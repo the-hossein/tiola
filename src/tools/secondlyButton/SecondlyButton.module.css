@@ -1,0 +1,16 @@
+.secondlyBtn {
+    background-color: var(--light-pen);
+    border-radius: var(--Product-Border-radius);
+    color: var(--dark-pen);
+    padding: 0.5rem 3.5rem;
+    font-size: 10pt;
+    border: none;
+    width: fit-content;
+}
+
+.secondlyBtn:hover {
+    border-radius: var(--Product-Border-radius) 0 var(--Product-Border-radius) 0;
+    background-color: var(--dark-pen);
+    color: var(--light-pen);
+    transition: 0.5s;
+}

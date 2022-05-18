@@ -1,32 +1,54 @@
-.headerContainer {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0.5rem 4rem;
+    padding: 0.6rem 4rem;
     color: var(--light-pen);
     font-size: 12pt;
     direction: var(--direction);
     border-radius: 0 0 8px 8px;
 }
 
+.headaritem {
+    width: 53%;
+    justify-content: space-between;
+}
 
-.menuIcon {
+.headaritem>span {
+
+    width: 55px !important;
+}
+
+.allitems span:not(:last-child),
+.allitems svg {
+    padding: var(--item-padding);
+}
+
+.mobileIcon span,
+.mobileIcon>svg {
+    padding: var(--item-padding);
+}
+
+.mobileLogo>span:last-child {
+    width: 30px !important;
+}
+
+.mobileLogo>span {
+    padding: var(--item-padding);
+}
+
+.headerIcon {
     display: flex;
     align-items: center;
-    flex: 0.5;
 }
 
-.menuItem>span {
-
-    width: 60px !important;
+.headerIcon>div,
+.headerIcon>span {
+    padding: var(--icon-padding);
 }
 
-.menuIcon>div>span,
-.menuIcon>div>svg,
-.menuIcon>div > div {
-    margin: var(--marginIcon)
-}
+
 
 .searchBox {
     background-color: var(--light-pen);
@@ -36,9 +58,9 @@
     animation-name: searchBoxAnimation;
     animation-duration: 1.5s;
     width: 180px;
-    padding:0 1.5rem;
+    padding: 0 1.5rem;
     border: none;
-   
+
 }
 
 .searchBox:focus-visible,
@@ -46,36 +68,23 @@
     box-shadow: none;
     border: none;
     outline: none;
-   
+
+
 }
 
 .searchBoxIcon {
     position: absolute;
-    left: 0;
+    left: 4px;
     color: #111111;
     top: 5px;
 }
 
-.menuIcon svg ,.menuIcon span {
-    cursor: pointer;
-}
 
-.menuIcon svg {
-    width: 26px;
-}
-
-.menuItem {
-    width: 52%;
-
-}
 
 .inputDesign {
     display: none;
 }
 
-.items {
-    width: 340px;
-}
 
 @keyframes searchBoxAnimation {
     from {
@@ -88,36 +97,34 @@
     }
 }
 
-@media(max-width:1200px) {
-    .menuItem {
-        width: 60%;
-    }
+@media(max-width:900px) {
+    .header {
+        padding: 0.6rem 1.5rem;
+        font-size: 10pt;
 
-    .items {
-        width: 300px;
     }
 }
 
-@media(max-width:768px) {
-  
-    .menuItem {
-        width: auto;
-        width: 36px;
 
+
+@media(max-width:475px) {
+    .header {
+        padding: 0.6rem 1rem;
     }
 
-    .items {
-        display: none !important;
-    }
-}
-
-@media(max-width:576px) {
-    .menuIcon span {
-        display: none;
+    .searchBox {
+        width: 100px;
     }
 
-    .headerContainer {
+    @keyframes searchBoxAnimation {
+        from {
+            display: block;
+            width: 0px;
+        }
 
-        padding: 0.5rem 1rem;
+        to {
+            width: 100px;
+        }
     }
+
 }

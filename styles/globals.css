@@ -1,16 +1,19 @@
 :root {
   --dark-pen: #000000;
-  --light-pen: #f2f2f2;
+  --light-pen: #ffffff;
   --darkGray-border: #343736;
   --lightGray-border: #7f7f7f;
   --border-bottom: 1px solid #cfcfcf;
   --blue-pen: #6a8eae;
   --medium-gray: #3e3f3a;
   --body-Color: #f2f2f2;
-  --direction:rtl;
+  --direction: rtl;
   --marginIcon: 0 0 0 1.5rem;
-  --textAlign-right:right;
-  --float-left:left;
+  --textAlign-right: right;
+  --float-left: left;
+  --Product-Border-radius: 8px;
+  --item-padding: 0 0 0 3rem;
+  --icon-padding: 0 2rem 0 0;
 }
 
 @font-face {

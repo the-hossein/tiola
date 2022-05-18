@@ -1,0 +1,12 @@
+.title{
+    text-align:var(--float-left);
+    margin-bottom: 2rem;
+}
+.container > div{
+border-bottom: var(--border-bottom);
+}
+@media(max-width:1300px){
+    .container{
+        width: 100%;
+    }
+}

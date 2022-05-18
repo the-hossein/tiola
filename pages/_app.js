@@ -4,6 +4,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
+import { Provider } from "react-redux";
+import { store } from "../src/redux/store";
 
 i18n
   .use(initReactI18next)
@@ -24,7 +26,11 @@ i18n
   });
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 
 export default MyApp;
