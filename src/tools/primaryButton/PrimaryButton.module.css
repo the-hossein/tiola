@@ -1,0 +1,8 @@
+.descoverBtn button {
+    border: 1px solid var(--light-pen);
+    background-color: var(--medium-gray);
+    padding: 0.5rem 2.5rem;
+    color: var(--light-pen);
+    border-radius: 8px;
+    font-size: 10pt;
+}

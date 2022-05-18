@@ -1,0 +1,18 @@
+.product {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.arrow {
+    color: var(--light-pen);
+    height: 40px;
+}
+
+@media(max-width:576px) {
+    .product {
+        height: 200px;
+        object-fit: cover;
+
+    }
+}

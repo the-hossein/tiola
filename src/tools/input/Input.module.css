@@ -1,0 +1,7 @@
+.inputLabel {
+    float: var(--float-left);
+}
+
+.input {
+    text-align-last: var(--float-left);
+}

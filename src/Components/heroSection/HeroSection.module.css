@@ -1,0 +1,31 @@
+.heroSection img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+}
+
+.heroSection {
+    height: 650px;
+
+}
+
+.descoverMore {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+}
+@media(max-width:1200px){
+    .heroSection{
+        height: 560px;
+    }
+}
+@media(max-width:576px){
+    .heroSection{
+        height: 300px;
+    }
+    .descoverMore {
+        bottom: 58%;
+        left: 10%;
+    }
+}

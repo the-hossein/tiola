@@ -1,0 +1,123 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 4rem;
+    color: var(--light-pen);
+    font-size: 12pt;
+    direction: var(--direction);
+    border-radius: 0 0 8px 8px;
+}
+
+
+.menuIcon {
+    display: flex;
+    align-items: center;
+    flex: 0.5;
+}
+
+.menuItem>span {
+
+    width: 60px !important;
+}
+
+.menuIcon>div>span,
+.menuIcon>div>svg,
+.menuIcon>div > div {
+    margin: var(--marginIcon)
+}
+
+.searchBox {
+    background-color: var(--light-pen);
+    color: black;
+    border-radius: 6px;
+    text-align: left;
+    animation-name: searchBoxAnimation;
+    animation-duration: 1.5s;
+    width: 180px;
+    padding:0 1.5rem;
+    border: none;
+   
+}
+
+.searchBox:focus-visible,
+.searchBox:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+   
+}
+
+.searchBoxIcon {
+    position: absolute;
+    left: 0;
+    color: #111111;
+    top: 5px;
+}
+
+.menuIcon svg ,.menuIcon span {
+    cursor: pointer;
+}
+
+.menuIcon svg {
+    width: 26px;
+}
+
+.menuItem {
+    width: 52%;
+
+}
+
+.inputDesign {
+    display: none;
+}
+
+.items {
+    width: 340px;
+}
+
+@keyframes searchBoxAnimation {
+    from {
+        display: block;
+        width: 0px;
+    }
+
+    to {
+        width: 180px;
+    }
+}
+
+@media(max-width:1200px) {
+    .menuItem {
+        width: 60%;
+    }
+
+    .items {
+        width: 300px;
+    }
+}
+
+@media(max-width:768px) {
+  
+    .menuItem {
+        width: auto;
+        width: 36px;
+
+    }
+
+    .items {
+        display: none !important;
+    }
+}
+
+@media(max-width:576px) {
+    .menuIcon span {
+        display: none;
+    }
+
+    .headerContainer {
+
+        padding: 0.5rem 1rem;
+    }
+}

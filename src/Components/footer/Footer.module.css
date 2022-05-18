@@ -1,0 +1,39 @@
+.footer {
+    width: 100%;
+    padding: 3rem 0;
+    background-color: var(--blue-pen);
+}
+
+.namad {
+    height: 100px;
+    background-color: var(--light-pen);
+}
+
+.footerInput {
+    text-align: var(--textAlign-right);
+}
+
+.socialMedia {
+    text-align: center;
+    color: var(--light-pen);
+}
+
+.socialMedia svg {
+    margin: 0 0.7rem;
+}
+
+.send {
+    border: 1px solid transparent;
+    background-color: var(--light-pen);
+    color: var(--blue-pen);
+    padding: 0.2rem 2rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+
+}
+
+.send:hover {
+    border: 1px solid var(--light-pen);
+    background-color: var(--blue-pen);
+    color: var(--light-pen);
+}
