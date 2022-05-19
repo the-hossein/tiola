@@ -22,11 +22,9 @@ const MediumCollection = ({image1,image2,image3,content,title,color}) => {
         >
           <div>
             <h3 className={style.collectionTitile}>{title}</h3>
-            <p>
-            {
-                content
-            }
-            </p>
+            <p className="lh-lg">{content}</p>
+
+
             <ColorPick />
           </div>
           <div className={style.viewAll}>

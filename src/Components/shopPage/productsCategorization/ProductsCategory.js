@@ -9,7 +9,7 @@ const ProductsCategory = ({ reverse }) => {
 
   return (
     <section>
-      <div className={`container ${style.container}`}>
+      <div className={`${style.container}`}>
         <div className="row justify-content-center">
           <div className="col-xl-10 col-lg-12 col-12 mt-5 mb-5">
             <div
@@ -21,7 +21,7 @@ const ProductsCategory = ({ reverse }) => {
               <div
                 className={`col-xl-4 col-lg-4 col-sm-4  d-flex flex-column ${
                   reverse === true ? " align-items-end" : ""
-                } `}
+                } ${style.rectPhoto} `}
               >
                 <RectangleProduct />
                 <div className="mt-4 w-100 ">
@@ -31,16 +31,17 @@ const ProductsCategory = ({ reverse }) => {
 
               <div className="col-lg-8 co-md-8 col-8">
                 <div className="row ">
-                  <div className="col-6">
+                  <div className={`col-6  pb-3  ${style.productPhoto}`}>
                     <SquareProduct />
                   </div>
-                  <div className="col-6">
+                  <div className={`col-6   pb-3 ${style.productPhoto}`}>
                     <SquareProduct />
                   </div>
-                  <div className="col-6">
+
+                  <div className={`col-6  pb-3  ${style.productPhoto}`}>
                     <SquareProduct />
                   </div>
-                  <div className="col-6">
+                  <div className={`col-6  pb-3  ${style.productPhoto}`}>
                     <SquareProduct />
                   </div>
                 </div>

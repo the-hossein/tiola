@@ -11,7 +11,7 @@
   "collection1Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Morbi tristique senectus et netus. Mattis pellentesque id nibh tortor id aliquet lectus proin. ",
   "collection2Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Morbi tristique senectus et netus. Mattis pellentesque id nibh tortor id aliquet lectus proin. ",
   "viewExploreText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Morbi tristique senectus et netus. Mattis pellentesque id nibh tortor id aliquet lectus proin. ",
-  "viewAll": "View All >",
+  "viewAll": "< View All ",
   "typeHere": "Type Here",
   "sendAMessage": "Send a Message",
   "sentBtn": "Send",
@@ -20,5 +20,14 @@
   "t": "t",
   "simpleViewMore": "View more",
   "simpleViewAll": "View All",
-  "BlueOcean": "Blue Ocean"
+  "BlueOcean": "Blue Ocean",
+  "PurchaseGuide":"Purchase Guide",
+  "MyCart":"MyCart",
+  "SavedItem":"Saved Item",
+"Blog":"Blog",
+"ContactUs":"Contact Us",
+"AboutUs":"About Us",
+  "Signout":"Sign out",
+  "testLorem":" Loren ipsem lore ipsem lore ipsem lore ipsemlorem ipsem lorem ipsem lorem ipsem lorem ipsem"
+
 }

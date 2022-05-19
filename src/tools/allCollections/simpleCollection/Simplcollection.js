@@ -15,7 +15,8 @@ const Simplcollection = ({image1,image2,content,title,color}) => {
         <div className={` col-xl-6 col-lg-7 col-md-6 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}>
           <div>
             <h3 className={style.collectionTitile}>{title}</h3>
-            <p>{content}</p>
+            <p className="lh-lg">{content}</p>
+
             <ColorPick />
           </div>
           <div className={style.viewAll}>

@@ -1,0 +1,78 @@
+.burgerMenu {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.49);
+    animation-name: openmenu;
+    animation-duration: 1s;
+    height: 81vh;
+    position: absolute;
+    display: block;
+    top: 65px;
+    padding: 2rem 1.5rem;
+    direction: var(--direction);
+}
+
+.darkmenu {
+    background: var(--dark-pen) !important;
+
+}
+
+.menuRight {
+    right: 0;
+}
+
+.menuLeft {
+    left: 0;
+}
+
+.burgerMenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: table;
+    margin: auto;
+
+}
+
+.burgerMenu>span:first-child {
+    font-size: 15pt;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.sign {
+    display: block;
+    text-align: center;
+    margin: 2rem 0;
+
+}
+
+.burgerMenu ul li {
+    color: var(--light-pen);
+    font-size: 12pt;
+    padding: 0.5rem 0;
+}
+
+@keyframes openmenu {
+    from {
+        width: 0;
+        padding: 0;
+    }
+
+    to {
+        width: 250px;
+
+    }
+}
+
+@media(max-width:768px) {
+    .burgerMenu {
+        top: 49px;
+    }
+}
+
+@media(max-width:576px) {
+    .burgerMenu {
+        background-color: var(--dark-pen);
+        height: 71vh;
+    }
+}

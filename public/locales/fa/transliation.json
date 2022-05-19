@@ -20,6 +20,16 @@
   "t": "ت",
   "simpleViewMore": "بیشتر",
   "simpleViewAll":"مشاهده بیشتر",
-  "BlueOcean":"اقیانوس آبی"
+  "BlueOcean":"اقیانوس آبی",
+  "PurchaseGuide":"راهنمای خرید",
+  "MyCart":"سبد خرید من",
+   "SavedItem":"ذخیره شده",
+"Blog":"بلاگ",
+"ContactUs":"ارتباط با ما",
+"AboutUs":"درباره ما",
+  "Signout":"خروج",
+  "testLorem":" لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده "
+
+
 
 }

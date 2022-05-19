@@ -9,9 +9,15 @@ import i18next from "i18next";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLang } from "../../redux/lang/langActions";
+import Menu from "../../tools/menu/Menu";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 const Header = ({ backColor }) => {
+    const router = useRouter();
   const { t } = useTranslation();
-  const cookie = Cookies.get("i18next");
+  const lang = useSelector((state) => state.stateLang);
+  const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   useLayoutEffect(() => {
     function updateSize() {
@@ -21,7 +27,6 @@ const Header = ({ backColor }) => {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  const lang = useSelector((state) => state.stateLang);
   const dispatch = useDispatch();
   const [prelaod, setpreload] = useState(true);
   const [showSearchBox, setShowSearchBox] = useState(false);
@@ -36,17 +41,6 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--marginIcon", "0 0 0 1.5rem");
     root.style.setProperty("--textAlign-right", "left");
     root.style.setProperty("--float-left", "right");
-    size > 1110
-      ? root.style.setProperty("--icon-padding", "0 3rem 0 0")
-  
-      : root.style.setProperty("--icon-padding", "0 1.5rem 0 0");
-
-    size > 1110
-      ? root.style.setProperty("--item-padding", "0 0 0 3rem")
-     
-      : root.style.setProperty("--item-padding", "0 0 0 1.5rem")
-      size < 360
-      ? root.style.setProperty("--item-padding", "0 0 0 1rem"):""
   };
 
   const leftDir = () => {
@@ -54,21 +48,11 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--marginIcon", "0 1.5rem 0 0");
     root.style.setProperty("--textAlign-right", "right");
     root.style.setProperty("--float-left", "left");
-    root.style.setProperty("--icon-padding", "0 0 0 3rem");
-    size > 1110
-      ? root.style.setProperty("--item-padding", "0 3rem 0 0")
-      : root.style.setProperty("--item-padding", "0 1.5rem 0 0")
-      size < 360
-      ? root.style.setProperty("--item-padding", "0 1rem 0 0"):""
-
-    size > 1110
-      ? root.style.setProperty("--icon-padding", "0 0 0 1.5rem")
-      : root.style.setProperty("--icon-padding", "0 0 0 1.5rem");
   };
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
 
-    const lngCookie=Cookies.get("i18next")
+    const lngCookie = Cookies.get("i18next");
     if (lngCookie === "en") {
       leftDir();
     } else {
@@ -86,67 +70,91 @@ const Header = ({ backColor }) => {
       rightDir();
     }
   };
+  const openMenu = () => {
+    setMenuBar(!menuBar);
+  };
   return !prelaod ? (
-    <div className={`${style.header} ${backColor}`}>
-      {size > 768 ? (
-        <>
-          <div className={`${style.headaritem} d-flex align-items-center`}>
-            <div
-              className={` ${style.allitems} d-flex justify-content-between align-items-center`}
-            >
-              <FontAwesomeIcon icon={faBars} />
-              <span>{t("home")}</span>
-              <span>{t("shop")}</span>
-              <span>{t("explore")}</span>
-              <span>{t("collection")}</span>
+    <>
+      <div className={`${style.header} ${backColor}`}>
+        {size > 768 ? (
+          <>
+            <div className={`${style.headaritem} d-flex align-items-center`}>
+              <nav
+                className={` ${style.allitems} d-flex justify-content-between align-items-center`}
+              >
+                <FontAwesomeIcon
+                  icon={faBars}
+                  className="position-relative"
+                  onClick={openMenu}
+                />
+                {menuBar && <Menu backColor={backColor} />}
+                <Link href="/">
+                  <span className={router.pathname==="/"&& style.active}>{t("home")}</span>
+                </Link>
+                <Link href="/shop">
+                  <span className={router.pathname==="/shop"&& style.active}>{t("shop")}</span>
+                </Link>
+                <Link href="/">
+                  <span className={router.pathname==="#"&& style.active}>{t("explore")}</span>
+                </Link>
+                <Link href="collections">
+                  <span className={router.pathname==="/collections"&& style.active}>{t("collection")}</span>
+                </Link>
+              </nav>
+              <Image src={logo} alt="logo" />
             </div>
-            <Image src={logo} alt="logo" />
-          </div>
 
-          <div className={style.headerIcon}>
-            <span>
-              {lang.lng === "en" ? (
-                <span onClick={() => changeLng("fa")}>fa</span>
-              ) : (
-                <span onClick={() => changeLng("en")}>en</span>
-              )}
-            </span>
-            <div className="position-relative">
-              <input
-                className={showSearchBox ? style.searchBox : style.inputDesign}
-              />
-              <FontAwesomeIcon
-                icon={faSearch}
-                onClick={serachHandler}
-                className={showSearchBox ? style.searchBoxIcon : ""}
-              />
+            <div className={style.headerIcon}>
+              <span>
+                {lang.lng === "en" ? (
+                  <span onClick={() => changeLng("fa")}>fa</span>
+                ) : (
+                  <span onClick={() => changeLng("en")}>en</span>
+                )}
+              </span>
+              <div className="position-relative">
+                <input
+                  className={
+                    showSearchBox ? style.searchBox : style.inputDesign
+                  }
+                />
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  onClick={serachHandler}
+                  className={showSearchBox ? style.searchBoxIcon : ""}
+                />
+              </div>
+              <span>{t("login")}</span>
             </div>
-            <span>{t("login")}</span>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
-            <FontAwesomeIcon icon={faBars} />
-            <span>{t("login")}</span>
-            <div className="position-relative">
-              <input
-                className={showSearchBox ? style.searchBox : style.inputDesign}
-              />
-              <FontAwesomeIcon
-                icon={faSearch}
-                onClick={serachHandler}
-                className={showSearchBox ? style.searchBoxIcon : ""}
-              />
+          </>
+        ) : (
+          <>
+            <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
+              <FontAwesomeIcon icon={faBars} onClick={openMenu} />
+              {menuBar && <Menu />}
+
+              <span>{t("login")}</span>
+              <div className="position-relative">
+                <input
+                  className={
+                    showSearchBox ? style.searchBox : style.inputDesign
+                  }
+                />
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  onClick={serachHandler}
+                  className={showSearchBox ? style.searchBoxIcon : ""}
+                />
+              </div>
             </div>
-          </div>
-          <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
-            <span>{t("descoverMore")}</span>
-            <Image src={logo} alt="logo" />
-          </div>
-        </>
-      )}
-    </div>
+            <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
+              <span>{t("descoverMore")}</span>
+              <Image src={logo} alt="logo" />
+            </div>
+          </>
+        )}
+      </div>
+    </>
   ) : (
     ""
   );

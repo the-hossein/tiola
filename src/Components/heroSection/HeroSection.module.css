@@ -12,20 +12,32 @@
 
 .descoverMore {
     position: absolute;
-    bottom: 20%;
+    top: 500px;
     left: 10%;
 }
-@media(max-width:1200px){
-    .heroSection{
+.leftDescoverMore{
+    right: 10%;
+}
+@media(max-width:1200px) {
+    .heroSection {
         height: 560px;
     }
+
+    .descoverMore {
+        position: absolute;
+        top: 439px;
+    }
 }
-@media(max-width:576px){
-    .heroSection{
+
+@media(max-width:768px) {
+    .descoverMore {
+        display: none;
+    }
+}
+
+@media(max-width:576px) {
+    .heroSection {
         height: 300px;
     }
-    .descoverMore {
-        bottom: 58%;
-        left: 10%;
-    }
+
 }

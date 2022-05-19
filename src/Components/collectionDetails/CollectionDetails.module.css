@@ -1,0 +1,13 @@
+.collectionPic{
+    width: 100%;
+    height: 475px;
+    object-fit: cover;
+}
+.collectionName{
+        position: absolute;
+        top: 430px;
+        left: 10%;
+}
+.rightBtn{
+    right: 10%;
+}
