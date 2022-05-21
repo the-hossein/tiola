@@ -8,7 +8,7 @@ const Menu = ({backColor}) => {
 
   return (
     <nav>
-      <div className={`${style.burgerMenu} ${lang.lng==="fa"?`${style.menuRight}`:`${style.menuLeft}`} ${backColor==="headerColor"&& style.darkmenu}`}>
+      <div className={`${style.burgerMenu} ${lang.lng==="fa"?`${style.menuRight}`:`${style.menuLeft}`} ${backColor==="headerColor"? style.darkmenu:""}`}>
         <span>Melina Rudigoz</span>
         <ul>
           <li>{t("PurchaseGuide")}</li>

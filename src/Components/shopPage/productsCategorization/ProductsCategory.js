@@ -1,13 +1,25 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import SecondlyButton from "../../../tools/secondlyButton/SecondlyButton";
+import MBproductCategory from "../MBproductCategory/MBproductCategory";
 import RectangleProduct from "../product/RectangleProduct";
 import SquareProduct from "../product/SquareProduct";
 import style from "./ProductsCategory.module.css";
+import {useRouter} from 'next/router'
 const ProductsCategory = ({ reverse }) => {
   const { t } = useTranslation();
+  const [size, setSize] = useState([0]);
+  const router=useRouter()
 
-  return (
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size > 768 ? (
     <section>
       <div className={`${style.container}`}>
         <div className="row justify-content-center">
@@ -17,14 +29,14 @@ const ProductsCategory = ({ reverse }) => {
                 reverse === true ? "flex-row-reverse" : ""
               } `}
             >
-              <h1 className={style.title}>{t("scarf")}</h1>
+              <h3 className={style.title}>{t("scarf")}</h3>
               <div
                 className={`col-xl-4 col-lg-4 col-sm-4  d-flex flex-column ${
                   reverse === true ? " align-items-end" : ""
                 } ${style.rectPhoto} `}
-              >
-                <RectangleProduct />
-                <div className="mt-4 w-100 ">
+              >    
+                <RectangleProduct page={router.pathname==="/collection/[collectionName]"?"collPage":"shopPage"} />
+                <div className={`mt-4 w-100 ${router.pathname==="/collection/[collectionName]"?style.collPage:style.shopPage}`}>
                   <SecondlyButton text={t("simpleViewAll")} />
                 </div>
               </div>
@@ -51,6 +63,8 @@ const ProductsCategory = ({ reverse }) => {
         </div>
       </div>
     </section>
+  ) : (
+    <MBproductCategory reverse={reverse} page={router.pathname==="/collection/[collectionName]"?"collPage":"shopPage"} />
   );
 };
 

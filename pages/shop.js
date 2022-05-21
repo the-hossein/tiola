@@ -1,20 +1,10 @@
 import Head from "next/head";
-import { useLayoutEffect, useState } from "react";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import MBproductCategory from "../src/Components/shopPage/MBproductCategory/MBproductCategory";
 import ProductsCategory from "../src/Components/shopPage/productsCategorization/ProductsCategory";
-
+import ShopPage from "../src/Components/shopPage/ShopPage";
 export default function Shop() {
-  const [size, setSize] = useState([0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
   return (
     <div>
       <Head>
@@ -25,19 +15,11 @@ export default function Shop() {
       <header>
         <Header backColor={"headerColor"} />
       </header>
-      {size > 769 ? (
-        <main>
-          <ProductsCategory />
-          <ProductsCategory reverse={true} />
-          <ProductsCategory />
-        </main>
-      ) : (
-        <main>
-          <MBproductCategory />
-          <MBproductCategory reverse={true} />
-          <MBproductCategory />
-        </main>
-      )}
+
+      <main>
+        <ShopPage />
+      </main>
+
       <footer>
         <Footer />
       </footer>

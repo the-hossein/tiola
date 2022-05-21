@@ -4,12 +4,14 @@ import SecondlyButton from "../../../tools/secondlyButton/SecondlyButton";
 import RectangleProduct from "../product/RectangleProduct";
 import SquareProduct from "../product/SquareProduct";
 import style from "../productsCategorization/ProductsCategory.module.css";
-const MBproductCategory = () => {
+const MBproductCategory = ({reverse,page}) => {
   const { t } = useTranslation();
   return (
     <section>
       <div className="container mt-4">
-        <div className="row">
+        <div  className={`row ${
+                reverse === true ? "flex-row-reverse" : ""
+              } `}>
           <h1 className={style.title}>{t("scarf")}</h1>
           <div className={`col-6 ${style.MbproductPhoto}`}>
             <RectangleProduct />
@@ -32,7 +34,8 @@ const MBproductCategory = () => {
             <SquareProduct />
           </div>
         </div>
-<div className="text-center m-3">
+<div className={`text-center m-3 ${page
+==="collPage"? "d-none":""} `}>
 <SecondlyButton text={t("simpleViewAll")} />
 
 </div>

@@ -9,6 +9,7 @@
     top: 65px;
     padding: 2rem 1.5rem;
     direction: var(--direction);
+    z-index: 99;
 }
 
 .darkmenu {
@@ -42,7 +43,7 @@
 .sign {
     display: block;
     text-align: center;
-    margin: 2rem 0;
+    margin-top:3rem !important;
 
 }
 
@@ -73,6 +74,5 @@
 @media(max-width:576px) {
     .burgerMenu {
         background-color: var(--dark-pen);
-        height: 71vh;
     }
 }

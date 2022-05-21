@@ -19,17 +19,24 @@
   "code": "کد",
   "t": "ت",
   "simpleViewMore": "بیشتر",
-  "simpleViewAll":"مشاهده بیشتر",
-  "BlueOcean":"اقیانوس آبی",
-  "PurchaseGuide":"راهنمای خرید",
-  "MyCart":"سبد خرید من",
-   "SavedItem":"ذخیره شده",
-"Blog":"بلاگ",
-"ContactUs":"ارتباط با ما",
-"AboutUs":"درباره ما",
-  "Signout":"خروج",
-  "testLorem":" لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده "
-
-
-
+  "simpleViewAll": "مشاهده بیشتر",
+  "BlueOcean": "اقیانوس آبی",
+  "PurchaseGuide": "راهنمای خرید",
+  "MyCart": "سبد خرید من",
+  "SavedItem": "ذخیره شده",
+  "Blog": "بلاگ",
+  "ContactUs": "ارتباط با ما",
+  "AboutUs": "درباره ما",
+  "Signout": "خروج",
+  "testLorem": " لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده ",
+  "pay": "خرید",
+  "addWatch": "افزودن به لیست تماشا",
+  "Compatiblewith": "سازگار با:",
+  "factor":"فاکتور",
+  "writeYourCm":"نظر خود را در اینجا وارد کنید",
+  "total":"مجموع:",
+  "done":"انجام",
+  "Readmore":"بیشتر",
+  "Readless":"کمتر"
+  
 }

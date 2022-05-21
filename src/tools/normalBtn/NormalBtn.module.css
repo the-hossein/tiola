@@ -1,0 +1,41 @@
+.payBtn {
+    background-color: var(--red-pen);
+    color: var(--light-pen);
+    font-size: 16pt;
+
+}
+
+.payBtn:hover {
+    background-color: var(--light-pen);
+    color: var(--red-pen);
+}
+
+.payBtn,
+.addWatch {
+    border: none;
+    width: 200px;
+    padding: 0.5rem 0;
+    border-radius: var(--Product-Border-radius);
+    margin: 0.5rem 0;
+}
+
+.addWatch {
+    background-color: var(--light-pen);
+    color: var(--dark-pen);
+    font-size: 14pt;
+
+}
+
+.addWatch:hover {
+    background-color: var(--dark-pen);
+    color: var(--light-pen);
+}
+
+@media(max-width:768px) {
+
+    .payBtn,
+    .addWatch {
+        width: 151px;
+        font-size: 12pt;
+    }
+}

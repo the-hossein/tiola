@@ -1,6 +1,4 @@
-.collectionTitile {
-    margin-bottom: 1.5rem;
-}
+
 
 .collectionImage div img:first-child {
     border-radius: 0 87px 0 0;
@@ -31,9 +29,7 @@
     text-align: justify;
 }
 
-.viewAll {
-    text-align: right;
-}
+
 
 .collectionImage div img:last-child:hover,
 .collectionImage div img:first-child:hover {
@@ -54,11 +50,7 @@
 
 
 
-    .viewAll {
-        float: right;
-        position: unset;
-        padding-top: 0;
-    }
+
 
 
     .content {

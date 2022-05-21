@@ -1,6 +1,6 @@
 .title {
     text-align: var(--float-left);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .container {
@@ -18,6 +18,14 @@
 
 }
 
+.collPage {
+    display: none !important;
+}
+
+.shopPage {
+    display: block !important;
+}
+
 .productPhoto:hover {
     border-radius: none;
 }
@@ -25,11 +33,5 @@
 @media(max-width:1200px) {
     .container {
         width: 90%;
-    }
-}
-
-@media(max-width:450px) {
-    .MbproductPhoto {
-        padding-left: 0 !important;
     }
 }

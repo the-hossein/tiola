@@ -28,6 +28,15 @@
 "ContactUs":"Contact Us",
 "AboutUs":"About Us",
   "Signout":"Sign out",
-  "testLorem":" Loren ipsem lore ipsem lore ipsem lore ipsemlorem ipsem lorem ipsem lorem ipsem lorem ipsem"
+  "testLorem":" Loren ipsem lore ipsem lore ipsem lore ipsemlorem ipsem lorem ipsem lorem ipsem lorem ipsem",
+  "pay":"pay",
+  "addWatch":"Add to watch list",
+  "Compatiblewith":"Compatible with:",
+  "factor":"factor",
+  "writeYourCm":"Write Your comment here",
+  "total":"Total:",
+  "done":"done",
+  "Readmore":"Read more",
+  "Readless":"Read less"
 
 }

@@ -81,14 +81,15 @@ const Header = ({ backColor }) => {
             <div className={`${style.headaritem} d-flex align-items-center`}>
               <nav
                 className={` ${style.allitems} d-flex justify-content-between align-items-center`}
-              >
+                >
                 <FontAwesomeIcon
                   icon={faBars}
                   className="position-relative"
                   onClick={openMenu}
-                />
-                {menuBar && <Menu backColor={backColor} />}
-                <Link href="/">
+                  />
+                  {menuBar && <Menu backColor={backColor} />}
+              <div>
+              <Link href="/">
                   <span className={router.pathname==="/"&& style.active}>{t("home")}</span>
                 </Link>
                 <Link href="/shop">
@@ -97,9 +98,10 @@ const Header = ({ backColor }) => {
                 <Link href="/">
                   <span className={router.pathname==="#"&& style.active}>{t("explore")}</span>
                 </Link>
-                <Link href="collections">
+                <Link href="/collections">
                   <span className={router.pathname==="/collections"&& style.active}>{t("collection")}</span>
                 </Link>
+              </div>
               </nav>
               <Image src={logo} alt="logo" />
             </div>

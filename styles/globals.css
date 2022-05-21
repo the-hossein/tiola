@@ -12,6 +12,7 @@
   --textAlign-right: right;
   --float-left: left;
   --Product-Border-radius: 8px;
+  --red-pen:#c43131;
 
 }
 
@@ -81,4 +82,30 @@ a {
 .slick-next::before,
 .slick-prev::before {
   content: '' !important;
+}
+
+.owl-next {
+  margin-right: 2rem !important;
+  color: var(--light-pen) !important;
+}
+
+.owl-prev {
+  color: var(--light-pen) !important;
+  margin-left: 2rem !important;
+}
+.owl-prev span,.owl-next span{
+  font-size:40pt;
+
+}
+.owl-theme .owl-nav {
+
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.owl-theme .owl-nav [class*='owl-']:hover{
+  background: none !important;
 }

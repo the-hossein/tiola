@@ -1,6 +1,7 @@
 import React from "react";
 import ColorPick from "../../colorPick/ColorPick";
 import ViewAll from "../../viewAll/ViewAll";
+import CollectionText from "../CollectionText";
 import style from "./MediumCollection.module.css";
 const MediumCollection = ({image1,image2,image3,content,title,color}) => {
   return (
@@ -20,16 +21,9 @@ const MediumCollection = ({image1,image2,image3,content,title,color}) => {
         <div
           className={`col-xl-5 col-lg-6 col-md-4 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}
         >
-          <div>
-            <h3 className={style.collectionTitile}>{title}</h3>
-            <p className="lh-lg">{content}</p>
+               <CollectionText title={title} color={"#82C2B9"} content={content} reverse={true}/>
 
-
-            <ColorPick />
-          </div>
-          <div className={style.viewAll}>
-            <ViewAll />
-          </div>
+        
         </div>
       </div>
     </>

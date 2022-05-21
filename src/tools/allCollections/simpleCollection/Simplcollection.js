@@ -1,8 +1,9 @@
 import React from "react";
 import ColorPick from "../../colorPick/ColorPick";
 import ViewAll from "../../viewAll/ViewAll";
+import CollectionText from "../CollectionText";
 import style from "./Simplcollection.module.css";
-const Simplcollection = ({image1,image2,content,title,color}) => {
+const Simplcollection = ({image1,image2,content,title}) => {
   return (
     <>
       <div className={`row justify-content-center flex-row-reverse mt-5 mb-5 pb-3 ${style.collection}`}>
@@ -13,15 +14,7 @@ const Simplcollection = ({image1,image2,content,title,color}) => {
           </div>
         </div>
         <div className={` col-xl-6 col-lg-7 col-md-6 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}>
-          <div>
-            <h3 className={style.collectionTitile}>{title}</h3>
-            <p className="lh-lg">{content}</p>
-
-            <ColorPick />
-          </div>
-          <div className={style.viewAll}>
-            <ViewAll />
-          </div>
+       <CollectionText title={title} color={"#82C2B9"} content={content}/>
         </div>
       </div>
     </>

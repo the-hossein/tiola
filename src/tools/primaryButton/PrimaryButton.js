@@ -3,7 +3,7 @@ import style from './PrimaryButton.module.css'
 const PrimaryButton = ({btnText}) => {
   return (
     <>
-    <div className={style.descoverBtn}>
+    <div className={style.primaryBtn}>
         <button>{btnText}</button>
     </div>
     </>
