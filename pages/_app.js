@@ -9,7 +9,8 @@ import { store } from "../src/redux/store";
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import { useEffect } from "react";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
@@ -50,6 +51,8 @@ function MyApp({ Component, pageProps }) {const router=useRouter()
         <NextNProgress height={6} options={{ showSpinner: false }} color="#6a8eae" />
 
       <Component {...pageProps} />
+      <ToastContainer />
+
     </Provider>
   );
 }

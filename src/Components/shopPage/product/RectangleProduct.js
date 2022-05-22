@@ -12,7 +12,7 @@ const RectangleProduct = ({ page }) => {
             page === "collPage" ? style.collPage : style.shopPage
           }`} />
       
-        <ProductInfo />
+        <ProductInfo more={true} />
       </div>
 
 

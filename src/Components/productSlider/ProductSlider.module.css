@@ -4,6 +4,10 @@
     object-fit: cover;
 }
 
+.slider {
+    direction: ltr;
+}
+
 .arrow {
     color: var(--light-pen);
     height: 40px;
@@ -15,8 +19,9 @@
         object-fit: cover;
 
     }
-    .sliderContainer{
+
+    .slider  div{
         z-index: -1;
     }
-    
+
 }

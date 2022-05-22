@@ -2,7 +2,7 @@
   --dark-pen: #000000;
   --light-pen: #ffffff;
   --darkGray-border: #343736;
-  --lightGray-border: #7f7f7f;
+  --lightGray-border: #707070;
   --border-bottom: 1px solid #cfcfcf;
   --blue-pen: #6a8eae;
   --medium-gray: #3e3f3a;
@@ -12,7 +12,8 @@
   --textAlign-right: right;
   --float-left: left;
   --Product-Border-radius: 8px;
-  --red-pen:#c43131;
+  --red-pen: #c43131;
+  --border-button:#c7c7c7;
 
 }
 
@@ -60,6 +61,10 @@ a {
 
 }
 
+.Toastify__toast {
+  font-family: 'IRANSansWeb' !important;
+}
+
 .headerColor {
   background-color: var(--dark-pen);
   border: 1px solid var(--darkGray-pen);
@@ -93,10 +98,13 @@ a {
   color: var(--light-pen) !important;
   margin-left: 2rem !important;
 }
-.owl-prev span,.owl-next span{
-  font-size:40pt;
+
+.owl-prev span,
+.owl-next span {
+  font-size: 40pt;
 
 }
+
 .owl-theme .owl-nav {
 
   display: flex;
@@ -106,6 +114,14 @@ a {
   top: 50%;
   transform: translateY(-50%);
 }
-.owl-theme .owl-nav [class*='owl-']:hover{
+
+.owl-theme .owl-nav [class*='owl-']:hover {
   background: none !important;
+}
+
+@media(max-width:480px) {
+  .Toastify__toast-container--top-right {
+    text-align: center !important;
+    right: 0em !important;
+  }
 }

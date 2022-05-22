@@ -34,7 +34,7 @@ const AllComment = () => {
       0: {
         items: 1
       },
-      450: {
+      560: {
         items: 1
       },
       600: {

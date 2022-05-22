@@ -1,13 +1,13 @@
-import React from 'react'
-import style from './PrimaryButton.module.css'
-const PrimaryButton = ({btnText}) => {
+import React from "react";
+import style from "./PrimaryButton.module.css";
+const PrimaryButton = ({ btnText, light }) => {
   return (
     <>
-    <div className={style.primaryBtn}>
+      <div className={light===true ? style.lightBtn : style.primaryBtn}>
         <button>{btnText}</button>
-    </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default PrimaryButton
+export default PrimaryButton;

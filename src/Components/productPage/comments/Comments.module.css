@@ -61,9 +61,6 @@
     align-items: center;
 }
 
-.Raiting ul:last-child {
-    width: 114px;
-}
 
 .Raiting ul:last-child li {
     margin-bottom: 1rem;

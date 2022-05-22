@@ -3,19 +3,23 @@ import { useTranslation } from "react-i18next";
 import style from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import { useSelector } from "react-redux";
-const ProductInfo = () => {
+const ProductInfo = ({more}) => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   return (
     <>
       <div
         className={`d-flex justify-content-between ${lang.lng === "fa" ? "flex-row-reverse" : "flex-row"} ${style.info}`}>
-        <div className={`d-flex flex-column ${lang.lng === "fa" && "align-items-end"}`}>
+        <div className={`d-flex flex-column justify-content-between ${lang.lng === "fa" && "align-items-end"}`}>
           <span>{`250,000` + t("t")}</span>
           <span className={style.rating}>
             <Rating name="product Rate" value={3} readOnly />
           </span>
-          <span>{t("simpleViewMore")}</span>
+          {
+            more?
+            <span>{t("simpleViewMore")}</span>
+            :""
+          }
         </div>
 
         <div className={`d-flex flex-column ${ lang.lng === "en" && "align-items-end"}`}>

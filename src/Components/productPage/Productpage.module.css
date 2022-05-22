@@ -46,9 +46,12 @@ font-size: 9pt;
         margin: 2rem 0;
 
     }
-
+  
+    
     .buttons button {
         margin: 0.5rem 1rem;
+        width: 151px;
+        font-size: 12pt;
     }
 
     .information {

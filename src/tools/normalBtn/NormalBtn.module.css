@@ -31,11 +31,3 @@
     color: var(--light-pen);
 }
 
-@media(max-width:768px) {
-
-    .payBtn,
-    .addWatch {
-        width: 151px;
-        font-size: 12pt;
-    }
-}

@@ -80,7 +80,7 @@ const ProductSlider = ({
     }
   };
   return (
-    <div style={{ direction: "ltr" }}>
+    <div className={Style.slider}>
       <OwlCarousel {...prop}>
         {images.map((item) => (
           <>

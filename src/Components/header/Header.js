@@ -86,6 +86,7 @@ const Header = ({ backColor }) => {
                   icon={faBars}
                   className="position-relative"
                   onClick={openMenu}
+            
                   />
                   {menuBar && <Menu backColor={backColor} />}
               <div>

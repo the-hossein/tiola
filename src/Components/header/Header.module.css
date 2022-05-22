@@ -21,7 +21,7 @@
 }
 
 .active {
-    border-width:10px;
+    border-width: 10px;
     border-bottom: 1px solid var(--blue-pen);
 }
 
@@ -31,7 +31,9 @@
 }
 
 
-
+.allitems svg{
+    width: 20px;
+}
 .allitems span:hover,
 .allitems svg:hover,
 .headerIcon span:hover,
