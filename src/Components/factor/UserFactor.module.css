@@ -1,0 +1,51 @@
+.map img {
+    border-radius: var(--Product-Border-radius);
+    height: 200px;
+    overflow: hidden;
+    display: block;
+    margin: auto;
+}
+
+.title {
+    text-align: var(--float-left);
+}
+
+.addresinput fieldset {
+    border: none !important;
+}
+
+.addresinput textarea::placeholder,
+.addresinput textarea {
+    text-align: var(--float-left);
+    padding: 0 1rem;
+
+}
+
+.inputContainer {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.edit {
+    background-color: var(--light-pen);
+    border-radius: 4px;
+    padding: 0.3rem 0.8rem;
+    font-size: 9pt;
+    color: var(--dark-pen);
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    margin: 0.4rem 0.2rem;
+    cursor: pointer;
+    float: var(--textAlign-right);
+}
+
+.checkedRight{
+    position: absolute;
+    top: 45px;
+    right: 0;
+}
+.checkedLeft{
+    position: absolute;
+    top: 45px;
+    left: 0;
+}

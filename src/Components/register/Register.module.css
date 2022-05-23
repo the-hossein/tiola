@@ -60,7 +60,9 @@
 .error {
     color: var(--red-pen);
     font-size: 8pt;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
+    text-align: var(--float-left);
+    display: block;
 }
 
 @media(max-width:1300px) {

@@ -1,8 +1,14 @@
-.tiola{
-    background-image: url('/Assets/images/tiola.png');
+.tiola {
+    background-image: url('/Assets/images/tiola.svg');
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
+
     width: 100%;
     height: 100%;
+}
+
+.tiola p {
+    padding: 2rem 0;
+    text-align: justify;
+    color: var(--light-pen);
 }
