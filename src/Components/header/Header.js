@@ -104,7 +104,10 @@ const Header = ({ backColor }) => {
                 </Link>
               </div>
               </nav>
+              <Link  href="/">
               <Image src={logo} alt="logo" />
+              
+              </Link>
             </div>
 
             <div className={style.headerIcon}>
@@ -152,7 +155,10 @@ const Header = ({ backColor }) => {
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
               <span>{t("descoverMore")}</span>
+              <Link  href="/">
               <Image src={logo} alt="logo" />
+              
+              </Link>
             </div>
           </>
         )}

@@ -1,4 +1,5 @@
-.row img {
+.row img,
+.Mbrow img {
     width: 86px;
     height: 118px;
     border-radius: 8px;
@@ -8,27 +9,31 @@
     border: 1px solid var(--lightGray-border);
 
 }
-.count{
+
+.count {
     padding: 0 1rem;
 }
-.minus
- {
+
+.minus {
     padding: 0.35rem 0.45rem;
 }
 
-.row {
+.row,
+.Mbrow {
     direction: var(--direction);
     align-items: center;
     background-color: var(--light-pen);
     margin: 1.5rem 0 !important;
     border-radius: var(--Product-Border-radius);
     box-shadow: 0px 4px 6px #cccccc;
+    font-size: 12pt;
 }
 
-.row ul {
+.row ul,
+.Mbrow ul {
     width: fit-content;
     list-style-type: none;
-    font-size: 12pt;
+
     margin: 0;
 }
 
@@ -43,19 +48,23 @@
     align-items: flex-end;
 }
 
-.row>div svg {
+.row>div svg,
+.Mbrow>div svg {
     border: 1px solid #c7c7c7;
     border-radius: 6px;
     color: #a19c9c;
     cursor: pointer;
 }
-.row>div svg:hover{
+
+.row>div svg:hover {
     border-color: var(--blue-pen);
     color: var(--blue-pen);
 }
-.close{
+
+.close {
     margin-bottom: 2rem;
 }
+
 .close:hover {
     border: 1px solid var(--red-pen) !important;
     color: var(--red-pen) !important;
@@ -66,4 +75,40 @@
 .row>div button {
     font-size: 12pt;
     padding: 0.4rem 1.5rem;
+}
+
+.Mbrow ul li {
+    padding: 0 1rem;
+}
+
+.collection {
+    display: flex;
+    align-items: center;
+}
+
+.collection span {
+    width: 20px;
+    height: 20px;
+
+}
+
+@media(max-width:768px) {
+    .close {
+        margin: 1rem 1rem 0.5rem 1rem;
+        float: right
+    }
+
+    .Mbrow button {
+        margin: 1rem;
+    }
+
+.Mbrow img {
+    width: 120px;
+    height: 160px;
+}
+}
+@media(max-width:390px) {
+    .Mbrow {
+        font-size: 10pt;
+    }
 }

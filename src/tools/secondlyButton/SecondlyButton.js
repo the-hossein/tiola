@@ -1,9 +1,13 @@
 import React from "react";
 import style from "./SecondlyButton.module.css";
-const SecondlyButton = ({text}) => {
-  return <>
-  <button className={style.secondlyBtn}>{text}</button>
-  </>;
+const SecondlyButton = ({ text, onclick }) => {
+  return (
+    <>
+      <button className={style.secondlyBtn} onClick={onclick}>
+        {text}
+      </button>
+    </>
+  );
 };
 
 export default SecondlyButton;

@@ -1,0 +1,182 @@
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    margin: 0 2rem;
+}
+
+.profile {
+    direction: var(--direction);
+    display: flex;
+    align-items: center;
+}
+
+.editPro {
+    font-size: 20pt;
+    display: block;
+    line-height: 1.5;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.RowProduct {
+    background-color: var(--light-pen);
+    border-radius: var(--Product-Border-radius);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 10pt;
+    position: relative;
+    direction: var(--direction);
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.RowProduct>div>span,
+.status span,
+.status svg {
+    margin: 0 0.7rem;
+}
+
+.history button {
+    font-size: 10pt;
+    padding: 0.3rem 3rem;
+    margin: auto;
+    display: block;
+}
+
+.close {
+    background-color: var(--light-pen);
+    border-radius: 100%;
+    position: absolute;
+    top: -19px;
+    right: 2px;
+    /* float: var(--textAlign-right); */
+}
+
+
+.title {
+    direction: var(--direction);
+    margin: 1rem 0;
+}
+
+.stepper div:not(:last-child) span:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 49px;
+    background-color: var(--lightGray-border);
+    z-index: 0;
+}
+
+.shape svg,
+.icon {
+    font-size: 22pt;
+    color: var(--lightGray-border);
+    z-index: 9;
+}
+
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    direction: var(--direction);
+    margin: 4rem 0;
+
+}
+
+.active svg,
+.active {
+
+    color: var(--blue-pen);
+
+}
+
+.active::after {
+    background-color: var(--blue-pen) !important;
+
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+@media(max-width:510px) {
+
+    .shape svg,
+    .icon {
+        font-size: 16pt;
+
+    }
+
+    .stepper div span:nth-child(3) {
+        font-size: 9pt;
+
+    }
+
+    .stepper div:not(:last-child) span:nth-child(2)::after {
+        content: "";
+        top: 37px;
+
+    }
+
+    .RowProduct {
+        padding: 0.5rem 0;
+        font-size: 9pt;
+    }
+
+    .RowProduct>div>span,
+    .status span,
+    .status svg {
+        margin: 0 0.3rem;
+    }
+
+    .profile img {
+        margin: 0 1rem;
+    }
+
+    .name {
+        font-size: 16pt;
+        margin-bottom: 1rem;
+    }
+
+    .editPro {
+        font-size: 14pt;
+    }
+
+    .profile div span:last-child {
+        font-size: 9pt;
+    }
+}
+
+@media(max-width:400px) {
+    .RowProduct {
+        flex-direction: column;
+
+        justify-content: space-between;
+        height: 22%;
+    }
+
+    .RowProduct>div>span,
+    .status span,
+    .status svg {
+        margin: 0 0.6rem;
+    }
+
+}
+
+/* 
+@media(max-width:377px) {
+    .stepper div span:nth-child(3) {
+        overflow-wrap: break-word;
+        width: 72px;
+    }
+} */
