@@ -1,0 +1,18 @@
+.inputLabel {
+    float: var(--float-left);
+}
+.darkText{
+    color: var(--dark-pen);
+}
+.lightText{
+    color: var(--light-pen);
+
+}
+.input {
+    text-align-last: var(--float-left);
+    border: none;
+}
+.input:focus,.input:focus-visible{
+    border: none !important;
+    box-shadow: none !important;
+}

@@ -1,0 +1,11 @@
+.blurButton button {
+
+    background: none !important;
+    border: none;
+    backdrop-filter: blur(8px);
+    padding: 1rem 3rem;
+    color: var(--light-pen);
+    border-radius: 8px;
+    font-size: 10pt;
+    font-size: 16pt;
+}

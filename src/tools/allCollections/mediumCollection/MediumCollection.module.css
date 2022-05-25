@@ -1,0 +1,119 @@
+.collectionImage div img:first-child:hover,
+.collectionImage div img:nth-child(2):hover,
+.collectionImage div img:last-child:hover {
+    border-radius: 0;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+
+.collectionImage {
+    display: flex;
+}
+
+.collectionImage div img:first-child {
+    border-radius: 82px 87px 0 0;
+    width: 120px;
+    height: 220px;
+    margin-top: 2rem;
+
+    object-fit: cover;
+}
+
+.collectionImage div img:nth-child(2) {
+    border-radius: 80px 80px 80px 80px;
+    width: 170px;
+    height: 230px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    padding: 0 1rem;
+    align-self: self-end;
+
+
+}
+
+.collectionImage div img:last-child {
+    border-radius: 82px 87px 0 0;
+    height: 300px;
+    width: 160px;
+    align-self: start;
+    object-fit: cover;
+}
+
+.collectionImage>div {
+    height: 332px;
+}
+
+.collectionImage,
+
+
+.content {
+    border-bottom: var(--border-bottom);
+}
+
+
+
+.content2 {
+    direction: rtl;
+}
+
+.viewAll {
+    float: left;
+}
+
+
+.content p {
+    text-align: justify;
+}
+
+.collectionTitile {
+    margin-bottom: 1.5rem;
+}
+
+.viewAll {
+    text-align: left;
+}
+@media(max-width:768px) {
+
+    .collection {
+        flex-direction: column-reverse !important;
+    }
+    .viewAll {
+        padding-top: 0;
+        padding-bottom: 1rem;
+        position: unset;
+    }
+
+ 
+    .collectionImage {
+        justify-content: center !important;
+        padding-top: 0 !important;
+
+    }
+
+
+.content{
+    border-bottom: none;
+}
+}
+@media(max-width:500px) {
+
+    .collectionImage div img:first-child {
+        width: 26%;
+      
+    }
+    
+    .collectionImage div img:nth-child(2) {
+        width: 35%;
+      padding: 0 0.5rem;
+    
+    
+    }
+    
+    .collectionImage div img:last-child {
+       
+        width: 28%;
+      
+    }
+    
+}

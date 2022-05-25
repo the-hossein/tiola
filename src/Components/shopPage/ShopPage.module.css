@@ -1,0 +1,19 @@
+.shop {
+    width: 70%;
+    display: block;
+    margin: auto;
+    direction: var(--direction);
+    padding: 2rem 2rem 0 2rem;
+}
+
+@media(max-width:1200px) {
+    .shop {
+        width: 100%;
+    }
+}
+@media(max-width:576px){
+    .shop {
+        padding: 2rem 1rem 0 1rem;
+
+    }
+}

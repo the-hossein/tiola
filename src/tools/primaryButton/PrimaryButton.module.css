@@ -1,0 +1,31 @@
+.primaryBtn button {
+    border: 1px solid var(--light-pen);
+    background-color: var(--medium-gray);
+    padding: 0.5rem 2.5rem;
+    color: var(--light-pen);
+    border-radius: 8px;
+    font-size: 10pt;
+}
+
+.primaryBtn button:hover {
+    transform: scale(1.09);
+    transition: 0.5s;
+
+}
+
+.lightBtn button {
+    border: 1px solid var(--border-button);
+    background-color: var(--light-pen);
+    padding: 0.2rem 1rem;
+    border-radius: 8px;
+    color: var(--dark-pen);
+    font-size: 8pt;
+
+
+}
+
+.lightBtn button:hover {
+    background-color: var(--dark-pen);
+    color: var(--light-pen);
+
+}

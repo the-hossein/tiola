@@ -1,0 +1,174 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.3rem 4rem;
+    color: var(--light-pen);
+    font-size: 12pt;
+    direction: var(--direction);
+
+}
+
+.allitems div span {
+    margin: 0 1rem;
+    display: inline-block;
+}
+
+.headaritem {
+    width: 53%;
+    justify-content: space-between;
+}
+
+.active {
+    border-width: 10px;
+    border-bottom: 1px solid var(--blue-pen);
+}
+
+.headaritem>span {
+
+    width: 55px !important;
+}
+
+
+.allitems svg{
+    width: 20px;
+}
+.allitems span:hover,
+.allitems svg:hover,
+.headerIcon span:hover,
+.headerIcon div:hover {
+    cursor: pointer !important;
+
+}
+
+.headerIcon div {
+    padding: 0 1.5rem !important;
+
+}
+
+.mobileIcon span {
+
+    padding: 0 1.5rem !important;
+}
+
+.mobileLogo>span:last-child {
+    width: 30px !important;
+}
+
+.mobileLogo>span:first-child {
+    padding: 0 1rem;
+}
+
+.headerIcon {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.searchBox {
+    background-color: var(--light-pen);
+    color: black;
+    border-radius: 6px;
+    text-align: left;
+    animation-name: searchBoxAnimation;
+    animation-duration: 1.5s;
+    width: 180px;
+    padding: 0 1.5rem;
+    border: none;
+
+}
+
+.searchBox:focus-visible,
+.searchBox:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+
+
+}
+
+.searchBoxIcon {
+    position: absolute;
+    left: 30px;
+    color: #111111;
+    top: 5px;
+}
+
+
+
+.inputDesign {
+    display: none;
+}
+
+
+@keyframes searchBoxAnimation {
+    from {
+        display: block;
+        width: 0px;
+    }
+
+    to {
+        width: 180px;
+    }
+}
+
+@media(max-width:1000px) {
+    .header {
+        padding: 0.6rem 1.5rem;
+        font-size: 11pt;
+
+    }
+    .allitems div span {
+        margin: 0 0.7rem;
+}
+}
+
+@media(max-width:768px) {
+    .searchBoxIcon {
+        left: 6px;
+
+    }
+
+}
+
+@media(max-width:475px) {
+
+    .headerIcon div,
+    .mobileIcon span {
+        padding: 0 1rem !important;
+
+    }
+
+    .header {
+        padding: 0.6rem 1rem;
+    }
+
+    .searchBox {
+        width: 100px;
+    }
+
+    @keyframes searchBoxAnimation {
+        from {
+            display: block;
+            width: 0px;
+        }
+
+        to {
+            width: 100px;
+        }
+    }
+
+}
+
+@media(max-width:366px) {
+
+    .headerIcon div,
+    .mobileIcon span,
+    .mobileLogo>span:first-child {
+        padding: 0 0.5rem !important;
+
+    }
+
+}

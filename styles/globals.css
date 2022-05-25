@@ -1,0 +1,127 @@
+:root {
+  --dark-pen: #000000;
+  --light-pen: #ffffff;
+  --darkGray-border: #343736;
+  --lightGray-border: #707070;
+  --border-bottom: 1px solid #cfcfcf;
+  --blue-pen: #6a8eae;
+  --medium-gray: #3e3f3a;
+  --body-Color: #f2f2f2;
+  --direction: rtl;
+  --marginIcon: 0 0 0 1.5rem;
+  --textAlign-right: right;
+  --float-left: left;
+  --Product-Border-radius: 8px;
+  --red-pen: #c43131;
+  --border-button:#c7c7c7;
+
+}
+
+@font-face {
+  font-family: 'IRANSansWeb';
+  src: url('/Assets/Fonts/iranSans/eot/IRANSansWeb.eot');
+  src: url('/Assets/Fonts/iranSans/eot/IRANSansWeb.eot') format('embedded-opentype'), url('/Assets/Fonts/iranSans/woff/IRANSansWeb.woff') format('woff'), url('/Assets/Fonts/iranSans/ttf/IRANSansWeb.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'apple';
+  src: url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.eot');
+  src: url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.eot') format('embedded-opentype'), url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.woff') format('woff'), url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  direction: rtl;
+  font-family: 'IRANSansWeb' !important;
+  background-color: var(--body-Color) !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.headerBlur {
+  background-color: none;
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+
+}
+
+.Toastify__toast {
+  font-family: 'IRANSansWeb' !important;
+}
+
+.headerColor {
+  background-color: var(--dark-pen);
+  border: 1px solid var(--darkGray-pen);
+
+
+}
+
+.slick-prev {
+  left: 1.5rem !important;
+  z-index: 1 !important;
+}
+
+.slick-next {
+  right: 1.5rem !important;
+  z-index: 1 !important;
+
+}
+
+
+.slick-next::before,
+.slick-prev::before {
+  content: '' !important;
+}
+
+.owl-next {
+  margin-right: 2rem !important;
+  color: var(--light-pen) !important;
+}
+
+.owl-prev {
+  color: var(--light-pen) !important;
+  margin-left: 2rem !important;
+}
+
+.owl-prev span,
+.owl-next span {
+  font-size: 40pt;
+
+}
+
+.owl-theme .owl-nav {
+
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover {
+  background: none !important;
+}
+
+@media(max-width:480px) {
+  .Toastify__toast-container--top-right {
+    text-align: center !important;
+    right: 0em !important;
+  }
+}

@@ -1,0 +1,133 @@
+.rating span {
+    color: var(--dark-pen);
+}
+
+.ratinaition,
+.doneBtn,
+.total,
+.userComment,
+.Raiting {
+    font-size: 9pt;
+}
+
+.rate {
+    height: 5px;
+    border-radius: 8px;
+    background-color: #707070;
+}
+
+
+
+.Raiting ul,
+.ratinaition ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.doneBtn {
+    border: 1px solid var(--medium-gray);
+    color: var(--dark-pen);
+    background-color: var(--light-pen);
+    width: fit-content;
+    border-radius: 6px;
+    width: 100%;
+    padding: 0.2rem;
+}
+
+.doneBtn:hover {
+    color: var(--light-pen);
+    background-color: var(--dark-pen);
+}
+
+.amount {
+    border: 1px solid var(--dark-pen);
+    border-radius: 4px;
+    display: block;
+    width: 19px;
+    font-size: 7pt;
+    text-align: center;
+    margin: 0.1rem 0.2rem;
+}
+
+.ratinaition ul li span {
+    color: var(--dark-pen) !important;
+    padding: 0 !important;
+}
+
+.ratinaition ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.Raiting ul:last-child li {
+    margin-bottom: 1rem;
+}
+
+.userComment {
+    max-width: 200px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    height: 50px;
+}
+
+.addComment {
+    padding: 3.8rem;
+    border-radius: var(--Product-Border-radius);
+    background-color: var(--light-pen);
+    color: var(--medium-gray);
+}
+
+.add {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0.7rem 1rem 0.4rem 1rem;
+    border: 1px solid var(--dark-pen);
+    display: inline-block;
+}
+
+.commentInput {
+    background-color: var(--body-color);
+    border-radius: 10px;
+    height: 100px;
+}
+
+.writeCm {
+    background-color: var(--light-pen);
+    border-radius: var(--Product-Border-radius);
+    padding: 0.7rem;
+}
+
+.commentText textarea {
+    height: 80px !important;
+    background-color: var(--body-Color) !important;
+    border: none !important;
+    resize: none;
+    overflow: hidden;
+}
+
+.commentText textarea::placeholder,
+.commentText label {
+    font-size: 7pt;
+    color: var(--medium-gray);
+}
+
+.Commnet {
+    background-color: var(--light-pen);
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: var(--Product-Border-radius);
+    direction: var(--direction);
+}
+
+.AllComment {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: var(--Product-Border-radius);
+
+}

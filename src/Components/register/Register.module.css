@@ -1,0 +1,99 @@
+.Register {
+    height: 100vh !important;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pic span {
+    height: 100vh !important;
+}
+
+.Register h1 {
+    text-align: var(--float-left);
+    margin-bottom: 3rem;
+}
+
+.pic span img {
+    object-fit: cover;
+}
+
+.enterNum {
+    width: 65%;
+    margin: auto;
+    display: block;
+}
+
+.enterNum input {
+    height: 50px;
+    border-radius: 14px;
+}
+
+.submitButtons button {
+    font-size: 12pt;
+
+}
+
+.submitButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0;
+    font-size: 10pt;
+
+
+}
+
+.again {
+    color: var(--red-pen);
+    display: block;
+    width: 100%;
+
+}
+
+.editPhone button {
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    font-size: 10pt;
+}
+
+.error {
+    color: var(--red-pen);
+    font-size: 8pt;
+    padding: 0.5rem;
+    text-align: var(--float-left);
+    display: block;
+}
+
+@media(max-width:1300px) {
+    .enterNum {
+        width: 80%;
+    }
+}
+
+@media(max-width:1080px) {
+    .enterNum {
+        width: 85%;
+    }
+}
+
+@media(max-width:510px) {
+    .submitButtons button {
+        width: 170px;
+    }
+
+    .enterNum {
+        width: 90%;
+    }
+}
+
+@media(max-width:440px) {
+    .submitButtons button {
+        width: 140px;
+
+    }
+
+    .enterNum {
+        width: 95%;
+    }
+}

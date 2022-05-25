@@ -1,0 +1,25 @@
+.CategoryPhoto span {
+    border-radius: var(--Product-Border-radius);
+    height: 250px !important;
+}
+.CategoryPhoto span img{
+    object-fit: cover;
+
+}
+.CategoryProduct>div {
+    background-color: var(--light-pen);
+    border-radius: var(--Product-Border-radius);
+    padding: 0.5rem;
+}
+
+.CategoryProduct img {
+    width: 100%;
+    height:300px;
+    object-fit: cover;
+    margin-bottom: 0.7rem;
+
+}
+
+.CategoryProduct {
+    overflow: hidden;
+}

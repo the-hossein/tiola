@@ -1,0 +1,60 @@
+.myCollection {
+    overflow: hidden;
+
+}
+
+.myCollection img {
+    width: 75%;
+    border-radius: var(--Product-Border-radius);
+    height: 400px;
+    object-fit: cover;
+}
+
+.info {
+    width: 75%;
+    margin: auto;
+    font-size: 9pt;
+    text-align: var(--float-left);
+}
+
+.collectionName>span:first-child {
+    min-width: 96px;
+    overflow-wrap: break-word;
+}
+
+.title {
+    padding: 3rem 3rem 1rem 3rem;
+
+}
+
+.description {
+    padding: 0 3rem 1rem 3rem;
+
+}
+
+.title,
+.description {
+    text-align: var(--float-left);
+}
+
+.content {
+    min-width: 160px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    height: 55px;
+    direction: var(--direction);
+}
+
+.myCollection img:hover {
+    transition: 1s;
+    width: 100%;
+    cursor: pointer;
+}
+
+.collectionName {
+    overflow-wrap: break-word;
+    min-width: 100px;
+    margin: 0.6rem 0;
+}
