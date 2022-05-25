@@ -1,0 +1,24 @@
+.container{
+    background-color: #e0dbdb;
+    direction: var(--direction);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 60px;
+}
+.blogMain {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    /* padding: 30px 0; */
+}
+
+@media (max-width: 800px) {
+    .container{
+        width: 100%;
+        flex-direction: column;
+    }
+}
