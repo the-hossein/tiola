@@ -6,11 +6,12 @@ import RectangleProduct from "../product/RectangleProduct";
 import SquareProduct from "../product/SquareProduct";
 import style from "./ProductsCategory.module.css";
 import {useRouter} from 'next/router'
-const ProductsCategory = ({ reverse }) => {
+import Link from 'next/link'
+const ProductsCategory = ({ reverse,data }) => {
+  console.log(data)
   const { t } = useTranslation();
   const [size, setSize] = useState([0]);
   const router=useRouter()
-
   useLayoutEffect(() => {
     function updateSize() {
       setSize([window.innerWidth]);
@@ -29,15 +30,16 @@ const ProductsCategory = ({ reverse }) => {
                 reverse === true ? "flex-row-reverse" : ""
               } `}
             >
-              <h3 className={style.title}>{t("scarf")}</h3>
+              <h3 className={style.title}>{}</h3>
               <div
                 className={`col-xl-4 col-lg-4 col-sm-4  d-flex flex-column ${
                   reverse === true ? " align-items-end" : ""
                 } ${style.rectPhoto} `}
               >    
-                <RectangleProduct page={router.pathname==="/collection/[collectionName]"?"collPage":"shopPage"} />
+                <RectangleProduct page={router.pathname==="/collection/[collectionName]"?"collPage":"shopPage"}  />
                 <div className={`mt-4 w-100 ${router.pathname==="/collection/[collectionName]"?style.collPage:style.shopPage}`}>
                   <SecondlyButton text={t("simpleViewAll")} />
+                  
                 </div>
               </div>
 

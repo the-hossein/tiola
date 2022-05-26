@@ -4,7 +4,7 @@ import style from "./Product.module.css";
 
 import ProductInfo from "./ProductInfo";
 
-const SquareProduct = () => {
+const SquareProduct = ({data}) => {
   return (
     <>
 

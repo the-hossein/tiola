@@ -1,9 +1,11 @@
 import Head from "next/head";
+import callApi from "../src/api/callApi";
+import { BASE_URL, GET_ALL_COLLECTION } from "../src/api/urls";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import TiolaCollections from "../src/Components/pageCollentions/MyCollection/TiolaCollections";
 
-export default function collection() {
+export default function collections({ allCollection }) {
   return (
     <div>
       <Head>
@@ -15,11 +17,19 @@ export default function collection() {
         <Header backColor={"headerColor"} />
       </header>
       <main>
-          <TiolaCollections/>
+        <TiolaCollections data={allCollection.data} />
       </main>
       <footer>
         <Footer />
       </footer>
     </div>
   );
+}
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const data = await callApi(BASE_URL + GET_ALL_COLLECTION, "GET", "{}");
+
+  return {
+    props: { allCollection: data } // will be passed to the page component as props
+  };
 }

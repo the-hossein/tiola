@@ -12,8 +12,9 @@
 
 .descoverMore {
     position: absolute;
-    top: 500px;
+    margin-bottom: 4rem;
     left: 10%;
+
 }
 .leftDescoverMore{
     right: 10%;
@@ -23,10 +24,7 @@
         height: 560px;
     }
 
-    .descoverMore {
-        position: absolute;
-        top: 439px;
-    }
+ 
 }
 
 @media(max-width:768px) {
