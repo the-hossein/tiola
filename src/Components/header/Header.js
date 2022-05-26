@@ -101,7 +101,7 @@ const Header = ({ backColor }) => {
                 <Link href="/shop">
                   <span className={router.pathname==="/shop"? style.active:""}>{t("shop")}</span>
                 </Link>
-                <Link href="/">
+                <Link href="/explore">
                   <span className={router.pathname==="#"? style.active:""}>{t("explore")}</span>
                 </Link>
                 <Link href="/collections">
