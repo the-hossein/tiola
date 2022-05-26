@@ -5,7 +5,7 @@ import Link from "next/link";
 const MyCollection = () => {
   return (
     <>
-      <Link href="/collection/collNaame">
+      <Link href={`/collection/collNaame`}>
         <div
           className={`col-xl-3 col-lg-3 col-sm-6 col-12 ${style.myCollection} `}
         >

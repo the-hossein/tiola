@@ -41,7 +41,6 @@
   "sendCode": "ارسال کد",
   "enterCode": "وارد کردن کد",
   "signIN": "ورود",
-
   "signup": "ثبت نام",
   "phoneNumber": "شماره همراه",
   "successSignIn": "با موفقیت ثبت نام شدید",
@@ -59,13 +58,5 @@
   "edit": "ویرایش",
   "addresTest": " میرداماد-خیابان انوار- کوچه فلان پلاک3",
   "addWatchList": "افزود به لیست",
-  "mirdamad": "میرداماد",
-  "Completed": "کامل شده",
-  "pending": "انتظار",
-  "editProfile": "ویرایش پروفایل",
-  "remain": "باقی مانده",
-  "delivery": "تحویل سفارش",
-  "post": "ارسال به پست",
-
   "checking": "بررسی سفارش"
 }

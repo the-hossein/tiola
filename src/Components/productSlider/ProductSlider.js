@@ -84,12 +84,14 @@ const ProductSlider = ({
       <OwlCarousel {...prop}>
         {images.map((item) => (
           <>
-            <img
-              src={item.src}
-              alt="product"
-              className={Style.product}
-              style={{ height: heightImage, borderRadius: borderRadius }}
-            />
+            <div key={item.id}>
+              <img
+                src={item.src}
+                alt="product"
+                className={Style.product}
+                style={{ height: heightImage, borderRadius: borderRadius }}
+              />
+            </div>
           </>
         ))}
       </OwlCarousel>

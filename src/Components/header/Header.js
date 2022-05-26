@@ -41,6 +41,8 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--marginIcon", "0 0 0 1.5rem");
     root.style.setProperty("--textAlign-right", "left");
     root.style.setProperty("--float-left", "right");
+    // root.style.setProperty("--font", "IRANSansWeb");
+
   };
 
   const leftDir = () => {
@@ -48,6 +50,9 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--marginIcon", "0 1.5rem 0 0");
     root.style.setProperty("--textAlign-right", "right");
     root.style.setProperty("--float-left", "left");
+    // root.style.setProperty("--font", "apple");
+
+
   };
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
@@ -88,19 +93,19 @@ const Header = ({ backColor }) => {
                   onClick={openMenu}
             
                   />
-                  {menuBar && <Menu backColor={backColor} />}
+                  {menuBar ? <Menu backColor={backColor} />:""}
               <div>
               <Link href="/">
-                  <span className={router.pathname==="/"&& style.active}>{t("home")}</span>
+                  <span className={router.pathname==="/"? style.active:""}>{t("home")}</span>
                 </Link>
                 <Link href="/shop">
-                  <span className={router.pathname==="/shop"&& style.active}>{t("shop")}</span>
+                  <span className={router.pathname==="/shop"? style.active:""}>{t("shop")}</span>
                 </Link>
-                <Link href="/">
-                  <span className={router.pathname==="#"&& style.active}>{t("explore")}</span>
+                <Link href="/explore">
+                  <span className={router.pathname==="#"? style.active:""}>{t("explore")}</span>
                 </Link>
                 <Link href="/collections">
-                  <span className={router.pathname==="/collections"&& style.active}>{t("collection")}</span>
+                  <span className={router.pathname==="/collections"? style.active:""}>{t("collection")}</span>
                 </Link>
               </div>
               </nav>
@@ -137,7 +142,7 @@ const Header = ({ backColor }) => {
           <>
             <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
               <FontAwesomeIcon icon={faBars} onClick={openMenu} />
-              {menuBar && <Menu />}
+              {menuBar ? <Menu />:null}
 
               <span>{t("login")}</span>
               <div className="position-relative">
