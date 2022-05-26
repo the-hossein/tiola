@@ -29,9 +29,9 @@ i18n
     }
   });
 
-function MyApp({ Component, pageProps }) {const router=useRouter()
-
-   useEffect(()=>{
+function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  useEffect(() => {
     if (router.pathname === "/collection/[collectionName]") {
       document
         .getElementsByTagName("body")[0]
@@ -45,14 +45,17 @@ function MyApp({ Component, pageProps }) {const router=useRouter()
         .getElementsByTagName("body")[0]
         .style.setProperty("background", "#f2f2f2", "important");
     }
-   },[pageProps])
+  }, [pageProps]);
   return (
     <Provider store={store}>
-        <NextNProgress height={6} options={{ showSpinner: false }} color="#6a8eae" />
+      <NextNProgress
+        height={6}
+        options={{ showSpinner: false }}
+        color="#6a8eae"
+      />
 
       <Component {...pageProps} />
       <ToastContainer />
-
     </Provider>
   );
 }

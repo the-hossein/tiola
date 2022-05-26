@@ -8,17 +8,15 @@
 }
 
 .tileImage img {
-    width: 340px;
+    width: 330px;
+    cursor: pointer;
     object-fit: cover;
     height: 516px;
     filter: grayscale(100%);
 }
 .tileImage img:hover {
-    width: 340px;
-    object-fit: cover;
-    height: 516px;
+  
     filter: none;
-    cursor: pointer;
 }
 #line1 {
 
@@ -34,7 +32,8 @@
     position: absolute;
     top: -2px;
     right: 85px;
-    width: 255px;
+    /* width: 255px; */
+    width: 74.5%;
     height: 40px;
     background-color: var(--body-Color);
 }
@@ -61,7 +60,8 @@
     position: absolute;
     top: 112px;
     right: 88px;
-    width: 252px;
+    /* width: 252px; */
+    width: 74%;
     height: 10px;
     background-color: var(--body-Color);
 }
@@ -78,8 +78,9 @@
 #line7 {
     position: absolute;
     top: 65px;
-    right: 225px;
-    width: 115px;
+    right: 224px;
+    /* width: 117px; */
+    width: 33%;
     height: 10px;
     background-color: var(--body-Color);
 }
@@ -97,7 +98,8 @@
     position: absolute;
     top: 27px;
     right: 213px;
-    width: 98px;
+    /* width: 98px; */
+    width: 22%;
     height: 39px;
     background-color: var(--body-Color);
 }
@@ -115,7 +117,8 @@
     position: absolute;
     top: 308px;
     right: 89px;
-    width: 251px;
+    /* width: 251px; */
+    width: 74%;
     height: 10px;
     background-color: var(--body-Color);
 }
@@ -130,7 +133,8 @@
     position: absolute;
     top: 362px;
     right: 88px;
-    width: 252px;
+    /* width: 252px; */
+    width: 74%;
     height: 8px;
     background-color: var(--body-Color);
 }
@@ -171,7 +175,8 @@
     position: absolute;
     top: 409px;
     right: 128px;
-    width: 212px;
+    /* width: 212px; */
+    width: 62%;
     height: 8px;
     background-color: var(--body-Color);
 }
@@ -187,7 +192,8 @@
     position: absolute;
     top: 446px;
     right: 227px;
-    width: 113px;
+    /* width: 113px; */
+    width: 32%;
     height: 8px;
     background-color: var(--body-Color);  
 }
@@ -209,9 +215,10 @@
 }
 #line23{
     position: absolute;
-    top: 482px;
+    top: 483px;
     right: 227px;
-    width: 113px;
+    /* width: 113px; */
+    width: 32%;
     height: 8px;
     background-color: var(--body-Color);
 }

@@ -21,29 +21,29 @@ const addAddres=(e)=>{
 }
   return (
     <div className="row m-0">
-      <div className={`col-lg-6 col-md-6 col-12 ${style.map}`}>
+      <div className={`col-lg-6 col-md-6 col-12 overflow-hidden ${style.map}`}>
         <img src="/Assets/images/map.png" />
       </div>
       <div className="col-lg-6 col-md-6 col-12">
         <AddresInput
           id="addres1"
           checkicon={<CheckBoxIcon sx={{ fontSize: 30 }} />}
-          icon={<CheckBoxOutlineBlankIcon sx={{ fontSize: 30 }} />}
+          icon={<CheckBoxOutlineBlankIcon sx={{ fontSize: 30 ,color:'#c7c7c7'}} />}
           onChangeRadio={(e) => changeRadio(e)}
         />
         <AddresInput
           id="addres2"
           checkicon={<CheckBoxIcon sx={{ fontSize: 30 }} />}
-          icon={<CheckBoxOutlineBlankIcon sx={{ fontSize: 30 }} />}
+          icon={<CheckBoxOutlineBlankIcon sx={{ fontSize: 30,color:'#c7c7c7' }} />}
           onChangeRadio={(e) => changeRadio(e)}
         />
         
         <AddresInput
           id="add"
-          checkicon={<AddBoxOutlinedIcon sx={{ fontSize: 30 }} />}
-          icon={<AddBoxOutlinedIcon sx={{ fontSize: 30 }} />}
+          checkicon={<AddBoxOutlinedIcon sx={{ fontSize: 30 ,color:'#b5b5b5' }} />}
+          icon={<AddBoxOutlinedIcon sx={{ fontSize: 30,color:'#b5b5b5' }} />}
           onChangeRadio={(e) => addAddres(e)}
-
+type="add"
         />
       </div>
     </div>

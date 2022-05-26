@@ -12,7 +12,7 @@ import EditBtn from "./EditBtn";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddres } from "../../../redux/factor/factorAction";
-const AddresInput = ({ id, checkicon, icon, onChangeRadio }) => {
+const AddresInput = ({ id, checkicon, icon, onChangeRadio ,type}) => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.stateFactor);
   const lang = useSelector((state) => state.stateLang);
@@ -28,19 +28,23 @@ const AddresInput = ({ id, checkicon, icon, onChangeRadio }) => {
   };
   return !deleteAddres ? (
     <div>
+      {type !== "add" ? (
+        <>
+          <EditBtn onclick={() => setEdit(true)} text={t("edit")} />
+          <EditBtn
+            onclick={() => setDeleteAddres(true)}
+            text={<DeleteIcon sx={{ fontSize: 17 }} />}
+          />
+        </>
+      ):null}
       <Box
         component="form"
         noValidate
         autoComplete="off"
         className={Style.inputContainer}
       >
-        <EditBtn onclick={() => setEdit(true)} text={t("edit")} />
-        <EditBtn
-          onclick={() => setDeleteAddres(true)}
-          text={<DeleteIcon sx={{ fontSize: 17 }} />}
-        />
 
-        <FormControl sx={{ width: "100%" }}>
+        <FormControl sx={{ width: "100%",position:"relative" }}>
           <OutlinedInput
             onChange={changeAddres}
             placeholder={
@@ -57,7 +61,6 @@ const AddresInput = ({ id, checkicon, icon, onChangeRadio }) => {
             className={Style.addresinput}
             id={id}
           />
-        </FormControl>
         <Radio
           checkedIcon={checkicon}
           icon={icon}
@@ -68,6 +71,7 @@ const AddresInput = ({ id, checkicon, icon, onChangeRadio }) => {
           inputProps={{ "aria-label": `${id}` }}
           className={lang.lng === "en" ? Style.checkedRight : Style.checkedLeft}
         />
+        </FormControl>
       </Box>
     </div>
   ) : (

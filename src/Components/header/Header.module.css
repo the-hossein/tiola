@@ -120,8 +120,10 @@
         font-size: 11pt;
 
     }
+    .allitems div span {
+        margin: 0 0.7rem;
 }
-
+}
 
 @media(max-width:768px) {
     .searchBoxIcon {

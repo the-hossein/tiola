@@ -11,7 +11,7 @@ import { getCode, getphone } from "../../redux/sign/signActions";
 import { validationNumber } from "./validationNumber";
 import { useDispatch, useSelector } from "react-redux";
 import { validateCode } from "./validateCode";
-const Register = ({title}) => {
+const Register = ({ title }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateSign);
@@ -27,9 +27,8 @@ const Register = ({title}) => {
     console.log(errors);
   }, [state.phoneNumber, touched, state.code]);
   const sendCodeHandler = () => {
-    if (!Object.keys(errors).length&&state.phoneNumber.length!==0) {
+    if (!Object.keys(errors).length && state.phoneNumber.length !== 0) {
       setSendCode(true);
-    
     } else {
       notify(t("emptyPhoneValidate"), "error");
     }
@@ -45,20 +44,40 @@ const Register = ({title}) => {
     notify(t("successSignIn"), "success");
   };
   const changePhoneNUmber = (e) => {
-    var
-    persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g],
-    arabicNumbers  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g],
-    fixNumbers = function (str)
-    {
-      if(typeof str === 'string')
-      {
-        for(var i=0; i<10; i++)
-        {
-          str = str.replace(persianNumbers[i], i).replace(arabicNumbers[i], i);
+    var persianNumbers = [
+        /۰/g,
+        /۱/g,
+        /۲/g,
+        /۳/g,
+        /۴/g,
+        /۵/g,
+        /۶/g,
+        /۷/g,
+        /۸/g,
+        /۹/g
+      ],
+      arabicNumbers = [
+        /٠/g,
+        /١/g,
+        /٢/g,
+        /٣/g,
+        /٤/g,
+        /٥/g,
+        /٦/g,
+        /٧/g,
+        /٨/g,
+        /٩/g
+      ],
+      fixNumbers = function (str) {
+        if (typeof str === "string") {
+          for (var i = 0; i < 10; i++) {
+            str = str
+              .replace(persianNumbers[i], i)
+              .replace(arabicNumbers[i], i);
+          }
         }
-      }
-      return str;
-    };
+        return str;
+      };
     dispatch(getphone(fixNumbers(e.target.value)));
   };
   const focusHandler = (e) => {
@@ -107,7 +126,6 @@ const Register = ({title}) => {
                 lablelText={t("phoneNumber")}
                 type="text"
                 value={state.phoneNumber}
-
                 placeholder=""
                 color="dark"
                 maxLength={11}
@@ -129,8 +147,7 @@ const Register = ({title}) => {
               <span className={style.error}>
                 {errorsCode.code === "empty"
                   ? t("emptyPhoneValidate")
-                  : errors.code === "lengthCode"
-                  && t("lengthCode")}
+                  : errors.code === "lengthCode" && t("lengthCode")}
               </span>
             )}
 
@@ -147,7 +164,7 @@ const Register = ({title}) => {
                   text={
                     again ? (
                       <span onClick={againHandler} className={style.again}>
-                     {t("sendAgain")}
+                        {t("sendAgain")}
                       </span>
                     ) : (
                       <span>
@@ -168,11 +185,14 @@ const Register = ({title}) => {
                 <NormalBtn text={t("sendCode")} onClick={sendCodeHandler} />
               )}
             </div>
-            {
-              sendCode&&<div className={style.editPhone}>
-                <NormalBtn text={t("editPhone")} onClick={()=>setSendCode(false)}/>
+            {sendCode && (
+              <div className={style.editPhone}>
+                <NormalBtn
+                  text={t("editPhone")}
+                  onClick={() => setSendCode(false)}
+                />
               </div>
-            }
+            )}
           </div>
         </div>
         <div className={`col-lg-6 col-md-4 col-12 p-0 ${style.pic}`}>

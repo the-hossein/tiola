@@ -2,7 +2,7 @@ import Head from "next/head";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import Blogs from "../src/Components/blogs/Blogs";
-export default function explore() {
+export default function allblogs() {
   return (
     <div>
       <Head>

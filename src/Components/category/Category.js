@@ -53,7 +53,7 @@ const Category = () => {
         <div className="row">
           {product.map((item) => (
             <>
-              <CategoryProduct data={item} />
+              <CategoryProduct data={item}  key={item.src}/>
             </>
           ))}
         </div>
