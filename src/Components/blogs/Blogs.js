@@ -20,7 +20,7 @@ const Blogs = () => {
             <div className={style.blogMain}>
                 {
                     !blogs.length ? <h2>Loading...</h2> :
-                         blogs.map(blog => <Blog key={blog.id} title={blog.title} body={blog.body} />)
+                         blogs.map(blog => <Blog key={blog.id} title={blog.title} body={blog.body} params={blog.id} />)
                 }
             </div>
         </div>

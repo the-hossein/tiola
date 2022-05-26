@@ -24,10 +24,12 @@ const ExploreMain = () => {
     
     useEffect(()=> {
         axios.get('https://fakestoreapi.com/products')
-        .then(response => setProductsApi(response.data))
+        .then(response => {
+          setProductsApi(response.data);
+          setGetItem({items:response.data.splice(0,10),hasMore:true});
+        })
         .catch(err => console.log(err));
         
-        setGetItem({items:fakeItem.splice(0,10),hasMore:true});
     }, []);
     
     const fakeItem = [...productsApi,...productsApi,...productsApi,...productsApi,...productsApi];
@@ -59,12 +61,12 @@ const ExploreMain = () => {
 
 
     const fetchMoreData = () => {
-        if (getItem.length >= 100) {
+        if (getItem.length === 100) {
           setGetItem({...setGetItem, hasMore: false });
           return;
         }
         setTimeout(() => {
-            console.log(getItem.items.length)
+            console.log(getItem.length);
             setGetItem({...getItem, items: fakeItem.splice(0, getItem.items.length + 10)})
         }, 500);
       };

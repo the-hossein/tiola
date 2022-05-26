@@ -1,6 +1,5 @@
 .container {
     direction: var(--direction);
-    /* width: 100%; */
     background-color: #fff;
     padding: 10px 15px;
     width: 45%;
@@ -13,11 +12,27 @@
 }
 .container img {
     height: 100px;
+    float: var(--float-left);
     margin-right: 10px;
     border-radius: 10px;
 }
 .text {
     font-size: 15px;
+}
+.text h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-bottom: 10px;
+}
+.text p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 @media (max-width: 800px) {
