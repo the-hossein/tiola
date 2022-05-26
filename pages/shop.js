@@ -1,8 +1,11 @@
 import Head from "next/head";
+import callApi from "../src/api/callApi";
+import { BASE_URL, GET_ALL_PRODUCT, TYPE_PAGE_API } from "../src/api/urls";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import ShopPage from "../src/Components/shopPage/ShopPage";
-export default function Shop() {
+export default function Shop({ shop }) {
+  console.log(shop)
   return (
     <div>
       <Head>
@@ -15,7 +18,7 @@ export default function Shop() {
       </header>
 
       <main>
-        <ShopPage />
+        <ShopPage data={shop.data} />
       </main>
 
       <footer>
@@ -23,4 +26,10 @@ export default function Shop() {
       </footer>
     </div>
   );
+}
+export async function getServerSideProps(context) {
+  const data = await callApi(BASE_URL + TYPE_PAGE_API, "GET", "{}");
+  return {
+    props: { shop: data } // will be passed to the page component as props
+  };
 }

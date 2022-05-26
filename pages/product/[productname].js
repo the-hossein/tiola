@@ -4,9 +4,8 @@ import Footer from "../../src/Components/footer/Footer";
 import Header from "../../src/Components/header/Header";
 import callApi from "../../src/api/callApi";
 import { useEffect } from "react";
-import { BASE_URL } from "../../src/api/urls";
-export default function productname({ product }) {
-
+import { BASE_URL, GET_PRODUCT, GET_WITHLABLE } from "../../src/api/urls";
+export default function productname({ product, similar }) {
   return (
     <div>
       <Head>
@@ -18,7 +17,7 @@ export default function productname({ product }) {
         <Header backColor={"headerColor"} />
       </header>
       <main>
-        <Productpage />
+        <Productpage product={product.data} similar={similar} />
       </main>
       <footer>
         <Footer />
@@ -28,12 +27,20 @@ export default function productname({ product }) {
 }
 
 export async function getServerSideProps(context) {
+  const { params } = context;
+  const { productname } = params;
   const data = await callApi(
-    `${BASE_URL}api/Prodcut/GetProduct?id=9`,
+    `${BASE_URL + GET_PRODUCT}?id=${productname}`,
     "GET",
     "{}"
   );
+  const similar = await callApi(
+    `${BASE_URL + GET_WITHLABLE}?Type=scarf`,
+    "GET",
+    "{}"
+  );
+
   return {
-    props: { product: data } // will be passed to the page component as props
+    props: { product: data, similar: similar } // will be passed to the page component as props
   };
 }

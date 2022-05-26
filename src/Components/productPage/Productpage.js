@@ -3,55 +3,54 @@ import { useTranslation } from "react-i18next";
 import ProductSlider from "../productSlider/ProductSlider";
 import ProductContent from "./ProductContent";
 import style from "./Productpage.module.css";
-const Productpage = ({ data }) => {
-  
+const Productpage = ({ product, similar }) => {
+  const images = [];
+  var itm;
+  console.log(similar)
+  similar.data.map((item) => {
+    itm = item.collection.picture.filename;
+    images.push({src:itm,id:1});
+  });
+  console.log(images);
   const { t } = useTranslation();
   const product2 = [
     {
-      src: "/Assets/images/3.jpeg"
-      ,id:1
+      src: "/Assets/images/3.jpeg",
+      id: 1
     },
     {
-      src: "/Assets/images/4.jpeg"
-      ,id:2
-
+      src: "/Assets/images/4.jpeg",
+      id: 2
     },
     {
-      src: "/Assets/images/5.jpeg"
-      ,id:3
-
+      src: "/Assets/images/5.jpeg",
+      id: 3
     },
     {
-      src: "/Assets/images/2.jpeg"
-      ,id:4
-
+      src: "/Assets/images/2.jpeg",
+      id: 4
     },
     {
-      src: "/Assets/images/4.jpeg"
-      ,id:5
-
+      src: "/Assets/images/4.jpeg",
+      id: 5
     },
     {
-      src: "/Assets/images/5.jpeg"
-      ,id:6
-
+      src: "/Assets/images/5.jpeg",
+      id: 6
     },
     {
-      src: "/Assets/images/2.jpeg"
-      ,id:7
-
+      src: "/Assets/images/2.jpeg",
+      id: 7
     },
     {
-      src: "/Assets/images/1.jpeg"
-      ,id:8
-
-    },
- 
+      src: "/Assets/images/1.jpeg",
+      id: 8
+    }
   ];
 
   return (
     <section>
-      <ProductContent />
+      <ProductContent product={product} />
       <div className="container mb-4 mt-5">
         <h1 className={style.similar}>Similar</h1>
         <ProductSlider
