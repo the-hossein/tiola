@@ -45,7 +45,7 @@ const BlogDetail = () => {
                 {/* <BlogPaginate blogDataProps={blogs} pageNum={2}  /> */}
                 <div className={`row align-items-center ${style.blogMain}`}>
                     <div className={`'col-12 col-md-6 col-lg-6' ${style.headerContainer}`}>
-                        <img className={style.imgBlog} src='/Assets/images/4.jpeg' alt='logo' />
+                        <div className={style.imgBlog} ></div>
                     </div>
                     <div className='col-12 col-md-6 col-lg-6'>
                         <h1>{blogTarget.length ? blogTarget[0].title : 'Loading...'}</h1>
@@ -54,7 +54,7 @@ const BlogDetail = () => {
                 </div>
                 <div className={`row flex-row-reverse align-items-center ${style.blogMain}`}>
                     <div className={`'col-12 col-md-6 col-lg-6' ${style.headerContainer}`}>
-                        <img className={style.imgBlog} src='/Assets/images/4.jpeg' alt='logo' />
+                        <div className={style.imgBlog} ></div>
                     </div>
                     <div className={`col-12 col-md-6 col-lg-6 ${style.textMain}`}>
                         <h1>{blogTarget.length ? blogTarget[0].title : 'Loading...'}</h1>

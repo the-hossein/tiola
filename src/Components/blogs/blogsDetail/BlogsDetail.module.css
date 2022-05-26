@@ -64,9 +64,19 @@
 .blogMain {
     margin: 50px 0 180px;
 }
+.imgBlog:hover{
+    border-radius: 10px;
+}
 .imgBlog{
-    width: 100%;
-    border-radius: 50% 50% 10px 10px;
+    width: 60%;
+    height: 630px;
+    /* height: %; */
+    background: url('/Assets/images/3.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 400px 400px 10px 10px;
+    transition: all .5s linear;
 }
 .textMain {
     display: flex;
@@ -83,8 +93,14 @@
         font-size: 15pt;
         margin: 10px auto;
     }
+    .imgBlog{ 
+        width: 100%;
+    }
     .imageHeader button {
         left: 10px;
+    }
+    .blogMain {
+        margin: 50px 0;
     }
 }
 @media (max-width: 780px) {
