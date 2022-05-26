@@ -2,7 +2,8 @@ import Head from "next/head";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import Blogs from "../src/Components/blogs/Blogs";
-export default function allblogs() {
+// import axios from "axios";
+export default function blogs() {
   return (
     <div>
       <Head>
@@ -24,3 +25,9 @@ export default function allblogs() {
     </div>
   );
 }
+
+// export async function getServerSideProps() {
+//     const data = await axios.get("https://jsonplaceholder.typicode.com/posts");
+//     const blogs = data.date;
+//     return { props:{ blogsFetched: blogs } }
+// }

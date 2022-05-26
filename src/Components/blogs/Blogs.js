@@ -8,11 +8,12 @@ import style from './Blogs.module.css';
 const Blogs = () => {
 
     const [blogs, setBlogs] = useState([]);
-
+    
+    
     useEffect(()=> {
         axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response=> setBlogs(response.data))
-    })
+        .then(response=> setBlogs(response.data))
+    },[])
     
     return (
         <div className={style.container}>
