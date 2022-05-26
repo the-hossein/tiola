@@ -2,8 +2,11 @@ import Head from "next/head";
 import Productpage from "../../src/Components/productPage/Productpage";
 import Footer from "../../src/Components/footer/Footer";
 import Header from "../../src/Components/header/Header";
+import callApi from "../../src/api/callApi";
+import { useEffect } from "react";
+import { BASE_URL } from "../../src/api/urls";
+export default function productname({ product }) {
 
-export default function productname() {
   return (
     <div>
       <Head>
@@ -22,4 +25,15 @@ export default function productname() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const data = await callApi(
+    `${BASE_URL}api/Prodcut/GetProduct?id=9`,
+    "GET",
+    "{}"
+  );
+  return {
+    props: { product: data } // will be passed to the page component as props
+  };
 }

@@ -1,4 +1,5 @@
 :root {
+  --font: "IRANSansWeb";
   --dark-pen: #000000;
   --light-pen: #ffffff;
   --darkGray-border: #343736;
@@ -13,7 +14,7 @@
   --float-left: left;
   --Product-Border-radius: 8px;
   --red-pen: #c43131;
-  --border-button:#c7c7c7;
+  --border-button: #c7c7c7;
 
 }
 
@@ -29,8 +30,8 @@
 
 @font-face {
   font-family: 'apple';
-  src: url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.eot');
-  src: url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.eot') format('embedded-opentype'), url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.woff') format('woff'), url('/Assets/Fonts/appleFont/6ecff1acfc72a3653c6b2ff78e7f6b9c.ttf') format('truetype');
+  src: url('/Assets/Fonts/appleFont/Apple Symbols.ttf');
+  src: url('/Assets/Fonts/appleFont/Apple Symbols.ttf') format('embedded-opentype'), url('/Assets/Fonts/appleFont/Apple Symbols.ttf') format('woff'), url('/Assets/Fonts/appleFont/Apple Symbols.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

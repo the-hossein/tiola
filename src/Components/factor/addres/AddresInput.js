@@ -28,7 +28,7 @@ const AddresInput = ({ id, checkicon, icon, onChangeRadio ,type}) => {
   };
   return !deleteAddres ? (
     <div>
-      {type !== "add" && (
+      {type !== "add" ? (
         <>
           <EditBtn onclick={() => setEdit(true)} text={t("edit")} />
           <EditBtn
@@ -36,7 +36,7 @@ const AddresInput = ({ id, checkicon, icon, onChangeRadio ,type}) => {
             text={<DeleteIcon sx={{ fontSize: 17 }} />}
           />
         </>
-      )}
+      ):null}
       <Box
         component="form"
         noValidate
