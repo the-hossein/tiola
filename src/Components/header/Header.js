@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Header = ({ backColor }) => {
-    const router = useRouter();
+  const router = useRouter();
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   const [menuBar, setMenuBar] = useState(false);
@@ -42,7 +42,6 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--textAlign-right", "left");
     root.style.setProperty("--float-left", "right");
     // root.style.setProperty("--font", "IRANSansWeb");
-
   };
 
   const leftDir = () => {
@@ -51,8 +50,6 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--textAlign-right", "right");
     root.style.setProperty("--float-left", "left");
     // root.style.setProperty("--font", "apple");
-
-
   };
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
@@ -86,32 +83,50 @@ const Header = ({ backColor }) => {
             <div className={`${style.headaritem} d-flex align-items-center`}>
               <nav
                 className={` ${style.allitems} d-flex justify-content-between align-items-center`}
-                >
+              >
                 <FontAwesomeIcon
                   icon={faBars}
                   className="position-relative"
                   onClick={openMenu}
-            
-                  />
-                  {menuBar ? <Menu backColor={backColor} />:""}
-              <div>
-              <Link href="/">
-                  <span className={router.pathname==="/"? style.active:""}>{t("home")}</span>
-                </Link>
-                <Link href="/shop">
-                  <span className={router.pathname==="/shop"? style.active:""}>{t("shop")}</span>
-                </Link>
-                <Link href="/explore">
-                  <span className={router.pathname==="#"? style.active:""}>{t("explore")}</span>
-                </Link>
-                <Link href="/collections">
-                  <span className={router.pathname==="/collections"? style.active:""}>{t("collection")}</span>
-                </Link>
-              </div>
+                />
+                {menuBar ? <Menu backColor={backColor} /> : ""}
+                <div>
+                  <Link href="/">
+                    <span
+                      className={router.pathname === "/" ? style.active : ""}
+                    >
+                      {t("home")}
+                    </span>
+                  </Link>
+                  <Link href="/shop">
+                    <span
+                      className={
+                        router.pathname === "/shop" ? style.active : ""
+                      }
+                    >
+                      {t("shop")}
+                    </span>
+                  </Link>
+                  <Link href="/explore">
+                    <span
+                      className={router.pathname === "#" ? style.active : ""}
+                    >
+                      {t("explore")}
+                    </span>
+                  </Link>
+                  <Link href="/collections">
+                    <span
+                      className={
+                        router.pathname === "/collections" ? style.active : ""
+                      }
+                    >
+                      {t("collection")}
+                    </span>
+                  </Link>
+                </div>
               </nav>
-              <Link  href="/">
-              <Image src={logo} alt="logo" />
-              
+              <Link href="/">
+                <Image src={logo} alt="logo" />
               </Link>
             </div>
 
@@ -135,16 +150,19 @@ const Header = ({ backColor }) => {
                   className={showSearchBox ? style.searchBoxIcon : ""}
                 />
               </div>
-              <span>{t("login")}</span>
+              <Link href={"/signin"}>
+                <span>{t("login")}</span>
+              </Link>
             </div>
           </>
         ) : (
           <>
             <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
               <FontAwesomeIcon icon={faBars} onClick={openMenu} />
-              {menuBar ? <Menu />:null}
-
-              <span>{t("login")}</span>
+              {menuBar ? <Menu /> : null}
+              <Link href={"/signin"}>
+                <span>{t("login")}</span>
+              </Link>
               <div className="position-relative">
                 <input
                   className={
@@ -159,10 +177,11 @@ const Header = ({ backColor }) => {
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
-              <span>{t("descoverMore")}</span>
-              <Link  href="/">
-              <Image src={logo} alt="logo" />
-              
+              <Link href="/shop">
+                <span>{t("descoverMore")}</span>
+              </Link>
+              <Link href="/">
+                <Image src={logo} alt="logo" />
               </Link>
             </div>
           </>

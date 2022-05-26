@@ -81,7 +81,7 @@ const ProductSlider = ({
   };
   return (
     <div className={Style.slider}>
-      <OwlCarousel {...prop}>
+      <OwlCarousel {...prop}  showThumbs={true}>
         {images.map((item) => (
           <>
             <div key={item.id}>

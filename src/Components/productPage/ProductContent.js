@@ -7,46 +7,26 @@ import style from "./Productpage.module.css";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 
 import { useTranslation } from "react-i18next";
-const ProductContent = () => {
+const ProductContent = ({product}) => {
   const { t } = useTranslation();
-  const product2 = [
+  const images = [
     {
-      src: "/Assets/images/3.jpeg"
-      ,id:10
+      src: product.image1
     },
     {
-      src: "/Assets/images/4.jpeg"
-      ,id:20
+      src: product.image2
 
     },
     {
-      src: "/Assets/images/5.jpeg"
-      ,id:30
+      src: product.image3
 
     },
     {
-      src: "/Assets/images/2.jpeg"
-      ,id:40
+      src: product.image4
 
     },
     {
-      src: "/Assets/images/4.jpeg"
-      ,id:50
-
-    },
-    {
-      src: "/Assets/images/5.jpeg"
-      ,id:60
-
-    },
-    {
-      src: "/Assets/images/2.jpeg"
-      ,id:70
-
-    },
-    {
-      src: "/Assets/images/1.jpeg"
-      ,id:80
+      src: product.image5
 
     },
  
@@ -58,7 +38,7 @@ const ProductContent = () => {
         <div className={`col-lg-5 col-12  ${style.productSlider}`}>
           <ProductSlider
             slidesShow={1.4}
-            images={product2}
+            images={images}
             arrowStatus={false}
             margin={20}
             heightImage="82vh"
@@ -68,10 +48,10 @@ const ProductContent = () => {
         </div>
         <div className={`col-lg-7 col-12 ${style.information} mt-5 `}>
           
-          <h1>{t("scurf") + " No 1"}</h1>
+          <h1>{product.title}</h1>
           <div className={`w-100 d-flex justify-content-between ${style.info}`}>
             <div>
-              <span className={style.price}>{"250/000 " + t("t")}</span>
+              <span className={style.price}>{product.price + t("t")}</span>
 
               <p className={style.content}>
                 <ReactReadMoreReadLess
@@ -81,7 +61,7 @@ const ProductContent = () => {
                   readMoreClassName={style.readmore}
                   readLessClassName={style.readLess}
                 >
-                  {t("collection1Content")}
+                  {product.description}
                 </ReactReadMoreReadLess>
               </p>
               <div>

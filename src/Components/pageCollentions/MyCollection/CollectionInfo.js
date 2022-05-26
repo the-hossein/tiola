@@ -3,7 +3,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-const CollectionInfo = () => {
+const CollectionInfo = ({data}) => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
 
@@ -17,7 +17,7 @@ const CollectionInfo = () => {
             lang.lng === "en" ? "flex-row-reverse" : "flex-row"
           } ${style.collectionName}`}
         >
-          <span>{t("collection")} NO 1</span>
+          <span>{data.title}</span>
           <span>{t("viewAll")} </span>
         </div>
         <p className={style.content}>{t("testLorem")}</p>

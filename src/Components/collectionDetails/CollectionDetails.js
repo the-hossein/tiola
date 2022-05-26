@@ -18,8 +18,8 @@ const CollectionDetails = () => {
       >
         <BlurButton btnText={t("coolection") + " No 1"} />
       </div>
-      <ProductsCategory />
-      <ProductsCategory reverse={true} />
+      
+      <ProductsCategory reverse={index % 2 !== 0 ? true : false}/>
     </section>
   );
 };
