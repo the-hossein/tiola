@@ -10,7 +10,7 @@ const Simplcollection = ({image1,image2,content,title}) => {
         <div className={` col-xl-4 col-lg-5 col-md-6 col-12 text-center d-flex justify-content-end p-0  pt-4  pb-4 ${style.collectionImage}`}>
           <div className="d-flex justify-content-center">
             <img src={image1} />
-            <img src={image2} />
+            <img src={image2} className={style.fixedBorder} />
           </div>
         </div>
         <div className={` col-xl-6 col-lg-7 col-md-6 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}>
