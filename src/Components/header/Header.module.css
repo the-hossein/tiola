@@ -34,10 +34,10 @@
 .allitems svg{
     width: 20px;
 }
-.allitems span:hover,
-.allitems svg:hover,
-.headerIcon span:hover,
-.headerIcon div:hover {
+.allitems span,
+.allitems svg,
+.headerIcon span,
+.headerIcon div {
     cursor: pointer !important;
 
 }

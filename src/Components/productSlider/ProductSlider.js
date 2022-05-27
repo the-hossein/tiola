@@ -83,7 +83,7 @@ const ProductSlider = ({
   };
   return (
     <div className={Style.slider}>
-      <OwlCarousel {...prop} showThumbs={true}>
+      <OwlCarousel {...prop} showThumbs={true} style={{zIndex:22}}>
         {images.map((item) => (
           <>
             <Link href={`/product/${item.id}`}>

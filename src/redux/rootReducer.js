@@ -17,12 +17,9 @@ const rootReducer = combineReducers({
   stateSign: signReducer,
   stateFactor: factorReducer,
   stateProduct: productReducer,
-<<<<<<< HEAD
   stateBlogs: blogReducer,
-=======
   stateColProduct: collectionReducer,
   stateShop: shopReducer
->>>>>>> 2c0bfa123fc73a95ddb2d2309cdca43469128f64
 });
 
 export default rootReducer;
