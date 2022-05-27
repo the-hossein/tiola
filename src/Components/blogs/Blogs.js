@@ -8,19 +8,20 @@ import style from './Blogs.module.css';
 const Blogs = () => {
 
     const [blogs, setBlogs] = useState([]);
-
+    
+    
     useEffect(()=> {
         axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response=> setBlogs(response.data))
-    })
+        .then(response=> setBlogs(response.data))
+    },[])
     
     return (
-        <div className={style.container}>
+        <div className={`${style.container} container`}>
             <h1>Blogs</h1>
             <div className={style.blogMain}>
                 {
                     !blogs.length ? <h2>Loading...</h2> :
-                         blogs.map(blog => <Blog key={blog.id} title={blog.title} body={blog.body} />)
+                         blogs.map(blog => <Blog key={blog.id} title={blog.title} body={blog.body} params={blog.id}/>)
                 }
             </div>
         </div>

@@ -16,6 +16,7 @@
 .socialMedia {
     text-align: center;
     color: var(--light-pen);
+    margin-top: 25px;
 }
 
 .socialMedia svg {

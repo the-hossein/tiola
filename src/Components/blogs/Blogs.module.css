@@ -1,11 +1,12 @@
 .container{
-    background-color: #e0dbdb;
+    background-color: var(--body-Color);
     direction: var(--direction);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 30px 60px;
+    /* padding: 30px 60px; */
+    padding: 40px 0;
 }
 .blogMain {
     width: 100%;

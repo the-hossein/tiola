@@ -1,8 +1,7 @@
 import Head from "next/head";
-import Footer from "../src/Components/footer/Footer";
-import Header from "../src/Components/header/Header";
-import Blogs from "../src/Components/blogs/Blogs";
-// import axios from "axios";
+import Footer from "../../src/Components/footer/Footer";
+import Header from "../../src/Components/header/Header";
+import BlogDetail from "../../src/Components/blogs/blogsDetail/BlogDetail";
 export default function blogs() {
   return (
     <div>
@@ -16,7 +15,7 @@ export default function blogs() {
       </header>
 
       <main>
-        <Blogs />
+        <BlogDetail />
       </main>
 
       <footer>
@@ -25,9 +24,3 @@ export default function blogs() {
     </div>
   );
 }
-
-// export async function getServerSideProps() {
-//     const data = await axios.get("https://jsonplaceholder.typicode.com/posts");
-//     const blogs = data.date;
-//     return { props:{ blogsFetched: blogs } }
-// }

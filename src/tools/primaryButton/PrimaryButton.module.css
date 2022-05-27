@@ -10,7 +10,9 @@
 .primaryBtn button:hover {
     transform: scale(1.09);
     transition: 0.5s;
-
+    background-color: var(--light-pen);
+    color: #000;
+    border: 1px solid var(--darkGray-border);
 }
 
 .lightBtn button {
