@@ -1,11 +1,20 @@
 import Head from "next/head";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import callApi from "../src/api/callApi";
-import { BASE_URL, GET_ALL_PRODUCT, TYPE_PAGE_API } from "../src/api/urls";
+import { BASE_URL, TYPE_PAGE_API } from "../src/api/urls";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import ShopPage from "../src/Components/shopPage/ShopPage";
+import { getshopCategory } from "../src/redux/shop/shopActions";
+import Loader from "../src/tools/loader/Loader";
 export default function Shop({ shop }) {
-  console.log(shop)
+  const state = useSelector((state) => state.stateShop);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getshopCategory(shop.data));
+  }, [shop]);
   return (
     <div>
       <Head>
@@ -16,11 +25,13 @@ export default function Shop({ shop }) {
       <header>
         <Header backColor={"headerColor"} />
       </header>
-
-      <main>
-        <ShopPage data={shop.data} />
-      </main>
-
+      {state.loading ? (
+        <Loader />
+      ) : (
+        <main>
+          <ShopPage />
+        </main>
+      )}
       <footer>
         <Footer />
       </footer>

@@ -1,21 +1,29 @@
-import React, { useEffect, useState, useLayoutEffect, useReducer } from 'react';
+import React, { useEffect, useState, useLayoutEffect, useReducer } from "react";
 //fetch Data
-import axios from 'axios';
+import axios from "axios";
 //scrolling
 import InfiniteScroll from "react-infinite-scroll-component";
 //Masonry
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import Masonry from '@mui/lab/Masonry';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Masonry from "@mui/lab/Masonry";
 
 //style
-import style from './ExploreMain.module.css';
+import style from "./ExploreMain.module.css";
+import Loader from "../../tools/loader/Loader";
 
+const ExploreMain = ({ data }) => {
+  const [size, setSize] = useState(0);
 
+  const [getItem, setGetItem] = useState({});
 
-const ExploreMain = () => {
+  console.log(data);
+  useEffect(() => {
+    setGetItem(data.slice(0, 6));
+  }, []);
 
+<<<<<<< HEAD
   const productsFake = [
     {
         src: "/Assets/images/1.jpeg"
@@ -204,20 +212,35 @@ src: "/Assets/images/3.jpeg"
         }
     }, [])
     
+=======
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth]);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => {
+      window.removeEventListener("resize", updateSize);
+    };
+  }, []);
+>>>>>>> 2c0bfa123fc73a95ddb2d2309cdca43469128f64
 
-    
-    const Item = styled(Paper)(({ theme }) => ({
-      backgroundColor: '#1A2027',
-      borderRadius: "15px",
-      ...theme.typography.body2,
-      padding: '0',
-      cursor: "pointer",
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      height: "fit-content",
-    }));
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: "#1A2027",
+    borderRadius: "15px",
+    ...theme.typography.body2,
+    padding: "0",
+    cursor: "pointer",
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    height: "fit-content"
+  }));
 
+  const fetchMoreData = () => {
+    setGetItem(data.slice(0, getItem.length + 10));
+  };
 
+<<<<<<< HEAD
     const fetchMoreData = () => {
         if (getItem.items.length === 50) {
           setGetItem({...getItem, hasMore: false });
@@ -264,3 +287,37 @@ src: "/Assets/images/3.jpeg"
 export default ExploreMain;
 
 
+=======
+  return (
+    <div className={style.explore}>
+      <Box sx={{ width: "auto" }}>
+        <InfiniteScroll
+          dataLength={data.length}
+          next={fetchMoreData}
+          hasMore={getItem.length===data.length?false:true}
+          endMessage=""
+          loader={<Loader/>}
+        >
+          {getItem.length > 0 && (
+            <Masonry
+              columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
+              spacing={2}
+            >
+              {getItem.map((product, index) => (
+                <Item key={index}>
+                  <div className={style.showProduct}>
+                    <img src={product.imageFile1.filePath} alt="product" />
+                    <p className={style.parag}>lorem</p>
+                  </div>
+                </Item>
+              ))}
+            </Masonry>
+          )}
+        </InfiniteScroll>
+      </Box>
+    </div>
+  );
+};
+
+export default ExploreMain;
+>>>>>>> 2c0bfa123fc73a95ddb2d2309cdca43469128f64

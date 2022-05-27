@@ -7,30 +7,15 @@ import style from "./Productpage.module.css";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 
 import { useTranslation } from "react-i18next";
-const ProductContent = ({product}) => {
+const ProductContent = ({ product, similar }) => {
   const { t } = useTranslation();
-  const images = [
-    {
-      src: product.image1
-    },
-    {
-      src: product.image2
+  const images = [];
+  var itm;
 
-    },
-    {
-      src: product.image3
-
-    },
-    {
-      src: product.image4
-
-    },
-    {
-      src: product.image5
-
-    },
- 
-  ];
+  similar.data.map((item) => {
+    itm = item.collection.picture.filePath;
+    images.push({ src: itm, id: item.id });
+  });
 
   return (
     <>
@@ -44,10 +29,10 @@ const ProductContent = ({product}) => {
             heightImage="82vh"
             mbItem={1}
             tbItem={2}
+            loop={true}
           />
         </div>
         <div className={`col-lg-7 col-12 ${style.information} mt-5 `}>
-          
           <h1>{product.title}</h1>
           <div className={`w-100 d-flex justify-content-between ${style.info}`}>
             <div>

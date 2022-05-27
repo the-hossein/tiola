@@ -9,8 +9,9 @@
     margin: auto;
 }
 
-.container>div {
+.spliterCategory{
     border-bottom: var(--border-bottom);
+    margin: 4rem 0;
 }
 
 .productPhoto {
