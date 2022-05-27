@@ -5,7 +5,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 30px 60px;
+    /* padding: 30px 60px; */
+    padding: 40px 0;
 }
 .blogMain {
     width: 100%;

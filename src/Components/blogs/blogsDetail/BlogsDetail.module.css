@@ -76,12 +76,15 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 400px 400px 10px 10px;
-    transition: all .5s linear;
+    transition: all .2s linear;
+}
+.imgTow {
+    float: right;
 }
 .textMain {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    /* justify-content: end; */
 }
 .blogMain h1{
     margin-bottom: 2rem;

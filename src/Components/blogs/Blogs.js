@@ -16,7 +16,7 @@ const Blogs = () => {
     },[])
     
     return (
-        <div className={style.container}>
+        <div className={`${style.container} container`}>
             <h1>Blogs</h1>
             <div className={style.blogMain}>
                 {

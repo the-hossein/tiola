@@ -16,6 +16,9 @@
     margin: 0 10px;
     border-radius: 10px;
 }
+.text button {
+    float: right ;
+}
 .text {
     font-size: 15px;
 }

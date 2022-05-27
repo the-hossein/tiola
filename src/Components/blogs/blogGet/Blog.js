@@ -15,7 +15,7 @@ const Blog = ({title, body, params}) => {
             <div className={style.text}>
                 <h5>{title}</h5>
                 <p>{body}</p>
-                <Link href={`/blogs/${params}`}><Button variant='outline' title='see more...' size='sm'>view</Button></Link>
+                <Link href={`/blogs/${params}`}><Button variant='outline' title='see more...' size='sm' >view</Button></Link>
             </div>
         </div>
     );
