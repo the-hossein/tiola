@@ -5,6 +5,7 @@
 .content {
     direction: var(--direction);
     text-align: justify;
+    margin-top: 50px;
 }
 
 .tileImage img {

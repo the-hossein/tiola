@@ -3,18 +3,20 @@
     height: 100%;
     display: block;
     object-fit: fill;
+    position: relative;
 }
 
 .heroSection {
     height: 85vh;
-
+    position: relative;
+    z-index: 2;
 }
 
 .descoverMore {
     position: absolute;
-    margin-bottom: 4rem;
+    /* margin-bottom: 4rem; */
     left: 10%;
-
+    bottom: 25px;
 }
 .leftDescoverMore{
     right: 10%;
