@@ -12,6 +12,8 @@ import Masonry from "@mui/lab/Masonry";
 //style
 import style from "./ExploreMain.module.css";
 import Loader from "../../tools/loader/Loader";
+import { height } from "@mui/system";
+import Link from "next/link";
 
 const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
@@ -20,7 +22,7 @@ const ExploreMain = ({ data }) => {
 
   console.log(data);
   useEffect(() => {
-    setGetItem(data.slice(0, 6));
+    setGetItem(data.slice(0, 10));
   }, []);
 
   useLayoutEffect(() => {
@@ -53,6 +55,7 @@ const ExploreMain = ({ data }) => {
     <div className={style.explore}>
       <Box sx={{ width: "auto" }}>
         <InfiniteScroll
+        style={{overflow:'hidden'}}
           dataLength={data.length}
           next={fetchMoreData}
           hasMore={getItem.length===data.length?false:true}
@@ -66,10 +69,12 @@ const ExploreMain = ({ data }) => {
             >
               {getItem.map((product, index) => (
                 <Item key={index}>
-                  <div className={style.showProduct}>
+                <Link href={`/product/${product.id}`}>
+                <div className={style.showProduct}>
                     <img src={product.imageFile1.filePath} alt="product" />
-                    <p className={style.parag}>lorem</p>
+                    <p className={style.parag}>{product.title}</p>
                   </div>
+                </Link>
                 </Item>
               ))}
             </Masonry>
