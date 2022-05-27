@@ -32,7 +32,7 @@ i18n
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
-    if (router.pathname === "/collection/[collectionName]") {
+    if (router.pathname === "/collections/[collectionname]") {
       document
         .getElementsByTagName("body")[0]
         .style.setProperty(
@@ -45,6 +45,7 @@ function MyApp({ Component, pageProps }) {
         .getElementsByTagName("body")[0]
         .style.setProperty("background", "#f2f2f2", "important");
     }
+
   }, [pageProps]);
   return (
     <Provider store={store}>

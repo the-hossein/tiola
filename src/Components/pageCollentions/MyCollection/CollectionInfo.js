@@ -20,7 +20,7 @@ const CollectionInfo = ({data}) => {
           <span>{data.title}</span>
           <span>{t("viewAll")} </span>
         </div>
-        <p className={style.content}>{t("testLorem")}</p>
+        <p className={style.content}>{data.description}</p>
       </div>
     </>
   );

@@ -2,11 +2,11 @@ import React from "react";
 import CollectionInfo from "./CollectionInfo";
 import style from "./PageCollection.module.css";
 import Link from "next/link";
-const MyCollection = ({data}) => {
-  console.log(data)
+const MyCollection = ({ data }) => {
+  console.log(data);
   return (
     <>
-      <Link href={`/collection/${data.id}`}>
+      <Link href={`/collections/${data.id}`}>
         <div
           className={`col-xl-3 col-lg-3 col-sm-6 col-12 ${style.myCollection} `}
         >

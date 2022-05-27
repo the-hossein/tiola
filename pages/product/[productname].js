@@ -6,6 +6,7 @@ import callApi from "../../src/api/callApi";
 import { useEffect } from "react";
 import { BASE_URL, GET_PRODUCT, GET_WITHLABLE } from "../../src/api/urls";
 export default function productname({ product, similar }) {
+  console.log(similar)
   return (
     <div>
       <Head>
@@ -35,7 +36,7 @@ export async function getServerSideProps(context) {
     "{}"
   );
   const similar = await callApi(
-    `${BASE_URL + GET_WITHLABLE}?Type=scarf`,
+    `${BASE_URL + GET_WITHLABLE}?Type=${data.data.type}`,
     "GET",
     "{}"
   );

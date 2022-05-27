@@ -4,64 +4,28 @@ import ProductSlider from "../productSlider/ProductSlider";
 import ProductContent from "./ProductContent";
 import style from "./Productpage.module.css";
 const Productpage = ({ product, similar }) => {
+  const { t } = useTranslation();
   const images = [];
   var itm;
-  console.log(similar)
   similar.data.map((item) => {
-    itm = item.collection.picture.filename;
-    images.push({src:itm,id:1});
+    itm = item.collection.picture.filePath;
+    images.push({ src: itm, id: item.id });
   });
-  console.log(images);
-  const { t } = useTranslation();
-  const product2 = [
-    {
-      src: "/Assets/images/3.jpeg",
-      id: 1
-    },
-    {
-      src: "/Assets/images/4.jpeg",
-      id: 2
-    },
-    {
-      src: "/Assets/images/5.jpeg",
-      id: 3
-    },
-    {
-      src: "/Assets/images/2.jpeg",
-      id: 4
-    },
-    {
-      src: "/Assets/images/4.jpeg",
-      id: 5
-    },
-    {
-      src: "/Assets/images/5.jpeg",
-      id: 6
-    },
-    {
-      src: "/Assets/images/2.jpeg",
-      id: 7
-    },
-    {
-      src: "/Assets/images/1.jpeg",
-      id: 8
-    }
-  ];
-
   return (
     <section>
-      <ProductContent product={product} />
+      <ProductContent product={product} similar={similar} />
       <div className="container mb-4 mt-5">
-        <h1 className={style.similar}>Similar</h1>
+        <h1 className={style.similar}>{t("Similar")}</h1>
         <ProductSlider
           arrowStatus={true}
-          images={product2}
+          images={images}
           slidesShow={5}
           margin={16}
           heightImage={"350px"}
           borderRadius={"8px"}
           mbItem={1}
           tbItem={2}
+          loop={false}
         />
       </div>
     </section>

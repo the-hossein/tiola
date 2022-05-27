@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import langReducer from "../redux/lang/langReducer";
+import collectionReducer from "./collectionDetail/collectionReducer";
 import commentReducer from "./comment/commentReducer";
 import factorReducer from "./factor/factorReducer";
 import productReducer from "./product/productReducer";
 import rateReducer from "./rate/rateReducer";
+import shopReducer from "./shop/shopReducer";
 import signReducer from "./sign/signReducer";
 
 const rootReducer = combineReducers({
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
   stateRate: rateReducer,
   stateSign: signReducer,
   stateFactor: factorReducer,
-  stateProduct: productReducer
+  stateProduct: productReducer,
+  stateColProduct: collectionReducer,
+  stateShop: shopReducer
 });
 
 export default rootReducer;

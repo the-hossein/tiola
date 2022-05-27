@@ -64,7 +64,10 @@
   "Completed": "Completed",
   "editProfile": "edit Profile",
   "remain": "remain",
-  "delivery":"deliery order",
-  "checking":"Order check",
-  "post":"Send to post"
+  "delivery": "deliery order",
+  "checking": "Order check",
+  "post": "Send to post",
+  "Similar":"Similar",
+  "stock":"Stock"
+
 }

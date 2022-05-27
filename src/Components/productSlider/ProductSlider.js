@@ -4,6 +4,7 @@ import Style from "./ProductSlider.module.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   // Client-side-only code
@@ -21,7 +22,8 @@ const ProductSlider = ({
   heightImage,
   borderRadius,
   mbItem,
-  tbItem
+  tbItem,
+  loop
 }) => {
   //   const sliderSettings = {
   //     dots: false,
@@ -64,7 +66,7 @@ const ProductSlider = ({
     ltr: true,
     dots: false,
     lazyLoad: true,
-    loop: true,
+    loop: loop,
     nav: arrowStatus,
     navClass: ["owl-prev", "owl-next"],
     responsive: {
@@ -81,17 +83,19 @@ const ProductSlider = ({
   };
   return (
     <div className={Style.slider}>
-      <OwlCarousel {...prop}  showThumbs={true}>
+      <OwlCarousel {...prop} showThumbs={true}>
         {images.map((item) => (
           <>
-            <div key={item.id}>
-              <img
-                src={item.src}
-                alt="product"
-                className={Style.product}
-                style={{ height: heightImage, borderRadius: borderRadius }}
-              />
-            </div>
+            <Link href={`/product/${item.id}`}>
+              <div key={item.id}>
+                <img
+                  src={item.src}
+                  alt="product"
+                  className={Style.product}
+                  style={{ height: heightImage, borderRadius: borderRadius }}
+                />
+              </div>
+            </Link>
           </>
         ))}
       </OwlCarousel>

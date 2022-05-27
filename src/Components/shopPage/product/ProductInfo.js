@@ -3,33 +3,49 @@ import { useTranslation } from "react-i18next";
 import style from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import { useSelector } from "react-redux";
-const ProductInfo = ({more}) => {
+import Link from "next/link";
+const ProductInfo = ({ more, data }) => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
-  return (
-    <>
-      <div
-        className={`d-flex justify-content-between ${lang.lng === "fa" ? "flex-row-reverse" : "flex-row"} ${style.info}`}>
-        <div className={`d-flex flex-column justify-content-between ${lang.lng === "fa" && "align-items-end"}`}>
-          <span>{`250,000` + t("t")}</span>
-          <span className={style.rating}>
-            <Rating name="product Rate" value={3} readOnly />
-          </span>
-          {
-            more?
-            <span>{t("simpleViewMore")}</span>
-            :""
-          }
+  console.log(data);
+  if (typeof data !== "undefined") {
+    return (
+      <>
+        <div
+          className={`d-flex justify-content-between ${
+            lang.lng === "fa" ? "flex-row-reverse" : "flex-row"
+          } ${style.info}`}
+        >
+          <div
+            className={`d-flex flex-column justify-content-between ${
+              lang.lng === "fa" && "align-items-end"
+            }`}
+          >
+            <span>{data.price + t("t")}</span>
+            <span className={style.rating}>
+              <Rating name="product Rate" value={data.rate} readOnly />
+            </span>
+            {more ? (
+              <Link href={`/product/${data.id}`}>
+                <span className={style.moreText}>{t("simpleViewMore")}</span>
+              </Link>
+            ) : (
+              ""
+            )}
+          </div>
+          <div
+            className={`d-flex flex-column ${
+              lang.lng === "en" && "align-items-end"
+            }`}
+          >
+            <span>{data.title}</span>
+            <span>{t("stock") + data.stock}</span>
+            <span>{data.collection.title}</span>
+          </div>
         </div>
-
-        <div className={`d-flex flex-column ${ lang.lng === "en" && "align-items-end"}`}>
-          <span>{t("scarf") + `No1`}</span>
-          <span>{t("code") + `1107`}</span>
-          <span>{t("BlueOcean")}</span>
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 };
 
 export default ProductInfo;

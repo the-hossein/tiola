@@ -14,7 +14,7 @@
 }
 
 .editPro {
-    font-size: 20pt;
+    font-size: 18pt;
     display: block;
     line-height: 1.5;
     cursor: pointer;
@@ -76,7 +76,7 @@
 
 .shape svg,
 .icon {
-    font-size: 22pt;
+    font-size: 20pt;
     color: var(--lightGray-border);
     z-index: 9;
 }
