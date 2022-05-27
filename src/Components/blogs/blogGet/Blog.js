@@ -1,11 +1,12 @@
 import React from 'react';
-
-//stylesheet
+import { Button } from '@mui/material';
+import Link from 'next/link';
+ //stylesheet
 import style from './Blog.module.css';
 
 // import userProfile from ;
 
-const Blog = ({title, body}) => {
+const Blog = ({title, body, params}) => {
     return (
         <div className={style.container}>
             <div>
@@ -14,6 +15,7 @@ const Blog = ({title, body}) => {
             <div className={style.text}>
                 <h5>{title}</h5>
                 <p>{body}</p>
+                <Link href={`/blogs/${params}`}><Button variant='outline' title='see more...' size='sm' >view</Button></Link>
             </div>
         </div>
     );

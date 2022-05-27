@@ -7,6 +7,8 @@ import productReducer from "./product/productReducer";
 import rateReducer from "./rate/rateReducer";
 import shopReducer from "./shop/shopReducer";
 import signReducer from "./sign/signReducer";
+//get blogs
+import blogReducer from "./blog/blogsReducer";
 
 const rootReducer = combineReducers({
   stateLang: langReducer,
@@ -15,8 +17,12 @@ const rootReducer = combineReducers({
   stateSign: signReducer,
   stateFactor: factorReducer,
   stateProduct: productReducer,
+<<<<<<< HEAD
+  stateBlogs: blogReducer,
+=======
   stateColProduct: collectionReducer,
   stateShop: shopReducer
+>>>>>>> 2c0bfa123fc73a95ddb2d2309cdca43469128f64
 });
 
 export default rootReducer;

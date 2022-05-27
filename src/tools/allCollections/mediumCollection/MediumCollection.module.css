@@ -11,19 +11,25 @@
     display: flex;
 }
 
+.containerPic {
+    width: 100%;
+    padding: 0 30px !important;
+}
 .collectionImage div img:first-child {
-    border-radius: 82px 87px 0 0;
-    width: 120px;
-    height: 220px;
+    border-radius: 80px 80px 0 0;
+    /* width: 160px; */
+    width: 28%;
+    height: 320px;
     margin-top: 2rem;
 
     object-fit: cover;
 }
 
 .collectionImage div img:nth-child(2) {
-    border-radius: 80px 80px 80px 80px;
-    width: 170px;
-    height: 230px;
+    border-radius: 100px ;
+    /* width: 190px; */
+    width: 33.6%;
+    height: 306px;
     -o-object-fit: cover;
     object-fit: cover;
     padding: 0 1rem;
@@ -33,15 +39,16 @@
 }
 
 .collectionImage div img:last-child {
-    border-radius: 82px 87px 0 0;
-    height: 300px;
-    width: 160px;
+    border-radius: 165px 165px 0 0;
+    /* width: 230px; */
+    width: 40%;
+    height: 430px;
     align-self: start;
     object-fit: cover;
 }
 
 .collectionImage>div {
-    height: 332px;
+    height: 520px;
 }
 
 .collectionImage,
@@ -117,3 +124,4 @@
     }
     
 }
+
