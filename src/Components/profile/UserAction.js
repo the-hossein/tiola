@@ -7,12 +7,15 @@ import style from "./UserProfile.module.css";
 const UserAction = () => {
   const { t } = useTranslation();
   return (
-    <div className="row justify-content-between mt-5 mb-5 ">
+    <div className="row justify-content-center mt-5 mb-5 ">
       <div className="col-xl-6 col-lg-10 col-md-12  col-12">
         <h3 className={style.title}>Watch List</h3>
         <RowProduct statusText="pending" close={true}/>
         <RowProduct statusText="pending" close={true}/>
         <RowProduct statusText="pending" close={true}/>
+        <RowProduct statusText="pending" close={true}/>
+        <RowProduct statusText="pending" close={true}/>
+
       </div>
       <div className={`col-xl-6 col-lg-10 col-md-12 col-12 ${style.history}`}>
         <h3 className={style.title}>History</h3>

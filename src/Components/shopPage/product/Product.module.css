@@ -16,6 +16,10 @@
     object-fit: cover;
 }
 
+.moreText {
+    cursor: pointer;
+}
+
 .squarePhoto:hover,
 .rectanglePhoto:hover {
     border-radius: 0px !important;
@@ -25,7 +29,7 @@
 
 .rectanglePhoto {
     width: 100%;
-  
+
     overflow: hidden;
 }
 
@@ -43,12 +47,15 @@
     width: 14px !important;
     height: 14px !important;
 }
-.collPage{
+
+.collPage {
     height: 580px;
 }
-.shopPage{
+
+.shopPage {
     height: 470px;
 }
+
 .info {
     font-size: 9pt;
 }
@@ -75,10 +82,10 @@
         width: 300px;
     }
 
-   
+
 }
 
-@media(max-width:768px){
+@media(max-width:768px) {
     .rectanglePhoto {
         height: 580px;
     }
@@ -94,7 +101,8 @@
     .squarePhoto img {
         height: 210px;
     }
-    .rectanglePhoto{
+
+    .rectanglePhoto {
         height: 500px;
     }
 }

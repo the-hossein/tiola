@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
-import ExploreMain from '../src/Components/Explore/ExploreMain'
-export default function explore() {
+import ExploreMain from "../src/Components/Explore/ExploreMain";
+import { BASE_URL, GET_ALL_PRODUCT } from "../src/api/urls";
+import callApi from "../src/api/callApi";
+export default function explore({ explore }) {
   return (
     <div>
       <Head>
@@ -15,7 +17,7 @@ export default function explore() {
       </header>
 
       <main>
-        <ExploreMain />
+        <ExploreMain data={explore.data}/>
       </main>
 
       <footer>
@@ -23,4 +25,12 @@ export default function explore() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const data = await callApi(BASE_URL + GET_ALL_PRODUCT, "GET", "{}");
+
+  return {
+    props: { explore: data } // will be passed to the page component as props
+  };
 }
