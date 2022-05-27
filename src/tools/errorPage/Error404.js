@@ -1,5 +1,5 @@
 import React from 'react';
-
+import XoGame from '../xogame/XoGame';
 //stylesheet
 import style from './Error404.module.css';
 
@@ -18,9 +18,10 @@ const Error404 = () => {
                         </div>
                     </div>            
                     <div className='col-12 col-md-5 col-lg-5' >
-                        <div className={style.game}>
+                        <XoGame />
+                        {/* <div className={style.game}>
                             <span className={style.ball}></span>
-                        </div>
+                        </div> */}
                     </div>            
                 </div>
             </div>
