@@ -67,7 +67,9 @@
   "delivery": "deliery order",
   "checking": "Order check",
   "post": "Send to post",
-  "Similar":"Similar",
-  "stock":"Stock"
-
+  "Similar": "Similar",
+  "stock": "Stock",
+  "shawl": "Shawl",
+  "headgear": "Headgear",
+  "scurf": "Scurf"
 }

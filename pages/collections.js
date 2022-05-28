@@ -6,6 +6,7 @@ import Header from "../src/Components/header/Header";
 import TiolaCollections from "../src/Components/pageCollentions/MyCollection/TiolaCollections";
 
 export default function collections({ allCollection }) {
+  console.log(allCollection)
   return (
     <div>
       <Head>

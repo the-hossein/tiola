@@ -27,6 +27,7 @@ const CollectionDetails = ({ data }) => {
           <ProductsCategory
             reverse={index % 2 !== 0 ? true : false}
             data={item}
+            type={null}
           />
         </>
       ))}

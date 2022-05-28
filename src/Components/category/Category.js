@@ -4,8 +4,11 @@ import Image from "next/image";
 import category1 from "../../../public/Assets/images/2.jpeg";
 import { useTranslation } from "react-i18next";
 import CategoryProduct from "./CategoryProduct";
-const Category = () => {
+import Link from "next/link";
+const Category = ({ data }) => {
   const { t } = useTranslation();
+  console.log(data);
+
   const product = [
     {
       src: "/Assets/images/3.jpeg"
@@ -38,22 +41,28 @@ const Category = () => {
   return (
     <section>
       <div className="container mt-5">
-        <h1 className="pb-4">{t("scurf")}</h1>
+        <h1 className="pb-4">{t(`${data[0].type}`)}</h1>
         <div className="row">
-          <div className={`col-lg-4 col-md-4 col-12 ${style.CategoryPhoto}`}>
-            <Image src={category1} alt="category pic " />
-          </div>
-          <div className={`col-lg-4 col-md-4 col-6 ${style.CategoryPhoto}`}>
-            <Image src={category1} alt="category pic" />
-          </div>
-          <div className={`col-lg-4 col-md-4 col-6 ${style.CategoryPhoto}`}>
-            <Image src={category1} alt="category pic" />
-          </div>
+          {data.slice(0, 3).map(
+            (item) =>
+              item.imageFile1.confirmed && (
+                <>
+                
+                  <Link href={`/product/${item.id}`}>
+                    <div
+                      className={`col-lg-4 col-md-4 col-12 mb-3 ${style.CategoryPhoto}`}
+                    >
+                      <img src={item.imageFile1.filePath} alt="category pic " />
+                    </div>
+                  </Link>
+                </>
+              )
+          )}
         </div>
         <div className="row">
-          {product.map((item) => (
+          {data.slice(3, data.length).map((item) => (
             <>
-              <CategoryProduct data={item}  key={item.src}/>
+              <CategoryProduct data={item} key={item.id} />
             </>
           ))}
         </div>
