@@ -45,8 +45,8 @@ const AllComment = () => {
 
   return (
     <>
-      {size < 600 && <AddComment />}
-
+      
+      { size < 600 && <AddComment />}
       <div className={`${Style.AllComment} mt-2`}>
         {/* <OwlCarousel
           responsive={respons.responsive}
@@ -70,6 +70,7 @@ const AllComment = () => {
           {size > 600 && <AddComment />}
         {/* </OwlCarousel> */}
       </div>
+        
     </>
   );
 };

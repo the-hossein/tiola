@@ -4,14 +4,14 @@
     animation-name: openmenu;
     animation-duration: 1s;
     height: 100vh;
-    position: absolute;
     display: block;
+    position: absolute;
     top: 65px;
     padding: 2rem 1.5rem;
     direction: var(--direction);
     z-index: 99;
+    /* transform: translateX(-100%); */
 }
-
 .darkmenu {
     background: var(--dark-pen) !important;
 
