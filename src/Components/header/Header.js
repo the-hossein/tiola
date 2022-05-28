@@ -172,6 +172,7 @@ const Header = ({ backColor }) => {
                 <FontAwesomeIcon
                   icon={faSearch}
                   onClick={serachHandler}
+                  style={{fontSize:14}}
                   className={showSearchBox ? style.searchBoxIcon : ""}
                 />
               </div>

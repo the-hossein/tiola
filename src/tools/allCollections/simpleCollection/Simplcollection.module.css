@@ -62,7 +62,10 @@
 
 
 
-
+    .containerPic {
+    
+        padding-right: 0;
+    }
 
     .content {
         border-bottom: none;

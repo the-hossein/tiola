@@ -1,6 +1,6 @@
 .container {
     direction: ltr;
-    min-height: 60vh;
+    min-height: 100vh;
     background: url("/Assets/images/5.jpeg");
     background-position: center;
     background-repeat: no-repeat;

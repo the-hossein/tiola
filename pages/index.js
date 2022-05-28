@@ -44,9 +44,13 @@ export default function Home() {
       <header>
         <Header backColor={"headerBlur"} />
       </header>
-      <main>
+      <main>  
+           
+           
+           
+          
         <HeroSection />
-        <ProductSlider slidesShow={3} images={product} arrowStatus={true} margin={0} mbItem={1} tbItem={2} loop={false}/>
+        <ProductSlider slidesShow={3} radius={0} images={product} arrowStatus={true} margin={0} mbItem={1} tbItem={2}  heightImage={'250px'}/>
         <Collection />
       </main>
       <footer>
