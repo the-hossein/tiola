@@ -7,7 +7,6 @@ import Link from "next/link";
 const ProductInfo = ({ more, data }) => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
-  console.log(data);
   if (typeof data !== "undefined") {
     return (
       <>
@@ -38,9 +37,13 @@ const ProductInfo = ({ more, data }) => {
               lang.lng === "en" && "align-items-end"
             }`}
           >
-            <span>{data.title}</span>
-            <span>{t("stock") +": "+ data.stock}</span>
-            <span>{data.collection.title}</span>
+            <span>{lang.lng === "fa" ? data.title : data.titleEn}</span>
+            <span>{t("stock") + ": " + data.stock}</span>
+            <span>
+              {lang.lng === "fa"
+                ? data.collection.title
+                : data.collection.titleEn}
+            </span>
           </div>
         </div>
       </>

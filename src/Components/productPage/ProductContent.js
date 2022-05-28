@@ -33,10 +33,9 @@ const ProductContent = ({ product }) => {
   if (product.imageFile5 && product.imageFile5.confirmed) {
     images.push({ src: product.imageFile5.filePath, id: product.id });
   }
-
+  console.log(product);
   return (
     <>
-   
       <div className="row  m-0">
         <div className={`col-lg-5 col-12  ${style.productSlider}`}>
           {/* <ProductSlider
@@ -57,7 +56,7 @@ const ProductContent = ({ product }) => {
             images={images}
             arrowStatus={false}
             margin={20}
-            heightImage={'82vh'}
+            heightImage={"82vh"}
           />
         </div>
         <div className={`col-lg-7 col-12 ${style.information} mt-5 `}>
@@ -79,11 +78,11 @@ const ProductContent = ({ product }) => {
               </p>
               <div>
                 <span className="d-block mb-2">{t("Compatiblewith")}</span>
-                <ColorPick color="#445887" />
-                <ColorPick color="#ffd2a8" />
-                <ColorPick color="#beb8b6" />
-                <ColorPick color="#f8bd14" />
-                <ColorPick color="#8bbbe1" />
+                {product.compatibleColors.split(",").map((color) => (
+                  <>
+                    <ColorPick color={color} />
+                  </>
+                ))}
               </div>
             </div>
             <div className={style.buttons}>
@@ -91,9 +90,9 @@ const ProductContent = ({ product }) => {
               <NormalBtn color="white" text={t("addWatch")} />
             </div>
           </div>
-            <div className="row">
-                <AllComment className='col' />
-            </div>
+          <div className="row">
+            <AllComment className="col" />
+          </div>
         </div>
       </div>
     </>

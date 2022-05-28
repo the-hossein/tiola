@@ -16,6 +16,7 @@ const ShopPage = () => {
             reverse={index % 2 !== 0 ? true : false}
             data={item.products}
             title={item.title}
+            type={item.products[0]}
           />
         </>
       ))}

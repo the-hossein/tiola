@@ -6,7 +6,7 @@ const MyCollection = ({ data }) => {
   console.log(data);
   return (
     <>
-    {data.picture.confirmed?
+    {/* {data.picture.confirmed? */}
     
   
       <Link href={`/collections/${data.id}`}>
@@ -19,8 +19,8 @@ const MyCollection = ({ data }) => {
             <CollectionInfo data={data} />
           </div>
         </div>
-      </Link>:""
-  }
+      </Link>
+  {/* :""} */}
     </>
   );
 };

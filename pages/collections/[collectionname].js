@@ -30,7 +30,7 @@ console.log(collection)
       <header>
         <Header backColor={"headerColor"} />
       </header>
-      <main>{state.loading ? <Loader /> : <CollectionDetails />}</main>
+      <main>{state.loading ? <Loader /> : <CollectionDetails data={collection.data}/>}</main>
       <footer>
         <Footer />
       </footer>

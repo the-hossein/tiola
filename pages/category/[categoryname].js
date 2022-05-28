@@ -1,8 +1,10 @@
 import Head from "next/head";
+import callApi from "../../src/api/callApi";
+import { BASE_URL, GET_WITHLABLE } from "../../src/api/urls";
 import Category from "../../src/Components/category/Category";
 import Footer from "../../src/Components/footer/Footer";
 import Header from "../../src/Components/header/Header";
-export default function categoryname() {
+export default function categoryname({category}) {
   return (
     <div>
       <Head>
@@ -14,10 +16,24 @@ export default function categoryname() {
         <Header backColor={"headerColor"} />
       </header>
 
-      <main><Category/></main>
+      <main><Category data={category.data}/></main>
       <footer>
         <Footer />
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { categoryname } = params;
+  const data = await callApi(
+    `${BASE_URL + GET_WITHLABLE}?Type=${categoryname}`,
+    "GET",
+    "{}"
+  );
+
+  return {
+    props: { category: data } // will be passed to the page component as props
+  };
 }

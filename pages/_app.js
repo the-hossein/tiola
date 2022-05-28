@@ -40,6 +40,7 @@ function MyApp({ Component, pageProps }) {
           "linear-gradient(0deg, rgba(242,242,242,1) 28%, rgba(242,227,193,1) 66%, rgba(255,179,0,1) 100%)",
           "important"
         );
+        console.log(pageProps.collection.data)
     } else {
       document
         .getElementsByTagName("body")[0]

@@ -3,12 +3,13 @@ import { useTranslation } from "react-i18next";
 import ProductInfo from "../shopPage/product/ProductInfo";
 import ProActions from "./ProActions";
 
-const ProInformation = () => {
+const ProInformation = ({data}) => {
   const { t } = useTranslation();
+  console.log(data)
   return (
     <div className="d-flex flex-column">
-      <ProductInfo more={false} />
-      <ProActions />
+      <ProductInfo more={false} data={data}/>
+      <ProActions id={data.id}/>
     </div>
   );
 };

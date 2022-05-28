@@ -17,10 +17,10 @@ const CollectionInfo = ({data}) => {
             lang.lng === "en" ? "flex-row-reverse" : "flex-row"
           } ${style.collectionName}`}
         >
-          <span>{data.title}</span>
+          <span>{lang.lng==="fa"?data.title:data.titleEn}</span>
           <span>{t("viewAll")} </span>
         </div>
-        <p className={style.content}>{data.description}</p>
+        <p className={style.content}>{lang.lng==="fa"?data.description:data.descriptionEn}</p>
       </div>
     </>
   );

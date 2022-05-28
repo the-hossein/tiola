@@ -45,8 +45,7 @@ const AllComment = () => {
 
   return (
     <>
-      
-      { size < 600 && <AddComment />}
+      {size < 600 && <AddComment />}
       <div className={`${Style.AllComment} mt-2`}>
         {/* <OwlCarousel
           responsive={respons.responsive}
@@ -57,22 +56,19 @@ const AllComment = () => {
           mouseDrag={size > 650&&state.writeCm ? false : true}
           touchDrag={size > 650&&state.writeCm ? false : true}
         > */}
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          {
-            size > 600 && <AddComment />
-          }
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        {size > 600 && <AddComment />}
         {/* </OwlCarousel> */}
       </div>
-        
     </>
   );
 };
