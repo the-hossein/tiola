@@ -75,6 +75,7 @@ const Header = ({ backColor }) => {
   const openMenu = () => {
     setMenuBar(!menuBar);
   };
+  
   return !prelaod ? (
     <>
       <div className={`${style.header} ${backColor}`}>
