@@ -63,8 +63,9 @@ const ProductContent = ({ product, similar }) => {
               <NormalBtn color="white" text={t("addWatch")} />
             </div>
           </div>
-
-          <AllComment />
+            <div className="row">
+                <AllComment className='col' />
+            </div>
         </div>
       </div>
     </>
