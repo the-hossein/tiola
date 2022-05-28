@@ -90,7 +90,10 @@
         padding-bottom: 1rem;
         position: unset;
     }
-
+    .containerPic {
+    
+        padding: 0 !important;
+    }
  
     .collectionImage {
         justify-content: center !important;

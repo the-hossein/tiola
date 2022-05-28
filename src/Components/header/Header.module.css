@@ -73,7 +73,7 @@
     border-radius: 6px;
     text-align: left;
     animation-name: searchBoxAnimation;
-    animation-duration: 1.5s;
+    animation-duration: 0.6s;
     width: 180px;
     padding: 0 1.5rem;
     border: none;
@@ -94,6 +94,7 @@
     left: 30px;
     color: #111111;
     top: 5px;
+
 }
 
 

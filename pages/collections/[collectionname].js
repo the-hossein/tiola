@@ -11,7 +11,7 @@ import Loader from "../../src/tools/loader/Loader";
 
 export default function CollectionName({ collection }) {
   const state = useSelector((state) => state.stateColProduct);
-
+console.log(collection)
   const dispatch = useDispatch();
   useEffect(() => {
     var sliced = [];

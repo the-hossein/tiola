@@ -6,6 +6,9 @@ const MyCollection = ({ data }) => {
   console.log(data);
   return (
     <>
+    {data.picture.confirmed?
+    
+  
       <Link href={`/collections/${data.id}`}>
         <div
           className={`col-xl-3 col-lg-3 col-sm-6 col-12 ${style.myCollection} `}
@@ -16,7 +19,8 @@ const MyCollection = ({ data }) => {
             <CollectionInfo data={data} />
           </div>
         </div>
-      </Link>
+      </Link>:""
+  }
     </>
   );
 };

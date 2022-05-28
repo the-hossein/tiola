@@ -39,7 +39,7 @@ const ProductInfo = ({ more, data }) => {
             }`}
           >
             <span>{data.title}</span>
-            <span>{t("stock") + data.stock}</span>
+            <span>{t("stock") +": "+ data.stock}</span>
             <span>{data.collection.title}</span>
           </div>
         </div>
