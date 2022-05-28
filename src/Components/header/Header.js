@@ -89,7 +89,7 @@ const Header = ({ backColor }) => {
                   className="position-relative"
                   onClick={openMenu}
                 />
-                {menuBar ? <Menu backColor={backColor} /> : ""}
+                {menuBar && <Menu backColor={backColor} />}
                 <div>
                   <Link href="/">
                     <span

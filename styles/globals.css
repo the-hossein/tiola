@@ -43,6 +43,7 @@ body {
   direction: rtl;
   font-family: 'IRANSansWeb' !important;
   background-color: var(--body-Color) !important;
+  /* overflow-x: hidden; */
 }
 
 a {
