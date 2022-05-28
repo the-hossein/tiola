@@ -67,15 +67,10 @@ const AllComment = () => {
           <Comment />
           <Comment />
           <Comment />
-<<<<<<< HEAD
           {
             size > 600 && <AddComment />
           }
-        </OwlCarousel>
-=======
-          {size > 600 && <AddComment />}
         {/* </OwlCarousel> */}
->>>>>>> dcecc1567c20916238a9f92418c627cb4109f52c
       </div>
         
     </>

@@ -8,7 +8,7 @@ const Menu = ({ backColor }) => {
   const lang = useSelector((state) => state.stateLang);
 
   return (
-    <nav>
+    <nav className={style.humbergerMenuNav}>
       <div
         className={`${style.burgerMenu} ${
           lang.lng === "fa" ? `${style.menuRight}` : `${style.menuLeft}`
