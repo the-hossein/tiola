@@ -6,7 +6,7 @@ import callApi from "../../src/api/callApi";
 import { useEffect } from "react";
 import { BASE_URL, GET_PRODUCT, GET_WITHLABLE } from "../../src/api/urls";
 export default function productname({ product, similar }) {
-  console.log(similar)
+  console.log(product)
   return (
     <div>
       <Head>
