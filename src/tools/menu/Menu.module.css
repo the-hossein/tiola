@@ -6,7 +6,7 @@
     height: 100vh;
     display: block;
     position: absolute;
-    top: 65px;
+    top: 65px; 
     padding: 2rem 1.5rem;
     direction: var(--direction);
     z-index: 99;
@@ -14,7 +14,6 @@
 }
 .darkmenu {
     background: var(--dark-pen) !important;
-
 }
 
 .menuRight {
