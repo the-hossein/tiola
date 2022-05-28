@@ -11,26 +11,32 @@ const CollectionDetails = ({ data }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateColProduct);
-
-  return(
+  const lang = useSelector((state) => state.stateLang);
+  return (
     <section>
-     <div className="position-relative">
+      <div className="position-relative">
         <img src="/Assets/images/col.png" className={Style.collectionPic} />
         <div className={`${Style.collectionName}`}>
-          <BlurButton btnText={t("coolection") + " No 1"} />
+          <BlurButton
+            btnText={
+              lang.lng=== "fa"
+                ? state.data[0][0].collection.title
+                : state.data[0][0].collection.titleEn
+            }
+          />
         </div>
       </div>
 
       <div className="mt-5 mb-5">
-      {state.data.map((item, index) => (
-        <>
-          <ProductsCategory
-            reverse={index % 2 !== 0 ? true : false}
-            data={item}
-            type={null}
-          />
-        </>
-      ))}
+        {state.data.map((item, index) => (
+          <>
+            <ProductsCategory
+              reverse={index % 2 !== 0 ? true : false}
+              data={item}
+              type={null}
+            />
+          </>
+        ))}
       </div>
     </section>
   );
