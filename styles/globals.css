@@ -131,7 +131,6 @@ a {
     /* width: 100%;
     height: 100%; */
     z-index: 1 !important;
-<<<<<<< HEAD
   }  
 }
 .swiper-button-next:after,.swiper-button-prev:after {
@@ -157,9 +156,7 @@ a {
   /* color: #fff; */
 }
 
-* button {
+* > button {
   transition: all .3s linear !important;
-=======
-  }
->>>>>>> c14e85db84b24a6aa5619f0a7803f77b188b3516
 }
+/* hello */
