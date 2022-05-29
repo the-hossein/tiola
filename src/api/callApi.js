@@ -1,25 +1,20 @@
-import axios from "axios";
-const callApi = async (url, method, body) => {
-  axios.defaults.baseURL = "https://api.asanbtc.com";
-  axios.defaults.headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json;charset=UTF-8"
-  };
-  var options;
-  if (body !== "{}") {
-    options = {
-      url: url,
-      method: method,
-      data: body
+export const callApi = async (BaseUrl, Body, Header, Method) => {
+  var requestOptions;
+  if (Body === "{}") {
+    requestOptions = {
+      method: Method,
+      headers: Header,
+      redirect: "follow"
     };
   } else {
-    options = {
-      url: url,
-      method: method
+    requestOptions = {
+      method: Method,
+      headers: Header,
+      body: Body,
+      redirect: "follow"
     };
   }
-  const response = await axios(options);
-  return response.data;
+  const response = await fetch(BaseUrl, requestOptions);
+  const data = await response.json();
+  return data;
 };
-
-export default callApi;

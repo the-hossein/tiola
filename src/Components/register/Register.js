@@ -7,14 +7,21 @@ import NormalBtn from "../../tools/normalBtn/NormalBtn";
 import { useTranslation } from "react-i18next";
 import CountdownTimer from "react-component-countdown-timer";
 import { notify } from "../../tools/toast/toast";
-import { getCode, getphone } from "../../redux/sign/signActions";
 import { validationNumber } from "./validationNumber";
 import { useDispatch, useSelector } from "react-redux";
 import { validateCode } from "./validateCode";
+import {
+  getCode,
+  getphone,
+  registerPhone
+} from "../../redux/register/registerAction";
+import { callApi } from "../../api/callApi";
+import TextLoader from "../../tools/textLoader/TextLoader";
 const Register = ({ title }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.stateSign);
+  const state = useSelector((state) => state.stateRegister);
+  const lang = useSelector((state) => state.stateLang.lng);
   const [phone, setPhone] = useState("");
   const [sendCode, setSendCode] = useState(false);
   const [again, setAgain] = useState(false);
@@ -26,11 +33,27 @@ const Register = ({ title }) => {
     setErrorsCode(validateCode(state.code));
     console.log(errors);
   }, [state.phoneNumber, touched, state.code]);
+
   const sendCodeHandler = () => {
     if (!Object.keys(errors).length && state.phoneNumber.length !== 0) {
-      setSendCode(true);
+      dispatch(registerPhone(state.phoneNumber, lang));
     } else {
-      notify(t("emptyPhoneValidate"), "error");
+      {
+        errors.phone === "empty"
+          ? t("emptyPhoneValidate")
+          : errors.phone === "length"
+          ? t("lengthPhoneValidate")
+          : t("incorrentPhoneValidate");
+      }
+
+      if (errors.phone === "empty") {
+        var errorText = t("emptyPhoneValidate");
+      } else if (errors.phone === "length") {
+        errorText = t("lengthPhoneValidate");
+      } else {
+        errorText = t("incorrentPhoneValidate");
+      }
+      notify(errorText, "error");
     }
   };
   const againHandler = () => {
@@ -101,6 +124,7 @@ const Register = ({ title }) => {
     }
     return true;
   };
+
   return (
     <section>
       <div className={`row m-0 ${style.Register}`}>
@@ -182,7 +206,10 @@ const Register = ({ title }) => {
                   onClick={timerHandler}
                 />
               ) : (
-                <NormalBtn text={t("sendCode")} onClick={sendCodeHandler} />
+                <NormalBtn
+                  text={state.loader ? <TextLoader /> : t("sendCode")}
+                  onClick={sendCodeHandler}
+                />
               )}
             </div>
             {sendCode && (

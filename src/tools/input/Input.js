@@ -1,7 +1,5 @@
 import React from "react";
 import style from "./Input.module.css";
-import { useDispatch } from "react-redux";
-import { getphone } from "../../redux/sign/signActions";
 
 const Input = ({
   lablelText,
