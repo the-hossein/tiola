@@ -90,8 +90,8 @@ const ProductContent = ({ product }) => {
               <NormalBtn color="white" text={t("addWatch")} />
             </div>
           </div>
-          <div className="row">
-            <AllComment className="col" />
+          <div className="w-100 d-flex justify-content-between">
+              <AllComment className="col" />
           </div>
         </div>
       </div>

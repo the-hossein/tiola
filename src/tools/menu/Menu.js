@@ -16,9 +16,9 @@ const Menu = ({ backColor }) => {
       >
         <span>Melina Rudigoz</span>
         <ul>
-          <Link href="/">
+          {/* <Link href="/">
             <li>{t("PurchaseGuide")}</li>
-          </Link>
+          </Link> */}
           <Link href="/factor">
             <li>{t("MyCart")}</li>
           </Link>

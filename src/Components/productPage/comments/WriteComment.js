@@ -31,48 +31,61 @@ const WriteComment = () => {
         <label to="floatingInputGrid">{t("writeYourCm")}</label>
       </div>
       <div
-        className={`d-flex  justify-content-between align-items-center mt-3`}
+        className={`row mt-3 `}
       >
-        <div className={`d-flex  ${Style.ratinaition}`}>
-          <ul>
-            <li>{t("factor") + " 1"}</li>
-            <li>{t("factor") + " 2"}</li>
-            <li>{t("factor") + " 3"}</li>
-          </ul>
-          <Box width={100} paddingX={1}>
-            <ul>
-              <li>
-                <RateSlider name="factor1" />
-                <span className={Style.amount}>{state.factor1}</span>
-              </li>
-              <li>
-                <RateSlider name="factor2" />
+        
+          <div className={
+            `col-12 col-md-12 col-lg-12 col-xl-6 d-flex align-items-center justify-content-around ${Style.ratinaition}`}
+            >
+                <ul className={Style.factorLi}>
+                  <li>{t("factor") + " 1"}</li>
+                  <li>{t("factor") + " 2"}</li>
+                  <li>{t("factor") + " 3"}</li>
+                </ul>
+              
+                  <Box width="60%" paddingX={1} className={Style.myBox} >
+                    <ul>
+                      <li>
+                        <RateSlider name="factor1"/>
+                        <span className={Style.amount}>{state.factor1}</span>
+                      </li>
+                      <li>
+                        <RateSlider name="factor2" />
 
-                <span className={Style.amount}>{state.factor2}</span>
-              </li>
-              <li>
-                <RateSlider name="factor3" />
+                        <span className={Style.amount}>{state.factor2}</span>
+                      </li>
+                      <li>
+                        <RateSlider name="factor3" />
 
-                <span className={Style.amount}>{state.factor3}</span>
-              </li>
-            </ul>
-          </Box>
-        </div>
-        <Box paddingX={2}>
-          <div className="d-flex align-items-center">
-            <span className={Style.total}>{t("total")}</span>
-            <span className={Style.rating}>
-              <Rating
-                name="product Rate"
-                value={(state.factor1 + state.factor2 + state.factor3) / 6}
-                readOnly
-              />
-            </span>
+                        <span className={Style.amount}>{state.factor3}</span>
+                      </li>
+                    </ul>
+                  </Box>
           </div>
-          <button className={Style.doneBtn} onClick={doneHandler}>
-            {t("done")}
-          </button>
-        </Box>
+          <div className="col-12 col-md-12 col-lg-12 col-xl-6 d-flex align-items-center justify-content-center">
+            <Box paddingX={2} className={Style.myBox}>
+              <div className="row">
+                <div className="col-12">
+                  <div className="d-flex align-items-center">
+                    <span className={Style.total}>{t("total")}</span>
+                    <span className={Style.rating}>
+                      <Rating
+                        name="product Rate"
+                        value={(state.factor1 + state.factor2 + state.factor3) / 6}
+                        readOnly
+                      />
+                    </span>
+                  </div>
+                </div>
+                <div className="col-12">
+                  <button className={Style.doneBtn} onClick={doneHandler}>
+                    {t("done")}
+                  </button>
+                </div>
+              </div>
+            </Box>
+          </div>
+        {/* </div> */}
       </div>
     </div>
   );

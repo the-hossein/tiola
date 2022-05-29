@@ -37,7 +37,7 @@ const ProFileSection = () => {
             <input
               type="file"
               id="userImage"
-              accept="image/png, image/gif, image/jpeg"
+              accept="image/png, image/jpeg,"
               onChange={(e) => {
                 ChangeImageAction(e);
               }}
