@@ -32,6 +32,7 @@ const ProFileSection = () => {
               <AddAPhotoRoundedIcon
                 fontSize={"large"}
                 className={style.addPhoto}
+                
               />
             </label>
             <input
