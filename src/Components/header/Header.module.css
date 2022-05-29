@@ -5,7 +5,7 @@
     width: 100%;
     padding: 0.3rem 4rem;
     color: var(--light-pen);
-    font-size: 12pt;
+    font-size: var(--md-font);
     direction: var(--direction);
     z-index: 10;
 }
@@ -118,7 +118,7 @@
 @media(max-width:1000px) {
     .header {
         padding: 0.6rem 1.5rem;
-        font-size: 11pt;
+        font-size: var(--xs-font);
 
     }
     .allitems div span {

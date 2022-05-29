@@ -41,7 +41,7 @@ const Category = ({ data }) => {
   return (
     <section>
       <div className="container mt-5">
-        <h1 className="pb-4">{t(`${data[0].type}`)}</h1>
+        <h1 className={style.categoryType}>{t(`${data[0].type}`)}</h1>
         <div className="row">
           {data.slice(0, 3).map(
             (item) =>

@@ -7,7 +7,7 @@ const CollectionText = ({content,title,color,reverse}) => {
     <>
       <div>
         <h3 className={style.collectionTitile}>{title}</h3>
-        <p className="lh-lg">{content}</p>
+        <p className={style.CollectionText}>{content}</p>
 
         <ColorPick color={color} />
       </div>

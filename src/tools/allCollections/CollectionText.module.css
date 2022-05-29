@@ -1,10 +1,18 @@
 .collectionTitile {
     margin-bottom: 1.5rem;
+    font-size: var(--xxl-font);
 }
 .ViewAll {
         text-align: right;
+    font-size: var(--xs-font);
+
+}
+.CollectionText{
+    line-height: 1.6;
+    font-size: var(--md-font);
 }
 .ViewAllLeft{
     text-align: left;
+    font-size: var(--xs-font);
 
 }
