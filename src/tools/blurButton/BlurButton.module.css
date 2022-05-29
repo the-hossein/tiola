@@ -6,6 +6,6 @@
     padding: 1rem 3rem;
     color: var(--light-pen);
     border-radius: 8px;
-    font-size: 10pt;
-    font-size: 16pt;
+    font-size: var(--xxl-font);
+
 }

@@ -13,7 +13,7 @@
 .info {
     width: 75%;
     margin: auto;
-    font-size: 9pt;
+    font-size: var(--sm-font);
     text-align: var(--float-left);
 }
 
@@ -23,12 +23,15 @@
 }
 
 .title {
-    padding: 3rem 3rem 1rem 3rem;
+    padding: 3rem 3rem 0rem 3rem;
+    font-size: var(--xxl-font);
+
 
 }
 
 .description {
-    padding: 0 3rem 1rem 3rem;
+    padding: 0 3rem 2rem 3rem;
+    font-size: var(--md-font);
 
 }
 
