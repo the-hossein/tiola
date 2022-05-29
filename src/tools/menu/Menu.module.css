@@ -30,11 +30,15 @@
     padding: 0;
     display: table;
     margin: auto;
+    
+}
 
+.burgerMenu ul li {
+    font-size: var(--md-font) !important;
 }
 
 .burgerMenu>span:first-child {
-    font-size: 15pt;
+    font-size: var(--md-font);
     display: block;
     margin-bottom: 2rem;
 }
@@ -48,7 +52,6 @@
 
 .burgerMenu ul li {
     color: var(--light-pen);
-    font-size: 12pt;
     padding: 0.5rem 0;
 }
 

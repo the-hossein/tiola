@@ -86,6 +86,7 @@ const Register = ({ title }) => {
   const changeCodeNumber = (e) => {
     dispatch(getCode(e.target.value));
   };
+  
   const TypeNumber = (e) => {
     if (!e) {
       e = window.event;
