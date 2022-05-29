@@ -49,6 +49,7 @@
     text-align: center;
     margin: 0.1rem 0.2rem;
 }
+.factorLi {margin-top: 10px !important;}
 
 .ratinaition ul li span {
     color: var(--dark-pen) !important;
@@ -130,4 +131,9 @@
     width: 100%;
     border-radius: var(--Product-Border-radius);
 
+}
+
+.myBox {
+    padding: 0!important;
+    margin-top: 10px;
 }

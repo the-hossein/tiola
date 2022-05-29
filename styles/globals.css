@@ -170,3 +170,29 @@ a {
     z-index: 1 !important;
   }  
 }
+.swiper-button-next:after,.swiper-button-prev:after {
+  font-size: 4rem !important;
+  font-weight: 900;
+}
+
+.mySwiperComment {
+  /* margin: 100px auto; */
+  /* width: 100% !important;
+  height: 100% !important; */
+  padding:0 .5rem .5rem !important;
+  /* background: #c43131; */
+  /* color: #000000 !important; */
+}
+.mySwiperComment .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content ;
+  height: fit-content ;
+  /* box-shadow: 5px 10px 4px #23232354; */
+  /* color: #fff; */
+}
+
+* button {
+  transition: all .3s linear !important;
+}
