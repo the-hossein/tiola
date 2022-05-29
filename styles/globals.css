@@ -15,6 +15,14 @@
   --Product-Border-radius: 8px;
   --red-pen: #c43131;
   --border-button: #c7c7c7;
+  --sm-font: 9pt;
+  --xs-font: 10pt;
+  --md-font: 12pt;
+  --lg-font: 14pt;
+  --xl-font: 16pt;
+  --xxl-font: 24pt;
+
+
 
 }
 
@@ -41,7 +49,7 @@ body {
   margin: 0;
   position: relative;
   direction: rtl;
-  font-family: 'IRANSansWeb' !important;
+  font-family: var(--font) !important;
   background-color: var(--body-Color) !important;
   /* overflow-x: hidden; */
 }
@@ -73,52 +81,7 @@ a {
 
 }
 
-.slick-prev {
-  left: 1.5rem !important;
-  z-index: 1 !important;
-}
 
-.slick-next {
-  right: 1.5rem !important;
-  z-index: 1 !important;
-
-}
-
-
-.slick-next::before,
-.slick-prev::before {
-  content: '' !important;
-}
-
-.owl-next {
-  margin-right: 2rem !important;
-  color: var(--light-pen) !important;
-}
-
-.owl-prev {
-  color: var(--light-pen) !important;
-  margin-left: 2rem !important;
-}
-
-.owl-prev span,
-.owl-next span {
-  font-size: 80pt;
-
-}
-
-.owl-theme .owl-nav {
-
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.owl-theme .owl-nav [class*='owl-']:hover {
-  background: none !important;
-}
 
 .swiper {
   width: 100%;
@@ -168,5 +131,5 @@ a {
     /* width: 100%;
     height: 100%; */
     z-index: 1 !important;
-  }  
+  }
 }

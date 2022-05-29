@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import PrimaryButton from "../../tools/primaryButton/PrimaryButton";
 import style from "./HeroSection.module.css";
-import Link from 'next/link'
+import Link from "next/link";
 const HeroSection = () => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
@@ -18,9 +18,11 @@ const HeroSection = () => {
             lang.lng === "en" && style.leftDescoverMore
           }`}
         >
-          <Link href="shop">
+          <Link href="/shop">
             {/* add a new props for PrimaryButton for value bottom */}
-            <PrimaryButton btnText={t("descoverMore")} />
+            <div>
+              <PrimaryButton btnText={t("descoverMore")} />
+            </div>
           </Link>
         </div>
       </div>

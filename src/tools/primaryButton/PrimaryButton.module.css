@@ -1,10 +1,10 @@
 .primaryBtn button {
     border: 1px solid var(--lightGray-border);
     background-color: var(--medium-gray);
-    padding: 0.5rem 2.5rem;
+    padding: 0.2rem 2.5rem 0.5rem;
     color: var(--light-pen);
     border-radius: 8px;
-    font-size: 10pt;
+    font-size: var(--xs-font);
 }
 
 .primaryBtn button:hover {
@@ -21,7 +21,7 @@
     padding: 0.2rem 1rem;
     border-radius: 8px;
     color: var(--dark-pen);
-    font-size: 8pt;
+    font-size: var(--sm-font);
 
 
 }

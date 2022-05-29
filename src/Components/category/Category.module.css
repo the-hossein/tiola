@@ -10,6 +10,11 @@
     overflow: hidden;
 cursor: pointer;
 
+
+}
+.categoryType{
+    font-size: var(--xxl-font);
+    padding-bottom: 1rem;
 }
 .CategoryProduct>div {
     background-color: var(--light-pen);

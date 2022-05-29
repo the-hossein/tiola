@@ -26,18 +26,9 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
       <section>
         <div className={style.container}>
           <div
-            className={`row justify-content-center ${
-              router.pathname !== "/collections/[collectionname]"
-                ? style.spliterCategory
-                : ""
-            }`}
-          >
+            className={`row justify-content-center ${router.pathname !== "/collections/[collectionname]"? style.spliterCategory: ""}`}>
             <div className={`col-xl-10 col-lg-12 col-12`}>
-              <div
-                className={`row justify-content-center  ${
-                  reverse === true ? "flex-row-reverse" : ""
-                } `}
-              >
+              <div className={`row justify-content-center  ${reverse === true ? "flex-row-reverse" : ""} `}>
                 {router.pathname !== "/collections/[collectionname]" && (
                   <h3 className={style.title}>{t(`${type.type}`)}</h3>
                 )}
@@ -69,7 +60,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                 </div>
 
                 <div className="col-lg-8 co-md-8 col-8">
-                  <div className="row justify-content-end">
+                  <div className={`row ${reverse&& "justify-content-end"}`}>
                     {data.slice(1, 5).map((item) => (
                       <>
                         <div className={`col-6  pb-3  ${style.productPhoto}`}>

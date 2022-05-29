@@ -66,14 +66,19 @@
 
 .viewAll {
     float: left;
+    font-size: var(--xs-font);
 }
 
 
 .content p {
     text-align: justify;
+    font-size: var(--md-font);
+
 }
 
 .collectionTitile {
+    font-size: var(--xxl-font);
+
     margin-bottom: 1.5rem;
 }
 

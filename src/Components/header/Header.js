@@ -12,7 +12,7 @@ import { changeLang } from "../../redux/lang/langActions";
 import Menu from "../../tools/menu/Menu";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import SearchIcon from '@mui/icons-material/Search';
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -41,7 +41,14 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--marginIcon", "0 0 0 1.5rem");
     root.style.setProperty("--textAlign-right", "left");
     root.style.setProperty("--float-left", "right");
-    // root.style.setProperty("--font", "IRANSansWeb");
+    root.style.setProperty("--font", "IRANSansWeb");
+    root.style.setProperty("--sm-font", "9pt");
+    root.style.setProperty("--xs-font", "10pt");
+    root.style.setProperty("--md-font", "12pt");
+    root.style.setProperty("--lg-font", "14pt");
+    root.style.setProperty("--xl-font", "16pt");
+    root.style.setProperty("--xxl-font", "24pt");
+
   };
 
   const leftDir = () => {
@@ -49,7 +56,14 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--marginIcon", "0 1.5rem 0 0");
     root.style.setProperty("--textAlign-right", "right");
     root.style.setProperty("--float-left", "left");
-    // root.style.setProperty("--font", "apple");
+    root.style.setProperty("--font", "apple");
+    root.style.setProperty("--sm-font", "13pt");
+    root.style.setProperty("--xs-font", "15pt");
+    root.style.setProperty("--md-font", "17pt");
+    root.style.setProperty("--lg-font", "19pt");
+    root.style.setProperty("--xl-font", "21pt");
+    root.style.setProperty("--xxl-font", "29pt");
+
   };
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
@@ -75,7 +89,7 @@ const Header = ({ backColor }) => {
   const openMenu = () => {
     setMenuBar(!menuBar);
   };
-  
+
   return !prelaod ? (
     <>
       <div className={`${style.header} ${backColor}`}>
@@ -145,11 +159,12 @@ const Header = ({ backColor }) => {
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
                 />
-                <FontAwesomeIcon
+                <SearchIcon  onClick={serachHandler} className={showSearchBox ? style.searchBoxIcon : ""}/>
+                {/* <FontAwesomeIcon
                   icon={faSearch}
                   onClick={serachHandler}
                   className={showSearchBox ? style.searchBoxIcon : ""}
-                />
+                /> */}
               </div>
               <Link href={"/signin"}>
                 <span>{t("login")}</span>
@@ -173,7 +188,7 @@ const Header = ({ backColor }) => {
                 <FontAwesomeIcon
                   icon={faSearch}
                   onClick={serachHandler}
-                  style={{fontSize:14}}
+                  style={{ fontSize: 14 }}
                   className={showSearchBox ? style.searchBoxIcon : ""}
                 />
               </div>
