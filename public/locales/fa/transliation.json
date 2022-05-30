@@ -40,7 +40,7 @@
   "Readless": "کمتر",
   "sendCode": "ارسال کد",
   "enterCode": "وارد کردن کد",
-  "signIN": "ورود",
+  "signIN": "ثبت نام/ورود",
   "signup": "ثبت نام",
   "phoneNumber": "شماره همراه",
   "successSignIn": "با موفقیت ثبت نام شدید",
@@ -64,8 +64,8 @@
   "shawl": "شال",
   "headgear": "روسری",
   "scurf": "اسکارف",
-  "tiolaStory":"داستان تیولا",
-  "blogs": "بلاگ ها"
-
-
+  "tiolaStory": "داستان تیولا",
+  "blogs": "بلاگ ها",
+  "emptycodeValidate": "لطفا کد را واارد کنید ",
+  "lengthcodeValidate": "لطفا کد 6 رقمی وارد کنید"
 }

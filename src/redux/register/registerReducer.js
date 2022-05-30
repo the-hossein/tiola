@@ -3,12 +3,18 @@ const initializedState = {
   loginStatus: false,
   phoneNumber: "",
   code: "",
-  codeStatus: false
+  codeStatus: false,
+  otpStatus: false
 };
 const registerReducer = (state = initializedState, action) => {
   switch (action.type) {
     case "LOGIN_TRUE":
       return { ...state, loginStatus: true };
+    case "LOGIN_FALSE":
+      return {
+        ...state,
+        loginStatus: false
+      };
     case "GETPHONE":
       return { ...state, phoneNumber: action.num };
     case "GETCODE":
@@ -26,12 +32,26 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         codeStatus: false,
+        code: "",
         loader: false
       };
     case "LOADER":
       return {
         ...state,
         loader: true
+      };
+    case "CHECK_OTP_SUCCESS":
+      return {
+        ...state,
+        otpStatus: true,
+        loader: false,
+        loginStatus: true
+      };
+    case "CHECK_OTP_FAILED":
+      return {
+        ...state,
+        otpStatus: false,
+        loader: false
       };
     default:
       return state;
