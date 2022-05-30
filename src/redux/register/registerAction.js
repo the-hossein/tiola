@@ -49,6 +49,11 @@ const loader = () => {
     type: "LOADER"
   };
 };
+const userData = () => {
+  return {
+    type: "USER_DATA"
+  };
+};
 const registerPhone = (num, lang) => {
   return (dispatch) => {
     dispatch(loader());
@@ -140,6 +145,7 @@ const registerCode = (code, num, lang, router) => {
           exp: registerCode[0].data.expiration,
           phone: num
         };
+
         localStorage.setItem("userToken", JSON.stringify(data));
         dispatch(loader());
 
