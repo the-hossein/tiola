@@ -4,7 +4,9 @@ const initializedState = {
   phoneNumber: "",
   code: "",
   codeStatus: false,
-  otpStatus: false
+  otpStatus: false,
+  userid: "",
+  userName: ""
 };
 const registerReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -52,6 +54,13 @@ const registerReducer = (state = initializedState, action) => {
         ...state,
         otpStatus: false,
         loader: false
+      };
+    case "USER_DATA":
+      return {
+        ...state,
+        phoneNumber: action.user.phoneNumber,
+        userid: action.user.id,
+        userName:action.user.userName
       };
     default:
       return state;

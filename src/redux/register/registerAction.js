@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import callApi from "../../api/callApi";
-import { BASE_URL, SIGN_UP } from "../../api/urls";
+import { BASE_URL, GET_PROFILE, SIGN_UP } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
 const getphone = (num) => {
   return {
@@ -49,9 +49,11 @@ const loader = () => {
     type: "LOADER"
   };
 };
-const userData = () => {
+const userData = (user) => {
   return {
-    type: "USER_DATA"
+    type: "USER_DATA",
+    user:user
+
   };
 };
 const registerPhone = (num, lang) => {
@@ -68,7 +70,7 @@ const registerPhone = (num, lang) => {
         }
       });
       const registerUser = await callApi(
-        "http://185.105.239.3:85/api/v1/User/Signup",
+       BASE_URL+SIGN_UP,
         raw,
         myHeaders,
         "POST"
@@ -114,16 +116,14 @@ const registerCode = (code, num, lang, router) => {
         }
       });
       const registerCode = await callApi(
-        "http://185.105.239.3:85/api/v1/User/Signup",
+       BASE_URL+SIGN_UP,
         raw,
         myHeaders,
         "POST"
       );
 
       var text;
-      console.log(registerCode);
       if (registerCode[1] === 200) {
-        console.log(registerCode);
         dispatch(checkOtpSuccess());
         if (lang === "fa") {
           if (registerCode[0].message === "با موفقیت لاگین شدید") {
@@ -138,7 +138,6 @@ const registerCode = (code, num, lang, router) => {
             text = "Your registration was successful";
           }
         }
-        console.log(registerCode);
 
         const data = {
           token: registerCode[0].data.token,
@@ -171,6 +170,29 @@ const registerCode = (code, num, lang, router) => {
     checkOtp();
   };
 };
+const getProfile=()=>{
+
+  return (dispatch) => {
+    var ls = localStorage.getItem("userToken");
+    const userToken = JSON.parse(ls);
+    var phone = userToken.phone;
+    var token = userToken.token;
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      phonenumber:`${phone}`
+    });
+    
+const profile=async()=>{
+const user=await callApi(BASE_URL+GET_PROFILE,raw,myHeaders,"POST")
+dispatch(userData(user[0].data))
+}
+profile()
+  }
+}
 export {
   loginTrue,
   registerPhone,
@@ -182,5 +204,7 @@ export {
   registerCode,
   checkOtpSuccess,
   checkOtpFailed,
-  loginFalse
+  loginFalse,
+  userData,
+  getProfile
 };
