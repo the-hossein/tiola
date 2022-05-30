@@ -19,8 +19,8 @@ const Blogs = () => {
 
   return (
     <div className={`${style.container} container mt-3 mb-3`}>
-<h2 className={style.blogTitle}>{t("blogs")}</h2>
-     <div className="row justify-content-between">
+      <h2 className={style.blogTitle}>{t("blogs")}</h2>
+      <div className="row justify-content-between">
         {!blogs.length ? (
         <Loader/>
         ) : (

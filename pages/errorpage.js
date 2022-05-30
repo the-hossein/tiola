@@ -2,6 +2,7 @@ import Head from "next/head";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import Error404 from "../src/tools/errorPage/Error404";
+import PopUp from "../src/tools/popup/PopUp";
 export default function errorpage() {
   return (
     <div>

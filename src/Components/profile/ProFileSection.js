@@ -4,7 +4,7 @@ import style from "./UserProfile.module.css";
 import { notify } from "../../tools/toast/toast";
 import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
 import ChangeImage from "../../tools/uploadImgUser/getUserProfile";
-import Loader from "../../tools/loader/Loader";
+// import Loader from "../../tools/loader/Loader";
 const ProFileSection = () => {
   const { t } = useTranslation();
   const [imageid, setImageid] = useState("");
@@ -22,17 +22,15 @@ const ProFileSection = () => {
   };
   return (
     <>
-      {preload === true ? (
-        <Loader />
-      ) : (
+      
         <div className={style.profile}>
           <div className={style.avatar}>
-            <img src={image === '' ? "/Assets/images/1.jpeg" :image } alt="user profile image" />
+            <img src={ preload === true ? "/Assets/images/loader.gif" : image === '' ? "/Assets/images/1.jpeg" : image } alt="user profile image" />
             <label htmlFor="userImage">
               <AddAPhotoRoundedIcon
                 fontSize={"large"}
                 className={style.addPhoto}
-                
+
               />
             </label>
             <input
@@ -55,7 +53,7 @@ const ProFileSection = () => {
             <span className="d-block">20%{t("remain")}</span>
           </div>
         </div>
-      )}
+      
     </>
   );
 };
