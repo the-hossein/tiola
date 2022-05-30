@@ -1,12 +1,17 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Menu.module.css";
 import Link from "next/link";
+import { loginFalse } from "../../redux/register/registerAction";
 const Menu = ({ backColor }) => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
-
+  const dispatch=useDispatch()
+const exitHandler=()=>{
+  localStorage.removeItem("userToken");
+  dispatch(loginFalse())
+}
   return (
     <nav className={style.humbergerMenuNav}>
       <div
@@ -37,7 +42,7 @@ const Menu = ({ backColor }) => {
             <li>{t("AboutUs")}</li>
           </Link>
         </ul>
-        <span className={style.sign}>{t("Signout")}</span>
+        <span className={style.sign} onClick={exitHandler}>{t("Signout")}</span>
       </div>
     </nav>
   );

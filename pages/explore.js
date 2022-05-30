@@ -17,7 +17,7 @@ export default function explore({ explore }) {
       </header>
 
       <main>
-        <ExploreMain data={explore.data}/>
+        <ExploreMain data={explore[0].data}/>
       </main>
 
       <footer>

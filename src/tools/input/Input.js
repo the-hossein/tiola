@@ -13,10 +13,9 @@ const Input = ({
   keyDown,
   value
 }) => {
-  const submitHndler=(e)=>{
-e.preventDefault()
-
-  }
+  const submitHndler = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
       <form onSubmit={submitHndler}>
@@ -30,7 +29,7 @@ e.preventDefault()
             {lablelText}
           </label>
           <input
-          name={name}
+            name={name}
             type={type}
             className={`form-control text-start ${style.input}`}
             id="input"

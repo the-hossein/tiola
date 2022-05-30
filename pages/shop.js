@@ -10,11 +10,11 @@ import { getshopCategory } from "../src/redux/shop/shopActions";
 import Loader from "../src/tools/loader/Loader";
 export default function Shop({ shop }) {
   const state = useSelector((state) => state.stateShop);
-
+console.log(shop[0].data)
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getshopCategory(shop.data));
-  }, [shop]);
+    dispatch(getshopCategory(shop[0]));
+  }, [shop[0]]);
   return (
     <div>
       <Head>

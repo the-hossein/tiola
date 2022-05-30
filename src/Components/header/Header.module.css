@@ -14,7 +14,22 @@
     margin: 0 1rem;
     display: inline-block;
 }
-
+.basket{
+    position: relative;
+}
+.basket svg{
+    font-size:14pt;
+    
+}
+.basket div{
+    border-radius: 50%;
+    padding: 0 4px;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: var(--verySmall-font);
+    border: 1px solid var(--light-pen);
+}
 .headaritem {
     width: 53%;
     justify-content: space-between;
@@ -42,7 +57,7 @@
 
 }
 
-.headerIcon div {
+.headerIcon > div {
     padding: 0 1.5rem !important;
 
 }
