@@ -202,7 +202,7 @@ const Header = ({ backColor }) => {
               </span>
               <div className="position-relative">
                   {
-                    boxTarget && targetSearch.length && <div className={style.suggest}>
+                    boxTarget && <div className={style.suggest}>
                         {targetSearch.map(item => {
                           // {console.log(item)}
                           return <span key={item.id}><Link href={`/product/${item.id}`} >{item.title}</Link></span>

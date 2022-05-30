@@ -186,7 +186,7 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     /* align-items: center; */
     height: 300px;
     overflow-y: scroll;
@@ -196,9 +196,15 @@
     display: none;
 }
 
-.suggest span {
-    /* margin: 8px 0; */
-    font-size: var(--s-font);
+.suggest a {
+    font-size: var(--s-font) !important;
     display: block;
     float: var(--textAlign-right);
+    color: #111111;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+.suggest a:hover {
+    height: fit-content;
+    color: var(--blue-pen);
 }
