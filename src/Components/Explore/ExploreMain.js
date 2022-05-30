@@ -20,7 +20,7 @@ const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
 
   const [getItem, setGetItem] = useState({});
-const lang =useSelector(state=>state.stateLang.lng)
+  const lang =useSelector(state=>state.stateLang.lng)
   console.log(data);
   useEffect(() => {
     setGetItem(data.slice(0, 20));
@@ -68,7 +68,8 @@ const lang =useSelector(state=>state.stateLang.lng)
               spacing={2}
             >
               {getItem.map((product, index) => (
-                <Item key={index}>
+                <Item key={product.id}>
+                  {console.log(product.id)}
                 <Link href={`/product/${product.id}`}>
                 <div className={style.showProduct}>
                     <img src={product.imageFile1.filePath} alt="product" />

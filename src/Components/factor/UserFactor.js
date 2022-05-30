@@ -8,7 +8,7 @@ const UserFactor = () => {
   const { t } = useTranslation();
 
   return (
-    <section>
+    <section className={style.ContainerSection}>
       <div className="container mt-4">
         <FactorSection title={t("addres")} component={<UserAddres />} />
         <FactorSection title={t("paylist")} component={<BuyLists />} />

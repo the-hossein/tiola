@@ -12,7 +12,22 @@ import EditBtn from "./EditBtn";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddres } from "../../../redux/factor/factorAction";
+
+//make style for components mui
+import { makeStyles } from '@mui/styles';  
+
+const useStyle = makeStyles({
+  applyFont: {
+    fontFamily: "var(--font) !important"
+  }
+})
+
+
+
 const AddresInput = ({ id, checkicon, icon, onChangeRadio ,type}) => {
+  //useStyle for stylesheet mui
+  const classes = useStyle();
+
   const { t } = useTranslation();
   const state = useSelector((state) => state.stateFactor);
   const lang = useSelector((state) => state.stateLang);
@@ -44,7 +59,7 @@ const AddresInput = ({ id, checkicon, icon, onChangeRadio ,type}) => {
         className={Style.inputContainer}
       >
 
-        <FormControl sx={{ width: "100%",position:"relative" }}>
+        <FormControl sx={{ width: "100%",position:"relative" }} className={classes.applyFont}>
           <OutlinedInput
             onChange={changeAddres}
             placeholder={
@@ -58,7 +73,7 @@ const AddresInput = ({ id, checkicon, icon, onChangeRadio ,type}) => {
                 ? { backgroundColor: "#ffffff", color: "#000000" }
                 : { backgroundColor: "#ffffff", color: "#707070" }
             }
-            className={Style.addresinput}
+            className={`${Style.addresinput} ${classes.applyFont}`}
             id={id}
           />
         <Radio
