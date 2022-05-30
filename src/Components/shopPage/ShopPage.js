@@ -10,7 +10,7 @@ const ShopPage = () => {
   return (
     <>
       <h1 className={style.shop}>{t("shop")}</h1>
-      {state.data.map((item, index) => (
+      {state.data.data.map((item, index) => (
         <>
           <ProductsCategory
             reverse={index % 2 !== 0 ? true : false}

@@ -15,13 +15,14 @@
   --Product-Border-radius: 8px;
   --red-pen: #c43131;
   --border-button: #c7c7c7;
+  --verySmall-font:7pt;
   --sm-font: 9pt;
   --xs-font: 10pt;
   --md-font: 12pt;
   --lg-font: 14pt;
   --xl-font: 16pt;
   --xxl-font: 24pt;
-  --oxx-font: 48pt;
+  --oxx-font: 26pt;
 
 }
 
@@ -116,26 +117,16 @@ a {
   display: block;
   object-fit: cover;
 }
-
-@media(max-width:480px) {
-  .Toastify__toast-container--top-right {
-    text-align: center !important;
-    right: 0em !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .swiper {
-    z-index: 1 !important;
-  }  
-}
 .swiper-button-next:after,.swiper-button-prev:after {
   font-size: 4rem !important;
   font-weight: 900;
 }
 
-.mySwiperComment {
+/* .mySwiperComment {
   padding:0 .5rem .5rem !important;
+} */
+.swiper-pagination {
+  bottom: -6px !important;
 }
 .mySwiperComment .swiper-slide {
   display: flex;
@@ -154,4 +145,16 @@ a {
 
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+@media(max-width:480px) {
+  .Toastify__toast-container--top-right {
+    text-align: center !important;
+    right: 0em !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .swiper {
+    z-index: 1 !important;
+  }  
 }

@@ -5,7 +5,7 @@ const regex = /\.(jpe?g|png|svg|bmp)$/mgi;
 
 const ChangeImage = async (e) => {
     const target = e.target.files[0];
-    console.log(target.name)
+    // console.log(target.name)
 
     if(regex.test(target.name)){
       var formdata = new FormData();

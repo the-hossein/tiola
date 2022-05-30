@@ -43,9 +43,9 @@ const registerReducer = (state = initializedState, action) => {
     case "CHECK_OTP_SUCCESS":
       return {
         ...state,
+        loginStatus: true,
         otpStatus: true,
-        loader: false,
-        loginStatus: true
+        loader: false
       };
     case "CHECK_OTP_FAILED":
       return {

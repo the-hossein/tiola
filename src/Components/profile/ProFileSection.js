@@ -4,12 +4,14 @@ import style from "./UserProfile.module.css";
 import { notify } from "../../tools/toast/toast";
 import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
 import ChangeImage from "../../tools/uploadImgUser/getUserProfile";
+
 // import Loader from "../../tools/loader/Loader";
 const ProFileSection = () => {
   const { t } = useTranslation();
   const [imageid, setImageid] = useState("");
   const [preload, setpreload] = useState(false);
   const [image, setImage] = useState("");
+
   const ChangeImageAction = async (e) => {
     setpreload(true);
     var Image = await ChangeImage(e);
@@ -20,40 +22,40 @@ const ProFileSection = () => {
     }
     setpreload(false);
   };
+
+
+  
   return (
     <>
-      
-        <div className={style.profile}>
-          <div className={style.avatar}>
-            <img src={ preload === true ? "/Assets/images/loader.gif" : image === '' ? "/Assets/images/1.jpeg" : image } alt="user profile image" />
-            <label htmlFor="userImage">
-              <AddAPhotoRoundedIcon
-                fontSize={"large"}
-                className={style.addPhoto}
-
+          <div className={style.profile}>
+            <div className={style.avatar}>
+              <img src={ preload === true ? "/Assets/images/loader.gif" : image === '' ? "/Assets/images/userdefault.png" : image } alt="user profile image" />
+              <label htmlFor="userImage">
+                <AddAPhotoRoundedIcon
+                  fontSize={"large"}
+                  className={style.addPhoto}
+                />
+              </label>
+              <input
+                type="file"
+                id="userImage"
+                accept="image/png, image/jpeg,"
+                onChange={(e) => {
+                  ChangeImageAction(e);
+                }}
               />
-            </label>
-            <input
-              type="file"
-              id="userImage"
-              accept="image/png, image/jpeg,"
-              onChange={(e) => {
-                ChangeImageAction(e);
-              }}
-            />
+            </div>
+            <div>
+              <h1 className={style.name}>Melina Rodiguz</h1>
+              <span
+                className={style.editPro}
+                onClick={() => notify("worked", "success")}
+              >
+                {t("editProfile")}
+              </span>
+              <span className="d-block">20%{t("remain")}</span>
+            </div>
           </div>
-          <div>
-            <h1 className={style.name}>Melina Rodiguz</h1>
-            <span
-              className={style.editPro}
-              onClick={() => notify("worked", "success")}
-            >
-              {t("editProfile")}
-            </span>
-            <span className="d-block">20%{t("remain")}</span>
-          </div>
-        </div>
-      
     </>
   );
 };

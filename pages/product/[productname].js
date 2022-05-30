@@ -6,7 +6,7 @@ import callApi from "../../src/api/callApi";
 import { useEffect } from "react";
 import { BASE_URL, GET_PRODUCT, GET_WITHLABLE } from "../../src/api/urls";
 export default function productname({ product, similar }) {
-  console.log(product)
+  console.log(product[0]);
   return (
     <div>
       <Head>
@@ -18,7 +18,7 @@ export default function productname({ product, similar }) {
         <Header backColor={"headerColor"} />
       </header>
       <main>
-        <Productpage product={product.data} similar={similar} />
+        <Productpage product={product[0]} similar={similar[0]} />
       </main>
       <footer>
         <Footer />
@@ -33,9 +33,6 @@ export async function getServerSideProps(context) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-
-
-
   const data = await callApi(
     `${BASE_URL + GET_PRODUCT}?id=${productname}`,
     "{}",
@@ -43,7 +40,7 @@ export async function getServerSideProps(context) {
     "GET"
   );
   const similar = await callApi(
-    `${BASE_URL + GET_WITHLABLE}?Type=${data.data.type}`,
+    `${BASE_URL + GET_WITHLABLE}?Type=scarf`,
     "{}",
     myHeaders,
     "GET"

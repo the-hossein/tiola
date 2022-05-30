@@ -12,19 +12,21 @@ import { changeLang } from "../../redux/lang/langActions";
 import Menu from "../../tools/menu/Menu";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import SearchIcon from '@mui/icons-material/Search';
-import PersonIcon from '@mui/icons-material/Person';
+import SearchIcon from "@mui/icons-material/Search";
+import PersonIcon from "@mui/icons-material/Person";
 import { loginFalse, loginTrue } from "../../redux/register/registerAction";
 
 
 //dispatch all products request
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
 
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
-  const state=useSelector(state=>state.stateRegister)
+  const state = useSelector((state) => state.stateRegister);
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   const [boxTarget, setBoxTarget] = useState(false)
@@ -58,7 +60,7 @@ const Header = ({ backColor }) => {
   const [showSearchBox, setShowSearchBox] = useState(false);
   if (typeof window !== "undefined") {
     var root = document.documentElement;
-      var ls = localStorage.getItem("userToken");
+    var ls = localStorage.getItem("userToken");
   }
   const serachHandler = () => {
     setShowSearchBox(!showSearchBox);
@@ -70,13 +72,15 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--textAlign-right", "left");
     root.style.setProperty("--float-left", "right");
     root.style.setProperty("--font", "IRANSansWeb");
+    root.style.setProperty("--verySmall-font", "7pt");
+
     root.style.setProperty("--sm-font", "9pt");
     root.style.setProperty("--xs-font", "10pt");
     root.style.setProperty("--md-font", "12pt");
     root.style.setProperty("--lg-font", "14pt");
     root.style.setProperty("--xl-font", "16pt");
     root.style.setProperty("--xxl-font", "24pt");
-
+    root.style.setProperty("--oxx-font", "26pt");
   };
 
   const leftDir = () => {
@@ -85,13 +89,14 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--textAlign-right", "right");
     root.style.setProperty("--float-left", "left");
     root.style.setProperty("--font", "apple");
+    root.style.setProperty("--verySmall-font", "10pt");
     root.style.setProperty("--sm-font", "13pt");
     root.style.setProperty("--xs-font", "15pt");
     root.style.setProperty("--md-font", "17pt");
     root.style.setProperty("--lg-font", "19pt");
     root.style.setProperty("--xl-font", "21pt");
     root.style.setProperty("--xxl-font", "29pt");
-
+    root.style.setProperty("--oxx-font", "32pt");
   };
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
@@ -103,23 +108,20 @@ const Header = ({ backColor }) => {
       rightDir();
     }
     setpreload(false);
-      if (ls) {
-        if (state.loginStatus === false) {
-  
-          const userToken = JSON.parse(ls);
-          var token = userToken.token;
-  
-          const tokenExp = userToken.exp;
-          const now = new Date();
-          const endDate = new Date(tokenExp);
-          if (endDate - now < 0) {
-            localStorage.removeItem("userToken");
-            dispatch(loginTrue());
-          }
-        }
-      } else {
+    if (ls) {
+      const userToken = JSON.parse(ls);
+      const tokenExp = userToken.exp;
+      const now = new Date();
+      const endDate = new Date(tokenExp);
+      if (endDate - now < 0) {
+        localStorage.removeItem("userToken");
         dispatch(loginFalse());
+      } else {
+        dispatch(loginTrue());
       }
+    } else {
+      dispatch(loginFalse());
+    }
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
@@ -193,6 +195,14 @@ const Header = ({ backColor }) => {
             </div>
 
             <div className={style.headerIcon}>
+            
+            <Link href="/factor">
+            <div className={style.basket}>
+                <ShoppingCartIcon/>
+                <div>2</div>
+              </div>
+            </Link>
+             
               <span>
                 {lang.lng === "en" ? (
                   <span onClick={() => changeLng("fa")}>fa</span>
@@ -216,22 +226,25 @@ const Header = ({ backColor }) => {
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
                 />
-                <SearchIcon  onClick={serachHandler} className={showSearchBox ? style.searchBoxIcon : ""}/>
+                <SearchIcon
+                  onClick={serachHandler}
+                  className={showSearchBox ? style.searchBoxIcon : ""}
+                />
                 {/* <FontAwesomeIcon
                   icon={faSearch}
                   onClick={serachHandler}
                   className={showSearchBox ? style.searchBoxIcon : ""}
                 /> */}
               </div>
-              {
-                state.loginStatus?
-                <PersonIcon/>:
-                
-              <Link href={"/signin"}>
-                <span>{t("login")}</span>
-              </Link>
-
-              }
+              {state.loginStatus ? (
+                <Link href={"/profile"}>
+                  <PersonIcon />
+                </Link>
+              ) : (
+                <Link href={"/signin"}>
+                  <span>{t("login")}</span>
+                </Link>
+              )}
             </div>
           </>
         ) : (
@@ -257,8 +270,15 @@ const Header = ({ backColor }) => {
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
+            <Link href="/factor">
+            <div className={style.basket}>
+                <ShoppingCartIcon sx={{fontSize:12}}/>
+                <div>2</div>
+              </div>
+            </Link>
               <Link href="/shop">
-                <span>{t("descoverMore")}</span>
+                <ShoppingBagIcon sx={{fontSize:16}}/>
+                {/* <span>{t("descoverMore")}</span> */}
               </Link>
               <Link href="/">
                 <Image src={logo} alt="logo" />
