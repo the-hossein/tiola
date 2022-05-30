@@ -15,7 +15,7 @@
   --Product-Border-radius: 8px;
   --red-pen: #c43131;
   --border-button: #c7c7c7;
-  --verySmall-font:7pt;
+  --verySmall-font: 7pt;
   --sm-font: 9pt;
   --xs-font: 10pt;
   --md-font: 12pt;
@@ -23,6 +23,7 @@
   --xl-font: 16pt;
   --xxl-font: 24pt;
   --oxx-font: 26pt;
+  --green-pen: #06745f;
 
 }
 
@@ -117,7 +118,9 @@ a {
   display: block;
   object-fit: cover;
 }
-.swiper-button-next:after,.swiper-button-prev:after {
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
   font-size: 4rem !important;
   font-weight: 900;
 }
@@ -128,24 +131,27 @@ a {
 .swiper-pagination {
   bottom: -6px !important;
 }
+
 .mySwiperComment .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content ;
-  height: fit-content ;
+  width: fit-content;
+  height: fit-content;
   /* box-shadow: 5px 10px 4px #23232354; */
   /* color: #fff; */
 }
 
-* > button {
+*>button {
   transition: all .3s linear !important;
 }
+
 /* hello */
 
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
 @media(max-width:480px) {
   .Toastify__toast-container--top-right {
     text-align: center !important;
@@ -156,5 +162,5 @@ input[type=number]::-webkit-inner-spin-button {
 @media (max-width: 600px) {
   .swiper {
     z-index: 1 !important;
-  }  
+  }
 }

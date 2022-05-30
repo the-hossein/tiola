@@ -14,23 +14,23 @@ const Collection = ({ dir }) => {
           <div className="row justify-content-center">
             <div className="col-lg-12 col-md-12 col-11 p-0">
               <Simplcollection
-                image1="/Assets/images/2.jpeg"
-                image2="/Assets/images/3.jpeg"
+                image1="/Assets/images/4.jpg"
+                image2="/Assets/images/5.jpg"
                 content={t("collection1Content")}
                 color="exapmle"
                 title={t("collection1")}
               />
               <MediumCollection
-                image1={"/Assets/images/1.jpeg"}
-                image2={"/Assets/images/4.jpeg"}
-                image3={"/Assets/images/3.jpeg"}
+                image1={"/Assets/images/6.jpg"}
+                image2={"/Assets/images/7.jpg"}
+                image3={"/Assets/images/8.jpg"}
                 title={t("collection2")}
                 content={t("collection2Content")}
 
                 color="example"
               />
               <HardCollection
-                image={"/Assets/images/3.jpeg"}
+                image={"/Assets/images/9.jpg"}
                 title={t("viewExplore")}
                 content={t("viewExploreText")}
               />

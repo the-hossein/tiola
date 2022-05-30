@@ -1,0 +1,47 @@
+.close {
+    background-color: var(--light-pen);
+    border-radius: 100%;
+
+}
+
+.popoup {
+    z-index: 141;
+    background-color: #9999996f;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+}
+
+.popoupContent {
+
+    width: 300px;
+    background-color: var(--body-Color);
+    border-radius: var(--Product-Border-radius);
+    font-size: var(--xs-font);
+    padding: 1.5rem;
+    position: relative;
+    margin: 0 auto;
+    top: 9%;
+
+}
+
+.popoupHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.donebtn {
+    background-color: var(--green-pen);
+    padding: 0.4rem 2rem;
+    border-radius: var(--Product-Border-radius);
+    border: none;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    color: var(--light-pen);
+}

@@ -14,12 +14,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-import { loginFalse, loginTrue } from "../../redux/register/registerAction";
-
-
-//dispatch all products request
-import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
-
+import { getProfile, loginFalse, loginTrue } from "../../redux/register/registerAction";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 const Header = ({ backColor }) => {
@@ -117,6 +112,7 @@ const Header = ({ backColor }) => {
         localStorage.removeItem("userToken");
         dispatch(loginFalse());
       } else {
+        dispatch(getProfile())
         dispatch(loginTrue());
       }
     } else {

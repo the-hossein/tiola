@@ -1,5 +1,5 @@
 /* apply font family */
-.ContainerSection > * {
+.ContainerSection>* {
     font-family: var(--font) !important;
 }
 
@@ -47,13 +47,14 @@
     float: var(--textAlign-right);
 }
 
-.checkedRight{
-    position: absolute;
+.checkedRight {
+    position: absolute !important;
     top: 4px;
     right: 0;
 }
-.checkedLeft{
-    position: absolute;
+
+.checkedLeft {
+    position: absolute !important;
     top: 4px;
     left: 0;
 }

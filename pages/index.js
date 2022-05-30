@@ -9,31 +9,15 @@ export default function Home() {
   
     const product = [
     {
-      src: "/Assets/images/3.jpeg"
+      src: "/Assets/images/1.jpg"
     },
     {
-      src: "/Assets/images/4.jpeg"
+      src: "/Assets/images/2.jpg"
     },
     {
-      src: "/Assets/images/5.jpeg"
-    },
-    {
-        src: "/Assets/images/2.jpeg"
-      },
-      {
-        src: "/Assets/images/4.jpeg"
-      },
-      {
-        src: "/Assets/images/5.jpeg"
-      },  {
-        src: "/Assets/images/2.jpeg"
-      },
-      {
-        src: "/Assets/images/1.jpeg"
-      },
-      {
-        src: "/Assets/images/5.jpeg"
-      },
+      src: "/Assets/images/3.jpg"
+    }
+ 
   ];
   return (
     <>
