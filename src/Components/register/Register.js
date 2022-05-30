@@ -42,14 +42,9 @@ const Register = ({ title }) => {
   const sendCodeHandler = () => {
     if (!Object.keys(errors).length && state.phoneNumber.length !== 0) {
       dispatch(registerPhone(state.phoneNumber, lang));
+      setAgain(false)
     } else {
-      {
-        errors.phone === "empty"
-          ? t("emptyPhoneValidate")
-          : errors.phone === "length"
-          ? t("lengthPhoneValidate")
-          : t("incorrentPhoneValidate");
-      }
+   
 
       if (errors.phone === "empty") {
         var errorText = t("emptyPhoneValidate");
@@ -62,6 +57,7 @@ const Register = ({ title }) => {
     }
   };
   const againHandler = () => {
+    dispatch(registerPhone(state.phoneNumber, lang));
     setAgain(false);
   };
   const endTimerHandler = () => {
@@ -70,9 +66,22 @@ const Register = ({ title }) => {
   const timerHandler = () => {};
 
   const enterCodeHandler = () => {
-    dispatch(
-      registerCode(state.code, state.phoneNumber, lang, router.pathname)
-    );
+    if (!Object.keys(errorsCode).length && state.code.length !== 0) {
+      dispatch(
+        registerCode(state.code, state.phoneNumber, lang, router)
+      );
+    } else {
+     
+      if (errorsCode.code === "empty") {
+        var errorText = t("emptycodeValidate");
+      } else if (errorsCode.code === "lengthCode") {
+        errorText = t("lengthcodeValidate");
+      } 
+      notify(errorText, "error");
+    }
+
+
+   
   };
   const changePhoneNUmber = (e) => {
     var persianNumbers = [
@@ -170,22 +179,25 @@ const Register = ({ title }) => {
                   keyDown={(e) => TypeNumber(e)}
                 />
               )}
-              {errors.phone && touched.phone && (
-                <span className={style.error}>
-                  {errors.phone === "empty"
-                    ? t("emptyPhoneValidate")
-                    : errors.phone === "length"
-                    ? t("lengthPhoneValidate")
-                    : t("incorrentPhoneValidate")}
-                </span>
-              )}
-              {errorsCode.code && touched.code && (
-                <span className={style.error}>
-                  {errorsCode.code === "empty"
-                    ? t("emptyPhoneValidate")
-                    : errors.code === "lengthCode" && t("lengthCode")}
-                </span>
-              )}
+            
+              {
+
+                state.codeStatus?(errorsCode.code && touched.code )&& (
+                  <span className={style.error}>
+                    {errorsCode.code === "empty"
+                      ? t("emptyPhoneValidate")
+                      : errorsCode.code === "lengthCode" && t("lengthCode")}
+                  </span>
+                ):
+                (errors.phone && touched.phone) && (
+                  <span className={style.error}>
+                    {errors.phone === "empty"
+                      ? t("emptyPhoneValidate")
+                      : errors.phone === "length"
+                      ? t("lengthPhoneValidate")
+                      : t("incorrentPhoneValidate")}
+                  </span>)
+              }
 
               <div
                 className={`${style.submitButtons}`}
@@ -210,7 +222,7 @@ const Register = ({ title }) => {
                         <span>
                           <CountdownTimer
                             color="#6a8eae"
-                            count={10}
+                            count={120}
                             backgroundColor={"none"}
                             hideDay={true}
                             hideHours={true}

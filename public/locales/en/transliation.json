@@ -40,7 +40,7 @@
   "Readless": "Read less",
   "sendCode": "send Code",
   "enterCode": "enter Code",
-  "signIN": "Sign In",
+  "signIN": "Sign In/Sign Up",
   "signup": "Sign Up",
   "phoneNumber": "Phone number",
   "successSignIn": "sign in successfuly",
@@ -73,5 +73,7 @@
   "headgear": "Headgear",
   "scurf": "Scurf",
   "tiolaStory": "The story of Tiula",
-  "blogs": "Blogs"
+  "blogs": "Blogs",
+  "emptycodeValidate": "please enter Code",
+  "lengthcodeValidate": "please enter 6 raqam code"
 }

@@ -16,6 +16,7 @@
   }
   const response = await fetch(BaseUrl, requestOptions);
   const data = await response.json();
-  return data;
+  const status = await response.status;
+  return [data,status];
 };
 export default callApi

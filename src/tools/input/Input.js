@@ -13,9 +13,13 @@ const Input = ({
   keyDown,
   value
 }) => {
+  const submitHndler=(e)=>{
+e.preventDefault()
+
+  }
   return (
     <>
-      <form>
+      <form onSubmit={submitHndler}>
         <div className="form-group">
           <label
             to="input"

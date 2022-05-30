@@ -13,10 +13,13 @@ import Menu from "../../tools/menu/Menu";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import SearchIcon from '@mui/icons-material/Search';
+import PersonIcon from '@mui/icons-material/Person';
+import { loginFalse, loginTrue } from "../../redux/register/registerAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
+  const state=useSelector(state=>state.stateRegister)
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   useLayoutEffect(() => {
@@ -32,6 +35,7 @@ const Header = ({ backColor }) => {
   const [showSearchBox, setShowSearchBox] = useState(false);
   if (typeof window !== "undefined") {
     var root = document.documentElement;
+      var ls = localStorage.getItem("userToken");
   }
   const serachHandler = () => {
     setShowSearchBox(!showSearchBox);
@@ -75,6 +79,23 @@ const Header = ({ backColor }) => {
       rightDir();
     }
     setpreload(false);
+      if (ls) {
+        if (state.loginStatus === false) {
+  
+          const userToken = JSON.parse(ls);
+          var token = userToken.token;
+  
+          const tokenExp = userToken.exp;
+          const now = new Date();
+          const endDate = new Date(tokenExp);
+          if (endDate - now < 0) {
+            localStorage.removeItem("userToken");
+            dispatch(loginTrue());
+          }
+        }
+      } else {
+        dispatch(loginFalse());
+      }
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
@@ -166,9 +187,15 @@ const Header = ({ backColor }) => {
                   className={showSearchBox ? style.searchBoxIcon : ""}
                 /> */}
               </div>
+              {
+                state.loginStatus?
+                <PersonIcon/>:
+                
               <Link href={"/signin"}>
                 <span>{t("login")}</span>
               </Link>
+
+              }
             </div>
           </>
         ) : (
