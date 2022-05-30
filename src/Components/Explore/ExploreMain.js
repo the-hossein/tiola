@@ -69,6 +69,7 @@ const ExploreMain = ({ data }) => {
             >
               {getItem.map((product, index) => (
                 <Item key={index}>
+                  {console.log(product)}
                 <Link href={`/product/${product.id}`}>
                 <div className={style.showProduct}>
                     <img src={product.imageFile1.filePath} alt="product" />

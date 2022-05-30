@@ -55,9 +55,9 @@ const ProductSlider = ({
       >
         {images.map((item) => (
           <>
-            <SwiperSlide>
+            <SwiperSlide key={item.src}>
               <Link href={`/product/${item.id}`}>
-                <div key={item.id}>
+                <div>
                   <img
                     src={item.src}
                     alt="product"
