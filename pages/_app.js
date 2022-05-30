@@ -11,6 +11,7 @@ import NextNProgress from "nextjs-progressbar";
 import { useEffect , useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import PopUp from "../src/tools/popup/PopUp";
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
@@ -63,6 +64,7 @@ function MyApp({ Component, pageProps }) {
 
       <Component {...pageProps} />
       <ToastContainer />
+      <PopUp/>
     </Provider>
   );
 }

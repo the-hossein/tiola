@@ -1,30 +1,77 @@
 import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
+import { useDispatch, useSelector } from "react-redux";
+import CloseIcon from "@mui/icons-material/Close";
 import { useTranslation } from "react-i18next";
-import { makeStyles } from "@mui/styles";
-import CountdownTimer from "react-component-countdown-timer";
+import style from "./PopUp.module.css";
+import Input from "../input/Input";
+import { closePopUp, getCode, getphone, registerPhone } from "../../redux/register/registerAction";
 import { validationNumber } from "../../Components/register/validationNumber";
-import { ConnectingAirportsOutlined } from "@mui/icons-material";
-import changePhoneNUmber from "../changephonenumber/changePhoneNUmber";
+import { validateCode } from "../../Components/register/validateCode";
+import { notify } from "../toast/toast";
+const PopUp = () => {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.stateRegister);
+  const lang = useSelector((state) => state.stateLang.lng);
 
-const useStyle = makeStyles({
-  btn: {
-    background: "#6a8eae",
-    "&:hover": {
-      backgroundColor: "#7b8eaf"
-    }
-  }
-});
+  const [again, setAgain] = useState(false);
+  const [errors, setError] = useState({});
+  const [touched, setTouched] = useState({ phone: false, code: false });
+  const [errorsCode, setErrorsCode] = useState({});
+  useEffect(() => {
+    setError(validationNumber(state.phoneNumber));
+    setErrorsCode(validateCode(state.code));
+    console.log(errors);
+  }, [state.phoneNumber, touched, state.code]);
+  const changePhoneNUmber = (e) => {
+    var persianNumbers = [
+        /۰/g,
+        /۱/g,
+        /۲/g,
+        /۳/g,
+        /۴/g,
+        /۵/g,
+        /۶/g,
+        /۷/g,
+        /۸/g,
+        /۹/g
+      ],
+      arabicNumbers = [
+        /٠/g,
+        /١/g,
+        /٢/g,
+        /٣/g,
+        /٤/g,
+        /٥/g,
+        /٦/g,
+        /٧/g,
+        /٨/g,
+        /٩/g
+      ],
+      fixNumbers = function (str) {
+        if (typeof str === "string") {
+          for (var i = 0; i < 10; i++) {
+            str = str
+              .replace(persianNumbers[i], i)
+              .replace(arabicNumbers[i], i);
+          }
+        }
+        return str;
+      };
+    dispatch(getphone(fixNumbers(e.target.value)));
+  };
+  const focusHandler = (e) => {
+    setTouched({ ...touched, [e.target.name]: true });
+  };
+  const changeCodeNumber = (e) => {
+    dispatch(getCode(e.target.value));
+  };
 
-export default function PopUp({open,setOpen}) {
   const TypeNumber = (e) => {
-    // console.log(e.ctrlKey)
+    if (!e) {
+      e = window.event;
+    }
+
     var code = e.keyCode || e.which;
 
     if (!e.ctrlKey) {
@@ -35,131 +82,89 @@ export default function PopUp({open,setOpen}) {
     }
     return true;
   };
+  const sendCodeHandler = () => {
+    if (!Object.keys(errors).length && state.phoneNumber.length !== 0) {
+      dispatch(registerPhone(state.phoneNumber, lang));
+    } else {
 
-  const classes = useStyle();
-
-  const { t } = useTranslation();
-
-  //for show pop up user have token false
-  //for accept phone number
-  const [stepTwo, setStepTwo] = useState(false);
-
-  const [phone, setPhone] = useState();
-  const [valid, setValid] = useState(validationNumber(phone));
-  const [again, setAgain] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
+      if (errors.phone === "empty") {
+        var errorText = t("emptyPhoneValidate");
+      } else if (errors.phone === "length") {
+        errorText = t("lengthPhoneValidate");
+      } else {
+        errorText = t("incorrentPhoneValidate");
+      }
+      notify(errorText, "error");
+    }
   };
-
-  const handleClose = () => {
-    setOpen(false);
-    setStepTwo(false);
-  };
-  var check = Object.keys(valid);
-
-  useEffect(() => {
-    setValid(validationNumber(phone));
-    console.log();
-  }, [phone]);
-
-  const acceptHandler = () => {
-    phone && check.length === 0 ? setStepTwo(true) : console.log("po");
-    console.log("cleaan state");
-  };
-
-  const againHandler = () => {
-    setAgain(false);
-  };
-  const endTimerHandler = () => {
-    setAgain(true);
-    console.log(again);
-  };
-
   return (
-    <div>
-     
-      <Dialog open={open} onClose={handleClose} >
-        <DialogTitle>{t("signupt")}</DialogTitle>
-        <DialogContent sx={{ justifyContent: "center", alignItems: "end" }}>
-          <DialogContentText>
-            Enter your Numberphone for sign in
-          </DialogContentText>
-          <TextField
-            fullWidth
-            autoFocus
-            margin="dense"
-            id="phone"
-            label="Phone Number"
-            type="text"
-            variant="outlined"
-            onChange={(e) => setPhone(e.target.value)}
-            color={valid === {} ? "success" : "error"}
-            onKeyDown={(e) => TypeNumber(e)}
-          />
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: "space-around" }}>
-          <Button variant="outlined" color="error" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button
-            className={classes.btn}
-            variant="contained"
-            color="info"
-            onClick={acceptHandler}
-          >
-            Submit
-          </Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* handling get code */}
-      <Dialog open={stepTwo} onClose={handleClose}>
-        <DialogTitle>code</DialogTitle>
-        <DialogContent sx={{ justifyContent: "center", alignItems: "end" }}>
-          <DialogContentText>
-            We send your numberphone please enter in felid
-          </DialogContentText>
-          <TextField
-            fullWidth
-            autoFocus
-            margin="dense"
-            id="code"
-            label="Enter Code"
-            type="text"
-            variant="outlined"
-            onChange={(e) => setPhone(e.target.value)}
-            keyDown={(e) => TypeNumber(e)}
-          />
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: "space-around" }}>
-          <Button variant="outlined" color="error" onClick={handleClose}>
-            Cancel
-          </Button>
-          <span>
-            {again ? (
-              <Button onClick={againHandler}>reset</Button>
+    state.closePopUp === true && (
+      <div className={style.popoup}>
+        <div className={style.popoupContent}>
+          <div className={style.popoupHeader}>
+            <span>{t("signIN")}</span>
+            <CloseIcon
+              sx={{ color: "#707070", fontSize: 18, cursor: "pointer" }}
+              className={style.close}
+              onClick={()=>dispatch(closePopUp())}
+            />
+          </div>
+          <div className={style.content}>
+            {/* <p>{t("signTextPopUp")}</p> */}
+            {state.codeStatus ? (
+              <Input
+                name="code"
+                value={state.code}
+                lablelText={t("signTextPopUp")}
+                type="text"
+                placeholder=""
+                color="dark"
+                maxLength={6}
+                changehandler={(e) => changeCodeNumber(e)}
+                focusHandler={(e) => focusHandler(e)}
+                keyDown={(e) => TypeNumber(e)}
+              />
             ) : (
-              <CountdownTimer
-                color="#6a8eae"
-                count={10}
-                backgroundColor={"none"}
-                hideDay={true}
-                hideHours={true}
-                onEnd={endTimerHandler}
+              <Input
+                name="phone"
+                lablelText={t("phoneNumber")}
+                type="text"
+                value={state.phoneNumber}
+                placeholder=""
+                color="dark"
+                maxLength={11}
+                changehandler={(e) => changePhoneNUmber(e)}
+                focusHandler={(e) => focusHandler(e)}
+                keyDown={(e) => TypeNumber(e)}
               />
             )}
-          </span>
-          <Button
-            className={classes.btn}
-            variant="contained"
-            color="success"
-            onClick={handleClose}
-          >
-            Submit
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+            <button className={style.donebtn} onClick={sendCodeHandler}>{t("done")}</button>
+            <span>
+              {state.codeStatus
+                ? errorsCode.code &&
+                  touched.code && (
+                    <span className={style.error}>
+                      {errorsCode.code === "empty"
+                        ? t("emptyPhoneValidate")
+                        : errorsCode.code === "lengthCode" && t("lengthCode")}
+                    </span>
+                  )
+                : errors.phone &&
+                  touched.phone && (
+                    <span className={style.error}>
+                      {errors.phone === "empty"
+                        ? t("emptyPhoneValidate")
+                        : errors.phone === "length"
+                        ? t("lengthPhoneValidate")
+                        : t("incorrentPhoneValidate")}
+                    </span>
+                  )}
+            </span>
+          </div>
+        </div>
+      </div>
+    )
   );
-}
+};
+
+export default PopUp;

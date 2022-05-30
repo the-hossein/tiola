@@ -75,5 +75,7 @@
   "tiolaStory": "The story of Tiula",
   "blogs": "Blogs",
   "emptycodeValidate": "please enter Code",
-  "lengthcodeValidate": "please enter 6 raqam code"
+  "lengthcodeValidate": "please enter 6 raqam code",
+ "signTextPopUp":"Enter Your Phone Number For Sign in"
+
 }

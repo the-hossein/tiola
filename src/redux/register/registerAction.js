@@ -52,8 +52,12 @@ const loader = () => {
 const userData = (user) => {
   return {
     type: "USER_DATA",
-    user:user
-
+    user: user
+  };
+};
+const closePopUp = () => {
+  return {
+    type: "CLOSE_POPUP"
   };
 };
 const registerPhone = (num, lang) => {
@@ -70,7 +74,7 @@ const registerPhone = (num, lang) => {
         }
       });
       const registerUser = await callApi(
-       BASE_URL+SIGN_UP,
+        BASE_URL + SIGN_UP,
         raw,
         myHeaders,
         "POST"
@@ -116,7 +120,7 @@ const registerCode = (code, num, lang, router) => {
         }
       });
       const registerCode = await callApi(
-       BASE_URL+SIGN_UP,
+        BASE_URL + SIGN_UP,
         raw,
         myHeaders,
         "POST"
@@ -170,8 +174,7 @@ const registerCode = (code, num, lang, router) => {
     checkOtp();
   };
 };
-const getProfile=()=>{
-
+const getProfile = () => {
   return (dispatch) => {
     var ls = localStorage.getItem("userToken");
     const userToken = JSON.parse(ls);
@@ -181,18 +184,23 @@ const getProfile=()=>{
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
-    
+
     var raw = JSON.stringify({
-      phonenumber:`${phone}`
+      phonenumber: `${phone}`
     });
-    
-const profile=async()=>{
-const user=await callApi(BASE_URL+GET_PROFILE,raw,myHeaders,"POST")
-dispatch(userData(user[0].data))
-}
-profile()
-  }
-}
+
+    const profile = async () => {
+      const user = await callApi(
+        BASE_URL + GET_PROFILE,
+        raw,
+        myHeaders,
+        "POST"
+      );
+      dispatch(userData(user[0].data));
+    };
+    profile();
+  };
+};
 export {
   loginTrue,
   registerPhone,
@@ -206,5 +214,6 @@ export {
   checkOtpFailed,
   loginFalse,
   userData,
-  getProfile
+  getProfile,
+  closePopUp
 };

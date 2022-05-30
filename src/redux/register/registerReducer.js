@@ -6,7 +6,8 @@ const initializedState = {
   codeStatus: false,
   otpStatus: false,
   userid: "",
-  userName: ""
+  userName: "",
+  closePopUp: false
 };
 const registerReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -60,7 +61,12 @@ const registerReducer = (state = initializedState, action) => {
         ...state,
         phoneNumber: action.user.phoneNumber,
         userid: action.user.id,
-        userName:action.user.userName
+        userName: action.user.userName
+      };
+    case "CLOSE_POPUP":
+      return {
+        ...state,
+        closePopUp: !state.closePopUp
       };
     default:
       return state;
