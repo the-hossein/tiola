@@ -39,7 +39,11 @@ export default function Shop({ shop }) {
   );
 }
 export async function getServerSideProps(context) {
-  const data = await callApi(BASE_URL + TYPE_PAGE_API, "GET", "{}");
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+
+  const data = await callApi(BASE_URL + TYPE_PAGE_API,"{}", myHeaders, "GET");
   return {
     props: { shop: data } // will be passed to the page component as props
   };

@@ -3,6 +3,13 @@
     direction: var(--direction) !important;
 }
 
+.container h1{
+    font-size: var(--xxl-font);
+}
+.container p {
+    font-size: var(--xl-font);
+}
+
 .imageHeader {
     direction: var(--direction);
     width: 100%;
@@ -79,7 +86,7 @@
     transition: all .2s linear;
 }
 .imgTow {
-    float: right;
+    float: var( --textAlign-right);
 }
 .textMain {
     display: flex;

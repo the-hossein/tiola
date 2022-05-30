@@ -14,7 +14,9 @@ const Menu = ({ backColor }) => {
           lang.lng === "fa" ? `${style.menuRight}` : `${style.menuLeft}`
         } ${backColor === "headerColor" ? style.darkmenu : ""}`}
       >
-        <span>Melina Rudigoz</span>
+        <Link href='/profile'>
+          <span>Melina Rudigoz</span>
+        </Link>
         <ul>
           {/* <Link href="/">
             <li>{t("PurchaseGuide")}</li>

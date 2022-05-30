@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Register.module.css";
 import Image from "next/image";
+import Loader from "../../tools/loader/Loader";
 import loginPic from "../../../public/Assets/images/loginPic.png";
 import Input from "../../tools/input/Input";
 import NormalBtn from "../../tools/normalBtn/NormalBtn";
@@ -13,15 +14,19 @@ import { validateCode } from "./validateCode";
 import {
   getCode,
   getphone,
-  registerPhone
+  registerCode,
+  registerPhone,
+  sendCodeFailed
 } from "../../redux/register/registerAction";
 import { callApi } from "../../api/callApi";
 import TextLoader from "../../tools/textLoader/TextLoader";
+import { useRouter } from "next/router";
 const Register = ({ title }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
+  const router = useRouter();
   const [phone, setPhone] = useState("");
   const [sendCode, setSendCode] = useState(false);
   const [again, setAgain] = useState(false);
@@ -63,8 +68,11 @@ const Register = ({ title }) => {
     setAgain(true);
   };
   const timerHandler = () => {};
+
   const enterCodeHandler = () => {
-    notify(t("successSignIn"), "success");
+    dispatch(
+      registerCode(state.code, state.phoneNumber, lang, router.pathname)
+    );
   };
   const changePhoneNUmber = (e) => {
     var persianNumbers = [
@@ -109,6 +117,7 @@ const Register = ({ title }) => {
   const changeCodeNumber = (e) => {
     dispatch(getCode(e.target.value));
   };
+
   const TypeNumber = (e) => {
     if (!e) {
       e = window.event;
@@ -129,98 +138,103 @@ const Register = ({ title }) => {
     <section>
       <div className={`row m-0 ${style.Register}`}>
         <div className="col-lg-6 col-md-8 col-12 pt-5">
-          <div className={style.enterNum}>
-            <h1>{title} </h1>
-            {sendCode ? (
-              <Input
-                name="code"
-                value={state.code}
-                lablelText={t("enterCode")}
-                type="text"
-                placeholder=""
-                color="dark"
-                maxLength={6}
-                changehandler={(e) => changeCodeNumber(e)}
-                focusHandler={(e) => focusHandler(e)}
-                keyDown={(e) => TypeNumber(e)}
-              />
-            ) : (
-              <Input
-                name="phone"
-                lablelText={t("phoneNumber")}
-                type="text"
-                value={state.phoneNumber}
-                placeholder=""
-                color="dark"
-                maxLength={11}
-                changehandler={(e) => changePhoneNUmber(e)}
-                focusHandler={(e) => focusHandler(e)}
-                keyDown={(e) => TypeNumber(e)}
-              />
-            )}
-            {errors.phone && touched.phone && (
-              <span className={style.error}>
-                {errors.phone === "empty"
-                  ? t("emptyPhoneValidate")
-                  : errors.phone === "length"
-                  ? t("lengthPhoneValidate")
-                  : t("incorrentPhoneValidate")}
-              </span>
-            )}
-            {errorsCode.code && touched.code && (
-              <span className={style.error}>
-                {errorsCode.code === "empty"
-                  ? t("emptyPhoneValidate")
-                  : errors.code === "lengthCode" && t("lengthCode")}
-              </span>
-            )}
-
-            <div
-              className={`${style.submitButtons}`}
-              style={sendCode === false ? { float: "left" } : { float: "none" }}
-            >
-              {sendCode === true && (
-                <NormalBtn text={t("enterCode")} onClick={enterCodeHandler} />
-              )}
-
-              {sendCode ? (
-                <NormalBtn
-                  text={
-                    again ? (
-                      <span onClick={againHandler} className={style.again}>
-                        {t("sendAgain")}
-                      </span>
-                    ) : (
-                      <span>
-                        <CountdownTimer
-                          color="#6a8eae"
-                          count={10}
-                          backgroundColor={"none"}
-                          hideDay={true}
-                          hideHours={true}
-                          onEnd={endTimerHandler}
-                        />
-                      </span>
-                    )
-                  }
-                  onClick={timerHandler}
+          {state.loader ? (
+            <Loader />
+          ) : (
+            <div className={style.enterNum}>
+              <h1>{title} </h1>
+              {state.codeStatus ? (
+                <Input
+                  name="code"
+                  value={state.code}
+                  lablelText={t("enterCode")}
+                  type="text"
+                  placeholder=""
+                  color="dark"
+                  maxLength={6}
+                  changehandler={(e) => changeCodeNumber(e)}
+                  focusHandler={(e) => focusHandler(e)}
+                  keyDown={(e) => TypeNumber(e)}
                 />
               ) : (
-                <NormalBtn
-                  text={state.loader ? <TextLoader /> : t("sendCode")}
-                  onClick={sendCodeHandler}
+                <Input
+                  name="phone"
+                  lablelText={t("phoneNumber")}
+                  type="text"
+                  value={state.phoneNumber}
+                  placeholder=""
+                  color="dark"
+                  maxLength={11}
+                  changehandler={(e) => changePhoneNUmber(e)}
+                  focusHandler={(e) => focusHandler(e)}
+                  keyDown={(e) => TypeNumber(e)}
                 />
               )}
-            </div>
-            {sendCode && (
-              <div className={style.editPhone}>
-                <NormalBtn
-                  text={t("editPhone")}
-                  onClick={() => setSendCode(false)}
-                />
+              {errors.phone && touched.phone && (
+                <span className={style.error}>
+                  {errors.phone === "empty"
+                    ? t("emptyPhoneValidate")
+                    : errors.phone === "length"
+                    ? t("lengthPhoneValidate")
+                    : t("incorrentPhoneValidate")}
+                </span>
+              )}
+              {errorsCode.code && touched.code && (
+                <span className={style.error}>
+                  {errorsCode.code === "empty"
+                    ? t("emptyPhoneValidate")
+                    : errors.code === "lengthCode" && t("lengthCode")}
+                </span>
+              )}
+
+              <div
+                className={`${style.submitButtons}`}
+                style={
+                  state.codeStatus === false
+                    ? { float: "left" }
+                    : { float: "none" }
+                }
+              >
+                {state.codeStatus === true && (
+                  <NormalBtn text={t("enterCode")} onClick={enterCodeHandler} />
+                )}
+
+                {state.codeStatus ? (
+                  <NormalBtn
+                    text={
+                      again ? (
+                        <span onClick={againHandler} className={style.again}>
+                          {t("sendAgain")}
+                        </span>
+                      ) : (
+                        <span>
+                          <CountdownTimer
+                            color="#6a8eae"
+                            count={10}
+                            backgroundColor={"none"}
+                            hideDay={true}
+                            hideHours={true}
+                            onEnd={endTimerHandler}
+                          />
+                        </span>
+                      )
+                    }
+                    onClick={timerHandler}
+                  />
+                ) : (
+                  <NormalBtn text={t("sendCode")} onClick={sendCodeHandler} />
+                )}
               </div>
-            )}
-          </div>
+              {state.codeStatus && (
+                <div className={style.editPhone}>
+                  <NormalBtn
+                    text={t("editPhone")}
+                    onClick={() => dispatch(sendCodeFailed())}
+                  />
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <div className={`col-lg-6 col-md-4 col-12 p-0 ${style.pic}`}>
           <Image alt="sign image" src={loginPic} />

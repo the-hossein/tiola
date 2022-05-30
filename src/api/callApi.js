@@ -1,4 +1,4 @@
-export const callApi = async (BaseUrl, Body, Header, Method) => {
+ const callApi= async (BaseUrl, Body, Header, Method) => {
   var requestOptions;
   if (Body === "{}") {
     requestOptions = {
@@ -18,3 +18,4 @@ export const callApi = async (BaseUrl, Body, Header, Method) => {
   const data = await response.json();
   return data;
 };
+export default callApi

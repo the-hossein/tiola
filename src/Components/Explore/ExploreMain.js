@@ -14,15 +14,16 @@ import style from "./ExploreMain.module.css";
 import Loader from "../../tools/loader/Loader";
 import { height } from "@mui/system";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
 
   const [getItem, setGetItem] = useState({});
-
+const lang =useSelector(state=>state.stateLang.lng)
   console.log(data);
   useEffect(() => {
-    setGetItem(data.slice(0, 10));
+    setGetItem(data.slice(0, 20));
   }, []);
 
   useLayoutEffect(() => {
@@ -37,7 +38,6 @@ const ExploreMain = ({ data }) => {
   }, []);
 
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: "#1A2027",
     borderRadius: "15px",
     ...theme.typography.body2,
     padding: "0",
@@ -48,7 +48,7 @@ const ExploreMain = ({ data }) => {
   }));
 
   const fetchMoreData = () => {
-    setGetItem(data.slice(0, getItem.length + 10));
+    setGetItem(data.slice(0, getItem.length + 20));
   };
 
   return (
@@ -72,7 +72,7 @@ const ExploreMain = ({ data }) => {
                 <Link href={`/product/${product.id}`}>
                 <div className={style.showProduct}>
                     <img src={product.imageFile1.filePath} alt="product" />
-                    <p className={style.parag}>{product.title}</p>
+                    <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
                   </div>
                 </Link>
                 </Item>

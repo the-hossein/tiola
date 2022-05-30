@@ -3,7 +3,9 @@
     padding: 0 50px;
     color: #965acf;
     background-color: inherit;
+    font-family: var(--font) !important;
 }
+
 
 .explore img {
     width: 100% !important;
@@ -25,6 +27,9 @@
 .showProduct:hover .parag {
     opacity: 1;
     transform: translateY(0);
+    font-family: var(--font) !important;
+    font-size: var(--xs-font);
+
 }
 
 .showProduct:hover::before {

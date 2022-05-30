@@ -30,7 +30,9 @@
     overflow: hidden;
 }
 .text button {
-    float: right ;
+    float: var(--textAlign-right) ;
+    font-family: var(--font);
+    font-size: var(--sm-font);
 }
 
 .text h5 {
