@@ -16,7 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { loginFalse, loginTrue } from "../../redux/register/registerAction";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -169,10 +169,13 @@ const Header = ({ backColor }) => {
             </div>
 
             <div className={style.headerIcon}>
-              <div className={style.basket}>
+            
+            <Link href="/factor">
+            <div className={style.basket}>
                 <ShoppingCartIcon/>
                 <div>2</div>
               </div>
+            </Link>
              
               <span>
                 {lang.lng === "en" ? (
@@ -231,8 +234,15 @@ const Header = ({ backColor }) => {
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
+            <Link href="/factor">
+            <div className={style.basket}>
+                <ShoppingCartIcon sx={{fontSize:12}}/>
+                <div>2</div>
+              </div>
+            </Link>
               <Link href="/shop">
-                <span>{t("descoverMore")}</span>
+                <ShoppingBagIcon sx={{fontSize:16}}/>
+                {/* <span>{t("descoverMore")}</span> */}
               </Link>
               <Link href="/">
                 <Image src={logo} alt="logo" />
