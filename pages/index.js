@@ -36,7 +36,7 @@ export default function Home() {
       },
   ];
   return (
-    <div>
+    <>
       <Head>
         <title>home</title>
         <link rel="icon" href="/logo.ico" />
@@ -57,6 +57,6 @@ export default function Home() {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 }
