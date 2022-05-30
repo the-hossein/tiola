@@ -20,7 +20,7 @@ const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
 
   const [getItem, setGetItem] = useState({});
-const lang =useSelector(state=>state.stateLang.lng)
+  const lang =useSelector(state=>state.stateLang.lng)
   console.log(data);
   useEffect(() => {
     setGetItem(data.slice(0, 20));

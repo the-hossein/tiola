@@ -21,6 +21,7 @@
   --lg-font: 14pt;
   --xl-font: 16pt;
   --xxl-font: 24pt;
+  --oxx-font: 48pt;
 
 }
 
@@ -59,6 +60,7 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: var(--font) !important;
 }
 
 .headerBlur {

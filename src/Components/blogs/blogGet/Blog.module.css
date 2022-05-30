@@ -12,7 +12,7 @@
     font-size: var(--xl-font);
 }
 .text p{
-    font-size: var(--md-font);
+    font-size: var(--xs-font);
     line-height: 1.5;
     padding: 0 1rem;
     overflow: hidden;

@@ -11,6 +11,7 @@
 .Register h1 {
     text-align: var(--float-left);
     margin-bottom: 3rem;
+    font-size: var(--oxx-font) !important;
 }
 
 .pic span img {
@@ -22,15 +23,20 @@
     margin: auto;
     display: block;
 }
-
+.enterNum span {
+    font-size: var(--xs-font);
+}
+.enterNum label {
+    font-size: var(--md-font);
+}
 .enterNum input {
+    font-size: var(--md-font) !important;
     height: 50px;
     border-radius: 14px;
 }
 
 .submitButtons button {
-    font-size: 12pt;
-
+    font-size: var(--xs-font) !important;
 }
 
 .submitButtons {
@@ -38,7 +44,7 @@
     align-items: center;
     justify-content: space-between;
     margin: 2rem 0;
-    font-size: 10pt;
+    font-size: var(--xs-font);
 
 
 }
@@ -54,7 +60,7 @@
     display: block;
     margin: auto;
     margin-bottom: 2rem;
-    font-size: 10pt;
+    font-size: var(--xs-font);
 }
 
 .error {
