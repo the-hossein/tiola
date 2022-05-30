@@ -15,6 +15,11 @@ import { useRouter } from "next/router";
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import { loginFalse, loginTrue } from "../../redux/register/registerAction";
+
+
+//dispatch all products request
+import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
+
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -22,6 +27,24 @@ const Header = ({ backColor }) => {
   const state=useSelector(state=>state.stateRegister)
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
+  const [boxTarget, setBoxTarget] = useState(false)
+  
+  //call state allProducts
+  const allProducts = useSelector(state => state.stateAllProducts.data);
+  // for get text search clint
+  // const {targetSearch, setTargetSearch} = useState([]);
+  const [textSearch, setTextSearch] = useState("");
+  const searchHandler = (event) => {
+    setTextSearch(event.target.value);
+    setBoxTarget(true);
+    // const setSuggest = async () => {
+      //   const resolve = await allProducts.data.filter(item => item.title.includes(textSearch))
+      //   return setTargetSearch(resolve)
+      // }
+      // setSuggest();
+      console.log(targetSearch)
+    }
+    
   useLayoutEffect(() => {
     function updateSize() {
       setSize([window.innerWidth]);
@@ -39,6 +62,7 @@ const Header = ({ backColor }) => {
   }
   const serachHandler = () => {
     setShowSearchBox(!showSearchBox);
+    setBoxTarget(false);
   };
   const rightDir = () => {
     root.style.setProperty("--direction", "rtl");
@@ -71,7 +95,7 @@ const Header = ({ backColor }) => {
   };
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
-
+    dispatch(fetchProducts())
     const lngCookie = Cookies.get("i18next");
     if (lngCookie === "en") {
       leftDir();
@@ -110,6 +134,8 @@ const Header = ({ backColor }) => {
   const openMenu = () => {
     setMenuBar(!menuBar);
   };
+
+  const targetSearch = allProducts.filter(item => item.title.includes(textSearch));
 
   return !prelaod ? (
     <>
@@ -175,7 +201,17 @@ const Header = ({ backColor }) => {
                 )}
               </span>
               <div className="position-relative">
+                  {
+                    boxTarget && targetSearch.length && <div className={style.suggest}>
+                        {targetSearch.map(item => {
+                          // {console.log(item)}
+                          return <span key={item.id}><Link href={`/product/${item.id}`} >{item.title}</Link></span>
+                        })}
+                    </div> 
+                  }
                 <input
+                  onChange={searchHandler}
+                  onKeyDown={event => event.key === 'Enter' && router.push({pathname:'/explore'})}
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }

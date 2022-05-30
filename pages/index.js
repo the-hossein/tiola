@@ -6,6 +6,7 @@ import HeroSection from "../src/Components/heroSection/HeroSection";
 import ProductSlider from "../src/Components/productSlider/ProductSlider";
 
 export default function Home() {
+  
     const product = [
     {
       src: "/Assets/images/3.jpeg"

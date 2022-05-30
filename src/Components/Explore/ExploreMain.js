@@ -69,13 +69,12 @@ const ExploreMain = ({ data }) => {
             >
               {getItem.map((product, index) => (
                 <Item key={product.id}>
-                  {console.log(product.id)}
-                <Link href={`/product/${product.id}`}>
-                <div className={style.showProduct}>
-                    <img src={product.imageFile1.filePath} alt="product" />
-                    <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
-                  </div>
-                </Link>
+                  <Link href={`/product/${product.id}`}>
+                    <div className={style.showProduct}>
+                      <img src={product.imageFile1.filePath} alt="product" />
+                      <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
+                    </div>
+                  </Link>
                 </Item>
               ))}
             </Masonry>

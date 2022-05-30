@@ -39,7 +39,6 @@
 .headerIcon span,
 .headerIcon div {
     cursor: pointer !important;
-
 }
 
 .headerIcon div {
@@ -94,7 +93,8 @@
     left: 30px;
     color: #111111;
     top: 5px;
-
+    font-size: var(--md-font) !important;
+    transition: all .2s linear;   
 }
 
 
@@ -172,4 +172,33 @@
 
     }
 
+}
+
+/* style box suggest search */
+.suggest {
+    width: 80%;
+    height: fit-content;
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #111111;
+    position: absolute;
+    bottom: -310px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    height: 300px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.suggest::-webkit-scrollbar {
+    display: none;
+}
+
+.suggest span {
+    /* margin: 8px 0; */
+    font-size: var(--s-font);
+    display: block;
+    float: var(--textAlign-right);
 }
