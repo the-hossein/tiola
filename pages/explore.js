@@ -28,7 +28,11 @@ export default function explore({ explore }) {
 }
 
 export async function getServerSideProps(context) {
-  const data = await callApi(BASE_URL + GET_ALL_PRODUCT, "GET", "{}");
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+
+  const data = await callApi(BASE_URL + GET_ALL_PRODUCT, "{}", myHeaders, "GET");
 
   return {
     props: { explore: data } // will be passed to the page component as props

@@ -6,7 +6,7 @@ import Header from "../src/Components/header/Header";
 import TiolaCollections from "../src/Components/pageCollentions/MyCollection/TiolaCollections";
 
 export default function collections({ allCollection }) {
-  console.log(allCollection)
+  console.log(allCollection);
   return (
     <div>
       <Head>
@@ -28,7 +28,11 @@ export default function collections({ allCollection }) {
 }
 export async function getServerSideProps(context) {
   const { params } = context;
-  const data = await callApi(BASE_URL + ALL_COLLECTION, "GET", "{}");
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+
+  const data = await callApi(BASE_URL + ALL_COLLECTION, "{}", myHeaders, "GET");
 
   return {
     props: { allCollection: data } // will be passed to the page component as props

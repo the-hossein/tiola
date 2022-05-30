@@ -30,15 +30,23 @@ export default function productname({ product, similar }) {
 export async function getServerSideProps(context) {
   const { params } = context;
   const { productname } = params;
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+
+
+
   const data = await callApi(
     `${BASE_URL + GET_PRODUCT}?id=${productname}`,
-    "GET",
-    "{}"
+    "{}",
+    myHeaders,
+    "GET"
   );
   const similar = await callApi(
     `${BASE_URL + GET_WITHLABLE}?Type=${data.data.type}`,
-    "GET",
-    "{}"
+    "{}",
+    myHeaders,
+    "GET"
   );
 
   return {

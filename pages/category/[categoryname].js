@@ -4,7 +4,7 @@ import { BASE_URL, GET_WITHLABLE } from "../../src/api/urls";
 import Category from "../../src/Components/category/Category";
 import Footer from "../../src/Components/footer/Footer";
 import Header from "../../src/Components/header/Header";
-export default function categoryname({category}) {
+export default function categoryname({ category }) {
   return (
     <div>
       <Head>
@@ -16,7 +16,9 @@ export default function categoryname({category}) {
         <Header backColor={"headerColor"} />
       </header>
 
-      <main><Category data={category.data}/></main>
+      <main>
+        <Category data={category.data} />
+      </main>
       <footer>
         <Footer />
       </footer>
@@ -27,10 +29,13 @@ export default function categoryname({category}) {
 export async function getServerSideProps(context) {
   const { params } = context;
   const { categoryname } = params;
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
   const data = await callApi(
     `${BASE_URL + GET_WITHLABLE}?Type=${categoryname}`,
-    "GET",
-    "{}"
+    "{}",
+    myHeaders,
+    "GET"
   );
 
   return {
