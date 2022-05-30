@@ -15,11 +15,13 @@ import "swiper/css/navigation";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import PopUp from "../../tools/popup/PopUp";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { closePopUp } from "../../redux/register/registerAction";
 const ProductContent = ({ product }) => {
   const { t } = useTranslation();
   const router = useRouter();
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
@@ -42,8 +44,8 @@ const ProductContent = ({ product }) => {
   }
 
   const payHandler = () => {
-    if (!state.loginStatus) {
-      setOpen(true);
+    if (state.loginStatus) {
+      dispatch(closePopUp());
     }
   };
   const addWatchHandler = () => {};

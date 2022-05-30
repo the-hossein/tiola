@@ -67,5 +67,8 @@
   "tiolaStory": "داستان تیولا",
   "blogs": "بلاگ ها",
   "emptycodeValidate": "لطفا کد را واارد کنید ",
-  "lengthcodeValidate": "لطفا کد 6 رقمی وارد کنید"
+  "lengthcodeValidate": "لطفا کد 6 رقمی وارد کنید",
+ "signTextPopUp":" شماره همراه خود را وارد کنید"
+
 }
+
