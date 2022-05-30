@@ -76,6 +76,10 @@
   "blogs": "Blogs",
   "emptycodeValidate": "please enter Code",
   "lengthcodeValidate": "please enter 6 raqam code",
- "signTextPopUp":"Enter Your Phone Number For Sign in"
+ "signTextPopUp":"Enter Your Phone Number For Sign in",
+ "TextCodePopUp":" Enter Code Please",
+ "enterCodePlaceHolder":"Enter Code Here",
+  "enterPhonePlaceHolder":"Enter phone number here"
+
 
 }

@@ -55,6 +55,11 @@ const userData = (user) => {
     user: user
   };
 };
+const openPopUp = () => {
+  return {
+    type: "OPEN_POPUP"
+  };
+};
 const closePopUp = () => {
   return {
     type: "CLOSE_POPUP"
@@ -159,6 +164,7 @@ const registerCode = (code, num, lang, router) => {
           });
         }
         dispatch(sendCodeFailed());
+        dispatch(closePopUp())
       } else {
         dispatch(checkOtpFailed());
         var errorText;
@@ -215,5 +221,6 @@ export {
   loginFalse,
   userData,
   getProfile,
-  closePopUp
+  closePopUp,
+  openPopUp
 };
