@@ -144,11 +144,12 @@ const registerCode = (code, num, lang, router) => {
         dispatch(loader());
 
         notify(text, "success");
-        dispatch(checkOtpSuccess());
+        if (router.pathname === "/signin") {
+          router.push({
+            pathname: "/"
+          });
+        }
         dispatch(sendCodeFailed());
-        router.push({
-          pathname: "/"
-        });
       } else {
         dispatch(checkOtpFailed());
         var errorText;
