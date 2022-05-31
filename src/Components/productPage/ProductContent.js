@@ -109,7 +109,7 @@ const ProductContent = ({ product }) => {
               </div>
             </div>
           </div>
-          <div className="w-100 d-flex justify-content-between">
+          <div>
             <AllComment className="col" />
           </div>
         </div>

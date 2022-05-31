@@ -4,9 +4,12 @@ import style from "./UserProfile.module.css";
 import { notify } from "../../tools/toast/toast";
 import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
 import ChangeImage from "../../tools/uploadImgUser/getUserProfile";
+import Link from "next/link";
+import { useSelector } from 'react-redux';
 
 // import Loader from "../../tools/loader/Loader";
 const ProFileSection = () => {
+  const data = useSelector(state => state.stateRegister);
   const { t } = useTranslation();
   const [imageid, setImageid] = useState("");
   const [preload, setpreload] = useState(false);
@@ -29,31 +32,18 @@ const ProFileSection = () => {
     <>
           <div className={style.profile}>
             <div className={style.avatar}>
-              <img src={ preload === true ? "/Assets/images/loader.gif" : image === '' ? "/Assets/images/userdefault.png" : image } alt="user profile image" />
-              <label htmlFor="userImage">
-                <AddAPhotoRoundedIcon
-                  fontSize={"large"}
-                  className={style.addPhoto}
-                />
-              </label>
-              <input
-                type="file"
-                id="userImage"
-                accept="image/png, image/jpeg,"
-                onChange={(e) => {
-                  ChangeImageAction(e);
-                }}
-              />
+              <img src={data.userImage === null ? "/Assets/images/userdefault.png" : data.userImage } alt="user profile image" />
             </div>
             <div>
-              <h1 className={style.name}>Melina Rodiguz</h1>
-              <span
-                className={style.editPro}
-                onClick={() => notify("worked", "success")}
-              >
-                {t("editProfile")}
-              </span>
-              <span className="d-block">20%{t("remain")}</span>
+              <h1 className={style.name}>{data.userNameAvatar === "" ? data.phoneNumber : data.userNameAvatar}</h1>
+              <Link href='/editprofile'>
+                <span
+                  className={style.editPro}
+                >
+                  {t("editProfile")}
+                </span>
+              </Link>
+              {/* <span className="d-block">20%{t("remain")}</span> */}
             </div>
           </div>
     </>

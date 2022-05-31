@@ -2,48 +2,75 @@ import callApi from '../../api/callApi';
 import axios from 'axios';
 import { BASE_URL, UPLOAD_FILE_REQUEST } from '../../api/urls';
 import { notify } from '../toast/toast';
-const regex = /\.(jpe?g|png|svg|bmp)$/mgi;
+const regex = /\.(jpeg|png|svg|bmp|jpg)$/mgi;
 
-const ChangeImage = async (e, token) => {
+const ChangeImage = async (e) => {
     const target = e.target.files[0];
-    // console.log(target.name)
+    let data = '';
 
     if(regex.test(target.name)){
-      var formdata = new FormData();
-      formdata.append("File", e.target.files[0], e.target.files[0].name);
 
+      var ls = localStorage.getItem("userToken");
+      const userToken = JSON.parse(ls);
+
+      var usertoken = userToken.token;
       var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}` );
+      myHeaders.append("Authorization", `Bearer ${usertoken}`);
       myHeaders.append("Content-Type", "application/json");
-      
-      var raw = JSON.stringify({
-        "userId": token,
-        "name": "",
-        "family": "",
-        "profilepic": 0,
-        "birthdaydatetime": "2022-05-30T17:55:14.382Z",
-        "gender": 1,
-      });
-      
+
+
+      var formdata = new FormData();
+      formdata.append("File", target, target.name);
+
       var requestOptions = {
         method: 'POST',
-        headers: myHeaders,
-        body: raw,
+        Headers:myHeaders,
+        body: formdata,
         redirect: 'follow'
       };
+
+      const response = await fetch('https://api.tiolastyle.com/api/v1/Files/Upload', requestOptions);
+      const data = await response.json();
+      const status = await response.status;
       
-      try {
-        const result = await callApi(BASE_URL+UPLOAD_FILE_REQUEST,)
-        console.log(result)
-        if (result.code === 200) {
-          return result.data;
-        }
-        else {
-          return null
-        }
-      } catch {
-        return null
-      }
+      // console.log(data.data)
+        
+      return data;
+       
+
+      // var formdata = new FormData();
+      // formdata.append("File", target, target.name);
+
+      // var myHeaders = new Headers();
+      // myHeaders.append("Content-Type", "application/json");
+
+
+
+
+      // var requestOptions = {
+      //   method: 'POST',
+      //   body: formdata,
+      //   header: myHeaders,
+      //   redirect: 'follow'
+      // };
+      
+      // fetch("https://api.tiolastyle.com/api/v1/Files/Upload", requestOptions)
+      //     .then(response => response.json)
+      //     .then(json => console.log(json))
+      //     .catch(err => console.log(err))
+      
+      // try {
+      //   const result = await fetch("https://api.tiolastyle.com/api/v1/Files/Upload", requestOptions)
+      //   console.log(result)
+      //   if (result.code === 200) {
+      //     return result.data;
+      //   }
+      //   else {
+      //     return null
+      //   }
+      // } catch {
+      //   return null
+      // }
     } else {
       notify("pleas enter true format image" , 'error');
       return null; 
@@ -75,7 +102,7 @@ const ChangeImage = async (e, token) => {
 //   redirect: 'follow'
 // };
 
-fetch("https://api.tiolastyle.com/api/v1/User/UpdateProfile", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+// fetch("https://api.tiolastyle.com/api/v1/User/UpdateProfile", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));

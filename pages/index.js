@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>home</title>
+        <title>Tiola home</title>
         <link rel="icon" href="/logo.ico" />
         <meta name="google-site-verification" content="nR4pwY73DvKf7OURnL2xr3p1fZo2yXwTkhg_DDWRzPQ" />
       </Head>

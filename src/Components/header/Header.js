@@ -17,6 +17,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { getProfile, loginFalse, loginTrue } from "../../redux/register/registerAction";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import { fetchProducts } from '../../redux/getallproducts/allProductsAction'
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();

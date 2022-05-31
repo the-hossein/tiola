@@ -1,6 +1,6 @@
 .profile img {
-    width: 125px;
-    height: 125px;
+    width: 100px;
+    height: 100px;
     border-radius: 100%;
     overflow: hidden;
     object-fit: cover;
@@ -58,13 +58,6 @@
     /* float: var(--textAlign-right); */
 }
 
-.avatar{
-    position: relative;
-}
-.avatar input {
-    position: absolute;
-    display: none;
-}
 .addPhoto {
     position: absolute;
     bottom: 8px;
@@ -93,7 +86,7 @@
 
 .shape svg,
 .icon {
-    font-size: 20pt;
+    font-size: var(--lg-font) !important;
     color: var(--lightGray-border);
     z-index: 9;
 }

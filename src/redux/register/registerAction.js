@@ -179,10 +179,10 @@ const getProfile = () => {
     var ls = localStorage.getItem("userToken");
     const userToken = JSON.parse(ls);
     var phone = userToken.phone;
-    var token = userToken.token;
+    var usertoken = userToken.token;
 
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
+    myHeaders.append("Authorization", `Bearer ${usertoken}`);
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
@@ -196,11 +196,17 @@ const getProfile = () => {
         myHeaders,
         "POST"
       );
+      console.log(user)
       dispatch(userData(user[0].data));
     };
     profile();
   };
 };
+
+const updateSetProfile = (newData) => {
+  return { type: 'SET_NEW_DATA', payload: newData }
+}
+
 export {
   loginTrue,
   registerPhone,
@@ -215,5 +221,6 @@ export {
   loginFalse,
   userData,
   getProfile,
-  closePopUp
+  closePopUp,
+  updateSetProfile
 };

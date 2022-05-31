@@ -15,12 +15,14 @@ const AddComment = () => {
     <WriteComment />
   ) : (
     <div
-      className={`d-block text-center ${style.addComment}`}
+      className={`${style.addComment}`}
       onClick={openHandler}
     >
-      <p>Add Comment</p>
-      <div className={style.add}>
-        <FontAwesomeIcon icon={faAdd} />
+      <div className="text-center">
+        <p>Add Comment</p>
+        <div className={style.add}>
+          <FontAwesomeIcon icon={faAdd} />
+        </div>
       </div>
     </div>
   );
