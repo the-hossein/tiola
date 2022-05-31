@@ -5,12 +5,11 @@ const BuyLists = () => {
   return (
     <div>
       <List />
+       <List />
       <List />
       <List />
       <List />
       <List />
-      <List />
-
     </div>
   );
 };

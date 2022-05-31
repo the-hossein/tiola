@@ -9,6 +9,7 @@ import shopReducer from "./shop/shopReducer";
 //get blogs
 import blogReducer from "./blog/blogsReducer";
 import registerReducer from "./register/registerReducer";
+import screenLoaderReducer from "./screenLoader/screenLoaderReducer";
 
 const rootReducer = combineReducers({
   stateLang: langReducer,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   stateBlogs: blogReducer,
   stateColProduct: collectionReducer,
   stateShop: shopReducer,
-  stateRegister: registerReducer
+  stateRegister: registerReducer,
+  stateScreenLoader: screenLoaderReducer
 });
 
 export default rootReducer;

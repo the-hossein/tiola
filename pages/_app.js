@@ -8,10 +8,11 @@ import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import PopUp from "../src/tools/popup/PopUp";
+import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
@@ -34,7 +35,6 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
   useEffect(() => {
-    
     if (router.pathname === "/collections/[collectionname]") {
       document
         .getElementsByTagName("body")[0]
@@ -43,16 +43,16 @@ function MyApp({ Component, pageProps }) {
           "linear-gradient(0deg, rgba(242,242,242,1) 28%, rgba(242,227,193,1) 66%, rgba(255,179,0,1) 100%)",
           "important"
         );
-        console.log(pageProps.collection.data)
+      console.log(pageProps.collection.data);
     } else {
       document
         .getElementsByTagName("body")[0]
         .style.setProperty("background", "#f2f2f2", "important");
     }
-    setshowChild(true) 
+    setshowChild(true);
   }, [pageProps]);
-  if(!showChild){
-    return null
+  if (!showChild) {
+    return null;
   }
   return (
     <Provider store={store}>
@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }) {
 
       <Component {...pageProps} />
       <ToastContainer />
-      <PopUp/>
+      <PopUp />
     </Provider>
   );
 }

@@ -4,8 +4,15 @@ import { BASE_URL, GET_WITHLABLE } from "../../src/api/urls";
 import Category from "../../src/Components/category/Category";
 import Footer from "../../src/Components/footer/Footer";
 import Header from "../../src/Components/header/Header";
-export default function categoryname({ category }) {
+import {useRouter} from 'next/router'
+export default function Categoryname({ category }) {
+  console.log(category)
+  const router=useRouter()
+
   return (
+   category===404?
+      router.push({pathname:"/errorpage"})
+    :
     <div>
       <Head>
         <title>category</title>
@@ -17,7 +24,7 @@ export default function categoryname({ category }) {
       </header>
 
       <main>
-        <Category data={category.data} />
+        <Category data={category[0].data} />
       </main>
       <footer>
         <Footer />
@@ -38,7 +45,13 @@ export async function getServerSideProps(context) {
     "GET"
   );
 
+if(data[0].data.length>0){
   return {
     props: { category: data } // will be passed to the page component as props
   };
+}else{
+  return {
+    props: { category: 404 } // will be passed to the page component as props
+  };
+}
 }

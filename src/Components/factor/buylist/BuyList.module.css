@@ -1,5 +1,5 @@
-.row img,
-.Mbrow img {
+.row >img,
+.Mbrow >img {
     width: 86px;
     height: 118px;
     border-radius: 8px;
@@ -9,7 +9,15 @@
     border: 1px solid var(--lightGray-border);
 
 }
-
+.factorBtn{
+    display: block;
+    margin: auto;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+.factorBtn button{
+    margin: 2rem 1rem;
+}
 .count {
     padding: 0 1rem;
 }

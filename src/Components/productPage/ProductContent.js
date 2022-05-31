@@ -18,6 +18,8 @@ import PopUp from "../../tools/popup/PopUp";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { closePopUp, openPopUp } from "../../redux/register/registerAction";
+import callApi from "../../api/callApi";
+import { ADD_BASKET, BASE_URL } from "../../api/urls";
 const ProductContent = ({ product }) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -42,10 +44,41 @@ const ProductContent = ({ product }) => {
   if (product.data.imageFile5 && product.data.imageFile5.confirmed) {
     images.push({ src: product.data.imageFile5.filePath, id: product.data.id });
   }
-
+  if (typeof window !== "undefined") {
+    var ls = localStorage.getItem("userToken");
+  }
   const payHandler = () => {
-    if (state.loginStatus) {
+    if (!state.loginStatus) {
       dispatch(openPopUp());
+    } else {
+      const userToken = JSON.parse(ls);
+      var phone = userToken.phone;
+      var token = userToken.token;
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        userid: state.userid,
+        title: product.data.title,
+        phonenumber: `${phone}`,
+        description: "string",
+        qty: 1,
+        amount: product.data.price,
+        productid:  product.data.id
+      });
+
+      console.log(raw);
+      const addbasket = async () => {
+        const added = await callApi(
+          BASE_URL + ADD_BASKET,
+          raw,
+          myHeaders,
+          "POST"
+        );
+        console.log(added);
+      };
+      addbasket();
     }
   };
   const addWatchHandler = () => {};

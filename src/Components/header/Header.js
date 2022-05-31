@@ -14,14 +14,20 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-import { getProfile, loginFalse, loginTrue } from "../../redux/register/registerAction";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import {
+  getProfile,
+  loginFalse,
+  loginTrue
+} from "../../redux/register/registerAction";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   const state = useSelector((state) => state.stateRegister);
+  const basket = useSelector((state) => state.stateFactor);
+
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   useLayoutEffect(() => {
@@ -87,13 +93,16 @@ const Header = ({ backColor }) => {
     if (ls) {
       const userToken = JSON.parse(ls);
       const tokenExp = userToken.exp;
+      const token = userToken.token;
+      const phone = userToken.phone;
+
       const now = new Date();
       const endDate = new Date(tokenExp);
+      dispatch(getProfile(token, phone));
       if (endDate - now < 0) {
         localStorage.removeItem("userToken");
         dispatch(loginFalse());
       } else {
-        dispatch(getProfile())
         dispatch(loginTrue());
       }
     } else {
@@ -170,14 +179,13 @@ const Header = ({ backColor }) => {
             </div>
 
             <div className={style.headerIcon}>
-            
-            <Link href="/factor">
-            <div className={style.basket}>
-                <ShoppingCartIcon/>
-                <div>2</div>
-              </div>
-            </Link>
-             
+              <Link href="/factor">
+                <div className={style.basket}>
+                  <ShoppingCartIcon />
+                  <div>{basket.qty}</div>
+                </div>
+              </Link>
+
               <span>
                 {lang.lng === "en" ? (
                   <span onClick={() => changeLng("fa")}>fa</span>
@@ -235,14 +243,14 @@ const Header = ({ backColor }) => {
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
-            <Link href="/factor">
-            <div className={style.basket}>
-                <ShoppingCartIcon sx={{fontSize:12}}/>
-                <div>2</div>
-              </div>
-            </Link>
+              <Link href="/factor">
+                <div className={style.basket}>
+                  <ShoppingCartIcon sx={{ fontSize: 12 }} />
+                  <div>2</div>
+                </div>
+              </Link>
               <Link href="/shop">
-                <ShoppingBagIcon sx={{fontSize:16}}/>
+                <ShoppingBagIcon sx={{ fontSize: 16 }} />
                 {/* <span>{t("descoverMore")}</span> */}
               </Link>
               <Link href="/">
