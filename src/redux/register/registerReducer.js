@@ -7,7 +7,16 @@ const initializedState = {
   otpStatus: false,
   userid: "",
   userName: "",
-  closePopUp: false
+  userNameAvatar: "",
+  userImage: null,
+  closePopUp: false,
+  address: "",
+  gender: "",
+  profilePicId: null,
+  birthDayDateTime: "",
+  name: '',
+  family: ''
+
 };
 const registerReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -56,12 +65,27 @@ const registerReducer = (state = initializedState, action) => {
         otpStatus: false,
         loader: false
       };
+    case 'SET_NEW_DATA':
+      return {
+        ...state,
+        userNameAvatar: `${action.payload.name} ${action.payload.family}` ,
+        profilePicId: action.payload.profiepicpath,
+        gender: action.payload.gender,
+        // address: action.payload.address,
+      }
     case "USER_DATA":
       return {
         ...state,
         phoneNumber: action.user.phoneNumber,
         userid: action.user.id,
-        userName: action.user.userName
+        userNameAvatar:`${action.user.name} ${action.user.family}`,
+        address: "",
+        gender: action.user.gender,
+        profilePicId: action.user.profilePicId,
+        birthDayDateTime: action.user.birthDayDateTime,
+        name: action.user.name,
+        family: action.user.family,
+
       };
     case "CLOSE_POPUP":
       return {

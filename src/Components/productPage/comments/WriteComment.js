@@ -30,12 +30,9 @@ const WriteComment = () => {
         />
         <label to="floatingInputGrid">{t("writeYourCm")}</label>
       </div>
-      <div
-        className={`row mt-3 `}
-      >
-        
           <div className={
-            `col-12 col-md-12 col-lg-12 col-xl-6 d-flex align-items-center justify-content-around ${Style.ratinaition}`}
+            `
+            d-flex align-items-center justify-content-around ${Style.ratinaition}`}
             >
                 <ul className={Style.factorLi}>
                   <li>{t("factor") + " 1"}</li>
@@ -61,31 +58,21 @@ const WriteComment = () => {
                       </li>
                     </ul>
                   </Box>
-          </div>
-          <div className="col-12 col-md-12 col-lg-12 col-xl-6 d-flex align-items-center justify-content-center">
             <Box paddingX={2} className={Style.myBox}>
-              <div className="row">
-                <div className="col-12">
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex flex-column align-items-center">
                     <span className={Style.total}>{t("total")}</span>
                     <span className={Style.rating}>
                       <Rating
                         name="product Rate"
                         value={(state.factor1 + state.factor2 + state.factor3) / 6}
                         readOnly
-                      />
-                    </span>
+                        />
+                      </span>
+                      <button className={Style.doneBtn} onClick={doneHandler}>
+                        {t("done")}
+                      </button>
                   </div>
-                </div>
-                <div className="col-12">
-                  <button className={Style.doneBtn} onClick={doneHandler}>
-                    {t("done")}
-                  </button>
-                </div>
-              </div>
             </Box>
-          </div>
-        {/* </div> */}
       </div>
     </div>
   );

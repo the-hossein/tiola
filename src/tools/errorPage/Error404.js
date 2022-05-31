@@ -2,6 +2,7 @@ import React from 'react';
 import XoGame from '../xogame/XoGame';
 //stylesheet
 import style from './Error404.module.css';
+import PopUp from '../popup/PopUp'
 
 
 const Error404 = () => {
@@ -25,6 +26,7 @@ const Error404 = () => {
                     </div>            
                 </div>
             </div>
+            <PopUp />
         </div>
     );
 };

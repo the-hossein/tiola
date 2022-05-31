@@ -10,6 +10,9 @@ import shopReducer from "./shop/shopReducer";
 import blogReducer from "./blog/blogsReducer";
 import registerReducer from "./register/registerReducer";
 
+//get all products
+import allProductsReducer from "./getallproducts/AllProductsReducer";
+
 const rootReducer = combineReducers({
   stateLang: langReducer,
   stateComment: commentReducer,
@@ -19,7 +22,8 @@ const rootReducer = combineReducers({
   stateBlogs: blogReducer,
   stateColProduct: collectionReducer,
   stateShop: shopReducer,
-  stateRegister: registerReducer
+  stateRegister: registerReducer,
+  stateAllProducts: allProductsReducer,
 });
 
 export default rootReducer;
