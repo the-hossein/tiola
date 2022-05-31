@@ -40,7 +40,7 @@ const WriteComment = () => {
                   <li>{t("factor") + " 3"}</li>
                 </ul>
               
-                  <Box width="60%" paddingX={1} className={Style.myBox} >
+                  <Box width="30%" paddingX={1} className={Style.myBox} >
                     <ul>
                       <li>
                         <RateSlider name="factor1"/>
@@ -60,14 +60,16 @@ const WriteComment = () => {
                   </Box>
             <Box paddingX={2} className={Style.myBox}>
                   <div className="d-flex flex-column align-items-center">
-                    <span className={Style.total}>{t("total")}</span>
-                    <span className={Style.rating}>
-                      <Rating
-                        name="product Rate"
-                        value={(state.factor1 + state.factor2 + state.factor3) / 6}
-                        readOnly
-                        />
-                      </span>
+                    <div className="d-flex align-items-center">
+                      <span className={Style.total}>{t("total")}</span>
+                      <span className={Style.rating}>
+                        <Rating
+                          name="product Rate"
+                          value={(state.factor1 + state.factor2 + state.factor3) / 6}
+                          readOnly
+                          />
+                        </span>
+                    </div>
                       <button className={Style.doneBtn} onClick={doneHandler}>
                         {t("done")}
                       </button>

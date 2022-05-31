@@ -137,7 +137,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  min-width: fit-content !important ;
+  width: auto !important;
   /* height: fit-content; */
   /* box-shadow: 5px 10px 4px #23232354; */
   /* color: #fff; */
