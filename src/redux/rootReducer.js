@@ -12,6 +12,7 @@ import registerReducer from "./register/registerReducer";
 
 //get all products
 import allProductsReducer from "./getallproducts/AllProductsReducer";
+import saveItemReducer from "./saveItem/saveItemReducer";
 
 const rootReducer = combineReducers({
   stateLang: langReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   stateShop: shopReducer,
   stateRegister: registerReducer,
   stateAllProducts: allProductsReducer,
+  stateWatchList: saveItemReducer,
 });
 
 export default rootReducer;

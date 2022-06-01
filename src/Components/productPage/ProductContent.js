@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorPick from "../../tools/colorPick/ColorPick";
 import NormalBtn from "../../tools/normalBtn/NormalBtn";
 import ProductSlider from "../productSlider/ProductSlider";
@@ -18,6 +18,11 @@ import PopUp from "../../tools/popup/PopUp";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { closePopUp } from "../../redux/register/registerAction";
+
+//import thunk for save product
+import { checkSavedItem, fetchingToSave } from "../../redux/saveItem/saveItemAction";
+import { notify } from "../../tools/toast/toast";
+
 const ProductContent = ({ product }) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -25,6 +30,7 @@ const ProductContent = ({ product }) => {
   const [open, setOpen] = useState(false);
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
+  const watchList = useSelector(state => state.stateWatchList);
   const images = [];
 
   if (product.data.imageFile1 && product.data.imageFile1.confirmed) {
@@ -48,7 +54,25 @@ const ProductContent = ({ product }) => {
       dispatch(closePopUp());
     }
   };
-  const addWatchHandler = () => {};
+  const addWatchHandler = () => {
+    const userID = state.userid;
+    const productId = product.data.id;
+    const targetItem = !!watchList.list.find(item => item.productId === productId);
+    if(targetItem){
+      notify("شما این محصول را قبلا اضافه کردین", "success");
+    }else {
+      dispatch(fetchingToSave(userID, productId))
+    }
+  };
+  
+  useEffect(()=> {
+    if(state) {
+      const userID = state.userid;
+      dispatch(checkSavedItem(userID))
+    } 
+    
+  }, [state])
+
   return (
     <>
       <div className="row  m-0">

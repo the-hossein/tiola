@@ -1,12 +1,12 @@
 :root {
-  --font: "IRANSansWeb";
+  --font: "IRANSansWeb" , 'apple';
   --dark-pen: #000000;
   --light-pen: #ffffff;
   --darkGray-border: #343736;
   --lightGray-border: #707070;
   --border-bottom: 1px solid #cfcfcf;
-  --blue-pen: #6a8eae;
-  --medium-gray: #3e3f3a;
+  --blue-pen: #93a8c9;
+    --medium-gray: #3e3f3a;
   --body-Color: #f2f2f2;
   --direction: rtl;
   --marginIcon: 0 0 0 1.5rem;

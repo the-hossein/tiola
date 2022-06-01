@@ -139,7 +139,7 @@ const EditProfile = () => {
                         </div>
                     </div>
                 </div>
-                <div className='row m-5 align-items-end'>
+                {/* <div className='row m-5 align-items-end'>
                     <div className='col-12'>
                         <div className='d-flex flex-column '>
                             <label htmlFor='address-in'>Enter your Address:</label>
@@ -152,7 +152,7 @@ const EditProfile = () => {
                             />
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className='row m-5 align-items-end'>
                     <div className='col-12 col-md-6 col-lg-4'>
                         <div className='d-flex flex-column '>
@@ -179,7 +179,7 @@ const EditProfile = () => {
                         </div>
                     </div>
                     <div className='col-12 col-md-12 col-lg-3 text-center'>
-                        <div className='mt-5'>
+                        <div className={`mt-5 ${style.btnHandel}`}>
                             <button type='submit'>Submit</button>
                             <Link href='/' >
                                 <span className={style.navigate}>Home</span>

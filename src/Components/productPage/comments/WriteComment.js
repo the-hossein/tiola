@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { writeFalse } from "../../../redux/comment/commentActions";
 import { resetRate } from "../../../redux/rate/rateActions";
 import { useRouter } from "next/dist/client/router";
+import CloseIcon from '@mui/icons-material/Close';
 
 //add comment 
 import { createComment } from "../../../redux/comment/commentActions";
@@ -104,6 +105,9 @@ const WriteComment = () => {
                       </button>
                   </div>
             </Box>
+      </div>
+      <div className={Style.closeBtn}>
+        <CloseIcon fontSize="small" onClick={()=> dispatch(writeFalse())}/>
       </div>
     </div>
   );

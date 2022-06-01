@@ -2,10 +2,13 @@
     color: var(--dark-pen);
 }
 
+.userComment {
+    font-size: var(--xs-font);
+}
+
 .ratinaition,
 .doneBtn,
 .total,
-.userComment,
 .Raiting {
     font-size: 9pt;
 }
@@ -51,7 +54,7 @@
     text-align: center;
     margin: 0.1rem 0.2rem;
 }
-.factorLi {margin-top: 10px !important;}
+/* .factorLi {margin-top: 10px !important;} */
 
 .ratinaition ul li span {
     color: var(--dark-pen) !important;
@@ -79,7 +82,8 @@
 }
 
 .addComment {
-    min-width: 200px !important;
+    min-width: 230px !important;
+    min-height: 200px !important;
     width: 100% !important;
     height: 100% !important;
     /* padding: 3.8rem; */
@@ -118,19 +122,27 @@
     padding: 0 0.7rem;
     width: 350px !important;
     height: 95% !important;
+    min-height: 200px !important;
+    position: relative;
 }
 
+.closeBtn{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
 .commentText textarea {
     height: 80px !important;
     background-color: var(--body-Color) !important;
     border: none !important;
     resize: none;
     overflow: hidden;
+    font-size: var(--xs-font);
 }
 
 .commentText textarea::placeholder,
 .commentText label {
-    font-size: 7pt;
+    font-size: var(--xs-font);
     color: var(--medium-gray);
 }
 
@@ -140,6 +152,9 @@
     padding: 0.5rem;
     border-radius: var(--Product-Border-radius);
     direction: var(--direction);
+}
+.Commnet span {
+    font-size: var(--md-font);
 }
 
 .AllComment {
