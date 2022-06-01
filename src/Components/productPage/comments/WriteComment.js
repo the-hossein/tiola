@@ -28,9 +28,14 @@ const WriteComment = () => {
 
   const dispatch = useDispatch();
   const doneHandler = () => {
-    dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
-    dispatch(writeFalse());
-    dispatch(resetRate());
+    if(commentText === ''){
+      dispatch(writeFalse());
+      dispatch(resetRate());
+    }else {
+      dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
+      dispatch(writeFalse());
+      dispatch(resetRate());
+    }
   };
 
 
