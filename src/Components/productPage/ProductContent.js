@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorPick from "../../tools/colorPick/ColorPick";
 import NormalBtn from "../../tools/normalBtn/NormalBtn";
 import ProductSlider from "../productSlider/ProductSlider";
@@ -20,6 +20,8 @@ import { useRouter } from "next/router";
 import { closePopUp, openPopUp } from "../../redux/register/registerAction";
 import callApi from "../../api/callApi";
 import { ADD_BASKET, BASE_URL } from "../../api/urls";
+import { notify } from "../../tools/toast/toast";
+import { addQtyAmont } from "../../redux/factor/factorAction";
 const ProductContent = ({ product }) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -65,7 +67,7 @@ const ProductContent = ({ product }) => {
         description: "string",
         qty: 1,
         amount: product.data.price,
-        productid:  product.data.id
+        productid: product.data.id
       });
 
       console.log(raw);
@@ -76,11 +78,35 @@ const ProductContent = ({ product }) => {
           myHeaders,
           "POST"
         );
-        console.log(added);
+        if (added[0].code === 200) {
+          dispatch(addQtyAmont())
+          if (lang === "fa") {
+            var text = " محصول با موفقیت به سبد خرید شما اضافه شد";
+          } else {
+            text = "Add product successfully to basket";
+          }
+          notify(text, "success");
+        } else if (added[0].code === 201) {
+          if (lang === "fa") {
+            var text = " از این محصول به سبد خرید شما اضافه شد";
+          } else {
+            text = "Add this product successfully to basket";
+          }
+          notify(text, "success");
+        } else if (added[0].code === 206) {
+          if (lang === "fa") {
+            var text =
+              "از این محصول به تعداد درخواستی شما در انبار موجود نمی باشد";
+          } else {
+            text = "This product is not available in stock as requested by you";
+          }
+          notify(text, "error");
+        }
       };
       addbasket();
     }
   };
+
   const addWatchHandler = () => {};
   return (
     <>
@@ -142,7 +168,7 @@ const ProductContent = ({ product }) => {
               </div>
             </div>
           </div>
-          <div className="w-100 d-flex justify-content-between">
+          <div>
             <AllComment className="col" />
           </div>
         </div>

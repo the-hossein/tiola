@@ -94,7 +94,7 @@ a {
 
 
 .swiper-slide {
-  text-align: center;
+  /* text-align: center; */
   font-size: 18px;
   width: fit-content;
   height: fit-content;
@@ -130,6 +130,7 @@ a {
 } */
 .swiper-pagination {
   bottom: -6px !important;
+  /* height: fit-content ; */
 }
 
 .mySwiperComment .swiper-slide {
@@ -137,7 +138,7 @@ a {
   align-items: center;
   justify-content: center;
   width: fit-content;
-  height: fit-content;
+  /* height: fit-content; */
   /* box-shadow: 5px 10px 4px #23232354; */
   /* color: #fff; */
 }

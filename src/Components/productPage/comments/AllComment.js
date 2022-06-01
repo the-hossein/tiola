@@ -43,33 +43,27 @@ const AllComment = () => {
 
   return (
     <>
-      {/* {size < 600 && <AddComment />} */}
+      {size < 600 && <div className="row" ><AddComment className="col"/></div>}
       <div className={`${Style.AllComment} row`}>
         {/* <div className="row"> */}
-          <div className="col-12 col-md-6 p-1">
+          <div className="col-12 col-md-12 p-1">
               <Swiper
               showsPagination={false}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    grabCursor={true}
-                    effect={"creative"}
-                    creativeEffect={{
-                      prev: {
-                        shadow: true,
-                        origin: "left center",
-                        translate: ["-5%", 0, -200],
-                        rotate: [0, 100, 0],
-                      },
-                      next: {
-                        origin: "right center",
-                        translate: ["5%", 0, -200],
-                        rotate: [0, -100, 0],
-                      },
-                    }}
-                    modules={[EffectCreative, Pagination]}
+              slidesPerView={3}
+              spaceBetween={15}
+              // centeredSlides={true}
+              grabCursor={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Pagination]}
                     className="mySwiperComment"
               >
+                    {size > 601 &&
+                      <SwiperSlide>
+                        <AddComment />
+                      </SwiperSlide>
+                    }
                     <SwiperSlide> 
                         <Comment />
                     </SwiperSlide>
@@ -91,11 +85,10 @@ const AllComment = () => {
                     <SwiperSlide> 
                         <Comment />
                     </SwiperSlide>
-                    
                 </Swiper>
           </div>
-          <div className="col-12 col-md-6 p-1">
-            <AddComment />
+          <div className="col-12 col-md-4 p-1 ">
+            
           </div>
         {/* </div> */}
         

@@ -4,6 +4,8 @@ import Stepper from "./Stepper";
 import UserAction from "./UserAction";
 import style from "./UserProfile.module.css";
 const UserProfile = () => {
+  // const register = useSelector(state=> state.stateRegister);
+
   return (
     <section>
       <div className="container mt-5 mb-5">

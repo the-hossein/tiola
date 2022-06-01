@@ -1,6 +1,14 @@
 import callApi from "../../api/callApi";
-import { BASE_URL, GET_BASKET } from "../../api/urls";
-
+import {
+  BASE_URL,
+  DELETE_BASKET,
+  GET_BASKET,
+  GET_BASKET_DETAILS,
+  GET_USER_ADDRESS
+} from "../../api/urls";
+if (typeof window !== "undefined") {
+  var ls = localStorage.getItem("userToken");
+}
 const getAddres = (addres) => {
   return {
     type: "GET_ADDRES",
@@ -13,31 +21,122 @@ const checkAddress = (addres) => {
     check: addres
   };
 };
-const basketid = (data) => {
+
+const addQtyAmont = () => {
   return {
-    type: "BASKET_ID",
+    type: "ADD_QTY_AMOUNT"
+  };
+};
+
+const addbasketDetails = (data) => {
+  return {
+    type: "BASKET_DETAILS",
     data: data
   };
 };
-const getBasketUser = (userid) => {
-  console.log(userid)
-  var ls = localStorage.getItem("userToken");
+const deleted = (item) => {
+  return {
+    type: "DELETE_BASKET",
+    product: item
+  };
+};
+const loaderFactorTrue = () => {
+  return {
+    type: "LOADER_FACTOR"
+  };
+};
+const setAlladdress=(data)=>{
+  return{
+    type:"SET_ALL_ADDRESS",
+    payload:data
+  }
+}
+const getBasketDetails = (basketid) => {
   const userToken = JSON.parse(ls);
-  var token = userToken.token;
-
+  const token = userToken.token;
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${token}`);
   return (dispatch) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    const basket = async () => {
-      const basketUser = await callApi(
-        `${BASE_URL + GET_BASKET}?UserId=${userid}`,
+    dispatch(loaderFactorTrue());
+
+    const basketDetails = async () => {
+      const details = await callApi(
+        `${BASE_URL + GET_BASKET_DETAILS}?id=${basketid}`,
         "{}",
         myHeaders,
         "GET"
       );
-      dispatch(basketid(basketUser[0].data));
+      if (details[0].code) {
+        dispatch(addbasketDetails(details[0].data));
+      }
     };
-    basket();
+    basketDetails();
   };
 };
-export { getAddres, checkAddress, getBasketUser, basketid };
+
+const deleteBasketUser = (alldata, data) => {
+  return (dispatch) => {
+    dispatch(loaderFactorTrue());
+    const userToken = JSON.parse(ls);
+    const token = userToken.token;
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    const deletProduct = async () => {
+      const status = await callApi(
+        `${BASE_URL + DELETE_BASKET}?BasketDetailId=${data.id}`,
+        "{}",
+        myHeaders,
+        "POST"
+      );
+      if (status[0].code === 200) {
+        const deletePro = alldata.filter((item) => item.id !== data.id);
+        dispatch(deleted(deletePro));
+      }
+    };
+    deletProduct();
+  };
+};
+const getuserAddress=(userid)=>{
+  const userToken = JSON.parse(ls);
+  const token = userToken.token;
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${token}`);
+  return(dispatch)=>{
+    dispatch(loaderFactorTrue())
+    const allAddress=async()=>{
+      const address=await callApi(`${BASE_URL+GET_USER_ADDRESS}?UserId=${userid}`,"{}",myHeaders,"POST")
+      if(address[0].code===200){
+        dispatch(setAlladdress(address[0].data))
+      }
+    }
+    allAddress()
+  }
+}
+// const getBasketUser = (token, userid) => {
+//   return (dispatch) => {
+//     var myHeaders = new Headers();
+//     myHeaders.append("Authorization", `Bearer ${token}`);
+//     const basket = async () => {
+//       const basketUser = await callApi(
+//         `${BASE_URL + GET_BASKET}?UserId=${userid}`,
+//         "{}",
+//         myHeaders,
+//         "GET"
+//       );
+
+//       if (basketUser[0].code === 200) {
+//         console.log(basketUser[0].data.id);
+//         dispatch(basketid(basketUser[0].data));
+//       }
+//     };
+//     basket();
+//   };
+// };
+export {
+  getAddres,
+  checkAddress,
+  addQtyAmont,
+  getBasketDetails,
+  deleteBasketUser,
+  getuserAddress
+};

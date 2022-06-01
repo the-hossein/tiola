@@ -31,7 +31,6 @@ const PopUp = () => {
   useEffect(() => {
     setError(validationNumber(state.phoneNumber));
     setErrorsCode(validateCode(state.code));
-    console.log(errors);
   }, [state.phoneNumber, touched, state.code]);
   const changePhoneNUmber = (e) => {
     var persianNumbers = [

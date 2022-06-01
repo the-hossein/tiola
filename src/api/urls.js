@@ -14,3 +14,5 @@ export const DELETE_ADDRESS = "api/v1/User/DeleteAddress";
 export const INCREASE_QTY = "api/v1/Basket/Incress";
 export const DECREASE_QTY = "api/v1/Basket/Decress";
 export const ADD_BASKET = "api/v1/Basket/AddBasketDetail";
+export const DELETE_BASKET = "api/v1/Basket/DeleteBasketDetail";
+export const GET_USER_ADDRESS = "api/v1/User/GetUserAddress";

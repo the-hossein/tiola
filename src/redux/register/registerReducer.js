@@ -1,4 +1,5 @@
 const initializedState = {
+  userDataLoader: true,
   loader: false,
   loginStatus: false,
   phoneNumber: "",
@@ -6,8 +7,18 @@ const initializedState = {
   codeStatus: false,
   otpStatus: false,
   userid: "",
+  basketid:"",
   userName: "",
-  popup: false
+  popup: false,
+  userNameAvatar: "",
+  userImage: null,
+  closePopUp: false,
+  address: "",
+  gender: "",
+  profilePicId: null,
+  birthDayDateTime: "",
+  name: "",
+  family: ""
 };
 const registerReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -16,7 +27,13 @@ const registerReducer = (state = initializedState, action) => {
     case "LOGIN_FALSE":
       return {
         ...state,
-        loginStatus: false
+        loginStatus: false,
+        userDataLoader:false
+      };
+    case "USER_DATA_LOADER":
+      return {
+        ...state,
+        userDataLoader: true
       };
     case "GETPHONE":
       return { ...state, phoneNumber: action.num };
@@ -56,13 +73,32 @@ const registerReducer = (state = initializedState, action) => {
         otpStatus: false,
         loader: false
       };
+    case "SET_NEW_DATA":
+      return {
+        ...state,
+        userNameAvatar: `${action.payload.name} ${action.payload.family}`,
+        profilePicId: action.payload.profiepicpath,
+        gender: action.payload.gender
+        // address: action.payload.address,
+      };
     case "USER_DATA":
       return {
         ...state,
+        loginStatus: true,
+        userDataLoader: false,
         phoneNumber: action.user.phoneNumber,
         userid: action.user.id,
-        userName: action.user.userName
+        userNameAvatar: `${action.user.name} ${action.user.family}`,
+        address: "",
+        gender: action.user.gender,
+        profilePicId: action.user.profilePicId,
+        birthDayDateTime: action.user.birthDayDateTime,
+        name: action.user.name,
+        family: action.user.family
       };
+      case "BASKET_ID":return{
+        ...state,basketid:action.data
+      }
     case "CLOSE_POPUP":
       return {
         ...state,

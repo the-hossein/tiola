@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
 import callApi from "../../api/callApi";
-import { BASE_URL, GET_PROFILE, SIGN_UP } from "../../api/urls";
+import { BASE_URL, GET_BASKET, GET_PROFILE, SIGN_UP } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
+if (typeof window !== "undefined") {
+  var ls = localStorage.getItem("userToken");
+}
 const getphone = (num) => {
   return {
     type: "GETPHONE",
@@ -108,6 +111,12 @@ const registerPhone = (num, lang) => {
     sendPhone();
   };
 };
+const basketid = (data) => {
+  return {
+    type: "BASKET_ID",
+    data: data
+  };
+};
 const registerCode = (code, num, lang, router) => {
   return (dispatch) => {
     dispatch(loader());
@@ -134,6 +143,7 @@ const registerCode = (code, num, lang, router) => {
       var text;
       if (registerCode[1] === 200) {
         dispatch(checkOtpSuccess());
+        dispatch(loginTrue());
         if (lang === "fa") {
           if (registerCode[0].message === "با موفقیت لاگین شدید") {
             text = "با موفقیت وارد حساب کاربری خود شده اید";
@@ -164,7 +174,7 @@ const registerCode = (code, num, lang, router) => {
           });
         }
         dispatch(sendCodeFailed());
-        dispatch(closePopUp())
+        dispatch(closePopUp());
       } else {
         dispatch(checkOtpFailed());
         var errorText;
@@ -180,9 +190,15 @@ const registerCode = (code, num, lang, router) => {
     checkOtp();
   };
 };
+const userDataLoader = () => {
+  return {
+    type: "USER_DATA_LOADER"
+  };
+};
 const getProfile = () => {
   return (dispatch) => {
-    var ls = localStorage.getItem("userToken");
+    // dispatch(userDataLoader());
+    ls = localStorage.getItem("userToken");
     const userToken = JSON.parse(ls);
     var phone = userToken.phone;
     var token = userToken.token;
@@ -190,23 +206,43 @@ const getProfile = () => {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      phonenumber: `${phone}`
-    });
-
     const profile = async () => {
+      var raw = JSON.stringify({
+        phonenumber: `${phone}`
+      });
+
       const user = await callApi(
         BASE_URL + GET_PROFILE,
         raw,
         myHeaders,
         "POST"
       );
-      dispatch(userData(user[0].data));
+      if (user[0].code === 200 && user[0].data !== null) {
+        const basket = async () => {
+          const basketUser = await callApi(
+            `${BASE_URL + GET_BASKET}?UserId=${user[0].data.id}`,
+            "{}",
+            myHeaders,
+            "GET"
+          );
+          if (basketUser[0].code === 200) {
+            dispatch(userData(user[0].data));
+            dispatch(basketid(basketUser[0].data.id));
+            userToken["userid"] = user[0].data.id;
+            localStorage.setItem("userToken", JSON.stringify(userToken));
+          }
+        };
+        basket();
+      }
     };
     profile();
   };
 };
+
+const updateSetProfile = (newData) => {
+  return { type: "SET_NEW_DATA", payload: newData };
+};
+
 export {
   loginTrue,
   registerPhone,
@@ -222,5 +258,6 @@ export {
   userData,
   getProfile,
   closePopUp,
-  openPopUp
+  openPopUp,
+  updateSetProfile
 };
