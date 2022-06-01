@@ -2,6 +2,10 @@ import axios from "axios";
 import { BASE_URL, CREATE_COMMENT } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
 
+const preLoad = () => {
+  return { type: "load" }
+}
+
 const writeTrue = () => {
   return {
     type: "WRITECM_TRUE"
@@ -12,6 +16,10 @@ const writeFalse = () => {
     type: "WRITECM_FALSE"
   };
 };
+
+const setComment = (comments) => {
+  return {type: "SHOW_COMMENT", payload: comments }
+}
 
 const createComment = (userId, commentText, score, productId, userName) => {
 
@@ -42,5 +50,17 @@ const createComment = (userId, commentText, score, productId, userName) => {
     }
 }
 
+const getAllComment = () => {
+  return (dispatch) => {
+    axios.get(BASE_URL+"api/Comment/GetComments?ProductId=9")
+      .then(rseponse => {
+        dispatch(preLoad())
+        dispatch(setComment(rseponse.data.data))
+      })
+      .catch(err => console.log("error"))
+      
+  }
+}
 
-export { writeTrue, writeFalse, createComment };
+
+export { writeTrue, writeFalse, createComment, getAllComment };

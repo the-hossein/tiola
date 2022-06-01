@@ -5,6 +5,7 @@
 .ViewAll {
         text-align: right;
     font-size: var(--xs-font);
+    cursor: pointer;
 
 }
 .CollectionText{
@@ -14,5 +15,6 @@
 .ViewAllLeft{
     text-align: left;
     font-size: var(--xs-font);
+    cursor: pointer;
 
 }

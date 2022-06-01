@@ -21,11 +21,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteBasketUser } from "../../../redux/factor/factorAction";
 import { notify } from "../../../tools/toast/toast";
 import Link from "next/link";
-const List = ({ data, alldata, setBasketDatas }) => {
+const List = ({ data, alldata }) => {
   console.log(data);
   const dispatch = useDispatch();
   const [size, setSize] = useState([0]);
-  const [qty, setQty] = useState(data.qty);
+  const [info, setInfo] = useState({
+    qty: data.qty,
+    total: data.amount * data.qty
+  });
+
   const lang = useSelector((state) => state.stateLang.lng);
   const basket = useSelector((state) => state.stateFactor);
   const { t } = useTranslation();
@@ -54,7 +58,11 @@ const List = ({ data, alldata, setBasketDatas }) => {
         "POST"
       );
       if (statusAdd[0].code === 200) {
-        setQty(qty + 1);
+        setInfo({
+          ...info,
+          qty: info.qty + 1,
+          total: (info.qty + 1) * data.amount
+        });
       } else if (statusAdd[0].code === 206) {
         if (lang === "fa") {
           var text = "موجودی کافی نیست ";
@@ -77,7 +85,12 @@ const List = ({ data, alldata, setBasketDatas }) => {
         "POST"
       );
       if (statusDec[0].code === 200) {
-        setQty(qty - 1);
+        // setQty(qty - 1);
+        setInfo({
+          ...info,
+          qty: info.qty - 1,
+          total: info.total - data.amount
+        });
       }
     };
     decrease();
@@ -110,11 +123,11 @@ const List = ({ data, alldata, setBasketDatas }) => {
           <li>
             {lang === "fa" ? data.collection.title : data.collection.titleEn}
           </li>
-          <li className={style.price}>{data.totalPrice + t("t")}</li>
+          <li className={style.price}>{info.total + t("t")}</li>
         </ul>
         <ColorPick color={data.collection.colorCode} />
         <div className="d-flex flex-row">
-          {qty <= 1 ? (
+          {info.qty <= 1 ? (
             <DeleteIcon sx={{ fontSize: 24 }} onClick={deleteHandler} />
           ) : (
             <FontAwesomeIcon
@@ -123,7 +136,7 @@ const List = ({ data, alldata, setBasketDatas }) => {
               onClick={decreseHandler}
             />
           )}
-          <span className={style.count}>{qty}</span>
+          <span className={style.count}>{info.qty}</span>
           <AddOutlinedIcon
             sx={{ fontSize: 30, margin: 0 }}
             onClick={increaseHandler}

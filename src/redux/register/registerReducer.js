@@ -82,6 +82,7 @@ const registerReducer = (state = initializedState, action) => {
         // address: action.payload.address,
       };
     case "USER_DATA":
+      
       return {
         ...state,
         loginStatus: true,

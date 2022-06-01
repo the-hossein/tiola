@@ -3,19 +3,24 @@ import { t } from "i18next";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Style from "./Comments.module.css";
-const Comment = () => {
+const Comment = ({userName, score, commentText}) => {
   const { t } = useTranslation();
+  const num1 = Math.floor(Math.random() * 100);
+  const num2 = Math.floor(Math.random() * 100);
+  const num3 = Math.floor(Math.random() * 100);
+
+
   return (
     <>
       <div className={`d-flex flex-column justify-content-between ${Style.Commnet}`}>
         <div className="d-flex justify-content-between">
-          <span>Melina Rodiguza</span>
-          <span>7/10</span>
+          <span>{userName}</span>
+          <span>{score*2}/10</span>
         </div>
         <span className={Style.rating}>
-          <Rating name="product Rate" value={3} readOnly />
+          <Rating name="product Rate" value={score} readOnly />
         </span>
-        <p className={Style.userComment}>{t("testLorem")}</p>
+        <p className={Style.userComment}>{commentText ? commentText : t("testLorem")}</p>
         <div className={`d-flex justify-content-between  w-100 ${Style.Raiting}`}>
           <ul className="w-100" >
             <li>{t("factor") + " 1"}</li>
@@ -23,9 +28,9 @@ const Comment = () => {
             <li>{t("factor") + " 3"}</li>
           </ul>
           <ul className="w-100">
-            <li style={{ width: "40%" }} className={Style.rate}></li>
-            <li style={{ width: "90%" }} className={Style.rate}></li>
-            <li style={{ width: "60%" }} className={Style.rate}></li>
+            <li style={{width: `${num1}% `}} className={Style.rate}></li>
+            <li style={{ width: `${num2}% ` }} className={Style.rate}></li>
+            <li style={{ width: `${num3}% ` }} className={Style.rate}></li>
           </ul>
         </div>
       </div>

@@ -115,6 +115,7 @@ a {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  display: block !important;
 }
 
 .swiper-slide img {

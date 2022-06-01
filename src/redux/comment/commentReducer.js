@@ -1,5 +1,7 @@
 const initializedState = {
-  writeCm: false
+  writeCm: false,
+  allComment: [],
+  preLoad: true
 };
 const commentReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -11,11 +13,16 @@ const commentReducer = (state = initializedState, action) => {
       return {...state,
         writeCm: false
       };
-    case "ADD_COMMENT": 
+    case 'load': 
+      return{
+        ...state,
+        preLoad: true,
+      }
+    case "SHOW_COMMENT": 
       return {
         ...state,
-        writeCm: true,
-        
+        allComment: action.payload,
+        preLoad:false
       }
     default:
       return state;

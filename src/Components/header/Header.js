@@ -24,6 +24,7 @@ import {
 } from "../../redux/register/registerAction";
 
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
+import { getBasketDetails } from "../../redux/factor/factorAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -111,6 +112,7 @@ const Header = ({ backColor }) => {
       const phone = userToken.phone;
 
       dispatch(getProfile());
+      dispatch(getBasketDetails(state.basketid))
       console.log(state);
 
       const now = new Date();

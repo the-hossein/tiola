@@ -22,6 +22,7 @@ import callApi from "../../api/callApi";
 import { ADD_BASKET, BASE_URL } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
 import { addQtyAmont } from "../../redux/factor/factorAction";
+import Placement from "../../tools/placement/Placement";
 const ProductContent = ({ product }) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -29,21 +30,42 @@ const ProductContent = ({ product }) => {
   const [open, setOpen] = useState(false);
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
+
   const images = [];
 
-  if (product.data.imageFile1 && product.data.imageFile1.confirmed) {
+  if (
+    product.data !== null &&
+    product.data.imageFile1 &&
+    product.data.imageFile1.confirmed
+  ) {
     images.push({ src: product.data.imageFile1.filePath, id: product.data.id });
   }
-  if (product.data.imageFile2 && product.data.imageFile2.confirmed) {
+  if (
+    product.data !== null &&
+    product.data.imageFile2 &&
+    product.data.imageFile2.confirmed
+  ) {
     images.push({ src: product.data.imageFile2.filePath, id: product.data.id });
   }
-  if (product.data.imageFile3 && product.data.imageFile3.confirmed) {
+  if (
+    product.data !== null &&
+    product.data.imageFile3 &&
+    product.data.imageFile3.confirmed
+  ) {
     images.push({ src: product.data.imageFile3.filePath, id: product.data.id });
   }
-  if (product.data.imageFile4 && product.data.imageFile4.confirmed) {
+  if (
+    product.data !== null &&
+    product.data.imageFile4 &&
+    product.data.imageFile4.confirmed
+  ) {
     images.push({ src: product.data.imageFile4.filePath, id: product.data.id });
   }
-  if (product.data.imageFile5 && product.data.imageFile5.confirmed) {
+  if (
+    product.data !== null &&
+    product.data.imageFile5 &&
+    product.data.imageFile5.confirmed
+  ) {
     images.push({ src: product.data.imageFile5.filePath, id: product.data.id });
   }
   if (typeof window !== "undefined") {
@@ -79,7 +101,7 @@ const ProductContent = ({ product }) => {
           "POST"
         );
         if (added[0].code === 200) {
-          dispatch(addQtyAmont())
+          dispatch(addQtyAmont());
           if (lang === "fa") {
             var text = " محصول با موفقیت به سبد خرید شما اضافه شد";
           } else {
@@ -109,72 +131,75 @@ const ProductContent = ({ product }) => {
 
   const addWatchHandler = () => {};
   return (
-    <>
-      <div className="row  m-0">
-        <div className={`col-lg-5 col-12  ${style.productSlider}`}>
-          <ProductSlider
-            radius={0}
-            mbItem={1.4}
-            tbItem={2}
-            slidesShow={1.4}
-            images={images}
-            arrowStatus={false}
-            margin={20}
-            heightImage={"82vh"}
-          />
-        </div>
-        <div className={`col-lg-7 col-12 ${style.information} mt-5 `}>
-          <div>
-            <h1>{lang === "fa" ? product.data.title : product.data.titleEn}</h1>
-            <div
-              className={`w-100 d-flex justify-content-between ${style.info}`}
-            >
-              <div>
-                <span className={style.price}>
-                  {product.data.price + t("t")}
-                </span>
-
-                <p className={style.content}>
-                  <ReactReadMoreReadLess
-                    charLimit={300}
-                    readMoreText={t("Readmore")}
-                    readLessText={t("Readless")}
-                    readMoreClassName={style.readmore}
-                    readLessClassName={style.readLess}
-                  >
-                    {product.data.description}
-                  </ReactReadMoreReadLess>
-                </p>
+    product.data !== null ? (
+      <>
+        <div className="row  m-0">
+          <div className={`col-lg-5 col-12  ${style.productSlider}`}>
+            <ProductSlider
+              radius={0}
+              mbItem={1.4}
+              tbItem={2}
+              slidesShow={1.4}
+              images={images}
+              arrowStatus={false}
+              margin={20}
+              heightImage={"82vh"}
+            />
+          </div>
+          <div className={`col-lg-7 col-12 ${style.information} mt-5 `}>
+            <div>
+              <h1>
+                {lang === "fa" ? product.data.title : product.data.titleEn}
+              </h1>
+              <div
+                className={`w-100 d-flex justify-content-between ${style.info}`}
+              >
                 <div>
-                  <span className="d-block mb-2">{t("Compatiblewith")}</span>
-                  {product.data.compatibleColors.split(",").map((color) => (
-                    <>
-                      <ColorPick color={color} />
-                    </>
-                  ))}
+                  <span className={style.price}>
+                    {product.data.price + t("t")}
+                  </span>
+
+                  <p className={style.content}>
+                    <ReactReadMoreReadLess
+                      charLimit={300}
+                      readMoreText={t("Readmore")}
+                      readLessText={t("Readless")}
+                      readMoreClassName={style.readmore}
+                      readLessClassName={style.readLess}
+                    >
+                      {product.data.description}
+                    </ReactReadMoreReadLess>
+                  </p>
+                  <div>
+                    <span className="d-block mb-2">{t("Compatiblewith")}</span>
+                    {product.data.compatibleColors.split(",").map((color) => (
+                      <>
+                        <ColorPick color={color} />
+                      </>
+                    ))}
+                  </div>
+                </div>
+                <div className={style.buttons}>
+                  <NormalBtn
+                    color="red"
+                    text={t("pay")}
+                    onClick={(e) => payHandler()}
+                  />
+                  <NormalBtn
+                    color="white"
+                    text={t("addWatch")}
+                    onClick={(e) => addWatchHandler()}
+                  />
                 </div>
               </div>
-              <div className={style.buttons}>
-                <NormalBtn
-                  color="red"
-                  text={t("pay")}
-                  onClick={(e) => payHandler()}
-                />
-                <NormalBtn
-                  color="white"
-                  text={t("addWatch")}
-                  onClick={(e) => addWatchHandler()}
-                />
-              </div>
+            </div>
+            <div>
+              <AllComment product={product[0]} className="col" />
             </div>
           </div>
-          <div>
-            <AllComment product={product[0]} className="col" />
-          </div>
         </div>
-      </div>
-      <PopUp open={open} setOpen={setOpen} />
-    </>
+      </>
+    ):<Placement text="محصول موجود نمی باشد"/>
   );
 };
 
