@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./Comments.module.css";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
@@ -8,25 +8,49 @@ import RateSlider from "../../../tools/rateSlider/RateSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { writeFalse } from "../../../redux/comment/commentActions";
 import { resetRate } from "../../../redux/rate/rateActions";
+import { useRouter } from "next/dist/client/router";
+
+//add comment 
+import { createComment } from "../../../redux/comment/commentActions";
 
 const WriteComment = () => {
+
+  const router = useRouter();
   const state = useSelector((state) => state.stateRate);
+  const user = useSelector(state => state.stateRegister);
+
+  const [commentText, setCommentText] = useState("");
+  const changeComment = event => {
+    setCommentText(event.target.value);
+  }
+   
+  const [total, setTotal] = useState((state.factor1 + state.factor2 + state.factor3) / 6);
+
   const dispatch = useDispatch();
   const doneHandler = () => {
+    dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
     dispatch(writeFalse());
     dispatch(resetRate());
   };
+
+
+  useEffect(()=> {
+    setTotal((state.factor1 + state.factor2 + state.factor3) / 6);
+    console.log(total)
+  }, [state])
   return (
     <div
       className={`d-flex flex-column justify-content-between ${Style.writeCm}`}
     >
-      <span>Melina Rodrigoz</span>
+      <span>{user.userNameAvatar}</span>
       <div className={`form-floating ${Style.commentText}`}>
         <textarea
           type="text"
           className="form-control"
           id="floatingInputGrid"
           placeholder={t("writeYourCm")}
+          value={commentText}
+          onChange={changeComment}
         />
         <label to="floatingInputGrid">{t("writeYourCm")}</label>
       </div>
@@ -40,7 +64,7 @@ const WriteComment = () => {
                   <li>{t("factor") + " 3"}</li>
                 </ul>
               
-                  <Box width="60%" paddingX={1} className={Style.myBox} >
+                  <Box width="30%" paddingX={1} className={Style.myBox} >
                     <ul>
                       <li>
                         <RateSlider name="factor1"/>
@@ -60,14 +84,16 @@ const WriteComment = () => {
                   </Box>
             <Box paddingX={2} className={Style.myBox}>
                   <div className="d-flex flex-column align-items-center">
-                    <span className={Style.total}>{t("total")}</span>
-                    <span className={Style.rating}>
-                      <Rating
-                        name="product Rate"
-                        value={(state.factor1 + state.factor2 + state.factor3) / 6}
-                        readOnly
-                        />
-                      </span>
+                    <div className="d-flex align-items-center">
+                      <span className={Style.total}>{t("total")}</span>
+                      <span className={Style.rating}>
+                        <Rating
+                          name="product Rate"
+                          value={(state.factor1 + state.factor2 + state.factor3) / 6}
+                          readOnly
+                          />
+                        </span>
+                    </div>
                       <button className={Style.doneBtn} onClick={doneHandler}>
                         {t("done")}
                       </button>

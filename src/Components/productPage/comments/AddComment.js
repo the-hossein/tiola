@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { writeTrue } from "../../../redux/comment/commentActions";
 import style from "./Comments.module.css";
 import WriteComment from "./WriteComment";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 const AddComment = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateComment);
@@ -21,7 +22,7 @@ const AddComment = () => {
       <div className="text-center">
         <p>Add Comment</p>
         <div className={style.add}>
-          <FontAwesomeIcon icon={faAdd} />
+          <AddCircleOutlineIcon fontSize="large" />
         </div>
       </div>
     </div>

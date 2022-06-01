@@ -18,17 +18,15 @@ const EditProfile = () => {
 
     const userData = useSelector(state => state.stateRegister);
 
-    console.log(userData.name)
-    console.log(userData.family)
 
     const [userToken, setToken] = useState();
 
-    const [userFName , setUserFName] = useState(userData.name);
+    const [userFName , setUserFName] = useState();
     const subFName = (e) => {
         setUserFName(e.target.value)
     }
 
-    const [userLName , setUserLName] = useState(userData.family);
+    const [userLName , setUserLName] = useState();
     const subLName = (e) => {
         setUserLName(e.target.value)
     }
@@ -38,20 +36,19 @@ const EditProfile = () => {
         setAddress(e.target.value);
     }
 
-    const birthdayUser = userData.birthDayDateTime;
+    const birthdayUser = userData.birthDayDateTime.split('T');
     const [userBirthday , setBirthday] = useState(birthdayUser);
     const subBirthday = (e) => {
         setBirthday(e.target.value)
     }
 
-    const [gender , setGender] = useState(userData.gender);
+    const [gender , setGender] = useState();
     const subGender = (e) => {
         setGender(e.target.value)
     }
 
     const subHandler = (e) => {
         e.preventDefault();
-        // console.log(imageId);
         RequestProfile(
             userToken,userData.userid,userFName,userLName,userBirthday,gender,imageId,image,dispatch,address
             ,router
@@ -69,7 +66,6 @@ const EditProfile = () => {
       var Image = await ChangeImage(e);
       if (Image !== null) {
         setImage(Image.data.filePath);
-        console.log(Image.data);
         setImageid(Image.data.id);
       } else {
           console.log("error")
@@ -87,7 +83,11 @@ const EditProfile = () => {
         if (tokenLocal) {
          setToken(tokenLocal.token);
         }
-    },[])
+        setUserFName(userData.name);
+        setUserLName(userData.family);
+        setBirthday(birthdayUser[0]);
+        setGender(userData.gender)
+    },[userData])
 
     return (
         <div className={`container ${style.main}`}>
@@ -173,7 +173,7 @@ const EditProfile = () => {
                                     <select value={gender} id="cars" onChange={subGender}>
                                         <option value="0">Female</option>
                                         <option value="1">Male</option>
-                                        <option value="2">bobo</option>
+                                        <option value="2">not to say</option>
                                     </select>
                             </div>
                         </div>
