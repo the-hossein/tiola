@@ -20,6 +20,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteBasketUser } from "../../../redux/factor/factorAction";
 import { notify } from "../../../tools/toast/toast";
+import Link from "next/link";
 const List = ({ data, alldata, setBasketDatas }) => {
   console.log(data);
   const dispatch = useDispatch();
@@ -105,10 +106,11 @@ const List = ({ data, alldata, setBasketDatas }) => {
       <>
         <ul>
           <li>{lang === "fa" ? data.title : data.titleEn}</li>
-          {t("code") + data.productId}
+
           <li>
             {lang === "fa" ? data.collection.title : data.collection.titleEn}
           </li>
+          <li className={style.price}>{data.totalPrice + t("t")}</li>
         </ul>
         <ColorPick color={data.collection.colorCode} />
         <div className="d-flex flex-row">
@@ -127,7 +129,9 @@ const List = ({ data, alldata, setBasketDatas }) => {
             onClick={increaseHandler}
           />
         </div>
-        <img src={data.filePath} />
+        <Link href={`/product/${data.productId}`}>
+          <img src={data.filePath} />
+        </Link>
         <div>
           <CloseOutlinedIcon
             sx={{ fontSize: 24 }}

@@ -9,6 +9,9 @@
     border: 1px solid var(--lightGray-border);
 
 }
+.price{
+    color: var(--greenLight-pen);
+}
 .factorBtn{
     display: block;
     margin: auto;
