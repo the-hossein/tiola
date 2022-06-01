@@ -15,11 +15,11 @@ console.log(collection)
   const dispatch = useDispatch();
   useEffect(() => {
     var sliced = [];
-    for (var i = 0; i < collection.data.length; i += 5) {
-      sliced.push(collection.data.slice(i, i + 5));
+    for (var i = 0; i < collection[0].data.length; i += 5) {
+      sliced.push(collection[0].data.slice(i, i + 5));
       dispatch(getcollectionproduct(sliced));
     }
-  }, [collection]);
+  }, [collection[0]]);
   return (
     <div>
       <Head>
@@ -30,7 +30,7 @@ console.log(collection)
       <header>
         <Header backColor={"headerColor"} />
       </header>
-      <main>{state.loading ? <Loader /> : <CollectionDetails data={collection.data}/>}</main>
+      <main>{state.loading ? <Loader /> : <CollectionDetails data={collection[0].data}/>}</main>
       <footer>
         <Footer />
       </footer>

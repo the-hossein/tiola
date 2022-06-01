@@ -6,7 +6,7 @@ import Header from "../src/Components/header/Header";
 import TiolaCollections from "../src/Components/pageCollentions/MyCollection/TiolaCollections";
 
 export default function collections({ allCollection }) {
-  console.log(allCollection);
+  console.log(allCollection[0].data);
   return (
     <div>
       <Head>
@@ -18,7 +18,7 @@ export default function collections({ allCollection }) {
         <Header backColor={"headerColor"} />
       </header>
       <main>
-        <TiolaCollections data={allCollection.data} />
+        <TiolaCollections data={allCollection[0].data} />
       </main>
       <footer>
         <Footer />

@@ -98,11 +98,7 @@
     /* border: 1px solid var(--dark-pen); */
     display: inline-block;
 }
-.add svg {
-    width: 50px !important;
-    height: 50px !important;
-    /* font-size: var(--xl-font) !important; */
-}
+
 
 .commentInput {
     background-color: var(--body-color);
@@ -115,7 +111,7 @@
     margin: 0 auto;
     background-color: var(--light-pen);
     border-radius: var(--Product-Border-radius);
-    padding: 0 0.7rem;
+    padding: 1.4rem 0.7rem;
     width: 350px !important;
     height: 95% !important;
 }
