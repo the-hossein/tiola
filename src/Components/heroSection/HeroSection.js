@@ -11,7 +11,7 @@ const HeroSection = () => {
   return (
     <section>
       <div className={style.heroSection}>
-        <img src="/Assets/images/5.jpeg" alt="image" />
+        <img src="/Assets/images/2.jpg" alt="image" />
 
         <div
           className={`${style.descoverMore} ${

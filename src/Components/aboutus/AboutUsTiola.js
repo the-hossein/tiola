@@ -102,9 +102,7 @@ const AboutUsTiola = () => {
             </p>
           )}
         </div>
-        <div className={style.pic}>
-          
-        </div>
+        <div className={style.pic}></div>
       </div>
     </div>
   );

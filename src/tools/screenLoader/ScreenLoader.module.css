@@ -1,0 +1,10 @@
+.screenLoader{
+    text-align: center;
+    z-index: 141;
+    background-color: #2d2d2d6f;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}

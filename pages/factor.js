@@ -1,8 +1,18 @@
 import Head from "next/head";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import UserFactor from "../src/Components/factor/UserFactor";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
+import Loader from "../src/tools/loader/Loader";
+import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 export default function SigninUser() {
+  if (typeof window !== "undefined") {
+    var root = document.documentElement;
+    var ls = localStorage.getItem("userToken");
+  }
+  const state = useSelector((state) => state.stateRegister);
+
   return (
     <div>
       <Head>
@@ -13,10 +23,13 @@ export default function SigninUser() {
       <header>
         <Header backColor={"headerColor"} />
       </header>
-
-      <main>
-        <UserFactor />
-      </main>
+      {state.userDataLoader ? (
+        <ScreenLoader />
+      ) : (
+        <main>
+          <UserFactor />
+        </main>
+      )}
       <footer>
         <Footer />
       </footer>
