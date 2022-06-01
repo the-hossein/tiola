@@ -165,7 +165,15 @@
 
 @media (max-width: 600px) {
     .addComment {
+        /* width: 95% !important; */
         height: 200px !important;
         margin-bottom: 10px;
+        margin-bottom: 25px;
+    }
+    .writeCm {
+        width: 95% !important;
+        height: 200px !important;
+        margin-bottom: 25px;
+
     }
 }

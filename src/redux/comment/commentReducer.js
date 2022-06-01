@@ -11,6 +11,12 @@ const commentReducer = (state = initializedState, action) => {
       return {...state,
         writeCm: false
       };
+    case "ADD_COMMENT": 
+      return {
+        ...state,
+        writeCm: true,
+        
+      }
     default:
       return state;
   }

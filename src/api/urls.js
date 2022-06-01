@@ -9,3 +9,4 @@ export const UPLOAD_FILE_REQUEST = "api/v1/Files/Upload";
 export const SIGN_UP = "api/v1/User/Signup";
 export const GET_PROFILE = "api/v1/User/GetProfile";
 export const GET_BASKET = "api/v1/Basket/GetBasket";
+export const CREATE_COMMENT = "api/Comment/CreateComment"

@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./Comments.module.css";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
@@ -8,25 +8,54 @@ import RateSlider from "../../../tools/rateSlider/RateSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { writeFalse } from "../../../redux/comment/commentActions";
 import { resetRate } from "../../../redux/rate/rateActions";
+import { useRouter } from "next/dist/client/router";
+
+//add comment 
+import { createComment } from "../../../redux/comment/commentActions";
 
 const WriteComment = () => {
+
+  const router = useRouter();
   const state = useSelector((state) => state.stateRate);
+  const user = useSelector(state => state.stateRegister);
+
+  const [commentText, setCommentText] = useState("");
+  const changeComment = event => {
+    setCommentText(event.target.value);
+  }
+   
+  const [total, setTotal] = useState((state.factor1 + state.factor2 + state.factor3) / 6);
+
   const dispatch = useDispatch();
   const doneHandler = () => {
-    dispatch(writeFalse());
-    dispatch(resetRate());
+    dispatch(createComment(user.userid, commentText, total, router.query.productname));
+    // dispatch(writeFalse());
+    // dispatch(resetRate());
   };
+
+  const test = () => {
+    console.log(state);
+    console.log(typeof +router.query.productname)
+  }
+  
+  useEffect(()=> {
+    setTotal((state.factor1 + state.factor2 + state.factor3) / 6);
+    console.log(total)
+  }, [state])
   return (
     <div
       className={`d-flex flex-column justify-content-between ${Style.writeCm}`}
     >
-      <span>Melina Rodrigoz</span>
+      <button onClick={test} >click</button>
+      <span>{user.userNameAvatar}</span>
       <div className={`form-floating ${Style.commentText}`}>
         <textarea
           type="text"
           className="form-control"
           id="floatingInputGrid"
           placeholder={t("writeYourCm")}
+          value={commentText}
+          onChange={changeComment}
         />
         <label to="floatingInputGrid">{t("writeYourCm")}</label>
       </div>
