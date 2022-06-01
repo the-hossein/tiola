@@ -28,16 +28,12 @@ const WriteComment = () => {
 
   const dispatch = useDispatch();
   const doneHandler = () => {
-    dispatch(createComment(user.userid, commentText, total, router.query.productname));
-    // dispatch(writeFalse());
-    // dispatch(resetRate());
+    dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
+    dispatch(writeFalse());
+    dispatch(resetRate());
   };
 
-  const test = () => {
-    console.log(state);
-    console.log(typeof +router.query.productname)
-  }
-  
+
   useEffect(()=> {
     setTotal((state.factor1 + state.factor2 + state.factor3) / 6);
     console.log(total)
@@ -46,7 +42,6 @@ const WriteComment = () => {
     <div
       className={`d-flex flex-column justify-content-between ${Style.writeCm}`}
     >
-      <button onClick={test} >click</button>
       <span>{user.userNameAvatar}</span>
       <div className={`form-floating ${Style.commentText}`}>
         <textarea
