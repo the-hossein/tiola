@@ -16,3 +16,4 @@ export const DECREASE_QTY = "api/v1/Basket/Decress";
 export const ADD_BASKET = "api/v1/Basket/AddBasketDetail";
 export const DELETE_BASKET = "api/v1/Basket/DeleteBasketDetail";
 export const GET_USER_ADDRESS = "api/v1/User/GetUserAddress";
+export const CREATE_COMMENT = "api/Comment/CreateComment"
