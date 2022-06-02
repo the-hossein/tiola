@@ -11,7 +11,11 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import style from "./UserProfile.module.css";
 
+
+
 const Stepper = ({ active }) => {
+  // const userId = useSelector(state => state.stateRegister.userid);
+  // const dispatch = useDispatch();
   const { t } = useTranslation();
   useEffect(() => {
     for (let i = active; i > 0; i--) {
@@ -19,6 +23,9 @@ const Stepper = ({ active }) => {
       actived.classList.add(style.active);
       actived.previousElementSibling.classList.add(style.active);
     }
+    
+    
+    
   }, []);
   return (
     <div className={style.stepper}>

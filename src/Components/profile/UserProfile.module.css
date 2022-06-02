@@ -195,3 +195,16 @@
         width: 72px;
     }
 } */
+
+.messageExist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 65px;
+}
+.messageExist p {
+    text-align: center;
+    color: var(--darkGray-border);
+    font-size: var(--md-font);
+}
