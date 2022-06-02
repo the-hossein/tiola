@@ -12,7 +12,7 @@ const RequestProfile = (token, userID, name, family, birthday, gender, picId, ro
         "userId": userID,
         "name": name,
         "family": family,
-        "profilepic": picId,
+        "profilepicid": picId,
         "birthdaydatetime": birthday,
         "gender": +gender,
   });

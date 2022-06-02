@@ -70,6 +70,7 @@ const EditProfile = () => {
     setpreload(true);
     var Image = await ChangeImage(e);
     if (Image !== null) {
+      console.log(Image);
       setImage(Image.data.filePath);
       setImageid(Image.data.id);
     } else {
@@ -104,11 +105,10 @@ const EditProfile = () => {
               <div className="col-12">
                 <img
                   src={
-                    preload
-                      ? "/Assets/images/loader.gif"
-                      : image === ""
-                      ? "/Assets/images/userdefault.png"
-                      : image
+                    userData.profileUser.filePath === null ? 
+                    "/Assets/images/userdefault.png"  :  preload ? "/Assets/images/loader.gif" :
+                    image === "" ? userData.profileUser.filePath : image
+                    
                   }
                   alt="user profile"
                 />
