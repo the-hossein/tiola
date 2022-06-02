@@ -1,5 +1,5 @@
-.row >img,
-.Mbrow >img {
+.row>img,
+.Mbrow>img {
     width: 86px;
     height: 118px;
     border-radius: 8px;
@@ -7,20 +7,44 @@
     object-fit: cover;
     padding: 0;
     border: 1px solid var(--lightGray-border);
+    cursor: pointer;
 
 }
-.price{
+
+.payBtn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 2.5rem 0;
+}
+
+.payBtn button {
+    margin: 0 1rem;
+}
+
+.payBtn>div {
+    background: var(--light-pen);
+    padding: 1rem;
+    border-radius: var(--Product-Border-radius);
+    min-width: 216px;
     color: var(--greenLight-pen);
 }
-.factorBtn{
+
+.price {
+    color: var(--greenLight-pen);
+}
+
+.factorBtn {
     display: block;
     margin: auto;
     text-align: center;
     flex-wrap: nowrap;
 }
-.factorBtn button{
+
+.factorBtn button {
     margin: 2rem 1rem;
 }
+
 .count {
     padding: 0 1rem;
 }
@@ -115,11 +139,12 @@
         margin: 1rem;
     }
 
-.Mbrow img {
-    width: 120px;
-    height: 160px;
+    .Mbrow img {
+        width: 120px;
+        height: 160px;
+    }
 }
-}
+
 @media(max-width:390px) {
     .Mbrow {
         font-size: 10pt;

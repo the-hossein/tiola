@@ -1,0 +1,11 @@
+.landingCategory{
+ width: 90%;
+ display: block;
+ margin:0 auto;
+ padding: 0;
+}
+@media(max-width:992px){
+    .landingCategory{
+        width: 97%;
+    }
+}

@@ -33,16 +33,21 @@ const UserFactor = () => {
   return (
     <section className={style.ContainerSection}>
       <div className="container mt-4">
-        <FactorSection title={t("addres")} component={<UserAddres />} />
         {basket.loading ? (
           <Loader />
         ) : (
-          <FactorSection
-            title={t("paylist")}
-            component={
-              <BuyLists data={basket.details} setBasketDatas={setBasketDatas} />
-            }
-          />
+          <>
+            <FactorSection title={t("addres")} component={<UserAddres />} />
+            <FactorSection
+              title={t("paylist")}
+              component={
+                <BuyLists
+                  data={basket.details}
+                  setBasketDatas={setBasketDatas}
+                />
+              }
+            />
+          </>
         )}
       </div>
     </section>

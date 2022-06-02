@@ -21,7 +21,7 @@ const MediumCollection = ({image1,image2,image3,content,title,color}) => {
         <div
           className={`col-xl-4 col-lg-5 col-md-4 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}
         >
-               <CollectionText title={title} color={"#82C2B9"} content={content} reverse={true}/>
+               <CollectionText title={title}  content={content} reverse={true}/>
 
         
         </div>

@@ -81,7 +81,8 @@
  "TextCodePopUp":" Enter Code Please",
  "enterCodePlaceHolder":"Enter Code Here",
   "enterPhonePlaceHolder":"Enter phone number here",
-  "placementfactorList":"You do not have products in your shopping cart"
+  "placementfactorList":"You do not have products in your shopping cart",
+  "submit":"submit"
 
 
 }

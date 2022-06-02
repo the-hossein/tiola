@@ -20,10 +20,12 @@ import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import {
   getProfile,
   loginFalse,
-  loginTrue
+  loginTrue,
+  openPopUp
 } from "../../redux/register/registerAction";
 
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
+import { getBasketDetails } from "../../redux/factor/factorAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -111,6 +113,7 @@ const Header = ({ backColor }) => {
       const phone = userToken.phone;
 
       dispatch(getProfile());
+      dispatch(getBasketDetails(state.basketid))
       console.log(state);
 
       const now = new Date();
@@ -152,7 +155,15 @@ const Header = ({ backColor }) => {
   const targetSearch = allProducts.filter((item) =>
     item.title.includes(textSearch)
   );
-
+const goFactorHandler=()=>{
+  if(!state.loginStatus){
+    dispatch(openPopUp())
+  }else{
+    router.push({
+      pathname:'/factor'
+    })
+  }
+}
   return !prelaod ? (
     <>
       <div className={`${style.header} ${backColor}`}>
@@ -209,14 +220,13 @@ const Header = ({ backColor }) => {
             </div>
 
             <div className={style.headerIcon}>
-              <Link href="/factor">
-                <div className={style.basket}>
+                <div className={style.basket} onClick={goFactorHandler}>
                   <ShoppingCartIcon />
                {basket.basketLength===0?"":
                     <div>{basket.basketLength}</div>
                }
                 </div>
-              </Link>
+ 
 
               <span>
                 {lang.lng === "en" ? (
