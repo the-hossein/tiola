@@ -4,15 +4,22 @@ import PrimaryButton from "../../tools/primaryButton/PrimaryButton";
 import SecondlyButton from "../../tools/secondlyButton/SecondlyButton";
 import RowProduct from "./RowProduct";
 import style from "./UserProfile.module.css";
+import { useRouter } from "next/dist/client/router";
 
 //get state watch list
 import { useDispatch, useSelector } from "react-redux";
 import { checkSavedItem } from "../../redux/saveItem/saveItemAction";
 
 const UserAction = () => {
+  const router = useRouter()
   const user = useSelector(state => state.stateRegister);
   const watchList = useSelector(state=> state.stateWatchList);
   const dispatch = useDispatch();
+
+  const navigate = (productId) => {
+    router.push({pathname:`/product/${productId}`})
+  }
+
   useEffect(()=> {
     if(user){
       const userId = user.userid;
@@ -29,7 +36,15 @@ const UserAction = () => {
           watchList.preload ? 
             <p>Loading....</p> 
             : watchList.list.map( item => {
-              return <RowProduct key={item.id} statusText="pending" close={true} removeId={item.id} data= {item.product} userId={user.userid}/>
+              return <RowProduct 
+                        key={item.id} 
+                        statusText="pending" 
+                        close={true} 
+                        removeId={item.id} 
+                        data= {item.product} 
+                        userId={user.userid}
+                        onclick={navigate}
+                      />
             })
         }
         

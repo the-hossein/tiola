@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { removeItem } from "../../redux/saveItem/saveItemAction";
 
-const RowProduct = ({ close, statusText, data, userId, removeId }) => {
+const RowProduct = ({ close, statusText, data, userId, removeId, onclick }) => {
   const dateC =data ?  data.createdDatetime.split("T") : '';
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -29,7 +29,7 @@ const RowProduct = ({ close, statusText, data, userId, removeId }) => {
         )}
           <div className={` d-flex `}>
             {/* {t("scarf")}  t("mirdamad") */}
-            <span> {data ? data.title : "nonono"}</span>
+            <span onClick={()=> onclick(data.id)} > {data ? data.title : "nonono"}</span>
             <span>{data ? dateC[0] : "kd"}</span>
             <span>{data ? data.collection.title : "mirdamad"}</span>
           </div>
