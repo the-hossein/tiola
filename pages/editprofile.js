@@ -1,10 +1,14 @@
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import Header from "../src/Components/header/Header";
 import Register from "../src/Components/register/Register";
 import EditProfile from "../src/tools/editProfile/EditProfile";
+import Loader from "../src/tools/loader/Loader";
 export default function SigninUser() {
   const { t } = useTranslation();
+  const state = useSelector((state) => state.stateRegister);
+
   return (
     <div>
       <Head>
@@ -15,10 +19,12 @@ export default function SigninUser() {
       <header>
         <Header backColor={"headerColor"} />
       </header>
-
+  {state.userDataLoader ? (
+        <Loader/>
+      ) : (
       <main>
         <EditProfile />
-      </main>
+      </main>)}
     </div>
   );
 }

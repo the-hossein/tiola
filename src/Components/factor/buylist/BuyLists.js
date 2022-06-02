@@ -4,10 +4,13 @@ import NormalBtn from "../../../tools/normalBtn/NormalBtn";
 import Placement from "../../../tools/placement/Placement";
 import List from "./List";
 import style from "./BuyList.module.css";
+import { useSelector } from "react-redux";
+import Loader from "../../../tools/loader/Loader";
 const payHandler = () => {};
 
 const BuyLists = ({ data, setBasketDatas }) => {
   const { t } = useTranslation();
+  const state = useSelector((state) => state.stateFactor);
   return (
     <div>
       {data.map((item) => (

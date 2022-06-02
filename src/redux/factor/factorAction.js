@@ -45,12 +45,27 @@ const loaderFactorTrue = () => {
     type: "LOADER_FACTOR"
   };
 };
-const setAlladdress=(data)=>{
-  return{
-    type:"SET_ALL_ADDRESS",
-    payload:data
-  }
-}
+const setAlladdress = (data) => {
+  return {
+    type: "SET_ALL_ADDRESS",
+    payload: data
+  };
+};
+const loadingAddress = () => {
+  return {
+    type: "lOADING_ADDRESS"
+  };
+};
+const loadingProductList = () => {
+  return {
+    type: "lOADING_LIST"
+  };
+};
+const falseLoadingProductlist = () => {
+  return {
+    type: "lOADING_LIST_FALSE"
+  };
+};
 const getBasketDetails = (basketid) => {
   const userToken = JSON.parse(ls);
   const token = userToken.token;
@@ -76,7 +91,7 @@ const getBasketDetails = (basketid) => {
 
 const deleteBasketUser = (alldata, data) => {
   return (dispatch) => {
-    dispatch(loaderFactorTrue());
+    dispatch(loadingProductList());
     const userToken = JSON.parse(ls);
     const token = userToken.token;
     var myHeaders = new Headers();
@@ -96,22 +111,28 @@ const deleteBasketUser = (alldata, data) => {
     deletProduct();
   };
 };
-const getuserAddress=(userid)=>{
+const getuserAddress = (userid) => {
   const userToken = JSON.parse(ls);
   const token = userToken.token;
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
-  return(dispatch)=>{
-    dispatch(loaderFactorTrue())
-    const allAddress=async()=>{
-      const address=await callApi(`${BASE_URL+GET_USER_ADDRESS}?UserId=${userid}`,"{}",myHeaders,"POST")
-      if(address[0].code===200){
-        dispatch(setAlladdress(address[0].data))
+  return (dispatch) => {
+    // dispatch(loaderFactorTrue());
+    dispatch(loadingAddress());
+    const allAddress = async () => {
+      const address = await callApi(
+        `${BASE_URL + GET_USER_ADDRESS}?UserId=${userid}`,
+        "{}",
+        myHeaders,
+        "POST"
+      );
+      if (address[0].code === 200) {
+        dispatch(setAlladdress(address[0].data));
       }
-    }
-    allAddress()
-  }
-}
+    };
+    allAddress();
+  };
+};
 // const getBasketUser = (token, userid) => {
 //   return (dispatch) => {
 //     var myHeaders = new Headers();
@@ -138,5 +159,8 @@ export {
   addQtyAmont,
   getBasketDetails,
   deleteBasketUser,
-  getuserAddress
+  getuserAddress,
+  loadingAddress,
+  loadingProductList,
+  falseLoadingProductlist
 };
