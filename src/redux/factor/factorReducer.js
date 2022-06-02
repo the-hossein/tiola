@@ -35,9 +35,30 @@ const factorReducer = (state = initializedState, action) => {
         details: action.data,
         basketLength: action.data.length,
         loading: false,
-        loadingList:false
+        loadingList: false
       };
-
+    case "Incress_Details":
+      const update = state.details.map((p) =>
+        p.id === action.payload ? { ...p, p: p.qty++ } : p
+      );
+      
+      return {
+        ...state,
+        details: update,
+        loading: false,
+        loadingList: false
+      };
+      case "Decress_Details":
+        const updateD = state.details.map((p) =>
+          p.id === action.payload ? { ...p, p: p.qty-- } : p
+        );
+        
+        return {
+          ...state,
+          details: updateD,
+          loading: false,
+          loadingList: false
+        };
     case "DELETE_BASKET":
       return {
         ...state,
@@ -63,12 +84,12 @@ const factorReducer = (state = initializedState, action) => {
         ...state,
         loadingList: true
       };
-        case "lOADING_LIST_FALSE":
+    case "lOADING_LIST_FALSE":
       return {
         ...state,
         loadingList: false
       };
-      
+
     default:
       return state;
   }

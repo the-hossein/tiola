@@ -32,27 +32,26 @@ const UserAddres = () => {
         <img src="/Assets/images/map.png" />
       </div>
       <div className="col-lg-6 col-md-6 col-12">
-        {state.loadingAddress ? (
-          <Loader />
-        ) : (
+      {
+        state.loadingAddress?<Loader/>:
+     <>
+        {state.allAddress.map((item) => (
           <>
-            {state.allAddress.map((item) => (
-              <>
-                <AddresInput
-                  data={item}
-                  id={item.id}
-                  checkicon={<CheckBoxIcon sx={{ fontSize: 30 }} />}
-                  icon={
-                    <CheckBoxOutlineBlankIcon
-                      sx={{ fontSize: 30, color: "#c7c7c7" }}
-                    />
-                  }
+            <AddresInput
+              data={item}
+              id={item.id}
+              checkicon={<CheckBoxIcon sx={{ fontSize: 30 }} />}
+              icon={
+                <CheckBoxOutlineBlankIcon
+                  sx={{ fontSize: 30, color: "#c7c7c7" }}
                 />
-              </>
-            ))}
-            <AddNewAddress />
+              }
+            />
           </>
-        )}
+        ))}
+        <AddNewAddress />
+     </>
+      }
       </div>
     </div>
   );

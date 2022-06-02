@@ -24,7 +24,9 @@ const MobileFooter = () => {
             <WhatsAppIcon />
             <InstagramIcon />
           </div>
-          <span>{t("ContactUs")}</span>
+          <a href="tel:02126420420" id={style.phone}>
+                  <span>{t("ContactUs")}: 02126420420</span> 
+                </a>
 
         </div>
        <div className='d-flex align-item-center justify-content-evenly pt-3'>

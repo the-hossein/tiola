@@ -7,7 +7,8 @@ const initializedState = {
   codeStatus: false,
   otpStatus: false,
   userid: "",
-  basketid:"",
+  basketid: "",
+  basketloader: true,
   userName: "",
   popup: false,
   userNameAvatar: "",
@@ -29,7 +30,7 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         loginStatus: false,
-        userDataLoader:false
+        userDataLoader: false
       };
     case "USER_DATA_LOADER":
       return {
@@ -83,7 +84,6 @@ const registerReducer = (state = initializedState, action) => {
         // address: action.payload.address,
       };
     case "USER_DATA":
-      
       return {
         ...state,
         loginStatus: true,
@@ -99,9 +99,13 @@ const registerReducer = (state = initializedState, action) => {
         family: action.user.user.family,
         profileUser : action.user.profilePic
       };
-      case "BASKET_ID":return{
-        ...state,basketid:action.data
-      }
+    case "BASKET_ID":
+      return {
+        ...state,
+        basketid: action.data,
+        userDataLoader: false,
+        basketloader: false
+      };
     case "CLOSE_POPUP":
       return {
         ...state,

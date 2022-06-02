@@ -197,7 +197,7 @@ const userDataLoader = () => {
 };
 const getProfile = () => {
   return (dispatch) => {
-    // dispatch(userDataLoader());
+    dispatch(userDataLoader());
     ls = localStorage.getItem("userToken");
     const userToken = JSON.parse(ls);
     var phone = userToken.phone;
@@ -219,17 +219,21 @@ const getProfile = () => {
       );
       if (user[0].code === 200 && user[0].data !== null) {
         dispatch(userData(user[0].data));
-        console.log(user);
+
         const basket = async () => {
+    dispatch(userDataLoader());
+
           const basketUser = await callApi(
             `${BASE_URL + GET_BASKET}?UserId=${user[0].data.user.id}`,
             "{}",
             myHeaders,
             "GET"
           );
+
           if (basketUser[0].code === 200) {
             dispatch(basketid(basketUser[0].data.id));
-            userToken["userid"] = user[0].data.id;
+            
+            userToken["userid"] = user[0].data.user.id;
             localStorage.setItem("userToken", JSON.stringify(userToken));
           }
         };

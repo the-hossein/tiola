@@ -20,8 +20,11 @@ import {
 } from "../../../api/urls";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
+  DecreaseBasketDetail,
   deleteBasketUser,
   falseLoadingProductlist,
+  getBasketDetails,
+  IncressBasketDetail,
   loadingProductList
 } from "../../../redux/factor/factorAction";
 import { notify } from "../../../tools/toast/toast";
@@ -30,6 +33,7 @@ import Loader from "../../../tools/loader/Loader";
 const List = ({ data, alldata }) => {
   console.log(data);
   const dispatch = useDispatch();
+  const [preload, setPreload] = useState(false);
   const [size, setSize] = useState([0]);
   const [info, setInfo] = useState({
     qty: data.qty,
@@ -38,6 +42,7 @@ const List = ({ data, alldata }) => {
 
   const lang = useSelector((state) => state.stateLang.lng);
   const basket = useSelector((state) => state.stateFactor);
+  const state = useSelector((state) => state.stateRegister);
   const { t } = useTranslation();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
@@ -54,8 +59,8 @@ const List = ({ data, alldata }) => {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
   const increaseHandler = () => {
+    setPreload(true);
     const increase = async () => {
-      dispatch(loadingProductList());
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
       const statusAdd = await callApi(
@@ -70,9 +75,10 @@ const List = ({ data, alldata }) => {
           qty: info.qty + 1,
           total: (info.qty + 1) * data.amount
         });
-        dispatch(falseLoadingProductlist());
+        setPreload(false);
+        dispatch(IncressBasketDetail(data.id));
       } else if (statusAdd[0].code === 206) {
-        dispatch(falseLoadingProductlist());
+        setPreload(false);
 
         if (lang === "fa") {
           var text = "موجودی کافی نیست ";
@@ -85,6 +91,8 @@ const List = ({ data, alldata }) => {
     increase();
   };
   const decreseHandler = () => {
+    setPreload(true);
+
     const decrease = async () => {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
@@ -95,18 +103,24 @@ const List = ({ data, alldata }) => {
         "POST"
       );
       if (statusDec[0].code === 200) {
+        
         // setQty(qty - 1);
         setInfo({
           ...info,
           qty: info.qty - 1,
           total: info.total - data.amount
         });
+        dispatch(DecreaseBasketDetail(data.id));
+
+        setPreload(false);
       }
     };
     decrease();
   };
   const deleteHandler = () => {
+    setPreload(true);
     dispatch(deleteBasketUser(alldata, data));
+    setPreload(false);
     // var myHeaders = new Headers();
     // myHeaders.append("Authorization", `Bearer ${token}`);
     // const deletProduct = async () => {
@@ -137,26 +151,29 @@ const List = ({ data, alldata }) => {
         </ul>
         <ColorPick color={data.collection.colorCode} />
 
-        <div className="d-flex flex-row">
-          {basket.loadingList ? (
-            <Spinner animation="grow" />
-          ) : info.qty <= 1 ? (
-            <DeleteIcon sx={{ fontSize: 24 }} onClick={deleteHandler} />
-          ) : (
-            <>
+        {preload ? (
+          <Spinner animation="grow" />
+        ) : (
+          <div className="d-flex flex-row">
+            {info.qty <= 1 ? (
+              <DeleteIcon sx={{ fontSize: 24 }} onClick={deleteHandler} />
+            ) : (
               <FontAwesomeIcon
                 icon={faMinus}
                 className={style.minus}
                 onClick={decreseHandler}
               />
+            )}
+
+            <>
               <span className={style.count}>{info.qty}</span>
               <AddOutlinedIcon
                 sx={{ fontSize: 30, margin: 0 }}
                 onClick={increaseHandler}
               />
             </>
-          )}
-        </div>
+          </div>
+        )}
         <Link href={`/product/${data.productId}`}>
           <img src={data.filePath} />
         </Link>
