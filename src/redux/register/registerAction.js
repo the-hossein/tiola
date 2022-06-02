@@ -218,15 +218,16 @@ const getProfile = () => {
         "POST"
       );
       if (user[0].code === 200 && user[0].data !== null) {
+        dispatch(userData(user[0].data));
+        console.log(user);
         const basket = async () => {
           const basketUser = await callApi(
-            `${BASE_URL + GET_BASKET}?UserId=${user[0].data.id}`,
+            `${BASE_URL + GET_BASKET}?UserId=${user[0].data.user.id}`,
             "{}",
             myHeaders,
             "GET"
           );
           if (basketUser[0].code === 200) {
-            dispatch(userData(user[0].data));
             dispatch(basketid(basketUser[0].data.id));
             userToken["userid"] = user[0].data.id;
             localStorage.setItem("userToken", JSON.stringify(userToken));
