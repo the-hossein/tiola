@@ -34,15 +34,17 @@
 }
 
 .main button, .imgField span {
-    background-color: var(--green-pen);
-    padding: 0.4rem 1rem;
+    background-color: var(--blue-pen);
+    padding: 0.4rem 1rem !important;
     border-radius: var(--Product-Border-radius);
     border: none;
     color: var(--light-pen);
     height: auto;
     margin: 0 10px;
     font-size: var(--md-font);
+    transition: all .2s linear;
 }
+
 .main span {
     cursor: pointer;
     font-size: var(--md-font);
@@ -58,8 +60,12 @@
     display: none;
 }
 
+.imgField label {
+    cursor: pointer;
+}
+
 .imgField span {
-    background-color: var(--green-pen);
+    background-color: var(--blue-pen);
     padding: .7rem 1rem !important;
     border-radius: var(--Product-Border-radius);
     border: none;
@@ -67,9 +73,17 @@
     height: auto !important;
     margin: 0 10px;
     font-size: var(--md-font);
+    cursor: pointer;
+    transition: all .2s linear;
 }
 
-.imgField button, .imgField label, .imgField span{
+.imgField button{
+    color: var( --darkGray-border);
+    background-color: var(--light-pen) !important;
+    font-size: var(--sm-font) !important;
+}
+
+.imgField label, .imgField span{
     color: var(--light-pen) !important;
     font-size: var(--sm-font) !important;
     /* height: auto !important;
@@ -78,4 +92,12 @@
 
 .navigate {
     margin: 0 0 0 15px !important;
+}
+
+.imgField button:hover {
+    background-color: var( --darkGray-border) !important;
+    color: var(--light-pen) !important;
+}
+.main button:hover, .imgField span:hover {
+    background-color: #76a1e6;
 }

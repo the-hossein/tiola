@@ -50,9 +50,9 @@ const createComment = (userId, commentText, score, productId, userName) => {
     }
 }
 
-const getAllComment = () => {
+const getAllComment = (productID) => {
   return (dispatch) => {
-    axios.get(BASE_URL+"api/Comment/GetComments?ProductId=9")
+    axios.get(BASE_URL+`api/Comment/GetComments?ProductId=${productID}`)
       .then(rseponse => {
         dispatch(preLoad())
         dispatch(setComment(rseponse.data.data))

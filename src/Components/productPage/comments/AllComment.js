@@ -5,7 +5,7 @@ import AddComment from "./AddComment";
 import WriteComment from "./WriteComment";
 import { useDispatch, useSelector } from "react-redux";
 import { writeTrue, getAllComment } from "../../../redux/comment/commentActions";
-
+import { useRouter } from "next/router";
 
 //swiper lib
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,6 +16,7 @@ import "swiper/css/effect-creative";
 
 
 const AllComment = ({product}) => {
+  const router = useRouter()
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateComment);
   const lang = useSelector(state => state.stateLang.lng);
@@ -47,9 +48,10 @@ const AllComment = ({product}) => {
 
   useEffect(()=> {
     lang === "en" ? setDecorate("ltr") : setDecorate("rtl");
-    console.log("bobo");
+    console.log(router.query.productname);
     setTest(prevTest => !prevTest);
-    dispatch(getAllComment());
+    dispatch(getAllComment(router.query.productname));
+
   }, [])
 
   return (
@@ -57,8 +59,6 @@ const AllComment = ({product}) => {
       {size < 600 && <div><AddComment/></div>}
       <div className={`${Style.AllComment} row`}>
       <div className="col-12 col-md-12 ">
-        {
-          !state.preLoad && 
           <Swiper
           dir={"rtl"}
           allowTouchMove={true}
@@ -89,7 +89,7 @@ const AllComment = ({product}) => {
                 </SwiperSlide>)
             }
           </Swiper>
-        }
+    
       
           </div>
           <div className="col-12 col-md-4 p-1 ">

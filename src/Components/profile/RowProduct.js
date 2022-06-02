@@ -4,9 +4,18 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { removeItem } from "../../redux/saveItem/saveItemAction";
 
-const RowProduct = ({ close, statusText }) => {
+const RowProduct = ({ close, statusText, data, userId, removeId }) => {
+  const dateC =data ?  data.createdDatetime.split("T") : '';
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+
+  const test = () => {
+    dispatch(removeItem(removeId, userId));
+  }
+
   return (
     <>
        
@@ -15,12 +24,14 @@ const RowProduct = ({ close, statusText }) => {
           <CloseIcon
             sx={{ color: "#707070", fontSize: 18, cursor: "pointer" }}
             className={style.close}
+            onClick={test}
           />
         )}
           <div className={` d-flex `}>
-            <span>{t("scarf")} No1No1No1</span>
-            <span>2021/01/31</span>
-            <span>{t("mirdamad")}</span>
+            {/* {t("scarf")}  t("mirdamad") */}
+            <span> {data ? data.title : "nonono"}</span>
+            <span>{data ? dateC[0] : "kd"}</span>
+            <span>{data ? data.collection.title : "mirdamad"}</span>
           </div>
           <div className={style.status}>
             <span>
