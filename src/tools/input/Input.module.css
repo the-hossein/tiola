@@ -12,6 +12,10 @@
     text-align-last: var(--float-left);
     border: none;
 }
+.input::placeholder{
+    color: var(--lightGray-border);
+    font-size: var(--sm-font);
+}
 .input:focus,.input:focus-visible{
     border: none !important;
     box-shadow: none !important;

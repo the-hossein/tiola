@@ -26,10 +26,10 @@
 
 .basket div {
     border-radius: 50%;
-    padding: 0 4px;
+    padding: 2px 4px 0;
     position: absolute;
-    top: 0px;
-    right: 10px;
+    top: -5px;
+    right: 8px;
     font-size: var(--verySmall-font);
     border: 1px solid var(--light-pen);
 }

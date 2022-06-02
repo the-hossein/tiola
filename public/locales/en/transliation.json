@@ -77,6 +77,11 @@
   "emptycodeValidate": "please enter Code",
   "lengthcodeValidate": "please enter 6 raqam code",
  "signTextPopUp":"Enter Your Phone Number For Sign in",
-  "search": "Search"
+  "search": "Search",
+ "TextCodePopUp":" Enter Code Please",
+ "enterCodePlaceHolder":"Enter Code Here",
+  "enterPhonePlaceHolder":"Enter phone number here",
+  "placementfactorList":"You do not have products in your shopping cart"
+
 
 }

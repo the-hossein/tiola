@@ -9,6 +9,7 @@ import shopReducer from "./shop/shopReducer";
 //get blogs
 import blogReducer from "./blog/blogsReducer";
 import registerReducer from "./register/registerReducer";
+import screenLoaderReducer from "./screenLoader/screenLoaderReducer";
 
 //get all products
 import allProductsReducer from "./getallproducts/AllProductsReducer";
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   stateColProduct: collectionReducer,
   stateShop: shopReducer,
   stateRegister: registerReducer,
+  stateScreenLoader: screenLoaderReducer,
   stateAllProducts: allProductsReducer,
   stateWatchList: saveItemReducer,
 });

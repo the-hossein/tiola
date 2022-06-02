@@ -69,7 +69,9 @@
   "emptycodeValidate": "لطفا کد را واارد کنید ",
   "lengthcodeValidate": "لطفا کد 6 رقمی وارد کنید",
   "signTextPopUp":" شماره همراه خود را وارد کنید",
-  "search": "به دنبال ... بگرد"
-
+  "search": "به دنبال ... بگرد",
+  "TextCodePopUp": "کد ارسال شده را وارد کنید",
+  "enterCodePlaceHolder": "کد را در اینجا وارد کنید",
+  "enterPhonePlaceHolder": "شماره همراه را در اینجا وارد کنید",
+  "placementfactorList": "شما محصولی در سبد خرید خود ندارید"
 }
-

@@ -17,6 +17,7 @@ const HeroSection = () => {
           {/* <source src="movie.ogg" type="video/ogg"> */}
           Your browser does not support the video tag.
         </video>
+        <img src="/Assets/images/2.jpg" alt="image" />
 
         <div
           className={`${style.descoverMore} ${

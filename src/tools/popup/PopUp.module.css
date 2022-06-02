@@ -6,7 +6,7 @@
 
 .popoup {
     z-index: 141;
-    background-color: #9999996f;
+    background-color: #2d2d2d6f;
     position: absolute;
     top: 0;
     right: 0;
@@ -15,6 +15,27 @@
 
 }
 
+.content input {
+    border-radius: 12px;
+}
+
+.content input:focus-visible {
+    border: 1px solid var(--green-pen) !important;
+
+}
+
+.error {
+    color: var(--red-pen);
+    font-size: var(--verySmall-font);
+    text-align: center;
+    display: block;
+    margin: 0.7rem 0;
+}
+.popoupContent label{
+    text-align-last: center;
+    float: none;
+
+}
 .popoupContent {
 
     width: 300px;
@@ -25,6 +46,7 @@
     position: relative;
     margin: 0 auto;
     top: 9%;
+    text-align: center;
 
 }
 

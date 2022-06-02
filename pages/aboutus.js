@@ -18,9 +18,7 @@ export default function AboutUs() {
           <AboutUsTiola/>
       </main>
 
-      <footer>
-        <Footer />
-      </footer>
+   
     </div>
   );
 }

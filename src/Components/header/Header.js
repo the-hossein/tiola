@@ -14,21 +14,29 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-import { getProfile, loginFalse, loginTrue } from "../../redux/register/registerAction";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import { fetchProducts } from '../../redux/getallproducts/allProductsAction'
+
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import {
+  getProfile,
+  loginFalse,
+  loginTrue
+} from "../../redux/register/registerAction";
+
+import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   const state = useSelector((state) => state.stateRegister);
+  const basket = useSelector((state) => state.stateFactor);
+
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
-  const [boxTarget, setBoxTarget] = useState(false)
-  
+  const [boxTarget, setBoxTarget] = useState(false);
+
   //call state allProducts
-  const allProducts = useSelector(state => state.stateAllProducts.data);
+  const allProducts = useSelector((state) => state.stateAllProducts.data);
   // for get text search clint
   // const {targetSearch, setTargetSearch} = useState([]);
   const [textSearch, setTextSearch] = useState("");
@@ -36,13 +44,13 @@ const Header = ({ backColor }) => {
     setTextSearch(event.target.value);
     setBoxTarget(true);
     // const setSuggest = async () => {
-      //   const resolve = await allProducts.data.filter(item => item.title.includes(textSearch))
-      //   return setTargetSearch(resolve)
-      // }
-      // setSuggest();
-      console.log(targetSearch)
-    }
-    
+    //   const resolve = await allProducts.data.filter(item => item.title.includes(textSearch))
+    //   return setTargetSearch(resolve)
+    // }
+    // setSuggest();
+    console.log(targetSearch);
+  };
+
   useLayoutEffect(() => {
     function updateSize() {
       setSize([window.innerWidth]);
@@ -94,9 +102,31 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xxl-font", "26pt");
     root.style.setProperty("--oxx-font", "28pt");
   };
+
+  useEffect(() => {
+    if (ls) {
+      const userToken = JSON.parse(ls);
+      const tokenExp = userToken.exp;
+      const token = userToken.token;
+      const phone = userToken.phone;
+
+      dispatch(getProfile());
+      console.log(state);
+
+      const now = new Date();
+      const endDate = new Date(tokenExp);
+      if (endDate - now < 0) {
+        localStorage.removeItem("userToken");
+        dispatch(loginFalse());
+      }
+    } else {
+      dispatch(loginFalse());
+    }
+  }, [state.loginStatus]);
+
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
-    dispatch(fetchProducts())
+    dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
     if (lngCookie === "en") {
       leftDir();
@@ -104,21 +134,6 @@ const Header = ({ backColor }) => {
       rightDir();
     }
     setpreload(false);
-    if (ls) {
-      const userToken = JSON.parse(ls);
-      const tokenExp = userToken.exp;
-      const now = new Date();
-      const endDate = new Date(tokenExp);
-      if (endDate - now < 0) {
-        localStorage.removeItem("userToken");
-        dispatch(loginFalse());
-      } else {
-        dispatch(getProfile())
-        dispatch(loginTrue());
-      }
-    } else {
-      dispatch(loginFalse());
-    }
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
@@ -134,7 +149,9 @@ const Header = ({ backColor }) => {
     setMenuBar(!menuBar);
   };
 
-  const targetSearch = allProducts.filter(item => item.title.includes(textSearch));
+  const targetSearch = allProducts.filter((item) =>
+    item.title.includes(textSearch)
+  );
 
   return !prelaod ? (
     <>
@@ -192,14 +209,15 @@ const Header = ({ backColor }) => {
             </div>
 
             <div className={style.headerIcon}>
-            
-            <Link href="/factor">
-            <div className={style.basket}>
-                <ShoppingCartIcon/>
-                <div>2</div>
-              </div>
-            </Link>
-             
+              <Link href="/factor">
+                <div className={style.basket}>
+                  <ShoppingCartIcon />
+               {basket.basketLength===0?"":
+                    <div>{basket.basketLength}</div>
+               }
+                </div>
+              </Link>
+
               <span>
                 {lang.lng === "en" ? (
                   <span onClick={() => changeLng("fa")}>fa</span>
@@ -208,18 +226,25 @@ const Header = ({ backColor }) => {
                 )}
               </span>
               <div className="position-relative">
-                  {
-                    boxTarget && <div className={style.suggest}>
-                        {targetSearch.map(item => {
-                          // {console.log(item)}
-                          return <span key={item.id}><Link href={`/product/${item.id}`} >{item.title}</Link></span>
-                        })}
-                    </div> 
-                  }
+                {boxTarget && (
+                  <div className={style.suggest}>
+                    {targetSearch.map((item) => {
+                      // {console.log(item)}
+                      return (
+                        <span key={item.id}>
+                          <Link href={`/product/${item.id}`}>{item.title}</Link>
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={event => event.key === 'Enter' && router.push({pathname:'/explore'})}
+                  onKeyDown={(event) =>
+                    event.key === "Enter" &&
+                    router.push({ pathname: "/explore" })
+                  }
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
@@ -285,14 +310,14 @@ const Header = ({ backColor }) => {
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
-            <Link href="/factor">
-            <div className={style.basket}>
-                <ShoppingCartIcon sx={{fontSize:12}}/>
-                <div>2</div>
-              </div>
-            </Link>
+              <Link href="/factor">
+                <div className={style.basket}>
+                  <ShoppingCartIcon sx={{ fontSize: 12 }} />
+                  <div>2</div>
+                </div>
+              </Link>
               <Link href="/shop">
-                <ShoppingBagIcon sx={{fontSize:16}}/>
+                <ShoppingBagIcon sx={{ fontSize: 16 }} />
                 {/* <span>{t("descoverMore")}</span> */}
               </Link>
               <Link href="/">
