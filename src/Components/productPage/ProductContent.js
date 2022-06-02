@@ -17,6 +17,12 @@ import Link from "next/link";
 import PopUp from "../../tools/popup/PopUp";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { closePopUp } from "../../redux/register/registerAction";
+
+//import thunk for save product
+import { checkSavedItem, fetchingToSave } from "../../redux/saveItem/saveItemAction";
+import { notify } from "../../tools/toast/toast";
+
 import { closePopUp, openPopUp } from "../../redux/register/registerAction";
 import callApi from "../../api/callApi";
 import { ADD_BASKET, BASE_URL } from "../../api/urls";
@@ -30,7 +36,11 @@ const ProductContent = ({ product }) => {
   const [open, setOpen] = useState(false);
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
+<<<<<<< HEAD
 
+=======
+  const watchList = useSelector(state => state.stateWatchList);
+>>>>>>> d3758f08df2ec81d724c7a73f8a80b58bb67d1ba
   const images = [];
 
   if (
@@ -128,8 +138,25 @@ const ProductContent = ({ product }) => {
       addbasket();
     }
   };
+  const addWatchHandler = () => {
+    const userID = state.userid;
+    const productId = product.data.id;
+    const targetItem = !!watchList.list.find(item => item.productId === productId);
+    if(targetItem){
+      notify("شما این محصول را قبلا اضافه کردین", "success");
+    }else {
+      dispatch(fetchingToSave(userID, productId))
+    }
+  };
+  
+  useEffect(()=> {
+    if(state) {
+      const userID = state.userid;
+      dispatch(checkSavedItem(userID))
+    } 
+    
+  }, [state])
 
-  const addWatchHandler = () => {};
   return (
     product.data !== null ? (
       <>

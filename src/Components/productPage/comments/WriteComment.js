@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { writeFalse } from "../../../redux/comment/commentActions";
 import { resetRate } from "../../../redux/rate/rateActions";
 import { useRouter } from "next/dist/client/router";
+import CloseIcon from '@mui/icons-material/Close';
 
 //add comment 
 import { createComment } from "../../../redux/comment/commentActions";
+import { notify } from "../../../tools/toast/toast";
 
 const WriteComment = () => {
 
@@ -29,7 +31,8 @@ const WriteComment = () => {
   const dispatch = useDispatch();
   const doneHandler = () => {
     if(commentText === ''){
-      dispatch(writeFalse());
+      notify("این فیلد نباید خالی باشد", "warning")
+      // dispatch(writeFalse());
       dispatch(resetRate());
     }else {
       dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
@@ -104,6 +107,9 @@ const WriteComment = () => {
                       </button>
                   </div>
             </Box>
+      </div>
+      <div className={Style.closeBtn}>
+        <CloseIcon fontSize="small" onClick={()=> dispatch(writeFalse())}/>
       </div>
     </div>
   );

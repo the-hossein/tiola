@@ -84,6 +84,11 @@
     z-index: 0;
 }
 
+.stepper svg {
+    max-width: 30px;
+    max-height: 30px;
+}
+
 .shape svg,
 .icon {
     font-size: var(--lg-font) !important;

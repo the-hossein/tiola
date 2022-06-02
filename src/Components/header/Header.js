@@ -96,13 +96,13 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--float-left", "left");
     root.style.setProperty("--font", "apple");
     root.style.setProperty("--verySmall-font", "10pt");
-    root.style.setProperty("--sm-font", "13pt");
-    root.style.setProperty("--xs-font", "15pt");
-    root.style.setProperty("--md-font", "17pt");
-    root.style.setProperty("--lg-font", "19pt");
-    root.style.setProperty("--xl-font", "21pt");
-    root.style.setProperty("--xxl-font", "29pt");
-    root.style.setProperty("--oxx-font", "32pt");
+    root.style.setProperty("--sm-font", "11pt");
+    root.style.setProperty("--xs-font", "12pt");
+    root.style.setProperty("--md-font", "14pt");
+    root.style.setProperty("--lg-font", "15pt");
+    root.style.setProperty("--xl-font", "17pt");
+    root.style.setProperty("--xxl-font", "26pt");
+    root.style.setProperty("--oxx-font", "28pt");
   };
 
   useEffect(() => {
@@ -249,6 +249,7 @@ const goFactorHandler=()=>{
                   </div>
                 )}
                 <input
+                  placeholder={t("search")}
                   onChange={searchHandler}
                   onKeyDown={(event) =>
                     event.key === "Enter" &&
@@ -284,11 +285,28 @@ const goFactorHandler=()=>{
             <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
               <FontAwesomeIcon icon={faBars} onClick={openMenu} />
               {menuBar ? <Menu /> : null}
-              <Link href={"/signin"}>
-                <span>{t("login")}</span>
-              </Link>
-              <div className="position-relative">
+              {state.loginStatus ? (
+                <Link href={"/profile"}>
+                  <PersonIcon />
+                </Link>
+              ) : (
+                <Link href={"/signin"}>
+                  <span>{t("login")}</span>
+                </Link>
+              )}
+              <div className="position-relative d-flex align-items-center">
+                  {
+                    boxTarget && <div className={style.suggest}>
+                        {targetSearch.map(item => {
+                          // {console.log(item)}
+                          return <span key={item.id}><Link href={`/product/${item.id}`} >{item.title}</Link></span>
+                        })}
+                    </div> 
+                  }
                 <input
+                  placeholder={t("search")}
+                  onChange={searchHandler}
+                  onKeyDown={event => event.key === 'Enter' && router.push({pathname:'/explore'})}
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }

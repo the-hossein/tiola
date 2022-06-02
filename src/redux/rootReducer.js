@@ -13,6 +13,7 @@ import screenLoaderReducer from "./screenLoader/screenLoaderReducer";
 
 //get all products
 import allProductsReducer from "./getallproducts/AllProductsReducer";
+import saveItemReducer from "./saveItem/saveItemReducer";
 
 const rootReducer = combineReducers({
   stateLang: langReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   stateRegister: registerReducer,
   stateScreenLoader: screenLoaderReducer,
   stateAllProducts: allProductsReducer,
+  stateWatchList: saveItemReducer,
 });
 
 export default rootReducer;
