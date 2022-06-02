@@ -72,5 +72,7 @@
   "TextCodePopUp": "کد ارسال شده را وارد کنید",
   "enterCodePlaceHolder": "کد را در اینجا وارد کنید",
   "enterPhonePlaceHolder": "شماره همراه را در اینجا وارد کنید",
-  "placementfactorList": "شما محصولی در سبد خرید خود ندارید"
+  "placementfactorList": "شما محصولی در سبد خرید خود ندارید",
+  "submit":"ثبت"
+  
 }

@@ -11,12 +11,18 @@ import { useTranslation } from "react-i18next";
 import EditBtn from "./EditBtn";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-import { getAddres } from "../../../redux/factor/factorAction";
+import { checkAddress, getAddres } from "../../../redux/factor/factorAction";
 
 //make style for components mui
 import { makeStyles } from "@mui/styles";
 import callApi from "../../../api/callApi";
-import { BASE_URL, DELETE_ADDRESS } from "../../../api/urls";
+import {
+  BASE_URL,
+  CHOSE_ADDRESS,
+  DELETE_ADDRESS,
+  UPDATE_ADDRESS
+} from "../../../api/urls";
+import { notify } from "../../../tools/toast/toast";
 
 const useStyle = makeStyles({
   applyFont: {
@@ -24,60 +30,112 @@ const useStyle = makeStyles({
   }
 });
 
-const AddresInput = ({ data, id, checkicon, icon, onChangeRadio, type }) => {
-  console.log(data);
+const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
   //useStyle for stylesheet mui
   const classes = useStyle();
-
   const { t } = useTranslation();
   const state = useSelector((state) => state.stateFactor);
-  const lang = useSelector((state) => state.stateLang);
-
+  const lang = useSelector((state) => state.stateLang.lng);
+  const user = useSelector((state) => state.stateRegister);
+  const [addresValue, setAddresvalue] = useState(data.address);
   const dispatch = useDispatch();
-  const [checked, setChecked] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [address, setAddress] = useState();
-  // const [addresInput, setAddresInput] = useState("City1-street1-num1-unit-1");
   const [deleteAddres, setDeleteAddres] = useState(false);
+  const [checked, setChecked] = useState(data.isActive);
   if (typeof window !== "undefined") {
-    var root = document.documentElement;
     var ls = localStorage.getItem("userToken");
     var userToken = JSON.parse(ls);
-
     var token = userToken.token;
   }
-  const changeAddres = (e) => {
-    dispatch(getAddres(e.target.value));
-    console.log(state);
-  };
-  const deleteAddress = () => {
-    const deleted = async () => {
+  const changeRadio = (e) => {
+    dispatch(getAddres(document.getElementById(`${e.target.value}`).value));
+    console.log(document.getElementById(`${e.target.value}`).value);
+    dispatch(checkAddress(e.target.value));
+
+    const chosekAddress = async () => {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
+      const choseStatus = await callApi(
+        `${BASE_URL + CHOSE_ADDRESS}?UserId=${user.userid}&id=${data.id}`,
+        "{}",
+        myHeaders,
+        "POST"
+      );
+
+      if (choseStatus[0].code === 200) {
+        setChecked(true);
+      }
+    };
+    chosekAddress();
+  };
+  const updateHandler = (e) => {
+    const editApi = async () => {
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        id: data.id,
+        address: addresValue,
+        userid: user.userid
+      });
+      console.log(raw);
+      const edited = await callApi(
+        `https://api.tiolastyle.com/api/v1/User/UpdateAddress`,
+        raw,
+        myHeaders,
+        "POST"
+      );
+
+      if (edited[0].code == 200) {
+        setEdit(false);
+        if(lang==="fa"){
+          var  text="آدرس ویرایش شد"
+        }else{
+          text="edited addres"
+        }
+        notify(text,"success")
+      }
+    };
+    editApi();
+  };
+  const changeAddres = (e) => {
+    dispatch(getAddres(e.target.value));
+    setAddresvalue(e.target.value);
+  };
+  const deleteAddress = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    const deleted = async () => {
       const status = await callApi(
         `${BASE_URL + DELETE_ADDRESS}?id=${data.id}`,
         "{}",
         myHeaders,
         "POST"
       );
-     if(status[0].code===200){
-      setDeleteAddres(true)
-     }
+      if (status[0].code === 200) {
+        setDeleteAddres(true);
+      }
     };
     deleted();
   };
   if (typeof data !== "undefined") {
     return !deleteAddres ? (
       <div>
-        {type !== "add" ? (
-          <>
-            <EditBtn onclick={() => setEdit(true)} text={t("edit")} />
-            <EditBtn
-              onclick={ deleteAddress}
-              text={<DeleteIcon sx={{ fontSize: 17 }} />}
-            />
-          </>
-        ) : null}
+        <EditBtn
+          text={
+            !edit ? (
+              <span onClick={() => setEdit(true)}>{t("edit")}</span>
+            ) : (
+              <span onClick={updateHandler} className={Style.submit}>{t("submit")}</span>
+            )
+          }
+        />
+        <EditBtn
+          onclick={deleteAddress}
+          text={<DeleteIcon sx={{ fontSize: 17 }} />}
+        />
+
         <Box
           component="form"
           noValidate
@@ -90,12 +148,10 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio, type }) => {
           >
             <OutlinedInput
               onChange={changeAddres}
-              placeholder={
-                type === "add" ? t("addCmPlaceHOlder") : t("addresPlaceHolder")
-              }
-              value={data.address}
-              readOnly={type === "add" ? false : edit ? false : true}
-              multiline={true}
+              placeholder={t("addresPlaceHolder")}
+              value={addresValue}
+              readOnly={edit ? false : true}
+              multiline={edit ? true : false}
               style={
                 edit
                   ? { backgroundColor: "#ffffff", color: "#000000" }
@@ -107,13 +163,13 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio, type }) => {
             <Radio
               checkedIcon={checkicon}
               icon={icon}
-              checked={type!=="add"&&data.id === id}
-              onChange={onChangeRadio}
+              checked={checked}
+              onChange={changeRadio}
               value={id}
               name="radio-buttons"
               inputProps={{ "aria-label": `${id}` }}
               className={
-                lang.lng === "en" ? Style.checkedRight : Style.checkedLeft
+                lang === "en" ? Style.checkedRight : Style.checkedLeft
               }
             />
           </FormControl>

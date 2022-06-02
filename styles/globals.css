@@ -24,7 +24,7 @@
   --xxl-font: 24pt;
   --oxx-font: 26pt;
   --green-pen: #06745f;
-  --greenLight-pen:#03c65e;
+  --greenLight-pen: #03c65e;
 
 }
 
@@ -141,7 +141,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: fit-content !important ;
+  min-width: fit-content !important;
   /* width: auto !important; */
   /* height: fit-content; */
   /* box-shadow: 5px 10px 4px #23232354; */
@@ -156,6 +156,11 @@ a {
 
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+
+  padding: 1rem 0.7rem 1rem 3rem !important;
 }
 
 @media(max-width:480px) {

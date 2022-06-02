@@ -5,6 +5,7 @@ import Placement from "../../../tools/placement/Placement";
 import List from "./List";
 import style from "./BuyList.module.css";
 const payHandler = () => {};
+
 const BuyLists = ({ data, setBasketDatas }) => {
   const { t } = useTranslation();
   return (

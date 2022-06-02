@@ -5,7 +5,7 @@
 
 .map img {
     border-radius: var(--Product-Border-radius);
-    height: 200px;
+    height: 250px;
     overflow: hidden;
     display: block;
     margin: auto;
@@ -33,7 +33,9 @@
     margin-bottom: 1rem;
     /* position: relative; */
 }
-
+.submit{
+    color:var(--blue-pen);
+}
 .edit {
     background-color: var(--light-pen);
     border-radius: 4px;

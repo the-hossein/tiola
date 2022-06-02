@@ -13,8 +13,16 @@ const Landing = () => {
         },
         {
           src: "/Assets/images/1.jpg"
+        },
+        {
+          src: "/Assets/images/1.jpg"
+        },
+        {
+          src: "/Assets/images/1.jpg"
+        },
+        {
+          src: "/Assets/images/1.jpg"
         }
-     
       ];
   return (
     <div className={style.landing}>
@@ -27,7 +35,7 @@ const Landing = () => {
         margin={0}
         mbItem={1}
         tbItem={2}
-        heightImage={"auto"}
+        heightImage={300}
       />
       <Collection />
     </div>

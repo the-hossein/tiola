@@ -18,4 +18,6 @@ export const DELETE_BASKET = "api/v1/Basket/DeleteBasketDetail";
 export const GET_USER_ADDRESS = "api/v1/User/GetUserAddress";
 export const CREATE_COMMENT = "api/Comment/CreateComment";
 export const ADD_ADDRESS = "api/v1/User/AddAddress";
+export const CHOSE_ADDRESS="api/v1/User/ChooseAddress";
+export const UPDATE_ADDRESS="api/v1/User/UpdateAddress"
 
