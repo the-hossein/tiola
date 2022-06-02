@@ -113,8 +113,9 @@ const Header = ({ backColor }) => {
       const phone = userToken.phone;
 
       dispatch(getProfile());
+
       dispatch(getBasketDetails(state.basketid))
-      console.log(state);
+     
 
       const now = new Date();
       const endDate = new Date(tokenExp);

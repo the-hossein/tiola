@@ -22,7 +22,15 @@
 .socialMedia svg {
     margin: 0 0.7rem;
 }
-
+#phone{
+    text-decoration: none;
+    color:var(--light-pen);
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: var(--xs-font);
+    
+}
 .send {
     border: 1px solid transparent;
     background-color: var(--light-pen);

@@ -7,7 +7,8 @@ const initializedState = {
   codeStatus: false,
   otpStatus: false,
   userid: "",
-  basketid:"",
+  basketid: "",
+  basketloader: true,
   userName: "",
   popup: false,
   userNameAvatar: "",
@@ -28,7 +29,7 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         loginStatus: false,
-        userDataLoader:false
+        userDataLoader: false
       };
     case "USER_DATA_LOADER":
       return {
@@ -76,30 +77,33 @@ const registerReducer = (state = initializedState, action) => {
     case "SET_NEW_DATA":
       return {
         ...state,
-        userNameAvatar: `${action.payload.name} ${action.payload.family}`,
-        profilePicId: action.payload.profiepicpath,
-        gender: action.payload.gender
+        userNameAvatar: `${action.payload.user.name} ${action.payload.user.family}`,
+        // profilePicId: action.payload.profiepicpath,
+        gender: action.payload.user.gender
         // address: action.payload.address,
       };
     case "USER_DATA":
-      
       return {
         ...state,
         loginStatus: true,
         userDataLoader: false,
-        phoneNumber: action.user.phoneNumber,
-        userid: action.user.id,
-        userNameAvatar: `${action.user.name} ${action.user.family}`,
+        phoneNumber: action.user.user.phoneNumber,
+        userid: action.user.user.id,
+        userNameAvatar: `${action.user.user.name} ${action.user.user.family}`,
         address: "",
-        gender: action.user.gender,
-        profilePicId: action.user.profilePicId,
-        birthDayDateTime: action.user.birthDayDateTime,
-        name: action.user.name,
-        family: action.user.family
+        gender: action.user.user.gender,
+        // profilePicId: action.user.user.profilePicId,
+        birthDayDateTime: action.user.user.birthDayDateTime,
+        name: action.user.user.name,
+        family: action.user.user.family
       };
-      case "BASKET_ID":return{
-        ...state,basketid:action.data
-      }
+    case "BASKET_ID":
+      return {
+        ...state,
+        basketid: action.data,
+        userDataLoader: false,
+        basketloader: false
+      };
     case "CLOSE_POPUP":
       return {
         ...state,

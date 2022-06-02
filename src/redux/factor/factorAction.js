@@ -1,5 +1,6 @@
 import callApi from "../../api/callApi";
 import {
+  ADD_PAYMENT,
   BASE_URL,
   DELETE_BASKET,
   GET_BASKET,
@@ -9,12 +10,7 @@ import {
 if (typeof window !== "undefined") {
   var ls = localStorage.getItem("userToken");
 }
-const increaseItem = (item) => {
-  return {
-    type: "INCREASE_ITEM",
-    payload: item
-  };
-};
+
 const getAddres = (addres) => {
   return {
     type: "GET_ADDRES",
@@ -44,6 +40,18 @@ const deleted = (item) => {
   return {
     type: "DELETE_BASKET",
     product: item
+  };
+};
+const IncressBasketDetail = (id) => {
+  return {
+    type: "Incress_Details",
+    payload: id
+  };
+};
+const DecreaseBasketDetail = (id) => {
+  return {
+    type: "Decress_Details",
+    payload: id
   };
 };
 const loaderFactorTrue = () => {
@@ -87,7 +95,8 @@ const getBasketDetails = (basketid) => {
         myHeaders,
         "GET"
       );
-      if (details[0].code) {
+      if (details[0].code === 200) {
+        console.log(details[0].data);
         dispatch(addbasketDetails(details[0].data));
       }
     };
@@ -159,6 +168,7 @@ const getuserAddress = (userid) => {
 //     basket();
 //   };
 // };
+
 export {
   getAddres,
   checkAddress,
@@ -169,5 +179,7 @@ export {
   loadingAddress,
   loadingProductList,
   falseLoadingProductlist,
-  increaseItem
+  IncressBasketDetail,
+  DecreaseBasketDetail,
+
 };

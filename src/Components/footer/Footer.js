@@ -51,7 +51,9 @@ const Footer = () => {
                   <WhatsAppIcon />
                   <InstagramIcon />
                 </div>
-                <span>{t("ContactUs")}</span>
+                <a href="tel:02126420420" id={style.phone}>
+                  <span>{t("ContactUs")}: 02126420420</span> 
+                </a>
               </div>
               <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
             </div>

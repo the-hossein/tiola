@@ -20,7 +20,7 @@ const UserFactor = () => {
   const basket = useSelector((state) => state.stateFactor);
   const dispatch = useDispatch();
   const [prelaod, setPreload] = useState(true);
-  const [baskedatas, setBasketDatas] = useState(basket.details);
+  const [baskedatas, setBasketDatas] = useState();
   const state = useSelector((state) => state.stateRegister);
 
   if (typeof window !== "undefined") {
@@ -28,28 +28,34 @@ const UserFactor = () => {
   }
 
   useEffect(() => {
-    dispatch(getuserAddress(state.userid));
+    console.log(state);
+
     dispatch(getBasketDetails(state.basketid));
+
+    dispatch(getuserAddress(state.userid));
+    console.log(basket.details);
+    setBasketDatas(basket.details);
+    setPreload(false);
   }, []);
   return (
     <section className={style.ContainerSection}>
       <div className="container mt-4">
-        {/* {basket.loading ? (
+        {basket.loading ? (
           <ScreenLoader />
-        ) : ( */}
+        ) : (
           <>
             <FactorSection title={t("addres")} component={<UserAddres />} />
+
             <FactorSection
               title={t("paylist")}
               component={
-                <BuyLists
-                  data={basket.details}
-                  setBasketDatas={setBasketDatas}
-                />
+                prelaod ? null : (
+                  <BuyLists data={baskedatas} setBasketDatas={setBasketDatas} />
+                )
               }
             />
           </>
-        {/* )} */}
+        )}
       </div>
     </section>
   );

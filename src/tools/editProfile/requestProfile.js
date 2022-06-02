@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'
 
 
 
-const RequestProfile = (token, userID, name, family, birthday, gender, picId, picPath, dispatch,address, router) => {
+const RequestProfile = (token, userID, name, family, birthday, gender, picId, router) => {
+  // const router = useRouter();
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
@@ -12,12 +13,12 @@ const RequestProfile = (token, userID, name, family, birthday, gender, picId, pi
         "name": name,
         "family": family,
         "profilepic": picId,
-        "profiepicpath": picPath,
         "birthdaydatetime": birthday,
         "gender": +gender,
-        "address": address
-});
+  });
 
+  console.log(raw);
+  console.log(router);
 
 var requestOptions = {
     method: 'POST',
@@ -28,9 +29,11 @@ var requestOptions = {
 fetch("https://api.tiolastyle.com/api/v1/User/UpdateProfile", requestOptions)
   .then(response => response.json())
   .then(json => {
+    console.log(json)
       if(json.code === 200) {
-          dispatch(updateSetProfile(JSON.parse(raw)));
-          router.push({pathname: '/'});
+        console.log("worked")
+        router.push({pathname: '/'});
+          // dispatch(updateSetProfile(JSON.parse(raw)));
       }
     })
   .catch(error => console.log('error', error))

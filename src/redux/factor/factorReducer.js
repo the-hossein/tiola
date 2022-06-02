@@ -6,31 +6,10 @@ const initializedState = {
   id: "",
   basketLength: 0,
   details: [],
-  allAddress: [],
-  selectedItem: [],
-  itemsCounter: 0,
-  totalPrice: 0,
+  allAddress: []
 };
-const sumItems = (items) => {
-  const itemCounter = items.reduce(
-    (total, product) => total + product.quantity,
-    0
-  );
-  const total = items
-    .reduce((total, product) => product.quantity * product.price + total, 0)
-    .toFixed(2);
-  return { itemsCounter: itemCounter, totalPrice: total };
-};
-
 const factorReducer = (state = initializedState, action) => {
   switch (action.type) {
-    case "INCREASE_ITEM":
-      const indexI = state.details.findIndex(
-        (item) => item.id === action.payload.id
-      );
-      state.details[indexI].quantity++;
-      console.log(state.details)
-      return { ...state, ...sumItems(state.details) };
     case "GET_ADDRES":
       return { ...state, addres: action.addres };
     case "CHECKED_ADDRES":
@@ -56,9 +35,30 @@ const factorReducer = (state = initializedState, action) => {
         details: action.data,
         basketLength: action.data.length,
         loading: false,
-        loadingList:false
+        loadingList: false
       };
-
+    case "Incress_Details":
+      const update = state.details.map((p) =>
+        p.id === action.payload ? { ...p, p: p.qty++ } : p
+      );
+      
+      return {
+        ...state,
+        details: update,
+        loading: false,
+        loadingList: false
+      };
+      case "Decress_Details":
+        const updateD = state.details.map((p) =>
+          p.id === action.payload ? { ...p, p: p.qty-- } : p
+        );
+        
+        return {
+          ...state,
+          details: updateD,
+          loading: false,
+          loadingList: false
+        };
     case "DELETE_BASKET":
       return {
         ...state,
@@ -84,12 +84,12 @@ const factorReducer = (state = initializedState, action) => {
         ...state,
         loadingList: true
       };
-        case "lOADING_LIST_FALSE":
+    case "lOADING_LIST_FALSE":
       return {
         ...state,
         loadingList: false
       };
-      
+
     default:
       return state;
   }

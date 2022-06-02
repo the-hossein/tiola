@@ -20,9 +20,11 @@ import {
 } from "../../../api/urls";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
+  DecreaseBasketDetail,
   deleteBasketUser,
   falseLoadingProductlist,
-  increaseItem,
+  getBasketDetails,
+  IncressBasketDetail,
   loadingProductList
 } from "../../../redux/factor/factorAction";
 import { notify } from "../../../tools/toast/toast";
@@ -40,6 +42,7 @@ const List = ({ data, alldata }) => {
 
   const lang = useSelector((state) => state.stateLang.lng);
   const basket = useSelector((state) => state.stateFactor);
+  const state = useSelector((state) => state.stateRegister);
   const { t } = useTranslation();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
@@ -57,37 +60,35 @@ const List = ({ data, alldata }) => {
   }, []);
   const increaseHandler = () => {
     setPreload(true);
-    dispatch(increaseItem(data))
-    setPreload(false);
+    const increase = async () => {
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+      const statusAdd = await callApi(
+        `${BASE_URL + INCREASE_QTY}?BasketDetailId=${data.id}`,
+        "{}",
+        myHeaders,
+        "POST"
+      );
+      if (statusAdd[0].code === 200) {
+        setInfo({
+          ...info,
+          qty: info.qty + 1,
+          total: (info.qty + 1) * data.amount
+        });
+        setPreload(false);
+        dispatch(IncressBasketDetail(data.id));
+      } else if (statusAdd[0].code === 206) {
+        setPreload(false);
 
-    // const increase = async () => {
-    //   var myHeaders = new Headers();
-    //   myHeaders.append("Authorization", `Bearer ${token}`);
-    //   const statusAdd = await callApi(
-    //     `${BASE_URL + INCREASE_QTY}?BasketDetailId=${data.id}`,
-    //     "{}",
-    //     myHeaders,
-    //     "POST"
-    //   );
-    //   if (statusAdd[0].code === 200) {
-    //     setInfo({
-    //       ...info,
-    //       qty: info.qty + 1,
-    //       total: (info.qty + 1) * data.amount
-    //     });
-    //     setPreload(false);
-    //   } else if (statusAdd[0].code === 206) {
-    //     setPreload(false);
-
-    //     if (lang === "fa") {
-    //       var text = "موجودی کافی نیست ";
-    //     } else {
-    //       text = "Inventory is not enough";
-    //     }
-    //     notify(text, "error");
-    //   }
-    // };
-    // increase();
+        if (lang === "fa") {
+          var text = "موجودی کافی نیست ";
+        } else {
+          text = "Inventory is not enough";
+        }
+        notify(text, "error");
+      }
+    };
+    increase();
   };
   const decreseHandler = () => {
     setPreload(true);
@@ -102,14 +103,16 @@ const List = ({ data, alldata }) => {
         "POST"
       );
       if (statusDec[0].code === 200) {
-        setPreload(false);
-
+        
         // setQty(qty - 1);
         setInfo({
           ...info,
           qty: info.qty - 1,
           total: info.total - data.amount
         });
+        dispatch(DecreaseBasketDetail(data.id));
+
+        setPreload(false);
       }
     };
     decrease();

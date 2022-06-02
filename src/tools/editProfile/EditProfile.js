@@ -33,8 +33,8 @@ const EditProfile = () => {
     setAddress(e.target.value);
   };
 
-  // const birthdayUser = userData.birthDayDateTime.split('T');
-  const [userBirthday, setBirthday] = useState();
+  const birthdayUser = userData.birthDayDateTime.split('T');
+  const [userBirthday, setBirthday] = useState(birthdayUser);
   const subBirthday = (e) => {
     setBirthday(e.target.value);
   };
@@ -54,10 +54,9 @@ const EditProfile = () => {
       userBirthday,
       gender,
       imageId,
-      image,
-      dispatch,
-      address,
       router
+      // image,
+      // address,
     );
   };
 
@@ -91,7 +90,7 @@ const EditProfile = () => {
     }
     setUserFName(userData.name);
     setUserLName(userData.family);
-    // setBirthday();
+    setBirthday(birthdayUser[0]);
     setGender(userData.gender);
   }, [userData]);
 
