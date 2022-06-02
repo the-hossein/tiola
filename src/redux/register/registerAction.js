@@ -218,22 +218,22 @@ const getProfile = () => {
         "POST"
       );
       if (user[0].code === 200 && user[0].data !== null) {
-        const basket = async () => {
-          const basketUser = await callApi(
-            `${BASE_URL + GET_BASKET}?UserId=${user[0].data.id}`,
-            "{}",
-            myHeaders,
-            "GET"
-          );
-          if (basketUser[0].code === 200) {
-            dispatch(userData(user[0].data));
-            dispatch(basketid(basketUser[0].data.id));
-            userToken["userid"] = user[0].data.id;
-            localStorage.setItem("userToken", JSON.stringify(userToken));
-          }
-        };
-        basket();
+        dispatch(userData(user[0].data));
       }
+      const basket = async () => {
+        const basketUser = await callApi(
+          `${BASE_URL + GET_BASKET}?UserId=${user[0].data.id}`,
+          "{}",
+          myHeaders,
+          "GET"
+        );
+        if (basketUser[0].code === 200) {
+          dispatch(basketid(basketUser[0].data.id));
+          userToken["userid"] = user[0].data.id;
+          localStorage.setItem("userToken", JSON.stringify(userToken));
+        }
+      };
+      basket();
     };
     profile();
   };

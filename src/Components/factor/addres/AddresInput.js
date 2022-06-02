@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   checkAddress,
   getAddres,
-  getuserAddress
+  getuserAddress,
+  loadingAddress
 } from "../../../redux/factor/factorAction";
 
 //make style for components mui
@@ -57,6 +58,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
     dispatch(checkAddress(e.target.value));
 
     const choseAddress = async () => {
+      dispatch(loadingAddress());
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
       const choseStatus = await callApi(
@@ -68,9 +70,8 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
 
       if (choseStatus[0].code === 200) {
         dispatch(getuserAddress(user.userid));
-      }
-      else{
-        notify("warning","error")
+      } else {
+        notify("warning", "error");
       }
     };
     choseAddress();

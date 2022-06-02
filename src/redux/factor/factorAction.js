@@ -9,6 +9,12 @@ import {
 if (typeof window !== "undefined") {
   var ls = localStorage.getItem("userToken");
 }
+const increaseItem = (item) => {
+  return {
+    type: "INCREASE_ITEM",
+    payload: item
+  };
+};
 const getAddres = (addres) => {
   return {
     type: "GET_ADDRES",
@@ -162,5 +168,6 @@ export {
   getuserAddress,
   loadingAddress,
   loadingProductList,
-  falseLoadingProductlist
+  falseLoadingProductlist,
+  increaseItem
 };

@@ -6,10 +6,31 @@ const initializedState = {
   id: "",
   basketLength: 0,
   details: [],
-  allAddress: []
+  allAddress: [],
+  selectedItem: [],
+  itemsCounter: 0,
+  totalPrice: 0,
 };
+const sumItems = (items) => {
+  const itemCounter = items.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
+  const total = items
+    .reduce((total, product) => product.quantity * product.price + total, 0)
+    .toFixed(2);
+  return { itemsCounter: itemCounter, totalPrice: total };
+};
+
 const factorReducer = (state = initializedState, action) => {
   switch (action.type) {
+    case "INCREASE_ITEM":
+      const indexI = state.details.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.details[indexI].quantity++;
+      console.log(state.details)
+      return { ...state, ...sumItems(state.details) };
     case "GET_ADDRES":
       return { ...state, addres: action.addres };
     case "CHECKED_ADDRES":

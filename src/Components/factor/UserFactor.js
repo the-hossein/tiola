@@ -28,15 +28,15 @@ const UserFactor = () => {
   }
 
   useEffect(() => {
-    dispatch(getBasketDetails(state.basketid));
     dispatch(getuserAddress(state.userid));
+    dispatch(getBasketDetails(state.basketid));
   }, []);
   return (
     <section className={style.ContainerSection}>
       <div className="container mt-4">
-        {basket.loading ? (
+        {/* {basket.loading ? (
           <ScreenLoader />
-        ) : (
+        ) : ( */}
           <>
             <FactorSection title={t("addres")} component={<UserAddres />} />
             <FactorSection
@@ -49,7 +49,7 @@ const UserFactor = () => {
               }
             />
           </>
-        )}
+        {/* )} */}
       </div>
     </section>
   );
