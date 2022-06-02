@@ -11,6 +11,7 @@ import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import MbList from "./MbList";
 import { useDispatch, useSelector } from "react-redux";
 import callApi from "../../../api/callApi";
+import Spinner from "react-bootstrap/Spinner";
 import {
   BASE_URL,
   DECREASE_QTY,
@@ -18,9 +19,14 @@ import {
   INCREASE_QTY
 } from "../../../api/urls";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteBasketUser } from "../../../redux/factor/factorAction";
+import {
+  deleteBasketUser,
+  falseLoadingProductlist,
+  loadingProductList
+} from "../../../redux/factor/factorAction";
 import { notify } from "../../../tools/toast/toast";
 import Link from "next/link";
+import Loader from "../../../tools/loader/Loader";
 const List = ({ data, alldata }) => {
   console.log(data);
   const dispatch = useDispatch();
@@ -49,6 +55,7 @@ const List = ({ data, alldata }) => {
   }, []);
   const increaseHandler = () => {
     const increase = async () => {
+      dispatch(loadingProductList());
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
       const statusAdd = await callApi(
@@ -63,7 +70,10 @@ const List = ({ data, alldata }) => {
           qty: info.qty + 1,
           total: (info.qty + 1) * data.amount
         });
+        dispatch(falseLoadingProductlist());
       } else if (statusAdd[0].code === 206) {
+        dispatch(falseLoadingProductlist());
+
         if (lang === "fa") {
           var text = "موجودی کافی نیست ";
         } else {
@@ -126,21 +136,26 @@ const List = ({ data, alldata }) => {
           <li className={style.price}>{info.total + t("t")}</li>
         </ul>
         <ColorPick color={data.collection.colorCode} />
+
         <div className="d-flex flex-row">
-          {info.qty <= 1 ? (
+          {basket.loadingList ? (
+            <Spinner animation="grow" />
+          ) : info.qty <= 1 ? (
             <DeleteIcon sx={{ fontSize: 24 }} onClick={deleteHandler} />
           ) : (
-            <FontAwesomeIcon
-              icon={faMinus}
-              className={style.minus}
-              onClick={decreseHandler}
-            />
+            <>
+              <FontAwesomeIcon
+                icon={faMinus}
+                className={style.minus}
+                onClick={decreseHandler}
+              />
+              <span className={style.count}>{info.qty}</span>
+              <AddOutlinedIcon
+                sx={{ fontSize: 30, margin: 0 }}
+                onClick={increaseHandler}
+              />
+            </>
           )}
-          <span className={style.count}>{info.qty}</span>
-          <AddOutlinedIcon
-            sx={{ fontSize: 30, margin: 0 }}
-            onClick={increaseHandler}
-          />
         </div>
         <Link href={`/product/${data.productId}`}>
           <img src={data.filePath} />

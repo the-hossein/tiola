@@ -24,6 +24,8 @@ const MobileFooter = () => {
             <WhatsAppIcon />
             <InstagramIcon />
           </div>
+          <span>{t("ContactUs")}</span>
+
         </div>
        <div className='d-flex align-item-center justify-content-evenly pt-3'>
        <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>

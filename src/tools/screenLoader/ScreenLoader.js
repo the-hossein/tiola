@@ -5,11 +5,12 @@ const ScreenLoader = () => {
   const state = useSelector((state) => state.stateScreenLoader);
   console.log(state);
   return (
-    state.loadingScreen && (
-      <div className={style.screenLoader}>
+    // state.loadingScreen && (
+      <div className={style.loading_gif}>
+        {/*   <img src={gif} alt="loading" /> */}
         <img src="/Assets/images/loader.gif" />
       </div>
-    )
+    // )
   );
 };
 

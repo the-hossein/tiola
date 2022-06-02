@@ -22,48 +22,37 @@ const UserAddres = () => {
   const state = useSelector((state) => state.stateFactor);
   const user = useSelector((state) => state.stateRegister);
 
- 
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
   }
 
- 
   return (
     <div className="row m-0">
       <div className={`col-lg-6 col-md-6 col-12 overflow-hidden ${style.map}`}>
         <img src="/Assets/images/map.png" />
       </div>
       <div className="col-lg-6 col-md-6 col-12">
-        {state.loading ? (
+        {state.loadingAddress ? (
           <Loader />
         ) : (
-          state.allAddress.map((item) => (
-            <>
-              <AddresInput
-                data={item}
-                id={item.id}
-                checkicon={<CheckBoxIcon sx={{ fontSize: 30 }} />}
-                icon={
-                  <CheckBoxOutlineBlankIcon
-                    sx={{ fontSize: 30, color: "#c7c7c7" }}
-                  />
-                }
-           
-              />
-            </>
-          ))
+          <>
+            {state.allAddress.map((item) => (
+              <>
+                <AddresInput
+                  data={item}
+                  id={item.id}
+                  checkicon={<CheckBoxIcon sx={{ fontSize: 30 }} />}
+                  icon={
+                    <CheckBoxOutlineBlankIcon
+                      sx={{ fontSize: 30, color: "#c7c7c7" }}
+                    />
+                  }
+                />
+              </>
+            ))}
+            <AddNewAddress />
+          </>
         )}
-<AddNewAddress/>
-        {/* <AddresInput
-          data="addAddress"
-          id="add"
-          checkicon={
-            <AddBoxOutlinedIcon sx={{ fontSize: 30, color: "#b5b5b5" }} />
-          }
-          icon={<AddBoxOutlinedIcon sx={{ fontSize: 30, color: "#b5b5b5" }} />}
-          onChangeRadio={(e) => addAddres(e)}
-          type="add"
-        /> */}
       </div>
     </div>
   );

@@ -51,6 +51,7 @@ const Footer = () => {
                   <WhatsAppIcon />
                   <InstagramIcon />
                 </div>
+                <span>{t("ContactUs")}</span>
               </div>
               <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
             </div>

@@ -14,6 +14,7 @@ import { getProfile } from "../../redux/register/registerAction";
 import callApi from "../../api/callApi";
 import { BASE_URL, GET_BASKET_DETAILS } from "../../api/urls";
 import Loader from "../../tools/loader/Loader";
+import ScreenLoader from "../../tools/screenLoader/ScreenLoader";
 const UserFactor = () => {
   const { t } = useTranslation();
   const basket = useSelector((state) => state.stateFactor);
@@ -34,7 +35,7 @@ const UserFactor = () => {
     <section className={style.ContainerSection}>
       <div className="container mt-4">
         {basket.loading ? (
-          <Loader />
+          <ScreenLoader />
         ) : (
           <>
             <FactorSection title={t("addres")} component={<UserAddres />} />

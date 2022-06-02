@@ -11,7 +11,11 @@ import { useTranslation } from "react-i18next";
 import EditBtn from "./EditBtn";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-import { checkAddress, getAddres } from "../../../redux/factor/factorAction";
+import {
+  checkAddress,
+  getAddres,
+  getuserAddress
+} from "../../../redux/factor/factorAction";
 
 //make style for components mui
 import { makeStyles } from "@mui/styles";
@@ -52,7 +56,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
     console.log(document.getElementById(`${e.target.value}`).value);
     dispatch(checkAddress(e.target.value));
 
-    const chosekAddress = async () => {
+    const choseAddress = async () => {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
       const choseStatus = await callApi(
@@ -63,10 +67,13 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
       );
 
       if (choseStatus[0].code === 200) {
-        setChecked(true);
+        dispatch(getuserAddress(user.userid));
+      }
+      else{
+        notify("warning","error")
       }
     };
-    chosekAddress();
+    choseAddress();
   };
   const updateHandler = (e) => {
     const editApi = async () => {
@@ -89,12 +96,12 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
 
       if (edited[0].code == 200) {
         setEdit(false);
-        if(lang==="fa"){
-          var  text="آدرس ویرایش شد"
-        }else{
-          text="edited addres"
+        if (lang === "fa") {
+          var text = "آدرس ویرایش شد";
+        } else {
+          text = "edited addres";
         }
-        notify(text,"success")
+        notify(text, "success");
       }
     };
     editApi();
@@ -127,7 +134,9 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
             !edit ? (
               <span onClick={() => setEdit(true)}>{t("edit")}</span>
             ) : (
-              <span onClick={updateHandler} className={Style.submit}>{t("submit")}</span>
+              <span onClick={updateHandler} className={Style.submit}>
+                {t("submit")}
+              </span>
             )
           }
         />
@@ -168,9 +177,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
               value={id}
               name="radio-buttons"
               inputProps={{ "aria-label": `${id}` }}
-              className={
-                lang === "en" ? Style.checkedRight : Style.checkedLeft
-              }
+              className={lang === "en" ? Style.checkedRight : Style.checkedLeft}
             />
           </FormControl>
         </Box>

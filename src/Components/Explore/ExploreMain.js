@@ -68,8 +68,10 @@ const ExploreMain = ({ data }) => {
               spacing={2}
             >
               {getItem.map((product, index) => (
-                <Item key={product.id}>
-                  {console.log(product.id)}
+               product.imageFile1.confirmed&&
+
+                  <Item key={product.id}>
+                
                   <Link href={`/product/${product.id}`}>
                     <div className={style.showProduct}>
                       <img src={product.imageFile1.filePath} alt="product" />
@@ -77,6 +79,7 @@ const ExploreMain = ({ data }) => {
                     </div>
                   </Link>
                 </Item>
+                
               ))}
             </Masonry>
           )}
