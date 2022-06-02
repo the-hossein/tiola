@@ -11,7 +11,12 @@ const HeroSection = () => {
   return (
     <section>
       <div className={style.heroSection}>
-        <img src="/Assets/images/5.jpeg" alt="image" />
+        {/* <img src="/Assets/images/5.jpeg" alt="image" /> */}
+        <video  autoPlay playsInline muted preload="true" loop >
+          <source src="/Assets/images/Tiola.V1.ForWeb (1) - Copy (1).mp4" type="video/mp4" />
+          {/* <source src="movie.ogg" type="video/ogg"> */}
+          Your browser does not support the video tag.
+        </video>
 
         <div
           className={`${style.descoverMore} ${

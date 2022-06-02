@@ -5,6 +5,13 @@
     object-fit: fill;
     position: relative;
 }
+.heroSection video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+    position: relative;
+}
 
 .heroSection {
     height: 85vh;

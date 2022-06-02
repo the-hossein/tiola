@@ -39,7 +39,7 @@ const UserAction = () => {
         <RowProduct statusText="completed" />
         <RowProduct statusText="completed" />
         <RowProduct statusText="completed" />
-        <SecondlyButton text={t("viewMore")} onClick={() => {}} />
+        <SecondlyButton text={t("viewMore")} onClick={() => console.log("popopooopokokiji")} />
       </div>
     </div>
   );

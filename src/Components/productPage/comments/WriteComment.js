@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 //add comment 
 import { createComment } from "../../../redux/comment/commentActions";
+import { notify } from "../../../tools/toast/toast";
 
 const WriteComment = () => {
 
@@ -30,7 +31,8 @@ const WriteComment = () => {
   const dispatch = useDispatch();
   const doneHandler = () => {
     if(commentText === ''){
-      dispatch(writeFalse());
+      notify("این فیلد نباید خالی باشد", "warning")
+      // dispatch(writeFalse());
       dispatch(resetRate());
     }else {
       dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
