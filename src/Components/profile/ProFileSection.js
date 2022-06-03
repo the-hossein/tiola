@@ -28,8 +28,8 @@ const ProFileSection = () => {
   
   useEffect(()=> {
     setpreload(true)
-    if(data) {
-      console.log(data.profileUser.filePath);
+    if(data.profileUser) {
+      // console.log(data.profileUser.filePath);
       setpreload(false)
       return;
     }

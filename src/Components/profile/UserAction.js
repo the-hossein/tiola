@@ -35,7 +35,7 @@ const UserAction = () => {
   const { t } = useTranslation();
   return (
     <div className="row justify-content-between mt-5 mb-5 ">
-      <div className="col-xl-5 col-lg-5 col-md-12  col-12">
+      <div className={`col-xl-5 col-lg-5 col-md-12  col-12 ${style.watchListDiv}`}>
         <h3 className={style.title}>Watch List</h3>
         {
           watchList.preload ? 
@@ -48,7 +48,6 @@ const UserAction = () => {
                         removeId={item.id} 
                         data= {item.product} 
                         userId={user.userid}
-                        // onclick={navigate}
                       />
             })
         }
@@ -63,8 +62,8 @@ const UserAction = () => {
         }
         {
           orderHistory.data.length ?
-          <SecondlyButton text={t("viewMore")} onClick={() => console.log("")} /> :
-          <SecondlyButton text={t("descoverMore")} onClick={() => router.push({pathname: "/product"})} /> 
+          <SecondlyButton text={t("viewMore")} onClick={() => console.log("worked")} /> :
+          <SecondlyButton text={t("descoverMore")} onclick={() => router.push({pathname: `/shop`})} /> 
         }
       </div>
     </div>
