@@ -34,34 +34,9 @@ const BuyLists = ({ setBasketDatas }) => {
   }, [state]);
 
   const payHandler = () => {
-    setpreloadPay(true)
-    const userToken = JSON.parse(ls);
-    const token = userToken.token;
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({
-      userid: user.userid,
-      basketid: user.basketid,
-      amount: totalprice,
-      description: "string",
-      bank: 1
-    });
-    console.log(raw);
-    const apipayment = async () => {
-      const status = await callApi(
-        BASE_URL + ADD_PAYMENT,
-        raw,
-        myHeaders,
-        "POST"
-      );
-      if (status[0].code === 200) {
-        setpreloadPay(false)
-        window.location = status[0].data.requestBank;
+   if(user.loginStatus&&user.birthDayDateTime!==""){
 
-      }
-    };
-    apipayment();
+   }
   };
 
   return (

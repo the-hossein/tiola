@@ -4,9 +4,12 @@ import SecondlyButton from "../../../tools/secondlyButton/SecondlyButton";
 import RectangleProduct from "../product/RectangleProduct";
 import Link from "next/link";
 import SquareProduct from "../product/SquareProduct";
+import { useRouter } from "next/router";
 import style from "../productsCategorization/ProductsCategory.module.css";
-const MBproductCategory = ({ reverse, page, data, title }) => {
+const MBproductCategory = ({ reverse, page, data, title,type }) => {
+  const router=useRouter()
   const { t } = useTranslation();
+
   return (
     <section>
       <div className={style.container}>
@@ -35,8 +38,16 @@ const MBproductCategory = ({ reverse, page, data, title }) => {
         <div
           className={`text-center m-3 ${page === "collPage" ? "d-none" : ""} `}
         >
-          <Link href={`/category/categoryname`}>
-            <SecondlyButton text={t("simpleViewAll")} />
+          <Link href={type !== null ? `/category/${type.type}` : "/"}>
+            <div
+              className={`mt-5 w-100 ${
+                router.pathname === "/collections/[collectionname]"
+                  ? style.collPage
+                  : style.shopPage
+              }`}
+            >
+              <SecondlyButton text={t("simpleViewAll")} />
+            </div>
           </Link>
         </div>
       </div>

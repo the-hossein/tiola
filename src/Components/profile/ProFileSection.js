@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import style from "./UserProfile.module.css";
 import { notify } from "../../tools/toast/toast";
@@ -25,14 +25,20 @@ const ProFileSection = () => {
     }
     setpreload(false);
   };
-
-
+  
+  useEffect(()=> {
+    setpreload(true)
+    if(data) {
+      setpreload(false)
+      return;
+    }
+  }, [data])
   
   return (
     <>
           <div className={style.profile}>
             <div className={style.avatar}>
-              <img src={data.userImage === null ? "/Assets/images/userdefault.png" : data.userImage } alt="user profile image" />
+              <img src={data.profileUser === null ? "/Assets/images/userdefault.png" : data.profileUser.filePath } alt="user profile image" />
             </div>
             <div>
               <h1 className={style.name}>{data.userNameAvatar === "" ? data.phoneNumber : data.userNameAvatar}</h1>

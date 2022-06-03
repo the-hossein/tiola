@@ -19,7 +19,8 @@ const initializedState = {
   profilePicId: null,
   birthDayDateTime: "",
   name: "",
-  family: ""
+  family: "",
+  profileUser: {}
 };
 const registerReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -34,7 +35,8 @@ const registerReducer = (state = initializedState, action) => {
     case "USER_DATA_LOADER":
       return {
         ...state,
-        userDataLoader: true
+        userDataLoader: true,
+       
       };
     case "GETPHONE":
       return { ...state, phoneNumber: action.num };
@@ -47,7 +49,8 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         codeStatus: true,
-        loader: false
+        loader: false,
+      
       };
     case "SEND_CODE_FAILED":
       return {
@@ -78,7 +81,7 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         userNameAvatar: `${action.payload.user.name} ${action.payload.user.family}`,
-        // profilePicId: action.payload.profiepicpath,
+        profileUser : action.user.profilePic,
         gender: action.payload.user.gender
         // address: action.payload.address,
       };
@@ -92,17 +95,19 @@ const registerReducer = (state = initializedState, action) => {
         userNameAvatar: `${action.user.user.name} ${action.user.user.family}`,
         address: "",
         gender: action.user.user.gender,
-        // profilePicId: action.user.user.profilePicId,
+        userImage: action.user.user.profilePicId,
         birthDayDateTime: action.user.user.birthDayDateTime,
         name: action.user.user.name,
-        family: action.user.user.family
+        family: action.user.user.family,
+        profileUser : action.user.profilePic
       };
     case "BASKET_ID":
       return {
         ...state,
         basketid: action.data,
         userDataLoader: false,
-        basketloader: false
+        basketloader: false,
+        loginStatus:true
       };
     case "CLOSE_POPUP":
       return {

@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddres, getuserAddress } from "../../../redux/factor/factorAction";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import { notify } from "../../../tools/toast/toast";
 
 //make style for components mui
 import { makeStyles } from "@mui/styles";
@@ -31,7 +32,7 @@ const AddNewAddress = () => {
   const state = useSelector((state) => state.stateFactor);
   const user = useSelector((state) => state.stateRegister);
 
-  const lang = useSelector((state) => state.stateLang);
+  const lang = useSelector((state) => state.stateLang.lng);
   const dispatch = useDispatch();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
@@ -52,19 +53,29 @@ const AddNewAddress = () => {
       address: `${newAddres}`,
       userid: user.userid
     });
-    const addAddresUser = async () => {
-      console.log(raw);
-      const addStatus = await callApi(
-        BASE_URL + ADD_ADDRESS,
-        raw,
-        myHeaders,
-        "POST"
-      );
-      if (addStatus[0].code === 200) {
-        dispatch(getuserAddress(user.userid));
+    console.log(e.target.value)
+    if (newAddres !== "") {
+      const addAddresUser = async () => {
+        console.log(raw);
+        const addStatus = await callApi(
+          BASE_URL + ADD_ADDRESS,
+          raw,
+          myHeaders,
+          "POST"
+        );
+        if (addStatus[0].code === 200) {
+          dispatch(getuserAddress(user.userid));
+        }
+      };
+      addAddresUser();
+    } else {
+      if (lang === "fa") {
+        var text = "لطفا آدرس خود را وارد کنید";
+      } else {
+        text = "plase enter your addres";
       }
-    };
-    addAddresUser();
+      notify(text, "error");
+    }
   };
   return (
     <div>
@@ -95,12 +106,14 @@ const AddNewAddress = () => {
             icon={
               <AddBoxOutlinedIcon sx={{ fontSize: 30, color: "#b5b5b5" }} />
             }
-            onChange={addAddres}
+       
+            onClick={addAddres}
+
             value="add"
             name="radio-buttons"
             inputProps={{ "aria-label": "add" }}
             className={
-              lang.lng === "en" ? Style.checkedRight : Style.checkedLeft
+              lang === "en" ? Style.checkedRight : Style.checkedLeft
             }
           />
         </FormControl>

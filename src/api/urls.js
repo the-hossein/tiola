@@ -20,5 +20,6 @@ export const CREATE_COMMENT = "api/Comment/CreateComment";
 export const ADD_ADDRESS = "api/v1/User/AddAddress";
 export const CHOSE_ADDRESS="api/v1/User/ChooseAddress";
 export const UPDATE_ADDRESS="api/v1/User/UpdateAddress";
-export const ADD_PAYMENT="api/v1/Basket/Payment"
+export const ADD_PAYMENT="api/v1/Basket/Payment";
+export const VERIFY_PAYMENT="api/v1/Basket/VerifyPayment"
 

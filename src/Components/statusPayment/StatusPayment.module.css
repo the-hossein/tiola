@@ -1,0 +1,45 @@
+.container {
+    text-align: center;
+}
+
+.container img {
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    width: 60%;
+}
+
+.container span {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.backindex {
+    border: 1px solid #ff4f5a;
+    color: #ff4f5a;
+    padding: 0.5rem 1rem;
+    width: 183px;
+    margin-bottom: 2rem;
+    margin: 1rem 0.5rem;
+    border-radius: 8px;
+}
+
+.hi {
+    color: red;
+}
+
+@media(max-width:390px) {
+    .container button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .container img {
+        width: 100%;
+    }
+
+    .backindex {
+        margin: 0;
+
+    }
+}

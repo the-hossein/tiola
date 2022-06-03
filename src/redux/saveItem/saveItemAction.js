@@ -11,7 +11,7 @@ const addToFavorite = data => {
 }
 
 const checkSavedItem = (userId) => {
-    var ls = localStorage.getItem("userToken");
+
     const userToken = JSON.parse(ls);
     var token = userToken.token;
   

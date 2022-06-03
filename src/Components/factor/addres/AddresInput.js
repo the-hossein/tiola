@@ -15,6 +15,7 @@ import {
   checkAddress,
   getAddres,
   getuserAddress,
+  loadingAddresFalse,
   loadingAddress
 } from "../../../redux/factor/factorAction";
 
@@ -49,8 +50,10 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
   const [checked, setChecked] = useState(data.isActive);
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
-    var userToken = JSON.parse(ls);
-    var token = userToken.token;
+    if(ls!== null) {
+      var userToken = JSON.parse(ls);
+      var token = userToken.token;
+    }
   }
   const changeRadio = (e) => {
     dispatch(getAddres(document.getElementById(`${e.target.value}`).value));
@@ -77,6 +80,8 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
     choseAddress();
   };
   const updateHandler = (e) => {
+    dispatch(loadingAddress());
+
     const editApi = async () => {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
@@ -96,6 +101,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
       );
 
       if (edited[0].code == 200) {
+        dispatch(loadingAddresFalse());
         setEdit(false);
         if (lang === "fa") {
           var text = "آدرس ویرایش شد";
