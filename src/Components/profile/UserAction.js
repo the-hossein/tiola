@@ -9,21 +9,26 @@ import { useRouter } from "next/dist/client/router";
 //get state watch list
 import { useDispatch, useSelector } from "react-redux";
 import { checkSavedItem } from "../../redux/saveItem/saveItemAction";
+import { fetchOrderHistory } from "../../redux/orderHistory/orderHistoryAction";
 
 const UserAction = () => {
   const router = useRouter()
   const user = useSelector(state => state.stateRegister);
   const watchList = useSelector(state=> state.stateWatchList);
+  const orderHistory = useSelector(state => state.stateHistory);
   const dispatch = useDispatch();
 
-  const navigate = (productId) => {
-    router.push({pathname:`/product/${productId}`})
-  }
+  const [historyRender, setHistoryRender] = useState(true);
+
 
   useEffect(()=> {
-    if(user){
+    if(user.loginStatus){
       const userId = user.userid;
       dispatch(checkSavedItem(userId));
+      if(historyRender){
+        dispatch(fetchOrderHistory(userId));
+        setHistoryRender(false)
+      }
     }
   }, [user])
 
@@ -43,7 +48,7 @@ const UserAction = () => {
                         removeId={item.id} 
                         data= {item.product} 
                         userId={user.userid}
-                        onclick={navigate}
+                        // onclick={navigate}
                       />
             })
         }
@@ -51,10 +56,16 @@ const UserAction = () => {
       </div>
       <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
         <h3 className={style.title}>History</h3>
-        <RowProduct statusText="completed" />
-        <RowProduct statusText="completed" />
-        <RowProduct statusText="completed" />
-        <SecondlyButton text={t("viewMore")} onClick={() => console.log("popopooopokokiji")} />
+        {
+          orderHistory.loader ? <h4>Loading...</h4> : !orderHistory.data.length ? 
+          <div className={style.messageExist}><p>شما در حال حاضر سفارشی ثبت نکردین!</p></div> :
+          orderHistory.data.map(item => <RowProduct key={Math.random()} statusText="completed" />)
+        }
+        {
+          orderHistory.data.length ?
+          <SecondlyButton text={t("viewMore")} onClick={() => console.log("")} /> :
+          <SecondlyButton text={t("descoverMore")} onClick={() => router.push({pathname: "/product"})} /> 
+        }
       </div>
     </div>
   );

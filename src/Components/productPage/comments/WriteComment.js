@@ -30,14 +30,18 @@ const WriteComment = () => {
 
   const dispatch = useDispatch();
   const doneHandler = () => {
-    if(commentText === ''){
-      notify("این فیلد نباید خالی باشد", "warning")
-      // dispatch(writeFalse());
-      dispatch(resetRate());
-    }else {
-      dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
-      dispatch(writeFalse());
-      dispatch(resetRate());
+    if(user.loginStatus){
+      if(commentText === ''){
+        notify("این فیلد نباید خالی باشد", "warning")
+        // dispatch(writeFalse());
+        dispatch(resetRate());
+      }else {
+        dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
+        // dispatch(writeFalse());
+        dispatch(resetRate());
+      }
+    }else{
+      notify("create a account", "warning")
     }
   };
 
