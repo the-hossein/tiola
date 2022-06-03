@@ -1,7 +1,6 @@
 .payBtn {
     background-color: var(--red-pen);
     color: var(--light-pen);
-    font-size: 16pt;
 
 }
 
@@ -17,13 +16,14 @@
     padding: 0.5rem 0;
     border-radius: var(--Product-Border-radius);
     margin: 0.5rem 0;
+    font-size: var(--xl-font) !important;
 }
 
 .addWatch {
     background-color: var(--light-pen);
     color: var(--dark-pen);
-    font-size: 14pt;
-
+    width: fit-content;
+    padding: 0.5rem;
 }
 
 .addWatch:hover {

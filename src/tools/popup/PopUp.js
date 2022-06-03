@@ -212,7 +212,7 @@ const PopUp = () => {
                 {state.codeStatus&&(again===true) ? (
                   <span
                     onClick={againHandler}
-                    className="d-block mt-2 cursor-pointer"
+                    className={style.again}
                   >
                     {t("sendAgain")}
                   </span>

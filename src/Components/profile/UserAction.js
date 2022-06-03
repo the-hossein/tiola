@@ -30,7 +30,7 @@ const UserAction = () => {
         setHistoryRender(false)
       }
     }
-  }, [user])
+  }, [user]);
 
   const { t } = useTranslation();
   return (

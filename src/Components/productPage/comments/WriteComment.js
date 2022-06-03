@@ -52,7 +52,7 @@ const WriteComment = () => {
   }, [state])
   return (
     <div
-      className={`d-flex flex-column justify-content-between ${Style.writeCm}`}
+      className={`d-flex flex-column justify-content-between  ${Style.writeCm}`}
     >
       <span>{user.userNameAvatar}</span>
       <div className={`form-floating ${Style.commentText}`}>
@@ -68,7 +68,7 @@ const WriteComment = () => {
       </div>
           <div className={
             `
-            d-flex align-items-center justify-content-around ${Style.ratinaition}`}
+            d-flex align-items-center justify-content-around mt-2 ${Style.ratinaition}`}
             >
                 <ul className={Style.factorLi}>
                   <li>{t("factor") + " 1"}</li>

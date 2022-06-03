@@ -11,7 +11,7 @@ const Collection = ({ dir }) => {
     <>
       <section>
         <div className={`${style.landingCategory}`}>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center m-0">
             <div className="col-lg-12 col-md-12 col-11 p-0">
               <Simplcollection
                 image1="/Assets/images/4.jpg"

@@ -79,6 +79,11 @@ const factorReducer = (state = initializedState, action) => {
         ...state,
         loadingAddress: true
       };
+      case "lOADING_ADDRESS_FALSE":
+        return {
+          ...state,
+          loadingAddress: false
+        };
     case "lOADING_LIST":
       return {
         ...state,

@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-
+import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import {
@@ -106,16 +106,19 @@ const Header = ({ backColor }) => {
   };
 
   useEffect(() => {
-    if (ls) {
+    if (ls !== null) {
       const userToken = JSON.parse(ls);
       const tokenExp = userToken.exp;
       const token = userToken.token;
       const phone = userToken.phone;
 
-      dispatch(getProfile());
+      const getApi = async () => {
+        dispatch(await getProfile());
+        dispatch(await getBasketDetails(state.basketid));
+      }
 
-      dispatch(getBasketDetails(state.basketid))
-     
+      getApi();
+
 
       const now = new Date();
       const endDate = new Date(tokenExp);
@@ -156,15 +159,15 @@ const Header = ({ backColor }) => {
   const targetSearch = allProducts.filter((item) =>
     item.title.includes(textSearch)
   );
-const goFactorHandler=()=>{
-  if(!state.loginStatus){
-    dispatch(openPopUp())
-  }else{
-    router.push({
-      pathname:'/factor'
-    })
-  }
-}
+  const goFactorHandler = () => {
+    if (!state.loginStatus) {
+      dispatch(openPopUp());
+    } else {
+      router.push({
+        pathname: "/factor"
+      });
+    }
+  };
   return !prelaod ? (
     <>
       <div className={`${style.header} ${backColor}`}>
@@ -174,11 +177,16 @@ const goFactorHandler=()=>{
               <nav
                 className={` ${style.allitems} d-flex justify-content-between align-items-center`}
               >
-                <FontAwesomeIcon
+                <MenuIcon
+                  sx={{ fontSize: 20, position: "relative" }}
+                  onClick={openMenu}
+                />
+
+                {/* <FontAwesomeIcon
                   icon={faBars}
                   className="position-relative"
                   onClick={openMenu}
-                />
+                /> */}
                 {menuBar && <Menu backColor={backColor} />}
                 <div>
                   <Link href="/">
@@ -221,13 +229,14 @@ const goFactorHandler=()=>{
             </div>
 
             <div className={style.headerIcon}>
-                <div className={style.basket} onClick={goFactorHandler}>
-                  <ShoppingCartIcon />
-               {basket.basketLength===0?"":
-                    <div>{basket.basketLength}</div>
-               }
-                </div>
- 
+              <div className={style.basket} onClick={goFactorHandler}>
+                <ShoppingCartIcon />
+                {basket.basketLength === 0 ? (
+                  ""
+                ) : (
+                  <div>{basket.basketLength}</div>
+                )}
+              </div>
 
               <span>
                 {lang.lng === "en" ? (
@@ -284,11 +293,11 @@ const goFactorHandler=()=>{
         ) : (
           <>
             <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
-              <FontAwesomeIcon icon={faBars} onClick={openMenu} />
+              <MenuIcon sx={{ fontSize: 12 }} onClick={openMenu} />
               {menuBar ? <Menu /> : null}
               {state.loginStatus ? (
                 <Link href={"/profile"}>
-                  <PersonIcon />
+                  <PersonIcon sx={{ fontSize: 20 }} />
                 </Link>
               ) : (
                 <Link href={"/signin"}>
@@ -296,44 +305,58 @@ const goFactorHandler=()=>{
                 </Link>
               )}
               <div className="position-relative d-flex align-items-center">
-                  {
-                    boxTarget && <div className={style.suggest}>
-                        {targetSearch.map(item => {
-                          // {console.log(item)}
-                          return <span key={item.id}><Link href={`/product/${item.id}`} >{item.title}</Link></span>
-                        })}
-                    </div> 
-                  }
+                {boxTarget && (
+                  <div className={style.suggest}>
+                    {targetSearch.map((item) => {
+                      // {console.log(item)}
+                      return (
+                        <span key={item.id}>
+                          <Link href={`/product/${item.id}`}>{item.title}</Link>
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={event => event.key === 'Enter' && router.push({pathname:'/explore'})}
+                  onKeyDown={(event) =>
+                    event.key === "Enter" &&
+                    router.push({ pathname: "/explore" })
+                  }
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
                 />
-                <FontAwesomeIcon
-                  icon={faSearch}
+                <SearchIcon
                   onClick={serachHandler}
-                  style={{ fontSize: 14 }}
                   className={showSearchBox ? style.searchBoxIcon : ""}
+                  sx={{ fontSize: 14 }}
                 />
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
+            {
+              !showSearchBox&&
+              <>
+              
               <Link href="/factor">
                 <div className={style.basket}>
-                  <ShoppingCartIcon sx={{ fontSize: 12 }} />
-                  <div>2</div>
+                  <ShoppingCartIcon sx={{ fontSize: 18 }} />
+                {basket.basketLength<=0?"":
+                  <div>{basket.basketLength}</div>
+                }
                 </div>
               </Link>
               <Link href="/shop">
-                <ShoppingBagIcon sx={{ fontSize: 16 }} />
+                <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
                 {/* <span>{t("descoverMore")}</span> */}
               </Link>
               <Link href="/">
                 <Image src={logo} alt="logo" />
               </Link>
+              </>
+            }
             </div>
           </>
         )}

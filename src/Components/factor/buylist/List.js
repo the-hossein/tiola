@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import ColorPick from "../../../tools/colorPick/ColorPick";
 import { useTranslation } from "react-i18next";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
@@ -30,6 +30,10 @@ import {
 import { notify } from "../../../tools/toast/toast";
 import Link from "next/link";
 import Loader from "../../../tools/loader/Loader";
+import {
+  checkSavedItem,
+  fetchingToSave
+} from "../../../redux/saveItem/saveItemAction";
 const List = ({ data, alldata }) => {
   console.log(data);
   const dispatch = useDispatch();
@@ -39,7 +43,7 @@ const List = ({ data, alldata }) => {
     qty: data.qty,
     total: data.amount * data.qty
   });
-
+  const watchList = useSelector((state) => state.stateWatchList);
   const lang = useSelector((state) => state.stateLang.lng);
   const basket = useSelector((state) => state.stateFactor);
   const state = useSelector((state) => state.stateRegister);
@@ -103,7 +107,6 @@ const List = ({ data, alldata }) => {
         "POST"
       );
       if (statusDec[0].code === 200) {
-        
         // setQty(qty - 1);
         setInfo({
           ...info,
@@ -137,7 +140,25 @@ const List = ({ data, alldata }) => {
     // };
     // deletProduct();
   };
-  const addwatch = () => {};
+  const addWatchHandler = () => {
+    const userID = state.userid;
+    const productId = data.productId;
+    const targetItem = !!watchList.list.find(
+      (item) => item.productId === productId
+    );
+    if (targetItem) {
+      notify("شما این محصول را قبلا اضافه کردین", "success");
+    } else {
+      dispatch(fetchingToSave(userID, productId));
+    }
+  };
+
+  useEffect(() => {
+    if (state.loginStatus && state.userid !== "") {
+      const userID = state.userid;
+      dispatch(checkSavedItem(userID));
+    }
+  }, []);
   return size > 768 ? (
     <div className={`row m-0 p-3 justify-content-between w-100 ${style.row}`}>
       <>
@@ -156,7 +177,10 @@ const List = ({ data, alldata }) => {
         ) : (
           <div className="d-flex flex-row">
             {info.qty <= 1 ? (
-              <DeleteIcon sx={{ fontSize: 24 }} onClick={deleteHandler} />
+              <DeleteIcon
+                className={style.deleteicon}
+                onClick={deleteHandler}
+              />
             ) : (
               <FontAwesomeIcon
                 icon={faMinus}
@@ -175,7 +199,7 @@ const List = ({ data, alldata }) => {
           </div>
         )}
         <Link href={`/product/${data.productId}`}>
-          <img src={data.filePath} />
+          <img src={data.filePath}  />
         </Link>
         <div>
           <CloseOutlinedIcon
@@ -186,13 +210,22 @@ const List = ({ data, alldata }) => {
           <PrimaryButton
             light={true}
             btnText={t("addWatchList")}
-            onClick={addwatch}
+            onClick={(e) => addWatchHandler()}
           />
         </div>
       </>
     </div>
   ) : (
-    <MbList />
+    <MbList
+      data={data}
+      alldata={alldata}
+      addWatchHandler={(e) => addWatchHandler()}
+      info={info}
+      increaseHandler={(e)=>increaseHandler()}
+      decreseHandler={(e)=>decreseHandler()}
+      deleteHandler={(e)=>deleteHandler()}
+      preload={preload}
+    />
   );
 };
 

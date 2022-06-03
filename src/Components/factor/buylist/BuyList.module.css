@@ -10,7 +10,12 @@
     cursor: pointer;
 
 }
-
+.row{
+    font-size: var(--md-font) !important;
+}
+.deleteicon {
+    font-size: 22pt !important; 
+}
 .payBtn {
     display: flex;
     justify-content: center;
@@ -47,10 +52,13 @@
 
 .count {
     padding: 0 1rem;
+    font-size: var(--md-font);
 }
 
 .minus {
-    padding: 0.35rem 0.45rem;
+    padding: 0.38rem 0rem;
+    width: 25px !important;
+    font-size: 12pt !important;
 }
 
 .row,
@@ -83,17 +91,16 @@
     align-items: flex-end;
 }
 
-.row>div svg,
-.Mbrow>div svg {
+.row>div >svg,
+.Mbrow>div> svg {
     border: 1px solid #c7c7c7;
     border-radius: 6px;
     color: #a19c9c;
     cursor: pointer;
-    width: 25px;
-    font-size: 17pt;
+    width: 27px;
 }
 
-.row>div svg:hover {
+.row>div> svg:hover {
     border-color: var(--blue-pen);
     color: var(--blue-pen);
 }
@@ -140,7 +147,7 @@
     }
 
     .Mbrow img {
-        width: 120px;
+        width: 42%;
         height: 160px;
     }
 }

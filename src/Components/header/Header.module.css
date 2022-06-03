@@ -65,13 +65,16 @@
     padding: 0 1.5rem !important;
 
 }
+
 .mobileIcon svg {
     margin: 0 5px;
     font-size: 16pt;
 }
+
 .mobileIcon .searchBox {
     font-size: 9pt !important;
 }
+
 .mobileIcon span {
 
     padding: 0 1.5rem !important;
@@ -79,7 +82,7 @@
 
 .mobileLogo {
     justify-content: space-between;
-    flex: 0.35;
+    /* flex: 0.35; */
 }
 
 .mobileLogo>span:last-child {
@@ -106,6 +109,7 @@
     text-align: left;
     animation-name: searchBoxAnimation;
     animation-duration: 0.6s;
+    animation-timing-function: linear;
     width: 180px;
     padding: .5rem 1.8rem;
     border: none;
@@ -127,7 +131,7 @@
     color: #111111;
     top: .5rem;
     font-size: 14pt !important;
-    transition: all .2s linear;   
+    transition: all .2s linear;
 }
 
 
@@ -145,6 +149,17 @@
 
     to {
         width: 180px;
+    }
+}
+
+@keyframes searchBoxAnimationMB {
+    from {
+        display: block;
+        width: 0px;
+    }
+
+    to {
+        width: 100%;
     }
 }
 
@@ -189,18 +204,22 @@
     }
 
     .searchBox {
-        width: 70%;
+        width: 100%;
         font-size: var(--xs-font) !important;
         padding: 5px 1.3rem 5px 1.3rem !important;
-        
+        animation-name: searchBoxAnimationMB;
+
+
     }
+
     .searchBox::placeholder {
         display: inline !important;
         font-size: var(--sm-font) !important;
         color: #111111 !important;
     }
+
     .searchBoxIcon {
-        font-size: 9pt!important;
+        font-size: 9pt !important;
     }
 
     @keyframes searchBoxAnimation {
@@ -213,7 +232,8 @@
             width: 100px;
         }
     }
-    .suggest { 
+
+    .suggest {
         top: 30px !important;
         /* left: 50px !important; */
     }
@@ -256,6 +276,7 @@
     scrollbar-width: none;
     z-index: 5150 !important;
 }
+
 .suggest::-webkit-scrollbar {
     display: none;
 }
@@ -269,6 +290,7 @@
     text-decoration: none;
     transition: all .2s linear;
 }
+
 .suggest a:hover {
     height: fit-content;
     color: var(--blue-pen);
