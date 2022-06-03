@@ -99,7 +99,7 @@ const RowProduct = ({ close, statusText, data, userId, removeId, onclick }) => {
         )}
           <div className={` d-flex `}>
             {/* {t("scarf")}  t("mirdamad") */}
-            <span onClick={navigate} > {data ? data.title : "nonono"}</span>
+            <span onClick={navigate} style={{cursor: "pointer"}} > {data ? data.title : "nonono"}</span>
             <span>{data ? dateC[0] : "kd"}</span>
             <span>{data ? data.collection.title : "mirdamad"}</span>
           </div>
