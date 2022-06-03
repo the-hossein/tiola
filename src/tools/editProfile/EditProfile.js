@@ -33,8 +33,8 @@ const EditProfile = () => {
     setAddress(e.target.value);
   };
 
-  const birthdayUser = userData.birthDayDateTime.split('T');
-  const [userBirthday, setBirthday] = useState(birthdayUser);
+  
+  const [userBirthday, setBirthday] = useState();
   const subBirthday = (e) => {
     setBirthday(e.target.value);
   };
@@ -79,9 +79,10 @@ const EditProfile = () => {
     setpreload(false);
   };
 
-  const removeImg = () => {
+  const removeImg = (e) => {
+    e.preventDefault();
     setImage("");
-    setImageid(0);
+    setImageid(null);
   };
 
   useEffect(() => {
@@ -89,10 +90,13 @@ const EditProfile = () => {
     if (tokenLocal) {
       setToken(tokenLocal.token);
     }
-    setUserFName(userData.name);
-    setUserLName(userData.family);
-    setBirthday(birthdayUser[0]);
-    setGender(userData.gender);
+    if(userData.birthDayDateTime !== null){
+      const birthdayUser = userData.birthDayDateTime.split('T');
+      setUserFName(userData.name);
+      setUserLName(userData.family);
+      setGender(userData.gender);
+      setBirthday(birthdayUser[0]);
+    }
   }, [userData]);
 
   return (
@@ -105,10 +109,9 @@ const EditProfile = () => {
               <div className="col-12">
                 <img
                   src={
-                    userData.profileUser.filePath === null ? 
-                    "/Assets/images/userdefault.png"  :  preload ? "/Assets/images/loader.gif" :
-                    image === "" ? userData.profileUser.filePath : image
-                    
+                     preload ? "/Assets/images/loader.gif" :
+                    image === "" ?userData.profileUser === null ? 
+                    "/Assets/images/userdefault.png"  :  userData.profileUser.filePath : image
                   }
                   alt="user profile"
                 />

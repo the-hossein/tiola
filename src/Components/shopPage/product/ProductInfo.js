@@ -4,6 +4,7 @@ import style from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import persianNumber from "../../../tools/persianNumber/persianNumber";
 const ProductInfo = ({ more, data }) => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
@@ -20,7 +21,7 @@ const ProductInfo = ({ more, data }) => {
               lang.lng === "fa" && "align-items-end"
             }`}
           >
-            <span>{data.price + t("t")}</span>
+            <span>{lang.lng==="fa"?persianNumber(data.price) + " "+t("t"):data.price+" "+ t("t")}</span>
             <span className={style.rating}>
               <Rating name="product Rate" value={data.rate} readOnly />
             </span>

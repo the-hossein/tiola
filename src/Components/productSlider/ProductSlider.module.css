@@ -4,7 +4,9 @@
     object-fit: cover;
     
 }
-
+.slider img{
+    cursor: pointer;
+}
 .slider {
     direction: ltr;
 }

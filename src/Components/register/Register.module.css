@@ -11,9 +11,11 @@
 .Register h1 {
     text-align: var(--float-left);
     margin-bottom: 3rem;
-    font-size: var(--oxx-font) !important;
+    font-size: var(--xxl-font) !important;
 }
-
+.submitButtons button{
+    font-size: var(--xs-font);
+}
 .pic span img {
     object-fit: cover;
 }

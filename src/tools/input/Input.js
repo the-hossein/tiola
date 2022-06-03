@@ -11,7 +11,8 @@ const Input = ({
   focusHandler,
   name,
   keyDown,
-  value
+  value,
+  AutoFocus
 }) => {
   const submitHndler = (e) => {
     e.preventDefault();
@@ -39,6 +40,7 @@ const Input = ({
             maxLength={maxLength}
             onFocus={focusHandler}
             onKeyDown={keyDown}
+            autoFocus={AutoFocus}
           />
         </div>
       </form>

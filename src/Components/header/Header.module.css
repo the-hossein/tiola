@@ -57,7 +57,9 @@
 .allitems span,
 .allitems svg,
 .headerIcon span,
-.headerIcon div {
+.headerIcon div ,
+.headerIcon svg,.logo
+{
     cursor: pointer !important;
 }
 
@@ -166,7 +168,7 @@
 @media(max-width:1000px) {
     .header {
         padding: 0.6rem 1.5rem;
-        font-size: var(--xs-font);
+        font-size: var(--md-font);
 
     }
 

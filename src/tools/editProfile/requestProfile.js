@@ -1,5 +1,7 @@
 import { updateSetProfile } from "../../redux/register/registerAction"; 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { BASE_URL } from "../../api/urls";
+import { notify } from "../toast/toast";
 
 
 
@@ -17,26 +19,27 @@ const RequestProfile = (token, userID, name, family, birthday, gender, picId, ro
         "gender": +gender,
   });
 
-  console.log(raw);
-  console.log(router);
-
+  console.log(birthday);
 var requestOptions = {
     method: 'POST',
     headers: myHeaders,
     body: raw,
 };
-
-fetch("https://api.tiolastyle.com/api/v1/User/UpdateProfile", requestOptions)
-  .then(response => response.json())
-  .then(json => {
-    console.log(json)
-      if(json.code === 200) {
-        console.log("worked")
-        router.push({pathname: '/'});
-          // dispatch(updateSetProfile(JSON.parse(raw)));
-      }
-    })
-  .catch(error => console.log('error', error))
+  if(name !== "" && family !== "" && birthday !== ""){
+    fetch(`${BASE_URL}api/v1/User/UpdateProfile`, requestOptions)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json)
+          if(json.code === 200) {
+            console.log("worked")
+            router.push({pathname: '/profile'});
+              dispatch(updateSetProfile(JSON.parse(raw)));
+          }
+        })
+      .catch(error => console.log('error', error))
+  }else{
+    notify("compeleted your data", "warning")
+  }
 }
 
 export default RequestProfile;

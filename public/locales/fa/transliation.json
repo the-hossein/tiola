@@ -40,7 +40,7 @@
   "Readless": "کمتر",
   "sendCode": "ارسال کد",
   "enterCode": "وارد کردن کد",
-  "signIN": "ثبت نام/ورود",
+  "signIN": "ثبت نام / ورود",
   "signup": "ثبت نام",
   "phoneNumber": "شماره همراه",
   "successSignIn": "با موفقیت ثبت نام شدید",
@@ -63,17 +63,19 @@
   "stock": "موجودی",
   "shawl": "شال",
   "headgear": "روسری",
-  "scurf": "اسکارف",
+  "scarf": "اسکارف",
   "tiolaStory": "داستان تیولا",
   "blogs": "بلاگ ها",
   "emptycodeValidate": "لطفا کد را واارد کنید ",
   "lengthcodeValidate": "لطفا کد 6 رقمی وارد کنید",
-  "signTextPopUp":" شماره همراه خود را وارد کنید",
+  "signTextPopUp": " شماره همراه خود را وارد کنید",
   "search": "به دنبال ... بگرد",
   "TextCodePopUp": "کد ارسال شده را وارد کنید",
   "enterCodePlaceHolder": "کد را در اینجا وارد کنید",
   "enterPhonePlaceHolder": "شماره همراه را در اینجا وارد کنید",
   "placementfactorList": "شما محصولی در سبد خرید خود ندارید",
-  "submit":"ثبت"
-  
+  "submit": "ثبت",
+  "tiolaBlogsTitle": "مقاله تیولا",
+  "nullCollection":"کالشنی موجود نیست"
+
 }

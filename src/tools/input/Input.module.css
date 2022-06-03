@@ -12,6 +12,7 @@
     text-align-last: var(--float-left);
     border: none;
 }
+
 .input::placeholder{
     color: var(--lightGray-border);
     font-size: var(--sm-font);

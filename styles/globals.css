@@ -21,7 +21,7 @@
   --md-font: 12pt;
   --lg-font: 14pt;
   --xl-font: 16pt;
-  --xxl-font: 24pt;
+  --xxl-font: 21pt;
   --oxx-font: 26pt;
   --green-pen: #06745f;
   --greenLight-pen: #03c65e;
@@ -136,7 +136,9 @@ a {
   bottom: -6px !important;
   /* height: fit-content ; */
 }
-
+main{
+  min-height: 70vh;
+}
 .mySwiperComment .swiper-slide {
   display: flex;
   align-items: center;

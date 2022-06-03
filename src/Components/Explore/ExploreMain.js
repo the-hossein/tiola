@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Masonry from "@mui/lab/Masonry";
+import CircularProgress from "@mui/material/CircularProgress";
 
 //style
 import style from "./ExploreMain.module.css";
@@ -20,7 +21,7 @@ const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
 
   const [getItem, setGetItem] = useState({});
-  const lang =useSelector(state=>state.stateLang.lng)
+  const lang = useSelector((state) => state.stateLang.lng);
   console.log(data);
   useEffect(() => {
     setGetItem(data.slice(0, 10));
@@ -55,32 +56,40 @@ const ExploreMain = ({ data }) => {
     <div className={style.explore}>
       <Box sx={{ width: "auto" }}>
         <InfiniteScroll
-        style={{overflow:'hidden'}}
+          style={{ overflow: "hidden" }}
           dataLength={data.length}
           next={fetchMoreData}
-          hasMore={getItem.length===data.length?false:true}
+          hasMore={getItem.length === data.length ? false : true}
           endMessage=""
-          loader={<Loader/>}
+          loader={
+            <div className="d-block text-center">
+              <CircularProgress disableShrink />
+            </div>
+          }
         >
           {getItem.length > 0 && (
             <Masonry
               columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
               spacing={2}
             >
-              {getItem.map((product, index) => (
-               product.imageFile1.confirmed&&
-
-                  <Item key={product.id}>
-                
-                  <Link href={`/product/${product.id}`}>
-                    <div className={style.showProduct}>
-                      <img src={product.imageFile1.filePath} alt="product" />
-                      <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
-                    </div>
-                  </Link>
-                </Item>
-                
-              ))}
+              {getItem.map(
+                (product, index) =>
+                  product.imageFile1.confirmed && (
+                    <Item key={product.id}>
+                      <Link href={`/product/${product.id}`}>
+                        <div className={style.showProduct}>
+                          <img
+                            src={product.imageFile1.filePath}
+                            alt="product"
+                          />
+                          <p className={style.parag}>
+                            {lang === "fa" ? product.title : product.titleEn}
+                          </p>
+                        </div>
+                      </Link>
+                    </Item>
+                  )
+              )}
             </Masonry>
           )}
         </InfiniteScroll>

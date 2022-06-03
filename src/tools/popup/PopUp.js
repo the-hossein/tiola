@@ -158,6 +158,7 @@ const PopUp = () => {
                     changehandler={(e) => changeCodeNumber(e)}
                     focusHandler={(e) => focusHandler(e)}
                     keyDown={(e) => TypeNumber(e)}
+                    AutoFocus={true}
                   />
                 ) : (
                   <Input
@@ -171,6 +172,7 @@ const PopUp = () => {
                     changehandler={(e) => changePhoneNUmber(e)}
                     focusHandler={(e) => focusHandler(e)}
                     keyDown={(e) => TypeNumber(e)}
+                    AutoFocus={true}
                   />
                 )}
 
@@ -194,7 +196,6 @@ const PopUp = () => {
                               : errorsCode.code === "lengthCode" &&
                                 t("lengthCode")}
                           </span>
-                     
                         </>
                       )
                     : errors.phone &&
@@ -207,27 +208,26 @@ const PopUp = () => {
                             : t("incorrentPhoneValidate")}
                         </span>
                       )}
-                
                 </span>
-                {state.codeStatus&&(again===true) ? (
-                  <span
-                    onClick={againHandler}
-                    className={style.again}
-                  >
+                {state.codeStatus && again === true ? (
+                  <span onClick={againHandler} className={style.again}>
                     {t("sendAgain")}
                   </span>
-                ) :(state.codeStatus&&again===false) && (
-                  <span className="d-block mt-2">
-                    <CountdownTimer
-                      color="#707070"
-                      size={10}
-                      count={120}
-                      backgroundColor={"none"}
-                      hideDay={true}
-                      hideHours={true}
-                      onEnd={endTimerHandler}
-                    />
-                  </span>
+                ) : (
+                  state.codeStatus &&
+                  again === false && (
+                    <span className="d-block mt-2">
+                      <CountdownTimer
+                        color="#707070"
+                        size={10}
+                        count={120}
+                        backgroundColor={"none"}
+                        hideDay={true}
+                        hideHours={true}
+                        onEnd={endTimerHandler}
+                      />
+                    </span>
+                  )
                 )}
               </div>
             </>

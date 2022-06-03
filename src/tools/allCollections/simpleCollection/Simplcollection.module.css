@@ -1,6 +1,5 @@
-
 /* new border radius */
-.fixedBorder{
+.fixedBorder {
     border-radius: 185px 185px 0 0 !important;
 }
 
@@ -16,12 +15,13 @@
     width: 35%;
     height: 70%;
     -o-object-fit: cover;
-    object-fit:cover;
+    object-fit: cover;
     align-self: flex-end;
     transition-duration: 0.4s;
     transition-timing-function: linear;
 
 }
+
 .containerPic img:last-child {
     border-radius: 150px 150px 0 0;
     width: 50%;
@@ -41,7 +41,6 @@
 .content {
     direction: var(--direction);
     text-align: justify;
-    z-index: -1;
 }
 
 
@@ -50,13 +49,15 @@
 .containerPic img:first-child:hover {
     border-radius: 0 !important;
     cursor: pointer;
-  
+
 }
-@media(max-width:992px){
-    .containerPic{
+
+@media(max-width:992px) {
+    .containerPic {
         padding-right: 0;
     }
 }
+
 @media(max-width:768px) {
     .collection {
         flex-direction: column-reverse !important;
@@ -71,7 +72,7 @@
 
 
     .containerPic {
-    
+
         padding-right: 0;
     }
 
