@@ -1,8 +1,12 @@
 import Head from "next/head";
+import { useSelector } from "react-redux";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import UserProfile from "../src/Components/profile/UserProfile";
+import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 export default function profile() {
+  const state = useSelector((state) => state.stateRegister);
+ 
   return (
     <div>
       <Head>
@@ -13,10 +17,12 @@ export default function profile() {
       <header>
         <Header backColor={"headerColor"} />
       </header>
-
+      {state.userDataLoader ? (
+       <ScreenLoader />
+     ) : 
       <main>
         <UserProfile />
-      </main>
+      </main>}
       <footer>
         <Footer />
       </footer>

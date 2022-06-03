@@ -5,8 +5,12 @@ import Header from "../../src/Components/header/Header";
 import callApi from "../../src/api/callApi";
 import { useEffect } from "react";
 import { BASE_URL, GET_PRODUCT, GET_WITHLABLE } from "../../src/api/urls";
+import ScreenLoader from "../../src/tools/screenLoader/ScreenLoader";
+import { useSelector } from "react-redux";
 export default function productname({ product, similar }) {
   console.log(product[0]);
+  const state = useSelector((state) => state.stateRegister);
+
   return (
     <div>
       <Head>
@@ -17,9 +21,13 @@ export default function productname({ product, similar }) {
       <header>
         <Header backColor={"headerColor"} />
       </header>
-      <main>
-        <Productpage product={product[0]} similar={similar[0]} />
-      </main>
+      {state.userDataLoader ? (
+        <ScreenLoader />
+      ) : (
+        <main>
+          <Productpage product={product[0]} similar={similar[0]} />
+        </main>
+      )}
       <footer>
         <Footer />
       </footer>

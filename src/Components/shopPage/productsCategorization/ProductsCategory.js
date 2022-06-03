@@ -26,9 +26,18 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
       <section>
         <div className={style.container}>
           <div
-            className={`row justify-content-center ${router.pathname !== "/collections/[collectionname]"? style.spliterCategory: ""}`}>
+            className={`row justify-content-center ${
+              router.pathname !== "/collections/[collectionname]"
+                ? style.spliterCategory
+                : ""
+            }`}
+          >
             <div className={`col-xl-10 col-lg-12 col-12`}>
-              <div className={`row justify-content-center  ${reverse === true ? "flex-row-reverse" : ""} `}>
+              <div
+                className={`row justify-content-center  ${
+                  reverse === true ? "flex-row-reverse" : ""
+                } `}
+              >
                 {router.pathname !== "/collections/[collectionname]" && (
                   <h3 className={style.title}>{t(`${type.type}`)}</h3>
                 )}
@@ -46,21 +55,21 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                     }
                     data={data[0]}
                   />
-                      <Link href={type!==null?`/category/${type.type}`:'/'}>
-                  <div
-                    className={`mt-5 w-100 ${
-                      router.pathname === "/collections/[collectionname]"
-                        ? style.collPage
-                        : style.shopPage
-                    }`}
-                  >
+                  <Link href={type !== null ? `/category/${type.type}` : "/"}>
+                    <div
+                      className={`mt-5 w-100 ${
+                        router.pathname === "/collections/[collectionname]"
+                          ? style.collPage
+                          : style.shopPage
+                      }`}
+                    >
                       <SecondlyButton text={t("simpleViewAll")} />
-                  </div>
-                    </Link>
+                    </div>
+                  </Link>
                 </div>
 
                 <div className="col-lg-8 co-md-8 col-8">
-                  <div className={`row ${reverse&& "justify-content-end"}`}>
+                  <div className={`row ${reverse && "justify-content-end"}`}>
                     {data.slice(1, 5).map((item) => (
                       <>
                         <div className={`col-6  pb-3  ${style.productPhoto}`}>
@@ -85,6 +94,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
         }
         data={data}
         title={title}
+        type={type}
       />
     );
   }

@@ -9,6 +9,23 @@ import { useRouter } from "next/dist/client/router";
 //get state watch list
 import { useDispatch, useSelector } from "react-redux";
 import { checkSavedItem } from "../../redux/saveItem/saveItemAction";
+<<<<<<< HEAD
+import Loader from "../../tools/loader/Loader";
+import Placement from "../../tools/placement/Placement";
+
+const UserAction = () => {
+  const router = useRouter();
+  const user = useSelector((state) => state.stateRegister);
+  const watchList = useSelector((state) => state.stateWatchList);
+  const dispatch = useDispatch();
+
+  const navigate = (productId) => {
+    router.push({ pathname: `/product/${productId}` });
+  };
+
+  useEffect(() => {
+    if (user) {
+=======
 import { fetchOrderHistory } from "../../redux/orderHistory/orderHistoryAction";
 
 const UserAction = () => {
@@ -23,6 +40,7 @@ const UserAction = () => {
 
   useEffect(()=> {
     if(user.loginStatus){
+>>>>>>> 0a4bcfef3bff1fe55aca57869797c95ed435d5c3
       const userId = user.userid;
       dispatch(checkSavedItem(userId));
       if(historyRender){
@@ -30,13 +48,42 @@ const UserAction = () => {
         setHistoryRender(false)
       }
     }
-  }, [user])
+  }, [user]);
 
   const { t } = useTranslation();
   return (
     <div className="row justify-content-between mt-5 mb-5 ">
       <div className="col-xl-5 col-lg-5 col-md-12  col-12">
         <h3 className={style.title}>Watch List</h3>
+<<<<<<< HEAD
+        {watchList.preload ? (
+          <Loader />
+        ) : watchList.list.length <= 0 ? (
+          <Placement text="اطلاعاتی موجود نیست" />
+        ) : (
+          watchList.list.map((item) => (
+            <RowProduct
+              key={item.id}
+              statusText="pending"
+              close={true}
+              removeId={item.id}
+              data={item.product}
+              userId={user.userid}
+              onclick={navigate}
+            />
+          ))
+        )}
+      </div>
+      <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
+        <h3 className={style.title}>History</h3>
+        <RowProduct statusText="completed" />
+        <RowProduct statusText="completed" />
+        <RowProduct statusText="completed" />
+        <SecondlyButton
+          text={t("viewMore")}
+          onClick={() => console.log("popopooopokokiji")}
+        />
+=======
         {
           watchList.preload ? 
             <p>Loading....</p> 
@@ -66,6 +113,7 @@ const UserAction = () => {
           <SecondlyButton text={t("viewMore")} onClick={() => console.log("")} /> :
           <SecondlyButton text={t("descoverMore")} onClick={() => router.push({pathname: "/product"})} /> 
         }
+>>>>>>> 0a4bcfef3bff1fe55aca57869797c95ed435d5c3
       </div>
     </div>
   );

@@ -16,7 +16,10 @@
 .title {
     text-align: var(--float-left);
 }
-
+.addresinput{
+    direction: var(--direction) !important;
+    font-family: var(--font) !important;
+}
 .addresinput fieldset {
     border: none !important;
 }

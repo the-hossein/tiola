@@ -35,7 +35,8 @@ const registerReducer = (state = initializedState, action) => {
     case "USER_DATA_LOADER":
       return {
         ...state,
-        userDataLoader: true
+        userDataLoader: true,
+       
       };
     case "GETPHONE":
       return { ...state, phoneNumber: action.num };
@@ -48,7 +49,8 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         codeStatus: true,
-        loader: false
+        loader: false,
+      
       };
     case "SEND_CODE_FAILED":
       return {
@@ -104,7 +106,8 @@ const registerReducer = (state = initializedState, action) => {
         ...state,
         basketid: action.data,
         userDataLoader: false,
-        basketloader: false
+        basketloader: false,
+        loginStatus:true
       };
     case "CLOSE_POPUP":
       return {

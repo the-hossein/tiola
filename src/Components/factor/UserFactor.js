@@ -15,13 +15,14 @@ import callApi from "../../api/callApi";
 import { BASE_URL, GET_BASKET_DETAILS } from "../../api/urls";
 import Loader from "../../tools/loader/Loader";
 import ScreenLoader from "../../tools/screenLoader/ScreenLoader";
+import { notify } from "../../tools/toast/toast";
 const UserFactor = () => {
   const { t } = useTranslation();
+  const state = useSelector((state) => state.stateRegister);
   const basket = useSelector((state) => state.stateFactor);
   const dispatch = useDispatch();
   const [prelaod, setPreload] = useState(true);
   const [baskedatas, setBasketDatas] = useState();
-  const state = useSelector((state) => state.stateRegister);
 
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
@@ -29,14 +30,20 @@ const UserFactor = () => {
 
   useEffect(() => {
     console.log(state);
-
-    dispatch(getBasketDetails(state.basketid));
-
-    dispatch(getuserAddress(state.userid));
-    console.log(basket.details);
-    setBasketDatas(basket.details);
-    setPreload(false);
-  }, []);
+    if (!!state.userid) {
+      dispatch(getuserAddress(state.userid));
+      if (state.basketid) {
+        dispatch(getBasketDetails(state.basketid));
+      }
+    } else {
+      notify("plss", "success");
+    }
+    if (!!basket) {
+      console.log(basket.details);
+      setBasketDatas(basket.details);
+      setPreload(false);
+    }
+  }, [state]);
   return (
     <section className={style.ContainerSection}>
       <div className="container mt-4">

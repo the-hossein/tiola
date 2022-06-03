@@ -145,12 +145,12 @@ const ProductContent = ({ product }) => {
   };
   
   useEffect(()=> {
-    if(state.loginStatus) {
+    if(state.loginStatus&&state.userid!=="") {
       const userID = state.userid;
       dispatch(checkSavedItem(userID))
     } 
     
-  }, [state])
+  }, [])
 
   return (
     product.data !== null ? (
