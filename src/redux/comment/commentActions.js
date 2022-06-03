@@ -26,7 +26,6 @@ const createComment = (userId, commentText, score, productId, userName) => {
   const rounded = Math.round(+score);
   
   return (dispatch) => {
-
     if(userName === ''){
       notify("Edit your profile", "error");
     }else {

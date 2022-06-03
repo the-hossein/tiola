@@ -9,6 +9,7 @@ import { useRouter } from "next/dist/client/router";
 //get state watch list
 import { useDispatch, useSelector } from "react-redux";
 import { checkSavedItem } from "../../redux/saveItem/saveItemAction";
+<<<<<<< HEAD
 import Loader from "../../tools/loader/Loader";
 import Placement from "../../tools/placement/Placement";
 
@@ -24,8 +25,28 @@ const UserAction = () => {
 
   useEffect(() => {
     if (user) {
+=======
+import { fetchOrderHistory } from "../../redux/orderHistory/orderHistoryAction";
+
+const UserAction = () => {
+  const router = useRouter()
+  const user = useSelector(state => state.stateRegister);
+  const watchList = useSelector(state=> state.stateWatchList);
+  const orderHistory = useSelector(state => state.stateHistory);
+  const dispatch = useDispatch();
+
+  const [historyRender, setHistoryRender] = useState(true);
+
+
+  useEffect(()=> {
+    if(user.loginStatus){
+>>>>>>> 0a4bcfef3bff1fe55aca57869797c95ed435d5c3
       const userId = user.userid;
       dispatch(checkSavedItem(userId));
+      if(historyRender){
+        dispatch(fetchOrderHistory(userId));
+        setHistoryRender(false)
+      }
     }
   }, [user]);
 
@@ -34,6 +55,7 @@ const UserAction = () => {
     <div className="row justify-content-between mt-5 mb-5 ">
       <div className="col-xl-5 col-lg-5 col-md-12  col-12">
         <h3 className={style.title}>Watch List</h3>
+<<<<<<< HEAD
         {watchList.preload ? (
           <Loader />
         ) : watchList.list.length <= 0 ? (
@@ -61,6 +83,37 @@ const UserAction = () => {
           text={t("viewMore")}
           onClick={() => console.log("popopooopokokiji")}
         />
+=======
+        {
+          watchList.preload ? 
+            <p>Loading....</p> 
+            : watchList.list.map( item => {
+              return <RowProduct 
+                        key={item.id} 
+                        statusText="pending" 
+                        close={true} 
+                        removeId={item.id} 
+                        data= {item.product} 
+                        userId={user.userid}
+                        // onclick={navigate}
+                      />
+            })
+        }
+        
+      </div>
+      <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
+        <h3 className={style.title}>History</h3>
+        {
+          orderHistory.loader ? <h4>Loading...</h4> : !orderHistory.data.length ? 
+          <div className={style.messageExist}><p>شما در حال حاضر سفارشی ثبت نکردین!</p></div> :
+          orderHistory.data.map(item => <RowProduct key={Math.random()} statusText="completed" />)
+        }
+        {
+          orderHistory.data.length ?
+          <SecondlyButton text={t("viewMore")} onClick={() => console.log("")} /> :
+          <SecondlyButton text={t("descoverMore")} onClick={() => router.push({pathname: "/product"})} /> 
+        }
+>>>>>>> 0a4bcfef3bff1fe55aca57869797c95ed435d5c3
       </div>
     </div>
   );

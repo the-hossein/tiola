@@ -11,17 +11,18 @@ const addToFavorite = data => {
 }
 
 const checkSavedItem = (userId) => {
-
-    const userToken = JSON.parse(ls);
-    var token = userToken.token;
-  
-
     return (dispatch) => {
-        axios.defaults.headers.get['Authorization'] = `Bearer ${token}`;
-        
-        axios(`${BASE_URL}api/v1/User/FavoriteList?UserId=${userId}`)
-            .then(res => res.status === 200 &&  dispatch(addToFavorite(res.data.data)))
-            .catch(err => console.log("error"))
+        var ls = localStorage.getItem("userToken");
+        if(ls !== null){
+            const userToken = JSON.parse(ls);
+            var token = userToken.token;
+            axios.defaults.headers.get['Authorization'] = `Bearer ${token}`;
+            axios(`${BASE_URL}api/v1/User/FavoriteList?UserId=${userId}`)
+                .then(res => res.status === 200 &&  dispatch(addToFavorite(res.data.data)))
+                .catch(err => console.log("error"))
+        }else {
+            notify("you have not account", "error");
+        }
         
     }
 }
@@ -29,16 +30,21 @@ const checkSavedItem = (userId) => {
 const fetchingToSave = (userId, productId) => {
     return (dispatch) => {
         var ls = localStorage.getItem("userToken");
-        const userToken = JSON.parse(ls);
-        var token = userToken.token;
-        axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
+        if(ls !== null ){
+            const userToken = JSON.parse(ls);
+            var token = userToken.token;
+            axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
+    
+            axios.post(`${BASE_URL}api/v1/User/AddToFavoriteList?UserId=${userId}&ProductId=${productId}`)
+                .then(res => {
+                    dispatch(checkSavedItem(userId));
+                    res.data.code === 200 && notify("Saved", "success");
+                })
+                .catch(err => console.log("error"))
+        }else {
+            notify("you have not account", "error");
+        }
 
-        axios.post(`${BASE_URL}api/v1/User/AddToFavoriteList?UserId=${userId}&ProductId=${productId}`)
-            .then(res => {
-                dispatch(checkSavedItem(userId));
-                res.data.code === 200 && notify("Saved", "success");
-            })
-            .catch(err => console.log("error"))
     }
 }
 

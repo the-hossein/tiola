@@ -15,6 +15,7 @@ import screenLoaderReducer from "./screenLoader/screenLoaderReducer";
 import allProductsReducer from "./getallproducts/AllProductsReducer";
 import saveItemReducer from "./saveItem/saveItemReducer";
 import checkExistReduce from "./checkexist/checkExistReducer";
+import orderHistoryReducer from "./orderHistory/orederHistoryReducer";
 
 const rootReducer = combineReducers({
   stateLang: langReducer,
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
   stateScreenLoader: screenLoaderReducer,
   stateAllProducts: allProductsReducer,
   stateWatchList: saveItemReducer,
-  stateCheckExist: checkExistReduce
+  stateCheckExist: checkExistReduce,
+  stateHistory: orderHistoryReducer,
 });
 
 export default rootReducer;
