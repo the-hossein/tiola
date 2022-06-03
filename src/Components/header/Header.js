@@ -112,13 +112,8 @@ const Header = ({ backColor }) => {
       const token = userToken.token;
       const phone = userToken.phone;
 
-      const getApi = async () => {
-        dispatch(await getProfile());
-        dispatch(await getBasketDetails(state.basketid));
-      }
-
-      getApi();
-
+      dispatch(getProfile());
+    
 
       const now = new Date();
       const endDate = new Date(tokenExp);
@@ -130,7 +125,10 @@ const Header = ({ backColor }) => {
       dispatch(loginFalse());
     }
   }, [state.loginStatus]);
+useEffect(()=>{
+  dispatch(getBasketDetails(state.basketid));
 
+},[state.basketid])
   useEffect(() => {
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
@@ -336,27 +334,27 @@ const Header = ({ backColor }) => {
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
-            {
-              !showSearchBox&&
-              <>
-              
-              <Link href="/factor">
-                <div className={style.basket}>
-                  <ShoppingCartIcon sx={{ fontSize: 18 }} />
-                {basket.basketLength<=0?"":
-                  <div>{basket.basketLength}</div>
-                }
-                </div>
-              </Link>
-              <Link href="/shop">
-                <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
-                {/* <span>{t("descoverMore")}</span> */}
-              </Link>
-              <Link href="/">
-                <Image src={logo} alt="logo" />
-              </Link>
-              </>
-            }
+              {!showSearchBox && (
+                <>
+                  <Link href="/factor">
+                    <div className={style.basket}>
+                      <ShoppingCartIcon sx={{ fontSize: 18 }} />
+                      {basket.basketLength <= 0 ? (
+                        ""
+                      ) : (
+                        <div>{basket.basketLength}</div>
+                      )}
+                    </div>
+                  </Link>
+                  <Link href="/shop">
+                    <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
+                    {/* <span>{t("descoverMore")}</span> */}
+                  </Link>
+                  <Link href="/">
+                    <Image src={logo} alt="logo" />
+                  </Link>
+                </>
+              )}
             </div>
           </>
         )}
