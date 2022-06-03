@@ -235,6 +235,7 @@
 
     .suggest {
         top: 30px !important;
+        
         /* left: 50px !important; */
     }
 
@@ -259,7 +260,7 @@
 
 /* style box suggest search */
 .suggest {
-    width: 70%;
+    width: 80%;
     height: fit-content;
     padding: 10px 15px;
     background-color: #fff;
@@ -270,11 +271,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: flex-start ;
     /* align-items: center; */
     max-height: 300px;
     overflow-y: scroll;
     scrollbar-width: none;
     z-index: 5150 !important;
+    direction: rtl !important;
 }
 
 .suggest::-webkit-scrollbar {
@@ -289,6 +292,8 @@
     color: #111111;
     text-decoration: none;
     transition: all .2s linear;
+    margin-top: 10px;
+    direction: rtl !important;
 }
 
 .suggest a:hover {

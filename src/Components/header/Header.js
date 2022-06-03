@@ -23,6 +23,7 @@ import {
   loginTrue,
   openPopUp
 } from "../../redux/register/registerAction";
+import { query } from "../../redux/searchProduct/searchAction";
 
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
 import { getBasketDetails } from "../../redux/factor/factorAction";
@@ -36,7 +37,8 @@ const Header = ({ backColor }) => {
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   const [boxTarget, setBoxTarget] = useState(false);
-
+  const searchingTarget = useSelector(state => state.stateSearch.items)
+  let targetSearch = [];
   //call state allProducts
   const allProducts = useSelector((state) => state.stateAllProducts.data);
   // for get text search clint
@@ -50,7 +52,11 @@ const Header = ({ backColor }) => {
     //   return setTargetSearch(resolve)
     // }
     // setSuggest();
+    targetSearch = allProducts.filter((item) =>
+    item.title.includes(textSearch)
+    );
     console.log(targetSearch);
+    dispatch(query(targetSearch))
   };
 
   useLayoutEffect(() => {
@@ -156,9 +162,7 @@ const Header = ({ backColor }) => {
     setMenuBar(!menuBar);
   };
 
-  const targetSearch = allProducts.filter((item) =>
-    item.title.includes(textSearch)
-  );
+  
   const goFactorHandler = () => {
     if (!state.loginStatus) {
       dispatch(openPopUp());
@@ -248,7 +252,7 @@ const Header = ({ backColor }) => {
               <div className="position-relative">
                 {boxTarget && (
                   <div className={style.suggest}>
-                    {targetSearch.map((item) => {
+                    {searchingTarget.map((item) => {
                       // {console.log(item)}
                       return (
                         <span key={item.id}>
@@ -263,7 +267,7 @@ const Header = ({ backColor }) => {
                   onChange={searchHandler}
                   onKeyDown={(event) =>
                     event.key === "Enter" &&
-                    router.push({ pathname: "/explore" })
+                    router.push({pathname:`/explore`, shallow: true })
                   }
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign

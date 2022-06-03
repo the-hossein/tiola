@@ -14,16 +14,23 @@ import style from "./ExploreMain.module.css";
 import Loader from "../../tools/loader/Loader";
 import { height } from "@mui/system";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { query } from '../../redux/searchProduct/searchAction'
 
 const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
-
   const [getItem, setGetItem] = useState({});
+  const searching = useSelector(state => state.stateSearch);
+  const dispatch = useDispatch();
   const lang =useSelector(state=>state.stateLang.lng)
   console.log(data);
   useEffect(() => {
-    setGetItem(data.slice(0, 10));
+    // dispatch(query(data))
+    // setGetItem(data.slice(0, 10));
+    if(searching.items.length){
+      setGetItem(searching.items)
+    }
+    console.log(searching)
   }, []);
 
   useLayoutEffect(() => {
@@ -58,16 +65,16 @@ const ExploreMain = ({ data }) => {
         style={{overflow:'hidden'}}
           dataLength={data.length}
           next={fetchMoreData}
-          hasMore={getItem.length===data.length?false:true}
+          hasMore={searching.items.length===data.length?false:true}
           endMessage=""
           loader={<Loader/>}
         >
-          {getItem.length > 0 && (
+          {data.length > 0 && (
             <Masonry
               columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
               spacing={2}
             >
-              {getItem.map((product, index) => (
+              {searching.items.map((product, index) => (
                product.imageFile1.confirmed&&
 
                   <Item key={product.id}>
