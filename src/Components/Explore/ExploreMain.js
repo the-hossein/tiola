@@ -24,14 +24,27 @@ const ExploreMain = ({ data }) => {
   const dispatch = useDispatch();
   const lang =useSelector(state=>state.stateLang.lng)
   console.log(data);
+
+  const search = window.location.search; // could be '?foo=bar'
+  const params = new URLSearchParams(search);
+  // bar
+  var idSearching = params.get("search");
+
+  const [ targetSearch, setTargetSearch ] = useState([])
+  
   useEffect(() => {
     // dispatch(query(data))
-    // setGetItem(data.slice(0, 10));
-    if(searching.items.length){
-      setGetItem(searching.items)
-    }
-    console.log(searching)
-  }, []);
+    setGetItem(data.slice(0, 10));
+    // if(searching.items.length){
+      //   setGetItem(searching.items)
+      // }
+      console.log(getItem)
+      
+      console.log(idSearching);
+      console.log(searching)
+
+      setTargetSearch(data.filter(item => item.title.includes(idSearching)));
+    }, []);
 
   useLayoutEffect(() => {
     const updateSize = () => {
@@ -65,7 +78,7 @@ const ExploreMain = ({ data }) => {
         style={{overflow:'hidden'}}
           dataLength={data.length}
           next={fetchMoreData}
-          hasMore={searching.items.length===data.length?false:true}
+          hasMore={getItem.length===data.length?false:true}
           endMessage=""
           loader={<Loader/>}
         >
@@ -74,10 +87,10 @@ const ExploreMain = ({ data }) => {
               columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
               spacing={2}
             >
-              {searching.items.map((product, index) => (
-               product.imageFile1.confirmed&&
-
-                  <Item key={product.id}>
+              {
+              targetSearch.length ? 
+              targetSearch.map(product => (
+                <Item key={product.id}>
                 
                   <Link href={`/product/${product.id}`}>
                     <div className={style.showProduct}>
@@ -86,8 +99,23 @@ const ExploreMain = ({ data }) => {
                     </div>
                   </Link>
                 </Item>
+              )) :
+              data.map((product, index) => (
+              
+               product.imageFile1.confirmed&&
+               <Item key={product.id}>
+                  <Link href={`/product/${product.id}`}>
+                    <div className={style.showProduct}>
+                      <img src={product.imageFile1.filePath} alt="product" />
+                      <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
+                    </div>
+                  </Link>
+                </Item>
+              ))
+              }
+
                 
-              ))}
+                
             </Masonry>
           )}
         </InfiniteScroll>

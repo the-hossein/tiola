@@ -29,6 +29,7 @@ import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
 import { getBasketDetails } from "../../redux/factor/factorAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
+  // const { key:`${textSearch}`,  pid: "abc" } = router.query;
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   const state = useSelector((state) => state.stateRegister);
@@ -124,8 +125,7 @@ const Header = ({ backColor }) => {
       }
 
       getApi();
-
-
+      
       const now = new Date();
       const endDate = new Date(tokenExp);
       if (endDate - now < 0) {
@@ -138,6 +138,7 @@ const Header = ({ backColor }) => {
   }, [state.loginStatus]);
 
   useEffect(() => {
+    targetSearch = allProducts.filter(item => item.title.includes(''));
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
@@ -147,6 +148,7 @@ const Header = ({ backColor }) => {
       rightDir();
     }
     setpreload(false);
+    
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
@@ -215,6 +217,7 @@ const Header = ({ backColor }) => {
                     >
                       {t("explore")}
                     </span>
+                  
                   </Link>
                   <Link href="/collections">
                     <span
@@ -265,10 +268,7 @@ const Header = ({ backColor }) => {
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={(event) =>
-                    event.key === "Enter" &&
-                    router.push({pathname:`/explore`, shallow: true })
-                  }
+                  onKeyDown={event => event.key === "Enter" ? window.location = "/explore?search="+textSearch : null}
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
@@ -324,10 +324,7 @@ const Header = ({ backColor }) => {
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={(event) =>
-                    event.key === "Enter" &&
-                    router.push({ pathname: "/explore" })
-                  }
+                  onKeyDown={(event) =>event.key === "Enter" && console.log(router.query.pid)}
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
