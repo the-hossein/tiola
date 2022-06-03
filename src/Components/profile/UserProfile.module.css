@@ -41,7 +41,9 @@
 .status svg {
     margin: 0 0.7rem;
 }
-
+.history, .watchListDiv {
+    height: fit-content !important;
+}
 .history button {
     font-size: 10pt;
     padding: 0.3rem 3rem;
@@ -177,13 +179,21 @@
         flex-direction: column;
 
         justify-content: space-between;
-        height: 22%;
+        height: 30%;
     }
 
     .RowProduct>div>span,
     .status span,
     .status svg {
         margin: 0 0.6rem;
+    }
+    .status {
+        width: 100% !important;
+        margin-top: 15px ;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 60px;
     }
 
 }
