@@ -5,9 +5,9 @@ import { useTranslation } from "react-i18next";
 import Style from "./Comments.module.css";
 const Comment = ({userName, score, commentText}) => {
   const { t } = useTranslation();
-  const num1 = Math.floor(Math.random() * 100);
-  const num2 = Math.floor(Math.random() * 100);
-  const num3 = Math.floor(Math.random() * 100);
+  const num1 = Math.floor(Math.random() * 3);
+  const num2 = Math.floor(Math.random() * 3);
+  const num3 = Math.floor(Math.random() * 3);
 
 
   return (
@@ -28,9 +28,9 @@ const Comment = ({userName, score, commentText}) => {
             <li>{t("factor") + " 3"}</li>
           </ul>
           <ul className="w-100">
-            <li style={{width: `${num1}% `}} className={Style.rate}></li>
-            <li style={{ width: `${num2}% ` }} className={Style.rate}></li>
-            <li style={{ width: `${num3}% ` }} className={Style.rate}></li>
+            <li style={{width: `${score * 2 *  10 }% `}} className={Style.rate}></li>
+            <li style={{ width: `${score * 2 *  10 }% ` }} className={Style.rate}></li>
+            <li style={{ width: `${score * 2 *  10 }% ` }} className={Style.rate}></li>
           </ul>
         </div>
       </div>

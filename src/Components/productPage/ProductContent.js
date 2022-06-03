@@ -145,7 +145,7 @@ const ProductContent = ({ product }) => {
   };
   
   useEffect(()=> {
-    if(state) {
+    if(state.loginStatus) {
       const userID = state.userid;
       dispatch(checkSavedItem(userID))
     } 
