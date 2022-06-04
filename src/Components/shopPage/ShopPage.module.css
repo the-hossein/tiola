@@ -1,7 +1,7 @@
 .shop {
     width: 70%;
     display: block;
-    margin: auto;
+    margin:20px auto;
     direction: var(--direction);
     padding: 2rem 2rem 0 2rem;
 }

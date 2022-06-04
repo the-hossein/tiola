@@ -85,7 +85,7 @@
 }
 
 .addComment {
-    min-width: 230px !important;
+    min-width: 150px !important;
     min-height: 200px !important;
     width: 100% !important;
     height: 100% !important;
@@ -96,6 +96,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* margin-bottom: 25px; */
 }
 
 .add {
@@ -118,8 +119,9 @@
     margin: 0 auto;
     background-color: var(--light-pen);
     border-radius: var(--Product-Border-radius);
-    padding: 1.3rem 0.7rem 1.5rem;
-    width: 350px !important;
+    padding: 0 0.7rem ;
+    min-width: 320px !important;
+    width: 100% !important;
     height: 100% !important;
     min-height: 200px !important;
     position: relative;
@@ -184,12 +186,11 @@
     place-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 686px) {
     .addComment {
         /* width: 95% !important; */
         height: 200px !important;
-        margin-bottom: 10px;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .writeCm {
@@ -201,5 +202,16 @@
 }
 
 .firstChild {
-    z-index: 15 !important;
+    z-index: 10000 !important;
+}
+.firstChild > div > span {
+    z-index: 1000 !important;
+    /* position: absolute !important; */
+}
+.boboComent {
+    direction: ltr !important;
+}
+
+.nameUser {
+    direction: ltr !important;
 }

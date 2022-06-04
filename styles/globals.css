@@ -131,10 +131,6 @@ a {
 }
 
 .popo > .swiper-wrapper {
-  /* position: none !important; */
-  /* transition-property: none !important; */
-  /* transform: none !important;
-  transition: none !important; */
   z-index: 15 !important;
   font-family: "IRANSansWeb" !important;
 }

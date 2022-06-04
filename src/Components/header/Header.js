@@ -311,9 +311,9 @@ const Header = ({ backColor }) => {
                 </Link>
               )}
               <div className="position-relative d-flex align-items-center">
-                {boxTarget && (
+              {boxTarget && (
                   <div className={style.suggest}>
-                    {targetSearch.map((item) => {
+                    {searchingTarget.map((item) => {
                       // {console.log(item)}
                       return (
                         <span key={item.id}>
@@ -326,7 +326,7 @@ const Header = ({ backColor }) => {
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={(event) =>event.key === "Enter" && console.log(router.query.pid)}
+                  onKeyDown={event => event.key === "Enter" ? window.location = "/explore?search="+textSearch : null}
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
@@ -334,7 +334,6 @@ const Header = ({ backColor }) => {
                 <SearchIcon
                   onClick={serachHandler}
                   className={showSearchBox ? style.searchBoxIcon : ""}
-                  sx={{ fontSize: 14 }}
                 />
               </div>
             </div>

@@ -43,7 +43,10 @@ const createComment = (userId, commentText, score, productId, userName) => {
         };
     
         axios.post(BASE_URL + CREATE_COMMENT, raw)
-          .then(response => console.log("worked"))
+          .then(response =>{
+            console.log("worked")
+            notify("Completed comment :)", "success");
+        })
           .catch(error => console.log('error', error));
         }
     }

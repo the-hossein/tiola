@@ -39,6 +39,7 @@ const WriteComment = () => {
         dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
         // dispatch(writeFalse());
         dispatch(resetRate());
+        setCommentText("")
       }
     }else{
       notify("create a account", "warning")
@@ -48,13 +49,13 @@ const WriteComment = () => {
 
   useEffect(()=> {
     setTotal((state.factor1 + state.factor2 + state.factor3) / 6);
-    console.log(total)
+    // console.log(total)
   }, [state])
   return (
     <div
       className={`d-flex flex-column justify-content-between  ${Style.writeCm}`}
     >
-      <span>{user.userNameAvatar}</span>
+      <span className={Style.nameUser}>{user.userNameAvatar}</span>
       <div className={`form-floating ${Style.commentText}`}>
         <textarea
           type="text"

@@ -244,9 +244,7 @@ const ProductContent = ({ product }) => {
               </div>
             </div>
           </div>
-          <div>
             <AllComment product={product[0]} className="col" />
-          </div>
         </div>
       </div>
     </>
