@@ -63,7 +63,7 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family: var(--font) !important;
+  /* font-family: var(--font) !important; */
 }
 
 .headerBlur {
@@ -75,6 +75,7 @@ a {
 
 .Toastify__toast {
   font-family: var(--font) !important;
+  font-size: var(--md-font);
 }
 
 .headerColor {
@@ -96,7 +97,7 @@ a {
 
 
 .swiper-slide {
-  direction: var(--direction) !important;
+  direction: var(--direction) ;
   /* text-align: center; */
   font-size: 18px;
   width: fit-content;
@@ -129,9 +130,15 @@ a {
   font-weight: 900;
 }
 
-/* .mySwiperComment {
-  padding:0 .5rem .5rem !important;
-} */
+.popo > .swiper-wrapper {
+  /* position: none !important; */
+  /* transition-property: none !important; */
+  /* transform: none !important;
+  transition: none !important; */
+  z-index: 15 !important;
+  font-family: "IRANSansWeb" !important;
+}
+
 .swiper-pagination {
   bottom: -6px !important;
   /* height: fit-content ; */
@@ -143,7 +150,9 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "IRANSansWeb" !important;
   min-width: fit-content !important;
+  direction: ltr !important;
   /* width: auto !important; */
   /* height: fit-content; */
   /* box-shadow: 5px 10px 4px #23232354; */

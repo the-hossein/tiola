@@ -12,6 +12,7 @@ import MbList from "./MbList";
 import { useDispatch, useSelector } from "react-redux";
 import callApi from "../../../api/callApi";
 import Spinner from "react-bootstrap/Spinner";
+import RemoveIcon from "@mui/icons-material/Remove";
 import {
   BASE_URL,
   DECREASE_QTY,
@@ -34,11 +35,13 @@ import {
   checkSavedItem,
   fetchingToSave
 } from "../../../redux/saveItem/saveItemAction";
+import persianNumber from "../../../tools/persianNumber/persianNumber";
 const List = ({ data, alldata }) => {
   console.log(data);
   const dispatch = useDispatch();
   const [preload, setPreload] = useState(false);
   const [size, setSize] = useState([0]);
+  const [preloadList, setpreloadList] = useState();
   const [info, setInfo] = useState({
     qty: data.qty,
     total: data.amount * data.qty
@@ -121,9 +124,8 @@ const List = ({ data, alldata }) => {
     decrease();
   };
   const deleteHandler = () => {
-    setPreload(true);
     dispatch(deleteBasketUser(alldata, data));
-    setPreload(false);
+
     // var myHeaders = new Headers();
     // myHeaders.append("Authorization", `Bearer ${token}`);
     // const deletProduct = async () => {
@@ -168,7 +170,11 @@ const List = ({ data, alldata }) => {
           <li>
             {lang === "fa" ? data.collection.title : data.collection.titleEn}
           </li>
-          <li className={style.price}>{info.total + t("t")}</li>
+          <li className={style.price}>
+            {lang === "fa"
+              ? persianNumber(info.total) + t("t")
+              : info.total + t("t")}
+          </li>
         </ul>
         <ColorPick color={data.collection.colorCode} />
 
@@ -182,11 +188,7 @@ const List = ({ data, alldata }) => {
                 onClick={deleteHandler}
               />
             ) : (
-              <FontAwesomeIcon
-                icon={faMinus}
-                className={style.minus}
-                onClick={decreseHandler}
-              />
+              <RemoveIcon sx={{ fontSize: 30 }} onClick={decreseHandler} />
             )}
 
             <>
@@ -199,7 +201,7 @@ const List = ({ data, alldata }) => {
           </div>
         )}
         <Link href={`/product/${data.productId}`}>
-          <img src={data.filePath}  />
+          <img src={data.filePath} />
         </Link>
         <div>
           <CloseOutlinedIcon
@@ -221,9 +223,9 @@ const List = ({ data, alldata }) => {
       alldata={alldata}
       addWatchHandler={(e) => addWatchHandler()}
       info={info}
-      increaseHandler={(e)=>increaseHandler()}
-      decreseHandler={(e)=>decreseHandler()}
-      deleteHandler={(e)=>deleteHandler()}
+      increaseHandler={(e) => increaseHandler()}
+      decreseHandler={(e) => decreseHandler()}
+      deleteHandler={(e) => deleteHandler()}
       preload={preload}
     />
   );

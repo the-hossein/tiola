@@ -9,8 +9,6 @@ import {
 } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
 
-
-
 const loadingAddresFalse = () => {
   return {
     type: "lOADING_ADDRESS_FALSE"
@@ -114,8 +112,8 @@ const getBasketDetails = (basketid) => {
 
 const deleteBasketUser = (alldata, data) => {
   return (dispatch) => {
-    var ls = localStorage.getItem("userToken");
     dispatch(loadingProductList());
+    var ls = localStorage.getItem("userToken");
     const userToken = JSON.parse(ls);
     const token = userToken.token;
     var myHeaders = new Headers();
@@ -130,6 +128,9 @@ const deleteBasketUser = (alldata, data) => {
       if (status[0].code === 200) {
         const deletePro = alldata.filter((item) => item.id !== data.id);
         dispatch(deleted(deletePro));
+
+      } else {
+        notify("error", "error");
       }
     };
     deletProduct();
@@ -138,11 +139,11 @@ const deleteBasketUser = (alldata, data) => {
 const getuserAddress = (userid) => {
   return (dispatch) => {
     var ls = localStorage.getItem("userToken");
-  if(ls !== null ){
-    const userToken = JSON.parse(ls);
-    const token = userToken.token;
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
+    if (ls !== null) {
+      const userToken = JSON.parse(ls);
+      const token = userToken.token;
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
       // dispatch(loaderFactorTrue());
       dispatch(loadingAddress());
       const allAddress = async () => {
@@ -157,7 +158,7 @@ const getuserAddress = (userid) => {
         }
       };
       allAddress();
-  }
+    }
   };
 };
 // const getBasketUser = (token, userid) => {

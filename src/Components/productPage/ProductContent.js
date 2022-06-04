@@ -8,6 +8,7 @@ import ReactReadMoreReadLess from "react-read-more-read-less";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 // Import Swiper styles
+import CircularProgress from "@mui/material/CircularProgress";
 import { Scrollbar } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -36,6 +37,9 @@ const ProductContent = ({ product }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const [preloadWatch, setpreloadWatch] = useState();
+  const [preloadPay, setpreloadPay] = useState();
+
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
 
@@ -84,6 +88,7 @@ const ProductContent = ({ product }) => {
     if (!state.loginStatus) {
       dispatch(openPopUp());
     } else {
+      setpreloadPay(true);
       const userToken = JSON.parse(ls);
       var phone = userToken.phone;
       var token = userToken.token;
@@ -117,7 +122,9 @@ const ProductContent = ({ product }) => {
             text = "Add product successfully to basket";
           }
           notify(text, "success");
+          setpreloadPay(false);
         } else if (added[0].code === 201) {
+          setpreloadPay(false);
           if (lang === "fa") {
             var text = " از این محصول به سبد خرید شما اضافه شد";
           } else {
@@ -125,6 +132,7 @@ const ProductContent = ({ product }) => {
           }
           notify(text, "success");
         } else if (added[0].code === 206) {
+          setpreloadPay(false);
           if (lang === "fa") {
             var text =
               "از این محصول به تعداد درخواستی شما در انبار موجود نمی باشد";
@@ -138,6 +146,7 @@ const ProductContent = ({ product }) => {
     }
   };
   const addWatchHandler = () => {
+    setpreloadWatch(true);
     const userID = state.userid;
     const productId = product.data.id;
     const targetItem = !!watchList.list.find(
@@ -145,8 +154,10 @@ const ProductContent = ({ product }) => {
     );
     if (targetItem) {
       notify("شما این محصول را قبلا اضافه کردین", "success");
+      setpreloadWatch(false);
     } else {
       dispatch(fetchingToSave(userID, productId));
+      setpreloadWatch(false);
     }
   };
 
@@ -181,8 +192,8 @@ const ProductContent = ({ product }) => {
               <div>
                 <span className={style.price}>
                   {lang === "fa"
-                    ? persianNumber(product.data.price) +" " +t("t")
-                    : product.data.price + " "+t("t")}
+                    ? persianNumber(product.data.price) + " " + t("t")
+                    : product.data.price + " " + t("t")}
                 </span>
 
                 <p className={style.content}>
@@ -210,12 +221,24 @@ const ProductContent = ({ product }) => {
               <div className={style.buttons}>
                 <NormalBtn
                   color="red"
-                  text={t("pay")}
+                  text={
+                    preloadPay ? (
+                      <CircularProgress size={20} disableShrink />
+                    ) : (
+                      t("pay")
+                    )
+                  }
                   onClick={(e) => payHandler()}
                 />
                 <NormalBtn
                   color="white"
-                  text={t("addWatch")}
+                  text={
+                    preloadWatch ? (
+                      <CircularProgress size={20} disableShrink />
+                    ) : (
+                      t("addWatch")
+                    )
+                  }
                   onClick={(e) => addWatchHandler()}
                 />
               </div>

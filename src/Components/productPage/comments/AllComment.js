@@ -65,7 +65,8 @@ const AllComment = ({ product }) => {
         <div className="col-12 col-md-12 p-0 ">
           <Swiper
             dir={"rtl"}
-            allowTouchMove={false}
+            watchOverflow={true}
+            allowTouchMove={true}
             showsPagination={false}
             slidesPerView={size < 600 ? 1 : 3}
             spaceBetween={15}
@@ -74,12 +75,12 @@ const AllComment = ({ product }) => {
               clickable: false
             }}
             modules={[]}
-            className="mySwiperComment"
+            className="mySwiperComment popo"
           >
             {size > 601 && (
-              <SwiperSlide>
+              <SwiperSlide className={Style.firstChild}>
                 <AddComment />
-              </SwiperSlide>
+              </SwiperSlide> 
             )}
             {!state.preLoad &&
               state.allComment.map((comment) => (

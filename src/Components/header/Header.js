@@ -23,11 +23,13 @@ import {
   loginTrue,
   openPopUp
 } from "../../redux/register/registerAction";
+import { query } from "../../redux/searchProduct/searchAction";
 
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
 import { getBasketDetails } from "../../redux/factor/factorAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
+  // const { key:`${textSearch}`,  pid: "abc" } = router.query;
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   const state = useSelector((state) => state.stateRegister);
@@ -36,7 +38,8 @@ const Header = ({ backColor }) => {
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   const [boxTarget, setBoxTarget] = useState(false);
-
+  const searchingTarget = useSelector(state => state.stateSearch.items)
+  let targetSearch = [];
   //call state allProducts
   const allProducts = useSelector((state) => state.stateAllProducts.data);
   // for get text search clint
@@ -50,7 +53,11 @@ const Header = ({ backColor }) => {
     //   return setTargetSearch(resolve)
     // }
     // setSuggest();
+    targetSearch = allProducts.filter((item) =>
+    item.title.includes(textSearch)
+    );
     console.log(targetSearch);
+    dispatch(query(targetSearch))
   };
 
   useLayoutEffect(() => {
@@ -99,7 +106,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--sm-font", "12pt");
     root.style.setProperty("--xs-font", "12pt");
     root.style.setProperty("--md-font", "17pt");
-    root.style.setProperty("--lg-font", "15pt");
+    root.style.setProperty("--lg-font", "18pt");
     root.style.setProperty("--xl-font", "22pt");
     root.style.setProperty("--xxl-font", "29pt");
     root.style.setProperty("--oxx-font", "30pt");
@@ -112,8 +119,13 @@ const Header = ({ backColor }) => {
       const token = userToken.token;
       const phone = userToken.phone;
 
-      dispatch(getProfile());
+      const getApi = async () => {
+        dispatch(await getProfile());
+        dispatch(await getBasketDetails(state.basketid));
+      }
 
+      getApi();
+      
       const now = new Date();
       const endDate = new Date(tokenExp);
       if (endDate - now < 0) {
@@ -128,6 +140,7 @@ const Header = ({ backColor }) => {
     dispatch(getBasketDetails(state.basketid));
   }, [state.basketid]);
   useEffect(() => {
+    targetSearch = allProducts.filter(item => item.title.includes(''));
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
@@ -137,6 +150,7 @@ const Header = ({ backColor }) => {
       rightDir();
     }
     setpreload(false);
+    
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
@@ -152,9 +166,7 @@ const Header = ({ backColor }) => {
     setMenuBar(!menuBar);
   };
 
-  const targetSearch = allProducts.filter((item) =>
-    item.title.includes(textSearch)
-  );
+  
   const goFactorHandler = () => {
     if (!state.loginStatus) {
       dispatch(openPopUp());
@@ -207,6 +219,7 @@ const Header = ({ backColor }) => {
                     >
                       {t("explore")}
                     </span>
+                  
                   </Link>
                   <Link href="/collections">
                     <span
@@ -244,7 +257,7 @@ const Header = ({ backColor }) => {
               <div className="position-relative">
                 {boxTarget && (
                   <div className={style.suggest}>
-                    {targetSearch.map((item) => {
+                    {searchingTarget.map((item) => {
                       // {console.log(item)}
                       return (
                         <span key={item.id}>
@@ -257,10 +270,7 @@ const Header = ({ backColor }) => {
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={(event) =>
-                    event.key === "Enter" &&
-                    router.push({ pathname: "/explore" })
-                  }
+                  onKeyDown={event => event.key === "Enter" ? window.location = "/explore?search="+textSearch : null}
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
@@ -316,10 +326,7 @@ const Header = ({ backColor }) => {
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={(event) =>
-                    event.key === "Enter" &&
-                    router.push({ pathname: "/explore" })
-                  }
+                  onKeyDown={(event) =>event.key === "Enter" && console.log(router.query.pid)}
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
