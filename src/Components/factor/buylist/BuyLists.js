@@ -16,7 +16,7 @@ import persianNumber from "../../../tools/persianNumber/persianNumber";
 const BuyLists = ({ setBasketDatas }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.stateFactor);
+  const state = useSelector((state) => state.stateFactor.details);
   const user = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
 
@@ -78,51 +78,48 @@ const BuyLists = ({ setBasketDatas }) => {
   };
 
   return (
- 
-   state.loadingList?<Loader/>:
-   <div>
-   {state.details.length <= 0 ? (
-     <Placement text={t("placementfactorList")} />
-   ) : (
-     <>
-       {state.details.map((item) => (
-         <>
-           <List
-             data={item}
-             alldata={state.details}
-             setBasketDatas={setBasketDatas}
-           />
-         </>
-       ))}
+    <div>
+      {state.length <= 0 ? (
+        <Placement text={t("placementfactorList")} />
+      ) : (
+        <>
+          {state.map((item) => (
+            <>
+              <List
+                data={item}
+                alldata={state}
+                setBasketDatas={setBasketDatas}
+              />
+            </>
+          ))}
 
-       <div className={style.payBtn}>
-         <NormalBtn
-           color="red"
-           text={
-             preloadPay ? (
-               <Spinner animation="border" variant="primary" />
-             ) : (
-               t("pay")
-             )
-           }
-           onClick={(e) => payHandler()}
-         />
-         {preload === true ? (
-           <Loader />
-         ) : (
-           <div>
-             <span>{t("total")}</span>
-             <span>
-               {lang === "fa" ? persianNumber(totalprice) : totalprice}
-             </span>
-             <span>{t("toman")}</span>
-           </div>
-         )}
-       </div>
-     </>
-   )}
- </div>
- 
+          <div className={style.payBtn}>
+            <NormalBtn
+              color="red"
+              text={
+                preloadPay ? (
+                  <Spinner animation="border" variant="primary" />
+                ) : (
+                  t("pay")
+                )
+              }
+              onClick={(e) => payHandler()}
+            />
+            {preload === true ? (
+              <Loader />
+            ) : (
+              <div>
+                <span>{t("total")}</span>
+                <span>
+                  {lang === "fa" ? persianNumber(totalprice) : totalprice}
+                </span>
+                <span>{t("toman")}</span>
+              </div>
+            )}
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 
