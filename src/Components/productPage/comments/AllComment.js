@@ -62,21 +62,20 @@ const AllComment = ({ product }) => {
         </div>
       )}
       <div className={`${Style.AllComment} row m-0`}>
-        <div className="col-12 col-md-12 p-0 " >
+        <div className="col-12 col-md-12 p-0" >
           <div className="row justify-content-between align-items-center">
               {size > 685 && (
-              <div className={`${!state.writeCm ? 'col-md-2 col-sm-3 col-lg-5' : 'col-md-6 col-sm-6'}`}>
+              <div className={`${!state.writeCm ? 'col-12  col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3' : 'col-md-6 col-sm-5'}`}>
                 <div className={Style.firstChild}>
                   <AddComment />
-                </div>  
-
+                </div>
             </div>
               )}
-            <div className={size > 685 ? !state.writeCm ? 'col-12 col-md-9 col-sm-8 col-lg-7' : 'col-12 col-md-6 col-sm-6': "col-12"}>
+            <div className={size > 685 ? !state.writeCm ? 'col-9 col-sm-8 col-md-9 col-lg-8 col-xl-9 col-xxl-9' : 'col-12 col-md-6 col-sm-5': "col-12"}>
             <Swiper
             dir={"rtl"}
             showsPagination={false}
-            slidesPerView={size < 500 ? 1 :size < 780 ? 1.5 : !state.writeCm ? 2 : 1.5 }
+            slidesPerView={!state.writeCm && size > 900 ? 3 : !state.writeCm && size > 680 ? 2 : state.writeCm && size > 680 ? 1.2 : 1.8}
             spaceBetween={15}
             grabCursor={true}
             pagination={{

@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import style from "./HardCollection.module.css";
+import ViewAll from "../../viewAll/ViewAll";
+import { useTranslation } from "react-i18next";
 const HardCollection = ({ image, title, content }) => {
+  const { t } = useTranslation()
   return (
     <>
       <Link href="/explore">
@@ -49,6 +52,7 @@ const HardCollection = ({ image, title, content }) => {
               <h3 className={style.collectionTitile}>{title}</h3>
               <p className="lh-lg">{content}</p>
             </div>
+          <ViewAll content={t("btnExploreLand")} linked={'/explore'} />
           </div>
         </div>
       </Link>

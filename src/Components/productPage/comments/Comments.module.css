@@ -85,9 +85,9 @@
 }
 
 .addComment {
-    min-width: 150px !important;
+    min-width: 180px !important;
     min-height: 200px !important;
-    width: 100% !important;
+    width: auto !important;
     height: 100% !important;
     /* padding: 3.8rem; */
     border-radius: var(--Product-Border-radius);
@@ -119,8 +119,8 @@
     margin: 0 auto;
     background-color: var(--light-pen);
     border-radius: var(--Product-Border-radius);
-    padding: 0 0.7rem ;
-    min-width: 320px !important;
+    padding: 0.7rem 0.7rem ;
+    min-width: 320px ;
     width: 100% !important;
     height: 100% !important;
     min-height: 200px !important;
@@ -129,9 +129,12 @@
 }
 
 .closeBtn {
+    width: 30px;
+    height: 30px;
     position: absolute;
     top: 10px;
     right: 5px;
+    cursor: pointer;
 }
 
 .commentText textarea {
@@ -197,7 +200,15 @@
         width: 95% !important;
         height: 200px !important;
         margin-bottom: 25px;
+        min-width: 250px !important;
+    }
+}
 
+@media (max-width: 300px) {
+    .writeCm {
+        width: 95% !important;
+        height: 200px !important;
+        margin-bottom: 25px;
     }
 }
 
@@ -210,6 +221,8 @@
 }
 .boboComent {
     direction: ltr !important;
+    display: grid;
+    place-items: center;
 }
 
 .nameUser {

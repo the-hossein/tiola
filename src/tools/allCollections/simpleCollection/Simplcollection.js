@@ -4,7 +4,9 @@ import ViewAll from "../../viewAll/ViewAll";
 import CollectionText from "../CollectionText";
 import Link from 'next/link'
 import style from "./Simplcollection.module.css";
+import { useTranslation } from "react-i18next";
 const Simplcollection = ({image1,image2,content,title}) => {
+  const { t } = useTranslation()
   return (
     <>
  <Link href="/shop">
@@ -16,7 +18,7 @@ const Simplcollection = ({image1,image2,content,title}) => {
           </div>
         </div>
         <div className={` col-xl-4 col-lg-5 col-md-5 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}>
-       <CollectionText title={title}  content={content} />
+       <CollectionText title={title}  content={content} btnText={t("btnShopLand")} href={'/shop'} />
         </div>
       </div>
  </Link>

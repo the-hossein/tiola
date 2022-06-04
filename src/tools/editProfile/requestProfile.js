@@ -5,7 +5,7 @@ import { notify } from "../toast/toast";
 
 
 
-const RequestProfile = (token, userID, name, family, birthday, gender, picId, router) => {
+const RequestProfile = (token, userID, name, family, birthday, gender, picId, router, lang) => {
   // const router = useRouter();
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
@@ -19,7 +19,7 @@ const RequestProfile = (token, userID, name, family, birthday, gender, picId, ro
         "gender": +gender,
   });
 
-  console.log(birthday);
+  console.log(picId);
 var requestOptions = {
     method: 'POST',
     headers: myHeaders,
@@ -38,7 +38,13 @@ var requestOptions = {
         })
       .catch(error => console.log('error', error))
   }else{
-    notify("compeleted your data", "warning")
+    let textShow ;
+    if(lang === 'fa'){
+      textShow = "فرم ها را کامل پر کنید"
+    }else{
+      textShow = 'please completed forms'
+    }
+    notify(textShow, "warning")
   }
 }
 
