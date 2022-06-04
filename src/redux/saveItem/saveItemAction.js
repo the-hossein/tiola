@@ -10,7 +10,7 @@ const addToFavorite = data => {
     return {type: 'ADD_PRODUCT', payload: data}
 }
 
-const checkSavedItem = (userId) => {
+const checkSavedItem = (userId, lang) => {
     return (dispatch) => {
         var ls = localStorage.getItem("userToken");
         if(ls !== null){
@@ -21,14 +21,22 @@ const checkSavedItem = (userId) => {
                 .then(res => res.status === 200 &&  dispatch(addToFavorite(res.data.data)))
                 .catch(err => console.log("error"))
         }else {
-            notify("you have not account", "error");
+            let textShow ;
+            if(lang === 'fa'){
+                textShow = "شما حساب کاربری نساختین"
+            }else {
+                textShow = "You did not create an account";
+            }
+            notify(textShow, "error");
         }
         
     }
 }
 
-const fetchingToSave = (userId, productId) => {
+const fetchingToSave = (userId, productId, lang) => {
     return (dispatch) => {
+        
+        let textShow; 
         var ls = localStorage.getItem("userToken");
         if(ls !== null ){
             const userToken = JSON.parse(ls);
@@ -38,11 +46,21 @@ const fetchingToSave = (userId, productId) => {
             axios.post(`${BASE_URL}api/v1/User/AddToFavoriteList?UserId=${userId}&ProductId=${productId}`)
                 .then(res => {
                     dispatch(checkSavedItem(userId));
-                    res.data.code === 200 && notify("Saved", "success");
+                    if(lang === 'fa') {
+                        textShow = "ذخیره شد"
+                    }else {
+                        textShow = "Saved"
+                    }
+                    res.data.code === 200 && notify(textShow, "success");
                 })
                 .catch(err => console.log("error"))
         }else {
-            notify("you have not account", "error");
+            if(lang === 'fa'){
+                textShow = "شما حساب کاربری نساختین"
+            }else {
+                textShow = "You did not create an account";
+            }
+            notify(textShow, "error");
         }
 
     }
@@ -50,7 +68,9 @@ const fetchingToSave = (userId, productId) => {
 
 const removeItem = (idItem, user) => {
     return (dispatch) => {
-        console.log(idItem);
+        dispatch({type: "REMOVE_PRODUCT"})
+        console.log("worked")
+        // console.log(idItem);
         var ls = localStorage.getItem("userToken");
         const userToken = JSON.parse(ls);
         var token = userToken.token;
@@ -58,7 +78,7 @@ const removeItem = (idItem, user) => {
 
         axios.post(`${BASE_URL}api/v1/User/RemoveFromFavoriteList?id=${idItem}`)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 res.status === 200 && dispatch(checkSavedItem(user))
             })
             .catch(err => console.log("err"))

@@ -142,6 +142,9 @@ a {
 main{
   min-height: 70vh;
 }
+.mySwiperComment {
+  /* min-height: 230px !important; */
+}
 .mySwiperComment .swiper-slide {
   display: flex;
   align-items: center;
@@ -149,6 +152,8 @@ main{
   font-family: "IRANSansWeb" !important;
   min-width: fit-content !important;
   direction: ltr !important;
+  height: 200px !important;
+  
   /* width: auto !important; */
   /* height: fit-content; */
   /* box-shadow: 5px 10px 4px #23232354; */

@@ -153,10 +153,16 @@ const ProductContent = ({ product }) => {
       (item) => item.productId === productId
     );
     if (targetItem) {
-      notify("شما این محصول را قبلا اضافه کردین", "success");
+      let textShow ; 
+      if(lang === 'fa'){
+        textShow = 'شما این محصول را قبلا اضافه کردین';
+      }else {
+        textShow = 'You have already added this product';
+      }
+      notify(textShow, "success");
       setpreloadWatch(false);
     } else {
-      dispatch(fetchingToSave(userID, productId));
+      dispatch(fetchingToSave(userID, productId,lang));
       setpreloadWatch(false);
     }
   };
@@ -164,14 +170,14 @@ const ProductContent = ({ product }) => {
   useEffect(() => {
     if (state.loginStatus && state.userid !== "") {
       const userID = state.userid;
-      dispatch(checkSavedItem(userID));
+      dispatch(checkSavedItem(userID, lang));
     }
   }, []);
 
   return product.data !== null ? (
     <>
       <div className="row  m-0">
-        <div className={`col-lg-5 col-12  ${style.productSlider}`}>
+        <div className={`col-lg-4 col-xxl-5 col-12  ${style.productSlider}`}>
           <ProductSlider
             radius={0}
             mbItem={1.4}
@@ -183,7 +189,7 @@ const ProductContent = ({ product }) => {
             heightImage={"82vh"}
           />
         </div>
-        <div className={`col-lg-7 col-12 ${style.information} mt-5 `}>
+        <div className={`col-lg-8 col-xxl-7 col-12 ${style.information} mt-5 `}>
           <div>
             <h1>{lang === "fa" ? product.data.title : product.data.titleEn}</h1>
             <div

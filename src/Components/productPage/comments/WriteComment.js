@@ -20,6 +20,7 @@ const WriteComment = () => {
   const router = useRouter();
   const state = useSelector((state) => state.stateRate);
   const user = useSelector(state => state.stateRegister);
+  const lang = useSelector((state) => state.stateLang.lng);
 
   const [commentText, setCommentText] = useState("");
   const changeComment = event => {
@@ -32,7 +33,13 @@ const WriteComment = () => {
   const doneHandler = () => {
     if(user.loginStatus){
       if(commentText === ''){
-        notify("این فیلد نباید خالی باشد", "warning")
+        let textShow ;
+        if(lang === 'fa'){
+          textShow = 'این فیلد نباید خالی باشد';
+        }else{
+          textShow = 'This field should not be empty'
+        }
+        notify(textShow, "warning")
         // dispatch(writeFalse());
         dispatch(resetRate());
       }else {
@@ -42,7 +49,13 @@ const WriteComment = () => {
         setCommentText("")
       }
     }else{
-      notify("create a account", "warning")
+      let textShow2 ;
+      if(lang === 'fa'){
+        textShow2 = "لطفا اکانت بسازید"
+      }else{
+        textShow2 = "create a account" ;
+      }
+      notify(textShow2, "warning")
     }
   };
 
@@ -113,8 +126,8 @@ const WriteComment = () => {
                   </div>
             </Box>
       </div>
-      <div className={Style.closeBtn}>
-        <CloseIcon fontSize="small" onClick={()=> dispatch(writeFalse())}/>
+      <div className={Style.closeBtn} onClick={()=> dispatch(writeFalse())}>
+        <CloseIcon fontSize="small"/>
       </div>
     </div>
   );
