@@ -29,15 +29,13 @@ const UserFactor = () => {
   }
 
   useEffect(() => {
-    console.log(state);
+ 
     if (!!state.userid) {
       dispatch(getuserAddress(state.userid));
       if (state.basketid) {
         dispatch(getBasketDetails(state.basketid));
       }
-    } else {
-      notify("plss", "success");
-    }
+    } 
     if (!!basket) {
       console.log(basket.details);
       setBasketDatas(basket.details);

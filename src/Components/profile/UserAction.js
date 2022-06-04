@@ -10,6 +10,7 @@ import { useRouter } from "next/dist/client/router";
 import { useDispatch, useSelector } from "react-redux";
 import { checkSavedItem } from "../../redux/saveItem/saveItemAction";
 import { fetchOrderHistory } from "../../redux/orderHistory/orderHistoryAction";
+import Loader from "../../tools/loader/Loader";
 
 const UserAction = () => {
   const router = useRouter()
@@ -36,10 +37,10 @@ const UserAction = () => {
   return (
     <div className="row justify-content-between mt-5 mb-5 ">
       <div className={`col-xl-5 col-lg-5 col-md-12  col-12 ${style.watchListDiv}`}>
-        <h3 className={style.title}>Watch List</h3>
+        <h3 className={style.title}>{t("watchlist")}</h3>
         {
           watchList.preload ? 
-            <p>Loading....</p> 
+           <Loader/>
             : watchList.list.map( item => {
               return <RowProduct 
                         key={item.id} 
@@ -54,10 +55,10 @@ const UserAction = () => {
         
       </div>
       <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
-        <h3 className={style.title}>History</h3>
+        <h3 className={style.title}>{t("history")}</h3>
         {
-          orderHistory.loader ? <h4>Loading...</h4> : !orderHistory.data.length ? 
-          <div className={style.messageExist}><p>شما در حال حاضر سفارشی ثبت نکردین!</p></div> :
+          orderHistory.loader ?<Loader/> : !orderHistory.data.length ? 
+          <div className={style.messageExist}><p>{t("dontHistory")}</p></div> :
           orderHistory.data.map(item => <RowProduct key={Math.random()} statusText="completed" />)
         }
         {

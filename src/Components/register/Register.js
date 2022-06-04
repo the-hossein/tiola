@@ -164,6 +164,7 @@ const Register = ({ title }) => {
                   changehandler={(e) => changeCodeNumber(e)}
                   focusHandler={(e) => focusHandler(e)}
                   keyDown={(e) => TypeNumber(e)}
+                  AutoFocus={true}
                 />
               ) : (
                 <Input
@@ -177,6 +178,7 @@ const Register = ({ title }) => {
                   changehandler={(e) => changePhoneNUmber(e)}
                   focusHandler={(e) => focusHandler(e)}
                   keyDown={(e) => TypeNumber(e)}
+                  AutoFocus={true}
                 />
               )}
             

@@ -12,18 +12,19 @@
 .payBtn,
 .addWatch {
     border: none;
-    width: 200px;
+    width: fit-content;
+    min-width: 200px;
     padding: 0.5rem 0;
     border-radius: var(--Product-Border-radius);
     margin: 0.5rem 0;
-    font-size: var(--xl-font) !important;
+    font-size: var(--lg-font) !important;
 }
 
 .addWatch {
     background-color: var(--light-pen);
     color: var(--dark-pen);
-    width: fit-content;
     padding: 0.5rem;
+    font-size: var(--md-font);
 }
 
 .addWatch:hover {

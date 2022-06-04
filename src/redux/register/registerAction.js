@@ -47,6 +47,11 @@ const loginFalse = () => {
     type: "LOGIN_FALSE"
   };
 };
+const deleteUserData=()=>{
+  return{
+    type:"DELETE_USER_DATA"
+  }
+}
 const loader = () => {
   return {
     type: "LOADER"
@@ -264,5 +269,6 @@ export {
   getProfile,
   closePopUp,
   openPopUp,
-  updateSetProfile
+  updateSetProfile,
+  deleteUserData
 };

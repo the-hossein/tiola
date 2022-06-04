@@ -35,12 +35,14 @@
 
 .burgerMenu ul li {
     font-size: var(--md-font) !important;
+    cursor: pointer;
 }
 
 .burgerMenu>span:first-child {
     font-size: var(--md-font);
     display: block;
     margin-bottom: 2rem;
+    font-family: 'IRANSansWeb';
 }
 
 .sign {

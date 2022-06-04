@@ -2,6 +2,7 @@
     width: 100%;
     padding: 3rem 0;
     background-color: var(--blue-pen);
+    font-size: var(--md-font);
 }
 
 .namad {
@@ -28,14 +29,14 @@
     display: block;
     text-align: center;
     margin-top: 1rem;
-    font-size: var(--xs-font);
+    font-size: var(--md-font);
     
 }
 .send {
     border: 1px solid transparent;
     background-color: var(--light-pen);
     color: var(--blue-pen);
-    padding: 0.2rem 2rem 0;
+    padding: 0rem 2rem 0.2rem;
     border-radius: 6px;
     margin-top: 0.5rem;
 

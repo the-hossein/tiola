@@ -98,6 +98,7 @@
     color: #a19c9c;
     cursor: pointer;
     width: 27px;
+    font-size: 20pt !important;
 }
 
 .row>div> svg:hover {
@@ -120,7 +121,9 @@
     font-size: 12pt;
     padding: 0.4rem 1.5rem;
 }
-
+.payBtn div{
+font-size: var(--lg-font);
+}
 .Mbrow ul li {
     padding: 0 1rem;
 }
@@ -149,9 +152,20 @@
     .Mbrow img {
         width: 42%;
         height: 160px;
+        object-fit: cover;
     }
 }
-
+@media(max-width:450px){
+    .payBtn{
+        flex-direction: column-reverse;
+        margin: 2.5rem auto;
+        width: 80%;
+    }
+    .payBtn button{
+        width: 100%;
+        margin: 1rem 0;
+    }
+}
 @media(max-width:390px) {
     .Mbrow {
         font-size: 10pt;
