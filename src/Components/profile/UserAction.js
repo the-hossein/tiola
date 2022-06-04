@@ -10,6 +10,7 @@ import { useRouter } from "next/dist/client/router";
 import { useDispatch, useSelector } from "react-redux";
 import { checkSavedItem } from "../../redux/saveItem/saveItemAction";
 import { fetchOrderHistory } from "../../redux/orderHistory/orderHistoryAction";
+import Loader from "../../tools/loader/Loader";
 
 const UserAction = () => {
   const router = useRouter()
@@ -39,7 +40,7 @@ const UserAction = () => {
         <h3 className={style.title}>Watch List</h3>
         {
           watchList.preload ? 
-            <p>Loading....</p> 
+           <Loader/>
             : watchList.list.map( item => {
               return <RowProduct 
                         key={item.id} 

@@ -11,10 +11,10 @@
     width: 100% !important;
     height: 100% !important;
     border-radius: 15px;
-    transition: all .2s linear;
+    transition: all 0.4s linear;
     background: linear-gradient(180deg,
             rgba(242, 242, 242, 0)2%,
-            rgba(242, 277, 193, 0)52%,
+            rgba(242, 277, 193, 0)100%,
             rgba(0, 0, 0, .89)100%,
         );
     background-blend-mode: darken;
@@ -23,12 +23,15 @@
 
 .showProduct:hover .parag {
     opacity: 1;
+
     transform: translateY(0);
     
 }
 
 .showProduct:hover::before {
     opacity: 1;
+
+
 }
 
 .showProduct::before {
@@ -55,7 +58,7 @@
 
 .showProduct p {
     font-family: var(--font) !important;
-    font-size: var(--xs-font);
+    font-size: var(--md-font);
     position: absolute;
     padding: 10px 15px;
     transition: all .2s ease;

@@ -7,6 +7,7 @@ import style from "./UserProfile.module.css";
 //for exist open basket
 import { fetchRequestApi } from "../../redux/checkexist/checkExistActin";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../tools/loader/Loader";
 
 const UserProfile = () => {
   // const register = useSelector(state=> state.stateRegister);
@@ -23,7 +24,7 @@ const UserProfile = () => {
       <div className="container mt-5 mb-5">
         <ProFileSection />
         {
-          existOpen.preLoad ? <div className={style.messageExist}><h4>Loading...</h4></div> : existOpen.data ? <div className={style.messageExist}><p>شما در حال حاضر سفارش در حال پردازش ندارید!</p></div> : <Stepper active={2} />
+          existOpen.preLoad ? <div className={style.messageExist}><Loader/></div> : existOpen.data ? <div className={style.messageExist}><p>شما در حال حاضر سفارش در حال پردازش ندارید!</p></div> : <Stepper active={2} />
         }
         <UserAction />
       </div>

@@ -35,6 +35,7 @@
 
 .burgerMenu ul li {
     font-size: var(--md-font) !important;
+    cursor: pointer;
 }
 
 .burgerMenu>span:first-child {

@@ -4,6 +4,7 @@ import Header from "../src/Components/header/Header";
 import ExploreMain from "../src/Components/Explore/ExploreMain";
 import { BASE_URL, GET_ALL_PRODUCT } from "../src/api/urls";
 import callApi from "../src/api/callApi";
+import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 export default function explore({ explore }) {
   return (
     <div>
@@ -16,9 +17,11 @@ export default function explore({ explore }) {
         <Header backColor={"headerColor"} />
       </header>
 
-      <main>
-        <ExploreMain data={explore[0].data}/>
-      </main>
+     
+        <main>
+          <ExploreMain data={explore[0].data} />
+        </main>
+    
 
       <footer>
         <Footer />
@@ -31,8 +34,12 @@ export async function getServerSideProps(context) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-
-  const data = await callApi(BASE_URL + GET_ALL_PRODUCT, "{}", myHeaders, "GET");
+  const data = await callApi(
+    BASE_URL + GET_ALL_PRODUCT,
+    "{}",
+    myHeaders,
+    "GET"
+  );
 
   return {
     props: { explore: data } // will be passed to the page component as props

@@ -90,7 +90,7 @@ const EditProfile = () => {
     if (tokenLocal) {
       setToken(tokenLocal.token);
     }
-    if(userData.birthDayDateTime !== ""){
+    if(userData.birthDayDateTime !== null){
       const birthdayUser = userData.birthDayDateTime.split('T');
       setUserFName(userData.name);
       setUserLName(userData.family);

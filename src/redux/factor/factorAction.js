@@ -108,8 +108,6 @@ const getBasketDetails = (basketid) => {
         }
       };
       basketDetails();
-    }else {
-      notify("wiate pls", "error")
     }
   };
 };
