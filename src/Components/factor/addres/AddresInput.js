@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import {
   checkAddress,
+  deleteAddresUser,
   getAddres,
   getuserAddress,
   loadingAddresFalse,
@@ -36,7 +37,7 @@ const useStyle = makeStyles({
   }
 });
 
-const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
+const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
   //useStyle for stylesheet mui
   const classes = useStyle();
   const { t } = useTranslation();
@@ -46,11 +47,12 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
   const [addresValue, setAddresvalue] = useState(data.address);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
+
   const [deleteAddres, setDeleteAddres] = useState(false);
   const [checked, setChecked] = useState(data.isActive);
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
-    if(ls!== null) {
+    if (ls !== null) {
       var userToken = JSON.parse(ls);
       var token = userToken.token;
     }
@@ -118,23 +120,10 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
     setAddresvalue(e.target.value);
   };
   const deleteAddress = () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    const deleted = async () => {
-      const status = await callApi(
-        `${BASE_URL + DELETE_ADDRESS}?id=${data.id}`,
-        "{}",
-        myHeaders,
-        "POST"
-      );
-      if (status[0].code === 200) {
-        setDeleteAddres(true);
-      }
-    };
-    deleted();
+    dispatch(deleteAddresUser(allData,data.id));
   };
   if (typeof data !== "undefined") {
-    return !deleteAddres ? (
+    return (
       <div>
         <EditBtn
           text={
@@ -189,8 +178,6 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio }) => {
           </FormControl>
         </Box>
       </div>
-    ) : (
-      <></>
     );
   }
 };

@@ -40,12 +40,6 @@
 .status span,
 .status svg {
     margin: 0 0.5rem;
-    /* overflow: hidden;
-    width: 40px;    
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical; */
 }
 
 .history, .watchListDiv {

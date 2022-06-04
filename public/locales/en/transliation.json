@@ -102,5 +102,7 @@
   "nottosay": "not to say",
   "tiolaCollection": "tiola Collection",
   "paymentStatus": "payment Status",
-  "tiolaShop": "tiola Shop"
+  "tiolaShop": "tiola Shop",
+  "failedfactor": "Please login first to view your shopping cart",
+  "error404": "Error 404"
 }
