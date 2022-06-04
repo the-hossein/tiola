@@ -56,19 +56,27 @@ const AllComment = ({ product }) => {
 
   return (
     <>
-      {size < 600 && (
-        <div>
+      {size < 686 && (
+        <div className={`${Style.boboComent}`}>
           <AddComment />
         </div>
       )}
       <div className={`${Style.AllComment} row m-0`}>
-        <div className="col-12 col-md-12 p-0 ">
-          <Swiper
+        <div className="col-12 col-md-12 p-0 " >
+          <div className="row justify-content-between align-items-center">
+              {size > 685 && (
+              <div className={`${!state.writeCm ? 'col-md-2 col-sm-3 col-lg-5' : 'col-md-6 col-sm-6'}`}>
+                <div className={Style.firstChild}>
+                  <AddComment />
+                </div>  
+
+            </div>
+              )}
+            <div className={size > 685 ? !state.writeCm ? 'col-12 col-md-9 col-sm-8 col-lg-7' : 'col-12 col-md-6 col-sm-6': "col-12"}>
+            <Swiper
             dir={"rtl"}
-            watchOverflow={true}
-            allowTouchMove={true}
             showsPagination={false}
-            slidesPerView={size < 600 ? 1 : 3}
+            slidesPerView={size < 500 ? 1 :size < 780 ? 1.5 : !state.writeCm ? 2 : 1.5 }
             spaceBetween={15}
             grabCursor={true}
             pagination={{
@@ -76,16 +84,11 @@ const AllComment = ({ product }) => {
             }}
             modules={[]}
             className="mySwiperComment popo"
-          >
-            {size > 601 && (
-              <SwiperSlide className={Style.firstChild}>
-                <AddComment />
-              </SwiperSlide> 
-            )}
+            >
             {!state.preLoad &&
-              state.allComment.map((comment) => (
+              state.allComment.map((comment, index) => (
                 <>
-                  <SwiperSlide key={comment.name}>
+                  <SwiperSlide key={index}>
                     <Comment
                       userName={`${comment.name}  ${comment.family}`}
                       score={comment.score}
@@ -116,6 +119,12 @@ const AllComment = ({ product }) => {
                 </>
               ))}
           </Swiper>
+        </div>
+
+          </div>
+          
+            
+            
         </div>
         <div className="col-12 col-md-4 p-1 "></div>
       </div>

@@ -45,9 +45,7 @@ const UserFactor = () => {
   return (
     <section className={style.ContainerSection}>
       <div className="container mt-4">
-        {basket.loading ? (
-          <ScreenLoader />
-        ) : (
+  
           <>
             <FactorSection title={t("addres")} component={<UserAddres />} />
 
@@ -60,7 +58,7 @@ const UserFactor = () => {
               }
             />
           </>
-        )}
+    
       </div>
     </section>
   );
