@@ -156,7 +156,7 @@ const ProductContent = ({ product }) => {
     product.data !== null ? (
       <>
         <div className="row  m-0">
-          <div className={`col-lg-5 col-12  ${style.productSlider}`}>
+          <div className={`col-xl-5 col-12  ${style.productSlider}`}>
             <ProductSlider
               radius={0}
               mbItem={1.4}
@@ -168,7 +168,7 @@ const ProductContent = ({ product }) => {
               heightImage={"82vh"}
             />
           </div>
-          <div className={`col-lg-7 col-12 ${style.information} mt-5 `}>
+          <div className={`col-xl-7 col-12 ${style.information} mt-5 `}>
             <div>
               <h1>
                 {lang === "fa" ? product.data.title : product.data.titleEn}
@@ -215,9 +215,7 @@ const ProductContent = ({ product }) => {
                 </div>
               </div>
             </div>
-            <div>
-              <AllComment product={product[0]} className="col" />
-            </div>
+              <AllComment product={product[0]} className="col-12" />
           </div>
         </div>
       </>
