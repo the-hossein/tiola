@@ -119,7 +119,7 @@
     margin: 0 auto;
     background-color: var(--light-pen);
     border-radius: var(--Product-Border-radius);
-    padding: 0 0.7rem ;
+    padding: 0.7rem 0.7rem ;
     min-width: 320px ;
     width: 100% !important;
     height: 100% !important;
