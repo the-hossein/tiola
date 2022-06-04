@@ -106,7 +106,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--sm-font", "12pt");
     root.style.setProperty("--xs-font", "12pt");
     root.style.setProperty("--md-font", "17pt");
-    root.style.setProperty("--lg-font", "15pt");
+    root.style.setProperty("--lg-font", "18pt");
     root.style.setProperty("--xl-font", "22pt");
     root.style.setProperty("--xxl-font", "29pt");
     root.style.setProperty("--oxx-font", "30pt");
@@ -341,16 +341,15 @@ const Header = ({ backColor }) => {
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
               {!showSearchBox && (
                 <>
-                  <Link href="/factor">
-                    <div className={style.basket}>
-                      <ShoppingCartIcon sx={{ fontSize: 18 }} />
-                      {basket.basketLength <= 0 ? (
-                        ""
-                      ) : (
-                        <div>{basket.basketLength}</div>
-                      )}
-                    </div>
-                  </Link>
+                  <div className={style.basket} onClick={goFactorHandler}>
+                    <ShoppingCartIcon sx={{ fontSize: 18 }} />
+                    {basket.basketLength <= 0 ? (
+                      ""
+                    ) : (
+                      <div>{basket.basketLength}</div>
+                    )}
+                  </div>
+
                   <Link href="/shop">
                     <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
                     {/* <span>{t("descoverMore")}</span> */}

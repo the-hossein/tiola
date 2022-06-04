@@ -13,7 +13,8 @@ import callApi from "../../api/callApi";
 import { ADD_BASKET, BASE_URL } from "../../api/urls";
 import { addQtyAmont } from "../../redux/factor/factorAction";
 import { notify } from "../../tools/toast/toast";
-
+import persianNumber from "../../tools/persianNumber/persianNumber";
+import convertDate from '../../tools/convertDate/convertDate'
 const RowProduct = ({ close, statusText, data, userId, removeId, onclick }) => {
   const lang = useSelector((state) => state.stateLang.lng);
   const dateC =data ?  data.createdDatetime.split("T") : '';
@@ -99,13 +100,13 @@ const RowProduct = ({ close, statusText, data, userId, removeId, onclick }) => {
         )}
           <div className={` d-flex `}>
             {/* {t("scarf")}  t("mirdamad") */}
-            <span onClick={navigate} style={{cursor: "pointer"}} > {data ? data.title : "nonono"}</span>
-            <span>{data ? dateC[0] : "kd"}</span>
-            <span>{data ? data.collection.title : "mirdamad"}</span>
+            <span onClick={navigate} style={{cursor: "pointer"}} > {lang==="fa"?data.title:data.titleEn}</span>
+            <span>{lang==="fa"?convertDate(dateC[0]): dateC[0]}</span>
+            <span>{lang==="fa" ? data.collection.title : data.collection.titleEn}</span>
           </div>
           <div className={style.status}>
             <span>
-              {close ? `موجودی: ${data.stock}` : t("pending")}
+              {close ? `${t("stock")}: ${data.stock}` : t("pending")}
             </span>
             {
               close ? <AddCircleIcon 

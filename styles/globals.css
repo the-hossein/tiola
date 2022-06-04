@@ -75,6 +75,7 @@ a {
 
 .Toastify__toast {
   font-family: var(--font) !important;
+  font-size: var(--md-font);
 }
 
 .headerColor {

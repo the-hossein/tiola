@@ -10,10 +10,11 @@ import RequestProfile from "./requestProfile";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getProfile } from "../../redux/register/registerAction";
+import { useTranslation } from "react-i18next";
 
 const EditProfile = () => {
   const router = useRouter();
-
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const userData = useSelector((state) => state.stateRegister);
@@ -35,7 +36,6 @@ const EditProfile = () => {
     setAddress(e.target.value);
   };
 
-  
   const [userBirthday, setBirthday] = useState();
   const subBirthday = (e) => {
     setBirthday(e.target.value);
@@ -83,24 +83,23 @@ const EditProfile = () => {
 
   const removeImg = (e) => {
     e.preventDefault();
-    
+
     // setImage("");
     // setImageid(null);
-    
+
     var config = {
-      method: 'post',
+      method: "post",
       url: `https://api.tiolastyle.com/api/v1/Files/RemoveUserImage?id=36&UserId=${userData.userid}`,
-      headers: { 'Authorization': `Bearer ${userToken}`}
+      headers: { Authorization: `Bearer ${userToken}` }
     };
-    
+
     setpreload(true);
-    axios(config)
-      .then(res => {
-        dispatch(getProfile());
-        setImage("");
-        setImageid(null);
-        setpreload(false);
-      })
+    axios(config).then((res) => {
+      dispatch(getProfile());
+      setImage("");
+      setImageid(null);
+      setpreload(false);
+    });
   };
 
   useEffect(() => {
@@ -108,8 +107,8 @@ const EditProfile = () => {
     if (tokenLocal) {
       setToken(tokenLocal.token);
     }
-    if(userData.birthDayDateTime !== null){
-      const birthdayUser = userData.birthDayDateTime.split('T');
+    if (userData.birthDayDateTime !== null) {
+      const birthdayUser = userData.birthDayDateTime.split("T");
       setUserFName(userData.name);
       setUserLName(userData.family);
       setGender(userData.gender);
@@ -118,19 +117,18 @@ const EditProfile = () => {
   }, [userData]);
 
   const picHandler = () => {
-    if(userData.profileUser !== null) {
+    if (userData.profileUser !== null) {
       return userData.profileUser.filePath;
-    }else if (image !== ""){
+    } else if (image !== "") {
       return image;
     } else {
-      return ("/Assets/images/userdefault.png")
+      return "/Assets/images/userdefault.png";
     }
-  }
+  };
 
   return (
     <div className={`container ${style.main}`}>
-      <button onClick={picHandler} >doicjhun</button>
-      <h1>Acount</h1>
+      <h1>{t("accont")}</h1>
       <form onSubmit={subHandler}>
         <div className="row">
           <div className={`col-12 ${style.imgField}`}>
@@ -139,7 +137,13 @@ const EditProfile = () => {
                 {/* preload ? "/Assets/images/loader.gif" : "/Assets/images/userdefault.png" */}
                 <img
                   src={
-                    preload ? "/Assets/images/loader.gif" :image !== "" ? image : userData.profileUser === null ? "/Assets/images/userdefault.png" :userData.profileUser.filePath
+                    preload
+                      ? "/Assets/images/loader.gif"
+                      : image !== ""
+                      ? image
+                      : userData.profileUser === null
+                      ? "/Assets/images/userdefault.png"
+                      : userData.profileUser.filePath
                   }
                   alt="user profile"
                 />
@@ -150,17 +154,21 @@ const EditProfile = () => {
                   onChange={ChangeImageAction}
                 />
                 <span>
-                  <label htmlFor="userImage">Change</label>
+                  <label htmlFor="userImage" className={style.buttonStyle}>
+                    {t("Change")}
+                  </label>
                 </span>
-                <button onClick={removeImg}>Remove</button>
+                <button onClick={removeImg} className={style.buttonStyle}>
+                  {t("remove")}
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="row m-5">
+        <div className={`row m-5 ${style.formContainer}`}>
           <div className="col-12 col-md-6">
             <div className="d-flex flex-column ">
-              <label htmlFor="fname-in">Enter your first name:</label>
+              <label htmlFor="fname-in">{t("enterName")}</label>
               <input
                 id="fname-in"
                 type="text"
@@ -172,7 +180,7 @@ const EditProfile = () => {
           </div>
           <div className="col-12 col-md-6">
             <div className="d-flex flex-column ">
-              <label htmlFor="lname-in">Enter your last name:</label>
+              <label htmlFor="lname-in">{t("enterfamily")}</label>
               <input
                 id="lname-in"
                 type="text"
@@ -197,10 +205,10 @@ const EditProfile = () => {
                         </div>
                     </div>
                 </div> */}
-        <div className="row m-5 align-items-end">
+        <div className={`row m-5 align-items-end ${style.formContainer}`}>
           <div className="col-12 col-md-6 col-lg-4">
             <div className="d-flex flex-column ">
-              <label htmlFor="birthday">Enter your birthday</label>
+              <label htmlFor="birthday">{t("enterBirth")+ " : "}</label>
               <input
                 id="birthday"
                 type="date"
@@ -213,20 +221,20 @@ const EditProfile = () => {
           <div className="col-12 col-md-6 col-lg-5">
             <div className="row ">
               <div className="d-flex align-items-center col-12 col-md-12 col-lg-12 mt-4 text-center">
-                <label htmlFor="cars">Choose your sex:</label>
+                <label htmlFor="cars">{t("choseGender")+ " :  "}</label>
                 <select value={gender} id="cars" onChange={subGender}>
-                  <option value="0">Female</option>
-                  <option value="1">Male</option>
-                  <option value="2">not to say</option>
+                  <option value="0">{t("Female")}</option>
+                  <option value="1">{t("Male")}</option>
+                  <option value="2">{t("nottosay")}</option>
                 </select>
               </div>
             </div>
           </div>
           <div className="col-12 col-md-12 col-lg-3 text-center">
             <div className={`mt-5 ${style.btnHandel}`}>
-              <button type="submit">Submit</button>
+              <button type="submit">{t("submit")}</button>
               <Link href="/">
-                <span className={style.navigate}>Home</span>
+                <span className={style.navigate}>{t("home")}</span>
               </Link>
             </div>
           </div>

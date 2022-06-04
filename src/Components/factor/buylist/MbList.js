@@ -11,6 +11,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "react-bootstrap/Spinner";
 import Link from "next/link";
 import { checkSavedItem } from "../../../redux/saveItem/saveItemAction";
+import persianNumber from "../../../tools/persianNumber/persianNumber";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 const MbList = ({
   data,
   addWatchHandler,
@@ -45,7 +48,11 @@ const MbList = ({
           <li>
             {lang === "fa" ? data.collection.title : data.collection.titleEn}
           </li>
-          <li className={style.price}>{info.total + t("t")}</li>
+          <li className={style.price}>
+            {lang === "fa"
+              ? persianNumber(info.total) + t("t")
+              : info.total + t("t")}
+          </li>
 
           <ColorPick color={data.collection.colorCode} />
         </ul>
@@ -59,14 +66,22 @@ const MbList = ({
                 <Spinner animation="grow" />
               ) : (
                 <>
-                  <FontAwesomeIcon
-                    icon={faMinus}
-                    className={style.minus}
-                    onClick={decreseHandler}
-                  />
+                  {info.qty <= 1 ? (
+                    <DeleteIcon
+                      className={style.deleteicon}
+                      onClick={deleteHandler}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      className={style.minus}
+                      onClick={decreseHandler}
+                    />
+                  )}
                   <span className={style.count}>{info.qty}</span>
                   <AddOutlinedIcon
                     sx={{ fontSize: 30, margin: 0 }}
+                    className={style.add}
                     onClick={increaseHandler}
                   />
                 </>

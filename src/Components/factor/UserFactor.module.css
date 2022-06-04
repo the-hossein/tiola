@@ -16,11 +16,20 @@
 .title {
     text-align: var(--float-left);
     margin: 40px 0;
+    font-size: var(--xl-font);
 }
-.addresinput{
+
+.addresinput {
     direction: var(--direction) !important;
-    font-family: var(--font) !important;
+
 }
+
+.addresinput input,
+.addresinput textarea {
+    font-family: "IRANSansWeb" !important;
+    font-size: 11pt !important;
+}
+
 .addresinput fieldset {
     border: none !important;
 }
@@ -37,9 +46,11 @@
     margin-bottom: 1rem;
     /* position: relative; */
 }
-.submit{
-    color:var(--blue-pen);
+
+.submit {
+    color: var(--green-pen);
 }
+
 .edit {
     background-color: var(--light-pen);
     border-radius: 4px;

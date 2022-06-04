@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
@@ -7,11 +8,11 @@ import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 
 export default function Home() {
   const state = useSelector((state) => state.stateRegister);
-
+  const { t } = useTranslation();
   return (
     <>
       <Head>
-        <title>Tiola home</title>
+        <title>{t("home")}</title>
         <link rel="icon" href="/logo.ico" />
         <meta
           name="google-site-verification"
