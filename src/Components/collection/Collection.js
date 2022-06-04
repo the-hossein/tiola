@@ -16,7 +16,7 @@ const Collection = ({ dir }) => {
               <Simplcollection
                 image1="/Assets/images/4.jpg"
                 image2="/Assets/images/10.jpg"
-                content={t("collection1Content")}
+                content={t("messageShop")}
                 color="exapmle"
                 title={t("collection1")}
               />
@@ -25,14 +25,14 @@ const Collection = ({ dir }) => {
                 image2={"/Assets/images/7.jpg"}
                 image3={"/Assets/images/10.jpg"}
                 title={t("collection2")}
-                content={t("collection2Content")}
+                content={t("messageCollection")}
 
                 color="example"
               />
               <HardCollection
                 image={"/Assets/images/9.jpg"}
-                title={t("viewExplore")}
-                content={t("viewExploreText")}
+                title={t("explore")}
+                content={t("messageExplore")}
               />
             </div>
           </div>
