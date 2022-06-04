@@ -158,7 +158,7 @@ const Register = ({ title }) => {
                   value={state.code}
                   lablelText={t("enterCode")}
                   type="text"
-                  placeholder=""
+                  placeholder={t("typeHere")}
                   color="dark"
                   maxLength={6}
                   changehandler={(e) => changeCodeNumber(e)}
@@ -172,7 +172,7 @@ const Register = ({ title }) => {
                   lablelText={t("phoneNumber")}
                   type="text"
                   value={state.phoneNumber}
-                  placeholder=""
+                  placeholder={t("typeHere")}
                   color="dark"
                   maxLength={11}
                   changehandler={(e) => changePhoneNUmber(e)}

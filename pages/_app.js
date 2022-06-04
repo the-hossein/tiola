@@ -32,6 +32,10 @@ i18n
   });
 
 function MyApp({ Component, pageProps }) {
+if(typeof window !=="undefined"){
+  console.log(navigator.online)
+
+}
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
   useEffect(() => {

@@ -47,7 +47,7 @@ const UserFactor = () => {
     <section className={style.ContainerSection}>
       <div className="container mt-4">
         <>
-          {basket.details === "failed" || basket.allAddress ? (
+          {basket.details === "failed"  ? (
             <Placement text={t("failedfactor")} />
             
           ) : (

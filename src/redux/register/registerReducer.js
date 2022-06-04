@@ -108,6 +108,16 @@ const registerReducer = (state = initializedState, action) => {
         gender: action.payload.user.gender
         // address: action.payload.address,
       };
+    case "DATA_USERLOADER_FALSE":
+      return {
+        ...state,
+        userDataLoader: false
+      };
+    case "BASKET_LOADER_FALSE":
+      return {
+        ...state,
+        basketloader: false
+      };
     case "USER_DATA":
       return {
         ...state,

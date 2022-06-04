@@ -47,11 +47,11 @@ const loginFalse = () => {
     type: "LOGIN_FALSE"
   };
 };
-const deleteUserData=()=>{
-  return{
-    type:"DELETE_USER_DATA"
-  }
-}
+const deleteUserData = () => {
+  return {
+    type: "DELETE_USER_DATA"
+  };
+};
 const loader = () => {
   return {
     type: "LOADER"
@@ -122,6 +122,16 @@ const basketid = (data) => {
     data: data
   };
 };
+const dataUserloaderFalse = () => {
+  return {
+    type: "DATA_USERLOADER_FALSE"
+  };
+};
+const basketLoaderFalse = () => {
+  return {
+    type: "BASKET_LOADER_FALSE"
+  };
+};
 const registerCode = (code, num, lang, router) => {
   return (dispatch) => {
     dispatch(loader());
@@ -145,23 +155,38 @@ const registerCode = (code, num, lang, router) => {
         "POST"
       );
 
-      var text;
-      if (registerCode[1] === 200) {
+      console.log(registerCode);
+      if (registerCode[0].code === 200) {
         dispatch(checkOtpSuccess());
         dispatch(loginTrue());
-        if (lang === "fa") {
-          if (registerCode[0].message === "با موفقیت لاگین شدید") {
+        var text = "";
+        if (registerCode[0].message === "با موفقیت لاگین شدید ") {
+          if (lang === "fa") {
             text = "با موفقیت وارد حساب کاربری خود شده اید";
           } else {
-            text = "ثبت نام شما با موفقیت انجام شد";
+            text = "You have successfully logged in to your account";
           }
         } else {
-          if (registerCode[0].message === "با موفقیت لاگین شدید") {
-            text = "You have successfully logged in to your account";
+          if (lang === "fa") {
+            text = "ثبت نام شما با موفقیت انجام شد";
           } else {
             text = "Your registration was successful";
           }
         }
+        // if (lang === "fa") {
+        // if (registerCode[0].message === "با موفقیت لاگین شدید") {
+        // var text;
+        //     text = "با موفقیت وارد حساب کاربری خود شده اید";
+        //   } else {
+        //     text = "ثبت نام شما با موفقیت انجام شد";
+        //   }
+        // } else {
+        //   if (registerCode[0].message === "با موفقیت لاگین شدید") {
+        //     text = "You have successfully logged in to your account";
+        //   } else {
+        //     text = "Your registration was successful";
+        //   }
+        // }
 
         const data = {
           token: registerCode[0].data.token,
@@ -224,26 +249,28 @@ const getProfile = () => {
       );
       if (user[0].code === 200 && user[0].data !== null) {
         dispatch(userData(user[0].data));
-
-        const basket = async () => {
-    dispatch(userDataLoader());
-
-          const basketUser = await callApi(
-            `${BASE_URL + GET_BASKET}?UserId=${user[0].data.user.id}`,
-            "{}",
-            myHeaders,
-            "GET"
-          );
-
-          if (basketUser[0].code === 200) {
-            dispatch(basketid(basketUser[0].data.id));
-            
-            userToken["userid"] = user[0].data.user.id;
-            localStorage.setItem("userToken", JSON.stringify(userToken));
-          }
-        };
-        basket();
       }
+      const basket = async () => {
+        dispatch(userDataLoader());
+
+        const basketUser = await callApi(
+          `${BASE_URL + GET_BASKET}?UserId=${user[0].data.user.id}`,
+          "{}",
+          myHeaders,
+          "GET"
+        );
+
+        if (basketUser[0].code === 200 && basketUser[0].data !== null) {
+          dispatch(basketid(basketUser[0].data.id));
+        } else {
+          dispatch(loginTrue());
+          dispatch(basketLoaderFalse());
+          dispatch(dataUserloaderFalse());
+        }
+        userToken["userid"] = user[0].data.user.id;
+        localStorage.setItem("userToken", JSON.stringify(userToken));
+      };
+      basket();
     };
     profile();
   };
