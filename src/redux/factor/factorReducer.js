@@ -2,10 +2,11 @@ const initializedState = {
   loading: true,
   loadingAddress: true,
   loadingList: true,
+  deleteLoader: false,
   addres: "",
   id: "",
   basketLength: 0,
-  details: [],
+  details: null,
   allAddress: []
 };
 const factorReducer = (state = initializedState, action) => {
@@ -26,7 +27,14 @@ const factorReducer = (state = initializedState, action) => {
     case "ADD_QTY_AMOUNT":
       return {
         ...state,
-        basketLength: state.basketLength + 1,
+        basketLength: state.basketLength + 1
+      };
+    case "ADDRESS-DELETED":
+      return {
+        ...state,
+        allAddress: action.data,
+        loadingAddress:false
+        
       };
     case "BASKET_DETAILS":
       return {
@@ -35,35 +43,40 @@ const factorReducer = (state = initializedState, action) => {
         basketLength: action.data.length,
         loading: false,
         loadingList: false
-
       };
     case "Incress_Details":
       const update = state.details.map((p) =>
         p.id === action.payload ? { ...p, p: p.qty++ } : p
       );
-      
+
       return {
         ...state,
         details: update,
-        loading: false,
+        loading: false
       };
-      case "Decress_Details":
-        const updateD = state.details.map((p) =>
-          p.id === action.payload ? { ...p, p: p.qty-- } : p
-        );
-        
-        return {
-          ...state,
-          details: updateD,
-          loading: false,
-        };
+    case "Decress_Details":
+      const updateD = state.details.map((p) =>
+        p.id === action.payload ? { ...p, p: p.qty-- } : p
+      );
+
+      return {
+        ...state,
+        details: updateD,
+        loading: false
+      };
+    case "DELETE_LOADER":
+      return {
+        ...state,
+        deleteLoader: true
+      };
     case "DELETE_BASKET":
       return {
         ...state,
         details: action.product,
         basketLength: action.product.length,
+        deleteLoader: false,
         loading: false,
-        loadingList: false,
+        loadingList: false
       };
     case "SET_ALL_ADDRESS":
       return {
@@ -77,11 +90,11 @@ const factorReducer = (state = initializedState, action) => {
         ...state,
         loadingAddress: true
       };
-      case "lOADING_ADDRESS_FALSE":
-        return {
-          ...state,
-          loadingAddress: false
-        };
+    case "lOADING_ADDRESS_FALSE":
+      return {
+        ...state,
+        loadingAddress: false
+      };
     case "lOADING_LIST":
       return {
         ...state,

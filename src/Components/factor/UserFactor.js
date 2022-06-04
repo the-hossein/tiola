@@ -16,6 +16,7 @@ import { BASE_URL, GET_BASKET_DETAILS } from "../../api/urls";
 import Loader from "../../tools/loader/Loader";
 import ScreenLoader from "../../tools/screenLoader/ScreenLoader";
 import { notify } from "../../tools/toast/toast";
+import Placement from "../../tools/placement/Placement";
 const UserFactor = () => {
   const { t } = useTranslation();
   const state = useSelector((state) => state.stateRegister);
@@ -29,36 +30,44 @@ const UserFactor = () => {
   }
 
   useEffect(() => {
- 
     if (!!state.userid) {
       dispatch(getuserAddress(state.userid));
       if (state.basketid) {
         dispatch(getBasketDetails(state.basketid));
       }
-    } 
+    }
     if (!!basket) {
       console.log(basket.details);
       setBasketDatas(basket.details);
       setPreload(false);
     }
   }, [state]);
+  console.log(basket.allAddress)
   return (
     <section className={style.ContainerSection}>
       <div className="container mt-4">
-  
-          <>
-            <FactorSection title={t("addres")} component={<UserAddres />} />
+        <>
+          {basket.details === "failed" || basket.allAddress ? (
+            <Placement text={t("failedfactor")} />
+            
+          ) : (
+            <>
+              <FactorSection title={t("addres")} component={<UserAddres />} />
 
-            <FactorSection
-              title={t("paylist")}
-              component={
-                prelaod ? null : (
-                  <BuyLists data={baskedatas} setBasketDatas={setBasketDatas} />
-                )
-              }
-            />
-          </>
-    
+              <FactorSection
+                title={t("paylist")}
+                component={
+                  prelaod ? null : (
+                    <BuyLists
+                      data={baskedatas}
+                      setBasketDatas={setBasketDatas}
+                    />
+                  )
+                }
+              />
+            </>
+          )}
+        </>
       </div>
     </section>
   );

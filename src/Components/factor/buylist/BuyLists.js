@@ -16,7 +16,7 @@ import persianNumber from "../../../tools/persianNumber/persianNumber";
 const BuyLists = ({ setBasketDatas }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.stateFactor.details);
+  const state = useSelector((state) => state.stateFactor);
   const user = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
 
@@ -29,8 +29,8 @@ const BuyLists = ({ setBasketDatas }) => {
 
   useEffect(() => {
     var Price = 0;
-    for (var i = 0; i < state.length; i++) {
-      Price = Price + state[i].qty * state[i].amount;
+    for (var i = 0; i < state.details.length; i++) {
+      Price = Price + state.details[i].qty * state.details[i].amount;
       console.log(Price);
     }
     settotalprice(Price);
@@ -76,18 +76,19 @@ const BuyLists = ({ setBasketDatas }) => {
       notify(text, "error");
     }
   };
-
-  return (
+  return state.deleteLoader ? (
+    <Loader />
+  ) : (
     <div>
-      {state.length <= 0 ? (
+      {state.details.length === 0 && state.details !== null ? (
         <Placement text={t("placementfactorList")} />
       ) : (
         <>
-          {state.map((item) => (
+          {state.details.map((item) => (
             <>
               <List
                 data={item}
-                alldata={state}
+                alldata={state.details}
                 setBasketDatas={setBasketDatas}
               />
             </>
