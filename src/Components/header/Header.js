@@ -334,16 +334,15 @@ const Header = ({ backColor }) => {
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
               {!showSearchBox && (
                 <>
-                  <Link href="/factor">
-                    <div className={style.basket}>
-                      <ShoppingCartIcon sx={{ fontSize: 18 }} />
-                      {basket.basketLength <= 0 ? (
-                        ""
-                      ) : (
-                        <div>{basket.basketLength}</div>
-                      )}
-                    </div>
-                  </Link>
+                  <div className={style.basket} onClick={goFactorHandler}>
+                    <ShoppingCartIcon sx={{ fontSize: 18 }} />
+                    {basket.basketLength <= 0 ? (
+                      ""
+                    ) : (
+                      <div>{basket.basketLength}</div>
+                    )}
+                  </div>
+
                   <Link href="/shop">
                     <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
                     {/* <span>{t("descoverMore")}</span> */}

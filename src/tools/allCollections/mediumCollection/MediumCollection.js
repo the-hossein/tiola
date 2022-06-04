@@ -15,7 +15,7 @@ const MediumCollection = ({
 }) => {
   return (
     <>
-      <Link>
+      <Link href="/collections">
         <div
           className={`row justify-content-center  mt-5 mb-5 pb-3  ${style.collection}`}
         >
