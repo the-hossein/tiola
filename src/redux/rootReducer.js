@@ -16,6 +16,7 @@ import allProductsReducer from "./getallproducts/AllProductsReducer";
 import saveItemReducer from "./saveItem/saveItemReducer";
 import checkExistReduce from "./checkexist/checkExistReducer";
 import orderHistoryReducer from "./orderHistory/orederHistoryReducer";
+import searchReducer from "./searchProduct/searchReducer";
 
 const rootReducer = combineReducers({
   stateLang: langReducer,
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   stateWatchList: saveItemReducer,
   stateCheckExist: checkExistReduce,
   stateHistory: orderHistoryReducer,
+  stateSearch: searchReducer
 });
 
 export default rootReducer;

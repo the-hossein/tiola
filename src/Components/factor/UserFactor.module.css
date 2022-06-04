@@ -15,6 +15,7 @@
 
 .title {
     text-align: var(--float-left);
+    margin: 40px 0;
 }
 .addresinput{
     direction: var(--direction) !important;

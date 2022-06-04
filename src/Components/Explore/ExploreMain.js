@@ -15,17 +15,37 @@ import style from "./ExploreMain.module.css";
 import Loader from "../../tools/loader/Loader";
 import { height } from "@mui/system";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { query } from '../../redux/searchProduct/searchAction'
 
 const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
-
   const [getItem, setGetItem] = useState({});
-  const lang = useSelector((state) => state.stateLang.lng);
+  const searching = useSelector(state => state.stateSearch);
+  const dispatch = useDispatch();
+  const lang =useSelector(state=>state.stateLang.lng)
   console.log(data);
+
+  const search = window.location.search; // could be '?foo=bar'
+  const params = new URLSearchParams(search);
+  // bar
+  var idSearching = params.get("search");
+
+  const [ targetSearch, setTargetSearch ] = useState([])
+  
   useEffect(() => {
+    // dispatch(query(data))
     setGetItem(data.slice(0, 10));
-  }, []);
+    // if(searching.items.length){
+      //   setGetItem(searching.items)
+      // }
+      console.log(getItem)
+      
+      console.log(idSearching);
+      console.log(searching)
+
+      setTargetSearch(data.filter(item => item.title.includes(idSearching)));
+    }, []);
 
   useLayoutEffect(() => {
     const updateSize = () => {
@@ -67,29 +87,40 @@ const ExploreMain = ({ data }) => {
             </div>
           }
         >
-          {getItem.length > 0 && (
+          {data.length > 0 && (
             <Masonry
               columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
               spacing={2}
             >
-              {getItem.map(
-                (product, index) =>
-                  product.imageFile1.confirmed && (
-                    <Item key={product.id}>
-                      <Link href={`/product/${product.id}`}>
-                        <div className={style.showProduct}>
-                          <img
-                            src={product.imageFile1.filePath}
-                            alt="product"
-                          />
-                          <p className={style.parag}>
-                            {lang === "fa" ? product.title : product.titleEn}
-                          </p>
-                        </div>
-                      </Link>
-                    </Item>
-                  )
-              )}
+              {
+              targetSearch.length ? 
+              targetSearch.map(product => (
+                <Item key={product.id}>
+                
+                  <Link href={`/product/${product.id}`}>
+                    <div className={style.showProduct}>
+                      <img src={product.imageFile1.filePath} alt="product" />
+                      <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
+                    </div>
+                  </Link>
+                </Item>
+              )) :
+              data.map((product, index) => (
+              
+               product.imageFile1.confirmed&&
+               <Item key={product.id}>
+                  <Link href={`/product/${product.id}`}>
+                    <div className={style.showProduct}>
+                      <img src={product.imageFile1.filePath} alt="product" />
+                      <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
+                    </div>
+                  </Link>
+                </Item>
+              ))
+              }
+
+                
+                
             </Masonry>
           )}
         </InfiniteScroll>

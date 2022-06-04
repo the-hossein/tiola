@@ -3,7 +3,7 @@
 }
 
 .userComment {
-    font-size: var(--xs-font);
+    font-size: var(--font-xs-comment);
 }
 
 .ratinaition,
@@ -118,17 +118,18 @@
     margin: 0 auto;
     background-color: var(--light-pen);
     border-radius: var(--Product-Border-radius);
-    padding: 1.4rem 0.7rem;
+    padding: 1.3rem 0.7rem 1.5rem;
     width: 350px !important;
     height: 100% !important;
     min-height: 200px !important;
     position: relative;
+    z-index: 100 !important;
 }
 
 .closeBtn {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 10px;
+    right: 5px;
 }
 
 .commentText textarea {
@@ -151,12 +152,15 @@
     width: 100%;
     padding: 0.5rem;
     border-radius: var(--Product-Border-radius);
-    direction: var(--direction);
+    direction: rtl !important;
     height: 100%;
+    font-family: "IRANSansWeb" !important;
+    --font-md-comment: 12pt;
+    --font-xs-comment: 10pt;
 }
 
 .Commnet span {
-    font-size: var(--md-font);
+    font-size: var(--font-md-comment);
 }
 
 .AllComment {
@@ -194,4 +198,8 @@
         margin-bottom: 25px;
 
     }
+}
+
+.firstChild {
+    z-index: 15 !important;
 }

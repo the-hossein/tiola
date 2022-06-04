@@ -8,6 +8,8 @@ import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
 //request
 import RequestProfile from "./requestProfile";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { getProfile } from "../../redux/register/registerAction";
 
 const EditProfile = () => {
   const router = useRouter();
@@ -81,8 +83,24 @@ const EditProfile = () => {
 
   const removeImg = (e) => {
     e.preventDefault();
-    setImage("");
-    setImageid(null);
+    
+    // setImage("");
+    // setImageid(null);
+    
+    var config = {
+      method: 'post',
+      url: `https://api.tiolastyle.com/api/v1/Files/RemoveUserImage?id=36&UserId=${userData.userid}`,
+      headers: { 'Authorization': `Bearer ${userToken}`}
+    };
+    
+    setpreload(true);
+    axios(config)
+      .then(res => {
+        dispatch(getProfile());
+        setImage("");
+        setImageid(null);
+        setpreload(false);
+      })
   };
 
   useEffect(() => {
@@ -99,19 +117,29 @@ const EditProfile = () => {
     }
   }, [userData]);
 
+  const picHandler = () => {
+    if(userData.profileUser !== null) {
+      return userData.profileUser.filePath;
+    }else if (image !== ""){
+      return image;
+    } else {
+      return ("/Assets/images/userdefault.png")
+    }
+  }
+
   return (
     <div className={`container ${style.main}`}>
+      <button onClick={picHandler} >doicjhun</button>
       <h1>Acount</h1>
       <form onSubmit={subHandler}>
         <div className="row">
           <div className={`col-12 ${style.imgField}`}>
             <div className={`row ${style.imgField}`}>
               <div className="col-12">
+                {/* preload ? "/Assets/images/loader.gif" : "/Assets/images/userdefault.png" */}
                 <img
                   src={
-                     preload ? "/Assets/images/loader.gif" :
-                    image === "" ?userData.profileUser === null ? 
-                    "/Assets/images/userdefault.png"  :  userData.profileUser.filePath : image
+                    preload ? "/Assets/images/loader.gif" :image !== "" ? image : userData.profileUser === null ? "/Assets/images/userdefault.png" :userData.profileUser.filePath
                   }
                   alt="user profile"
                 />
