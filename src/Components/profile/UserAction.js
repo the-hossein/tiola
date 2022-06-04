@@ -39,9 +39,10 @@ const UserAction = () => {
       <div className={`col-xl-5 col-lg-5 col-md-12  col-12 ${style.watchListDiv}`}>
         <h3 className={style.title}>{t("watchlist")}</h3>
         {
-          watchList.preload ? 
-           <Loader/>
-            : watchList.list.map( item => {
+          // watchList.preload ? 
+          // <Loader/>
+          //  :
+           watchList.list.map( item => {
               return <RowProduct 
                         key={item.id} 
                         statusText="pending" 
@@ -49,6 +50,7 @@ const UserAction = () => {
                         removeId={item.id} 
                         data= {item.product} 
                         userId={user.userid}
+                        loading={watchList.preload} 
                       />
             })
         }

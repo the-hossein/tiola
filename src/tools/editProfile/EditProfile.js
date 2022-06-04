@@ -18,6 +18,7 @@ const EditProfile = () => {
   const dispatch = useDispatch();
 
   const userData = useSelector((state) => state.stateRegister);
+  const lang = useSelector(state => state.stateLang.lng);
 
   const [userToken, setToken] = useState();
 
@@ -56,9 +57,8 @@ const EditProfile = () => {
       userBirthday,
       gender,
       imageId,
-      router
-      // image,
-      // address,
+      router,
+      lang
     );
   };
 
@@ -113,6 +113,9 @@ const EditProfile = () => {
       setUserLName(userData.family);
       setGender(userData.gender);
       setBirthday(birthdayUser[0]);
+    }
+    if(userData.profileUser !== null){
+      setImageid(userData.profileUser.id)
     }
   }, [userData]);
 

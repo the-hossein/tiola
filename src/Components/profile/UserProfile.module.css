@@ -39,8 +39,15 @@
 .RowProduct>div>span,
 .status span,
 .status svg {
-    margin: 0 0.7rem;
+    margin: 0 0.5rem;
+    /* overflow: hidden;
+    width: 40px;    
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical; */
 }
+
 .history, .watchListDiv {
     height: fit-content !important;
 }
@@ -221,4 +228,11 @@
     text-align: center;
     color: var(--darkGray-border);
     font-size: var(--md-font);
+}
+.loader {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #fff;
+    object-fit: contain;
 }

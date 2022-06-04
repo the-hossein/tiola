@@ -1,4 +1,5 @@
 export const BASE_URL = "https://api.tiolastyle.com/";
+// export const BASE_URL = "http://185.105.239.3:85/";
 export const GET_ALL_PRODUCT = "api/Prodcut/GetAllProduct";
 export const GET_PRODUCT = "api/Prodcut/GetProduct";
 export const GET_WITHLABLE = "api/Prodcut/GetTypeOfProducts";

@@ -151,14 +151,14 @@ const List = ({ data, alldata }) => {
     if (targetItem) {
       notify("شما این محصول را قبلا اضافه کردین", "success");
     } else {
-      dispatch(fetchingToSave(userID, productId));
+      dispatch(fetchingToSave(userID, productId, lang));
     }
   };
 
   useEffect(() => {
     if (state.loginStatus && state.userid !== "") {
       const userID = state.userid;
-      dispatch(checkSavedItem(userID));
+      dispatch(checkSavedItem(userID, lang));
     }
   }, []);
   return size > 768 ? (

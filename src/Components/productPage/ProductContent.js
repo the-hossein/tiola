@@ -153,10 +153,16 @@ const ProductContent = ({ product }) => {
       (item) => item.productId === productId
     );
     if (targetItem) {
-      notify("شما این محصول را قبلا اضافه کردین", "success");
+      let textShow ; 
+      if(lang === 'fa'){
+        textShow = 'شما این محصول را قبلا اضافه کردین';
+      }else {
+        textShow = 'You have already added this product';
+      }
+      notify(textShow, "success");
       setpreloadWatch(false);
     } else {
-      dispatch(fetchingToSave(userID, productId));
+      dispatch(fetchingToSave(userID, productId,lang));
       setpreloadWatch(false);
     }
   };
@@ -164,7 +170,7 @@ const ProductContent = ({ product }) => {
   useEffect(() => {
     if (state.loginStatus && state.userid !== "") {
       const userID = state.userid;
-      dispatch(checkSavedItem(userID));
+      dispatch(checkSavedItem(userID, lang));
     }
   }, []);
 

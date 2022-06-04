@@ -15,7 +15,7 @@ import { addQtyAmont } from "../../redux/factor/factorAction";
 import { notify } from "../../tools/toast/toast";
 import persianNumber from "../../tools/persianNumber/persianNumber";
 import convertDate from '../../tools/convertDate/convertDate'
-const RowProduct = ({ close, statusText, data, userId, removeId, onclick }) => {
+const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
   const lang = useSelector((state) => state.stateLang.lng);
   const dateC =data ?  data.createdDatetime.split("T") : '';
   const router = useRouter();
@@ -89,8 +89,10 @@ const RowProduct = ({ close, statusText, data, userId, removeId, onclick }) => {
 
   return (
     <>
-       
         <div className={style.RowProduct}>
+        {
+          loading && <img className={style.loader} alt='loading' src="/Assets/images/lineLoad.gif" />
+        } 
         {close && (
           <CloseIcon
             sx={{ color: "#707070", fontSize: 18, cursor: "pointer" }}
@@ -101,8 +103,8 @@ const RowProduct = ({ close, statusText, data, userId, removeId, onclick }) => {
           <div className={` d-flex `}>
             {/* {t("scarf")}  t("mirdamad") */}
             <span onClick={navigate} style={{cursor: "pointer"}} > {lang==="fa"?data.title:data.titleEn}</span>
-            <span>{lang==="fa"?convertDate(dateC[0]): dateC[0]}</span>
-            <span>{lang==="fa" ? data.collection.title : data.collection.titleEn}</span>
+            {/* <span>{lang==="fa"?convertDate(dateC[0]): dateC[0]}</span> */}
+            {/* <span>{lang==="fa" ? data.collection.title : data.collection.titleEn}</span> */}
           </div>
           <div className={style.status}>
             <span>
