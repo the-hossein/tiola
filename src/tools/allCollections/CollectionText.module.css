@@ -2,19 +2,23 @@
     margin-bottom: 1.5rem;
     font-size: var(--xxl-font);
 }
+
 .ViewAll {
-        text-align: right;
-    font-size: var(--xs-font);
+    text-align: right;
+    font-size: var(--md-font) !important;
     cursor: pointer;
 
 }
-.CollectionText{
+
+.CollectionText {
     line-height: 1.6;
     font-size: var(--md-font);
+    direction: var(--direction);
 }
-.ViewAllLeft{
+
+.ViewAllLeft {
     text-align: left;
-    font-size: var(--xs-font);
+    font-size: var(--md-font) !important;
     cursor: pointer;
 
 }

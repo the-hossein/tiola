@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Masonry from "@mui/lab/Masonry";
+import CircularProgress from "@mui/material/CircularProgress";
 
 //style
 import style from "./ExploreMain.module.css";
@@ -75,12 +76,16 @@ const ExploreMain = ({ data }) => {
     <div className={style.explore}>
       <Box sx={{ width: "auto" }}>
         <InfiniteScroll
-        style={{overflow:'hidden'}}
+          style={{ overflow: "hidden" }}
           dataLength={data.length}
           next={fetchMoreData}
-          hasMore={getItem.length===data.length?false:true}
+          hasMore={getItem.length === data.length ? false : true}
           endMessage=""
-          loader={<Loader/>}
+          loader={
+            <div className="d-block text-center">
+              <CircularProgress disableShrink />
+            </div>
+          }
         >
           {data.length > 0 && (
             <Masonry

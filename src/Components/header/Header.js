@@ -92,7 +92,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--md-font", "12pt");
     root.style.setProperty("--lg-font", "14pt");
     root.style.setProperty("--xl-font", "16pt");
-    root.style.setProperty("--xxl-font", "24pt");
+    root.style.setProperty("--xxl-font", "21pt");
     root.style.setProperty("--oxx-font", "26pt");
   };
 
@@ -103,13 +103,13 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--float-left", "left");
     root.style.setProperty("--font", "apple");
     root.style.setProperty("--verySmall-font", "10pt");
-    root.style.setProperty("--sm-font", "11pt");
+    root.style.setProperty("--sm-font", "12pt");
     root.style.setProperty("--xs-font", "12pt");
-    root.style.setProperty("--md-font", "14pt");
+    root.style.setProperty("--md-font", "17pt");
     root.style.setProperty("--lg-font", "15pt");
-    root.style.setProperty("--xl-font", "17pt");
-    root.style.setProperty("--xxl-font", "26pt");
-    root.style.setProperty("--oxx-font", "28pt");
+    root.style.setProperty("--xl-font", "22pt");
+    root.style.setProperty("--xxl-font", "29pt");
+    root.style.setProperty("--oxx-font", "30pt");
   };
 
   useEffect(() => {
@@ -136,7 +136,9 @@ const Header = ({ backColor }) => {
       dispatch(loginFalse());
     }
   }, [state.loginStatus]);
-
+  useEffect(() => {
+    dispatch(getBasketDetails(state.basketid));
+  }, [state.basketid]);
   useEffect(() => {
     targetSearch = allProducts.filter(item => item.title.includes(''));
     dispatch(changeLang(Cookies.get("i18next")));
@@ -231,7 +233,7 @@ const Header = ({ backColor }) => {
                 </div>
               </nav>
               <Link href="/">
-                <Image src={logo} alt="logo" />
+                <Image src={logo} alt="logo" className={style.logo} />
               </Link>
             </div>
 
@@ -337,27 +339,27 @@ const Header = ({ backColor }) => {
               </div>
             </div>
             <div className={` d-flex  align-items-center ${style.mobileLogo}`}>
-            {
-              !showSearchBox&&
-              <>
-              
-              <Link href="/factor">
-                <div className={style.basket}>
-                  <ShoppingCartIcon sx={{ fontSize: 18 }} />
-                {basket.basketLength<=0?"":
-                  <div>{basket.basketLength}</div>
-                }
-                </div>
-              </Link>
-              <Link href="/shop">
-                <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
-                {/* <span>{t("descoverMore")}</span> */}
-              </Link>
-              <Link href="/">
-                <Image src={logo} alt="logo" />
-              </Link>
-              </>
-            }
+              {!showSearchBox && (
+                <>
+                  <Link href="/factor">
+                    <div className={style.basket}>
+                      <ShoppingCartIcon sx={{ fontSize: 18 }} />
+                      {basket.basketLength <= 0 ? (
+                        ""
+                      ) : (
+                        <div>{basket.basketLength}</div>
+                      )}
+                    </div>
+                  </Link>
+                  <Link href="/shop">
+                    <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
+                    {/* <span>{t("descoverMore")}</span> */}
+                  </Link>
+                  <Link href="/">
+                    <Image src={logo} alt="logo" className={style.logo} />
+                  </Link>
+                </>
+              )}
             </div>
           </>
         )}

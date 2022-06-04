@@ -15,6 +15,7 @@
     margin: auto;
     font-size: var(--sm-font);
     text-align: var(--float-left);
+    cursor: pointer;
 }
 
 .collectionName>span:first-child {

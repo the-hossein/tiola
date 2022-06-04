@@ -17,7 +17,7 @@ const initializedState = {
   address: "",
   gender: "",
   profilePicId: null,
-  birthDayDateTime: "",
+  birthDayDateTime: null,
   name: "",
   family: "",
   profileUser: {}
@@ -35,8 +35,32 @@ const registerReducer = (state = initializedState, action) => {
     case "USER_DATA_LOADER":
       return {
         ...state,
+        userDataLoader: true
+      };
+    case "DELETE_USER_DATA":
+      return {
         userDataLoader: true,
-       
+        loader: false,
+        loginStatus: false,
+        phoneNumber: "",
+        code: "",
+        codeStatus: false,
+        otpStatus: false,
+        userid: "",
+        basketid: "",
+        basketloader: true,
+        userName: "",
+        popup: false,
+        userNameAvatar: "",
+        userImage: null,
+        closePopUp: false,
+        address: "",
+        gender: "",
+        profilePicId: null,
+        birthDayDateTime: null,
+        name: "",
+        family: "",
+        profileUser: {}
       };
     case "GETPHONE":
       return { ...state, phoneNumber: action.num };
@@ -49,8 +73,7 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         codeStatus: true,
-        loader: false,
-      
+        loader: false
       };
     case "SEND_CODE_FAILED":
       return {
@@ -81,7 +104,7 @@ const registerReducer = (state = initializedState, action) => {
       return {
         ...state,
         userNameAvatar: `${action.payload.user.name} ${action.payload.user.family}`,
-        profileUser : action.user.profilePic,
+        profileUser: action.user.profilePic,
         gender: action.payload.user.gender
         // address: action.payload.address,
       };
@@ -99,7 +122,7 @@ const registerReducer = (state = initializedState, action) => {
         birthDayDateTime: action.user.user.birthDayDateTime,
         name: action.user.user.name,
         family: action.user.user.family,
-        profileUser : action.user.profilePic
+        profileUser: action.user.profilePic
       };
     case "BASKET_ID":
       return {
@@ -107,7 +130,7 @@ const registerReducer = (state = initializedState, action) => {
         basketid: action.data,
         userDataLoader: false,
         basketloader: false,
-        loginStatus:true
+        loginStatus: true
       };
     case "CLOSE_POPUP":
       return {
