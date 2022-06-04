@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import EditBtn from "./EditBtn";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-import { getAddres, getuserAddress } from "../../../redux/factor/factorAction";
+import { getAddres, getuserAddress, loadingAddresFalse, loadingAddress } from "../../../redux/factor/factorAction";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { notify } from "../../../tools/toast/toast";
 
@@ -44,6 +44,7 @@ const AddNewAddress = () => {
   };
 
   const addAddres = (e) => {
+    dispatch(loadingAddress())
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
@@ -65,10 +66,12 @@ const AddNewAddress = () => {
         );
         if (addStatus[0].code === 200) {
           dispatch(getuserAddress(user.userid));
+          dispatch(loadingAddresFalse())
         }
       };
       addAddresUser();
     } else {
+      dispatch(loadingAddresFalse())
       if (lang === "fa") {
         var text = "لطفا آدرس خود را وارد کنید";
       } else {
