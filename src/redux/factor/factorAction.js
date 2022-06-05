@@ -151,7 +151,12 @@ const getBasketDetails = (basketid) => {
  }
   };
 };
+const deletBasketLength=()=>{
+return{
+  type:"DELETE_BASKET_LEGTH"
+}
 
+}
 const deleteBasketUser = (alldata, data) => {
   return (dispatch) => {
     dispatch(deleteLoader());
@@ -232,6 +237,7 @@ export {
   getAddres,
   checkAddress,
   addQtyAmont,
+  deletBasketLength,
   getBasketDetails,
   deleteBasketUser,
   getuserAddress,

@@ -36,7 +36,10 @@ const AddNewAddress = () => {
   const dispatch = useDispatch();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
-
+    if (ls !== null) {
+      var userToken = JSON.parse(ls);
+      var token = userToken.token;
+    }
   }
   const changeAddres = (e) => {
     setNewAddres(e.target.value);
@@ -45,10 +48,7 @@ const AddNewAddress = () => {
   const addAddres = (e) => {
 
     dispatch(loadingAddress())
-    if(ls){
-      var userToken = JSON.parse(ls);
-      var token = userToken.token;
-    }
+ 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");

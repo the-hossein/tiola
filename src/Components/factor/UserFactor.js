@@ -42,33 +42,27 @@ const UserFactor = () => {
       setPreload(false);
     }
   }, [state]);
-  console.log(basket.allAddress)
+  console.log(basket.allAddress);
   return (
     <section className={style.ContainerSection}>
-      <div className="container mt-4">
-        <>
-          {basket.details === "failed" ? (
-            <Placement text={t("failedfactor")} />
-            
-          ) : (
-            <>
-              <FactorSection title={t("addres")} component={<UserAddres />} />
+      {!!basket && !!state.userid ? (
+        <div className="container mt-4">
+          <>
+            <FactorSection title={t("addres")} component={<UserAddres />} />
 
-              <FactorSection
-                title={t("paylist")}
-                component={
-                  prelaod ? null : (
-                    <BuyLists
-                      data={baskedatas}
-                      setBasketDatas={setBasketDatas}
-                    />
-                  )
-                }
-              />
-            </>
-          )}
-        </>
-      </div>
+            <FactorSection
+              title={t("paylist")}
+              component={
+                prelaod ? null : (
+                  <BuyLists data={baskedatas} setBasketDatas={setBasketDatas} />
+                )
+              }
+            />
+          </>
+        </div>
+      ) : (
+        <Placement text={t("failedfactor")} />
+      )}
     </section>
   );
 };

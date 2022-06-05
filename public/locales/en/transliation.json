@@ -105,10 +105,11 @@
   "tiolaShop": "tiola Shop",
   "failedfactor": "Please login first to view your shopping cart",
   "error404": "Error 404",
-  "messageExplore" : "This showcase is full of scarves and shawls that you may look for a long time but you will not find it. Sometimes your heart wants something but you do not know exactly what ?! You feel it with all your being, but if someone asks you, you can not explain it. (I saw it. I bought it)) or they say ((Yahoo saw it. I closed my eyes)). If you go around the shop window, you will surely find what you like.",
+  "messageExplore": "This showcase is full of scarves and shawls that you may look for a long time but you will not find it. Sometimes your heart wants something but you do not know exactly what ?! You feel it with all your being, but if someone asks you, you can not explain it. (I saw it. I bought it)) or they say ((Yahoo saw it. I closed my eyes)). If you go around the shop window, you will surely find what you like.",
   "messageCollection": "Here, each regal is for one color and each color is inspired by a city in a corner of this world. Walking between regals is like a journey around a small world. When you go on a journey, everything becomes like your destination. Mood. Mood Even clothes. Regular means walking among the beauties of the whole world. So let's go regal",
   "messageShop": "This store is full of products that we have tried to make you feel better about your beauty. Shopping gives a person confidence and reduces anxiety. This will make you feel more relaxed, especially if this purchase is for beauty. What is your own beauty or giving beauty to others. So let's go to the store.",
   "btnShopLand": "View more",
   "btnCollLand": "View more",
-  "btnExploreLand": "View more"
+  "btnExploreLand": "View more",
+  "dontProfileList": "No data",
 }
