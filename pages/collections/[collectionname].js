@@ -15,7 +15,6 @@ export default function CollectionName({ collection }) {
   const state = useSelector((state) => state.stateColProduct);
 const lang=useSelector(state=>state.stateLang.lng)
   const { t } = useTranslation();
-  console.log(collection[0].data[0].collection.titleEn);
   const dispatch = useDispatch();
   useEffect(() => {
     var sliced = [];

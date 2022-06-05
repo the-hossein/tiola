@@ -38,7 +38,7 @@ const BuyLists = ({ setBasketDatas }) => {
   }, [state]);
 
   const payHandler = () => {
-    if (user.loginStatus && user.birthDayDateTime !== null) {
+    if (user.loginStatus && user.birthDayDateTime !== null && ls) {
       console.log(user.birthDayDateTime);
       setpreloadPay(true);
       const userToken = JSON.parse(ls);

@@ -8,6 +8,7 @@ import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 import { useTranslation } from "react-i18next";
 export default function Explore({ explore }) {
   const {t}=useTranslation()
+  console.log(explore)
   return (
     <div>
       <Head>

@@ -53,8 +53,7 @@ const List = ({ data, alldata }) => {
   const { t } = useTranslation();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
-    var userToken = JSON.parse(ls);
-    var token = userToken.token;
+
   }
 
   useLayoutEffect(() => {
@@ -67,61 +66,68 @@ const List = ({ data, alldata }) => {
   }, []);
   const increaseHandler = () => {
     setPreload(true);
-    const increase = async () => {
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      const statusAdd = await callApi(
-        `${BASE_URL + INCREASE_QTY}?BasketDetailId=${data.id}`,
-        "{}",
-        myHeaders,
-        "POST"
-      );
-      if (statusAdd[0].code === 200) {
-        setInfo({
-          ...info,
-          qty: info.qty + 1,
-          total: (info.qty + 1) * data.amount
-        });
-        setPreload(false);
-        dispatch(IncressBasketDetail(data.id));
-      } else if (statusAdd[0].code === 206) {
-        setPreload(false);
-
-        if (lang === "fa") {
-          var text = "موجودی کافی نیست ";
-        } else {
-          text = "Inventory is not enough";
+    if(ls){
+      var userToken = JSON.parse(ls);
+      var token = userToken.token;
+      const increase = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        const statusAdd = await callApi(
+          `${BASE_URL + INCREASE_QTY}?BasketDetailId=${data.id}`,
+          "{}",
+          myHeaders,
+          "POST"
+        );
+        if (statusAdd[0].code === 200) {
+          setInfo({
+            ...info,
+            qty: info.qty + 1,
+            total: (info.qty + 1) * data.amount
+          });
+          setPreload(false);
+          dispatch(IncressBasketDetail(data.id));
+        } else if (statusAdd[0].code === 206) {
+          setPreload(false);
+  
+          if (lang === "fa") {
+            var text = "موجودی کافی نیست ";
+          } else {
+            text = "Inventory is not enough";
+          }
+          notify(text, "error");
         }
-        notify(text, "error");
-      }
-    };
-    increase();
+      };
+      increase();
+    }
   };
   const decreseHandler = () => {
     setPreload(true);
+if(ls){
+  var userToken = JSON.parse(ls);
+  var token = userToken.token;
+  const decrease = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    const statusDec = await callApi(
+      `${BASE_URL + DECREASE_QTY}?BasketDetailId=${data.id}`,
+      "{}",
+      myHeaders,
+      "POST"
+    );
+    if (statusDec[0].code === 200) {
+      // setQty(qty - 1);
+      setInfo({
+        ...info,
+        qty: info.qty - 1,
+        total: info.total - data.amount
+      });
+      dispatch(DecreaseBasketDetail(data.id));
 
-    const decrease = async () => {
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      const statusDec = await callApi(
-        `${BASE_URL + DECREASE_QTY}?BasketDetailId=${data.id}`,
-        "{}",
-        myHeaders,
-        "POST"
-      );
-      if (statusDec[0].code === 200) {
-        // setQty(qty - 1);
-        setInfo({
-          ...info,
-          qty: info.qty - 1,
-          total: info.total - data.amount
-        });
-        dispatch(DecreaseBasketDetail(data.id));
-
-        setPreload(false);
-      }
-    };
-    decrease();
+      setPreload(false);
+    }
+  };
+  decrease();
+}
   };
   const deleteHandler = () => {
     dispatch(deleteBasketUser(alldata, data));

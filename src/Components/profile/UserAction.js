@@ -11,24 +11,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkSavedItem } from "../../redux/saveItem/saveItemAction";
 import { fetchOrderHistory } from "../../redux/orderHistory/orderHistoryAction";
 import Loader from "../../tools/loader/Loader";
+import Placement from "../../tools/placement/Placement";
 
 const UserAction = () => {
-  const router = useRouter()
-  const user = useSelector(state => state.stateRegister);
-  const watchList = useSelector(state=> state.stateWatchList);
-  const orderHistory = useSelector(state => state.stateHistory);
+  const router = useRouter();
+  const user = useSelector((state) => state.stateRegister);
+  const watchList = useSelector((state) => state.stateWatchList);
+  const orderHistory = useSelector((state) => state.stateHistory);
   const dispatch = useDispatch();
 
   const [historyRender, setHistoryRender] = useState(true);
 
-
-  useEffect(()=> {
-    if(user.loginStatus){
+  useEffect(() => {
+    if (user.loginStatus) {
       const userId = user.userid;
       dispatch(checkSavedItem(userId));
-      if(historyRender){
+      if (historyRender) {
         dispatch(fetchOrderHistory(userId));
-        setHistoryRender(false)
+        setHistoryRender(false);
       }
     }
   }, [user]);
@@ -36,38 +36,57 @@ const UserAction = () => {
   const { t } = useTranslation();
   return (
     <div className="row justify-content-between mt-5 mb-5 ">
-      <div className={`col-xl-5 col-lg-5 col-md-12  col-12 ${style.watchListDiv}`}>
+      <div
+        className={`col-xl-5 col-lg-5 col-md-12  col-12 ${style.watchListDiv}`}
+      >
         <h3 className={style.title}>{t("watchlist")}</h3>
         {
-          // watchList.preload ? 
+          // watchList.preload ?
           // <Loader/>
           //  :
-           watchList.list.map( item => {
-              return <RowProduct 
-                        key={item.id} 
-                        statusText="pending" 
-                        close={true} 
-                        removeId={item.id} 
-                        data= {item.product} 
-                        userId={user.userid}
-                        loading={watchList.preload} 
-                      />
+          watchList.list.length === 0 ? (
+            <Placement text={t("dontProfileList")} />
+          ) : (
+            watchList.list.map((item) => {
+              return (
+                <RowProduct
+                  key={item.id}
+                  statusText="pending"
+                  close={true}
+                  removeId={item.id}
+                  data={item.product}
+                  userId={user.userid}
+                  loading={watchList.preload}
+                />
+              );
             })
+          )
         }
-        
       </div>
       <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
         <h3 className={style.title}>{t("history")}</h3>
-        {
-          orderHistory.loader ?<Loader/> : !orderHistory.data.length ? 
-          <div className={style.messageExist}><p>{t("dontHistory")}</p></div> :
-          orderHistory.data.map(item => <RowProduct key={Math.random()} statusText="completed" />)
-        }
-        {
-          orderHistory.data.length ?
-          <SecondlyButton text={t("viewMore")} onClick={() => console.log("worked")} /> :
-          <SecondlyButton text={t("descoverMore")} onclick={() => router.push({pathname: `/shop`})} /> 
-        }
+        {orderHistory.loader ? (
+          <Loader />
+        ) : !orderHistory.data.length ? (
+          <div className={style.messageExist}>
+            <p>{t("dontHistory")}</p>
+          </div>
+        ) : (
+          orderHistory.data.map((item) => (
+            <RowProduct key={Math.random()} statusText="completed" />
+          ))
+        )}
+        {orderHistory.data.length ? (
+          <SecondlyButton
+            text={t("viewMore")}
+            onClick={() => console.log("worked")}
+          />
+        ) : (
+          <SecondlyButton
+            text={t("descoverMore")}
+            onclick={() => router.push({ pathname: `/shop` })}
+          />
+        )}
       </div>
     </div>
   );
