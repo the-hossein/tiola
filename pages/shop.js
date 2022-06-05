@@ -9,13 +9,17 @@ import Header from "../src/Components/header/Header";
 import ShopPage from "../src/Components/shopPage/ShopPage";
 import { getshopCategory } from "../src/redux/shop/shopActions";
 import Loader from "../src/tools/loader/Loader";
+import { notify } from "../src/tools/toast/toast";
 export default function Shop({ shop }) {
   const { t } = useTranslation();
   const state = useSelector((state) => state.stateShop);
+  const user = useSelector(state => state.stateRegister);
+  const lang = useSelector(state =>  state.stateLang.lng);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getshopCategory(shop[0]));
   }, [shop[0]]);
+  
   return (
     <div>
       <Head>
