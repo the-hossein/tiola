@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -5,9 +6,29 @@ import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import UserProfile from "../src/Components/profile/UserProfile";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
+import { notify } from "../src/tools/toast/toast";
+
 export default function Profile() {
   const state = useSelector((state) => state.stateRegister);
+  const lang = useSelector(state =>  state.stateLang.lng);
  const {t}=useTranslation()
+ const [errorShow, setErrorShow] = useState(true);
+
+ useEffect(()=> {
+   
+   if(!state.isConfirmed){
+     let textShow ;
+     if(lang === "fa"){
+       textShow = "اطلاعات حساب کاربری خود را تکمیل کنید"
+     }else {
+       textShow = "Fill in your account information"
+     }
+     notify(textShow, "warning");
+    }
+    console.log("coco")
+
+  }, [])
+
   return (
     <div>
       <Head>

@@ -76,6 +76,7 @@ a {
 .Toastify__toast {
   font-family: var(--font) !important;
   font-size: var(--md-font);
+  border-radius: 0 0 18px 18px !important;
 }
 
 .headerColor {
@@ -185,5 +186,8 @@ input[type=number]::-webkit-inner-spin-button {
 @media (max-width: 600px) {
   .swiper {
     z-index: 1 !important;
+  }
+  .Toastify__toast-container  {
+    width: 100% !important; 
   }
 }

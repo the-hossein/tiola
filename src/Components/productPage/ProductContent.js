@@ -154,7 +154,7 @@ const ProductContent = ({ product }) => {
     if (targetItem) {
       let textShow ; 
       if(lang === 'fa'){
-        textShow = 'شما این محصول را قبلا اضافه کرده ایذ';
+        textShow = 'شما این محصول را قبلا اضافه کرده اید.';
       }else {
         textShow = 'You have already added this product';
       }

@@ -20,6 +20,7 @@ const initializedState = {
   birthDayDateTime: null,
   name: "",
   family: "",
+  isConfirmed: false ,
   profileUser: {}
 };
 const registerReducer = (state = initializedState, action) => {
@@ -132,7 +133,8 @@ const registerReducer = (state = initializedState, action) => {
         birthDayDateTime: action.user.user.birthDayDateTime,
         name: action.user.user.name,
         family: action.user.user.family,
-        profileUser: action.user.profilePic
+        profileUser: action.user.profilePic,
+        // isConfirmed : action.user.user.isConfirmed
       };
     case "BASKET_ID":
       return {
