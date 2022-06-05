@@ -34,7 +34,7 @@
   "Compatiblewith": "Compatible with:",
   "factor": "factor",
   "writeYourCm": "Write Your comment here",
-  "total": "Total:",
+  "total": "Total : ",
   "done": "done",
   "Readmore": "Read more",
   "Readless": "Read less",
@@ -112,4 +112,5 @@
   "btnCollLand": "View more",
   "btnExploreLand": "View more",
   "dontProfileList": "No data",
+  "addCm":"Add Comment"
 }

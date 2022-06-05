@@ -202,6 +202,7 @@ const getuserAddress = (userid) => {
       );
       if (address[0].code === 200) {
         dispatch(setAlladdress(address[0].data));
+
       }
     };
     allAddress();

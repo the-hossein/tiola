@@ -63,7 +63,7 @@ const UserAction = () => {
           )
         }
       </div>
-      <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
+      {/* <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
         <h3 className={style.title}>{t("history")}</h3>
         {orderHistory.loader ? (
           <Loader />
@@ -87,7 +87,7 @@ const UserAction = () => {
             onclick={() => router.push({ pathname: `/shop` })}
           />
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
