@@ -140,7 +140,6 @@ const getBasketDetails = (basketid) => {
         "GET"
       );
       if (details[0].code === 200) {
-        console.log(details[0].data);
         dispatch(addbasketDetails(details[0].data));
       }
     };

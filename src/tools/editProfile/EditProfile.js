@@ -58,7 +58,8 @@ const EditProfile = () => {
       gender,
       imageId,
       router,
-      lang
+      lang,
+      dispatch
     );
   };
 
@@ -72,7 +73,6 @@ const EditProfile = () => {
     setpreload(true);
     var Image = await ChangeImage(e);
     if (Image !== null) {
-      console.log(Image);
       setImage(Image.data.filePath);
       setImageid(Image.data.id);
     } else {

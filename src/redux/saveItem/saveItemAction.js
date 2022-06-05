@@ -23,7 +23,7 @@ const checkSavedItem = (userId, lang) => {
         }else {
             let textShow ;
             if(lang === 'fa'){
-                textShow = "شما حساب کاربری نساختین"
+                textShow = "ابتدا وارد حساب کاربری خود بشوید"
             }else {
                 textShow = "You did not create an account";
             }
@@ -56,7 +56,7 @@ const fetchingToSave = (userId, productId, lang) => {
                 .catch(err => console.log("error"))
         }else {
             if(lang === 'fa'){
-                textShow = "شما حساب کاربری نساختین"
+                textShow = "ابتدا وارد حساب کاربری خود بشوید"
             }else {
                 textShow = "You did not create an account";
             }
@@ -69,8 +69,6 @@ const fetchingToSave = (userId, productId, lang) => {
 const removeItem = (idItem, user) => {
     return (dispatch) => {
         dispatch({type: "REMOVE_PRODUCT"})
-        console.log("worked")
-        // console.log(idItem);
         var ls = localStorage.getItem("userToken");
         const userToken = JSON.parse(ls);
         var token = userToken.token;
@@ -78,7 +76,6 @@ const removeItem = (idItem, user) => {
 
         axios.post(`${BASE_URL}api/v1/User/RemoveFromFavoriteList?id=${idItem}`)
             .then(res => {
-                // console.log(res)
                 res.status === 200 && dispatch(checkSavedItem(user))
             })
             .catch(err => console.log("err"))

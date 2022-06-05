@@ -2,11 +2,11 @@ import { updateSetProfile } from "../../redux/register/registerAction";
 import { useRouter } from 'next/router';
 import { BASE_URL } from "../../api/urls";
 import { notify } from "../toast/toast";
+import { useDispatch } from "react-redux";
 
 
 
-const RequestProfile = (token, userID, name, family, birthday, gender, picId, router, lang) => {
-  // const router = useRouter();
+const RequestProfile = (token, userID, name, family, birthday, gender, picId, router, lang, dispatch) => {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
@@ -19,7 +19,6 @@ const RequestProfile = (token, userID, name, family, birthday, gender, picId, ro
         "gender": +gender,
   });
 
-  console.log(picId);
 var requestOptions = {
     method: 'POST',
     headers: myHeaders,
@@ -29,9 +28,7 @@ var requestOptions = {
     fetch(`${BASE_URL}api/v1/User/UpdateProfile`, requestOptions)
       .then(response => response.json())
       .then(json => {
-        console.log(json)
           if(json.code === 200) {
-            console.log("worked")
             router.push({pathname: '/profile'});
               dispatch(updateSetProfile(JSON.parse(raw)));
           }

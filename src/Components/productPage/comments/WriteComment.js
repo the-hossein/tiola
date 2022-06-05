@@ -43,7 +43,7 @@ const WriteComment = () => {
         // dispatch(writeFalse());
         dispatch(resetRate());
       }else {
-        dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name));
+        dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name,lang));
         // dispatch(writeFalse());
         dispatch(resetRate());
         setCommentText("")
@@ -51,9 +51,9 @@ const WriteComment = () => {
     }else{
       let textShow2 ;
       if(lang === 'fa'){
-        textShow2 = "لطفا اکانت بسازید"
+        textShow2 = "ابتدا وارد حساب کاربری خود بشوید"
       }else{
-        textShow2 = "create a account" ;
+        textShow2 = "You did not create an account" ;
       }
       notify(textShow2, "warning")
     }
@@ -62,7 +62,6 @@ const WriteComment = () => {
 
   useEffect(()=> {
     setTotal((state.factor1 + state.factor2 + state.factor3) / 6);
-    // console.log(total)
   }, [state])
   return (
     <div
