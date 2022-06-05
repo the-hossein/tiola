@@ -22,7 +22,6 @@ const fetchOrderHistory = (userId) => {
             axios.defaults.headers.get['Authorization'] = `Bearer ${token}`;
             axios(`${BASE_URL}api/v1/Basket/GetOrderHistory?UserId=${userId}`)
                 .then(res => {
-                    console.log(res.data)
                     dispatch(successFully(res.data.data))
                 })
                 .catch(err => dispatch(failedRequest(err)))

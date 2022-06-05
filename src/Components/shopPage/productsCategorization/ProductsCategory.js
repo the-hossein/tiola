@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { Fragment, useLayoutEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import SecondlyButton from "../../../tools/secondlyButton/SecondlyButton";
 import MBproductCategory from "../MBproductCategory/MBproductCategory";
@@ -8,7 +8,6 @@ import style from "./ProductsCategory.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
 const ProductsCategory = ({ reverse, data, title, type }) => {
-  console.log(data);
   const { t } = useTranslation();
   const [size, setSize] = useState([0]);
 
@@ -70,12 +69,12 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
 
                 <div className="col-lg-8 co-md-8 col-8">
                   <div className={`row ${reverse && "justify-content-end"}`}>
-                    {data.slice(1, 5).map((item) => (
-                      <>
+                    {data.slice(1, 5).map((item, index) => (
+                      <Fragment key={index}>
                         <div className={`col-6  pb-3  ${style.productPhoto}`}>
                           <SquareProduct data={item} />
                         </div>
-                      </>
+                      </Fragment>
                     ))}
                   </div>
                 </div>
@@ -93,7 +92,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
             : "shopPage"
         }
         data={data}
-        title={title}
+        title={t(`${type.type}`)}
         type={type}
       />
     );

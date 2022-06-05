@@ -12,7 +12,6 @@ import Loader from "../src/tools/loader/Loader";
 export default function Shop({ shop }) {
   const { t } = useTranslation();
   const state = useSelector((state) => state.stateShop);
-  console.log(shop[0].data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getshopCategory(shop[0]));

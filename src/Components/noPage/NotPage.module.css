@@ -1,0 +1,36 @@
+.noPage {
+    display: block;
+    margin: auto;
+    text-align: center;
+    min-height: 500px;
+}
+
+.noPage svg {
+    font-size: 50pt;
+    color: var(--blue-pen);
+    margin: 4rem 0 2rem 0
+}
+
+.noPage p {
+    font-size: var(--lg-font);
+    padding: 0 0.5rem;
+}
+
+.noPage button {
+    border: none;
+    background-color: var(--blue-pen);
+    color: var(--light-pen);
+    font-size: var(--md-font);
+    padding: 0.4rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+
+
+}
+
+.noPage button:hover {
+    border: 1px solid var(--blue-pen);
+    background-color: var(--light-pen);
+    color: var(--blue-pen);
+
+}

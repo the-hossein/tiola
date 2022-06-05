@@ -7,6 +7,9 @@ import style from './ContactUs.module.css';
 //icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 const ContactUs = () => {
     
@@ -25,9 +28,9 @@ const ContactUs = () => {
                     <p>Phone 2</p>
                     <p>Phone 3</p>
                     <div className={style.logos}>
-                        <FontAwesomeIcon icon={faTwitter} />
-                        <FontAwesomeIcon icon={faWhatsapp} />
-                        <FontAwesomeIcon icon={faInstagram} />
+                        <TwitterIcon fontSize='large' />
+                        <WhatsAppIcon fontSize='large' />
+                        <InstagramIcon fontSize='large' />
                     </div>
                 </div>
         </div>

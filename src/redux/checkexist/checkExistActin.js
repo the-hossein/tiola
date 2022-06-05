@@ -17,9 +17,7 @@ const fetchRequestApi = (userId) => {
     return (dispatch) => {
         dispatch(request());
         const userToken = window.localStorage.getItem("userToken");
-        const token = JSON.parse(userToken).token
-        
-        console.log("inja hastim", token)
+        const token = JSON.parse(userToken).token;
 
         axios.defaults.headers.get['Authorization'] = `Bearer ${token}`;
         
