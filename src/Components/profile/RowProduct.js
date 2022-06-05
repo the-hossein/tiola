@@ -50,7 +50,6 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
         productid: data.id
       });
 
-      console.log(raw);
       const addbasket = async () => {
         const added = await callApi(
           BASE_URL + ADD_BASKET,

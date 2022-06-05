@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import style from "./ScreenLoader.module.css";
 const ScreenLoader = () => {
   const state = useSelector((state) => state.stateScreenLoader);
-  console.log(state);
   return (
     // state.loadingScreen && (
       <div className={style.loading_gif}>

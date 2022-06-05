@@ -14,7 +14,6 @@ const test =async () => {
       "GET",
       "{}"
     );
-    console.log(data)
   return (dispatch) => {
       
     dispatch(fetchProductSuccesful(data));

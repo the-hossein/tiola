@@ -49,7 +49,6 @@ const AllComment = ({ product }) => {
 
   useEffect(() => {
     lang === "en" ? setDecorate("ltr") : setDecorate("rtl");
-    console.log(router.query.productname);
     setTest((prevTest) => !prevTest);
     dispatch(getAllComment(router.query.productname));
   }, []);

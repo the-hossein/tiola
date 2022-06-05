@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Style from "./ProductSlider.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
@@ -54,8 +54,8 @@ const ProductSlider = ({
         }}
       >
         {images.map((item) => (
-          <>
-            <SwiperSlide key={item.src}>
+          <Fragment key={item.src}>
+            <SwiperSlide>
               <Link href={`/product/${item.id}`}>
                 <div>
                   <img
@@ -67,7 +67,7 @@ const ProductSlider = ({
                 </div>
               </Link>
             </SwiperSlide>
-          </>
+          </Fragment>
         ))}
       </Swiper>
     </div>

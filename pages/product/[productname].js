@@ -8,7 +8,6 @@ import { BASE_URL, GET_PRODUCT, GET_WITHLABLE } from "../../src/api/urls";
 import ScreenLoader from "../../src/tools/screenLoader/ScreenLoader";
 import { useSelector } from "react-redux";
 export default function Productname({ product, similar }) {
-  console.log(product[0].data);
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
 

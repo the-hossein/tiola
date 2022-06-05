@@ -5,7 +5,6 @@ import ProductContent from "./ProductContent";
 import style from "./Productpage.module.css";
 const Productpage = ({ product, similar }) => {
   const { t } = useTranslation();
-  console.log(similar);
   const images = [];
   var itm;
   similar.data.map((item) => {

@@ -21,13 +21,19 @@ const setComment = (comments) => {
   return {type: "SHOW_COMMENT", payload: comments }
 }
 
-const createComment = (userId, commentText, score, productId, userName) => {
+const createComment = (userId, commentText, score, productId, userName, lang) => {
 
   const rounded = Math.round(+score);
   
   return (dispatch) => {
     if(userName === ''){
-      notify("Edit your profile", "error");
+      let textShow ;
+      if(lang === "fa"){
+        textShow = "ابتدا اطلاعات خود را تکمیل کنید."
+      }else {
+        textShow = "First Edit your profile"
+      }
+      notify(textShow, "error");
     }else {
         var raw ={
           "userId": userId,
@@ -35,7 +41,6 @@ const createComment = (userId, commentText, score, productId, userName) => {
           "score": rounded,
           "productid": +productId
         };
-        console.log(userId, commentText, score, +productId);
         
         var requestOptions = {
           method: 'POST',
@@ -44,8 +49,13 @@ const createComment = (userId, commentText, score, productId, userName) => {
     
         axios.post(BASE_URL + CREATE_COMMENT, raw)
           .then(response =>{
-            console.log("worked")
-            notify("Completed comment :)", "success");
+            let textShow ;
+            if(lang === "fa"){
+              textShow = "نظر شما در صف تایید قرار گرفت"
+            }else {
+              textShow = "Your comment has been approved"
+            }
+            notify(textShow, "success");
         })
           .catch(error => console.log('error', error));
         }

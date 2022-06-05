@@ -20,7 +20,6 @@ export const fetchProducts = () => {
         axios(BASE_URL+GET_ALL_PRODUCT)
             .then(response => {
                 const data = response.data.data;
-                // console.log(data)
                 dispatch(fetchSuccess(data));
             })
             .catch(error => {

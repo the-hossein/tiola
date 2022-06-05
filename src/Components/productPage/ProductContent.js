@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import ColorPick from "../../tools/colorPick/ColorPick";
 import NormalBtn from "../../tools/normalBtn/NormalBtn";
 import ProductSlider from "../productSlider/ProductSlider";
@@ -106,7 +106,6 @@ const ProductContent = ({ product }) => {
         productid: product.data.id
       });
 
-      console.log(raw);
       const addbasket = async () => {
         const added = await callApi(
           BASE_URL + ADD_BASKET,
@@ -155,7 +154,7 @@ const ProductContent = ({ product }) => {
     if (targetItem) {
       let textShow ; 
       if(lang === 'fa'){
-        textShow = 'شما این محصول را قبلا اضافه کردین';
+        textShow = 'شما این محصول را قبلا اضافه کرده ایذ';
       }else {
         textShow = 'You have already added this product';
       }
@@ -217,10 +216,10 @@ const ProductContent = ({ product }) => {
                   <span className={style.compatible}>
                     {t("Compatiblewith")}
                   </span>
-                  {product.data.compatibleColors.split(",").map((color) => (
-                    <>
+                  {product.data.compatibleColors.split(",").map((color, index) => (
+                    <Fragment key={index}>
                       <ColorPick color={color} />
-                    </>
+                    </Fragment>
                   ))}
                 </div>
               </div>
