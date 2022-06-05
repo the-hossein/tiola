@@ -9,6 +9,7 @@ import {
   openPopUp
 } from "../../redux/register/registerAction";
 import { notify } from "../toast/toast";
+import { deletBasketLength } from "../../redux/factor/factorAction";
 // import { useSelector } from "react-redux";
 const Menu = ({ backColor }) => {
   const { t } = useTranslation();
@@ -27,6 +28,7 @@ const Menu = ({ backColor }) => {
     }
     notify(text, "success");
     dispatch(deleteUserData());
+    dispatch(deletBasketLength());
     // location.reload()
   };
   const goFactorHandler = () => {

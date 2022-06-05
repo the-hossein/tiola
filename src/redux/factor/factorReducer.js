@@ -19,6 +19,7 @@ const factorReducer = (state = initializedState, action) => {
         check: action.check,
         loadingAddress: false
       };
+
     case "LOADER_FACTOR":
       return {
         ...state,
@@ -33,8 +34,7 @@ const factorReducer = (state = initializedState, action) => {
       return {
         ...state,
         allAddress: action.data,
-        loadingAddress:false
-        
+        loadingAddress: false
       };
     case "BASKET_DETAILS":
       return {
@@ -105,7 +105,11 @@ const factorReducer = (state = initializedState, action) => {
         ...state,
         loadingList: false
       };
-
+    case "DELETE_BASKET_LEGTH":
+      return {
+        ...state,
+        basketLength: 0
+      };
     default:
       return state;
   }
