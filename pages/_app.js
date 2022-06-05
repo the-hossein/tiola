@@ -67,7 +67,7 @@ if(typeof window !=="undefined"){
       />
 
       <Component {...pageProps} />
-      <ToastContainer style={{width: "30%", top: "0"}} />
+      <ToastContainer style={{width: "30%", top: "60px"}} />
       <PopUp />
     </Provider>
   );
