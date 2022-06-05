@@ -10,7 +10,7 @@ const TiolaCollections = ({ data }) => {
       <div className="container">
         <div className="row justify-content-center  ">
           <h1 className={style.title}>{t("collection")}</h1>
-          <p className={style.description}>{t("testLorem")}</p>
+          <p className={style.description}>{t("messageCollection")}</p>
           {data.map((item) => (
             <>
               <MyCollection data={item} />
