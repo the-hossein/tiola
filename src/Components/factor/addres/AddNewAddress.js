@@ -36,8 +36,10 @@ const AddNewAddress = () => {
   const dispatch = useDispatch();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
-    var userToken = JSON.parse(ls);
-    var token = userToken.token;
+    if(ls !== null ) {
+      var userToken = JSON.parse(ls);
+      var token = userToken.token;
+    }
   }
   const changeAddres = (e) => {
     setNewAddres(e.target.value);
