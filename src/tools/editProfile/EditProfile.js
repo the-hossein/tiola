@@ -42,7 +42,7 @@ const EditProfile = () => {
     setBirthday(e.target.value);
   };
 
-  const [gender, setGender] = useState();
+  const [gender, setGender] = useState(2);
   const subGender = (e) => {
     setGender(e.target.value);
   };
