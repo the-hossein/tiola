@@ -6,8 +6,10 @@ import { writeTrue } from "../../../redux/comment/commentActions";
 import style from "./Comments.module.css";
 import WriteComment from "./WriteComment";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { useTranslation } from "react-i18next";
 const AddComment = () => {
   const dispatch = useDispatch();
+  const {t}=useTranslation()
   const state = useSelector((state) => state.stateComment);
   const openHandler = () => {
     dispatch(writeTrue());
@@ -17,7 +19,7 @@ const AddComment = () => {
   ) : (
     <div className={`${style.addComment}`} onClick={openHandler}>
       <div className="text-center">
-        <p>Add Comment</p>
+        <p>{t("addCm")}</p>
         <div className={style.add}>
           <AddCircleOutlineIcon
             sx={{ fontSize: 40, color: "var(--lightGray-border)" }}

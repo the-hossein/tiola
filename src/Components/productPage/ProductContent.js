@@ -203,13 +203,13 @@ const ProductContent = ({ product }) => {
 
                 <p className={style.content}>
                   <ReactReadMoreReadLess
-                    charLimit={300}
+                    charLimit={340}
                     readMoreText={t("Readmore")}
                     readLessText={t("Readless")}
                     readMoreClassName={style.readmore}
                     readLessClassName={style.readLess}
                   >
-                    {product.data.description}
+                    {lang==="fa"?product.data.description:product.data.descriptionEn}
                   </ReactReadMoreReadLess>
                 </p>
                 <div>

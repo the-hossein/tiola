@@ -3,6 +3,7 @@
     overflow-wrap: break-word;
     text-align: justify;
     line-height: 1.7;
+    font-size: var(--md-font);
 
 }
 
@@ -30,6 +31,10 @@
 
 .productSlider {
     padding: 0 0 0 2rem;
+}
+
+.productSlider>div>div {
+    border-radius: 0 0 0 12px !important;
 }
 
 .product {

@@ -12,11 +12,11 @@ const CollectionDetails = ({ data }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateColProduct);
   const lang = useSelector((state) => state.stateLang);
-  console.log(data)
+
   return (
     <section>
       <div className="position-relative">
-        <img src="/Assets/images/col.png" className={Style.collectionPic} />
+        <img src={data[0].collection.picture.filePath} className={Style.collectionPic} />
         <div className={`${Style.collectionName}`}>
           <BlurButton
             btnText={

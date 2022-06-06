@@ -92,7 +92,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
             : "shopPage"
         }
         data={data}
-        title={title}
+        title={t(`${type.type}`)}
         type={type}
       />
     );

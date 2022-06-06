@@ -32,27 +32,25 @@ i18n
   });
 
 function MyApp({ Component, pageProps }) {
-if(typeof window !=="undefined"){
-  console.log(navigator.online)
-
-}
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
   useEffect(() => {
+    
     if (router.pathname === "/collections/[collectionname]") {
-      document
-        .getElementsByTagName("body")[0]
-        .style.setProperty(
-          "background",
-          "linear-gradient(0deg, rgba(242,242,242,1) 28%, rgba(242,227,193,1) 66%, rgba(255,179,0,1) 100%)",
-          "important"
-        );
-      console.log(pageProps.collection.data);
-    } else {
-      document
-        .getElementsByTagName("body")[0]
-        .style.setProperty("background", "#f2f2f2", "important");
-    }
+        if(pageProps.collection[0].data.length !== 0){
+        document
+          .getElementsByTagName("body")[0]
+          .style.setProperty(
+            "background",
+            pageProps.collection[0].data[0].collection.colorCode,
+            "important"
+          );
+        }
+      } else {
+        document
+          .getElementsByTagName("body")[0]
+          .style.setProperty("background", "#f2f2f2", "important");
+        }
     setshowChild(true);
   }, [pageProps]);
   if (!showChild) {
