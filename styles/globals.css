@@ -1,12 +1,12 @@
 :root {
-  --font: "IRANSansWeb" , 'apple';
+  --font: "IRANSansWeb", 'apple';
   --dark-pen: #000000;
   --light-pen: #ffffff;
   --darkGray-border: #343736;
   --lightGray-border: #707070;
   --border-bottom: 1px solid #cfcfcf;
   --blue-pen: #93a8c9;
-    --medium-gray: #3e3f3a;
+  --medium-gray: #3F3F3B;
   --body-Color: #f2f2f2;
   --direction: rtl;
   --marginIcon: 0 0 0 1.5rem;
@@ -39,7 +39,6 @@
 }
 
 
-
 @font-face {
   font-family: 'apple';
   src: url('/Assets/Fonts/appleFont/Apple Symbols.ttf');
@@ -59,8 +58,8 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: inherit !important;
+  text-decoration: none !important;
 }
 
 * {
@@ -100,7 +99,7 @@ a {
 
 
 .swiper-slide {
-  direction: var(--direction) ;
+  direction: var(--direction);
   /* text-align: center; */
   font-size: 18px;
   width: fit-content;
@@ -133,7 +132,7 @@ a {
   font-weight: 900;
 }
 
-.popo > .swiper-wrapper {
+.popo>.swiper-wrapper {
   z-index: 15 !important;
   font-family: "IRANSansWeb" !important;
 }
@@ -161,6 +160,7 @@ main{
 .mySwiperComment .swiper-wrapper{
   align-items: center;
 }
+
 .mySwiperComment .swiper-slide {
   display: flex;
   align-items: center;
@@ -169,7 +169,7 @@ main{
   min-width: fit-content !important;
   direction: ltr !important;
   height: 200px !important;
-  
+
   /* width: auto !important; */
   /* height: fit-content; */
   /* box-shadow: 5px 10px 4px #23232354; */
@@ -202,7 +202,8 @@ input[type=number]::-webkit-inner-spin-button {
   .swiper {
     z-index: 1 !important;
   }
-  .Toastify__toast-container  {
-    width: 100% !important; 
+
+  .Toastify__toast-container {
+    width: 100% !important;
   }
 }

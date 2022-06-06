@@ -10,7 +10,7 @@ const MyCollection = ({ data }) => {
     
   
       <Link href={`/collections/${data.id}`}>
-        <div
+        <a
           className={`col-xl-3 col-lg-4 col-sm-6 col-12 ${style.myCollection} `}
         >
           <div className="text-center">
@@ -18,7 +18,7 @@ const MyCollection = ({ data }) => {
 
             <CollectionInfo data={data} />
           </div>
-        </div>
+        </a>
       </Link>
   {/* :""} */}
     </>

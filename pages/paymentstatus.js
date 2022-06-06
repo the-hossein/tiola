@@ -5,12 +5,14 @@ import Loader from "../src/tools/loader/Loader";
 import { BASE_URL, VERIFY_PAYMENT } from "../src/api/urls";
 import callApi from "../src/api/callApi";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
 if (typeof window !== "undefined") {
   var ls = localStorage.getItem("userToken");
 }
 const PaymentStatus = () => {
   const { t } = useTranslation();
+
   const [status, setStatus] = useState();
   const [Classid, setClassid] = useState(0);
   const [preLoad, setPreLoad] = useState(true);
@@ -25,15 +27,13 @@ const PaymentStatus = () => {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
       myHeaders.append("Content-Type", "application/json");
-      console.log(userId);
+    
       console.log(params.get("orderid"));
 
       const VerifyPayment = async () => {
         try {
           const verify = await callApi(
-            `${
-              BASE_URL + VERIFY_PAYMENT
-            }?Payid=1014&UserId=74114007-279d-49f7-f8c3-08da42db43be`,
+            `${BASE_URL + VERIFY_PAYMENT}?Payid=${OrderId}&UserId=${userId}`,
             "{}",
             myHeaders,
             "POST"
@@ -45,14 +45,14 @@ const PaymentStatus = () => {
               verify[0].data.code === 206 &&
               verify[0].data.classId === null
             ) {
-              setStatusCode(verify[1]);
+                setStatusCode(verify[0].code);
 
               setStatus("success");
               setPreLoad(false);
             }
             // console.log(verify);
           } else {
-            setStatusCode(verify[1]);
+            setStatusCode(verify[0].code);
             setStatus("unSuccess");
             setPreLoad(false);
             // console.log(verify[1])

@@ -9,10 +9,12 @@ import {
   openPopUp
 } from "../../redux/register/registerAction";
 import { notify } from "../toast/toast";
+import { useRouter } from "next/router";
 import { deletBasketLength } from "../../redux/factor/factorAction";
 // import { useSelector } from "react-redux";
 const Menu = ({ backColor }) => {
   const { t } = useTranslation();
+  const router = useRouter();
   const lang = useSelector((state) => state.stateLang.lng);
   const user = useSelector((state) => state.stateRegister);
   const register = useSelector((state) => state.stateRegister);
@@ -55,24 +57,34 @@ const Menu = ({ backColor }) => {
           {/* <Link href="/">
             <li>{t("PurchaseGuide")}</li>
           </Link> */}
-          <Link href="/collections">
-            <li>{t("collection")}</li>
-          </Link>
-
-          <li onClick={goFactorHandler}>{t("MyCart")}</li>
-
-          <Link href={register.loginStatus ? "/profile" : "/signin"}>
-            <li>{t("SavedItem")}</li>
-          </Link>
-          <Link href="/blogs">
-            <li>{t("Blog")}</li>
-          </Link>
-          <Link href="/contactus">
-            <li>{t("ContactUs")}</li>
-          </Link>
-          <Link href="/aboutus">
-            <li>{t("AboutUs")}</li>
-          </Link>
+          <li>
+            <Link href="/collections">
+              <a>{t("collection")}</a>
+            </Link>
+          </li>
+          <li onClick={goFactorHandler}>
+            <a>{t("MyCart")}</a>
+          </li>
+          <li>
+            <Link href={register.loginStatus ? "/profile" : "/signin"}>
+              <a>{t("SavedItem")}</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blogs">
+              <a>{t("Blog")}</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contactus">
+              <a>{t("ContactUs")}</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/aboutus">
+              <a>{t("AboutUs")}</a>
+            </Link>
+          </li>
         </ul>
         {register.loginStatus && (
           <span className={style.sign} onClick={exitHandler}>

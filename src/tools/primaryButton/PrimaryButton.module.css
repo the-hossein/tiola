@@ -1,11 +1,21 @@
 .primaryBtn button {
-    border: 1px solid var(--lightGray-border);
+    border: 1px solid var(--light-pen);
     background-color: var(--medium-gray);
     padding: 0.5rem 2rem;
     color: var(--light-pen);
     border-radius: 8px;
+    width: 155px;
     font-size: var(--xs-font);
 }
+ .primaryBtnEn button{
+    border: 1px solid var(--light-pen);
+    background-color: var(--medium-gray);
+    padding: 0.3rem 2rem 0.5rem;
+    color: var(--light-pen);
+    width: 155px;
+    border-radius: 8px;
+    font-size: var(--xs-font);
+ }
 
 .primaryBtn button:hover {
 
@@ -23,7 +33,7 @@
     color: var(--dark-pen);
     font-size: var(--xs-font) !important;
 
- 
+
 
 }
 

@@ -21,13 +21,17 @@ const ProductInfo = ({ more, data }) => {
               lang.lng === "fa" && "align-items-end"
             }`}
           >
-            <span>{lang.lng==="fa"?persianNumber(data.price) + " "+t("t"):data.price+" "+ t("t")}</span>
+            <span>
+              {lang.lng === "fa"
+                ? persianNumber(data.price) + " " + t("t")
+                : data.price + " " + t("t")}
+            </span>
             <span className={style.rating}>
               <Rating name="product Rate" value={data.rate} readOnly />
             </span>
             {more ? (
               <Link href={`/product/${data.id}`}>
-                <span className={style.moreText}>{t("simpleViewMore")}</span>
+                <a className={style.moreText}>{t("simpleViewMore")}</a>
               </Link>
             ) : (
               ""

@@ -27,7 +27,7 @@ const Collection = ({ dir }) => {
                 title={t("collection1")}
                 content={t("messageShop")}
 
-                color="example"
+             
               />
               <HardCollection
                 image={"/Assets/images/9.jpg"}

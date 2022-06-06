@@ -35,7 +35,7 @@ const Landing = () => {
         margin={0}
         mbItem={1}
         tbItem={2}
-        heightImage={300}
+        heightImage={280}
       />
       <Collection />
     </div>

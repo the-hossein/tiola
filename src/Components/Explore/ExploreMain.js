@@ -98,10 +98,10 @@ const ExploreMain = ({ data }) => {
                 <Item key={product.id}>
                 
                   <Link href={`/product/${product.id}`}>
-                    <div className={style.showProduct}>
+                    <a className={style.showProduct}>
                       <img src={product.imageFile1.filePath} alt="product" />
                       <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
-                    </div>
+                    </a>
                   </Link>
                 </Item>
               )) :
@@ -110,10 +110,12 @@ const ExploreMain = ({ data }) => {
                product.imageFile1.confirmed&&
                <Item key={product.id}>
                   <Link href={`/product/${product.id}`}>
-                    <div className={style.showProduct}>
+                   <a>
+                   <div className={style.showProduct}>
                       <img src={product.imageFile1.filePath} alt="product" />
                       <p className={style.parag}>{lang==="fa"?product.title:product.titleEn}</p>
                     </div>
+                   </a>
                   </Link>
                 </Item>
               ))

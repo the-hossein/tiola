@@ -12,7 +12,7 @@
     border-radius: 0 0 10px 10px;
 }
 
-.allitems div span {
+.allitems div a {
     margin: 0 1rem;
     display: inline-block;
 }
@@ -26,15 +26,7 @@
 
 }
 
-.basket div {
-    border-radius: 50%;
-    padding: 2px 4px 0;
-    position: absolute;
-    top: -5px;
-    right: 8px;
-    font-size: var(--verySmall-font);
-    border: 1px solid var(--light-pen);
-}
+
 
 .headaritem {
     width: 53%;
@@ -46,7 +38,7 @@
     border-bottom: 1px solid var(--blue-pen);
 }
 
-.headaritem>span {
+.headaritem>a {
 
     width: 55px !important;
 }
@@ -59,9 +51,9 @@
 .allitems span,
 .allitems svg,
 .headerIcon span,
-.headerIcon div ,
-.headerIcon svg,.logo
-{
+.headerIcon div,
+.headerIcon svg,
+.logo {
     cursor: pointer !important;
 }
 
@@ -79,7 +71,7 @@
     font-size: 9pt !important;
 }
 
-.mobileIcon span {
+.mobileIcon a {
 
     padding: 0 1.5rem !important;
 }
@@ -89,11 +81,11 @@
     /* flex: 0.35; */
 }
 
-.mobileLogo>span:last-child {
+.mobileLogo>a:last-child {
     width: 30px !important;
 }
 
-.mobileLogo>span:first-child {
+.mobileLogo>a:first-child {
     padding: 0 1rem;
 }
 
@@ -144,6 +136,28 @@
     display: none;
 }
 
+.basketAmount {
+    border-radius: 50%;
+    padding: 2px 4px 0;
+    position: absolute;
+    top: -5px;
+    right: 8px;
+    font-size: var(--verySmall-font);
+    border: 1px solid var(--light-pen);
+}
+
+.basketAmountEn {
+    border-radius: 50%;
+    padding: 0px 5px 0;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    font-size: 8pt;
+    border: 1px solid var(--light-pen);
+
+
+
+}
 
 @keyframes searchBoxAnimation {
     from {
@@ -174,7 +188,7 @@
 
     }
 
-    .allitems div span {
+    .allitems div a {
         margin: 0 0.7rem;
     }
 }
@@ -183,25 +197,31 @@
     .searchBoxIcon {
         left: 6px;
     }
-
-    .basket div {
-        border-radius: 50%;
-        padding: 0 4px;
-        position: absolute;
-        top: -2px;
-        right: -14px;
-        font-size: var(--verySmall-font);
-        border: 1px solid var(--light-pen);
+    .basketAmount {
+      
+        top: -5px;
+        right: -17px;
     }
+    
+    .basketAmountEn {
+    
+        top: 0px;
+        right: 20px;
+     
+    
+    
+    
+    }
+
 }
 
 @media(max-width:475px) {
-
-    .headerIcon div,
-    .mobileIcon span {
-        padding: 0 0 !important;
+    .mobileIcon a {
+        padding: 0 0.5rem !important;
 
     }
+
+ 
 
     .header {
         padding: 0.6rem 1rem;
@@ -239,7 +259,7 @@
 
     .suggest {
         top: 30px !important;
-        
+
         /* left: 50px !important; */
     }
 
@@ -252,7 +272,7 @@
 
 }
 
-@media(max-width:366px) {
+/* @media(max-width:366px) {
 
     .headerIcon div,
     .mobileIcon span,
@@ -260,7 +280,7 @@
         padding: 0 0.5rem !important;
     }
 
-}
+} */
 
 /* style box suggest search */
 .suggest {
@@ -275,7 +295,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start ;
+    align-items: flex-start;
     /* align-items: center; */
     max-height: 300px;
     overflow-y: scroll;

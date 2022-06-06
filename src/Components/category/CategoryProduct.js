@@ -11,7 +11,9 @@ const CategoryProduct = ({ data }) => {
       >
         <div>
           <Link href={`/product/${data.id}`}>
-            <img src={data.imageFile1.filePath} alt="productImage" />
+           <a>
+           <img src={data.imageFile1.filePath} alt="productImage" />
+           </a>
           </Link>
           <ProInformation data={data} />
         </div>

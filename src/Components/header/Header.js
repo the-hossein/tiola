@@ -40,7 +40,7 @@ const Header = ({ backColor }) => {
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   const [boxTarget, setBoxTarget] = useState(false);
-  const searchingTarget = useSelector(state => state.stateSearch.items)
+  const searchingTarget = useSelector((state) => state.stateSearch.items);
   let targetSearch = [];
   //call state allProducts
   const allProducts = useSelector((state) => state.stateAllProducts.data);
@@ -56,10 +56,10 @@ const Header = ({ backColor }) => {
     // }
     // setSuggest();
     targetSearch = allProducts.filter((item) =>
-    item.title.includes(textSearch)
+      item.title.includes(textSearch)
     );
     console.log(targetSearch);
-    dispatch(query(targetSearch))
+    dispatch(query(targetSearch));
   };
 
   useLayoutEffect(() => {
@@ -124,10 +124,10 @@ const Header = ({ backColor }) => {
       const getApi = async () => {
         dispatch(await getProfile());
         dispatch(await getBasketDetails(state.basketid));
-      }
+      };
 
       getApi();
-      
+
       const now = new Date();
       const endDate = new Date(tokenExp);
       if (endDate - now < 0) {
@@ -142,7 +142,7 @@ const Header = ({ backColor }) => {
     dispatch(getBasketDetails(state.basketid));
   }, [state.basketid]);
   useEffect(() => {
-    targetSearch = allProducts.filter(item => item.title.includes(''));
+    targetSearch = allProducts.filter((item) => item.title.includes(""));
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
@@ -152,7 +152,6 @@ const Header = ({ backColor }) => {
       rightDir();
     }
     setpreload(false);
-    
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
@@ -168,7 +167,6 @@ const Header = ({ backColor }) => {
     setMenuBar(!menuBar);
   };
 
-  
   const goFactorHandler = () => {
     if (!state.loginStatus) {
       dispatch(openPopUp());
@@ -200,42 +198,39 @@ const Header = ({ backColor }) => {
                 {menuBar && <Menu backColor={backColor} />}
                 <div>
                   <Link href="/">
-                    <span
-                      className={router.pathname === "/" ? style.active : ""}
-                    >
+                    <a className={router.pathname === "/" ? style.active : ""}>
                       {t("home")}
-                    </span>
+                    </a>
                   </Link>
                   <Link href="/shop">
-                    <span
+                    <a
                       className={
                         router.pathname === "/shop" ? style.active : ""
                       }
                     >
                       {t("shop")}
-                    </span>
+                    </a>
                   </Link>
                   <Link href="/explore">
-                    <span
-                      className={router.pathname === "#" ? style.active : ""}
-                    >
+                    <a className={router.pathname === "#" ? style.active : ""}>
                       {t("explore")}
-                    </span>
-                  
+                    </a>
                   </Link>
                   <Link href="/collections">
-                    <span
+                    <a
                       className={
                         router.pathname === "/collections" ? style.active : ""
                       }
                     >
                       {t("collection")}
-                    </span>
+                    </a>
                   </Link>
                 </div>
               </nav>
               <Link href="/">
-                <Image src={logo} alt="logo" className={style.logo} />
+                <a>
+                  <Image src={logo} alt="logo" className={style.logo} />
+                </a>
               </Link>
             </div>
 
@@ -245,7 +240,7 @@ const Header = ({ backColor }) => {
                 {basket.basketLength === 0 ? (
                   ""
                 ) : (
-                  <div>{basket.basketLength}</div>
+                  <div className={lang.lng==="fa"?style.basketAmount:style.basketAmountEn}>{basket.basketLength}</div>
                 )}
               </div>
 
@@ -263,7 +258,9 @@ const Header = ({ backColor }) => {
                       // {console.log(item)}
                       return (
                         <span key={item.id}>
-                          <Link href={`/product/${item.id}`}>{item.title}</Link>
+                          <Link href={`/product/${item.id}`}>
+                            <a>{item.title}</a>
+                          </Link>
                         </span>
                       );
                     })}
@@ -272,7 +269,11 @@ const Header = ({ backColor }) => {
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={event => event.key === "Enter" ? window.location = "/explore?search="+textSearch : null}
+                  onKeyDown={(event) =>
+                    event.key === "Enter"
+                      ? (window.location = "/explore?search=" + textSearch)
+                      : null
+                  }
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
@@ -289,11 +290,13 @@ const Header = ({ backColor }) => {
               </div>
               {state.loginStatus ? (
                 <Link href={"/profile"}>
-                  <PersonIcon />
+                  <a>
+                    <PersonIcon />
+                  </a>
                 </Link>
               ) : (
                 <Link href={"/signin"}>
-                  <span>{t("login")}</span>
+                  <a>{t("login")}</a>
                 </Link>
               )}
             </div>
@@ -305,21 +308,25 @@ const Header = ({ backColor }) => {
               {menuBar ? <Menu /> : null}
               {state.loginStatus ? (
                 <Link href={"/profile"}>
-                  <PersonIcon sx={{ fontSize: 20 }} />
+                  <a>
+                    <PersonIcon sx={{ fontSize: 20 }} />
+                  </a>
                 </Link>
               ) : (
                 <Link href={"/signin"}>
-                  <span>{t("login")}</span>
+                  <a>{t("login")}</a>
                 </Link>
               )}
               <div className="position-relative d-flex align-items-center">
-              {boxTarget && (
+                {boxTarget && (
                   <div className={style.suggest}>
                     {searchingTarget.map((item) => {
                       // {console.log(item)}
                       return (
                         <span key={item.id}>
-                          <Link href={`/product/${item.id}`}>{item.title}</Link>
+                          <Link href={`/product/${item.id}`}>
+                            <a>{item.title}</a>
+                          </Link>
                         </span>
                       );
                     })}
@@ -328,7 +335,11 @@ const Header = ({ backColor }) => {
                 <input
                   placeholder={t("search")}
                   onChange={searchHandler}
-                  onKeyDown={event => event.key === "Enter" ? window.location = "/explore?search="+textSearch : null}
+                  onKeyDown={(event) =>
+                    event.key === "Enter"
+                      ? (window.location = "/explore?search=" + textSearch)
+                      : null
+                  }
                   className={
                     showSearchBox ? style.searchBox : style.inputDesign
                   }
@@ -347,16 +358,22 @@ const Header = ({ backColor }) => {
                     {basket.basketLength <= 0 ? (
                       ""
                     ) : (
-                      <div>{basket.basketLength}</div>
+                      <div className={lang.lng==="fa"?style.basketAmount:style.basketAmountEn}>{basket.basketLength}</div>
                     )}
                   </div>
 
                   <Link href="/shop">
-                    <ShoppingBagIcon sx={{ fontSize: 20, margin: "0 1rem" }} />
+                    <a>
+                      <ShoppingBagIcon
+                        sx={{ fontSize: 20, margin: "0 1rem" }}
+                      />
+                    </a>
                     {/* <span>{t("descoverMore")}</span> */}
                   </Link>
                   <Link href="/">
-                    <Image src={logo} alt="logo" className={style.logo} />
+                    <a>
+                      <Image src={logo} alt="logo" className={style.logo} />
+                    </a>
                   </Link>
                 </>
               )}

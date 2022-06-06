@@ -12,12 +12,7 @@ export default function Profile() {
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector(state =>  state.stateLang.lng);
  const {t}=useTranslation()
- const [errorShow, setErrorShow] = useState(true);
- useEffect(()=> {
-     
-   console.log("coco")
-  
-    }, [])
+
 
   return (
     <div>
@@ -30,11 +25,12 @@ export default function Profile() {
         <Header backColor={"headerColor"} />
       </header>
       {state.userDataLoader ? (
-       <ScreenLoader />
-     ) : 
-      <main>
-        <UserProfile />
-      </main>}
+        <ScreenLoader />
+      ) : (
+        <main>
+          <UserProfile />
+        </main>
+      )}
       <footer>
         <Footer />
       </footer>
