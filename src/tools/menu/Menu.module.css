@@ -27,6 +27,7 @@
 .burgerMenu ul {
     list-style-type: none;
     margin: 0;
+    width: 83%;
     padding: 0;
     display: table;
     margin: auto;

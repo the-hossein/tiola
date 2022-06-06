@@ -11,8 +11,8 @@
 }
 
 .containerPic img:first-child {
-    border-radius: 0 120px 0 0;
-    width: 35%;
+    border-top-right-radius: 60% 30%;
+    width: 31%;
     height: 70%;
     -o-object-fit: cover;
     object-fit: cover;
@@ -24,7 +24,7 @@
 
 .containerPic img:last-child {
     border-radius: 150px 150px 0 0;
-    width: 50%;
+    width: 40%;
     height: 100%;
 
     object-fit: cover;

@@ -28,7 +28,7 @@ const Landing = () => {
     <div className={style.landing}>
       <HeroSection />
       <ProductSlider
-        slidesShow={3}
+        slidesShow={2.4}
         radius={0}
         images={product}
         arrowStatus={true}
@@ -36,6 +36,7 @@ const Landing = () => {
         mbItem={1}
         tbItem={2}
         heightImage={280}
+        nameSet={'homeSwiper'}
       />
       <Collection />
     </div>

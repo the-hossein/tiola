@@ -18,13 +18,13 @@ const Collection = ({ dir }) => {
                 image2="/Assets/images/10.jpg"
                 content={t("messageCollection")}
                 color="exapmle"
-                title={t("collection2")}
+                title={t("collection")}
               />
               <MediumCollection
                 image1={"/Assets/images/6.jpg"}
                 image2={"/Assets/images/7.jpg"}
                 image3={"/Assets/images/10.jpg"}
-                title={t("collection1")}
+                title={t("shop")}
                 content={t("messageShop")}
 
              

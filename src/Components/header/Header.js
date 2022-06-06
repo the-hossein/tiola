@@ -98,6 +98,8 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xl-font", "16pt");
     root.style.setProperty("--xxl-font", "21pt");
     root.style.setProperty("--oxx-font", "26pt");
+    root.style.setProperty("--veryLg-font", "30pt");
+
   };
 
   const leftDir = () => {
@@ -115,7 +117,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--lg-font", "18pt");
     root.style.setProperty("--xl-font", "22pt");
     root.style.setProperty("--xxl-font", "29pt");
-    root.style.setProperty("--oxx-font", "30pt");
+    root.style.setProperty("--veryLg-font", "45pt");
   };
 
   useEffect(() => {

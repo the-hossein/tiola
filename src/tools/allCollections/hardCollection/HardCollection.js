@@ -54,7 +54,9 @@ const HardCollection = ({ image, title, content }) => {
               <h3 className={style.collectionTitile}>{title}</h3>
               <p className="lh-lg">{content}</p>
             </div>
-          <ViewAll content={t("btnExploreLand")} linked={'/explore'} />
+              <div className="text-end d-inline">
+                <ViewAll content={t("btnExploreLand")} linked={'/explore'} />
+              </div>
           </div>
         </div>
     </a>
