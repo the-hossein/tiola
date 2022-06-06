@@ -54,13 +54,8 @@ export async function getServerSideProps(context) {
     "GET"
   );
 
-  if (data[0].data.length > 0) {
     return {
       props: { category: data } // will be passed to the page component as props
     };
-  } else {
-    return {
-      props: { category: 404 } // will be passed to the page component as props
-    };
-  }
+
 }

@@ -70,7 +70,7 @@ const AddNewAddress = () => {
         );
         if (addStatus[0].code === 200) {
           dispatch(getuserAddress(user.userid));
-          dispatch(loadingAddresFalse())
+     
         }
       };
       addAddresUser();

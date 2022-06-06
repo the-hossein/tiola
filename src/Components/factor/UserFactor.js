@@ -45,7 +45,7 @@ const UserFactor = () => {
   console.log(basket.allAddress);
   return (
     <section className={style.ContainerSection}>
-      {!!basket && !!state.userid ? (
+      {!!basket ? (
         <div className="container mt-4">
           <>
             <FactorSection title={t("addres")} component={<UserAddres />} />
