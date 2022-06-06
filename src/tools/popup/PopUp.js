@@ -216,10 +216,10 @@ const PopUp = () => {
                 ) : (
                   state.codeStatus &&
                   again === false && (
-                    <span className="d-block mt-2">
+                    <span className={style.timer}>
                       <CountdownTimer
                         color="#707070"
-                        size={10}
+                        size={12}
                         count={120}
                         backgroundColor={"none"}
                         hideDay={true}

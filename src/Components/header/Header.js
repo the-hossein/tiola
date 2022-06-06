@@ -83,6 +83,8 @@ const Header = ({ backColor }) => {
   };
   const rightDir = () => {
     root.style.setProperty("--direction", "rtl");
+    root.style.setProperty("--directionR", "ltr");
+
     root.style.setProperty("--marginIcon", "0 0 0 1.5rem");
     root.style.setProperty("--textAlign-right", "left");
     root.style.setProperty("--float-left", "right");
@@ -91,7 +93,7 @@ const Header = ({ backColor }) => {
 
     root.style.setProperty("--sm-font", "9pt");
     root.style.setProperty("--xs-font", "10pt");
-    root.style.setProperty("--md-font", "12pt");
+    root.style.setProperty("--md-font", "11pt");
     root.style.setProperty("--lg-font", "14pt");
     root.style.setProperty("--xl-font", "16pt");
     root.style.setProperty("--xxl-font", "21pt");
@@ -100,14 +102,16 @@ const Header = ({ backColor }) => {
 
   const leftDir = () => {
     root.style.setProperty("--direction", "ltr");
+    root.style.setProperty("--directionR", "rtl");
+
     root.style.setProperty("--marginIcon", "0 1.5rem 0 0");
     root.style.setProperty("--textAlign-right", "right");
     root.style.setProperty("--float-left", "left");
     root.style.setProperty("--font", "apple");
     root.style.setProperty("--verySmall-font", "10pt");
-    root.style.setProperty("--sm-font", "12pt");
+    root.style.setProperty("--sm-font", "11pt");
     root.style.setProperty("--xs-font", "12pt");
-    root.style.setProperty("--md-font", "17pt");
+    root.style.setProperty("--md-font", "15pt");
     root.style.setProperty("--lg-font", "18pt");
     root.style.setProperty("--xl-font", "22pt");
     root.style.setProperty("--xxl-font", "29pt");
@@ -196,7 +200,7 @@ const Header = ({ backColor }) => {
                   onClick={openMenu}
                 /> */}
                 {menuBar && <Menu backColor={backColor} />}
-                <div>
+                <div className={style.menuDir}>
                   <Link href="/">
                     <a className={router.pathname === "/" ? style.active : ""}>
                       {t("home")}

@@ -17,7 +17,7 @@
     padding: 0.5rem 0;
     border-radius: var(--Product-Border-radius);
     margin: 0.5rem 0;
-    font-size: var(--lg-font) !important;
+    font-size: var(--lg-font) ;
 }
 
 .addWatch {
