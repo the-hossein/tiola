@@ -41,12 +41,23 @@ const WriteComment = () => {
         }
         notify(textShow, "warning")
         // dispatch(writeFalse());
-        dispatch(resetRate());
       }else {
-        dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name,lang));
-        // dispatch(writeFalse());
-        dispatch(resetRate());
-        setCommentText("")
+        if(!user.isConfirmed){
+          let textShow ;
+          if(lang === "fa"){
+            textShow = "اطلاعات حساب کاربری خود را تکمیل کنید"
+          }else {
+            textShow = "Fill in your account information"
+          }
+          
+          notify(textShow, "warning");
+        }else {
+          dispatch(resetRate());
+          dispatch(createComment(user.userid, commentText, total, router.query.productname, user.name,lang));
+          // dispatch(writeFalse());
+          dispatch(resetRate());
+          setCommentText("")
+        }
       }
     }else{
       let textShow2 ;
@@ -125,8 +136,8 @@ const WriteComment = () => {
                   </div>
             </Box>
       </div>
-      <div className={Style.closeBtn} onClick={()=> dispatch(writeFalse())}>
-        <CloseIcon fontSize="small"/>
+      <div className={Style.closeBtn} >
+        <CloseIcon fontSize="small" onClick={()=> dispatch(writeFalse())}/>
       </div>
     </div>
   );

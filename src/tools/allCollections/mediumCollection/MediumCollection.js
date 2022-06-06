@@ -23,7 +23,7 @@ const MediumCollection = ({
         <div
           className={`col-xl-7 col-lg-7 col-md-8 col-12 text-center d-flex justify-content-start p-0 pt-4  pb-4 ${style.collectionImage}`}
         >
-          <Link href="/collections">
+          <Link href="/shop">
         <a>
         <div
               className={`d-flex justify-content-center ${style.containerPic}`}
@@ -42,8 +42,7 @@ const MediumCollection = ({
             title={title}
             content={content}
             reverse={true}
-            btnText={t("btnCollLand")}
-            href="/collections"
+            btnText={t("btnShopLand")} href='/shop'
           />
         </div>
       </div>

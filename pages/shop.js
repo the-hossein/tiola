@@ -16,6 +16,7 @@ export default function Shop({ shop }) {
   const user = useSelector(state => state.stateRegister);
   const lang = useSelector(state =>  state.stateLang.lng);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getshopCategory(shop[0]));
   }, [shop[0]]);

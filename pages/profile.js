@@ -10,21 +10,9 @@ import { notify } from "../src/tools/toast/toast";
 
 export default function Profile() {
   const state = useSelector((state) => state.stateRegister);
-  const lang = useSelector((state) => state.stateLang.lng);
-  const { t } = useTranslation();
-  const [errorShow, setErrorShow] = useState(true);
+  const lang = useSelector(state =>  state.stateLang.lng);
+ const {t}=useTranslation()
 
-  useEffect(() => {
-    if (!state.isConfirmed) {
-      let textShow;
-      if (lang === "fa") {
-        textShow = "اطلاعات حساب کاربری خود را تکمیل کنید";
-      } else {
-        textShow = "Fill in your account information";
-      }
-      notify(textShow, "warning");
-    }
-  }, []);
 
   return (
     <div>

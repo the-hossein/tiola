@@ -24,6 +24,7 @@ import {
   openPopUp
 } from "../../redux/register/registerAction";
 import { query } from "../../redux/searchProduct/searchAction";
+import { notify } from "../../tools/toast/toast";
 
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
 import { getBasketDetails } from "../../redux/factor/factorAction";
@@ -35,6 +36,7 @@ const Header = ({ backColor }) => {
   const state = useSelector((state) => state.stateRegister);
   const basket = useSelector((state) => state.stateFactor);
 
+  const [errorShow, setErrorShow] = useState(true);
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
   const [boxTarget, setBoxTarget] = useState(false);

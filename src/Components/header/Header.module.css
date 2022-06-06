@@ -7,7 +7,9 @@
     color: var(--light-pen);
     font-size: var(--md-font);
     direction: var(--direction);
-    z-index: 10;
+    z-index: 1000 !important;
+    /* position: relative; */
+    border-radius: 0 0 10px 10px;
 }
 
 .allitems div a {
