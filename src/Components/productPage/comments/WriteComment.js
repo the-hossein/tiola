@@ -136,8 +136,8 @@ const WriteComment = () => {
                   </div>
             </Box>
       </div>
-      <div className={Style.closeBtn} onClick={()=> dispatch(writeFalse())}>
-        <CloseIcon fontSize="small"/>
+      <div className={Style.closeBtn} >
+        <CloseIcon fontSize="small" onClick={()=> dispatch(writeFalse())}/>
       </div>
     </div>
   );

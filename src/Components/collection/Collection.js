@@ -16,16 +16,16 @@ const Collection = ({ dir }) => {
               <Simplcollection
                 image1="/Assets/images/4.jpg"
                 image2="/Assets/images/10.jpg"
-                content={t("messageShop")}
+                content={t("messageCollection")}
                 color="exapmle"
-                title={t("collection1")}
+                title={t("collection2")}
               />
               <MediumCollection
                 image1={"/Assets/images/6.jpg"}
                 image2={"/Assets/images/7.jpg"}
                 image3={"/Assets/images/10.jpg"}
-                title={t("collection2")}
-                content={t("messageCollection")}
+                title={t("collection1")}
+                content={t("messageShop")}
 
                 color="example"
               />

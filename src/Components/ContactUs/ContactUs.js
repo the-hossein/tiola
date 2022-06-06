@@ -17,14 +17,16 @@ const ContactUs = () => {
 
     return (
         <div className={`${style.container}`}>
+                <div className={style.img}></div>
                 <div className={`${style.address}`}>
                     <h1>{t("ContactUs")}</h1>
-                    <p>Address 1</p>
-                    <p>Address 2</p>
-                    <p>Address 3</p>
+                    <p>{t("addresTest")}</p>
+                    <p>{t("addresTest")}</p>
+                    <p>{t("addresTest")}</p>
                 </div>
                 <div className={`${style.phone} `}>
-                    <p>Phone 1</p>
+                    <h1></h1>
+                    <p>021 88 288 206</p>
                     <p>Phone 2</p>
                     <p>Phone 3</p>
                     <div className={style.logos}>

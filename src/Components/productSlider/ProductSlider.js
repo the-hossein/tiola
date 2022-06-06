@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Style from "./ProductSlider.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Mousewheel } from "swiper";
 import { Scrollbar } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -29,18 +29,18 @@ const ProductSlider = ({
           "--swiper-pagination-color": "#fff",
           fontSize:"4rem", 
         }}
+        mousewheel={true}
         slidesPerView={5}
         spaceBetween={margin}
         grabCursor={true}
-        dir="ltr"
         pagination={{
           clickable: true
         }}
         scrollbar={{
           hide: true
         }}
-        modules={[Scrollbar, Navigation]}
-        className="mySwiper"
+        modules={[Scrollbar, Navigation, Mousewheel]}
+        className="swiperProductD"
         breakpoints={{
           200: {
             slidesPerView: mbItem

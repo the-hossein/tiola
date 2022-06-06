@@ -35,7 +35,7 @@ const MediumCollection = ({
           <div
             className={`col-xl-4 col-lg-5 col-md-4 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}
           >
-            <CollectionText title={title} content={content} reverse={true} btnText={t("btnCollLand")} href='/collections' />
+            <CollectionText title={title} content={content} reverse={true} btnText={t("btnShopLand")} href='/shop' />
           </div>
         </div>
       </Link>

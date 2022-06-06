@@ -25,6 +25,8 @@
   --oxx-font: 26pt;
   --green-pen: #06745f;
   --greenLight-pen: #03c65e;
+  --toastify-color-success: #05755d !important;
+  --toastify-color-error: #c43131 !important;
 
 }
 
@@ -140,11 +142,24 @@ a {
   bottom: -6px !important;
   /* height: fit-content ; */
 }
+header{
+  border-radius: 0 0 10px 10px;
+  /* z-index: 100 !important; */
+  position: relative;
+  z-index: 15;
+}
 main{
   min-height: 70vh;
 }
+.swiperProductD {
+  overflow-y: scroll ;
+}
 .mySwiperComment {
   /* min-height: 230px !important; */
+  height: 250px;
+}
+.mySwiperComment .swiper-wrapper{
+  align-items: center;
 }
 .mySwiperComment .swiper-slide {
   display: flex;
