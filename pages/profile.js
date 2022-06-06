@@ -13,21 +13,11 @@ export default function Profile() {
   const lang = useSelector(state =>  state.stateLang.lng);
  const {t}=useTranslation()
  const [errorShow, setErrorShow] = useState(true);
-
  useEffect(()=> {
-   
-   if(!state.isConfirmed){
-     let textShow ;
-     if(lang === "fa"){
-       textShow = "اطلاعات حساب کاربری خود را تکمیل کنید"
-     }else {
-       textShow = "Fill in your account information"
-     }
-     notify(textShow, "warning");
-    }
-    console.log("coco")
-
-  }, [])
+     
+   console.log("coco")
+  
+    }, [])
 
   return (
     <div>

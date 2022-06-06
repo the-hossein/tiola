@@ -97,6 +97,7 @@
     justify-content: center;
     align-items: center;
     /* margin-bottom: 25px; */
+    box-shadow: 4px 3px 8px #a6a5a547;
 }
 
 .add {
@@ -126,15 +127,17 @@
     min-height: 200px !important;
     position: relative;
     z-index: 100 !important;
+    box-shadow: 4px 3px 8px #a6a5a547;
 }
 
 .closeBtn {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     position: absolute;
     top: 4px;
     right: 5px;
     cursor: pointer;
+    /* background-color: aqua; */
 }
 
 .commentText textarea {
@@ -162,6 +165,7 @@
     font-family: "IRANSansWeb" !important;
     --font-md-comment: 12pt;
     --font-xs-comment: 10pt;
+    box-shadow: 4px 4px 8px #a6a5a547;
 }
 
 .Commnet span {
@@ -173,7 +177,7 @@
     justify-content: space-between;
     width: 100%;
     border-radius: var(--Product-Border-radius);
-
+    direction: rtl;
 }
 
 .myBox {

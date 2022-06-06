@@ -134,7 +134,7 @@ const registerReducer = (state = initializedState, action) => {
         name: action.user.user.name,
         family: action.user.user.family,
         profileUser: action.user.profilePic,
-        // isConfirmed : action.user.user.isConfirmed
+        isConfirmed : action.user.user.isConfirmed
       };
     case "BASKET_ID":
       return {

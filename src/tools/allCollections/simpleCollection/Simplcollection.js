@@ -18,7 +18,7 @@ const Simplcollection = ({image1,image2,content,title}) => {
           </div>
         </div>
         <div className={` col-xl-4 col-lg-5 col-md-5 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}>
-       <CollectionText title={title}  content={content} btnText={t("btnShopLand")} href={'/shop'} />
+       <CollectionText title={title}  content={content} btnText={t("btnCollLand")} href={'/collections'} />
         </div>
       </div>
  </Link>
