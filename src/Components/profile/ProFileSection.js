@@ -42,7 +42,7 @@ const ProFileSection = () => {
               <img src={data.profileUser === null ? "/Assets/images/userdefault.png" : data.profileUser.filePath } alt="user profile image" />
             </div>
             <div>
-              <h1 className={style.name}>{data.userNameAvatar === "" ? data.phoneNumber : data.userNameAvatar}</h1>
+              <h1 className={style.name}>{data.isConfirmed ? data.userNameAvatar : data.phoneNumber}</h1>
               <Link href='/editprofile'>
                 <span
                   className={style.editPro}
