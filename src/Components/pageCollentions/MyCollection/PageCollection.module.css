@@ -4,16 +4,19 @@
 }
 
 .myCollection img {
-    width: 75%;
-    border-radius: var(--Product-Border-radius);
-    height: 400px;
+    width: 68%;
+    border-radius: 12px;
+    height: 430px;
     object-fit: cover;
+    transition-duration:  0.5s;
+    transition-timing-function: linear;
+    border: 1px solid var(--lightGray-border);
 }
 
 .info {
-    width: 75%;
+    width: 68%;
     margin: auto;
-    font-size: var(--sm-font);
+    font-size: var(--xs-font);
     text-align: var(--float-left);
     cursor: pointer;
 }
@@ -24,15 +27,15 @@
 }
 
 .title {
-    padding: 3rem 3rem 0rem 3rem;
+    padding: 1.4rem 3rem 0.3rem 3rem;
     font-size: var(--veryLg-font);
-
+margin: 0;
 
 }
 
 .description {
     padding: 0 3rem 2rem 3rem;
-    font-size: var(--md-font);
+    font-size: var(--xs-font);
 
 }
 
@@ -52,8 +55,8 @@
 }
 
 .myCollection img:hover {
-    transition: 1s;
-    width: 100%;
+ 
+    width: 90%;
     cursor: pointer;
 }
 
@@ -61,4 +64,5 @@
     overflow-wrap: break-word;
     min-width: 100px;
     margin: 0.6rem 0;
+    font-size: var(--xs-font)
 }

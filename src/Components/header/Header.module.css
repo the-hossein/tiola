@@ -25,8 +25,9 @@
     font-size: 14pt;
 
 }
-.menuDir{
-direction: var(--directionR);
+
+.menuDir {
+    direction: var(--directionR);
 }
 
 
@@ -86,6 +87,8 @@ direction: var(--directionR);
 
 .mobileLogo>a:last-child {
     width: 30px !important;
+    height: 30px !important;
+
 }
 
 .mobileLogo>a:first-child {
@@ -200,20 +203,21 @@ direction: var(--directionR);
     .searchBoxIcon {
         left: 6px;
     }
+
     .basketAmount {
-      
+
         top: -5px;
         right: -17px;
     }
-    
+
     .basketAmountEn {
-    
+
         top: 0px;
         right: 20px;
-     
-    
-    
-    
+
+
+
+
     }
 
 }
@@ -221,10 +225,11 @@ direction: var(--directionR);
 @media(max-width:475px) {
     .mobileIcon a {
         padding: 0 0.5rem !important;
+        
 
     }
 
- 
+
 
     .header {
         padding: 0.6rem 1rem;

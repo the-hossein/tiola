@@ -3,6 +3,7 @@
     border-radius: var(--Product-Border-radius);
     object-fit: cover;
     margin-bottom: 0.5rem;
+    border: 1px solid var( --lightGray-border);
 }
 
 .squarePhoto {

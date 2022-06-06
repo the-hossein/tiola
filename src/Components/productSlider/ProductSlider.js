@@ -17,7 +17,8 @@ const ProductSlider = ({
   mbItem,
   tbItem,
   radius,
-  nameSet
+  nameSet,
+  border
 }) => {
   
   return (
@@ -62,7 +63,7 @@ const ProductSlider = ({
                   <img
                     src={item.src}
                     alt="product"
-                    className={Style.product}
+                    className={`${Style.product} ${!border&&Style.border}`}
                     style={{ borderRadius: radius, height: heightImage }}
                   />
                 </a>

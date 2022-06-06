@@ -7,6 +7,10 @@
 .slider img{
     cursor: pointer;
 }
+.border{
+    border: 1px solid var( --lightGray-border);
+
+}
 .slider {
     direction: ltr;
 }

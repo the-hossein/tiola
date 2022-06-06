@@ -10,7 +10,7 @@
 .doneBtn,
 .total,
 .Raiting {
-    font-size: 9pt;
+    font-size: var(--verySmall-font);
 }
 
 .ratinaition {
@@ -39,12 +39,22 @@
     width: fit-content;
     border-radius: 6px;
     width: 100%;
+    font-size: var(--verySmall-font);
     padding: 0.2rem;
 }
 
 .doneBtn:hover {
     color: var(--light-pen);
     background-color: var(--dark-pen);
+}
+.name{
+    width:180px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    height: 26px;
+    display: -webkit-box;
+    font-family: "IRANSansWeb" !important;
 }
 
 .amount {
@@ -68,6 +78,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: var(--verySmall-font);
+
 }
 
 
@@ -81,7 +93,8 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
-    height: 50px;
+    height: 57px;
+    overflow-wrap: break-word;
 }
 
 .addComment {
@@ -231,4 +244,5 @@
 
 .nameUser {
     direction: ltr !important;
+    font-family: "IRANSansWeb" !important;
 }

@@ -73,8 +73,13 @@
     background-color: var(--blue-pen);
     color: var(--light-pen);
 }
+@media(max-width:768px){
+    .phone{width: 100%;}
+}
 @media(max-width:490px){
     .footer{
         padding: 2rem;
     }
+
+    
 }

@@ -116,8 +116,8 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--md-font", "15pt");
     root.style.setProperty("--lg-font", "18pt");
     root.style.setProperty("--xl-font", "22pt");
-    root.style.setProperty("--xxl-font", "29pt");
-    root.style.setProperty("--veryLg-font", "45pt");
+    root.style.setProperty("--xxl-font", "35pt");
+    root.style.setProperty("--veryLg-font", "48pt");
   };
 
   useEffect(() => {

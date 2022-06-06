@@ -1,11 +1,19 @@
 import React from "react";
 import style from "./NormalBtn.module.css";
+import {  useSelector } from "react-redux";
+
 const NormalBtn = ({ color, text, onClick }) => {
- 
+  const lang = useSelector((state) => state.stateLang.lng);
   return (
     <button
       className={`style.paybtn ${
-        color === "red" ? style.payBtn : style.addWatch
+        color === "red"
+          ? lang === "fa"
+            ? style.payBtn
+            : `${style.payBtnEn} ${style.payBtn}`
+          : lang === "fa"
+          ? style.addWatch
+          : `${style.addWatchEn} ${ style.addWatch}`
       }`}
       onClick={onClick}
     >

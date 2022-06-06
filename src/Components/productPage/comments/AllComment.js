@@ -62,7 +62,7 @@ const AllComment = ({ product }) => {
       )}
       <div className={`${Style.AllComment} row m-0`}>
         <div className="col-12 col-md-12 p-0" >
-          <div className="row justify-content-between align-items-center">
+          <div className="row justify-content-evenly align-items-center">
               {size > 685 && (
               <div className={`${!state.writeCm ? 'col-12  col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3' : 'col-md-6 col-sm-5'}`}>
                 <div className={Style.firstChild}>

@@ -26,7 +26,7 @@ const Productpage = ({ product, similar }) => {
             images={images}
             arrowStatus={true}
             margin={20}
-            heightImage={'300px'}
+            heightImage={'380px'}
           />
       </div>
     </section>
