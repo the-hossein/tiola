@@ -11,6 +11,7 @@
 .input {
     text-align-last: var(--float-left);
     border: none;
+    border-radius: 8px !important;
 }
 
 .input::placeholder{

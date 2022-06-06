@@ -66,13 +66,19 @@
     justify-content: space-between;
     margin-bottom: 2rem;
 }
-
+.timer{
+    display: block;
+    margin-top: 1rem;
+    font-size: var(--verySmall-font) !important
+    ;
+}
 .donebtn {
     background-color: var(--green-pen);
     padding: 0.4rem 2rem;
     border-radius: var(--Product-Border-radius);
     border: none;
     display: block;
+    font-size: var(--xs-font);
     margin: auto;
     margin-top: 1rem;
     color: var(--light-pen);
