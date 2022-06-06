@@ -16,7 +16,8 @@ const ProductSlider = ({
   heightImage,
   mbItem,
   tbItem,
-  radius
+  radius,
+  nameSet
 }) => {
   
   return (
@@ -40,7 +41,7 @@ const ProductSlider = ({
           hide: true
         }}
         modules={[Scrollbar, Navigation, Mousewheel]}
-        className="swiperProductD"
+        className={nameSet}
         breakpoints={{
           200: {
             slidesPerView: mbItem

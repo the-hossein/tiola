@@ -36,6 +36,7 @@ const Landing = () => {
         mbItem={1}
         tbItem={2}
         heightImage={280}
+        nameSet={'homeSwiper'}
       />
       <Collection />
     </div>
