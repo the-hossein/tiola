@@ -45,9 +45,9 @@ const WriteComment = () => {
         if(!user.isConfirmed){
           let textShow ;
           if(lang === "fa"){
-            textShow = "اطلاعات حساب کاربری خود را تکمیل کنید"
+            textShow = "ابتدا در پروفایل خود اطلاعات حساب کاربری را تکمیل کنید."
           }else {
-            textShow = "Fill in your account information"
+            textShow = "First fill in the account information in your profile"
           }
           
           notify(textShow, "warning");

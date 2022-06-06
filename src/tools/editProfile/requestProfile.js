@@ -24,17 +24,16 @@ var requestOptions = {
     headers: myHeaders,
     body: raw,
 };
-fetch(`${BASE_URL}api/v1/User/UpdateProfile`, requestOptions)
-  .then(response => response.json())
-  .then(json => {
-      if(json.code === 200) {
-        router.push({pathname: '/profile'});
-          dispatch(updateSetProfile(JSON.parse(raw)));
-      }
-    })
-  .catch(error => console.log('error', error))
-  if(name !== "" && family !== "" && birthday !== ""){
-    console.log("bobo")
+if(name !== "" && family !== "" && birthday !== ""){
+  fetch(`${BASE_URL}api/v1/User/UpdateProfile`, requestOptions)
+    .then(response => response.json())
+    .then(json => {
+        if(json.code === 200) {
+          router.push({pathname: '/profile'});
+            dispatch(updateSetProfile(JSON.parse(raw)));
+        }
+      })
+    .catch(error => console.log('error', error))
   }else{
     let textShow ;
     if(lang === 'fa'){
