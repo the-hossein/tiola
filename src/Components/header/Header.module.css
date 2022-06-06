@@ -300,8 +300,9 @@
     max-height: 300px;
     overflow-y: scroll;
     scrollbar-width: none;
-    z-index: 5150 !important;
+    /* z-index: 5150 !important; */
     direction: rtl !important;
+    z-index: 26 !important;
 }
 
 .suggest::-webkit-scrollbar {

@@ -22,3 +22,7 @@
     cursor: pointer;
 
 }
+
+.secondeSection {
+    transform: translateY(-200px);
+}

@@ -1,3 +1,6 @@
+.collection{
+    min-height: 710px;
+}
 .collectionImage div img:first-child:hover,
 .collectionImage div img:nth-child(2):hover,
 .collectionImage div img:last-child:hover {
@@ -16,10 +19,11 @@
     padding: 0 30px !important;
 }
 .collectionImage div img:first-child {
-    border-radius: 80px 80px 0 0;
+    border-top-left-radius: 192.5px 50% ;
+    border-top-right-radius: 192.5px 50% ;
     /* width: 160px; */
-    width: 28%;
-    height: 320px;
+    width: 26%;
+    height: 385px;
     margin-top: 2rem;
     transition-duration: 0.4s;
     transition-timing-function: linear;
@@ -27,24 +31,26 @@
 }
 
 .collectionImage div img:nth-child(2) {
-    border-radius: 100px ;
-    /* width: 190px; */
-    width: 33.6%;
-    height: 306px;
+    border-top-left-radius: 75% 40%;
+    border-top-right-radius: 75% 40% ;
+    border-bottom-left-radius: 75% 40%;
+    border-bottom-right-radius: 75% 40%;
+    width: 28%;
+    height: 357px;
     -o-object-fit: cover;
     object-fit: cover;
     padding: 0 1rem;
     align-self: self-end;
     transition-duration: 0.4s;
     transition-timing-function: linear;
-
+    transform: translateY(80px);
 }
 
 .collectionImage div img:last-child {
     border-radius: 165px 165px 0 0;
     /* width: 230px; */
-    width: 40%;
-    height: 430px;
+    width: 30%;
+    height: 500px;
     align-self: start;
     object-fit: cover;
     transition-duration: 0.4s;
@@ -62,6 +68,9 @@
     border-bottom: var(--border-bottom);
 }
 
+.content a:last-child {
+    transform: translateY(-250px);
+}
 
 
 .content2 {

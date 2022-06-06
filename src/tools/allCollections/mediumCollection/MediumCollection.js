@@ -21,7 +21,7 @@ const MediumCollection = ({
         className={`row justify-content-center  mt-5 mb-5 pb-3  ${style.collection}`}
       >
         <div
-          className={`col-xl-7 col-lg-7 col-md-8 col-12 text-center d-flex justify-content-start p-0 pt-4  pb-4 ${style.collectionImage}`}
+          className={`col-xl-8 col-lg-8 col-md-8 col-12 text-center d-flex justify-content-start p-0 pt-4  pb-4 ${style.collectionImage}`}
         >
           <Link href="/shop">
         <a>
@@ -36,13 +36,14 @@ const MediumCollection = ({
           </Link>
         </div>
         <div
-          className={`col-xl-4 col-lg-5 col-md-4 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}
+          className={`col-xl-4 col-lg-4 col-md-4 col-12 position-relative d-flex flex-column pb-4 justify-content-between ${style.content}`}
         >
           <CollectionText
             title={title}
             content={content}
             reverse={true}
             btnText={t("btnShopLand")} href='/shop'
+            second={true}
           />
         </div>
       </div>
