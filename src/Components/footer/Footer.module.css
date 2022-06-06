@@ -1,15 +1,25 @@
 .footer {
     width: 100%;
-    padding: 3rem 0;
+    padding: 5rem ;
     background-color: var(--blue-pen);
     font-size: var(--md-font);
+    border: 1px solid var(--lightGray-border);
 }
+.footerStyle{
+    display: flex;
+    justify-content: space-between;
 
+}
 .namad {
-    height: 100px;
+    height: 160px;
+    width: 160px;
+    border: 1px solid var(--lightGray-border);
+
     background-color: var(--light-pen);
 }
-
+.phone input{
+    border: 1px solid var(--lightGray-border)!important;
+}
 .footerInput {
     text-align: var(--textAlign-right);
 }
@@ -17,11 +27,11 @@
 .socialMedia {
     text-align: center;
     color: var(--light-pen);
-    margin-top: 25px;
 }
 
 .socialMedia svg {
-    margin: 0 0.7rem;
+    margin: 0 1rem;
+    font-size: 28pt;
 }
 #phone{
     text-decoration: none;

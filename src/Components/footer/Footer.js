@@ -31,36 +31,55 @@ const Footer = () => {
 
   return (
     <>
-      <div className={`row ${style.footer} justify-content-center m-0`}>
-        {size > 500 ? (
-          <div className="col-xl-8 col-11">
-            <div className="row  justify-content-between align-items-center">
-              <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
+      <div className={style.footer}>
+          {size > 500 ? (
+            // <div className="col-12">
+            //   <div className="row  justify-content-between align-items-center">
+            //     <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
 
-              <div
-                className={`col-lg-4 col-md-6 col-sm-6 col-8 ${style.footerInput}`}
-              >
+            //     <div
+            //       className={`col-lg-4 col-md-6 col-sm-6 col-8 ${style.footerInput}`}
+            //     >
+            //       <Input
+            //         lablelText={t("sendAMessage")}
+            //         type="text"
+            //         placeholder={t("typeHere")}
+            //       />
+            //       <button className={style.send}>{t("sentBtn")}</button>
+            //       <div className={style.socialMedia}>
+            //         <TwitterIcon />
+            //         <WhatsAppIcon />
+            //         <InstagramIcon />
+            //       </div>
+            //       <a href="tel:02126420420" id={style.phone}>
+            //         <span>{t("ContactUs")}: 02126420420</span>
+            //       </a>
+            //     </div>
+            //     <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
+            //   </div>
+            // </div>
+            <>
+           <div className={style.footerStyle}>
+           <div className={style.namad}></div>
+              <div className={style.phone}>
                 <Input
                   lablelText={t("sendAMessage")}
                   type="text"
                   placeholder={t("typeHere")}
                 />
-                <button className={style.send}>{t("sentBtn")}</button>
-                <div className={style.socialMedia}>
+                {/* <button className={style.send}>{t("sentBtn")}</button> */}
+              </div>
+              <div className={style.namad}></div>
+           </div>
+              <div className={style.socialMedia}>
                   <TwitterIcon />
                   <WhatsAppIcon />
-                  <InstagramIcon />
-                </div>
-                <a href="tel:02126420420" id={style.phone}>
-                  <span>{t("ContactUs")}: 02126420420</span> 
-                </a>
+                    <InstagramIcon />
               </div>
-              <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
-            </div>
-          </div>
-        ) : (
-          <MobileFooter />
-        )}
+            </>
+          ) : (
+            <MobileFooter />
+          )}
       </div>
     </>
   );

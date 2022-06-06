@@ -25,7 +25,9 @@
     font-size: 14pt;
 
 }
-
+.menuDir{
+direction: var(--directionR);
+}
 
 
 .headaritem {
@@ -40,7 +42,8 @@
 
 .headaritem>a {
 
-    width: 55px !important;
+    width: 50px !important;
+    height: 50px;
 }
 
 

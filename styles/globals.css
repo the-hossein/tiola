@@ -9,6 +9,7 @@
   --medium-gray: #3F3F3B;
   --body-Color: #f2f2f2;
   --direction: rtl;
+  --directionR: ltr;
   --marginIcon: 0 0 0 1.5rem;
   --textAlign-right: right;
   --float-left: left;
@@ -18,7 +19,7 @@
   --verySmall-font: 7pt;
   --sm-font: 9pt;
   --xs-font: 10pt;
-  --md-font: 12pt;
+  --md-font: 11pt;
   --lg-font: 14pt;
   --xl-font: 16pt;
   --xxl-font: 21pt;
@@ -141,23 +142,28 @@ a {
   bottom: -6px !important;
   /* height: fit-content ; */
 }
-header{
+
+header {
   border-radius: 0 0 10px 10px;
   /* z-index: 100 !important; */
   position: relative;
   z-index: 15;
 }
-main{
+
+main {
   min-height: 70vh;
 }
+
 .swiperProductD {
-  overflow-y: scroll ;
+  overflow-y: scroll;
 }
+
 .mySwiperComment {
   /* min-height: 230px !important; */
   height: 250px;
 }
-.mySwiperComment .swiper-wrapper{
+
+.mySwiperComment .swiper-wrapper {
   align-items: center;
 }
 

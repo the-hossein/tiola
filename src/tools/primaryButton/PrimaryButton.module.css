@@ -17,7 +17,7 @@
     font-size: var(--xs-font);
  }
 
-.primaryBtn button:hover {
+.primaryBtn button:hover, .primaryBtnEn button:hover {
 
 
     background-color: var(--light-pen);

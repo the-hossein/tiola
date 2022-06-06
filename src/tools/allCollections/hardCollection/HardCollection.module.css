@@ -9,7 +9,7 @@
     /* font-size: var(--xxl-font); */
 }
 .content h3 {
-    font-size: var(--xxl-font);
+    font-size: var(--xl-font);
 }
 .content p {
     font-size: var(--md-font);
