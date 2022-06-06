@@ -12,14 +12,14 @@ const MobileFooter = () => {
   return (
     <>
     <div className='d-flex flex-column  '>
-        <div>
+        <div className={style.phone}>
           <Input
            lablelText={t("sendAMessage")}
            type="text"
            placeholder={t("typeHere")}
           />
-          <button className={style.send}>{t("sentBtn")}</button>
-          <div className={style.socialMedia}>
+          {/* <button className={style.send}>{t("sentBtn")}</button> */}
+          <div className={style.socialMediaMB}>
             <TwitterIcon />
             <WhatsAppIcon />
             <InstagramIcon />
