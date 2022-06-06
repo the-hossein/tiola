@@ -8,7 +8,9 @@ const HardCollection = ({ image, title, content }) => {
   return (
     <>
       <Link href="/explore">
-        <div
+    <a>
+
+    <div
           className={`row justify-content-center flex-row-reverse mt-5 mb-5 pb-3 ${style.collection}`}
         >
           <div
@@ -55,6 +57,7 @@ const HardCollection = ({ image, title, content }) => {
           <ViewAll content={t("btnExploreLand")} linked={'/explore'} />
           </div>
         </div>
+    </a>
       </Link>
     </>
   );

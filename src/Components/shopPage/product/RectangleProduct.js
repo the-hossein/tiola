@@ -9,7 +9,8 @@ const RectangleProduct = ({ page, data }) => {
       <>
         {data.imageFile1.confirmed === true ? (
           <Link href={`/product/${data.id}`}>
-            <div className={`m-0 ${style.product} col-12 overflow-hidden `}>
+          <a>
+          <div className={`m-0 ${style.product} col-12 overflow-hidden `}>
               <img
                 src={data.imageFile1.filePath}
                 alt="product"
@@ -20,6 +21,7 @@ const RectangleProduct = ({ page, data }) => {
 
               <ProductInfo more={true} data={data} />
             </div>
+          </a>
           </Link>
         ) : (
           ""

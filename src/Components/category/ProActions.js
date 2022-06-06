@@ -11,13 +11,13 @@ const ProActions = ({id}) => {
   return (
     <div className="d-flex justify-content-between mt-4 mb-2">
      <Link href={`/product/${id}`}>
-   <div>
+   <a>
    <PrimaryButton
         light={true}
         btnText={t("simpleViewMore")}
         onClick={morePro}
       />
-   </div>
+   </a>
      </Link>
       <PrimaryButton light={true} btnText={t("watchlist")} onClick={addwatch} />
     </div>

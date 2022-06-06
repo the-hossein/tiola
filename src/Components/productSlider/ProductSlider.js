@@ -57,14 +57,14 @@ const ProductSlider = ({
           <Fragment key={item.src}>
             <SwiperSlide>
               <Link href={`/product/${item.id}`}>
-                <div>
+                <a>
                   <img
                     src={item.src}
                     alt="product"
                     className={Style.product}
                     style={{ borderRadius: radius, height: heightImage }}
                   />
-                </div>
+                </a>
               </Link>
             </SwiperSlide>
           </Fragment>

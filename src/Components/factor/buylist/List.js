@@ -211,7 +211,7 @@ if(ls){
         </Link>
         <div>
           <CloseOutlinedIcon
-            sx={{ fontSize: 24 }}
+            sx={{ fontSize: 24 ,margin:" 0 0 3.5rem 0"}}
             className={style.close}
             onClick={deleteHandler}
           />

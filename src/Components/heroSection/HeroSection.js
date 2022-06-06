@@ -26,9 +26,9 @@ const HeroSection = () => {
         >
           <Link href="/shop">
             {/* add a new props for PrimaryButton for value bottom */}
-            <div>
+            <a>
               <PrimaryButton btnText={t("descoverMore")} />
-            </div>
+            </a>
           </Link>
         </div>
       </div>

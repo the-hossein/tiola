@@ -10,24 +10,21 @@ import { notify } from "../src/tools/toast/toast";
 
 export default function Profile() {
   const state = useSelector((state) => state.stateRegister);
-  const lang = useSelector(state =>  state.stateLang.lng);
- const {t}=useTranslation()
- const [errorShow, setErrorShow] = useState(true);
+  const lang = useSelector((state) => state.stateLang.lng);
+  const { t } = useTranslation();
+  const [errorShow, setErrorShow] = useState(true);
 
- useEffect(()=> {
-   
-   if(!state.isConfirmed){
-     let textShow ;
-     if(lang === "fa"){
-       textShow = "اطلاعات حساب کاربری خود را تکمیل کنید"
-     }else {
-       textShow = "Fill in your account information"
-     }
-     notify(textShow, "warning");
+  useEffect(() => {
+    if (!state.isConfirmed) {
+      let textShow;
+      if (lang === "fa") {
+        textShow = "اطلاعات حساب کاربری خود را تکمیل کنید";
+      } else {
+        textShow = "Fill in your account information";
+      }
+      notify(textShow, "warning");
     }
-    console.log("coco")
-
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -40,11 +37,12 @@ export default function Profile() {
         <Header backColor={"headerColor"} />
       </header>
       {state.userDataLoader ? (
-       <ScreenLoader />
-     ) : 
-      <main>
-        <UserProfile />
-      </main>}
+        <ScreenLoader />
+      ) : (
+        <main>
+          <UserProfile />
+        </main>
+      )}
       <footer>
         <Footer />
       </footer>

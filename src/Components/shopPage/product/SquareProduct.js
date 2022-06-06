@@ -12,9 +12,11 @@ const SquareProduct = ({ data }) => {
         {data.imageFile1.confirmed === true ? (
           <>
             <Link href={`/product/${data.id}`}>
-              <div className={`col-12 overflow-hidden  ${style.squarePhoto}`}>
+             <a>
+             <div className={`col-12 overflow-hidden  ${style.squarePhoto}`}>
                 <img alt="product" src={data.imageFile1.filePath} />
               </div>
+             </a>
             </Link>
             <ProductInfo more={true} data={data} />
           </>

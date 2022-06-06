@@ -22,7 +22,7 @@ const StatusPayment = ({ statusCode, type }) => {
     case 404:
       textError = "وب سریس یافت نشد.";
     case 405:
-      textError = "تراکنش ایجاد نشد.";
+      textError = "پرداخت تایید نشد.";
     case "catch":
       textError = "خطا در پرداخت";
     default:

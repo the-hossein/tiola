@@ -17,7 +17,7 @@ const Collection = ({ dir }) => {
                 image1="/Assets/images/4.jpg"
                 image2="/Assets/images/10.jpg"
                 content={t("messageShop")}
-                color="exapmle"
+                
                 title={t("collection1")}
               />
               <MediumCollection
@@ -27,7 +27,7 @@ const Collection = ({ dir }) => {
                 title={t("collection2")}
                 content={t("messageCollection")}
 
-                color="example"
+             
               />
               <HardCollection
                 image={"/Assets/images/9.jpg"}

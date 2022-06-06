@@ -55,7 +55,8 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                     data={data[0]}
                   />
                   <Link href={type !== null ? `/category/${type.type}` : "/"}>
-                    <div
+              <a>
+              <div
                       className={`mt-5 w-100 ${
                         router.pathname === "/collections/[collectionname]"
                           ? style.collPage
@@ -64,6 +65,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                     >
                       <SecondlyButton text={t("simpleViewAll")} />
                     </div>
+              </a>
                   </Link>
                 </div>
 
@@ -92,7 +94,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
             : "shopPage"
         }
         data={data}
-        title={t(`${type.type}`)}
+        title={type!==null?t(`${type.type}`):""}
         type={type}
       />
     );

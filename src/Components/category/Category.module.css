@@ -2,20 +2,22 @@
     border-radius: var(--Product-Border-radius);
     height: 250px !important;
 } */
-.CategoryPhoto  img{
+.CategoryPhoto img {
     object-fit: cover;
     width: 100%;
-    height: 300px;
+    height: 250px;
     border-radius: var(--Product-Border-radius);
     overflow: hidden;
-cursor: pointer;
+    cursor: pointer;
 
 
 }
-.categoryType{
+
+.categoryType {
     font-size: var(--xxl-font);
     padding-bottom: 1rem;
 }
+
 .CategoryProduct>div {
     background-color: var(--light-pen);
     border-radius: var(--Product-Border-radius);
@@ -24,7 +26,7 @@ cursor: pointer;
 
 .CategoryProduct img {
     width: 100%;
-    height:300px;
+    height: 300px;
     object-fit: cover;
     margin-bottom: 0.7rem;
     cursor: pointer;

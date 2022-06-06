@@ -49,11 +49,11 @@ const Category = ({ data }) => {
                 <>
                 
                   <Link href={`/product/${item.id}`}>
-                    <div
+                   <a
                       className={`col-lg-4 col-md-4 col-12 mb-3 ${style.CategoryPhoto}`}
                     >
                       <img src={item.imageFile1.filePath} alt="category pic " />
-                    </div>
+                    </a>
                   </Link>
                 </>
               )
