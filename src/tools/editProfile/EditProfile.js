@@ -49,18 +49,24 @@ const EditProfile = () => {
 
   const subHandler = (e) => {
     e.preventDefault();
-    RequestProfile(
-      userToken,
-      userData.userid,
-      userFName,
-      userLName,
-      userBirthday,
-      gender,
-      imageId,
-      router,
-      lang,
-      dispatch
-    );
+    console.log(typeof userFName === "undefined")
+    console.log(typeof userLName)
+    console.log(userBirthday)
+    if(typeof userBirthday !== "undefined" && typeof userLName !== "undefined" && typeof userFName !== "undefined"){
+      console.log("hello world")
+      RequestProfile(
+        userToken,
+        userData.userid,
+        userFName,
+        userLName,
+        userBirthday,
+        gender,
+        imageId,
+        router,
+        lang,
+        dispatch
+      );
+    }
   };
 
   //get image
@@ -104,6 +110,9 @@ const EditProfile = () => {
 
   useEffect(() => {
     const tokenLocal = JSON.parse(localStorage.getItem("userToken"));
+    if(tokenLocal === null){
+      router.push({pathname: "/"})
+    }
     if (tokenLocal) {
       setToken(tokenLocal.token);
     }
@@ -150,7 +159,7 @@ const EditProfile = () => {
                   }
                   alt="user profile"
                 />
-                <input
+                <input 
                   type="file"
                   id="userImage"
                   accept="image/png, image/jpeg,"
@@ -161,7 +170,7 @@ const EditProfile = () => {
                     {t("Change")}
                   </label>
                 </span>
-                <button onClick={removeImg} className={style.buttonStyle}>
+                <button onClick={removeImg} className={style.buttonStyle} type="button">
                   {t("remove")}
                 </button>
               </div>
@@ -235,7 +244,7 @@ const EditProfile = () => {
           </div>
           <div className="col-12 col-md-12 col-lg-3 text-center">
             <div className={`mt-5 ${style.btnHandel}`}>
-              <button type="submit">{t("submit")}</button>
+              <button type="submit" onClick={subHandler}>{t("submit")}</button>
               <Link href="/">
                 <span className={style.navigate}>{t("home")}</span>
               </Link>

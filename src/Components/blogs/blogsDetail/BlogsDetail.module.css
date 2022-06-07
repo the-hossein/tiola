@@ -9,19 +9,36 @@
 .container p {
     font-size: var(--xl-font);
 }
-.container >div > img{
+
+.container>div>img {
     position: relative;
     height: 70vh;
     width: 100%;
     object-fit: cover;
     overflow: hidden;
+    object-position: 0 20%;
+}
+
+.blogInfo {
+    position: absolute;
+    top: 148px;
+    left: 48px;
+    color: #fff;
+
+}
+
+.blogInfoEn {
+    position: absolute;
+    color: #fff;
+    top: 148px;
+    left: none;
+    right: 48px;
 }
 
 .imageHeader {
-    direction: var(--direction);
+    direction: ltr;
     width: 100%;
     padding: 0 !important;
-    
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,11 +47,10 @@
     left: 48px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: flex-start;
     color: #fff;
-    font-size: 26px;
-  
+
 }
 
 /* .imageHeader button {
@@ -44,61 +60,67 @@
     align-items: center;
     border: none;
     outline: none;
-    background: rgba(84, 84, 84, 0.15);
+    background: rgba(255, 255, 255, 0.35);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.4px);
-    -webkit-backdrop-filter: blur(5.4px);
-    position: absolute;
-    top: 10px;
-    left: 80px;
+    backdrop-filter: blur(7.8px);
+    -webkit-backdrop-filter: blur(7.8px);
     color: #fff;
     font-size: var(--xl-font);
 } */
-.imageHeader a,.imageHeader h1,.imageHeader p{
+
+.imageHeader a,
+.blogInfo h1,
+.blogInfo p,
+.blogInfoEn h1,
+.blogInfoEn p {
 
     backdrop-filter: blur(5.4px);
     background: rgb(255 255 255 / 21%);
 }
+
 .imageHeader a {
     display: flex;
     min-width: 114px;
     border-radius: var(--Product-Border-radius);
 
-    direction: var(--direction);
+
     padding: 0 1.5rem 0 0.5rem;
     align-items: center;
     /* backdrop-filter: blur(5.4px);
     -webkit-backdrop-filter: blur(5.4px);
     background: rgba(84, 84, 84, 0.15); */
-  
+
     color: #fff;
     font-size: var(--xl-font);
 }
 
 .imageHeader button svg {
-    font-size: 2rem;
+    /* font-size: rem; */
+    transform: scale(3, 1.4);
 }
 
-.imageHeader h1 {
+.blogInfo h1,
+.blogInfoEn h1 {
     padding: 1rem 2.5rem;
     /* background: rgba(84, 84, 84, 0.15); */
     border-radius: var(--Product-Border-radius);
-font-size: var(--veryLg-font);
-    min-width: 300px;
+    font-size: var(--veryLg-font);
+    min-width: 350px;
     text-align: center;
     box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
     /* backdrop-filter: blur(5.4px); */
     margin: 1rem 0;
 }
 
-.imageHeader p {
+.blogInfo p,
+.blogInfoEn p {
     padding: 0.3rem 2.5rem;
     /* background: rgba(84, 84, 84, 0.15); */
     border-radius: var(--Product-Border-radius);
     font-size: var(--md-font);
     text-align: center;
-    min-width: 311px;
+    min-width: 350px;
     box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
     /* backdrop-filter: blur(5.4px); */
     margin: 0;
@@ -113,17 +135,18 @@ font-size: var(--veryLg-font);
 }
 
 .imgBlog {
-    width: 60%;
-    height: 630px;
-    /* height: %; */
-    background: url('/Assets/images/3.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    width: 85%;
+    height: 640px;
+    object-fit: cover;
     border-radius: 400px 400px 10px 10px;
     transition-duration: 0.6s;
     transition-timing-function: linear;
 
+}
+
+.blogContent {
+    text-align: justify;
+    direction: var(--direction);
 }
 
 .imgTow {
@@ -138,7 +161,18 @@ font-size: var(--veryLg-font);
 
 .blogMain h1 {
     margin-bottom: 2rem;
+    font-size: var(--xl-font);
 }
+
+.blogMain p {
+    font-size: var(--md-font);
+
+}
+
+.headerContainer {
+    text-align: center;
+}
+
 /* 
 @media (max-width: 650px) {
 
@@ -175,19 +209,47 @@ font-size: var(--veryLg-font);
         height: 90vh;
     }
 } */
-@media(max-width:500px){
-    .imageHeader a{
+@media(max-width:500px) {
+    .imageHeader a {
         font-size: var(--lg-font);
     }
-    .imageHeader h1{
+
+    .blogInfo h1,
+    .blogInfoEn h1 {
         font-size: var(--oxx-font);
-        min-width: 311px;
+
     }
-  
+
+    .blogInfo {
+        width: 85%;
+    }
+
+    .blogInfo h1,
+    .blogInfoEn h1,
+    .blogInfo p,
+    .blogInfoEn p {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .headerContainer img {
+        width: 100%;
+        height: 480px;
+    }
 }
-@media(max-width:380px){
-  .imageHeader{
-      left: 26px;
-  }
-  
+
+@media(max-width:380px) {
+    .imageHeader {
+        left: 26px;
+    }
+
+    .blogInfo,
+    .blogInfoEn {
+        left: 26px;
+    }
+
+    .blogInfoEn {
+        right: 26px;
+    }
+
 }

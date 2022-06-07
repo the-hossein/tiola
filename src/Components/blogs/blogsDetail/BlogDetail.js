@@ -15,7 +15,7 @@ const BlogDetail = () => {
   const { t } = useTranslation();
   const params = useRouter();
   const id = +params.query.blog;
-  const lang = useSelector((state) => state.stateLang);
+  const lang = useSelector((state) => state.stateLang.lng);
   const [blogTarget, setBlogTarget] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -36,14 +36,14 @@ const BlogDetail = () => {
   return (
     <div className={`'container-fluid' ${style.container}`}>
       <div>
-          <img src="/Assets/images/2.jpeg"/>
+        <img src="/Assets/images/2.jpeg" />
         <div className={`col-12 ${style.imageHeader}`}>
           <a onClick={() => window.history.back()}>
-         
-                <ArrowLeftIcon sx={{ fontSize: "40pt" }} />
-                <span>{t("blogs")}</span>
-           
+            <ArrowLeftIcon sx={{ fontSize: "40pt" }} />
+            <span>{t("blogs")}</span>
           </a>
+        </div>
+        <div className={lang === "fa" ? style.blogInfoEn : style.blogInfo}>
           <h1>Blog NO 1</h1>
           <p>Lorem ipsum dolor </p>
         </div>
@@ -54,24 +54,24 @@ const BlogDetail = () => {
           className={`row align-items-center justify-content-space-between ${style.blogMain}`}
         >
           <div
-            className={`'col-12 col-md-6 col-lg-6' ${style.headerContainer}`}
+            className={`col-12 col-md-6 col-lg-5 ${style.headerContainer}`}
           >
-            <div className={style.imgBlog}></div>
+            <img className={style.imgBlog} src="/Assets/images/3.jpeg"/>
           </div>
-          <div className="col-12 col-md-6 col-lg-6">
+          <div className={`col-12 col-md-6 col-lg-6 ${style.blogContent}`}>
             <h1>{blogTarget.length ? blogTarget[0].title : "Loading..."}</h1>
             <p>{blogTarget.length ? blogTarget[0].body : "Loading..."}</p>
           </div>
         </div>
         <div
-          className={`row flex-row-reverse align-items-center ${style.blogMain}`}
+          className={`row align-items-center flex-row-reverse justify-content-space-between ${style.blogMain}`}
         >
           <div
-            className={`'col-12 col-md-6 col-lg-6' ${style.headerContainer}`}
+            className={`col-12 col-md-6 col-lg-5 ${style.headerContainer}`}
           >
-            <div className={`${style.imgBlog} ${style.imgTow}`}></div>
+            <img className={style.imgBlog} src="/Assets/images/3.jpeg"/>
           </div>
-          <div className={`col-12 col-md-6 col-lg-6 ${style.textMain}`}>
+          <div className={`col-12 col-md-6 col-lg-6 ${style.blogContent}`}>
             <h1>{blogTarget.length ? blogTarget[0].title : "Loading..."}</h1>
             <p>{blogTarget.length ? blogTarget[0].body : "Loading..."}</p>
           </div>
