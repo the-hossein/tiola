@@ -4,8 +4,7 @@ import axios from 'axios';
 //stylesheet
 import style from './BlogsDetail.module.css';
 //icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 
 
 
@@ -36,7 +35,7 @@ const BlogDetail = () => {
         <div className={`'container-fluid' ${style.container}`}>
             <div>
                 <div className={`col-12 ${style.imageHeader}`} >
-                    <button onClick={()=> window.history.back()}><FontAwesomeIcon icon={faCaretLeft} />Blogs</button>
+                    <button onClick={()=> window.history.back()}><ArrowLeftIcon fontSize='large' />Blogs</button>
                     <h1>Blog NO 1</h1>
                     <p>Lorem ipsum dolor </p>
                 </div>
