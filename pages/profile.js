@@ -7,12 +7,21 @@ import Header from "../src/Components/header/Header";
 import UserProfile from "../src/Components/profile/UserProfile";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 import { notify } from "../src/tools/toast/toast";
+import { useRouter } from "next/dist/client/router";
 
 export default function Profile() {
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector(state =>  state.stateLang.lng);
  const {t}=useTranslation()
-
+  const router = useRouter()
+ useEffect(()=> {
+  const tokenLocal = JSON.parse(window.localStorage.getItem("userToken"));
+  console.log("hello", tokenLocal)
+  if(tokenLocal === null){
+    console.log(router, "hihi")
+    router.push({pathname: "/"})
+  }
+ }, [])
 
   return (
     <div>
