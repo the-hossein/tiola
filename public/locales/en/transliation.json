@@ -62,7 +62,7 @@
   "mirdamad": "mirdamad",
   "pending": "pending",
   "Completed": "Completed",
-  "editProfile": "edit Profile",
+  "editProfile": "Edit Profile",
   "profile": "profile",
   "remain": "remain",
   "delivery": "deliery order",
@@ -117,5 +117,5 @@
   "goCollection": " Go Collections Page",
   "noProduct": "The product you are looking for was not found. Visit the store page",
   "goShop": "Go Shop",
-  "pleaseWait":"please wait"
+  "pleaseWait": "please wait a moment"
 }

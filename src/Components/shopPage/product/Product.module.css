@@ -14,7 +14,7 @@
     width: 100%;
     height: 250px;
     object-fit: cover;
-    object-position: 40px 20%;
+    object-position: 0 20%;
 }
 .priceproduct{
     direction: var(--direction);
@@ -80,14 +80,7 @@
 .productPhoto:hover {
     border-radius: none;
 }
-@media (max-width: 1400px) {
-    .squarePhoto img {
-        width: 350px;
-        height: 250px;
-        object-fit: cover;
-        object-position: 0% 20%;
-    }
-}
+
 @media(max-width:992px) {
 
 

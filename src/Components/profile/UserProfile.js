@@ -9,12 +9,13 @@ import { fetchRequestApi } from "../../redux/checkexist/checkExistActin";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../tools/loader/Loader";
 import { useTranslation } from "react-i18next";
+import Placement from "../../tools/placement/Placement";
 
 const UserProfile = () => {
   // const register = useSelector(state=> state.stateRegister);
   const userid = useSelector((state) => state.stateRegister.userid);
   const dispatch = useDispatch();
-  const {t}=useTranslation()
+  const { t } = useTranslation();
   const existOpen = useSelector((state) => state.stateCheckExist);
   useEffect(() => {
     if (userid) {
@@ -29,12 +30,24 @@ const UserProfile = () => {
           <div className={style.messageExist}>
             <Loader />
           </div>
-        ) : existOpen.data ? (
-          <div className={style.messageExist}>
-            <p>{t("dontorder")}</p>
-          </div>
+        ) : existOpen.data.length!==0 ? (
+          <Placement text={t("dontorder")} />
         ) : (
-          <Stepper active={2} />
+          existOpen.data.map((item) => (
+            <>
+              <Stepper
+                active={
+                  item.state === 0
+                    ? 2
+                    : item.state === 4
+                    ? 3
+                    : 4
+                }
+              />
+           
+            </>
+          ))
+          
         )}
         <UserAction />
       </div>
