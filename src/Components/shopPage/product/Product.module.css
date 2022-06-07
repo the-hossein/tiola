@@ -11,10 +11,10 @@
 }
 
 .squarePhoto img {
-    width: 350px;
+    width: 100%;
     height: 250px;
     object-fit: cover;
-    object-position: 40px 20%;
+    object-position: 0 20%;
 }
 
 .moreText {
@@ -77,14 +77,7 @@
 .productPhoto:hover {
     border-radius: none;
 }
-@media (max-width: 1400px) {
-    .squarePhoto img {
-        width: 350px;
-        height: 250px;
-        object-fit: cover;
-        object-position: 0% 20%;
-    }
-}
+
 @media(max-width:992px) {
     .squarePhoto img {
         width: 300px;
