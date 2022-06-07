@@ -159,7 +159,7 @@ const EditProfile = () => {
                   }
                   alt="user profile"
                 />
-                <input
+                <input 
                   type="file"
                   id="userImage"
                   accept="image/png, image/jpeg,"
