@@ -28,7 +28,7 @@ const UserAddres = () => {
 
   return (
     <div className="row m-0">
-      <div className={`col-lg-6 col-md-6 col-12 overflow-hidden ${style.map}`}>
+      <div className={`col-lg-6 col-md-6 col-12 mb-3 overflow-hidden ${style.map}`}>
         <img src="/Assets/images/map.png" />
       </div>
       <div className="col-lg-6 col-md-6 col-12">
