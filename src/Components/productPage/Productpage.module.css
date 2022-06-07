@@ -8,7 +8,8 @@
 }
 
 .information h1 {
-    font-size: var(--xxl-font);
+    font-size: var(--veryLg-font);
+    
 }
 
 .readmore,
@@ -20,13 +21,14 @@
 .compatible {
     display: block;
     margin-top: 1rem;
-    font-size: var(--md-font);
+    font-size: var(--xs-font);
+    margin-bottom: 0.4rem;
 }
 
 .price {
-    font-size: var(--xl-font);
+    font-size: var(--xxl-font);
     display: block;
-    padding-bottom: 2rem;
+    padding-bottom: 1.3rem;
 }
 
 .productSlider {
@@ -54,7 +56,7 @@
 
 .similar {
     text-align: var(--float-left);
-    font-size: var(--oxx-font);
+    font-size: var(--veryLg-font);
 }
 
 .buttons {

@@ -17,9 +17,13 @@
     padding: 0.5rem 0;
     border-radius: var(--Product-Border-radius);
     margin: 0.5rem 0;
-    font-size: var(--lg-font) ;
-}
 
+   
+    font-size: var(--xl-font);
+}
+.payBtnEn,.addWatchEn{
+    padding: 0 0 0.5rem;
+}
 .addWatch {
     background-color: var(--light-pen);
     color: var(--dark-pen);

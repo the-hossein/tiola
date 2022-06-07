@@ -156,7 +156,7 @@ const registerCode = (code, num, lang, router) => {
       );
 
       console.log(registerCode);
-      if (registerCode[0].code === 200) {
+      if (registerCode[0].code === 200||registerCode[0].code === 201) {
         dispatch(checkOtpSuccess());
         dispatch(loginTrue());
         var text = "";

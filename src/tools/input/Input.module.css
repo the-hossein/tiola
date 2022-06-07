@@ -1,5 +1,6 @@
 .inputLabel {
     float: var(--float-left);
+    font-size: var(--md-font);
 }
 .darkText{
     color: var(--dark-pen);
@@ -11,12 +12,12 @@
 .input {
     text-align-last: var(--float-left);
     border: none;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
 }
 
 .input::placeholder{
     color: var(--lightGray-border);
-    font-size: var(--sm-font);
+    font-size: var(--xs-font);
 }
 .input:focus,.input:focus-visible{
     border: none !important;

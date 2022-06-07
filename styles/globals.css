@@ -5,7 +5,7 @@
   --darkGray-border: #343736;
   --lightGray-border: #707070;
   --border-bottom: 1px solid #cfcfcf;
-  --blue-pen: #93a8c9;
+  --blue-pen: #6a8eae;
   --medium-gray: #3F3F3B;
   --body-Color: #f2f2f2;
   --direction: rtl;
@@ -13,7 +13,7 @@
   --marginIcon: 0 0 0 1.5rem;
   --textAlign-right: right;
   --float-left: left;
-  --Product-Border-radius: 8px;
+  --Product-Border-radius: 10px;
   --red-pen: #c43131;
   --border-button: #c7c7c7;
   --verySmall-font: 7pt;
@@ -24,6 +24,7 @@
   --xl-font: 16pt;
   --xxl-font: 21pt;
   --oxx-font: 26pt;
+  --veryLg-font:30pt;
   --green-pen: #06745f;
   --greenLight-pen: #03c65e;
   --toastify-color-success: #05755d !important;

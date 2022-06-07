@@ -186,6 +186,7 @@ const ProductContent = ({ product }) => {
             arrowStatus={false}
             margin={20}
             heightImage={"82vh"}
+            border={true}
           />
         </div>
         <div className={`col-lg-8 col-xxl-7 col-12 ${style.information} mt-5 `}>

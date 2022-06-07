@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <>
       <div className={style.footer}>
-          {size > 500 ? (
+          {size > 768 ? (
             // <div className="col-12">
             //   <div className="row  justify-content-between align-items-center">
             //     <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>

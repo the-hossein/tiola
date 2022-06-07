@@ -14,7 +14,7 @@ const Comment = ({userName, score, commentText}) => {
     <>
       <div className={`d-flex flex-column justify-content-between ${Style.Commnet}`}>
         <div className="d-flex justify-content-between">
-          <span>{userName}</span>
+          <span className={Style.name}>{userName}</span>
           <span>{score*2}/10</span>
         </div>
         <span className={Style.rating}>
