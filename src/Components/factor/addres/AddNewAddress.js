@@ -22,11 +22,27 @@ import { ADD_ADDRESS, BASE_URL, DELETE_ADDRESS } from "../../../api/urls";
 const useStyle = makeStyles({
   applyFont: {
     fontFamily: "var(--font) !important"
+  },
+  postCode: {
+    fontFamily: "var(--font) !important",
+    border: "1px solid #707070",
+    width: "50%",
   }
 });
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { InputAdornment } from "@mui/material";
+
+
+
+
 const AddNewAddress = () => {
   const [newAddres, setNewAddres] = useState("");
+  const [ postCode, setPostCode ] = useState("");
   const classes = useStyle();
   const { t } = useTranslation();
   const state = useSelector((state) => state.stateFactor);
@@ -45,43 +61,54 @@ const AddNewAddress = () => {
     setNewAddres(e.target.value);
   };
 
-  const addAddres = (e) => {
+  const changePostCode = (e) => {
+    setPostCode(e.target.value);
+  }
 
-    dispatch(loadingAddress())
- 
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    myHeaders.append("Content-Type", "application/json");
-    console.log(state.addres);
-    var raw = JSON.stringify({
-      id: user.basketid,
-      address: `${newAddres}`,
-      userid: user.userid
-    });
-    console.log(e.target.value)
-    if (newAddres !== "") {
-      const addAddresUser = async () => {
-        console.log(raw);
-        const addStatus = await callApi(
-          BASE_URL + ADD_ADDRESS,
-          raw,
-          myHeaders,
-          "POST"
-        );
-        if (addStatus[0].code === 200) {
-          dispatch(getuserAddress(user.userid));
-     
-        }
-      };
-      addAddresUser();
-    } else {
-      dispatch(loadingAddresFalse())
-      if (lang === "fa") {
-        var text = "لطفا آدرس خود را وارد کنید";
+  const addAddres = (e) => {
+    if(postCode.length === 10){
+      dispatch(loadingAddress())
+   
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+      myHeaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({
+        id: user.basketid,
+        address: `${newAddres}`,
+        userid: user.userid,
+        postcode: postCode,
+      });
+      if (newAddres !== "") {
+        const addAddresUser = async () => {
+          console.log(raw);
+          const addStatus = await callApi(
+            BASE_URL + ADD_ADDRESS,
+            raw,
+            myHeaders,
+            "POST"
+          );
+          if (addStatus[0].code === 200) {
+            dispatch(getuserAddress(user.userid));
+          }
+        };
+        addAddresUser();
       } else {
-        text = "plase enter your addres";
+        dispatch(loadingAddresFalse())
+        if (lang === "fa") {
+          var text = "لطفا آدرس خود را وارد کنید";
+        } else {
+          text = "plase enter your addres";
+        }
+        notify(text, "error");
       }
-      notify(text, "error");
+    }else{
+      let textShow ;
+      if(lang === "fa"){
+        textShow = "لطفا کد پستی خود را وارد کنید."
+      }else{
+        textShow = "Please enter your post code."
+      }
+      notify(textShow, "error")
     }
   };
   return (
@@ -92,7 +119,17 @@ const AddNewAddress = () => {
         autoComplete="off"
         className={Style.inputContainer}
       >
-        <FormControl
+        <Accordion>
+        <AccordionSummary
+          expandIcon={<AddBoxOutlinedIcon sx={{ fontSize: 30, color: "#b5b5b5" }} />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>{t("addresPlaceHolder")}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          <FormControl
           sx={{ width: "100%", position: "relative" }}
           className={classes.applyFont}
         >
@@ -106,7 +143,22 @@ const AddNewAddress = () => {
             id="addAddres"
             style={{ backgroundColor: "#ffffff", color: "#000000" }}
           />
-          <Radio
+
+          <div className={Style.handlerContainer}>
+              <div className={Style.containerPostCode}>
+                <input 
+                  type='number'
+                  placeholder="Enter your post code"
+                  value={postCode}
+                  onChange={changePostCode}
+                  className={`${Style.postCode} ${postCode.length !== 10 && Style.postCodeError}`}
+                />
+                <span className={postCode.length !== 10 && Style.errorShowPost}>کد پستی شما باید 10 عدد باشد.</span>
+              </div>
+              <button type="button" onClick={addAddres}>Done</button>
+          </div>
+          
+          {/* <Radio
             checkedIcon={
               <AddBoxOutlinedIcon sx={{ fontSize: 30, color: "#b5b5b5" }} />
             }
@@ -122,8 +174,16 @@ const AddNewAddress = () => {
             className={
               lang === "en" ? Style.checkedRight : Style.checkedLeft
             }
-          />
+          /> */}
         </FormControl>
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+
+
+
+
+        
       </Box>
     </div>
   );
