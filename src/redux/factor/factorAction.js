@@ -123,7 +123,7 @@ const deleteAddresUser = (allAddress, id) => {
 };
 const getBasketDetails = (basketid) => {
   return (dispatch) => {
- try {
+
   const newls = localStorage.getItem("userToken");
   if (newls !== null) {
     const userToken = JSON.parse(newls);
@@ -133,6 +133,7 @@ const getBasketDetails = (basketid) => {
     dispatch(loaderFactorTrue());
 
     const basketDetails = async () => {
+     try {
       const details = await callApi(
         `${BASE_URL + GET_BASKET_DETAILS}?id=${basketid}`,
         "{}",
@@ -142,12 +143,14 @@ const getBasketDetails = (basketid) => {
       if (details[0].code === 200) {
         dispatch(addbasketDetails(details[0].data));
       }
+     } catch (error) {
+       
+       dispatch(addbasketDetails("failed"))
+     }
     };
     basketDetails();
   }
- } catch (error) {
-   dispatch(addbasketDetails("failed"))
- }
+
   };
 };
 const deletBasketLength=()=>{

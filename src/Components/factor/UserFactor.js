@@ -16,9 +16,12 @@ import { BASE_URL, GET_BASKET_DETAILS } from "../../api/urls";
 import Loader from "../../tools/loader/Loader";
 import ScreenLoader from "../../tools/screenLoader/ScreenLoader";
 import { notify } from "../../tools/toast/toast";
+import { useRouter } from "next/router";
+
 import Placement from "../../tools/placement/Placement";
 const UserFactor = () => {
   const { t } = useTranslation();
+  const router = useRouter();
   const state = useSelector((state) => state.stateRegister);
   const basket = useSelector((state) => state.stateFactor);
   const dispatch = useDispatch();
@@ -41,13 +44,16 @@ const UserFactor = () => {
       setBasketDatas(basket.details);
       setPreload(false);
     }
+  
   }, [state]);
   console.log(basket.allAddress);
   return (
     <section className={style.ContainerSection}>
       {!!basket ? (
-        <div className="container mt-4">
-          <>
+        basket.details === null ? (
+          <Placement text="اکانت شماپاک شده است مجدد ثبت نام کنید" />
+        ) : (
+          <div className="container mt-4">
             <FactorSection title={t("addres")} component={<UserAddres />} />
 
             <FactorSection
@@ -58,8 +64,8 @@ const UserFactor = () => {
                 )
               }
             />
-          </>
-        </div>
+          </div>
+        )
       ) : (
         <Placement text={t("failedfactor")} />
       )}

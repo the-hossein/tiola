@@ -23,6 +23,9 @@ const Menu = ({ backColor }) => {
   const exitHandler = () => {
     localStorage.removeItem("userToken");
     dispatch(loginFalse());
+    router.push({
+      pathname: "/"
+    });
     if (lang === "fa") {
       var text = "از حساب کاربری خود خارج شدید";
     } else {

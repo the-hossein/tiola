@@ -42,7 +42,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                 )}
 
                 <div
-                  className={`col-xl-4 col-lg-4 col-sm-4  d-flex flex-column ${
+                  className={`col-xl-4 col-lg-4 col-sm-4 mb-2 d-flex flex-column ${
                     reverse === true ? "align-items-end" : ""
                   } ${style.rectPhoto} `}
                 >
