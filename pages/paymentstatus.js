@@ -41,15 +41,12 @@ const PaymentStatus = () => {
           console.log("first");
           console.log(verify);
           if (verify[0].code === 200) {
-            if (
-              verify[0].data.code === 206 &&
-              verify[0].data.classId === null
-            ) {
+          
                 setStatusCode(verify[0].code);
 
               setStatus("success");
               setPreLoad(false);
-            }
+            
             // console.log(verify);
           } else {
             setStatusCode(verify[0].code);

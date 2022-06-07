@@ -95,7 +95,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xs-font", "10pt");
     root.style.setProperty("--md-font", "11pt");
     root.style.setProperty("--lg-font", "14pt");
-    root.style.setProperty("--xl-font", "16pt");
+    root.style.setProperty("--xl-font", "15pt");
     root.style.setProperty("--xxl-font", "21pt");
     root.style.setProperty("--oxx-font", "26pt");
     root.style.setProperty("--veryLg-font", "30pt");

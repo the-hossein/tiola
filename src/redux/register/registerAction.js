@@ -227,21 +227,20 @@ const userDataLoader = () => {
 };
 const getProfile = () => {
   return (dispatch) => {
-    try {
-      dispatch(userDataLoader());
-      ls = localStorage.getItem("userToken");
-      const userToken = JSON.parse(ls);
-      var phone = userToken.phone;
-      var token = userToken.token;
+    dispatch(userDataLoader());
+    ls = localStorage.getItem("userToken");
+    const userToken = JSON.parse(ls);
+    var phone = userToken.phone;
+    var token = userToken.token;
 
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      myHeaders.append("Content-Type", "application/json");
-      const profile = async () => {
-        var raw = JSON.stringify({
-          phonenumber: `${phone}`
-        });
-
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    myHeaders.append("Content-Type", "application/json");
+    const profile = async () => {
+      var raw = JSON.stringify({
+        phonenumber: `${phone}`
+      });
+      try {
         const user = await callApi(
           BASE_URL + GET_PROFILE,
           raw,
@@ -273,11 +272,12 @@ const getProfile = () => {
           localStorage.setItem("userToken", JSON.stringify(userToken));
         };
         basket();
-      };
-      profile();
-    } catch (error) {
-      localStorage.removeItem("userToken");
-    }
+      } catch {
+         localStorage.removeItem("userToken");
+        window.location.reload();
+      }
+    };
+    profile();
   };
 };
 
