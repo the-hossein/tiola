@@ -156,7 +156,7 @@ const registerCode = (code, num, lang, router) => {
       );
 
       console.log(registerCode);
-      if (registerCode[0].code === 200||registerCode[0].code === 201) {
+      if (registerCode[0].code === 200 || registerCode[0].code === 201) {
         dispatch(checkOtpSuccess());
         dispatch(loginTrue());
         var text = "";
@@ -227,53 +227,57 @@ const userDataLoader = () => {
 };
 const getProfile = () => {
   return (dispatch) => {
-    dispatch(userDataLoader());
-    ls = localStorage.getItem("userToken");
-    const userToken = JSON.parse(ls);
-    var phone = userToken.phone;
-    var token = userToken.token;
+    try {
+      dispatch(userDataLoader());
+      ls = localStorage.getItem("userToken");
+      const userToken = JSON.parse(ls);
+      var phone = userToken.phone;
+      var token = userToken.token;
 
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    myHeaders.append("Content-Type", "application/json");
-    const profile = async () => {
-      var raw = JSON.stringify({
-        phonenumber: `${phone}`
-      });
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+      myHeaders.append("Content-Type", "application/json");
+      const profile = async () => {
+        var raw = JSON.stringify({
+          phonenumber: `${phone}`
+        });
 
-      const user = await callApi(
-        BASE_URL + GET_PROFILE,
-        raw,
-        myHeaders,
-        "POST"
-      );
-      if (user[0].code === 200 && user[0].data !== null) {
-        console.log(user[0].data)
-        dispatch(userData(user[0].data));
-      }
-      const basket = async () => {
-        dispatch(userDataLoader());
-
-        const basketUser = await callApi(
-          `${BASE_URL + GET_BASKET}?UserId=${user[0].data.user.id}`,
-          "{}",
+        const user = await callApi(
+          BASE_URL + GET_PROFILE,
+          raw,
           myHeaders,
-          "GET"
+          "POST"
         );
-
-        if (basketUser[0].code === 200 && basketUser[0].data !== null) {
-          dispatch(basketid(basketUser[0].data.id));
-        } else {
-          dispatch(loginTrue());
-          dispatch(basketLoaderFalse());
-          dispatch(dataUserloaderFalse());
+        if (user[0].code === 200 && user[0].data !== null) {
+          console.log(user[0].data);
+          dispatch(userData(user[0].data));
         }
-        userToken["userid"] = user[0].data.user.id;
-        localStorage.setItem("userToken", JSON.stringify(userToken));
+        const basket = async () => {
+          dispatch(userDataLoader());
+
+          const basketUser = await callApi(
+            `${BASE_URL + GET_BASKET}?UserId=${user[0].data.user.id}`,
+            "{}",
+            myHeaders,
+            "GET"
+          );
+
+          if (basketUser[0].code === 200 && basketUser[0].data !== null) {
+            dispatch(basketid(basketUser[0].data.id));
+          } else {
+            dispatch(loginTrue());
+            dispatch(basketLoaderFalse());
+            dispatch(dataUserloaderFalse());
+          }
+          userToken["userid"] = user[0].data.user.id;
+          localStorage.setItem("userToken", JSON.stringify(userToken));
+        };
+        basket();
       };
-      basket();
-    };
-    profile();
+      profile();
+    } catch (error) {
+      localStorage.removeItem("userToken");
+    }
   };
 };
 

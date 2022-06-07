@@ -64,6 +64,14 @@ const BuyLists = ({ setBasketDatas }) => {
         if (status[0].code === 200) {
           setpreloadPay(false);
           window.location = status[0].data.requestBank;
+        } else {
+          if (lang === "fa") {
+            var text = "خطایی رخ داده";
+          } else {
+            var text = "An error occurred";
+          }
+          notify(text, "error");
+          setpreloadPay(false);
         }
       };
       apipayment();
