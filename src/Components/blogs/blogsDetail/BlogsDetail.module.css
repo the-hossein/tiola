@@ -1,36 +1,44 @@
-
 .container {
     direction: var(--direction) !important;
 }
 
-.container h1{
+.container h1 {
     font-size: var(--xxl-font);
 }
+
 .container p {
     font-size: var(--xl-font);
+}
+.container >div > img{
+    position: relative;
+    height: 70vh;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .imageHeader {
     direction: var(--direction);
     width: 100%;
-    height: 60vh;
     padding: 0 !important;
-    margin: 0 0 100px  !important;
-    background: url(/Assets/images/2.jpeg);
+    
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative !important;
+    position: absolute;
+    top: 95px;
+    left: 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     color: #fff;
     font-size: 26px;
+  
 }
 
-.imageHeader button {
-    padding: 1rem 2.5rem;
+/* .imageHeader button {
+    padding: 0.6rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,36 +53,66 @@
     top: 10px;
     left: 80px;
     color: #fff;
+    font-size: var(--xl-font);
+} */
+.imageHeader a,.imageHeader h1,.imageHeader p{
+
+    backdrop-filter: blur(5.4px);
+    background: rgb(255 255 255 / 21%);
 }
+.imageHeader a {
+    display: flex;
+    min-width: 114px;
+    border-radius: var(--Product-Border-radius);
+
+    direction: var(--direction);
+    padding: 0 1.5rem 0 0.5rem;
+    align-items: center;
+    /* backdrop-filter: blur(5.4px);
+    -webkit-backdrop-filter: blur(5.4px);
+    background: rgba(84, 84, 84, 0.15); */
+  
+    color: #fff;
+    font-size: var(--xl-font);
+}
+
 .imageHeader button svg {
     font-size: 2rem;
 }
+
 .imageHeader h1 {
     padding: 1rem 2.5rem;
-    background: rgba(84, 84, 84, 0.15);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.4px);
-    -webkit-backdrop-filter: blur(5.4px);
-    margin: 0 150px;
+    /* background: rgba(84, 84, 84, 0.15); */
+    border-radius: var(--Product-Border-radius);
+font-size: var(--veryLg-font);
+    min-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    /* backdrop-filter: blur(5.4px); */
+    margin: 1rem 0;
 }
+
 .imageHeader p {
-    padding: 1rem 2.5rem;
-    background: rgba(84, 84, 84, 0.15);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.4px);
-    -webkit-backdrop-filter: blur(5.4px);
-    margin: 0 150px;
-    margin-top: 20px;
+    padding: 0.3rem 2.5rem;
+    /* background: rgba(84, 84, 84, 0.15); */
+    border-radius: var(--Product-Border-radius);
+    font-size: var(--md-font);
+    text-align: center;
+    min-width: 311px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    /* backdrop-filter: blur(5.4px); */
+    margin: 0;
 }
+
 .blogMain {
     margin: 50px 0 180px;
 }
-.imgBlog:hover{
-    border-radius: 10px;
+
+.imgBlog:hover {
+    border-radius: 0;
 }
-.imgBlog{
+
+.imgBlog {
     width: 60%;
     height: 630px;
     /* height: %; */
@@ -83,38 +121,51 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 400px 400px 10px 10px;
-    transition: all .2s linear;
+    transition-duration: 0.6s;
+    transition-timing-function: linear;
+
 }
+
 .imgTow {
-    float: var( --textAlign-right);
+    float: var(--textAlign-right);
 }
+
 .textMain {
     display: flex;
     flex-direction: column;
     /* justify-content: end; */
 }
-.blogMain h1{
+
+.blogMain h1 {
     margin-bottom: 2rem;
 }
+/* 
 @media (max-width: 650px) {
-    .imageHeader p, .imageHeader h1 , .imageHeader button{
+
+    .imageHeader p,
+    .imageHeader h1,
+    .imageHeader button {
         display: block;
         padding: 5px 15px;
         font-size: 15pt;
         margin: 10px auto;
     }
-    .imgBlog{ 
+
+    .imgBlog {
         width: 100%;
     }
+
     .imageHeader button {
         left: 10px;
     }
+
     .blogMain {
         margin: 50px 0;
     }
 }
+
 @media (max-width: 780px) {
-    .blogMain h1{
+    .blogMain h1 {
         margin-top: 3rem;
     }
 }
@@ -123,4 +174,20 @@
     .imageHeader {
         height: 90vh;
     }
+} */
+@media(max-width:500px){
+    .imageHeader a{
+        font-size: var(--lg-font);
+    }
+    .imageHeader h1{
+        font-size: var(--oxx-font);
+        min-width: 311px;
+    }
+  
+}
+@media(max-width:380px){
+  .imageHeader{
+      left: 26px;
+  }
+  
 }

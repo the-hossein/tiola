@@ -8,3 +8,6 @@
     left: 10%;
     bottom: 46px;
 }
+.collectionName button{
+  cursor: none;
+}

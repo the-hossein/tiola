@@ -116,5 +116,6 @@
   "noCollection": "The collection you are looking for could not be found, see other collections",
   "goCollection": " Go Collections Page",
   "noProduct": "The product you are looking for was not found. Visit the store page",
-  "goShop": "Go Shop"
+  "goShop": "Go Shop",
+  "pleaseWait":"please wait"
 }
