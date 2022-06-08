@@ -29,7 +29,7 @@ const ExploreMain = ({ data }) => {
   const params = new URLSearchParams(search);
   // bar
   var idSearching = params.get("search");
-
+console.log(data)
   const [targetSearch, setTargetSearch] = useState([]);
 
   useEffect(() => {
@@ -39,7 +39,6 @@ const ExploreMain = ({ data }) => {
     //   setGetItem(searching.items)
     // }
     console.log(getItem);
-
 
     setTargetSearch(data.filter((item) => item.title.includes(idSearching)));
   }, []);
@@ -66,8 +65,7 @@ const ExploreMain = ({ data }) => {
   }));
 
   const fetchMoreData = () => {
-    setGetItem(data.slice(0, getItem.length +20));
-   
+    setGetItem(data.slice(0, getItem.length + 20));
   };
 
   return (
@@ -85,7 +83,6 @@ const ExploreMain = ({ data }) => {
             </div>
           }
         >
-          
           {getItem.length > 0 && (
             <Masonry
               columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
@@ -98,7 +95,7 @@ const ExploreMain = ({ data }) => {
                         <Link href={`/product/${product.id}`}>
                           <div className={style.showProduct}>
                             <img
-                              src={product.imageFile1.filePath}
+                              src={product.explorFile.filePath}
                               alt="product"
                             />
                             <p className={style.parag}>
@@ -111,13 +108,13 @@ const ExploreMain = ({ data }) => {
                   ))
                 : getItem.map(
                     (product, index) =>
-                      product.imageFile1.confirmed && (
+                      product.explorFile.confirmed && (
                         <Item key={product.id}>
                           <Link href={`/product/${product.id}`}>
                             <a>
                               <div className={style.showProduct}>
                                 <img
-                                  src={product.imageFile1.filePath}
+                                  src={product.explorFile.filePath}
                                   alt="product"
                                 />
                                 <p className={style.parag}>
