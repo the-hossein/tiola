@@ -107,10 +107,18 @@ const AddNewAddress = () => {
       }
     }else{
       let textShow ;
-      if(lang === "fa"){
-        textShow = "لطفا کد پستی خود را وارد کنید."
+      if(postCode.length === 0){
+        if(lang === "fa"){
+          textShow = "لطفا کد پستی خود را وارد کنید.";
+        }else{
+          textShow = "Please enter your post code.";
+        }
       }else{
-        textShow = "Please enter your post code."
+        if(lang === "fa"){
+          textShow =  "کد پستی باید 10 رقم باشد";
+        }else{
+          textShow = "Postcode must be 10 digits";
+        }
       }
       notify(textShow, "error")
     }
@@ -150,7 +158,7 @@ const AddNewAddress = () => {
 
           <div className={Style.handlerContainer}>
               <div className={Style.containerPostCode}>
-                <span className={postCode.length !== 10 && Style.errorShowPost}>{t("errorPostCode")}</span>
+                <span className={postCode.length !== 10 && Style.errorShowPost}>*{t("errorPostCode")}</span>
                 <input 
                   type='number'
                   placeholder="Enter your post code"
