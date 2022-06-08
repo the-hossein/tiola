@@ -31,8 +31,27 @@ import {
 } from "../../../api/urls";
 import { notify } from "../../../tools/toast/toast";
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { InputAdornment } from "@mui/material";
+
+
 const useStyle = makeStyles({
   applyFont: {
+    fontFamily: "var(--font) !important",
+    direction: "var(--direction) !important"
+  },
+  icon: {
+  },
+  open : {
+    transform: "translateX()",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "8px",
     fontFamily: "var(--font) !important"
   }
 });
@@ -45,6 +64,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
   const lang = useSelector((state) => state.stateLang.lng);
   const user = useSelector((state) => state.stateRegister);
   const [addresValue, setAddresvalue] = useState(data.address);
+  const [postCode, setPostCode] = useState(data.postCode);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
 
@@ -82,38 +102,58 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
     choseAddress();
   };
   const updateHandler = (e) => {
-    dispatch(loadingAddress());
-
-    const editApi = async () => {
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      myHeaders.append("Content-Type", "application/json");
-
-      var raw = JSON.stringify({
-        id: data.id,
-        address: addresValue,
-        userid: user.userid
-      });
-      console.log(raw);
-      const edited = await callApi(
-        `https://api.tiolastyle.com/api/v1/User/UpdateAddress`,
-        raw,
-        myHeaders,
-        "POST"
-      );
-
-      if (edited[0].code == 200) {
-        dispatch(loadingAddresFalse());
-        setEdit(false);
-        if (lang === "fa") {
-          var text = "آدرس ویرایش شد";
-        } else {
-          text = "edited addres";
+    if(postCode.length === 10){
+      dispatch(loadingAddress());
+  
+      const editApi = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        myHeaders.append("Content-Type", "application/json");
+  
+        var raw = JSON.stringify({
+          id: data.id,
+          address: addresValue,
+          userid: user.userid,
+          postCode: postCode
+        });
+        console.log(raw);
+        const edited = await callApi(
+          `https://api.tiolastyle.com/api/v1/User/UpdateAddress`,
+          raw,
+          myHeaders,
+          "POST"
+        );
+  
+        if (edited[0].code == 200) {
+          dispatch(loadingAddresFalse());
+          dispatch(getuserAddress(user.userid));
+          setEdit(false);
+          if (lang === "fa") {
+            var text = "آدرس ویرایش شد";
+          } else {
+            text = "edited addres";
+          }
+          notify(text, "success");
         }
-        notify(text, "success");
+      };
+      editApi();
+    }else{
+      let textShow ;
+      if(lang === "fa"){
+        if(postCode.length === 0){
+          textShow = "لطفا کد پستی خود را وارد کنید."
+        }else {
+          textShow = "کد پستی باید 10 رقم باشد"
+        }
+      }else{
+        if(postCode.length === 0){
+          textShow = "Please enter your post code."
+        }else {
+          textShow = "Postcode must be 10 digits"
+        }
       }
-    };
-    editApi();
+      notify(textShow, "error")
+    }
   };
   const changeAddres = (e) => {
     dispatch(getAddres(e.target.value));
@@ -125,21 +165,6 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
   if (typeof data !== "undefined") {
     return (
       <div>
-        <EditBtn
-          text={
-            !edit ? (
-              <span onClick={() => setEdit(true)}>{t("edit")}</span>
-            ) : (
-              <span onClick={updateHandler} className={Style.submit}>
-                {t("submit")}
-              </span>
-            )
-          }
-        />
-        <EditBtn
-          onclick={deleteAddress}
-          text={<DeleteIcon sx={{ fontSize: 17 }} />}
-        />
 
         <Box
           component="form"
@@ -147,24 +172,15 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
           autoComplete="off"
           className={Style.inputContainer}
         >
-          <FormControl
-            sx={{ width: "100%", position: "relative" }}
-            className={classes.applyFont}
-          >
-            <OutlinedInput
-              onChange={changeAddres}
-              placeholder={t("addresPlaceHolder")}
-              value={addresValue}
-              readOnly={edit ? false : true}
-              multiline={edit ? true : false}
-              style={
-                edit
-                  ? { backgroundColor: "#ffffff", color: "#000000" }
-                  : { backgroundColor: "#ffffff", color: "#707070" }
-              }
-              className={`${Style.addresinput} ${classes.applyFont}`}
-              id={id}
-            />
+          {/* new code */}
+          <Accordion className={classes.applyFont}>
+            <AccordionSummary
+              // expandIcon={
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              className={classes.open}
+            >
+              <ExpandMoreIcon className={classes.icon} />
             <Radio
               checkedIcon={checkicon}
               icon={icon}
@@ -175,7 +191,64 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
               inputProps={{ "aria-label": `${id}` }}
               className={lang === "en" ? Style.checkedRight : Style.checkedLeft}
             />
+              <Typography className={classes.applyFont}>{addresValue}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+          <Typography className={classes.applyFont}>
+          <FormControl
+            sx={{ width: "100%", position: "relative" }}
+            className={classes.applyFont}
+          >
+            <OutlinedInput
+              onChange={changeAddres}
+              placeholder={t("addresPlaceHolder")}
+              value={addresValue}
+              // postCode
+              readOnly={edit ? false : true}
+              multiline={edit ? true : false}
+              style={
+                edit
+                  ? { backgroundColor: "#ffffff", color: "#000000" }
+                  : { backgroundColor: "#ffffff", color: "#707070" }
+              }
+              className={`${Style.addresinput} ${classes.applyFont}`}
+              id={id}
+            />
+            <OutlinedInput
+              onChange={(e)=> setPostCode(e.target.value)}
+              placeholder={"Enter your post code"}
+              value={postCode}
+              readOnly={edit ? false : true}
+              multiline={edit ? true : false}
+              style={
+                edit
+                  ? { backgroundColor: "#ffffff", color: "#000000" }
+                  : { backgroundColor: "#ffffff", color: "#707070" }
+              }
+              className={`${Style.addresinput} ${classes.applyFont}`}
+              id={id}
+            />
+            <div>
+            <EditBtn
+              text={
+                !edit ? (
+                  <span onClick={() => setEdit(true)}>{t("edit")}</span>
+                ) : (
+                  <span onClick={updateHandler} className={Style.submit}>
+                    {t("submit")}
+                  </span>
+                )
+              }
+            />
+            <EditBtn
+              onclick={deleteAddress}
+              text={<DeleteIcon sx={{ fontSize: 17 }} />}
+            />
+            </div>
           </FormControl>
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
         </Box>
       </div>
     );

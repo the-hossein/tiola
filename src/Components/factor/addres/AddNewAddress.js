@@ -27,6 +27,10 @@ const useStyle = makeStyles({
     fontFamily: "var(--font) !important",
     border: "1px solid #707070",
     width: "50%",
+  },
+  container: {
+    fontFamily: "var(--font) !important",
+    direction: 'var(--direction)'
   }
 });
 
@@ -119,13 +123,13 @@ const AddNewAddress = () => {
         autoComplete="off"
         className={Style.inputContainer}
       >
-        <Accordion>
+        <Accordion className={classes.container}>
         <AccordionSummary
           expandIcon={<AddBoxOutlinedIcon sx={{ fontSize: 30, color: "#b5b5b5" }} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>{t("addresPlaceHolder")}</Typography>
+          <Typography className={classes.applyFont}>{t("addresPlaceHolder")}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -146,6 +150,7 @@ const AddNewAddress = () => {
 
           <div className={Style.handlerContainer}>
               <div className={Style.containerPostCode}>
+                <span className={postCode.length !== 10 && Style.errorShowPost}>{t("errorPostCode")}</span>
                 <input 
                   type='number'
                   placeholder="Enter your post code"
@@ -153,9 +158,8 @@ const AddNewAddress = () => {
                   onChange={changePostCode}
                   className={`${Style.postCode} ${postCode.length !== 10 && Style.postCodeError}`}
                 />
-                <span className={postCode.length !== 10 && Style.errorShowPost}>کد پستی شما باید 10 عدد باشد.</span>
               </div>
-              <button type="button" onClick={addAddres}>Done</button>
+              <button type="button" onClick={addAddres}>{t("done")}</button>
           </div>
           
           {/* <Radio
