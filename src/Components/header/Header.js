@@ -202,7 +202,7 @@ const Header = ({ backColor }) => {
                   onClick={openMenu}
                 /> */}
                 {menuBar && <Menu backColor={backColor} />}
-                <div className={style.menuDir}>
+                <div>
                   <Link href="/">
                     <a className={router.pathname === "/" ? style.active : ""}>
                       {t("home")}
