@@ -87,7 +87,7 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
 
   return (
     <>
-      {console.log(data)}
+     
       <div className={style.RowProduct}>
         {loading && (
           <img
