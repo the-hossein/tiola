@@ -1,5 +1,5 @@
 .container {
-    direction: ltr;
+    direction: var(--direction);
     min-height: 100vh;
     /* background: url("/Assets/images/5.jpeg"); */
     background-position: center;
@@ -43,6 +43,7 @@
     align-items: flex-end;
     margin-top: 75px;
     z-index: 50 !important;
+    direction: ltr !important;
 }
 .address h1 {
     margin-bottom: 2rem;
