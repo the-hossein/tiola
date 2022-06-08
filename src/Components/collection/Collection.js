@@ -19,9 +19,9 @@ const Collection = ({ dir }) => {
                 image1="/Assets/images/4.jpg"
                 image2="/Assets/images/10.jpg"
                 content={lang==="fa"?
-                "اینجا هر رگال مخصوص یک رنگه و هر رنگ الهام گرفته از یک شهر در گوشه ای از این دنیاست.قدم زدن بین رگالها مثل یه سفر دور دنیای کوچک میمونه.وقتی میری سفر همه چیزت شبیه به مقصدت میشه.خلق و خو.حال و هوا حتی لباسهای.رگال گردی ای یعنی قدم زدن بین زیبایی های کل جهان.پس بریم رگال گردی"
+                "تیولا رگال‌های مختلفی دارد که هر رگال مخصوص یک رنگ است. هر کدام از مدل‌ها ویژگی خاصی دارد. با رگال گردی می‌توانید بهترین انتخاب خودتان و داشته باشید. "
                 :
-                `Here, each regal is for one color and each color is inspired by a city in a corner of this world. Walking between regals is like a journey around a small world. When you go on a journey, everything becomes like your destination. Mood. Mood Even clothes. Regular means walking among the beauties of the whole world. So let\'s go regal`}
+                `Tiola has different regals\, each regalia is specific to one color. Each model has a special feature. You can have your best choice with Regal Gerdi.`}
                 color="exapmle"
                 title={t("collection")}
               />
@@ -32,14 +32,18 @@ const Collection = ({ dir }) => {
                 title={t("shop")}
                 content={
                   lang === "fa"
-                    ? "این فروشگاه تیولاست.پر از محصولاتی که ما تلاش کردیم شما با داشتن اونها احساس بهتری نسبت به زیبایی خودتون داشته باشید.خرید کردن به آدم اعتماد به نفس میده و اضطراب اون رو کم می‌کنه . همین باعث میشه احساس آرامش بیشتری داشته باشی.مخصوصا اگر این خرید برای زیبایی باشه.چه زیبایی خودت چه هدیه دادن زیبایی به دیگران.پس بریم فروشگاه."
-                    : `This store is full of products that we have tried to make you feel better about your beauty. Shopping gives a person confidence and reduces anxiety. This will make you feel more relaxed, especially if this purchase is for beauty. What is your own beauty or giving beauty to others. So let\'s go to the store.,`
+                    ? `فروشگاه تیولا پر از مدل‌های متنوعی است که با هر سلیقه‌ای می‌توانید از بین آن‌ها انتخاب کنید. هر مدل ویژگی منحصر به فرد خودش را دارد. اگر دنبال یک مدل خاص هستید\، می‌توانید به فروشگاه تیولا بروید و بهترین انتخاب را داشته باشید.`
+                    : `Tiola store is full of various models that you can choose from with any taste. Each model has its own unique feature. If you are looking for a special model\, you can go to Tiola store and have the best choice.`
                 }
               />
               <HardCollection
                 image={"/Assets/images/9.jpg"}
                 title={t("explore")}
-                content={t("messageExplore")}
+                content={
+                  lang === 'fa' 
+                    ? `ویترین پر از مدل‌های متنوع است. اگر انتخاب طرح دلخواه برایتان سخت است. پیشنهاد می‌کنیم به ویترین تیولا بروید و از بین طرح‌های مختلف\، طرح مناسب و با سلیقه خودتان پیدا کنید.`
+                    : `The explore is full of various models. If it is difficult for you to choose the desired design. We suggest you go to the Tiola explore and find a suitable and tasteful design among the various designs.`
+                }
               />
             </div>
           </div>

@@ -32,9 +32,10 @@ i18n
   });
 
 function MyApp({ Component, pageProps }) {
+  const [network, setNetwork] = useState();
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
-
+  
   useEffect(() => {
     if (router.pathname === "/collections/[collectionname]") {
       if (pageProps.collection[0].data.length !== 0) {
@@ -63,7 +64,6 @@ function MyApp({ Component, pageProps }) {
         options={{ showSpinner: false }}
         color="#6a8eae"
       />
-
       <Component {...pageProps} />
       <ToastContainer
         style={{ width: "35%", padding: "3px", top: "71px" }}
