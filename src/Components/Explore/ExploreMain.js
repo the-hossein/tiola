@@ -24,7 +24,6 @@ const ExploreMain = ({ data }) => {
   const searching = useSelector((state) => state.stateSearch);
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.stateLang.lng);
-  console.log(data);
 
   const search = window.location.search; // could be '?foo=bar'
   const params = new URLSearchParams(search);
@@ -41,8 +40,6 @@ const ExploreMain = ({ data }) => {
     // }
     console.log(getItem);
 
-    console.log(idSearching);
-    console.log(searching);
 
     setTargetSearch(data.filter((item) => item.title.includes(idSearching)));
   }, []);
