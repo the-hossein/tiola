@@ -12,6 +12,7 @@ import axios from "axios";
 import { getProfile } from "../../redux/register/registerAction";
 import { useTranslation } from "react-i18next";
 import { BASE_URL, REMOVE_USER_IMAGE } from "../../api/urls";
+import { notify } from "../toast/toast";
 
 const EditProfile = () => {
   const router = useRouter();
@@ -53,20 +54,52 @@ const EditProfile = () => {
     console.log(typeof userFName === "undefined")
     console.log(typeof userLName)
     console.log(userBirthday)
+    let textShow ;
     if(typeof userBirthday !== "undefined" && typeof userLName !== "undefined" && typeof userFName !== "undefined"){
-      console.log("hello world")
-      RequestProfile(
-        userToken,
-        userData.userid,
-        userFName,
-        userLName,
-        userBirthday,
-        gender,
-        imageId,
-        router,
-        lang,
-        dispatch
-      );
+      if(userFName === ""){
+        if(lang === "fa"){
+          textShow = "لطفا نام خود را وارد کنید";
+        }else{
+          textShow = "Please enter your name";
+        }
+        notify(textShow, "warning")
+      }else if(userLName === "" ){
+        if(lang === "fa"){
+          textShow = "لطفا نام خانوادگی خود را وارد کنید";
+        }else{
+          textShow = "Please enter your last name";
+        }
+        notify(textShow, "warning");
+      }else if(userBirthday === "" ){
+        if(lang === "fa"){
+          textShow = "لطفا تاریخ تولد خود را وارد کنید";
+        }else{
+          textShow = "Please enter your date of birth";
+        }
+        notify(textShow, "warning");
+        }else {
+          RequestProfile(
+            userToken,
+            userData.userid,
+            userFName,
+            userLName,
+            userBirthday,
+            gender,
+            imageId,
+            router,
+            lang,
+            dispatch
+          );
+        }
+    }else{
+      console.log("worked allllllllli")
+      if(lang === "fa"){
+        textShow = "اطلاعات حساب کاربری خود را کامل وارد کنید"
+      }else{
+        textShow = "Enter your full account information"
+      }
+      notify(textShow, "error");
+      
     }
   };
 
