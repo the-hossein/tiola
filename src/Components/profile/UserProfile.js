@@ -30,24 +30,16 @@ const UserProfile = () => {
           <div className={style.messageExist}>
             <Loader />
           </div>
-        ) : existOpen.data.length!==0 ? (
+        ) : existOpen.data.length !== 0 ? (
           <Placement text={t("dontorder")} />
         ) : (
           existOpen.data.map((item) => (
             <>
               <Stepper
-                active={
-                  item.state === 0
-                    ? 2
-                    : item.state === 4
-                    ? 3
-                    : 4
-                }
+                active={item.state === 0 ? 2 : item.state === 4 ? 3 : 4}
               />
-           
             </>
           ))
-          
         )}
         <UserAction />
       </div>
