@@ -22,7 +22,7 @@
 
     background-color: var(--light-pen);
     color: #000;
-    border: 1px solid var(--darkGray-border);
+    border: none;
 }
 
 .lightBtn button {

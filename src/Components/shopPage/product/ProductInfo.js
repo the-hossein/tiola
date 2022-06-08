@@ -24,7 +24,7 @@ const ProductInfo = ({ more, data }) => {
             <span className={style.priceproduct}>
               {lang.lng === "fa"
                 ? persianNumber(data.price) + " " + t("t")
-                :  `${data.price} t`}
+                : `${data.price} t`}
             </span>
             <span className={style.rating}>
               <Rating name="product Rate" value={data.rate} readOnly />
@@ -43,7 +43,9 @@ const ProductInfo = ({ more, data }) => {
             }`}
           >
             <span>{lang.lng === "fa" ? data.title : data.titleEn}</span>
-            <span>{t("stock") + ": " + data.stock}</span>
+            <span>{`${t("stock")}: ${
+              lang.lng === "fa" ? persianNumber(data.stock) : data.stock
+            }`}</span>
             <span>
               {lang.lng === "fa"
                 ? data.collection.title

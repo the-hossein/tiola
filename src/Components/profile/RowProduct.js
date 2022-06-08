@@ -117,7 +117,7 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
           )}
         </div>
         <div className={style.status}>
-          <span>{close ? `${t("stock")}: ${data.stock}` : data.isFinish===true?t("Completed"):t("Pendding")}</span>
+          <span>{close ? `${t("stock")}: ${lang==="fa"?persianNumber(data.stock):data.stock}` : data.isFinish===true?t("Completed"):t("Pendding")}</span>
           {close ? (
             <AddCircleIcon
               sx={{ cursor: "pointer" }}
