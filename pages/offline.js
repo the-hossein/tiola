@@ -27,9 +27,7 @@ export default function Offline() {
          <Placement text={t("offlineText")}/>
         </main>
   
-      <footer>
-        <Footer />
-      </footer>
+ 
     </div>
   );
 }
