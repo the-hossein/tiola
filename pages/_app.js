@@ -32,15 +32,20 @@ i18n
   });
 
 function MyApp({ Component, pageProps }) {
+  const [network, setNetwork] = useState();
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
-  if(typeof window !=="undefined"){
-    console.log(window.navigator.onLine)
-    if (window.navigator.onLine === false) {
-      router.push({ pathname: "/offline" });
-    }
-  }
+  
   useEffect(() => {
+    if(router.pathname !== "/offline"){
+      if (window.navigator.onLine === false ) {
+          router.push({ pathname: "/offline" });
+        }
+      }else{
+        if(window.navigator.onLine === true){
+          router.push({ pathname: "/" });
+        }
+      }
     if (router.pathname === "/collections/[collectionname]") {
       if (pageProps.collection[0].data.length !== 0) {
         document
@@ -68,7 +73,6 @@ function MyApp({ Component, pageProps }) {
         options={{ showSpinner: false }}
         color="#6a8eae"
       />
-
       <Component {...pageProps} />
       <ToastContainer
         style={{ width: "35%", padding: "3px", top: "71px" }}

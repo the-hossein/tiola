@@ -46,9 +46,9 @@ const RequestProfile = (
   } else {
     let textShow;
     if (lang === "fa") {
-      textShow = "فرم ها را کامل پر کنید";
+      textShow = "اطلاعات حساب کاربری خود را کامل وارد کنید";
     } else {
-      textShow = "please completed forms";
+      textShow = "Enter your full account information";
     }
     notify(textShow, "warning");
   }
