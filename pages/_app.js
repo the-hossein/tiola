@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import PopUp from "../src/tools/popup/PopUp";
-import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
+
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
@@ -37,15 +37,6 @@ function MyApp({ Component, pageProps }) {
   const [showChild, setshowChild] = useState(false);
   
   useEffect(() => {
-    if(router.pathname !== "/offline"){
-      if (window.navigator.onLine === false ) {
-          router.push({ pathname: "/offline" });
-        }
-      }else{
-        if(window.navigator.onLine === true){
-          router.push({ pathname: "/" });
-        }
-      }
     if (router.pathname === "/collections/[collectionname]") {
       if (pageProps.collection[0].data.length !== 0) {
         document

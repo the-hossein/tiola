@@ -20,7 +20,7 @@ import { query } from "../../redux/searchProduct/searchAction";
 
 const ExploreMain = ({ data }) => {
   const [size, setSize] = useState(0);
-  const [getItem, setGetItem] = useState({});
+  const [getItem, setGetItem] = useState(data.slice(0, 10));
   const searching = useSelector((state) => state.stateSearch);
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.stateLang.lng);
@@ -33,8 +33,8 @@ const ExploreMain = ({ data }) => {
   const [targetSearch, setTargetSearch] = useState([]);
 
   useEffect(() => {
-    setGetItem(data.slice(0, 10));
     // dispatch(query(data))
+
     // if(searching.items.length){
     //   setGetItem(searching.items)
     // }
@@ -66,7 +66,8 @@ const ExploreMain = ({ data }) => {
   }));
 
   const fetchMoreData = () => {
-    setGetItem(data.slice(0, getItem.length + 10));
+    setGetItem(data.slice(0, getItem.length +20));
+   
   };
 
   return (
@@ -74,7 +75,7 @@ const ExploreMain = ({ data }) => {
       <Box sx={{ width: "auto" }}>
         <InfiniteScroll
           style={{ overflow: "hidden" }}
-          dataLength={data.length}
+          dataLength={getItem.length}
           next={fetchMoreData}
           hasMore={getItem.length === data.length ? false : true}
           endMessage=""
@@ -84,7 +85,8 @@ const ExploreMain = ({ data }) => {
             </div>
           }
         >
-          {data.length > 0 && (
+          
+          {getItem.length > 0 && (
             <Masonry
               columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
               spacing={2}
@@ -107,7 +109,7 @@ const ExploreMain = ({ data }) => {
                       </a>
                     </Item>
                   ))
-                : data.map(
+                : getItem.map(
                     (product, index) =>
                       product.imageFile1.confirmed && (
                         <Item key={product.id}>
