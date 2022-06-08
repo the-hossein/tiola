@@ -69,7 +69,7 @@ const AboutUsTiola = () => {
               feeling. It is there that an idea is formed in our mind and a
               thousand times more force is gathered in our whole being, we rise
               and create a fundamental change, for ourselves and for the life we
-              love. This was exactly the starting point for Tiola's team. You
+              love. This was exactly the starting point for Tiola&apos;s team. You
               see the world you have now and you enjoy seeing it. An eternal and
               unrepeatable beauty that needed to happen to achieve many things
               and change the fate of the Tiola team forever. Even the same text

@@ -73,19 +73,16 @@ const UserAction = () => {
           </div>
         ) : (
           orderHistory.data.map((item) => (
-            <RowProduct key={Math.random()} statusText="completed" />
+            <RowProduct
+              key={item.id}
+              close={true}
+              removeId={item.id}
+              data={item.product}
+              userId={user.userid}
+              loading={watchList.preload}
+              statusText="completed"
+            />
           ))
-        )}
-        {orderHistory.data.length ? (
-          <SecondlyButton
-            text={t("viewMore")}
-            onClick={() => console.log("worked")}
-          />
-        ) : (
-          <SecondlyButton
-            text={t("descoverMore")}
-            onclick={() => router.push({ pathname: `/shop` })}
-          />
         )}
       </div> */}
     </div>

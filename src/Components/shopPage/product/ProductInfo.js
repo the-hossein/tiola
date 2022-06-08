@@ -21,10 +21,10 @@ const ProductInfo = ({ more, data }) => {
               lang.lng === "fa" && "align-items-end"
             }`}
           >
-            <span>
+            <span className={style.priceproduct}>
               {lang.lng === "fa"
                 ? persianNumber(data.price) + " " + t("t")
-                : data.price + " " + t("t")}
+                :  `${data.price} t`}
             </span>
             <span className={style.rating}>
               <Rating name="product Rate" value={data.rate} readOnly />

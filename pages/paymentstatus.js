@@ -75,7 +75,7 @@ const PaymentStatus = () => {
         {preLoad ? (
           <>
             <p style={{ marginTop: "2rem", textAlign: "center" }}>
-              لطفا چند لحظه منتظر بمانید
+        {t("pleaseWait")}
             </p>
             <Loader />
           </>
