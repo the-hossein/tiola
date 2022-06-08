@@ -118,7 +118,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
         });
         console.log(raw);
         const edited = await callApi(
-          `https://api.tiolastyle.com/api/v1/User/UpdateAddress`,
+          BASE_URL + UPDATE_ADDRESS,
           raw,
           myHeaders,
           "POST"
