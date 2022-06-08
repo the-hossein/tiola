@@ -8,7 +8,9 @@
     margin-bottom: 2rem;
     width: 60%;
 }
-
+.container strong{
+    font-size: var(--lg-font);
+}
 .container span {
     width: 100% !important;
     height: 100% !important;
@@ -20,13 +22,12 @@
     padding: 0.5rem 1rem;
     width: 183px;
     margin-bottom: 2rem;
+    font-size: var(--md-font);
     margin: 1rem 0.5rem;
     border-radius: 8px;
 }
 
-.hi {
-    color: red;
-}
+
 
 @media(max-width:390px) {
     .container button {

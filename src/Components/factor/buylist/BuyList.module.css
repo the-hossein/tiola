@@ -76,7 +76,7 @@
 .Mbrow ul {
     width: fit-content;
     list-style-type: none;
-
+min-width: 160px;
     margin: 0;
 }
 

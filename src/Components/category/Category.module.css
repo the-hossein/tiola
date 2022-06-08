@@ -4,6 +4,7 @@
 } */
 .CategoryPhoto img {
     object-fit: cover;
+    object-position: 0 14%;
     width: 100%;
     height: 250px;
     border-radius: var(--Product-Border-radius);

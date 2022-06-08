@@ -8,90 +8,94 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../../redux/saveItem/saveItemAction";
 import { useRouter } from "next/router";
 import NormalBtn from "../../tools/normalBtn/NormalBtn";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import callApi from "../../api/callApi";
 import { ADD_BASKET, BASE_URL } from "../../api/urls";
 import { addQtyAmont } from "../../redux/factor/factorAction";
 import { notify } from "../../tools/toast/toast";
 import persianNumber from "../../tools/persianNumber/persianNumber";
-import convertDate from '../../tools/convertDate/convertDate'
+import convertDate from "../../tools/convertDate/convertDate";
 const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
   const lang = useSelector((state) => state.stateLang.lng);
-  const dateC =data ?  data.createdDatetime.split("T") : '';
+  const dateC = data ? data.createdDatetime.split("T") : "";
   const router = useRouter();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const test = () => {
     dispatch(removeItem(removeId, userId));
-  }
+  };
 
   const navigate = () => {
-    if(close){
-      router.push({pathname: `/product/${data.id}`})
+    if (close) {
+      router.push({ pathname: `/product/${data.id}` });
     }
-  }
+  };
   const payHandler = () => {
     const ls = window.localStorage.getItem("userToken");
-      const userToken = JSON.parse(ls);
-      var phone = userToken.phone;
-      var token = userToken.token;
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      myHeaders.append("Content-Type", "application/json");
+    const userToken = JSON.parse(ls);
+    var phone = userToken.phone;
+    var token = userToken.token;
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    myHeaders.append("Content-Type", "application/json");
 
-      var raw = JSON.stringify({
-        userid: userId,
-        title: data.title,
-        phonenumber: `${phone}`,
-        description: "string",
-        qty: 1,
-        amount: data.price,
-        productid: data.id
-      });
+    var raw = JSON.stringify({
+      userid: userId,
+      title: data.title,
+      phonenumber: `${phone}`,
+      description: "string",
+      qty: 1,
+      amount: data.price,
+      productid: data.id
+    });
 
-      const addbasket = async () => {
-        const added = await callApi(
-          BASE_URL + ADD_BASKET,
-          raw,
-          myHeaders,
-          "POST"
-        );
-        if (added[0].code === 200) {
-          dispatch(addQtyAmont());
-          if (lang === "fa") {
-            var text = " محصول با موفقیت به سبد خرید شما اضافه شد";
-          } else {
-            text = "Add product successfully to basket";
-          }
-          notify(text, "success");
-        } else if (added[0].code === 201) {
-          if (lang === "fa") {
-            var text = " از این محصول به سبد خرید شما اضافه شد";
-          } else {
-            text = "Add this product successfully to basket";
-          }
-          notify(text, "success");
-        } else if (added[0].code === 206) {
-          if (lang === "fa") {
-            var text =
-              "از این محصول به تعداد درخواستی شما در انبار موجود نمی باشد";
-          } else {
-            text = "This product is not available in stock as requested by you";
-          }
-          notify(text, "error");
+    const addbasket = async () => {
+      const added = await callApi(
+        BASE_URL + ADD_BASKET,
+        raw,
+        myHeaders,
+        "POST"
+      );
+      if (added[0].code === 200) {
+        dispatch(addQtyAmont());
+        if (lang === "fa") {
+          var text = " محصول با موفقیت به سبد خرید شما اضافه شد";
+        } else {
+          text = "Add product successfully to basket";
         }
-      };
-      addbasket();
-    
+        notify(text, "success");
+      } else if (added[0].code === 201) {
+        if (lang === "fa") {
+          var text = " از این محصول به سبد خرید شما اضافه شد";
+        } else {
+          text = "Add this product successfully to basket";
+        }
+        notify(text, "success");
+      } else if (added[0].code === 206) {
+        if (lang === "fa") {
+          var text =
+            "از این محصول به تعداد درخواستی شما در انبار موجود نمی باشد";
+        } else {
+          text = "This product is not available in stock as requested by you";
+        }
+        notify(text, "error");
+      }
+    };
+    addbasket();
   };
 
   return (
     <>
-        <div className={style.RowProduct}>
-        {
-          loading && <img className={style.loader} alt='loading' src="/Assets/images/lineLoad.gif" />
-        } 
+      {console.log(data)}
+      <div className={style.RowProduct}>
+        {loading && (
+          <img
+            className={style.loader}
+            alt="loading"
+            src="/Assets/images/lineLoad.gif"
+          />
+        )}
         {close && (
           <CloseIcon
             sx={{ color: "#707070", fontSize: 18, cursor: "pointer" }}
@@ -99,28 +103,33 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
             onClick={test}
           />
         )}
-          <div className={` d-flex `}>
-            {/* {t("scarf")}  t("mirdamad") */}
-            <span onClick={navigate} style={{cursor: "pointer"}} > {lang==="fa"?data.title:data.titleEn}</span>
-            {/* <span>{lang==="fa"?convertDate(dateC[0]): dateC[0]}</span> */}
-            {/* <span>{lang==="fa" ? data.collection.title : data.collection.titleEn}</span> */}
-          </div>
-          <div className={style.status}>
+        <div className={` d-flex align-items-center`}>
+          <span onClick={navigate} style={{ cursor: "pointer" }}>
+            {lang === "fa" ? data.title : data.titleEn}
+          </span>
+          <span>{lang === "fa" ? convertDate(dateC[0]) : dateC[0]}</span>
+          {close ? (
             <span>
-              {close ? `${t("stock")}: ${data.stock}` : t("pending")}
+              {lang === "fa" ? data.collection.title : data.collection.titleEn}
             </span>
-            {
-              close ? <AddCircleIcon 
-                        sx={{ cursor: "pointer" }}
-                        onClick={(e) => payHandler()}
-                      />
-              :statusText === "completed" ? (
-              <CheckCircleOutlineIcon sx={{ color: "#8ABA70", fontSize: 30 }} />
-            ) : (
-              <AccessTimeIcon sx={{ color: "#b7b7b7", fontSize: 30 }} />
-            )}
-          </div>
+          ) : (
+            <span className={style.address}>{data.address.address}</span>
+          )}
         </div>
+        <div className={style.status}>
+          <span>{close ? `${t("stock")}: ${data.stock}` : data.isFinish===true?t("Completed"):t("Pendding")}</span>
+          {close ? (
+            <AddCircleIcon
+              sx={{ cursor: "pointer" }}
+              onClick={(e) => payHandler()}
+            />
+          ) : data.isFinish===true ? (
+            <CheckCircleOutlineIcon sx={{ color: "#8ABA70", fontSize: 30 }} />
+          ) : (
+            <AccessTimeIcon sx={{ color: "#b7b7b7", fontSize: 30 }} />
+          )}
+        </div>
+      </div>
     </>
   );
 };

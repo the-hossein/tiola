@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getProfile } from "../../redux/register/registerAction";
 import { useTranslation } from "react-i18next";
+import { BASE_URL, REMOVE_USER_IMAGE } from "../../api/urls";
 
 const EditProfile = () => {
   const router = useRouter();
@@ -95,7 +96,7 @@ const EditProfile = () => {
 
     var config = {
       method: "post",
-      url: `https://api.tiolastyle.com/api/v1/Files/RemoveUserImage?id=36&UserId=${userData.userid}`,
+      url: `${BASE_URL+REMOVE_USER_IMAGE}?id=${userData.profilePicId}&UserId=${userData.userid}`,
       headers: { Authorization: `Bearer ${userToken}` }
     };
 

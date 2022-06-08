@@ -117,5 +117,11 @@
   "goCollection": " Go Collections Page",
   "noProduct": "The product you are looking for was not found. Visit the store page",
   "goShop": "Go Shop",
-  "pleaseWait": "please wait a moment"
+  "goHome": "Go Home",
+  "goFactor": "Go Factor",
+  "pleaseWait": "please wait a moment",
+  "Sorting": "Sorting",
+  "offline": "Offline",
+  "Pendding": "Pendding",
+  "offlineText": "Your internet connection is down. Please check your connection again"
 }
