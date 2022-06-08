@@ -30,7 +30,7 @@ const UserProfile = () => {
           <div className={style.messageExist}>
             <Loader />
           </div>
-        ) : existOpen.data.length !== 0 ? (
+        ) : existOpen.data.length === 0 ? (
           <Placement text={t("dontorder")} />
         ) : (
           existOpen.data.map((item) => (

@@ -118,5 +118,11 @@
   "noProduct": "The product you are looking for was not found. Visit the store page",
   "goShop": "Go Shop",
   "pleaseWait": "please wait a moment",
-  "errorPostCode": "Your post code must be 10 digits long."
+  "errorPostCode": "Your post code must be 10 digits long.",
+  "goHome": "Go Home",
+  "goFactor": "Go Factor",
+  "Sorting": "Sorting",
+  "offline": "Offline",
+  "Pendding": "Pendding",
+  "offlineText": "Your internet connection is down. Please check your connection again"
 }

@@ -34,5 +34,6 @@
 }
 .rand span{
     padding: 15px 30px ;
+    font-size: var(--xs-font);
 
 }

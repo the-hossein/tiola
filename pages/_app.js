@@ -34,10 +34,15 @@ i18n
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
+  if(typeof window !=="undefined"){
+    console.log(window.navigator.onLine)
+    if (window.navigator.onLine === false) {
+      router.push({ pathname: "/offline" });
+    }
+  }
   useEffect(() => {
-    
     if (router.pathname === "/collections/[collectionname]") {
-        if(pageProps.collection[0].data.length !== 0){
+      if (pageProps.collection[0].data.length !== 0) {
         document
           .getElementsByTagName("body")[0]
           .style.setProperty(
@@ -45,12 +50,12 @@ function MyApp({ Component, pageProps }) {
             pageProps.collection[0].data[0].collection.colorCode,
             "important"
           );
-        }
-      } else {
-        document
-          .getElementsByTagName("body")[0]
-          .style.setProperty("background", "#f2f2f2", "important");
-        }
+      }
+    } else {
+      document
+        .getElementsByTagName("body")[0]
+        .style.setProperty("background", "#f2f2f2", "important");
+    }
     setshowChild(true);
   }, [pageProps]);
   if (!showChild) {
@@ -65,7 +70,10 @@ function MyApp({ Component, pageProps }) {
       />
 
       <Component {...pageProps} />
-      <ToastContainer style={{width: "35%", padding: "3px", top: "71px"}} bodyClassName='toastBox' />
+      <ToastContainer
+        style={{ width: "35%", padding: "3px", top: "71px" }}
+        bodyClassName="toastBox"
+      />
       <PopUp />
     </Provider>
   );
