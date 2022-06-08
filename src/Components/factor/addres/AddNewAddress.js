@@ -161,7 +161,7 @@ const AddNewAddress = () => {
                 <span className={postCode.length !== 10 && Style.errorShowPost}>*{t("errorPostCode")}</span>
                 <input 
                   type='number'
-                  placeholder="Enter your post code"
+                  placeholder={lang === "fa" ? "لطفا کد پستی خود را وارد کنید" :"Enter your post code"}
                   value={postCode}
                   onChange={changePostCode}
                   className={`${Style.postCode} ${postCode.length !== 10 && Style.postCodeError}`}
