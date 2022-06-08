@@ -75,3 +75,53 @@
     top: 4px;
     left: 0;
 }
+.handlerContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.handlerContainer button {
+    max-width: 30%;
+    padding: 12px 35px;
+    font-size: var(--md-font);
+    border-radius: 15px;
+    border: none;
+    background-color: var(--blue-pen);
+    color: #fff;
+}
+.handlerContainer button:hover {
+    background-color: #24be64;
+}
+.containerPostCode{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.containerPostCode span {
+    color: #707070;
+    font-size: var(--xs-font);
+    margin-top: 5px;
+    padding: 0 15px;
+    display: none;
+    color: var(--red-pen);
+}
+.errorShowPost {
+    display: inline !important;
+}
+.postCode{
+    direction: var(--direction);
+    padding: 8px 25px;
+    border: 1px solid #707070;
+    border-radius: 15px;
+    outline: none;
+}
+.postCode::placeholder{
+    margin: 0 auto;
+    text-align: center;
+}
+.postCodeError {
+    border-color: var(--red-pen);
+}
