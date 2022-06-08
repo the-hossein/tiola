@@ -63,7 +63,7 @@ const UserAction = () => {
           )
         }
       </div>
-      {/* <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
+       <div className={`col-xl-5 col-lg-5 col-md-12 col-12 ${style.history}`}>
         <h3 className={style.title}>{t("history")}</h3>
         {orderHistory.loader ? (
           <Loader />
@@ -75,16 +75,16 @@ const UserAction = () => {
           orderHistory.data.map((item) => (
             <RowProduct
               key={item.id}
-              close={true}
+              close={false}
               removeId={item.id}
-              data={item.product}
+              data={item}
               userId={user.userid}
-              loading={watchList.preload}
+              loading={orderHistory.loader}
               statusText="completed"
             />
           ))
         )}
-      </div> */}
+      </div> 
     </div>
   );
 };

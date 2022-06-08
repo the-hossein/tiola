@@ -19,8 +19,9 @@ export const DELETE_BASKET = "api/v1/Basket/DeleteBasketDetail";
 export const GET_USER_ADDRESS = "api/v1/User/GetUserAddress";
 export const CREATE_COMMENT = "api/Comment/CreateComment";
 export const ADD_ADDRESS = "api/v1/User/AddAddress";
-export const CHOSE_ADDRESS="api/v1/User/ChooseAddress";
-export const UPDATE_ADDRESS="api/v1/User/UpdateAddress";
-export const ADD_PAYMENT="api/v1/Basket/Payment";
-export const VERIFY_PAYMENT="api/v1/Basket/VerifyPayment"
-
+export const CHOSE_ADDRESS = "api/v1/User/ChooseAddress";
+export const UPDATE_ADDRESS = "api/v1/User/UpdateAddress";
+export const ADD_PAYMENT = "api/v1/Basket/Payment";
+export const VERIFY_PAYMENT = "api/v1/Basket/VerifyPayment";
+export const UPDATE_PROFILE = "api/v1/User/UpdateProfile";
+export const REMOVE_USER_IMAGE="api/v1/Files/RemoveUserImage"

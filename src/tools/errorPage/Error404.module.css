@@ -23,6 +23,7 @@
     width: fit-content;
     padding: 10px 30px;
     border-radius: 10px;
+    font-size: var(--md-font);
     color: var(--lightGray-border);
     background-color: #fff;
     border: var(--border-bottom);

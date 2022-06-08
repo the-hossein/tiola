@@ -5,28 +5,69 @@ import style from "./StatusPayment.module.css";
 import erroPic from "../../../public/Assets/images/errorPic.jpg";
 import successPIc from "../../../public/Assets/images/successPic.jpg";
 import Alert from "react-bootstrap/Alert";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 const StatusPayment = ({ statusCode, type }) => {
   console.log(statusCode);
+  const { t } = useTranslation();
+  const lang = useSelector((state) => state.stateLang.lng);
   const textError = "";
   switch (statusCode) {
     case 200:
-      textError = "پرداخت با موفقیت انجام شد.";
+      if (lang === "fa") {
+        textError = "پرداخت با موفقیت انجام شد.";
+      } else {
+        textError = "Payment was successful.";
+      }
       break;
     case 400:
-      textError = "استعلام نتیجه ای نداشت.";
+      if (lang === "fa") {
+        textError = "استعلام نتیجه ای نداشت.";
+      } else {
+        textError = "Inquiry had no result.";
+      }
       break;
     case 401:
-      textError = "اعتبار سنجی وب سرویس ناموفق بود.";
+      if (lang === "fa") {
+        textError = "اعتبار سنجی وب سرویس ناموفق بود.";
+      } else {
+        textError = "Web service validation failed.";
+      }
+      break;
     case 403:
-      textError = "خطا رخ داده است";
+      if (lang === "fa") {
+        textError = "خطا رخ داده است";
+      } else {
+        textError = "An error has occurred";
+      }
+      break;
     case 404:
-      textError = "وب سریس یافت نشد.";
+      if (lang === "fa") {
+        textError = "وب سریس یافت نشد.";
+      } else {
+        textError = "Web service not found.";
+      }
+      break;
     case 405:
-      textError = "پرداخت تایید نشد.";
+      if (lang === "fa") {
+        textError = "پرداخت تایید نشد.";
+      } else if (lang === "en") {
+        textError = "Payment not confirmed.";
+      }
+      break;
     case "catch":
-      textError = "خطا در پرداخت";
+      if (lang === "fa") {
+        textError = "خطا در پرداخت";
+      } else {
+        textError = "Payment error";
+      }
+      break;
     default:
-      textError = "پرداخت انجام نشد";
+      if (lang === "fa") {
+        textError = "پرداخت انجام نشد";
+      } else {
+        textError = "Payment failed";
+      }
       break;
   }
   return (
@@ -42,7 +83,7 @@ const StatusPayment = ({ statusCode, type }) => {
                 <strong> {textError} </strong>
               </Alert>
             ) : (
-                <Alert key={"danger"} variant={"danger"}>
+              <Alert key={"danger"} variant={"danger"}>
                 <strong> {textError} </strong>
               </Alert>
             )}
@@ -53,14 +94,13 @@ const StatusPayment = ({ statusCode, type }) => {
             )}
 
             <Link href="/">
-              <button className={style.backindex}>بازگشت به صفحه اصلی</button>
+              <button className={style.backindex}>{t("goHome")}</button>
             </Link>
-          {
-              statusCode>206&&
+            {statusCode > 206 && (
               <Link href="/factor">
-              <button className={style.backindex}>بازگشت به فاکتور</button>
-            </Link>
-          }
+                <button className={style.backindex}>{t("goFactor")} </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

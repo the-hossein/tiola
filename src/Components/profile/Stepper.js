@@ -51,7 +51,7 @@ const Stepper = ({ active }) => {
         <span className={style.shape} id={3}>
           <FontAwesomeIcon icon={faDiamond} />
         </span>
-        <span>{t("post")}</span>
+        <span>{t("Sorting")}</span>
       </div>
       <div className={style.step}>
         <span>

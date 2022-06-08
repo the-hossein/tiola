@@ -14,7 +14,10 @@ export default function Errorpage() {
         <link rel="icon" href="/logo.ico" />
       </Head>
    
+<header className="d-none">
 
+  <Header/>
+</header>
       <main>
         <Error404 />
       </main>
