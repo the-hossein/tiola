@@ -93,27 +93,6 @@ const AllComment = ({ product }) => {
                       commentText={comment.commentText}
                     />
                   </SwiperSlide>
-                  <SwiperSlide key={comment.name}>
-                    <Comment
-                      userName={`${comment.name}  ${comment.family}`}
-                      score={comment.score}
-                      commentText={comment.commentText}
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide key={comment.name}>
-                    <Comment
-                      userName={`${comment.name}  ${comment.family}`}
-                      score={comment.score}
-                      commentText={comment.commentText}
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide key={comment.name}>
-                    <Comment
-                      userName={`${comment.name}  ${comment.family}`}
-                      score={comment.score}
-                      commentText={comment.commentText}
-                    />
-                  </SwiperSlide>
                 </>
               ))}
           </Swiper>
