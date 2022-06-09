@@ -17,8 +17,10 @@ import { height } from "@mui/system";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { query } from "../../redux/searchProduct/searchAction";
+import { useTranslation } from "react-i18next";
 
 const ExploreMain = ({ data }) => {
+  const { t } = useTranslation();
   const [size, setSize] = useState(0);
   const [getItem, setGetItem] = useState(data.slice(0, 10));
   const searching = useSelector((state) => state.stateSearch);
@@ -38,7 +40,6 @@ console.log(data)
     // if(searching.items.length){
     //   setGetItem(searching.items)
     // }
-    console.log(getItem);
 
     setTargetSearch(data.filter((item) => item.title.includes(idSearching)));
   }, []);
@@ -61,15 +62,59 @@ console.log(data)
     cursor: "pointer",
     textAlign: "center",
     color: theme.palette.text.secondary,
-    height: "fit-content"
+    height: "fit-content",
+    boxShadow: "none",
+    border: ".25px solid",
+    borderColor: "var(--lightGray-border)", 
   }));
+
 
   const fetchMoreData = () => {
     setGetItem(data.slice(0, getItem.length + 20));
   };
 
+  const categoryScarf = data.filter(item => item.type === "scarf");
+  const [scarfShow, setScarfShow] = useState(false);
+  const scarfHandler = () => {
+    setShawlShow(false);
+    setHeadgearShow(false)
+    setScarfShow(true);
+    console.log(categoryScarf);
+  }
+  const categoryShawl = data.filter(item => item.type === "shawl");
+  const [shawlShow, setShawlShow] = useState(false);
+  const shawlHandler = () => {
+    setHeadgearShow(false)
+    setScarfShow(false);
+    setShawlShow(true);
+    console.log(categoryShawl);
+  }
+  const categoryHeadgear = data.filter(item => item.type === "headgear");
+  const [headgearShow, setHeadgearShow] = useState(false);
+  const headgearHandler = () => {
+    setShawlShow(false);
+    setScarfShow(false);
+    setHeadgearShow(true);
+    console.log(categoryHeadgear);
+  }
+
   return (
     <div className={style.explore}>
+      <h1>{t("explore")}</h1>
+      <div className={style.selectedCategory}>
+        <div>
+          <img src={data[30].imageFile1.filePath} alt="category"/>
+          <span onClick={scarfHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t(`${data[0].type}`)}</span>
+        </div>
+        <div>
+          <img src={data[2].imageFile1.filePath} alt="boboland"/>
+          <span onClick={shawlHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t(`${data[2].type}`)}</span>
+        </div>
+        <div>
+          <img src={data[10].imageFile1.filePath} alt="boboland"/>
+          <span onClick={headgearHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t(`${data[4].type}`)}</span>
+        </div>
+      </div>
       <Box sx={{ width: "auto" }}>
         <InfiniteScroll
           style={{ overflow: "hidden" }}
@@ -87,6 +132,7 @@ console.log(data)
             <Masonry
               columns={size <= 480 ? 2 : size >= 980 ? 4 : 3}
               spacing={2}
+              style={{margin: "0"}}
             >
               {targetSearch.length
                 ? targetSearch.map((product) => (
@@ -106,7 +152,66 @@ console.log(data)
                       </a>
                     </Item>
                   ))
-                : getItem.map(
+                : 
+                scarfShow ? 
+                categoryScarf.map(item => (
+                    <Item key={item.id}>
+                          <Link href={`/product/${item.id}`}>
+                            <a>
+                              <div className={style.showProduct}>
+                                <img
+                                  src={item.explorFile.filePath}
+                                  alt="product"
+                                />
+                                <p className={style.parag}>
+                                  {lang === "fa"
+                                    ? item.title
+                                    : item.titleEn}
+                                </p>
+                              </div>
+                            </a>
+                          </Link>
+                        </Item>
+                )):
+                shawlShow ? 
+                categoryShawl.map(item => (
+                  <Item key={item.id}>
+                        <Link href={`/product/${item.id}`}>
+                          <a>
+                            <div className={style.showProduct}>
+                              <img
+                                src={item.explorFile.filePath}
+                                alt="product"
+                              />
+                              <p className={style.parag}>
+                                {lang === "fa"
+                                  ? item.title
+                                  : item.titleEn}
+                              </p>
+                            </div>
+                          </a>
+                        </Link>
+                      </Item>
+                )): headgearShow ? categoryHeadgear.map(item => (
+                  <Item key={item.id}>
+                        <Link href={`/product/${item.id}`}>
+                          <a>
+                            <div className={style.showProduct}>
+                              <img
+                                src={item.explorFile.filePath}
+                                alt="product"
+                              />
+                              <p className={style.parag}>
+                                {lang === "fa"
+                                  ? item.title
+                                  : item.titleEn}
+                              </p>
+                            </div>
+                          </a>
+                        </Link>
+                      </Item>
+                ))
+                  :getItem.map(
                     (product, index) =>
                       product.explorFile.confirmed && (
                         <Item key={product.id}>

@@ -201,7 +201,7 @@ const Header = ({ backColor }) => {
                   className="position-relative"
                   onClick={openMenu}
                 /> */}
-                {menuBar && <Menu backColor={backColor} />}
+                {menuBar && <Menu backColor={backColor} show={menuBar} />}
                 <div>
                   <Link href="/">
                     <a className={router.pathname === "/" ? style.active : ""}>
@@ -281,7 +281,7 @@ const Header = ({ backColor }) => {
                       : null
                   }
                   className={
-                    showSearchBox ? style.searchBox : style.inputDesign
+                    `${style.searchBox} ${showSearchBox ? style.inputDesign : style.inputDesignNot}`
                   }
                 />
                 <SearchIcon
@@ -347,7 +347,7 @@ const Header = ({ backColor }) => {
                       : null
                   }
                   className={
-                    showSearchBox ? style.searchBox : style.inputDesign
+                    `${style.searchBox} ${showSearchBox ? style.inputDesign : style.inputDesignNot}`
                   }
                 />
                 <SearchIcon

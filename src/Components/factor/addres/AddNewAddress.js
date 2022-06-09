@@ -66,7 +66,9 @@ const AddNewAddress = () => {
   };
 
   const changePostCode = (e) => {
-    setPostCode(e.target.value);
+    if(e.target.value.length <= 10){
+      setPostCode(e.target.value);
+    }
   }
 
   const addAddres = (e) => {

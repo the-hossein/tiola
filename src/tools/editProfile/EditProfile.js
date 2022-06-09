@@ -14,6 +14,17 @@ import { useTranslation } from "react-i18next";
 import { BASE_URL, REMOVE_USER_IMAGE } from "../../api/urls";
 import { notify } from "../toast/toast";
 
+//persian birthday
+import {
+  DatePicker,
+  DateTimePicker,
+  DateRangePicker,
+  DateTimeRangePicker
+} from "react-advance-jalaali-datepicker";
+
+//convert date
+
+
 const EditProfile = () => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -35,13 +46,24 @@ const EditProfile = () => {
   };
 
   const [address, setAddress] = useState("");
-  const subAddress = (e) => {
-    setAddress(e.target.value);
+  const subAddress = date => {
+    const valueOfInput = date.format();
+    setAddress(valueOfInput);
   };
 
   const [userBirthday, setBirthday] = useState();
-  const subBirthday = (e) => {
-    setBirthday(e.target.value);
+  const subBirthday = (unix, formatted) => {
+    console.log(unix);
+    console.log(formatted); 
+    var date = new Date(unix * 1000);
+    console.log(date.getTime())
+    console.log(date)
+    setBirthday(date);
+
+    // console.log(value) 
+    // console.log(e.target.value)
+    // const valueOfInput = e.format();
+    // setAddress(valueOfInput);
   };
 
   const [gender, setGender] = useState(2);
@@ -218,7 +240,7 @@ const EditProfile = () => {
               <input
                 id="fname-in"
                 type="text"
-                placeholder="Full Name"
+                placeholder={lang === "fa" ? "نام" : "First name"}
                 value={userFName}
                 onChange={subFName}
               />
@@ -230,7 +252,7 @@ const EditProfile = () => {
               <input
                 id="lname-in"
                 type="text"
-                placeholder="Last Name"
+                placeholder={lang === "fa" ? "نام خانوادگی" : "Last name"}
                 value={userLName}
                 onChange={subLName}
               />
@@ -252,18 +274,30 @@ const EditProfile = () => {
                     </div>
                 </div> */}
         <div className={`row m-5 align-items-end ${style.formContainer}`}>
-          <div className="col-12 col-md-6 col-lg-4">
+          {
+            !userData.birthDayDateTime && <div className="col-12 col-md-6 col-lg-4">
             <div className="d-flex flex-column ">
               <label htmlFor="birthday">{t("enterBirth")+ " : "}</label>
-              <input
+              {/* <input
                 id="birthday"
-                type="date"
                 placeholder="day/mont/year"
+                type="date"
                 value={userBirthday}
                 onChange={subBirthday}
-              />
+              /> */}
+              <DatePicker
+            // inputComponent={<input className="popo" type={"date"} />}
+              placeholder="انتخاب تاریخ"
+              format="jYYYY-jMM-jDD"
+              onChange={subBirthday}
+              id="datePicker"
+              preSelected={userBirthday}
+            />
             </div>
           </div>
+          }
+          
+          
           <div className="col-12 col-md-6 col-lg-5">
             <div className="row ">
               <div className="d-flex align-items-center col-12 col-md-12 col-lg-12 mt-4 text-center">

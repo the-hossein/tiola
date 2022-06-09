@@ -27,6 +27,7 @@ const Productpage = ({ product, similar }) => {
             arrowStatus={true}
             margin={20}
             heightImage={'380px'}
+            title={true}
           />
       </div>
     </section>

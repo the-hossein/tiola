@@ -78,7 +78,7 @@ const WriteComment = () => {
     <div
       className={`d-flex flex-column justify-content-between  ${Style.writeCm}`}
     >
-      <span className={Style.nameUser}>{user.userNameAvatar}</span>
+      <span className={Style.nameUser}>{user.userNameAvatar}<CloseIcon className=' cursor-pointer ' fontSize="small" onClick={()=> dispatch(writeFalse())}/></span>
       <div className={`form-floating ${Style.commentText}`}>
         <textarea
           type="text"
@@ -95,9 +95,9 @@ const WriteComment = () => {
             d-flex align-items-center justify-content-around mt-2 ${Style.ratinaition}`}
             >
                 <ul className={Style.factorLi}>
-                  <li>{t("factor") + " 1"}</li>
-                  <li>{t("factor") + " 2"}</li>
-                  <li>{t("factor") + " 3"}</li>
+                  <li>{t("factorRate1")}</li>
+                  <li>{t("factorRate2")}</li>
+                  <li>{t("factorRate3")}</li>
                 </ul>
               
                   <Box width="30%" paddingX={1} className={Style.myBox} >
@@ -135,9 +135,6 @@ const WriteComment = () => {
                       </button>
                   </div>
             </Box>
-      </div>
-      <div className={Style.closeBtn} >
-        <CloseIcon fontSize="small" onClick={()=> dispatch(writeFalse())}/>
       </div>
     </div>
   );

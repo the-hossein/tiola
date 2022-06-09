@@ -124,5 +124,8 @@
   "Sorting": "Sorting",
   "offline": "Offline",
   "Pendding": "Pendding",
-  "offlineText": "Your internet connection is down. Please check your connection again"
+  "offlineText": "Your internet connection is down. Please check your connection again",
+  "factorRate1": "Variety",
+  "factorRate2": "Quality",
+  "factorRate3": "Price"
 }

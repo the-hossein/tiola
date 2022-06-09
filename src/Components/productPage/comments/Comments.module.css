@@ -133,7 +133,7 @@
     margin: 0 auto;
     background-color: var(--light-pen);
     border-radius: var(--Product-Border-radius);
-    padding: 1.1rem 0.7rem .5rem ;
+    padding: .5rem 0.7rem .7rem ;
     min-width: 320px ;
     width: 100% !important;
     height: 100% !important;
@@ -245,4 +245,8 @@
 .nameUser {
     direction: ltr !important;
     font-family: "IRANSansWeb" !important;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

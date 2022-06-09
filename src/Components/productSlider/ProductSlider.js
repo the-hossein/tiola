@@ -18,7 +18,8 @@ const ProductSlider = ({
   tbItem,
   radius,
   nameSet,
-  border
+  border,
+  title
 }) => {
   
   return (
@@ -57,13 +58,13 @@ const ProductSlider = ({
       >
         {images.map((item) => (
           <Fragment key={item.src}>
-            <SwiperSlide>
+            <SwiperSlide >
               <Link href={`/product/${item.id}`}>
                 <a>
                   <img
                     src={item.src}
                     alt="product"
-                    className={`${Style.product} ${!border&&Style.border}`}
+                    className={`${Style.product} ${!border&&Style.border} ${title ? "simlarHover" : ""}`}
                     style={{ borderRadius: radius, height: heightImage }}
                   />
                 </a>
