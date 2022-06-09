@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./Register.module.css";
 import Image from "next/image";
 import Loader from "../../tools/loader/Loader";
-import loginPic from "../../../public/Assets/images/loginPic.png";
+import loginPic from "../../../public/Assets/images/1-1.jpg";
 import Input from "../../tools/input/Input";
 import NormalBtn from "../../tools/normalBtn/NormalBtn";
 import { useTranslation } from "react-i18next";
@@ -42,10 +42,8 @@ const Register = ({ title }) => {
   const sendCodeHandler = () => {
     if (!Object.keys(errors).length && state.phoneNumber.length !== 0) {
       dispatch(registerPhone(state.phoneNumber, lang));
-      setAgain(false)
+      setAgain(false);
     } else {
-   
-
       if (errors.phone === "empty") {
         var errorText = t("emptyPhoneValidate");
       } else if (errors.phone === "length") {
@@ -67,21 +65,15 @@ const Register = ({ title }) => {
 
   const enterCodeHandler = () => {
     if (!Object.keys(errorsCode).length && state.code.length !== 0) {
-      dispatch(
-        registerCode(state.code, state.phoneNumber, lang, router)
-      );
+      dispatch(registerCode(state.code, state.phoneNumber, lang, router));
     } else {
-     
       if (errorsCode.code === "empty") {
         var errorText = t("emptycodeValidate");
       } else if (errorsCode.code === "lengthCode") {
         errorText = t("lengthcodeValidate");
-      } 
+      }
       notify(errorText, "error");
     }
-
-
-   
   };
   const changePhoneNUmber = (e) => {
     var persianNumbers = [
@@ -124,7 +116,41 @@ const Register = ({ title }) => {
     setTouched({ ...touched, [e.target.name]: true });
   };
   const changeCodeNumber = (e) => {
-    dispatch(getCode(e.target.value));
+    var persianNumbers = [
+        /۰/g,
+        /۱/g,
+        /۲/g,
+        /۳/g,
+        /۴/g,
+        /۵/g,
+        /۶/g,
+        /۷/g,
+        /۸/g,
+        /۹/g
+      ],
+      arabicNumbers = [
+        /٠/g,
+        /١/g,
+        /٢/g,
+        /٣/g,
+        /٤/g,
+        /٥/g,
+        /٦/g,
+        /٧/g,
+        /٨/g,
+        /٩/g
+      ],
+      fixNumbers = function (str) {
+        if (typeof str === "string") {
+          for (var i = 0; i < 10; i++) {
+            str = str
+              .replace(persianNumbers[i], i)
+              .replace(arabicNumbers[i], i);
+          }
+        }
+        return str;
+      };
+    dispatch(getCode(fixNumbers(e.target.value)));
   };
 
   const TypeNumber = (e) => {
@@ -181,25 +207,26 @@ const Register = ({ title }) => {
                   AutoFocus={true}
                 />
               )}
-            
-              {
 
-                state.codeStatus?(errorsCode.code && touched.code )&& (
-                  <span className={style.error}>
-                    {errorsCode.code === "empty"
-                      ? t("emptyPhoneValidate")
-                      : errorsCode.code === "lengthCode" && t("lengthCode")}
-                  </span>
-                ):
-                (errors.phone && touched.phone) && (
-                  <span className={style.error}>
-                    {errors.phone === "empty"
-                      ? t("emptyPhoneValidate")
-                      : errors.phone === "length"
-                      ? t("lengthPhoneValidate")
-                      : t("incorrentPhoneValidate")}
-                  </span>)
-              }
+              {state.codeStatus
+                ? errorsCode.code &&
+                  touched.code && (
+                    <span className={style.error}>
+                      {errorsCode.code === "empty"
+                        ? t("emptyPhoneValidate")
+                        : errorsCode.code === "lengthCode" && t("lengthCode")}
+                    </span>
+                  )
+                : errors.phone &&
+                  touched.phone && (
+                    <span className={style.error}>
+                      {errors.phone === "empty"
+                        ? t("emptyPhoneValidate")
+                        : errors.phone === "length"
+                        ? t("lengthPhoneValidate")
+                        : t("incorrentPhoneValidate")}
+                    </span>
+                  )}
 
               <div
                 className={`${style.submitButtons}`}
@@ -210,31 +237,27 @@ const Register = ({ title }) => {
                 }
               >
                 {state.codeStatus === true && (
-                  <NormalBtn text={t("enterCode")} onClick={enterCodeHandler} />
+                  <NormalBtn text={t("submit")} onClick={enterCodeHandler} />
                 )}
 
                 {state.codeStatus ? (
-                  <NormalBtn
-                    text={
-                      again ? (
-                        <span onClick={againHandler} className={style.again}>
-                          {t("sendAgain")}
-                        </span>
-                      ) : (
-                        <span>
-                          <CountdownTimer
-                            color="#6a8eae"
-                            count={120}
-                            backgroundColor={"none"}
-                            hideDay={true}
-                            hideHours={true}
-                            onEnd={endTimerHandler}
-                          />
-                        </span>
-                      )
-                    }
-                    onClick={timerHandler}
-                  />
+                  <button onClick={timerHandler} className={style.timer}>
+                    {again ? (
+                      <span onClick={againHandler} className={style.again}>
+                        {t("sendAgain")}
+                      </span>
+                    ) : (
+                      <span>
+                        <CountdownTimer
+                          count={120}
+                          backgroundColor={"none"}
+                          hideDay={true}
+                          hideHours={true}
+                          onEnd={endTimerHandler}
+                        />
+                      </span>
+                    )}
+                  </button>
                 ) : (
                   <NormalBtn text={t("sendCode")} onClick={sendCodeHandler} />
                 )}

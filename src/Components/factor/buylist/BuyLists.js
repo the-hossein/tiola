@@ -129,7 +129,7 @@ const BuyLists = ({ setBasketDatas }) => {
               <div>
                 <span>{t("total")}</span>
                 <span>
-                  {lang === "fa" ? persianNumber(totalprice) : totalprice}
+                  {lang === "fa" ? 10000: totalprice}
                 </span>
                 <span>{t("toman")}</span>
               </div>

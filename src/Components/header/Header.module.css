@@ -32,7 +32,7 @@
 
 
 .headaritem {
-    width: 53%;
+    width: 51.79%;
     justify-content: space-between;
 }
 
@@ -186,14 +186,20 @@
         width: 100%;
     }
 }
-
+@media(max-width:1200px){
+    .headaritem{
+        width: 52.3%;
+    }
+}
 @media(max-width:1000px) {
     .header {
         padding: 0.6rem 1.5rem;
         font-size: var(--md-font);
 
     }
-
+.headaritem{
+    width: 52.6%;
+}
     .allitems div a {
         margin: 0 0.7rem;
     }

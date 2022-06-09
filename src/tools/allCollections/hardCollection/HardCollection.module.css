@@ -19,6 +19,8 @@
     cursor: pointer;
     object-fit: cover;
     height: 516px;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
     filter: grayscale(100%);
 }
 .tileImage img:hover {

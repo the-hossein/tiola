@@ -1,6 +1,6 @@
 .secondlyBtn {
     background-color: var(--light-pen);
-    border-radius: var(--Product-Border-radius);
+    border-radius: 8px;
     color: var(--dark-pen);
     padding: 0.5rem 3.5rem;
     font-size: var(--sm-font);

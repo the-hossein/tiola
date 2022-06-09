@@ -8,7 +8,8 @@
     cursor: pointer;
 }
 .border{
-    border: 1px solid var( --lightGray-border);
+    border: var(--borderWidth);
+    box-sizing: border-box;
 
 }
 .slider {

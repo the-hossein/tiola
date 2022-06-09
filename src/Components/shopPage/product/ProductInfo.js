@@ -43,7 +43,7 @@ const ProductInfo = ({ more, data }) => {
               lang.lng === "en" && "align-items-end"
             }`}
           >
-            <span>{lang.lng === "fa" ? data.title : data.titleEn}</span>
+            <span className={style.titleInfo}>{lang.lng === "fa" ? data.title : data.titleEn}</span>
             <span>{`${t("stock")}: ${
               lang.lng === "fa" ? persianNumber(data.stock) : data.stock
             }`}</span>
