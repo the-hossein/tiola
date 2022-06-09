@@ -15,7 +15,7 @@ const CollectionDetails = ({ data }) => {
 
   return (
     <section>
-      <div className="position-relative">
+      <div className="position-relative" id={Style.collectionImg}>
         <img src={data[0].collection.picture.filePath} className={Style.collectionPic} />
         <div className={`${Style.collectionName}`}>
           <BlurButton

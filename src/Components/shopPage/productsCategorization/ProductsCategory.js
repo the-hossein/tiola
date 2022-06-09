@@ -41,12 +41,9 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                   <h3 className={style.title}>{t(`${type.type}`)}</h3>
                 )}
 
-                <div
-                  className={`col-xl-4 col-lg-4 col-sm-4 mb-2 d-flex flex-column ${
-                    reverse === true ? "align-items-end" : ""
-                  } ${style.rectPhoto} `}
-                >
+                <div className={`col-xl-5 col-lg-5 col-sm-5  d-flex flex-column ${reverse === true ? "align-items-end" : ""} ${style.rectPhoto} `}>
                   <RectangleProduct
+                  reverse={reverse}
                     page={
                       router.pathname === "/collections/[collectionname]"
                         ? "collPage"
@@ -69,11 +66,11 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                   </Link>
                 </div>
 
-                <div className="col-lg-8 co-md-8 col-8">
+                <div className="col-lg-7 co-md-7 col-7">
                   <div className={`row ${reverse && "justify-content-end"}`}>
                     {data.slice(1, 5).map((item, index) => (
                       <Fragment key={index}>
-                        <div className={`col-6  pb-3  ${style.productPhoto}`}>
+                        <div className={`col-6 mb-4 pb-3  ${style.productPhoto}`}>
                           <SquareProduct data={item} />
                         </div>
                       </Fragment>

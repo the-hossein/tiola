@@ -3,7 +3,7 @@
     border-radius: var(--Product-Border-radius);
     object-fit: cover;
     margin-bottom: 0.5rem;
-    border: 1px solid var( --lightGray-border);
+    border: var(--borderWidth)
 }
 
 .squarePhoto {
@@ -16,14 +16,19 @@
     object-fit: cover;
     object-position: 0 20%;
 }
-.priceproduct{
+
+.priceproduct {
     direction: var(--direction);
     text-align: right;
 }
+
 .moreText {
     cursor: pointer;
 }
 
+.ret{
+    width: 90% !important;
+}
 .squarePhoto:hover,
 .rectanglePhoto:hover {
     border-radius: 0px !important;
@@ -52,18 +57,27 @@
     height: 14px !important;
 }
 
-.collPage {
-    height: 580px;
-}
+
 
 .shopPage {
-    height: 470px;
+    height: 512px;
 }
+.collPage{
+    height: 612px;
 
+}
 .info {
     font-size: var(--xs-font);
 }
-
+.titleInfo{
+    min-width: 85px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    height: 21px;
+    direction: var(--direction);
+}
 .product {
     width: fit-content;
     padding: 0 0 0.8rem 0;
@@ -80,29 +94,38 @@
 .productPhoto:hover {
     border-radius: none;
 }
-
-@media(max-width:992px) {
-
-
-
+.retDir{
+    width: 100%;
+    direction: rtl;
 }
+.retDirRevese{
+    width: 100%;
+    direction:ltr;
+}
+@media(max-width:992px) {}
 
 @media(max-width:768px) {
     .rectanglePhoto {
-        height: 580px;
+        height: 596px;
+   
+    }
+    .squarePhoto img {
+        height: 244px;
+    }
+
+   
+    .ret{
+        width: 100% !important;
     }
 }
 
-@media(max-width:500px) {
-  
-}
 
-@media(max-width:430px) {
+@media(max-width:500px) {
     .squarePhoto img {
-        height: 210px;
+        height: 170px;
     }
 
     .rectanglePhoto {
-        height: 500px;
+        height: 449px;
     }
 }

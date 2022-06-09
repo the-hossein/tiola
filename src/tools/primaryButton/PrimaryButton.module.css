@@ -3,21 +3,24 @@
     background-color: var(--medium-gray);
     padding: 0.5rem 2rem;
     color: var(--light-pen);
-    border-radius: 8px;
-    width: 155px;
+    border-radius: 6px;
+    width: 182px;
     font-size: var(--xs-font);
 }
- .primaryBtnEn button{
+
+.primaryBtnEn button {
     border: 1px solid var(--light-pen);
     background-color: var(--medium-gray);
     padding: 0.3rem 2rem 0.5rem;
     color: var(--light-pen);
-    width: 155px;
-    border-radius: 8px;
+    width: 182px;
+    min-height: 40px;
+    border-radius: 6px;
     font-size: var(--xs-font);
- }
+}
 
-.primaryBtn button:hover, .primaryBtnEn button:hover {
+.primaryBtn button:hover,
+.primaryBtnEn button:hover {
 
 
     background-color: var(--light-pen);
@@ -29,7 +32,7 @@
     border: 1px solid var(--border-button);
     background-color: var(--light-pen);
     padding: 0.2rem 1rem;
-    border-radius: 8px;
+    border-radius: 6px;
     color: var(--dark-pen);
     font-size: var(--xs-font) !important;
 
