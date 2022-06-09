@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import persianNumber from "../../../tools/persianNumber/persianNumber";
 const ProductInfo = ({ more, data }) => {
+  console.log(data)
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   if (typeof data !== "undefined") {
