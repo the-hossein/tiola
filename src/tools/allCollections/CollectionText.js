@@ -7,7 +7,7 @@ const CollectionText = ({ content, title, reverse,btnText, href, second }) => {
   return (
     <>
       <div>
-        <h3 className={style.collectionTitile}>{title}</h3>
+        <h1 className={style.collectionTitile}>{title}</h1>
         <p className={style.CollectionText}>{content}</p>
       </div>
       <div className={`${reverse === true ? style.ViewAllLeft : style.ViewAll} ${second && style.secondeSection}`}>
