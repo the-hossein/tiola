@@ -99,6 +99,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xxl-font", "21pt");
     root.style.setProperty("--oxx-font", "26pt");
     root.style.setProperty("--veryLg-font", "30pt");
+    root.style.setProperty("--hamberMenu-translate", "translateX(200%)");
 
   };
 
@@ -118,6 +119,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xl-font", "22pt");
     root.style.setProperty("--xxl-font", "35pt");
     root.style.setProperty("--veryLg-font", "48pt");
+    root.style.setProperty("--hamberMenu-translate", "translateX(-200%)");
   };
 
   useEffect(() => {

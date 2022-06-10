@@ -29,6 +29,7 @@
   --greenLight-pen: #03c65e;
   --toastify-color-success: #05755d !important;
   --toastify-color-error: #c43131 !important;
+  --hamberMenu-translate : translateX(200%);
   
 }
 .Toastify__toast-body div:last-child {

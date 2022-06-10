@@ -286,13 +286,12 @@ const EditProfile = () => {
                 onChange={subBirthday}
               /> */}
               <DatePicker
-            // inputComponent={<input className="popo" type={"date"} />}
-              placeholder="انتخاب تاریخ"
-              format="jYYYY-jMM-jDD"
-              onChange={subBirthday}
-              id="datePicker"
-              preSelected={userBirthday}
-            />
+                placeholder={lang === 'fa' ? "لطفا تاریخ تولد خود را وارد کنید" : "Please enter your date of birth"}
+                format="jYYYY-jMM-jDD"
+                onChange={subBirthday}
+                id="datePicker"
+                preSelected={userBirthday}
+              />
             </div>
           </div>
           }

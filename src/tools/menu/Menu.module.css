@@ -55,7 +55,7 @@
 @keyframes show {
     from{
         opacity: 0;
-        transform: translateX(200%);
+        transform: var(--hamberMenu-translate);
     }
     to{
         opacity: 1;
