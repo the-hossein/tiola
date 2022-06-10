@@ -77,6 +77,14 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
       var token = userToken.token;
     }
   }
+
+  //set post code 
+  const changePostCodeHandler = (e) => {
+    if(e.target.value.length <= 10){
+      setPostCode(e.target.value);
+    }
+  }
+
   const changeRadio = (e) => {
     dispatch(getAddres(document.getElementById(`${e.target.value}`).value));
     console.log(document.getElementById(`${e.target.value}`).value);
@@ -215,8 +223,8 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
               id={id}
             />
             <OutlinedInput
-              onChange={(e)=> setPostCode(e.target.value)}
-              placeholder={"Enter your post code"}
+              onChange={changePostCodeHandler}
+              placeholder={lang === "fa" ? "لطفا کد پستی خود را وارد کنید" :"Enter your post code"}
               value={postCode}
               readOnly={edit ? false : true}
               multiline={edit ? true : false}

@@ -12,7 +12,7 @@ import { notify } from "../toast/toast";
 import { useRouter } from "next/router";
 import { deletBasketLength } from "../../redux/factor/factorAction";
 // import { useSelector } from "react-redux";
-const Menu = ({ backColor }) => {
+const Menu = ({ backColor, show }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const lang = useSelector((state) => state.stateLang.lng);
@@ -49,9 +49,9 @@ const Menu = ({ backColor }) => {
   return (
     <nav className={style.humbergerMenuNav}>
       <div
-        className={`${style.burgerMenu} ${
+        className={`${style.burgerMenu} ${show && style.showItem} ${
           lang === "fa" ? `${style.menuRight}` : `${style.menuLeft}`
-        } ${backColor === "headerColor" ? style.darkmenu : ""}`}
+        } ${backColor === "headerColor" ? style.darkmenu : ""} `}
       >
         <Link href="/profile">
           <span>{user.name + " " + user.family}</span>

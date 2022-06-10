@@ -23,9 +23,9 @@ const Comment = ({userName, score, commentText}) => {
         <p className={Style.userComment}>{commentText ? commentText : t("testLorem")}</p>
         <div className={`d-flex justify-content-between  w-100 ${Style.Raiting}`}>
           <ul className="w-100" >
-            <li>{t("factor") + " 1"}</li>
-            <li>{t("factor") + " 2"}</li>
-            <li>{t("factor") + " 3"}</li>
+            <li>{t("factorRate1")}</li>
+            <li>{t("factorRate2")}</li>
+            <li>{t("factorRate3")}</li>
           </ul>
           <ul className="w-100">
             <li style={{width: `${score * 2 *  10 }% `}} className={Style.rate}></li>

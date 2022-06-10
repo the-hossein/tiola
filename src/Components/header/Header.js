@@ -99,6 +99,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xxl-font", "21pt");
     root.style.setProperty("--oxx-font", "26pt");
     root.style.setProperty("--veryLg-font", "30pt");
+    root.style.setProperty("--hamberMenu-translate", "translateX(200%)");
 
   };
 
@@ -118,6 +119,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xl-font", "26pt");
     root.style.setProperty("--xxl-font", "30pt");
     root.style.setProperty("--veryLg-font", "48pt");
+    root.style.setProperty("--hamberMenu-translate", "translateX(-200%)");
   };
 
   useEffect(() => {
@@ -201,7 +203,7 @@ const Header = ({ backColor }) => {
                   className="position-relative"
                   onClick={openMenu}
                 /> */}
-                {menuBar && <Menu backColor={backColor} />}
+                {menuBar && <Menu backColor={backColor} show={menuBar} />}
                 <div>
                   <Link href="/">
                     <a className={router.pathname === "/" ? style.active : ""}>
@@ -281,7 +283,7 @@ const Header = ({ backColor }) => {
                       : null
                   }
                   className={
-                    showSearchBox ? style.searchBox : style.inputDesign
+                    `${style.searchBox} ${showSearchBox ? style.inputDesign : style.inputDesignNot}`
                   }
                 />
                 <SearchIcon
@@ -347,7 +349,7 @@ const Header = ({ backColor }) => {
                       : null
                   }
                   className={
-                    showSearchBox ? style.searchBox : style.inputDesign
+                    `${style.searchBox} ${showSearchBox ? style.inputDesign : style.inputDesignNot}`
                   }
                 />
                 <SearchIcon

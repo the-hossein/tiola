@@ -29,9 +29,14 @@
   --greenLight-pen: #03c65e;
   --toastify-color-success: #05755d !important;
   --toastify-color-error: #c43131 !important;
+  --hamberMenu-translate : translateX(200%);
   --input-Radius: 12px;
   --borderWidth:0.5px solid var(--lightGray-border)
+}
 
+.Toastify__toast-body div:last-child {
+  direction: var(--direction) !important;
+  font-family: var(--font);
 }
 
 @font-face {
@@ -219,4 +224,11 @@ input[type=number]::-webkit-inner-spin-button {
   .Toastify__toast-container {
     width: 100% !important;
   }
+}
+
+.cursor-pointer{
+  cursor: pointer;
+} 
+.simlarHover:hover{
+  border-radius: 0 !important;
 }
