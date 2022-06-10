@@ -37,6 +37,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { InputAdornment } from "@mui/material";
+import AddressFeild from "./AddressFeild";
 
 
 const useStyle = makeStyles({
@@ -53,7 +54,13 @@ const useStyle = makeStyles({
     alignItems: "center",
     padding: "8px",
     fontFamily: "var(--font) !important"
-  }
+  },
+  container: {
+    fontFamily: "var(--font) !important",
+    direction: "var(--direction)",
+    boxShadow: "none",
+    borderRadius: "var(--input-Radius) !important"
+  },
 });
 
 const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
@@ -111,40 +118,49 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
   };
   const updateHandler = (e) => {
     if(postCode.length === 10){
-      dispatch(loadingAddress());
-  
-      const editApi = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-        myHeaders.append("Content-Type", "application/json");
-  
-        var raw = JSON.stringify({
-          id: data.id,
-          address: addresValue,
-          userid: user.userid,
-          postCode: postCode
-        });
-        console.log(raw);
-        const edited = await callApi(
-          BASE_URL + UPDATE_ADDRESS,
-          raw,
-          myHeaders,
-          "POST"
-        );
-  
-        if (edited[0].code == 200) {
-          dispatch(loadingAddresFalse());
-          dispatch(getuserAddress(user.userid));
-          setEdit(false);
-          if (lang === "fa") {
-            var text = "آدرس ویرایش شد";
-          } else {
-            text = "edited addres";
-          }
-          notify(text, "success");
+      if(addresValue.length <= 15){
+        let textShow ;
+        if(lang === 'fa'){
+          textShow = "لطفا آدرس خود را وارد کنید"
+        }else {
+          textShow = "Please enter your address"
         }
+        notify(textShow, "error")
+      }else{
+        dispatch(loadingAddress());
+        const editApi = async () => {
+          var myHeaders = new Headers();
+          myHeaders.append("Authorization", `Bearer ${token}`);
+          myHeaders.append("Content-Type", "application/json");
+    
+          var raw = JSON.stringify({
+            id: data.id,
+            address: addresValue,
+            userid: user.userid,
+            postCode: postCode
+          });
+          console.log(raw);
+          const edited = await callApi(
+            BASE_URL + UPDATE_ADDRESS,
+            raw,
+            myHeaders,
+            "POST"
+          );
+    
+          if (edited[0].code == 200) {
+            dispatch(loadingAddresFalse());
+            dispatch(getuserAddress(user.userid));
+            setEdit(false);
+            if (lang === "fa") {
+              var text = "آدرس ویرایش شد";
+            } else {
+              text = "edited addres";
+            }
+            notify(text, "success");
+          }
+        }
+        editApi();
       };
-      editApi();
     }else{
       let textShow ;
       if(lang === "fa"){
@@ -173,15 +189,29 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
   if (typeof data !== "undefined") {
     return (
       <div>
-
-        <Box
+        <AddressFeild 
+          checkicon={checkicon}
+          icon={icon} 
+          checked={checked} 
+          changeRadio={changeRadio} 
+          id={id} 
+          addresValue={addresValue}
+          changeAddres={changeAddres}
+          edit={edit}
+          changePostCodeHandler={changePostCodeHandler} 
+          postCode={postCode}  
+          deleteAddress={deleteAddress}
+          setEdit={setEdit}
+          updateHandler={updateHandler}
+        />
+        {/* <Box
           component="form"
           noValidate
           autoComplete="off"
           className={Style.inputContainer}
-        >
+        > */}
           {/* new code */}
-          <Accordion className={classes.applyFont}>
+          {/* <Accordion className={classes.container}>
             <AccordionSummary
               // expandIcon={
               aria-controls="panel1a-content"
@@ -257,7 +287,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-        </Box>
+        </Box> */}
       </div>
     );
   }
