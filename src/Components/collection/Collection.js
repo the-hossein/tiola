@@ -6,7 +6,7 @@ import HardCollection from "../../tools/allCollections/hardCollection/HardCollec
 import MediumCollection from "../../tools/allCollections/mediumCollection/MediumCollection";
 import Simplcollection from "../../tools/allCollections/simpleCollection/Simplcollection";
 import style from "./Collection.module.css";
-const Collection = ({ dir }) => {
+const Collection = ({ explore }) => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang.lng);
   return (
@@ -18,15 +18,16 @@ const Collection = ({ dir }) => {
               <Simplcollection
                 image1="/Assets/images/4.jpg"
                 image2="/Assets/images/10.jpg"
-                content={lang==="fa"?
-                "تیولا رگال‌های مختلفی دارد که هر رگال مخصوص یک رنگ است. هر کدام از مدل‌ها ویژگی خاصی دارد. با رگال گردی می‌توانید بهترین انتخاب خودتان و داشته باشید. "
-                :
-                `Tiola has different regals\, each regalia is specific to one color. Each model has a special feature. You can have your best choice with Regal Gerdi.`}
+                content={
+                  lang === "fa"
+                    ? "تیولا رگال‌های مختلفی دارد که هر رگال مخصوص یک رنگ است. هر کدام از مدل‌ها ویژگی خاصی دارد. با رگال گردی می‌توانید بهترین انتخاب خودتان و داشته باشید. "
+                    : `Tiola has different regals\, each regalia is specific to one color. Each model has a special feature. You can have your best choice with Regal Gerdi.`
+                }
                 color="exapmle"
                 title={t("collection")}
               />
               <MediumCollection
-                image1={"/Assets/images/6.jpg"}
+                image1={"/Assets/images/11.jpg"}
                 image2={"/Assets/images/7.jpg"}
                 image3={"/Assets/images/10.jpg"}
                 title={t("shop")}
@@ -37,10 +38,10 @@ const Collection = ({ dir }) => {
                 }
               />
               <HardCollection
-                image={"/Assets/images/9.jpg"}
+                image={explore.confirmed?explore.filePath:"/Assets/images/9.jpg"}
                 title={t("explore")}
                 content={
-                  lang === 'fa' 
+                  lang === "fa"
                     ? `ویترین پر از مدل‌های متنوع است. اگر انتخاب طرح دلخواه برایتان سخت است. پیشنهاد می‌کنیم به ویترین تیولا بروید و از بین طرح‌های مختلف\، طرح مناسب و با سلیقه خودتان پیدا کنید.`
                     : `The explore is full of various models. If it is difficult for you to choose the desired design. We suggest you go to the Tiola explore and find a suitable and tasteful design among the various designs.`
                 }

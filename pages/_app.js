@@ -7,7 +7,7 @@ import HttpApi from "i18next-http-backend";
 import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
 import { useRouter } from "next/router";
-import NextNProgress from "nextjs-progressbar";
+import NextProgress from "next-progress";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
   const [network, setNetwork] = useState();
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
-  
+
   useEffect(() => {
     if (router.pathname === "/collections/[collectionname]") {
       if (pageProps.collection[0].data.length !== 0) {
@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
           .getElementsByTagName("body")[0]
           .style.setProperty(
             "background",
-            pageProps.collection[0].data[0].collection.colorCode,
+            `   linear-gradient(180deg, rgba(26,121,9,0.4489146000196954) 0%, rgba(26,121,9,0.3200630594034489) 30%, rgba(239,239,239,0) 100%);`,
             "important"
           );
       }
@@ -59,14 +59,15 @@ function MyApp({ Component, pageProps }) {
   }
   return (
     <Provider store={store}>
-      <NextNProgress
+      <NextProgress
         height={6}
         options={{ showSpinner: false }}
         color="#6a8eae"
+     
       />
       <Component {...pageProps} />
       <ToastContainer
-        style={{ width: "35%", padding: "3px", top: "57px"}}
+        style={{ width: "35%", padding: "3px", top: "57px" }}
         bodyClassName="toastBox"
       />
       <PopUp />

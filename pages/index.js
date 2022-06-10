@@ -1,12 +1,15 @@
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import callApi from "../src/api/callApi";
+import { BASE_URL, GET_LAST_EXPLORE_IMAgE, GET_SLIDER } from "../src/api/urls";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import Landing from "../src/Components/landing/Landing";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 
-export default function Home() {
+export default function Home({ slider,explor }) {
+  console.log(explor);
   const state = useSelector((state) => state.stateRegister);
   const { t } = useTranslation();
   return (
@@ -26,7 +29,7 @@ export default function Home() {
         <ScreenLoader />
       ) : (
         <main>
-          <Landing />
+          <Landing product={slider[0].data} explore={explor[0].data[0]}/>
         </main>
       )}
       <footer>
@@ -34,4 +37,19 @@ export default function Home() {
       </footer>
     </>
   );
+}
+export async function getServerSideProps(context) {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const data = await callApi(BASE_URL + GET_SLIDER, "{}", myHeaders, "GET");
+  const exploreImage = await callApi(
+    BASE_URL + GET_LAST_EXPLORE_IMAgE,
+    "{}",
+    myHeaders,
+    "GET"
+  );
+  return {
+    props: { slider: data, explor: exploreImage } // will be passed to the page component as props
+  };
 }

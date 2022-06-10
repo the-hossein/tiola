@@ -29,7 +29,7 @@
 .title {
     padding: 1.4rem 3rem 0.3rem 3rem;
     font-size: var(--veryLg-font);
-margin: 0;
+margin: 0 0 0.8rem 0;
 
 }
 
@@ -50,7 +50,7 @@ margin: 0;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
-    height: 55px;
+    height: 59px;
     direction: var(--direction);
 }
 

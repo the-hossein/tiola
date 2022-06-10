@@ -20,9 +20,7 @@ export default function Explore() {
         <ContactUs />
       </main>
 
-      <footer>
-        <Footer />
-      </footer>
+   
     </div>
   );
 }

@@ -18,7 +18,6 @@
     width: 160px;
     border: var(--borderWidth);
     margin: 0 1rem;
-    background-color: var(--light-pen);
 }
 
 .phone {
@@ -43,6 +42,7 @@
 .socialMedia svg {
     margin: 0 1rem;
     font-size: 28pt;
+    cursor: pointer;
 }
 
 .socialMediaMB svg {

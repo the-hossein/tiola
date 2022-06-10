@@ -273,7 +273,7 @@ const getProfile = () => {
         };
         basket();
       } catch {
-         localStorage.removeItem("userToken");
+        
         window.location.reload();
       }
     };
