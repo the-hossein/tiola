@@ -45,7 +45,7 @@ const UserAddres = () => {
                   checkicon={<CheckBoxIcon sx={{ fontSize: 30 }} />}
                   icon={
                     <CheckBoxOutlineBlankIcon
-                      sx={{ fontSize: 30, color: "#c7c7c7" }}
+                      sx={{ fontSize: 30, color: "#c7c7c7" ,stroke: "white" }}
                     />
                   }
                 />

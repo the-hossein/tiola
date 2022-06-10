@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import persianNumber from "../../../tools/persianNumber/persianNumber";
 const ProductInfo = ({ more, data }) => {
+  console.log(data)
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang);
   if (typeof data !== "undefined") {
@@ -24,7 +25,7 @@ const ProductInfo = ({ more, data }) => {
             <span className={style.priceproduct}>
               {lang.lng === "fa"
                 ? persianNumber(data.price) + " " + t("t")
-                :  `${data.price} t`}
+                : `${data.price} t`}
             </span>
             <span className={style.rating}>
               <Rating name="product Rate" value={data.rate} readOnly />
@@ -42,8 +43,10 @@ const ProductInfo = ({ more, data }) => {
               lang.lng === "en" && "align-items-end"
             }`}
           >
-            <span>{lang.lng === "fa" ? data.title : data.titleEn}</span>
-            <span>{t("stock") + ": " + data.stock}</span>
+            <span className={style.titleInfo}>{lang.lng === "fa" ? data.title : data.titleEn}</span>
+            <span>{`${t("stock")}: ${
+              lang.lng === "fa" ? persianNumber(data.stock) : data.stock
+            }`}</span>
             <span>
               {lang.lng === "fa"
                 ? data.collection.title

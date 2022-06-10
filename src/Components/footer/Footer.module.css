@@ -4,7 +4,7 @@
     background-color: var(--blue-pen);
     font-size: var(--md-font);
     color: var(--light-pen);
-    border: 1px solid var(--lightGray-border);
+    border: var(--borderWidth);
 }
 
 .footerStyle {
@@ -16,15 +16,17 @@
 .namad {
     height: 160px;
     width: 160px;
-    border: 1px solid var(--lightGray-border);
+    border: var(--borderWidth);
     margin: 0 1rem;
     background-color: var(--light-pen);
 }
-.phone{
-    width:40%;
+
+.phone {
+    width: 40%;
 }
+
 .phone input {
-    border: 1px solid var(--lightGray-border) !important;
+    border: var(--borderWidth) !important;
     height: 46px;
 }
 
@@ -73,13 +75,17 @@
     background-color: var(--blue-pen);
     color: var(--light-pen);
 }
-@media(max-width:768px){
-    .phone{width: 100%;}
+
+@media(max-width:768px) {
+    .phone {
+        width: 100%;
+    }
 }
-@media(max-width:490px){
-    .footer{
+
+@media(max-width:490px) {
+    .footer {
         padding: 2rem;
     }
 
-    
+
 }

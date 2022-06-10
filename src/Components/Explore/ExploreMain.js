@@ -31,7 +31,7 @@ const ExploreMain = ({ data }) => {
   const params = new URLSearchParams(search);
   // bar
   var idSearching = params.get("search");
-console.log(data)
+  console.log(data);
   const [targetSearch, setTargetSearch] = useState([]);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ console.log(data)
 
 
   const fetchMoreData = () => {
-    setGetItem(data.slice(0, getItem.length + 20));
+    setGetItem(data.slice(0, getItem.length + 10));
   };
 
   const categoryScarf = data.filter(item => item.type === "scarf");

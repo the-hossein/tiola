@@ -6,11 +6,18 @@ import erroPic from "../../../public/Assets/images/errorPic.jpg";
 import successPIc from "../../../public/Assets/images/successPic.jpg";
 import Alert from "react-bootstrap/Alert";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getBasketDetails } from "../../redux/factor/factorAction";
 const StatusPayment = ({ statusCode, type }) => {
   console.log(statusCode);
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang.lng);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.stateRegister);
+  const goHomeHandler = () => {
+    console.log(state.basketid);
+    dispatch(getBasketDetails(state.basketid));
+  };
   const textError = "";
   switch (statusCode) {
     case 200:
@@ -94,7 +101,9 @@ const StatusPayment = ({ statusCode, type }) => {
             )}
 
             <Link href="/">
-              <button className={style.backindex}>{t("goHome")}</button>
+              <button className={style.backindex} onClick={goHomeHandler}>
+                {t("goHome")}
+              </button>
             </Link>
             {statusCode > 206 && (
               <Link href="/factor">

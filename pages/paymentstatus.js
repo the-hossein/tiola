@@ -7,13 +7,15 @@ import callApi from "../src/api/callApi";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import Header from "../src/Components/header/Header";
+import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
+import { useSelector } from "react-redux";
 
 if (typeof window !== "undefined") {
   var ls = localStorage.getItem("userToken");
 }
 const PaymentStatus = () => {
   const { t } = useTranslation();
-
+  const state = useSelector((state) => state.stateRegister);
   const [status, setStatus] = useState();
   const [Classid, setClassid] = useState(0);
   const [preLoad, setPreLoad] = useState(true);
@@ -75,18 +77,22 @@ const PaymentStatus = () => {
       <header className="d-none">
         <Header />
       </header>
-      <main>
-        {preLoad ? (
-          <>
-            <p style={{ marginTop: "2rem", textAlign: "center" }}>
-              {t("pleaseWait")}
-            </p>
-            <Loader />
-          </>
-        ) : (
-          <StatusPayment type={status} statusCode={statusCode} />
-        )}
-      </main>
+      {state.userDataLoader ? (
+        <ScreenLoader />
+      ) : (
+        <main>
+          {preLoad ? (
+            <>
+              <p style={{ marginTop: "2rem", textAlign: "center" }}>
+                {t("pleaseWait")}
+              </p>
+              <Loader />
+            </>
+          ) : (
+            <StatusPayment type={status} statusCode={statusCode} />
+          )}
+        </main>
+      )}
     </div>
   );
 };

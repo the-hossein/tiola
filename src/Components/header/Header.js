@@ -95,7 +95,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xs-font", "10pt");
     root.style.setProperty("--md-font", "11pt");
     root.style.setProperty("--lg-font", "14pt");
-    root.style.setProperty("--xl-font", "15pt");
+    root.style.setProperty("--xl-font", "18pt");
     root.style.setProperty("--xxl-font", "21pt");
     root.style.setProperty("--oxx-font", "26pt");
     root.style.setProperty("--veryLg-font", "30pt");
@@ -116,8 +116,8 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xs-font", "12pt");
     root.style.setProperty("--md-font", "15pt");
     root.style.setProperty("--lg-font", "18pt");
-    root.style.setProperty("--xl-font", "22pt");
-    root.style.setProperty("--xxl-font", "35pt");
+    root.style.setProperty("--xl-font", "26pt");
+    root.style.setProperty("--xxl-font", "30pt");
     root.style.setProperty("--veryLg-font", "48pt");
     root.style.setProperty("--hamberMenu-translate", "translateX(-200%)");
   };

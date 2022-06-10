@@ -19,10 +19,10 @@ const MBproductCategory = ({ reverse, page, data, title,type }) => {
             <RectangleProduct data={data[0]} />
           </div>
           <div className="col-6 pb-2 ">
-            <div className="col-12 pb-2">
+            <div className="col-12 mb-3 pb-2">
               <SquareProduct data={data[1]} />
             </div>
-            <div className="col-12 pb-2">
+            <div className="col-12 mb-3  pb-2">
               <SquareProduct data={data[2]} />
             </div>
           </div>
