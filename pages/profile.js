@@ -11,7 +11,7 @@ import { useRouter } from "next/dist/client/router";
 
 export default function Profile() {
   const state = useSelector((state) => state.stateRegister);
-  const lang = useSelector(state =>  state.stateLang.lng);
+  const lang = useSelector(state =>state.stateLang.lng);
  const {t}=useTranslation()
   const router = useRouter()
  useEffect(()=> {
