@@ -104,15 +104,15 @@ const ExploreMain = ({ data }) => {
       <div className={style.selectedCategory}>
         <div>
           <img src={data[30].imageFile1.filePath} alt="category"/>
-          <span onClick={scarfHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t(`${data[0].type}`)}</span>
+          <span onClick={scarfHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("scarf")}</span>
         </div>
         <div>
           <img src={data[2].imageFile1.filePath} alt="boboland"/>
-          <span onClick={shawlHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t(`${data[2].type}`)}</span>
+          <span onClick={shawlHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("shawl")}</span>
         </div>
         <div>
           <img src={data[10].imageFile1.filePath} alt="boboland"/>
-          <span onClick={headgearHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t(`${data[4].type}`)}</span>
+          <span onClick={headgearHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("headgear")}</span>
         </div>
       </div>
       <Box sx={{ width: "auto" }}>

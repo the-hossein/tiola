@@ -35,7 +35,11 @@ const useStyle = makeStyles({
   },
   container: {
     fontFamily: "var(--font) !important",
-    direction: "var(--direction)"
+    direction: "var(--direction)",
+    boxShadow: "none",
+    borderRadius: "var(--input-Radius) !important"
+  },
+  addressFiled: {
   }
 });
 
@@ -182,7 +186,7 @@ const AddNewAddress = () => {
                   placeholder={t("addresPlaceHolder")}
                   value={newAddres}
                   readOnly={false}
-                  multiline={true}
+                  multiline={false}
                   className={`${Style.addresinput} ${classes.applyFont}`}
                   id="addAddres"
                   style={{ backgroundColor: "#ffffff", color: "#000000" }}
@@ -190,11 +194,6 @@ const AddNewAddress = () => {
 
                 <div className={Style.handlerContainer}>
                   <div className={Style.containerPostCode}>
-                    <span
-                      className={postCode.length !== 10 && Style.errorShowPost}
-                    >
-                      *{t("errorPostCode")}
-                    </span>
                     <input
                       type="number"
                       placeholder={
@@ -208,6 +207,11 @@ const AddNewAddress = () => {
                         postCode.length !== 10 && Style.postCodeError
                       }`}
                     />
+                    <span
+                      className={postCode.length !== 10 && Style.errorShowPost}
+                    >
+                      *{t("errorPostCode")}
+                    </span>
                   </div>
                   <button type="button" onClick={addAddres}>
                     {t("done")}
