@@ -11,7 +11,7 @@
 .primaryBtnEn button {
     border: 1px solid var(--light-pen);
     background-color: var(--medium-gray);
-    padding: 0.3rem 2rem 0.5rem;
+    padding: 0.5rem 2rem 0.5rem;
     color: var(--light-pen);
     width: 182px;
     min-height: 40px;

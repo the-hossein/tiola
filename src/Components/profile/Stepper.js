@@ -36,7 +36,7 @@ const Stepper = ({ active }) => {
       </div>
       <div className={style.step}>
         <span>
-          <FontAwesomeIcon icon={faClipboardCheck} className={style.icon} />
+          <FontAwesomeIcon icon={faClipboardCheck} className={`${style.icon } ${style.categoty}`} />
         </span>
 
         <span className={style.shape} id={2}>

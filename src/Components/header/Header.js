@@ -100,7 +100,6 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--oxx-font", "26pt");
     root.style.setProperty("--veryLg-font", "30pt");
     root.style.setProperty("--hamberMenu-translate", "translateX(200%)");
-
   };
 
   const leftDir = () => {
@@ -131,9 +130,9 @@ const Header = ({ backColor }) => {
 
       const getApi = async () => {
         dispatch(await getProfile());
-       if(state.basket!==""){
-        dispatch(await getBasketDetails(state.basketid));
-       }
+        if (state.basket !== "") {
+          dispatch(await getBasketDetails(state.basketid));
+        }
       };
 
       getApi();
@@ -176,7 +175,11 @@ const Header = ({ backColor }) => {
   const openMenu = () => {
     setMenuBar(!menuBar);
   };
-
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setMenuBar(false);
+    });
+  }, [menuBar]);
   const goFactorHandler = () => {
     if (!state.loginStatus) {
       dispatch(openPopUp());
@@ -250,7 +253,15 @@ const Header = ({ backColor }) => {
                 {basket.basketLength === 0 ? (
                   ""
                 ) : (
-                  <div className={lang.lng==="fa"?style.basketAmount:style.basketAmountEn}>{basket.basketLength}</div>
+                  <div
+                    className={
+                      lang.lng === "fa"
+                        ? style.basketAmount
+                        : style.basketAmountEn
+                    }
+                  >
+                    {basket.basketLength}
+                  </div>
                 )}
               </div>
 
@@ -284,9 +295,9 @@ const Header = ({ backColor }) => {
                       ? (window.location = "/explore?search=" + textSearch)
                       : null
                   }
-                  className={
-                    `${style.searchBox} ${showSearchBox ? style.inputDesign : style.inputDesignNot}`
-                  }
+                  className={`${style.searchBox} ${
+                    showSearchBox ? style.inputDesign : style.inputDesignNot
+                  }`}
                 />
                 <SearchIcon
                   onClick={serachHandler}
@@ -351,9 +362,9 @@ const Header = ({ backColor }) => {
                       ? (window.location = "/explore?search=" + textSearch)
                       : null
                   }
-                  className={
-                    `${style.searchBox} ${showSearchBox ? style.inputDesign : style.inputDesignNot}`
-                  }
+                  className={`${style.searchBox} ${
+                    showSearchBox ? style.inputDesign : style.inputDesignNot
+                  }`}
                 />
                 <SearchIcon
                   onClick={serachHandler}
@@ -369,7 +380,15 @@ const Header = ({ backColor }) => {
                     {basket.basketLength <= 0 ? (
                       ""
                     ) : (
-                      <div className={lang.lng==="fa"?style.basketAmount:style.basketAmountEn}>{basket.basketLength}</div>
+                      <div
+                        className={
+                          lang.lng === "fa"
+                            ? style.basketAmount
+                            : style.basketAmountEn
+                        }
+                      >
+                        {basket.basketLength}
+                      </div>
                     )}
                   </div>
 

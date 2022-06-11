@@ -104,7 +104,7 @@
 
 .shape svg,
 .icon {
-    font-size: var(--lg-font) !important;
+    font-size: var(--xxl-font) !important;
     color: var(--lightGray-border);
     z-index: 9;
 
@@ -149,16 +149,20 @@
 
     .shape svg,
     .icon {
-        font-size: var(--lg-font)
+        font-size: var(--lg-font) !important;
+        width: 20px;
     }
+    .categoty{
+        width: 14px;
 
+    }
     .stepper div span:nth-child(3) {
-        font-size: var(--xs-font)
+        font-size: var(--verySmall-font)
     }
 
     .stepper div:not(:last-child) span:nth-child(2)::after {
         content: "";
-        top: 37px;
+        top:55%;
 
     }
 

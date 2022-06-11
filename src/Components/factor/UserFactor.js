@@ -51,7 +51,7 @@ const UserFactor = () => {
     <section className={style.ContainerSection}>
       {!!basket ? (
         basket.details === null ? (
-          <Placement text="اکانت شماپاک شده است مجدد ثبت نام کنید" />
+          <Placement text={t("exitAccount")} />
         ) : (
           <div className="container mt-4">
             <FactorSection title={t("addres")} component={<UserAddres />} />
