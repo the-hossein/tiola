@@ -12,7 +12,7 @@ const CollectionDetails = ({ data }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateColProduct);
   const lang = useSelector((state) => state.stateLang);
-
+console.log(data)
   return (
     <section>
       <div className="position-relative" id={Style.collectionImg}>

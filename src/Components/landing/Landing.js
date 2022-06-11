@@ -3,42 +3,32 @@ import Collection from "../collection/Collection";
 import HeroSection from "../heroSection/HeroSection";
 import ProductSlider from "../productSlider/ProductSlider";
 import style from "./Landing.module.css";
-const Landing = () => {
-    const product = [
-        {
-          src: "/Assets/images/1.jpg"
-        },
-        {
-          src: "/Assets/images/1.jpg"
-        },
-        {
-          src: "/Assets/images/1.jpg"
-        },
-        {
-          src: "/Assets/images/1.jpg"
-        },
-        {
-          src: "/Assets/images/1.jpg"
-        },
-        {
-          src: "/Assets/images/1.jpg"
-        }
-      ];
+const Landing = ({ product,explore }) => {
+  console.log(explore)
+  const images = [];
+  var itm;
+  product.map((item) => {
+    if (item.confirmed===true) {
+      itm = item.filePath;
+    }
+    images.push({ src: itm, id: item.id });
+  });
+  console.log(images)
   return (
     <div className={style.landing}>
       <HeroSection />
       <ProductSlider
         slidesShow={2.4}
         radius={0}
-        images={product}
+        images={images}
         arrowStatus={true}
         margin={0}
         mbItem={1}
         tbItem={2}
         heightImage={280}
-        nameSet={'homeSwiper'}
+        nameSet={"homeSwiper"}
       />
-      <Collection />
+      <Collection explore={explore}/>
     </div>
   );
 };

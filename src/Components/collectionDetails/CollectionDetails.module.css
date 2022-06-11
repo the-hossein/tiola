@@ -8,7 +8,7 @@
 
 #collectionImg::before {
   transition: all .2s linear;
-  border-radius: 15px;
+
   content: "";
   width: 100%;
   height: 100%;

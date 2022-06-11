@@ -16,6 +16,7 @@ import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 export default function CollectionName({ collection }) {
   const state = useSelector((state) => state.stateColProduct);
   const lang = useSelector((state) => state.stateLang.lng);
+  console.log(collection)
   const { t } = useTranslation();
   const dispatch = useDispatch();
   useEffect(() => {

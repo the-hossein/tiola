@@ -5,10 +5,11 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import style from "./Footer.module.css";
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 const MobileFooter = () => {
   const { t } = useTranslation();
-
+const lang=useSelector(state=>state.stateLang.lng)
   return (
     <>
     <div className='d-flex flex-column  '>
@@ -24,9 +25,10 @@ const MobileFooter = () => {
             <WhatsAppIcon />
             <InstagramIcon />
           </div>
-          <a href="tel:02126420420" id={style.phone}>
-                  <span>{t("ContactUs")}: 02126420420</span> 
-                </a>
+          <a href="tel:02191690818" id={style.phone}>
+              <span>{t("ContactUs") + " :   "}</span>
+              <span>{lang === "fa" ? "۰۲۱۹۱۶۹۰۸۱۸" : "021 91 690 818"}</span>
+            </a>
 
         </div>
        <div className='d-flex align-item-center justify-content-evenly pt-3'>
