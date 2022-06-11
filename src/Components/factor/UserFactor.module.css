@@ -11,6 +11,7 @@
     margin: auto;
     width: 100%;
     object-fit: cover;
+    margin-bottom: 3rem;
 }
 
 .title {
@@ -125,7 +126,7 @@
 
 .containerPostCode span {
     color: #707070;
-    font-size: var(--sm-font);
+    font-size: 8pt;
     margin-top: 5px;
     padding: 0 15px;
     display: none;
