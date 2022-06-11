@@ -221,12 +221,10 @@ const EditProfile = () => {
                   accept="image/png, image/jpeg,"
                   onChange={ChangeImageAction}
                 />
-                <span>
                   <label htmlFor="userImage" className={style.buttonStyle}>
                     {t("Change")}
                   </label>
-                </span>
-                <button onClick={removeImg} className={style.buttonStyle} type="button">
+                <button onClick={removeImg} className={style.buttonStyleRemove} type="button">
                   {t("remove")}
                 </button>
               </div>
@@ -311,7 +309,7 @@ const EditProfile = () => {
           </div>
           <div className="col-12 col-md-12 col-lg-3 text-center">
             <div className={`mt-5 ${style.btnHandel}`}>
-              <button type="submit" onClick={subHandler}>{t("submit")}</button>
+              <button type="submit" className={style.subBtn} onClick={subHandler}>{t("submit")}</button>
               <Link href="/">
                 <span className={style.navigate}>{t("home")}</span>
               </Link>

@@ -35,7 +35,7 @@
 .addresinput input,
 .addresinput textarea {
     font-family: "IRANSansWeb" !important;
-    font-size: 11pt !important;
+    font-size: 9pt !important;
     border: 1px solid #c1c1c1 !important;
     border-radius: var(--input-Radius) !important;
     padding: 8px 18px !important;
@@ -112,7 +112,7 @@
 }
 
 .handlerContainer button:hover {
-    background-color: #24be64;
+    background-color: #1a93c7;
 }
 
 .containerPostCode {
@@ -140,7 +140,7 @@
 .postCode {
     direction: var(--direction);
     padding: 8px 25px;
-    border: 1px solid #bcbaba5a;
+    border: 1px solid #c1c1c1;
     border-radius: 15px;
     outline: none;
     width: 99%;
@@ -167,9 +167,10 @@
     
 }
 .titleText{
+    font-family: "IRANSansWeb" !important;
     overflow: hidden !important;
     width: 85%;
-    font-size: var(--xs-font);
+    font-size: 10pt !important; 
     text-overflow: ellipsis !important;
     display: -webkit-box !important;
     -webkit-line-clamp: 1 !important;
@@ -196,12 +197,13 @@
     position: absolute !important;
     top: -37px;
     right: 0;
-    padding: 2px 15px;
+    padding: 2px 15px 4px;
     background-color: #fff;
-    font-size: var(--md-font);
-    border-radius: var(--input-Radius);
+    font-size: var(--xs-font);
+    border-radius: 8px;
     border: none;
     outline: none;
+    color: #707070;
 }
 .btnArdalanPasandFa {
     position: absolute !important;
@@ -209,10 +211,11 @@
     left: 0;
     padding: 2px 15px;
     background-color: #fff;
-    font-size: var(--md-font);
-    border-radius: var(--input-Radius);
+    font-size: var(--xs-font);
+    border-radius: 8px;
     border: none;
     outline: none;
+    color: #707070;
 }
 .filedClient {
     height: 0px;
@@ -221,4 +224,5 @@
 .parentClient{
     overflow: hidden;
     height: fit-content;
+    padding: 0 16px 16px;
 }

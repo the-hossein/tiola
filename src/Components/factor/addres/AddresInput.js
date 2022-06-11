@@ -121,11 +121,11 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
       if(addresValue.length <= 15){
         let textShow ;
         if(lang === 'fa'){
-          textShow = "لطفا آدرس خود را وارد کنید"
+          textShow = "لطفا ادرس خود را به طور دقیق وارد کنید."
         }else {
-          textShow = "Please enter your address"
+          textShow = "Please enter your exact address."
         }
-        notify(textShow, "error")
+        notify(textShow, "warning")
       }else{
         dispatch(loadingAddress());
         const editApi = async () => {

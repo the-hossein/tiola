@@ -25,6 +25,9 @@ const useStyle = makeStyles({
       fontFamily: "var(--font) !important",
       direction: "var(--direction) !important"
     },
+    applyFontFa: {
+        fontFamily: "'IRANSansWeb' !important",
+    },
     icon: {
     },
     open : {
@@ -43,7 +46,7 @@ const useStyle = makeStyles({
     },
     inputAddress: {
         // width: '100%',
-        fontFamily: "var(--font) !important",
+        fontFamily: "'IRANSansWeb' !important",
         direction: "var(--direction) !important",
         padding: "0 !important",
         // margin: "0 !important"
@@ -88,7 +91,7 @@ const AddressFeild = ({checkicon, icon, checked, changeRadio, id, addresValue, c
                     inputProps={{ "aria-label": `${id}` }}
                     className={lang === "en" ? Style.checkedRight : Style.checkedLeft}
                     />
-                    <h4 className={`${classes.applyFont} ${Style.titleText} `}>{addresValue}</h4>
+                    <h4 className={`${classes.applyFontFa} ${Style.titleText} `}>{addresValue}</h4>
               </div>
               <div className={Style.parentClient}>
                 <div className={` ${Style.filedClient} ${openFiled ? Style.openFiled : Style.closeFiled}`}>

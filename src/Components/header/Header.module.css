@@ -212,23 +212,29 @@
 
 @media(max-width:768px) {
     .searchBoxIcon {
-        left: 6px;
+        left: 1px;
+    }
+    .searchBox {
+        background-color: var(--light-pen);
+        color: black;
+        border-radius: 6px;
+        text-align: left;
+        /* display: none; */
+        /* opacity: 0; */
+        width: 0;
+        border: none;
+        font-size: var(--xs-font);
+        transition: all 0.4s ease-in-out !important;
     }
 
     .basketAmount {
-
         top: -5px;
         right: -17px;
     }
 
     .basketAmountEn {
-
         top: 0px;
         right: 20px;
-
-
-
-
     }
 
 }
@@ -236,7 +242,6 @@
 @media(max-width:475px) {
     .mobileIcon a {
         padding: 0 0.5rem !important;
-        
 
     }
 
@@ -246,48 +251,46 @@
         padding: 0.6rem 1rem;
     }
 
-    .searchBox {
-        width: 100%;
-        font-size: var(--xs-font) !important;
-        padding: 5px 1.3rem 5px 1.3rem !important;
-        animation-name: searchBoxAnimationMB;
-
-
-    }
-
     .searchBox::placeholder {
         display: inline !important;
         font-size: var(--sm-font) !important;
         color: #111111 !important;
     }
 
+    .searchBox{
+        width: .2px;
+    }
     .searchBoxIcon {
-        font-size: 9pt !important;
+        font-size: 13pt !important;
+        position: absolute;
+        left: 1%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .inputDesignNot {
+        position: absolute;
+        opacity: 0;
+        width: .1px;
+        height: 1px;
+        /* transform: translateY(-1200%) translateX(-500%); */
+    }
+    .inputDesign {
+        width: 100% !important;
+        opacity: 1 !important;
+        padding: .5rem 1.8rem;
     }
 
-    @keyframes searchBoxAnimation {
-        from {
-            display: block;
-            width: 0px;
-        }
-
-        to {
-            width: 100px;
-        }
-    }
 
     .suggest {
         top: 30px !important;
-
-        /* left: 50px !important; */
     }
 
-    .mobileIcon .searchBoxIcon {
-        position: absolute;
-        margin: 0 !important;
-        right: 5px !important;
-        top: 8px !important;
-    }
+        /* .mobileIcon .searchBoxIcon {
+            position: absolute;
+            margin: 0 !important;
+            right: 5px !important;
+            top: 8px !important;
+        } */
 
 }
 

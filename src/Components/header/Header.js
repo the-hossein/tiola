@@ -323,9 +323,10 @@ const Header = ({ backColor }) => {
                   </a>
                 </Link>
               ) : (
-                <Link href={"/signin"}>
-                  <a>{t("login")}</a>
-                </Link>
+                
+                !showSearchBox &&<Link href={"/signin"}>
+                <a>{t("login")}</a>
+              </Link>
               )}
               <div className="position-relative d-flex align-items-center">
                 {boxTarget && (
