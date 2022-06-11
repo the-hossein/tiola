@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { BASE_URL, GET_BLOG } from "../../../api/urls";
 //stylesheet
 import style from "./BlogsDetail.module.css";
 //icons
@@ -21,17 +22,16 @@ const BlogDetail = () => {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get(BASE_URL+GET_BLOG)
       .then((response) => {
-        const data = response.data;
-        setBlogTarget(data.filter((blog) => blog.id === id));
+        const data = response.data.data;
+        console.log(data)
+        setBlogTarget(data.filter(blog => blog.id === id));
         setLoading(false);
       })
       .catch((err) => console.log(err));
   }, [blogTarget]);
 
-  // console.log(blogTarget)
-  // console.log(blogs);
 
   return (
     <div className={`'container-fluid' ${style.container}`}>

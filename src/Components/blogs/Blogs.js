@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Loader from "../../tools/loader/Loader";
 import Blog from "./blogGet/Blog";
+import { BASE_URL, GET_BLOG } from "../../api/urls";
 
 //stylesheet
 import style from "./Blogs.module.css";
@@ -13,8 +14,11 @@ const Blogs = () => {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => setBlogs(response.data));
+      .get(BASE_URL+GET_BLOG)
+      .then((response) => {
+        setBlogs(response.data.data)
+      
+      });
   }, []);
 
   return (
@@ -28,7 +32,8 @@ const Blogs = () => {
             <Blog
               key={blog.id}
               title={blog.title}
-              body={blog.body}
+              titleEn={blog.titleEn}
+              body={blog.paragraphs}
               params={blog.id}
             />
           ))
