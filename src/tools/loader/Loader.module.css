@@ -1,0 +1,11 @@
+.loader {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.loader img {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+}

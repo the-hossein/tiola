@@ -54,7 +54,7 @@ const ProductsCategory = ({ reverse, data, title, type }) => {
                   <Link href={type !== null ? `/category/${type.type}` : "/"}>
               <a>
               <div
-                      className={`mt-5 w-100 ${
+                      className={`mt-5 mb-2 w-100 ${
                         router.pathname === "/collections/[collectionname]"
                           ? style.collPage
                           : style.shopPage
