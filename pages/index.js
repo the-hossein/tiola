@@ -8,7 +8,7 @@ import Header from "../src/Components/header/Header";
 import Landing from "../src/Components/landing/Landing";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 
-export default function Home({ slider,explor }) {
+export default function Home({ slider, explor }) {
   console.log(explor);
   const state = useSelector((state) => state.stateRegister);
   const { t } = useTranslation();
@@ -21,6 +21,7 @@ export default function Home({ slider,explor }) {
           name="google-site-verification"
           content="nR4pwY73DvKf7OURnL2xr3p1fZo2yXwTkhg_DDWRzPQ"
         />
+        <meta name="enamad" content="167125" />
       </Head>
       <header>
         <Header backColor={"headerBlur"} />
@@ -29,7 +30,7 @@ export default function Home({ slider,explor }) {
         <ScreenLoader />
       ) : (
         <main>
-          <Landing product={slider[0].data} explore={explor[0].data[0]}/>
+          <Landing product={slider[0].data} explore={explor[0].data[0]} />
         </main>
       )}
       <footer>
