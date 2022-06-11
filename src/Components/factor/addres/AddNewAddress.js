@@ -39,8 +39,7 @@ const useStyle = makeStyles({
     boxShadow: "none",
     borderRadius: "var(--input-Radius) !important"
   },
-  addressFiled: {
-  }
+  addressFiled: {}
 });
 
 import Accordion from "@mui/material/Accordion";
@@ -49,6 +48,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { InputAdornment } from "@mui/material";
+import Loader from "../../../tools/loader/Loader";
 
 const AddNewAddress = () => {
   const [newAddres, setNewAddres] = useState("");
@@ -72,21 +72,20 @@ const AddNewAddress = () => {
   };
 
   const changePostCode = (e) => {
-    if(e.target.value.length <= 10){
+    if (e.target.value.length <= 10) {
       setPostCode(e.target.value);
     }
-  }
+  };
 
   const addAddres = (e) => {
     if (postCode.length === 10) {
       dispatch(loadingAddress());
 
-     
       if (newAddres !== "") {
         const addAddresUser = async () => {
           console.log(raw);
           try {
-            console.log(user)
+            console.log(user);
             var myHeaders = new Headers();
             myHeaders.append("Authorization", `Bearer ${token}`);
             myHeaders.append("Content-Type", "application/json");
@@ -104,24 +103,22 @@ const AddNewAddress = () => {
             );
             if (addStatus[0].code === 200) {
               dispatch(getuserAddress(user.userid));
-            }else{
-              dispatch(loadingAddresFalse())
-              if(lang==="fa"){
-                var text="ثبت آدرس با خطا مواجه شد"
-              }else{
-                 text="ثبت آدرس با خطا مواجه شد"
-  
+            } else {
+              dispatch(loadingAddresFalse());
+              if (lang === "fa") {
+                var text = "ثبت آدرس با خطا مواجه شد";
+              } else {
+                text = "ثبت آدرس با خطا مواجه شد";
               }
-              notify(text,"error")
+              notify(text, "error");
             }
           } catch {
-            if(lang==="fa"){
-              var text="ثبت آدرس با خطا مواجه شد"
-            }else{
-               text="ثبت آدرس با خطا مواجه شد"
-
+            if (lang === "fa") {
+              var text = "ثبت آدرس با خطا مواجه شد";
+            } else {
+              text = "ثبت آدرس با خطا مواجه شد";
             }
-            notify(text,"error")
+            notify(text, "error");
           }
         };
         addAddresUser();
@@ -152,9 +149,8 @@ const AddNewAddress = () => {
       notify(textShow, "error");
     }
   };
-  return (
-    user.basketid!==""?
-    <div className={lang==="fa"?Style.addingAddres:Style.addingAddresEn}>
+  return(
+    <div className={lang === "fa" ? Style.addingAddres : Style.addingAddresEn}>
       <Box
         component="form"
         noValidate
@@ -240,9 +236,9 @@ const AddNewAddress = () => {
           </AccordionDetails>
         </Accordion>
       </Box>
-    </div>:
-    <h1>test</h1>
-  );
+    </div>
+  ) 
+  
 };
 
 export default AddNewAddress;

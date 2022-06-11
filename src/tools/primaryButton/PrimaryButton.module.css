@@ -25,7 +25,8 @@
 
     background-color: var(--light-pen);
     color: #000;
-    border: none;
+    border: 1px solid var(--light-pen);
+
 }
 
 .lightBtn button {

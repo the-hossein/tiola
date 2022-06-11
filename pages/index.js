@@ -15,7 +15,7 @@ export default function Home({ slider,explor }) {
   return (
     <>
       <Head>
-        <title>{t("home")}</title>
+        <title>{t("tiolaHome")}</title>
         <link rel="icon" href="/logo.ico" />
         <meta
           name="google-site-verification"

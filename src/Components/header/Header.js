@@ -131,7 +131,9 @@ const Header = ({ backColor }) => {
 
       const getApi = async () => {
         dispatch(await getProfile());
+       if(state.basket!==""){
         dispatch(await getBasketDetails(state.basketid));
+       }
       };
 
       getApi();
