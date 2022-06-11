@@ -10,7 +10,7 @@ const AboutUsTiola = () => {
   return (
     <div className={`container-fluid  ${style.tiola}`}>
       <div className={`row m-0 p-0`}>
-        <div className="col-lg-6 col-12">
+        <div className="col-lg-5 col-12">
           <h4 className={style.aboutUstitle}>{t("tiolaStory")}</h4>
           {lang.lng === "fa" ? (
             <p className={`text-justify ${style.lineHeight}`}>

@@ -69,6 +69,11 @@ const setAlladdress = (data) => {
     payload: data
   };
 };
+const deleteFactor = () => {
+  return {
+    type: "DELETE_FACTOR"
+  };
+};
 const loadingAddress = () => {
   return {
     type: "lOADING_ADDRESS"
@@ -123,42 +128,38 @@ const deleteAddresUser = (allAddress, id) => {
 };
 const getBasketDetails = (basketid) => {
   return (dispatch) => {
+    const newls = localStorage.getItem("userToken");
+    if (newls !== null) {
+      const userToken = JSON.parse(newls);
+      const token = userToken.token;
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+      dispatch(loaderFactorTrue());
 
-  const newls = localStorage.getItem("userToken");
-  if (newls !== null) {
-    const userToken = JSON.parse(newls);
-    const token = userToken.token;
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    dispatch(loaderFactorTrue());
-
-    const basketDetails = async () => {
-     try {
-      const details = await callApi(
-        `${BASE_URL + GET_BASKET_DETAILS}?id=${basketid}`,
-        "{}",
-        myHeaders,
-        "GET"
-      );
-      if (details[0].code === 200) {
-        dispatch(addbasketDetails(details[0].data));
-      }
-     } catch (error) {
-       
-       dispatch(addbasketDetails("failed"))
-     }
-    };
-    basketDetails();
-  }
-
+      const basketDetails = async () => {
+        try {
+          const details = await callApi(
+            `${BASE_URL + GET_BASKET_DETAILS}?id=${basketid}`,
+            "{}",
+            myHeaders,
+            "GET"
+          );
+          if (details[0].code === 200) {
+            dispatch(addbasketDetails(details[0].data));
+          }
+        } catch (error) {
+          dispatch(addbasketDetails("failed"));
+        }
+      };
+      basketDetails();
+    }
   };
 };
-const deletBasketLength=()=>{
-return{
-  type:"DELETE_BASKET_LEGTH"
-}
-
-}
+const deletBasketLength = () => {
+  return {
+    type: "DELETE_BASKET_LEGTH"
+  };
+};
 const deleteBasketUser = (alldata, data) => {
   return (dispatch) => {
     dispatch(deleteLoader());
@@ -186,33 +187,32 @@ const deleteBasketUser = (alldata, data) => {
 };
 const getuserAddress = (userid) => {
   return (dispatch) => {
- try {
-  var ls = localStorage.getItem("userToken");
-  if (ls !== null) {
-    const userToken = JSON.parse(ls);
-    const token = userToken.token;
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    // dispatch(loaderFactorTrue());
-    dispatch(loadingAddress());
-    const allAddress = async () => {
-      const address = await callApi(
-        `${BASE_URL + GET_USER_ADDRESS}?UserId=${userid}`,
-        "{}",
-        myHeaders,
-        "POST"
-      );
-      if (address[0].code === 200) {
-        dispatch(setAlladdress(address[0].data));
-
+    try {
+      var ls = localStorage.getItem("userToken");
+      if (ls !== null) {
+        const userToken = JSON.parse(ls);
+        const token = userToken.token;
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        // dispatch(loaderFactorTrue());
+        dispatch(loadingAddress());
+        const allAddress = async () => {
+          const address = await callApi(
+            `${BASE_URL + GET_USER_ADDRESS}?UserId=${userid}`,
+            "{}",
+            myHeaders,
+            "POST"
+          );
+          if (address[0].code === 200) {
+            dispatch(setAlladdress(address[0].data));
+          }
+        };
+        allAddress();
       }
-    };
-    allAddress();
-  }
- } catch (error) {
-   alert("test")
-   dispatch(setAlladdress("failed"))
- }
+    } catch (error) {
+      alert("test");
+      dispatch(setAlladdress("failed"));
+    }
   };
 };
 // const getBasketUser = (token, userid) => {
@@ -250,5 +250,5 @@ export {
   IncressBasketDetail,
   DecreaseBasketDetail,
   loadingAddresFalse,
-  deleteAddresUser
+  deleteAddresUser,deleteFactor
 };

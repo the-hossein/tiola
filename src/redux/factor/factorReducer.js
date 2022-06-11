@@ -30,6 +30,12 @@ const factorReducer = (state = initializedState, action) => {
         ...state,
         basketLength: state.basketLength + 1
       };
+    case "DELETE_FACTOR":
+      return {
+        ...state,
+        basketLength: 0,
+        details: null
+      };
     case "ADDRESS-DELETED":
       return {
         ...state,
@@ -37,6 +43,7 @@ const factorReducer = (state = initializedState, action) => {
         loadingAddress: false
       };
     case "BASKET_DETAILS":
+      console.log(action.data);
       return {
         ...state,
         details: action.data,
