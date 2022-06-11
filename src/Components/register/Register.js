@@ -172,7 +172,7 @@ const Register = ({ title }) => {
   return (
     <section>
       <div className={`row m-0 ${style.Register}`}>
-        <div className="col-lg-6 col-md-8 col-12 pt-5">
+        <div className="col-lg-6 col-md-6 col-12 pt-5">
           {state.loader ? (
             <Loader />
           ) : (
@@ -273,7 +273,7 @@ const Register = ({ title }) => {
             </div>
           )}
         </div>
-        <div className={`col-lg-6 col-md-4 col-12 p-0 ${style.pic}`}>
+        <div className={`col-lg-6 col-md-6 col-12 p-0 ${style.pic}`}>
           <Image alt="sign image" src={loginPic} />
         </div>
       </div>
