@@ -16,7 +16,7 @@
     width: 100%;
     object-fit: cover;
     overflow: hidden;
-    object-position: 0 20%;
+    object-position: center;
 }
 
 .blogInfo {
@@ -47,9 +47,10 @@
     left: 48px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    /* justify-content: start; */
     align-items: flex-start;
     color: #fff;
+    cursor: pointer;
 
 }
 
@@ -83,8 +84,7 @@
     display: flex;
     min-width: 114px;
     border-radius: var(--Product-Border-radius);
-
-
+    justify-content: center;
     padding: 0 1.5rem 0 0.5rem;
     align-items: center;
     /* backdrop-filter: blur(5.4px);
@@ -94,10 +94,14 @@
     color: #fff;
     font-size: var(--xl-font);
 }
+.imageHeader span{ 
+    line-height: 15px !important;
+}
 
-.imageHeader button svg {
+.imageHeader svg {
     /* font-size: rem; */
-    transform: scale(3, 1.4);
+    transform: scale(2.5, 1.2);
+    /* border-radius: 15px; */
 }
 
 .blogInfo h1,

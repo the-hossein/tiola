@@ -19,8 +19,8 @@
     padding: 0 30px !important;
 }
 .collectionImage div img:first-child {
-    border-top-left-radius: 192.5px 50% ;
-    border-top-right-radius: 192.5px 50% ;
+    border-top-left-radius: 50% 28% ;
+    border-top-right-radius: 50% 28%;
     /* width: 160px; */
     width: 26%;
     height: 385px;
@@ -47,7 +47,9 @@
 }
 
 .collectionImage div img:last-child {
-    border-radius: 165px 165px 0 0;
+    /* border-radius: 165px 165px 0 0; */
+    border-top-left-radius: 50% 28% ;
+    border-top-right-radius: 50% 28% ;
     /* width: 230px; */
     width: 30%;
     height: 500px;
@@ -128,20 +130,27 @@
 
     .collectionImage div img:first-child {
         width: 26%;
-      
+        height: 251px;
+        border-top-left-radius: 60% 25% ;
+        border-top-right-radius: 60% 25%;
     }
     
     .collectionImage div img:nth-child(2) {
         width: 35%;
-      padding: 0 0.5rem;
-    
+        padding: 0 0.5rem;
+        height: 230px;
+        border-top-left-radius: 75% 50%;
+        border-top-right-radius: 75% 50% ;
+        border-bottom-left-radius: 75% 50%;
+        border-bottom-right-radius: 75% 50%;
     
     }
     
     .collectionImage div img:last-child {
-       
         width: 28%;
-      
+        height: 330px;
+        border-top-left-radius: 60% 25% ;
+        border-top-right-radius: 60% 25% ;
     }
     
 }

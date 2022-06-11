@@ -1,4 +1,6 @@
 .container {
+    width: 100%;
+    /* height: fit-content; */
     direction: var(--direction);
     background-color: var(--light-pen);
     height: fit-content;

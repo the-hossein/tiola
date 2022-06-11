@@ -7,7 +7,6 @@
 .containerPic {
     width: 100%;
     height: 500px;
-
 }
 
 .containerPic img:first-child {
@@ -68,24 +67,24 @@
         flex-direction: column;
         padding-top: 0 !important;
     }
-
-
-
-
     .containerPic {
-
+        /* height: 400px; */
         padding-right: 0;
     }
 
     .content {
         border-bottom: none;
     }
+
 }
 
 @media(max-width:395px) {
+    .containerPic {
+        height: 350px;
+    }
     .containerPic img:first-child {
         width: 37%;
-
+        border-top-right-radius: 80% 40%;
 
     }
 
@@ -94,3 +93,4 @@
 
     }
 }
+
