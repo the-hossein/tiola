@@ -36,41 +36,9 @@ const Footer = () => {
       d.getElementsByTagName("body")[0].appendChild(s);
     })();
   }, []);
-  const addPhone = () => {
-  
-  };
-  
+  const addPhone = () => {};
+
   const TypeNumber = (e) => {
-    var input = document.getElementById("phone");
-
-    input.addEventListener("keydown", function (e) {
-      if (e.code === "Enter" && phoneNum.length === 11) {
-        //checks whether the pressed key is "Enter"
-
-        const addUser = async () => {
-          var myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
-          const response = await callApi(
-            `${BASE_URL + ADD_USER}?PhoneNumber=${phoneNum}`,
-            "{}",
-            myHeaders,
-            "POST"
-          );
-          console.log(response[0].code);
-          if (response[0].code <= 206) {
-            if (lang === "fa") {
-              var text = "شماره شما با موفقیت ثبت  شد";
-            } else {
-              text = "Your number was successfully registered";
-            }
-            notify(text, "success");
-          } else {
-            notify("no", "error");
-          }
-        };
-        addUser();
-      }
-    });
     if (!e) {
       e = window.event;
     }
@@ -83,9 +51,90 @@ const Footer = () => {
         return false;
       }
     }
+    if (e.code === "Enter") {
+      //checks whether the pressed key is "Enter"
+      if (phoneNum.length === 11 && /^[0]?[9][0-9]{9}$/.test(phoneNum)) {
+        const addUser = async () => {
+          var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json");
+          const response = await callApi(
+            `${BASE_URL + ADD_USER}?PhoneNumber=${phoneNum}`,
+            "{}",
+            myHeaders,
+            "POST"
+          );
+          console.log(response);
+          if (response[0].code === 200) {
+            if (lang === "fa") {
+              var text = "شماره شما با موفقیت ثبت  شد";
+            } else {
+              text = "Your number was successfully registered";
+            }
+            notify(text, "success");
+          } else if (response[0].code === 206) {
+            if (lang === "fa") {
+              var text = "شماره شما قبلا ثبت شده است";
+            } else {
+              text = "Your number is already registered";
+            }
+            notify(text, "warning");
+          } else {
+            if (lang === "fa") {
+              var text = "خطایی رخ داده";
+            } else {
+              text = "An error occurred";
+            }
+            notify(text, "error");
+          }
+        };
+        addUser();
+      } else {
+        if (lang === "fa") {
+          var text = "لطفا شماره خود را به درستی وارد کنید";
+        } else {
+          text = "Please enter your number correctly";
+        }
+        notify(text, "error");
+      }
+    }
     return true;
-
-
+  };
+  const changePhoneNUmber = (e) => {
+    var persianNumbers = [
+        /۰/g,
+        /۱/g,
+        /۲/g,
+        /۳/g,
+        /۴/g,
+        /۵/g,
+        /۶/g,
+        /۷/g,
+        /۸/g,
+        /۹/g
+      ],
+      arabicNumbers = [
+        /٠/g,
+        /١/g,
+        /٢/g,
+        /٣/g,
+        /٤/g,
+        /٥/g,
+        /٦/g,
+        /٧/g,
+        /٨/g,
+        /٩/g
+      ],
+      fixNumbers = function (str) {
+        if (typeof str === "string") {
+          for (var i = 0; i < 10; i++) {
+            str = str
+              .replace(persianNumbers[i], i)
+              .replace(arabicNumbers[i], i);
+          }
+        }
+        return str;
+      };
+    setPhoneNum(fixNumbers(e.target.value));
   };
   return (
     <>
@@ -125,8 +174,9 @@ const Footer = () => {
                   type="text"
                   placeholder={t("typeHere")}
                   value={phoneNum}
-                  changehandler={(e) => setPhoneNum(e.target.value)}
+                  changehandler={changePhoneNUmber}
                   keyDown={TypeNumber}
+                  maxLength="11"
                 />
                 {/* <button className={style.send}>{t("sentBtn")}</button> */}
               </div>
