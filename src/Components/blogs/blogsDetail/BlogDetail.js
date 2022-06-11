@@ -18,25 +18,28 @@ const BlogDetail = () => {
   const id = +params.query.blog;
   const lang = useSelector((state) => state.stateLang.lng);
   const [blogTarget, setBlogTarget] = useState({});
+  const [parag, setParag] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(BASE_URL+GET_BLOG)
+      .get(`${BASE_URL}${GET_BLOG}?id=${id}`)
       .then((response) => {
         const data = response.data.data;
         console.log(data)
-        setBlogTarget(data.filter(blog => blog.id === id));
+        setBlogTarget(data);
+        setParag(JSON.parse(data[0].paragraphs))
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [blogTarget]);
+  }, []);
 
 
   return (
     <div className={`'container-fluid' ${style.container}`}>
+      <button onClick={()=> console.log(parag.Paragraphs[0])}>ivjifgnj</button>
       <div>
-        <img src="/Assets/images/2.jpeg" />
+        <img src={loading !== true && blogTarget[0].imageFile.filePath} />
         <div className={`col-12 ${style.imageHeader}`}>
           <a onClick={() => window.history.back()}>
             <ArrowLeftIcon sx={{ fontSize: "40pt" }} />
@@ -44,7 +47,7 @@ const BlogDetail = () => {
           </a>
         </div>
         <div className={lang === "fa" ? style.blogInfoEn : style.blogInfo}>
-          <h1>Blog NO 1</h1>
+          <h1>{loading ? "loading" :lang === "fa" ? blogTarget[0].title : blogTarget[0].titleEn}</h1>
           <p>Lorem ipsum dolor </p>
         </div>
       </div>
@@ -56,11 +59,11 @@ const BlogDetail = () => {
           <div
             className={`col-12 col-md-6 col-lg-5 ${style.headerContainer}`}
           >
-            <img className={style.imgBlog} src="/Assets/images/3.jpeg"/>
+            <img className={style.imgBlog} src={loading === false && parag.Paragraphs[0].picpath } />
           </div>
           <div className={`col-12 col-md-6 col-lg-6 ${style.blogContent}`}>
-            <h1>{blogTarget.length ? blogTarget[0].title : "Loading..."}</h1>
-            <p>{blogTarget.length ? blogTarget[0].body : "Loading..."}</p>
+            <h1>{loading ? "Loading..." : lang === "fa" ? blogTarget[0].title : blogTarget[0].titleEn }</h1>
+            <p>{loading ? "Loading..." : lang === "fa" ? parag.Paragraphs[0].description : parag.Paragraphs[0].descriptionen }</p>
           </div>
         </div>
         <div
