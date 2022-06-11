@@ -11,6 +11,7 @@
     margin: auto;
     width: 100%;
     object-fit: cover;
+    margin-bottom: 3rem;
 }
 
 .title {
@@ -21,9 +22,8 @@
 
 .addresinput {
     direction: var(--direction) !important;
-
+    margin: 8px 0;
 }
-
 .addingAddres .inputContainer>div>div {
     padding: 0px 13px 0 9px !important;
 }
@@ -36,23 +36,33 @@
 .addresinput textarea {
     font-family: "IRANSansWeb" !important;
     font-size: 11pt !important;
+    border: 1px solid #c1c1c1 !important;
+    border-radius: var(--input-Radius) !important;
+    padding: 8px 18px !important;
 }
 
 .addresinput fieldset {
     border: none !important;
 }
-
+.addresinput textarea{
+    appearance: none;
+    padding: 6px 18px !important;
+}
 .addresinput textarea::placeholder,
 .addresinput textarea {
     text-align: var(--float-left);
-    padding: 0 1rem;
-    font-size: var(--xs-font);
+    /* padding: 0 1rem; */
+    font-size: var(--xs-font) !important;
 }
 
 .inputContainer {
+    direction: var(--direction);
     font-family: var(--font) !important;
-    margin-bottom: 1rem;
-    /* position: relative; */
+    margin-bottom: calc(1rem + 40px);
+    position: relative;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
+    overflow: hidden;
+    /* background-color: black; */
 }
 
 .submit {
@@ -74,14 +84,14 @@
 
 .checkedRight {
     position: absolute !important;
-    top: 4px;
-    right: 0;
+    top: -13px;
+    right: -10px;
 }
 
 .checkedLeft {
     position: absolute !important;
-    top: 4px;
-    left: 0;
+    top: -13px;
+    left: -10px;
 }
 
 .handlerContainer {
@@ -111,11 +121,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    margin-top: 20px;
 }
 
 .containerPostCode span {
     color: #707070;
-    font-size: var(--sm-font);
+    font-size: 8pt;
     margin-top: 5px;
     padding: 0 15px;
     display: none;
@@ -136,11 +147,78 @@
 }
 
 .postCode::placeholder {
-    /* margin: 0 40px; */
-    /* text-align: center; */
     color: #707070;
 }
 
-/* .postCodeError {
-    border-color: var(--red-pen);
-} */
+/* component address filed */
+.filedContainer{
+    position: relative;
+    width: 100%;
+    background: none;
+    background-color: #fff;
+    padding: 15px 10px;
+    border-radius: var(--input-Radius) !important;
+    height: 55px;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
+    margin-bottom: 3rem;
+}
+
+.filedAddressX {
+    
+}
+.titleText{
+    overflow: hidden !important;
+    width: 85%;
+    font-size: var(--xs-font);
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+}
+
+.titleFiled{
+    position: relative;
+    height: 55px;
+    overflow: hidden;
+}
+.openFiledBody{
+    height: 260px !important;
+}
+.openFiled{
+    height: fit-content !important;
+    transform: translateY(0);
+}
+.closeFiled{
+    /* height: 1px !important; */
+    transform: translateY(-150px);
+}
+.btnArdalanPasandEn{
+    position: absolute !important;
+    top: -37px;
+    right: 0;
+    padding: 2px 15px;
+    background-color: #fff;
+    font-size: var(--md-font);
+    border-radius: var(--input-Radius);
+    border: none;
+    outline: none;
+}
+.btnArdalanPasandFa {
+    position: absolute !important;
+    top: -30px;
+    left: 0;
+    padding: 2px 15px;
+    background-color: #fff;
+    font-size: var(--md-font);
+    border-radius: var(--input-Radius);
+    border: none;
+    outline: none;
+}
+.filedClient {
+    height: 0px;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
+}
+.parentClient{
+    overflow: hidden;
+    height: fit-content;
+}

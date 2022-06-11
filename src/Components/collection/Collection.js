@@ -19,9 +19,9 @@ const Collection = ({ dir }) => {
                 image1="/Assets/images/4.jpg"
                 image2="/Assets/images/10.jpg"
                 content={lang==="fa"?
-                "تیولا رگال‌های مختلفی دارد که هر رگال مخصوص یک رنگ است. هر کدام از مدل‌ها ویژگی خاصی دارد. با رگال گردی می‌توانید بهترین انتخاب خودتان و داشته باشید. "
+                ` اگر به دنبال رنگ به خصوصی هستید\، تیولا می‌تواند به شما کمک کند. چرا که تیولا رگال‌های متنوعی دارد و هر کدام مخصوص یک رنگ است. هر کدام از مدل‌هایی که در رگال تیولا می‌بینید ویژگی خاصی دارد. شما با رگال گردی می‌توانید بهترین انتخاب خودتان را داشته باشید.`
                 :
-                `Tiola has different regals\, each regalia is specific to one color. Each model has a special feature. You can have your best choice with Regal Gerdi.`}
+                `If you are looking for a private color\, Tiola can help you. Because Tiola has a variety of regals and each is specific to one color. Each of the models you see in Regal Tiola has a special feature. You can have the best choice with Regal Gerdi.`}
                 color="exapmle"
                 title={t("collection")}
               />
@@ -32,8 +32,8 @@ const Collection = ({ dir }) => {
                 title={t("shop")}
                 content={
                   lang === "fa"
-                    ? `فروشگاه تیولا پر از مدل‌های متنوعی است که با هر سلیقه‌ای می‌توانید از بین آن‌ها انتخاب کنید. هر مدل ویژگی منحصر به فرد خودش را دارد. اگر دنبال یک مدل خاص هستید\، می‌توانید به فروشگاه تیولا بروید و بهترین انتخاب را داشته باشید.`
-                    : `Tiola store is full of various models that you can choose from with any taste. Each model has its own unique feature. If you are looking for a special model\, you can go to Tiola store and have the best choice.`
+                    ? `در فروشگاه تیولا هر طرح و رنگی که بخواید و پیدا می‌کنید. فروشگاه ما پر از مدل‌های متنوعی است که با هر سلیقه‌ای می‌توانید از بین آن‌ها انتخاب کنید. هر مدلی که در تیولا می‌بینید ویژگی منحصر به فرد خودش را دارد. پس اگر به دنبال یک مدل خاص و مخصوص به خودتان هستید\، می‌توانید به فروشگاه تیولا برید و بهترین انتخاب را داشته باشید.`
+                    : `In Tiola store\, you can find any design and color you want. Our store is full of various models that you can choose from with any taste. Each model you see in Tiola has its own unique feature. So if you are looking for a special model for you\, you can go to Tiola store and have the best choice.`
                 }
               />
               <HardCollection
@@ -41,8 +41,8 @@ const Collection = ({ dir }) => {
                 title={t("explore")}
                 content={
                   lang === 'fa' 
-                    ? `ویترین پر از مدل‌های متنوع است. اگر انتخاب طرح دلخواه برایتان سخت است. پیشنهاد می‌کنیم به ویترین تیولا بروید و از بین طرح‌های مختلف\، طرح مناسب و با سلیقه خودتان پیدا کنید.`
-                    : `The explore is full of various models. If it is difficult for you to choose the desired design. We suggest you go to the Tiola explore and find a suitable and tasteful design among the various designs.`
+                    ? ` ویترین پر از مدل‌های متنوع است که با هربا رفتن به آنجا مدل‌ها جدیدی می‌بینید. اگر انتخاب طرح دلخواه برایتان سخت است و نمی‌دانید چه مدلی مناسبتان است\، پیشنهاد می‌کنیم به ویترین تیولا بروید و از بین طرح‌های مختلف\، طرح مناسب و با سلیقه خودتان پیدا کنید.`
+                    : `The explore is full of various models that you will see new models by going there. If it is difficult for you to choose the desired design and you do not know which model is right for you\, we suggest you go to the Tiola explore and find a suitable design with your own taste among the various designs.`
                 }
               />
             </div>
