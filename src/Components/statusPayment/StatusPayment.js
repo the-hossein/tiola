@@ -8,8 +8,10 @@ import Alert from "react-bootstrap/Alert";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getBasketDetails } from "../../redux/factor/factorAction";
+import { useRouter } from "next/router";
 const StatusPayment = ({ statusCode, type }) => {
   console.log(statusCode);
+  const router = useRouter();
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang.lng);
   const dispatch = useDispatch();
@@ -17,6 +19,9 @@ const StatusPayment = ({ statusCode, type }) => {
   const goHomeHandler = () => {
     console.log(state.basketid);
     dispatch(getBasketDetails(state.basketid));
+    router.push({
+      pathname: "/"
+    });
   };
   const textError = "";
   switch (statusCode) {
@@ -100,11 +105,9 @@ const StatusPayment = ({ statusCode, type }) => {
               <Image src={erroPic} />
             )}
 
-            <Link href="/">
-              <button className={style.backindex} onClick={goHomeHandler}>
-                {t("goHome")}
-              </button>
-            </Link>
+            <button className={style.backindex} onClick={goHomeHandler}>
+              {t("goHome")}
+            </button>
             {statusCode > 206 && (
               <Link href="/factor">
                 <button className={style.backindex}>{t("goFactor")} </button>

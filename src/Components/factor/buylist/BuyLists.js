@@ -49,7 +49,7 @@ const BuyLists = ({ setBasketDatas }) => {
       var raw = JSON.stringify({
         userid: user.userid,
         basketid: user.basketid,
-        amount: totalprice,
+        amount: totalprice*10,
         description: "string",
         bank: 1
       });
@@ -64,8 +64,7 @@ const BuyLists = ({ setBasketDatas }) => {
         if (status[0].code === 200) {
           setpreloadPay(false);
           window.location = status[0].data.requestBank;
-        } else if(status[0].code===285){
-          
+        } else if (status[0].code === 285) {
           if (lang === "fa") {
             var text = "آدرس خود را وارد کنید";
           } else {
@@ -73,7 +72,7 @@ const BuyLists = ({ setBasketDatas }) => {
           }
           notify(text, "error");
           setpreloadPay(false);
-        }else {
+        } else {
           if (lang === "fa") {
             var text = "خطایی رخ داده";
           } else {
@@ -129,7 +128,7 @@ const BuyLists = ({ setBasketDatas }) => {
               <div>
                 <span>{t("total")}</span>
                 <span>
-                  {lang === "fa" ? 10000: totalprice}
+                  {lang === "fa" ? persianNumber(totalprice) : totalprice}
                 </span>
                 <span>{t("toman")}</span>
               </div>
