@@ -18,7 +18,7 @@ const StatusPayment = ({ statusCode, type }) => {
   const state = useSelector((state) => state.stateRegister);
   const factor = useSelector((state) => state.stateFactor);
   const goHomeHandler = () => {
-    if(statusCode===200){
+    if(statusCode===200||statusCode===206){
 
       console.log(state.basketid);
       dispatch(deleteFactor());
@@ -26,14 +26,21 @@ const StatusPayment = ({ statusCode, type }) => {
         router.push({ pathname: "/" });
       }
     }else{
-   
-        router.push({ pathname: "/" });
+   console.log(statusCode)
+        // router.push({ pathname: "/" });
       
     }
   };
   const textError = "";
   switch (statusCode) {
     case 200:
+      if (lang === "fa") {
+        textError = "پرداخت با موفقیت انجام شد.";
+      } else {
+        textError = "Payment was successful.";
+      }
+      break;
+      case 206:
       if (lang === "fa") {
         textError = "پرداخت با موفقیت انجام شد.";
       } else {
@@ -95,7 +102,7 @@ const StatusPayment = ({ statusCode, type }) => {
       <div className="row  justify-content-center">
         <div className="col-lg-6 col-md-7 col-12 mt-5 mb-5">
           <div className={`colStyle ${style.container}`}>
-            {statusCode < 206 ? (
+            {statusCode <= 206 ? (
               //     <div className="alert alert-danger mt-5">
               //     <strong> {textError} </strong>
               //   </div>

@@ -44,7 +44,7 @@ const PaymentStatus = () => {
           console.log("first");
           console.log(verify[0].data.code);
 
-          if (verify[0].data.code === 200) {
+          if (verify[0].data.code === 200||verify[0].data.code === 206) {
             setStatusCode(verify[0].data.code);
 
             setStatus("success");
