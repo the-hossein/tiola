@@ -33,7 +33,6 @@ const factorReducer = (state = initializedState, action) => {
       };
     case "DELETE_FACTOR":
       return {
-        ...state,
         loading: true,
         loadingAddress: true,
         loadingList: true,
@@ -42,10 +41,11 @@ const factorReducer = (state = initializedState, action) => {
         id: "",
         basketLength: 0,
         details: null,
-        allAddress: []
+        allAddress: [],
+        checkout: true
       };
     case "CHECK_OUT":
-      console.log("first")
+      console.log("first");
       return {
         ...state,
         checkout: true

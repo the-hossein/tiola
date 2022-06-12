@@ -152,11 +152,10 @@ const Header = ({ backColor }) => {
   }, [state.loginStatus]);
   useEffect(() => {
     dispatch(getBasketDetails(state.basketid));
-    if (basket.checkout === true) {
-      dispatch(deleteFactor());
-    }
   }, [state.basketid]);
   useEffect(() => {
+   
+    
     targetSearch = allProducts.filter((item) => item.title.includes(""));
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
