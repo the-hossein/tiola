@@ -37,7 +37,6 @@ const BlogDetail = () => {
 
   return (
     <div className={`'container-fluid' ${style.container}`}>
-      <button onClick={()=> console.log(parag.Paragraphs[0])}>ivjifgnj</button>
       <div>
         <img src={loading !== true && blogTarget[0].imageFile.filePath} />
         <div className={`col-12 ${style.imageHeader}`}>

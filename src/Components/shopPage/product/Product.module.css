@@ -27,7 +27,7 @@
 }
 
 .ret{
-    width: 90% !important;
+    width: 100% !important;
 }
 .squarePhoto:hover,
 .rectanglePhoto:hover {
@@ -60,7 +60,7 @@
 
 
 .shopPage {
-    height: 512px;
+    height: 528px;
 }
 .collPage{
     height: 612px;
@@ -102,7 +102,11 @@
     width: 100%;
     direction:ltr;
 }
-@media(max-width:992px) {}
+@media(max-width:1200px) {
+    /* .rectanglePhoto {
+        height: 796px !important;
+    } */
+}
 
 @media(max-width:768px) {
     .rectanglePhoto {

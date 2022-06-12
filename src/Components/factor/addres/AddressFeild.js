@@ -64,13 +64,14 @@ const AddressFeild = ({checkicon, icon, checked, changeRadio, id, addresValue, c
     const btnEdit = (e) => {
         e.preventDefault();
         // setEdit(true);
+        setEdit(true)
         setOpenFiled(preveOpen => !preveOpen);
     }
 
     return (
         <div className={`${Style.filedContainer} ${openFiled && Style.openFiledBody}`}>
           <button className={lang !== 'fa' ? Style.btnArdalanPasandEn : Style.btnArdalanPasandFa } onClick={btnEdit}>
-                <span>{openFiled ? t("submit") : t("edit")}</span> 
+                <span>{t("edit")}</span> 
           </button>
             <Box
                 component="form"
