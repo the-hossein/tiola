@@ -24,10 +24,8 @@ const StatusPayment = ({ statusCode, type }) => {
   const goHomeHandler = () => {
     if (statusCode === 200 || statusCode === 206) {
       dispatch(checkout());
-      console.log(factor.basketLength);
-    
-        router.push({ pathname: "/" });
-      
+      dispatch(deleteFactor());
+      router.push({ pathname: "/" });
     } else {
       console.log(statusCode);
       router.push({ pathname: "/" });
