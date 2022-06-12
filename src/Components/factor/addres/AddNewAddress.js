@@ -79,49 +79,58 @@ const AddNewAddress = () => {
 
   const addAddres = (e) => {
     if (postCode.length === 10) {
-      dispatch(loadingAddress());
-
+      
       if (newAddres !== "") {
-        const addAddresUser = async () => {
-          console.log(raw);
-          try {
-            console.log(user);
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-            myHeaders.append("Content-Type", "application/json");
-            var raw = JSON.stringify({
-              id: user.basketid,
-              address: `${newAddres}`,
-              userid: user.userid,
-              postcode: postCode
-            });
-            const addStatus = await callApi(
-              BASE_URL + ADD_ADDRESS,
-              raw,
-              myHeaders,
-              "POST"
-            );
-            if (addStatus[0].code === 200) {
-              dispatch(getuserAddress(user.userid));
-            } else {
-              dispatch(loadingAddresFalse());
-              if (lang === "fa") {
-                var text = "ثبت آدرس با خطا مواجه شد";
-              } else {
-                text = "ثبت آدرس با خطا مواجه شد";
-              }
-              notify(text, "error");
-            }
-          } catch {
-            if (lang === "fa") {
-              var text = "ثبت آدرس با خطا مواجه شد";
-            } else {
-              text = "ثبت آدرس با خطا مواجه شد";
-            }
-            notify(text, "error");
+        if(newAddres.length <= 10){
+          let textAddress;
+          if(lang === "fa"){
+            textAddress = "لطفا ادرس خود را به طور دقیق وارد کنید."
+          }else {
+            textAddress = "Please enter your exact address."
           }
-        };
-        addAddresUser();
+          notify(textAddress, "warning")
+        }else{
+          dispatch(loadingAddress());
+            const addAddresUser = async () => { 
+              try {
+                console.log(user);
+                var myHeaders = new Headers();
+                myHeaders.append("Authorization", `Bearer ${token}`);
+                myHeaders.append("Content-Type", "application/json");
+                var raw = JSON.stringify({
+                  id: user.basketid,
+                  address: `${newAddres}`,
+                  userid: user.userid,
+                  postcode: postCode
+                });
+                const addStatus = await callApi(
+                  BASE_URL + ADD_ADDRESS,
+                  raw,
+                  myHeaders,
+                  "POST"
+                );
+                if (addStatus[0].code === 200) {
+                  dispatch(getuserAddress(user.userid));
+                } else {
+                  dispatch(loadingAddresFalse());
+                  if (lang === "fa") {
+                    var text = "ثبت آدرس با خطا مواجه شد";
+                  } else {
+                    text = "ثبت آدرس با خطا مواجه شد";
+                  }
+                  notify(text, "error");
+                }
+              } catch {
+                if (lang === "fa") {
+                  var text = "ثبت آدرس با خطا مواجه شد";
+                } else {
+                  text = "ثبت آدرس با خطا مواجه شد";
+                }
+                notify(text, "error");
+              }
+            };
+            addAddresUser();
+        }
       } else {
         dispatch(loadingAddresFalse());
         if (lang === "fa") {
