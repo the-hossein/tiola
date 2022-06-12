@@ -7,7 +7,8 @@ const initializedState = {
   id: "",
   basketLength: 0,
   details: null,
-  allAddress: []
+  allAddress: [],
+  checkout: false
 };
 const factorReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -42,6 +43,12 @@ const factorReducer = (state = initializedState, action) => {
         basketLength: 0,
         details: null,
         allAddress: []
+      };
+    case "CHECK_OUT":
+      console.log("first")
+      return {
+        ...state,
+        checkout: true
       };
     case "ADDRESS-DELETED":
       return {
