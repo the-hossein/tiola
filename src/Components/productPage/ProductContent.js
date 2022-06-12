@@ -33,6 +33,7 @@ import { addQtyAmont } from "../../redux/factor/factorAction";
 import Placement from "../../tools/placement/Placement";
 import persianNumber from "../../tools/persianNumber/persianNumber";
 const ProductContent = ({ product }) => {
+  console.log(product);
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch = useDispatch();
