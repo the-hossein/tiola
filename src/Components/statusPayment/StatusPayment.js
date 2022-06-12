@@ -7,7 +7,7 @@ import successPIc from "../../../public/Assets/images/successPic.jpg";
 import Alert from "react-bootstrap/Alert";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { getBasketDetails } from "../../redux/factor/factorAction";
+import { deleteFactor, getBasketDetails } from "../../redux/factor/factorAction";
 import { useRouter } from "next/router";
 const StatusPayment = ({ statusCode, type }) => {
   console.log(statusCode);
@@ -16,12 +16,20 @@ const StatusPayment = ({ statusCode, type }) => {
   const lang = useSelector((state) => state.stateLang.lng);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateRegister);
+  const factor = useSelector((state) => state.stateFactor);
   const goHomeHandler = () => {
-    console.log(state.basketid);
-    dispatch(getBasketDetails(state.basketid));
-    router.push({
-      pathname: "/"
-    });
+    if(statusCode===200){
+
+      console.log(state.basketid);
+      dispatch(deleteFactor());
+      if (factor.basketLength === 0) {
+        router.push({ pathname: "/" });
+      }
+    }else{
+   
+        router.push({ pathname: "/" });
+      
+    }
   };
   const textError = "";
   switch (statusCode) {
