@@ -35,9 +35,8 @@ const ContactUs = () => {
             } col-lg-4 col-md-5 col-12`}
           >
             <p>021 26 420 420</p>
-            <p>021 91 690 818</p>
-            <p>Phone 3</p>
-          
+            <p>{t("addresTest1")}</p>
+             
           </div>
           <div
             className={`${style.address} ${
@@ -46,14 +45,13 @@ const ContactUs = () => {
           >
             <p>{t("addresTest")}</p>
             <p>{t("addresTest")}</p>
-            <p>{t("addresTest")}</p>
           </div>
         </div>
         <div className={style.social}>
-              <InstagramIcon sx={{ fontSize: 40 }} />
-              <WhatsAppIcon sx={{ fontSize: 40 }} />
-              <TwitterIcon sx={{ fontSize: 40 }} />
-            </div>
+                  <InstagramIcon sx={{ fontSize: 40 }} />
+                  <WhatsAppIcon sx={{ fontSize: 40 }} />
+                  <TwitterIcon sx={{ fontSize: 40 }} />
+            </div> 
       </div>
     </div>
   );

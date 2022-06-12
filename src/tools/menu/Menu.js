@@ -12,7 +12,7 @@ import { notify } from "../toast/toast";
 import { useRouter } from "next/router";
 import { deletBasketLength } from "../../redux/factor/factorAction";
 // import { useSelector } from "react-redux";
-const Menu = ({ backColor, show }) => {
+const Menu = ({ backColor, show, setLang }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const lang = useSelector((state) => state.stateLang.lng);
@@ -34,7 +34,6 @@ const Menu = ({ backColor, show }) => {
     notify(text, "success");
     dispatch(deleteUserData());
     dispatch(deletBasketLength());
-    // location.reload()
   };
   const goFactorHandler = () => {
     if (!register.loginStatus) {
@@ -49,20 +48,38 @@ const Menu = ({ backColor, show }) => {
   return (
     <nav className={style.humbergerMenuNav}>
       <div
-        className={`${style.burgerMenu} ${show && style.showItem} ${
-          lang === "fa" ? `${style.menuRight}` : `${style.menuLeft}`
-        } ${backColor === "headerColor" ? style.darkmenu : ""} `}
+        className={`${style.burgerMenu} ${show && style.showItem} 
+        ${lang === "fa" ? style.menuRight : style.menuLeft} 
+        ${backColor === "headerColor" ? style.darkmenu : ""} `}
       >
-        <Link href="/profile">
-          <span>{user.name + " " + user.family}</span>
-        </Link>
+        <div className="d-flex justify-content-between">
+          <Link href="/profile">
+            <span>{user.name + " " + user.family}</span>
+          </Link>
+          {
+            setLang && <a className={style.setLng}>
+            {lang === "en" ? (
+              <span onClick={() => setLang("fa")}>fa</span>
+            ) : (
+              <span onClick={() => setLang("en")}>en</span>
+            )}
+          </a>
+          }
+        </div>
         <ul>
-          {/* <Link href="/">
-            <li>{t("PurchaseGuide")}</li>
-          </Link> */}
           <li>
             <Link href="/collections">
               <a>{t("collection")}</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/shop">
+              <a>{t("shop")}</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/explore">
+              <a>{t("explore")}</a>
             </Link>
           </li>
           <li onClick={goFactorHandler}>

@@ -99,6 +99,7 @@
     justify-content: space-between;
     align-items: center;
     width: 32.7%;
+    float: var(--textAlign-right);
     text-align: var(--textAlign-right);
     font-size: var(--xl-font);
     padding: 2rem 0.5rem 4rem 0.5rem;
