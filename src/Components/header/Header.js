@@ -153,7 +153,7 @@ const Header = ({ backColor }) => {
   useEffect(() => {
     dispatch(getBasketDetails(state.basketid));
     if (basket.checkout === true) {
-      dispatch(deleteFactor);
+      dispatch(deleteFactor());
     }
   }, [state.basketid]);
   useEffect(() => {
