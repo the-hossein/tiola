@@ -9,7 +9,7 @@ import Landing from "../src/Components/landing/Landing";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 
 export default function Home({ slider, explor }) {
-  console.log(explor);
+  console.log(slider);
   const state = useSelector((state) => state.stateRegister);
   const { t } = useTranslation();
   return (
