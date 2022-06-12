@@ -133,9 +133,9 @@ const Header = ({ backColor }) => {
 
       const getApi = async () => {
         dispatch(await getProfile());
-        if (state.basket !== "") {
-          dispatch(await getBasketDetails(state.basketid));
-        }
+        // if (state.basket !== "") {
+        //   dispatch(await getBasketDetails(state.basketid));
+        // }
       };
 
       getApi();
@@ -151,11 +151,11 @@ const Header = ({ backColor }) => {
     }
   }, [state.loginStatus]);
   useEffect(() => {
-    dispatch(getBasketDetails(state.basketid));
+    if (basket.checkout === false) {
+      dispatch(getBasketDetails(state.basketid));
+    }
   }, [state.basketid]);
   useEffect(() => {
-   
-    
     targetSearch = allProducts.filter((item) => item.title.includes(""));
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());

@@ -63,7 +63,8 @@ const factorReducer = (state = initializedState, action) => {
         details: action.data,
         basketLength: action.data.length,
         loading: false,
-        loadingList: false
+        loadingList: false,
+        check:false
       };
     case "Incress_Details":
       const update = state.details.map((p) =>
