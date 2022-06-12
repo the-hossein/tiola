@@ -8,6 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  checkout,
   deleteFactor,
   getBasketDetails
 } from "../../redux/factor/factorAction";
@@ -22,14 +23,11 @@ const StatusPayment = ({ statusCode, type }) => {
   const factor = useSelector((state) => state.stateFactor);
   const goHomeHandler = () => {
     if (statusCode === 200 || statusCode === 206) {
+      dispatch(checkout());
+      console.log(factor.basketLength);
     
-
-      dispatch(deleteFactor());
-      console.log(factor.basketLength)
-      if (factor.basketLength === 0) {
-        console.log(factor.details);
         router.push({ pathname: "/" });
-      }
+      
     } else {
       console.log(statusCode);
       router.push({ pathname: "/" });

@@ -74,6 +74,11 @@ const deleteFactor = () => {
     type: "DELETE_FACTOR"
   };
 };
+const checkout = () => {
+  return {
+    type: "CHECK_OUT"
+  };
+};
 const loadingAddress = () => {
   return {
     type: "lOADING_ADDRESS"
@@ -250,5 +255,7 @@ export {
   IncressBasketDetail,
   DecreaseBasketDetail,
   loadingAddresFalse,
-  deleteAddresUser,deleteFactor
+  deleteAddresUser,
+  deleteFactor,
+  checkout
 };

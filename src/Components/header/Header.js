@@ -27,7 +27,10 @@ import { query } from "../../redux/searchProduct/searchAction";
 import { notify } from "../../tools/toast/toast";
 
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
-import { getBasketDetails } from "../../redux/factor/factorAction";
+import {
+  deleteFactor,
+  getBasketDetails
+} from "../../redux/factor/factorAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
   // const { key:`${textSearch}`,  pid: "abc" } = router.query;
@@ -149,6 +152,9 @@ const Header = ({ backColor }) => {
   }, [state.loginStatus]);
   useEffect(() => {
     dispatch(getBasketDetails(state.basketid));
+    if (basket.checkout === true) {
+      dispatch(deleteFactor);
+    }
   }, [state.basketid]);
   useEffect(() => {
     targetSearch = allProducts.filter((item) => item.title.includes(""));
@@ -334,10 +340,11 @@ const Header = ({ backColor }) => {
                   </a>
                 </Link>
               ) : (
-                
-                !showSearchBox &&<Link href={"/signin"}>
-                <a>{t("login")}</a>
-              </Link>
+                !showSearchBox && (
+                  <Link href={"/signin"}>
+                    <a>{t("login")}</a>
+                  </Link>
+                )
               )}
               <div className="position-relative d-flex align-items-center">
                 {boxTarget && (
