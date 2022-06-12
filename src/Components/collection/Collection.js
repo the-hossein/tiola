@@ -37,9 +37,10 @@ const Collection = ({ explore }) => {
                     : `In Tiola store\, you can find any design and color you want. Our store is full of various models that you can choose from with any taste. Each model you see in Tiola has its own unique feature. So if you are looking for a special model for you\, you can go to Tiola store and have the best choice.`
                 }
               />
+              
               <HardCollection
                 image={
-                  explore.confirmed ? explore.filePath : "/Assets/images/9.jpg"
+                  typeof explore === "undefined" ? "/Assets/images/9.jpg" : explore.confirmed && explore.filePath 
                 }
                 title={t("explore")}
                 content={
@@ -48,6 +49,7 @@ const Collection = ({ explore }) => {
                     : `The explore is full of various models that you will see new models by going there. If it is difficult for you to choose the desired design and you do not know which model is right for you\, we suggest you go to the Tiola explore and find a suitable design with your own taste among the various designs.`
                 }
               />
+              
             </div>
           </div>
         </div>
