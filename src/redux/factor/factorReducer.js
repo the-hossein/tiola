@@ -45,7 +45,6 @@ const factorReducer = (state = initializedState, action) => {
         checkout: true
       };
     case "CHECK_OUT":
-      console.log("first");
       return {
         ...state,
         checkout: true

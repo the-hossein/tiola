@@ -151,11 +151,12 @@ const Header = ({ backColor }) => {
     }
   }, [state.loginStatus]);
   useEffect(() => {
-    if (basket.checkout === false) {
-      dispatch(getBasketDetails(state.basketid));
-    }
+    dispatch(getBasketDetails(state.basketid));
   }, [state.basketid]);
   useEffect(() => {
+    if (basket.checkout === true) {
+      window.location.reload();
+    }
     targetSearch = allProducts.filter((item) => item.title.includes(""));
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
