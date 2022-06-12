@@ -7,7 +7,10 @@ import successPIc from "../../../public/Assets/images/successPic.jpg";
 import Alert from "react-bootstrap/Alert";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFactor, getBasketDetails } from "../../redux/factor/factorAction";
+import {
+  deleteFactor,
+  getBasketDetails
+} from "../../redux/factor/factorAction";
 import { useRouter } from "next/router";
 const StatusPayment = ({ statusCode, type }) => {
   console.log(statusCode);
@@ -18,17 +21,18 @@ const StatusPayment = ({ statusCode, type }) => {
   const state = useSelector((state) => state.stateRegister);
   const factor = useSelector((state) => state.stateFactor);
   const goHomeHandler = () => {
-    if(statusCode===200||statusCode===206){
+    if (statusCode === 200 || statusCode === 206) {
+    
 
-      console.log(state.basketid);
       dispatch(deleteFactor());
+      console.log(factor.basketLength)
       if (factor.basketLength === 0) {
+        console.log(factor.details);
         router.push({ pathname: "/" });
       }
-    }else{
-   console.log(statusCode)
-        // router.push({ pathname: "/" });
-      
+    } else {
+      console.log(statusCode);
+      router.push({ pathname: "/" });
     }
   };
   const textError = "";
@@ -40,7 +44,7 @@ const StatusPayment = ({ statusCode, type }) => {
         textError = "Payment was successful.";
       }
       break;
-      case 206:
+    case 206:
       if (lang === "fa") {
         textError = "پرداخت با موفقیت انجام شد.";
       } else {

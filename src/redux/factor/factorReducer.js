@@ -33,8 +33,15 @@ const factorReducer = (state = initializedState, action) => {
     case "DELETE_FACTOR":
       return {
         ...state,
+        loading: true,
+        loadingAddress: true,
+        loadingList: true,
+        deleteLoader: false,
+        addres: "",
+        id: "",
         basketLength: 0,
-        details: null
+        details: null,
+        allAddress: []
       };
     case "ADDRESS-DELETED":
       return {
