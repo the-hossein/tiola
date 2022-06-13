@@ -17,7 +17,6 @@ const Blogs = () => {
       .get(BASE_URL+GET_BLOGS)
       .then((response) => {
         setBlogs(response.data.data);
-        console.log(response.data.data);
       });
   }, []);
 

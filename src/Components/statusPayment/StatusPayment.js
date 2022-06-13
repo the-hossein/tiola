@@ -14,7 +14,6 @@ import {
 } from "../../redux/factor/factorAction";
 import { useRouter } from "next/router";
 const StatusPayment = ({ statusCode, type }) => {
-  console.log(statusCode);
   const router = useRouter();
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang.lng);
@@ -27,7 +26,6 @@ const StatusPayment = ({ statusCode, type }) => {
       dispatch(deleteFactor());
       router.push({ pathname: "/" });
     } else {
-      console.log(statusCode);
       router.push({ pathname: "/" });
     }
   };

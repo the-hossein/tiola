@@ -61,7 +61,6 @@ const Header = ({ backColor }) => {
     targetSearch = allProducts.filter((item) =>
       item.title.includes(textSearch)
     );
-    console.log(targetSearch);
     dispatch(query(targetSearch));
   };
 
@@ -288,7 +287,6 @@ const Header = ({ backColor }) => {
                 {boxTarget && (
                   <div className={style.suggest}>
                     {searchingTarget.map((item) => {
-                      // {console.log(item)}
                       return (
                         <span key={item.id}>
                           <Link href={`/product/${item.id}`}>
@@ -356,7 +354,6 @@ const Header = ({ backColor }) => {
                 {boxTarget && (
                   <div className={style.suggest}>
                     {searchingTarget.map((item) => {
-                      // {console.log(item)}
                       return (
                         <span key={item.id}>
                           <Link href={`/product/${item.id}`}>

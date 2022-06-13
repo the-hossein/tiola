@@ -8,7 +8,6 @@
     font-size: var(--md-font);
     direction: var(--direction);
     z-index: 1000 !important;
-    position: relative;
 }
 
 .allitems div a {

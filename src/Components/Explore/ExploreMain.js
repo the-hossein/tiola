@@ -31,7 +31,6 @@ const ExploreMain = ({ data }) => {
   const params = new URLSearchParams(search);
   // bar
   var idSearching = params.get("search");
-  console.log(data);
   const [targetSearch, setTargetSearch] = useState([]);
 
   useEffect(() => {
@@ -79,7 +78,6 @@ const ExploreMain = ({ data }) => {
     setShawlShow(false);
     setHeadgearShow(false)
     setScarfShow(true);
-    console.log(categoryScarf);
   }
   const categoryShawl = data.filter(item => item.type === "shawl");
   const [shawlShow, setShawlShow] = useState(false);
@@ -87,7 +85,6 @@ const ExploreMain = ({ data }) => {
     setHeadgearShow(false)
     setScarfShow(false);
     setShawlShow(true);
-    console.log(categoryShawl);
   }
   const categoryHeadgear = data.filter(item => item.type === "headgear");
   const [headgearShow, setHeadgearShow] = useState(false);
@@ -95,7 +92,6 @@ const ExploreMain = ({ data }) => {
     setShawlShow(false);
     setScarfShow(false);
     setHeadgearShow(true);
-    console.log(categoryHeadgear);
   }
 
   const showAllExplore = () => {

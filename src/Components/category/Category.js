@@ -7,8 +7,6 @@ import CategoryProduct from "./CategoryProduct";
 import Link from "next/link";
 const Category = ({ data }) => {
   const { t } = useTranslation();
-  console.log(data);
-
   const product = [
     {
       src: "/Assets/images/3.jpeg"

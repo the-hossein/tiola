@@ -33,8 +33,7 @@ const XoGame = () => {
     let playerWon = linesThatAre('x', 'x', 'x').length > 0 ;
 
     let coupeterWon = linesThatAre('o','o','o').length > 0 ;
-
-    console.log(playerWon)
+    
     if(coupeterWon === true) {
       setWins(prevState => {
         return{
@@ -99,7 +98,6 @@ const XoGame = () => {
       <Board>
         {
           squares.map((square, index)=>{
-            // console.log(square)
             return <Square 
             key={index}
             name={index}

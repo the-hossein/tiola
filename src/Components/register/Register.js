@@ -220,7 +220,6 @@ const Register = ({ title }) => {
 
   return (
     <section>
-      {/* <button onClick={()=> console.log(tryClient === 5)} >hfyugdsb</button> */}
       <div className={`row m-0 ${style.Register}`}>
         <div className="col-lg-6 col-md-6 col-12 pt-5">
           {state.loader ? (
