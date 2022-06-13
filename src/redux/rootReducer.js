@@ -12,7 +12,7 @@ import registerReducer from "./register/registerReducer";
 import screenLoaderReducer from "./screenLoader/screenLoaderReducer";
 
 //get all products
-import allProductsReducer from "./getallproducts/AllProductsReducer";
+import allProductsReducer from "./getallproducts/allProductsReducer";
 import saveItemReducer from "./saveItem/saveItemReducer";
 import checkExistReduce from "./checkexist/checkExistReducer";
 import orderHistoryReducer from "./orderHistory/orederHistoryReducer";
