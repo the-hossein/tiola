@@ -208,6 +208,9 @@ input[type=number]::-webkit-inner-spin-button {
 .homeSwiper {
   z-index: 16 !important;
 }
+.homeSwiper img {
+  object-position: 0 10% !important;
+}
 
 @media(max-width:480px) {
   .Toastify__toast-container--top-right {

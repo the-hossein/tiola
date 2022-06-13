@@ -206,6 +206,15 @@ const registerCode = (code, num, lang, router) => {
         dispatch(sendCodeFailed());
         dispatch(closePopUp());
       } else {
+        let num;
+        if(localStorage.getItem("tryWrong") === null){
+          num = 1;
+          localStorage.setItem("tryWrong", JSON.stringify(num));
+        }else{
+          num = JSON.parse(localStorage.getItem("tryWrong"));
+          num++;
+          localStorage.setItem("tryWrong", JSON.stringify(num));
+        }
         dispatch(checkOtpFailed());
         var errorText;
         if (lang === "fa") {
