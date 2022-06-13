@@ -24,7 +24,7 @@
 }
 
 .payBtn button {
-    margin: 0 1rem;
+    margin: 0 2.5rem;
 }
 
 .payBtn>div {
@@ -33,6 +33,7 @@
     border-radius: var(--Product-Border-radius);
     min-width: 216px;
     color: var(--greenLight-pen);
+    font-size: var(--md-font);
 }
 
 .price {

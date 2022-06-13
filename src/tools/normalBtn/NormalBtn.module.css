@@ -21,9 +21,15 @@
     min-height: 50px;
     font-size: var(--xl-font);
 }
-.payBtnEn,.addWatchEn{
+
+.payBtnEn {
+    padding: 0 0 0.1rem;
+}
+
+.addWatchEn {
     padding: 0 0 0.5rem;
 }
+
 .addWatch {
     background-color: var(--light-pen);
     color: var(--dark-pen);
@@ -35,4 +41,3 @@
     background-color: var(--dark-pen);
     color: var(--light-pen);
 }
-

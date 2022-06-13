@@ -3,7 +3,7 @@ import style from "./Product.module.css";
 import ProductInfo from "./ProductInfo";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-const RectangleProduct = ({ page, data,reverse }) => {
+const RectangleProduct = ({ page, data, reverse }) => {
   if (typeof data !== "undefined") {
     return (
       <>
@@ -20,8 +20,9 @@ const RectangleProduct = ({ page, data,reverse }) => {
                     page === "collPage" ? style.collPage : style.shopPage
                   }`}
                 />
-
-                <ProductInfo more={true} data={data} />
+                <div className={reverse && style.infoEn}>
+                  <ProductInfo more={true} data={data} />
+                </div>
               </div>
             </a>
           </Link>

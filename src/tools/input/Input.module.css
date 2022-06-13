@@ -18,6 +18,7 @@
 .input::placeholder{
     color: var(--lightGray-border);
     font-size: var(--xs-font);
+    direction: var(--direction);
 }
 .input:focus,.input:focus-visible{
     border: none !important;

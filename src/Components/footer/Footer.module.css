@@ -5,6 +5,7 @@
     font-size: var(--md-font);
     color: var(--light-pen);
     border: var(--borderWidth);
+    margin-top: 5rem;
 }
 
 .footerStyle {

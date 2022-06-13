@@ -186,11 +186,11 @@ const ProductContent = ({ product }) => {
             images={images}
             arrowStatus={false}
             margin={20}
-            heightImage={"82vh"}
+            heightImage={"85vh"}
             border={true}
           />
         </div>
-        <div className={`col-lg-8 col-xxl-7 col-12 ${style.information} mt-5 `}>
+        <div className={`col-lg-8 col-xxl-7 col-12 ${lang==="fa"?style.information:style.informationEn} mt-5 `}>
           <div>
             <h1>{lang === "fa" ? product.data.title : product.data.titleEn}</h1>
             <div
