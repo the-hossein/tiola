@@ -17,7 +17,7 @@ const Blog = ({title, titleEn, body, params}) => {
     const bodyReveiw = JSON.parse(body);
 
     return (
-        <div className='col-lg-6 col-12 mb-4'>
+        <div className={`col-lg-6 col-12 mb-4 ${style.blogContainer}`}>
             <div className={`${style.container}`}>
                 <div>
                     <img src={bodyReveiw.Paragraphs[0].picpath} alt='user' />
@@ -29,7 +29,9 @@ const Blog = ({title, titleEn, body, params}) => {
                     <p className={style.blogContent}>
                         {lang === "fa" ? bodyReveiw.Paragraphs[0].description : bodyReveiw.Paragraphs[0].descriptionen}
                     </p>
-                    <Link href={`/blogs/${params}`}><Button variant='outline' title='see more...' size='sm' >{t("view")}</Button></Link>
+                    <div className={style.btnView}>
+                        <Link href={`/blogs/${params}`}><Button variant='outline' title='see more...' size='sm' >{t("view")}</Button></Link>
+                    </div>
                 </div>
             </div>
         </div>

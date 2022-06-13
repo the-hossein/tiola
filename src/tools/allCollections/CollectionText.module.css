@@ -24,5 +24,8 @@
 }
 
 .secondeSection {
-    transform: translateY(-200px);
+    transform: translateY(-40px);
+}
+.textContainer{
+    margin-top: 4rem;
 }

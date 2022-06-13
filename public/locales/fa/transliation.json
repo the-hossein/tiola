@@ -64,7 +64,7 @@
   "stock": "موجودی",
   "shawl": "شال",
   "headgear": "روسری",
-  "scarf": "اسکارف",
+  "scarf": "مینی اسکارف",
   "tiolaStory": "داستان تیولا",
   "blogs": "بلاگ ها",
   "emptycodeValidate": "لطفا کد را واارد کنید ",
@@ -127,6 +127,7 @@
   "factorRate2": "کیفیت",
   "factorRate3": "قیمت",
   "tiolaHome": "چهار دیواری تیولا",
-  "exitAccount":"از اکانت خود خارج شدید "
+  "exitAccount":"از اکانت خود خارج شدید ",
+  "remain": "تکمیل پروفایل"
 
 }

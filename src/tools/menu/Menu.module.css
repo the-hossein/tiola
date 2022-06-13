@@ -13,6 +13,11 @@
     /* transform: translateX(-100%); */
 }
 
+.userName{
+    font-size: var(--lg-font) !important;
+    margin: 0 0 .8rem 0;
+}
+
 .darkmenu {
     background: var(--dark-pen) !important;
 }
@@ -83,7 +88,7 @@
 .sign {
     display: block;
     text-align: center;
-    margin-top:.5rem !important;
+    margin-top:.3rem !important;
 }
 
 .burgerMenu ul li {

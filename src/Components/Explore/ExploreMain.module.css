@@ -9,6 +9,7 @@
     margin: 50px 0;
     font-size: var(--veryLg-font);  
     cursor: pointer;
+    padding: 0 8px;
 }
 
 .explore img {
@@ -94,6 +95,12 @@
     border-color: var(--lightGray-border);
     border-radius: 15px;
     position: relative;
+    cursor: pointer;
+}
+.selectedCategory div:nth-child(1):hover span,
+.selectedCategory div:nth-child(2):hover span,
+.selectedCategory div:nth-child(3):hover span{
+    opacity: 1 !important;
 }
 .selectedCategory span{
     position: absolute;
@@ -114,9 +121,7 @@
     cursor: pointer;
     transition: all .3s ease-in;
 }
-.selectedCategory span:hover  {
-    opacity: 1 !important;
-}
+
 .categoryEn{
     /* padding-bottom: 3rem; */
     /* line-height: 40px; */
