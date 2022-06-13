@@ -28,4 +28,5 @@ export const REMOVE_USER_IMAGE = "api/v1/Files/RemoveUserImage";
 export const GET_SLIDER = "api/Prodcut/GetSlider";
 export const GET_LAST_EXPLORE_IMAgE = "api/Prodcut/GetLastExplorImage";
 export const ADD_USER = "api/v1/User/AddUserPhone";
-export const GET_BLOG = "api/Content/GetAllContent";
+export const GET_BLOGS = "api/Content/GetAllContent";
+export const GET_TARGET_BLOG = "api/Content/GetContent"

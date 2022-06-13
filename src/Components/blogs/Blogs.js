@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Loader from "../../tools/loader/Loader";
 import Blog from "./blogGet/Blog";
-import { BASE_URL, GET_BLOG } from "../../api/urls";
+import { BASE_URL, GET_BLOGS } from "../../api/urls";
 
 //stylesheet
 import style from "./Blogs.module.css";
@@ -14,10 +14,10 @@ const Blogs = () => {
 
   useEffect(() => {
     axios
-      .get(BASE_URL+GET_BLOG)
+      .get(BASE_URL+GET_BLOGS)
       .then((response) => {
-        setBlogs(response.data.data)
-      
+        setBlogs(response.data.data);
+        console.log(response.data.data);
       });
   }, []);
 

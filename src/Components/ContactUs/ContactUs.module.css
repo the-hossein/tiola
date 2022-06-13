@@ -73,6 +73,10 @@
     padding: 16px 30px 8px !important;
 }
 
+/* .phoneNumber{
+    font-family: var(--font) !important;
+    font-size: var(--lg-font) !important;
+} */
 .address p,
 .phone p {
     width: 100%;
@@ -83,9 +87,11 @@
     backdrop-filter: blur(5.8px);
     -webkit-backdrop-filter: blur(5.8px);
     text-align: var(--float-left);
-    padding: 8px 30px;
+    padding: 16px 30px 8px !important;
     margin-bottom: 3rem;
-    font-size: var(--md-font);
+    font-size: 11pt !important;
+    font-family: "IRANSansWeb";
+    cursor: pointer;
 }
 
 .social {

@@ -5,10 +5,13 @@ import Link from 'next/link';
 import style from './Blog.module.css';
 
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 // import userProfile from ;
 
 const Blog = ({title, titleEn, body, params}) => {
+
+    const { t } = useTranslation();
     const lang = useSelector(state => state.stateLang.lng)
 
     const bodyReveiw = JSON.parse(body);
@@ -21,14 +24,12 @@ const Blog = ({title, titleEn, body, params}) => {
                 </div>
                 <div className={style.text}>
                     <h5 className={style.title}>
-                        {/* {lang === "fa" ? title : titleEn} */}
-                        hello world
+                        {lang === "fa" ? title : titleEn}
                     </h5>
                     <p className={style.blogContent}>
-                        {/* {lang === "fa" ? bodyReveiw.Paragraphs[0].description : bodyReveiw.Paragraphs[0].descriptionen} */}
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque In egestas erat imperdiet sed euismod nisi porta lorem mollis
+                        {lang === "fa" ? bodyReveiw.Paragraphs[0].description : bodyReveiw.Paragraphs[0].descriptionen}
                     </p>
-                    <Link href={`/blogs/${params}`}><Button variant='outline' title='see more...' size='sm' >view</Button></Link>
+                    <Link href={`/blogs/${params}`}><Button variant='outline' title='see more...' size='sm' >{t("view")}</Button></Link>
                 </div>
             </div>
         </div>

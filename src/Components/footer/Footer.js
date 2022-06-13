@@ -136,6 +136,10 @@ const Footer = () => {
       };
     setPhoneNum(fixNumbers(e.target.value));
   };
+
+  const openInNewTab = url => {
+    window.open(url, '_blank');
+  };
   return (
     <>
       <div className={style.footer}>
@@ -185,7 +189,7 @@ const Footer = () => {
             <div className={style.socialMedia}>
               <TwitterIcon />
               <WhatsAppIcon />
-              <InstagramIcon />
+              <InstagramIcon onClick={()=> openInNewTab("https://instagram.com/tiolastyle?igshid=NWRhNmQxMjQ=") }/>
             </div>
             <a href="tel:02191690818" id={style.phone}>
               <span>{t("ContactUs") + " :   "}</span>
