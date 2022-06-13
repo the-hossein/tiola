@@ -63,7 +63,6 @@ function MyApp({ Component, pageProps }) {
         height={6}
         options={{ showSpinner: false }}
         color="#6a8eae"
-     
       />
       <Component {...pageProps} />
       <ToastContainer
