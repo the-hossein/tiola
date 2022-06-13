@@ -17,7 +17,7 @@
   "sentBtn": "ارسال",
   "view": "دیدن",
   "code": "کد",
-  "t": "ت",
+  "t": "تومان",
   "simpleViewMore": "بیشتر ببینیم",
   "simpleViewAll": "دیدن همه",
   "BlueOcean": "اقیانوس آبی",
@@ -127,6 +127,5 @@
   "factorRate2": "کیفیت",
   "factorRate3": "قیمت",
   "tiolaHome": "چهار دیواری تیولا",
-  "exitAccount":"از اکانت خود خارج شدید "
-
+  "exitAccount": "از اکانت خود خارج شدید "
 }

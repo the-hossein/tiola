@@ -130,7 +130,7 @@
 }
 .selectedCategory img{
     object-fit: cover;
-    object-position: 0px 20% ;
+    /* object-position: 0px ; */
 
 }
 

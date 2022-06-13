@@ -109,15 +109,15 @@ const ExploreMain = ({ data }) => {
       <h1 onClick={showAllExplore}>{t("explore")}</h1>
       <div className={style.selectedCategory}>
         <div>
-          <img src={data[30].imageFile1.filePath} alt="category"/>
+          <img src="/Assets/images/categoryScarf.jpg" alt="category"/>
           <span onClick={scarfHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("scarf")}</span>
         </div>
         <div>
-          <img src={data[2].imageFile1.filePath} alt="boboland"/>
+          <img src="/Assets/images/categoryShwal.jpg" alt="boboland"/>
           <span onClick={shawlHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("shawl")}</span>
         </div>
         <div>
-          <img src={data[10].imageFile1.filePath} alt="boboland"/>
+          <img src="/Assets/images/categoryHeadger.jpg" alt="boboland"/>
           <span onClick={headgearHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("headgear")}</span>
         </div>
       </div>

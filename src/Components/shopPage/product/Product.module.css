@@ -24,11 +24,14 @@
 
 .moreText {
     cursor: pointer;
+    position: relative;
+    margin-top: -2px;
 }
 
-.ret{
+.ret {
     width: 100% !important;
 }
+
 .squarePhoto:hover,
 .rectanglePhoto:hover {
     border-radius: 0px !important;
@@ -62,14 +65,22 @@
 .shopPage {
     height: 528px;
 }
-.collPage{
-    height: 612px;
+
+.collPage {
+    height: 622px;
 
 }
+
 .info {
     font-size: var(--xs-font);
 }
-.titleInfo{
+
+.infoEn {
+    direction: rtl;
+
+}
+
+.titleInfo {
     min-width: 85px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -78,6 +89,7 @@
     height: 21px;
     direction: var(--direction);
 }
+
 .product {
     width: fit-content;
     padding: 0 0 0.8rem 0;
@@ -94,14 +106,17 @@
 .productPhoto:hover {
     border-radius: none;
 }
-.retDir{
+
+.retDir {
     width: 100%;
     direction: rtl;
 }
-.retDirRevese{
+
+.retDirRevese {
     width: 100%;
-    direction:ltr;
+    direction: ltr;
 }
+
 @media(max-width:1200px) {
     /* .rectanglePhoto {
         height: 796px !important;
@@ -111,14 +126,15 @@
 @media(max-width:768px) {
     .rectanglePhoto {
         height: 596px;
-   
+
     }
+
     .squarePhoto img {
         height: 244px;
     }
 
-   
-    .ret{
+
+    .ret {
         width: 100% !important;
     }
 }

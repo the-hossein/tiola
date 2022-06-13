@@ -102,11 +102,12 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xxl-font", "21pt");
     root.style.setProperty("--oxx-font", "26pt");
     root.style.setProperty("--veryLg-font", "30pt");
-    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
+    root.style.setProperty("--veryLg2-font", "40pt");
+
+    root.style.setProperty("--hamberMenu-translate", "translateX(200%)");
   };
 
   const leftDir = () => {
-    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
     root.style.setProperty("--direction", "ltr");
     root.style.setProperty("--directionR", "rtl");
 
@@ -122,6 +123,9 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--xl-font", "26pt");
     root.style.setProperty("--xxl-font", "30pt");
     root.style.setProperty("--veryLg-font", "48pt");
+    root.style.setProperty("--veryLg2-font", "56pt");
+
+    root.style.setProperty("--hamberMenu-translate", "translateX(-200%)");
   };
 
   useEffect(() => {
@@ -332,7 +336,7 @@ const Header = ({ backColor }) => {
           <>
             <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
               <MenuIcon sx={{ fontSize: 12 }} onClick={openMenu} />
-              {menuBar ? <Menu show={menuBar} setLang={(lng)=> changeLng(lng)} /> : null}
+              {menuBar ? <Menu /> : null}
               {state.loginStatus ? (
                 <Link href={"/profile"}>
                   <a>

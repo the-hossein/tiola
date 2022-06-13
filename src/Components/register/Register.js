@@ -33,16 +33,54 @@ const Register = ({ title }) => {
   const [errors, setError] = useState({});
   const [touched, setTouched] = useState({ phone: false, code: false });
   const [errorsCode, setErrorsCode] = useState({});
+  const [tryClient, setTryClient] = useState();
   useEffect(() => {
     setError(validationNumber(state.phoneNumber));
     setErrorsCode(validateCode(state.code));
-    console.log(errors);
+    let btryClient = window.localStorage.getItem("tryWrong");
+    setTryClient(JSON.parse(btryClient));
+
+    if(JSON.parse(btryClient) === 5){
+      let textAlert;
+      if(lang === "fa"){
+        textAlert = "شما بیش از حد معقول تلاش کرده اید لطفا یک دقیقه صبر کنید";
+      }else{
+        textAlert = "You have tried too hard, please wait a minute";
+      }
+      // notify(textAlert, "warning");
+      
+      if(window.localStorage.getItem("setWrong") === null){
+        let num = 1;
+        window.localStorage.setItem("setWrong", JSON.stringify(num));
+      }else{
+        let num = JSON.parse(window.localStorage.getItem("setWrong"));
+        num++;
+        window.localStorage.setItem("setWrong", JSON.stringify(num));
+      }
+      
+      setTimeout(()=> {
+        localStorage.removeItem("tryWrong");
+        setTryClient(0);
+      }, 60000);
+
+      if(JSON.parse(window.localStorage.getItem("setWrong")) === 2 ){
+        let textForBlocked;
+        if(lang === "fa"){
+          textForBlocked = "شما بیش از حد کد نادرست وارد کرده اید حساب شما مسدود شد."
+        }else{
+          textForBlocked = "You have entered too much incorrect code. Your account has been blocked.";
+        }
+        notify(textForBlocked, "error");
+        localStorage.removeItem("setWrong");
+      }
+    }
+
   }, [state.phoneNumber, touched, state.code]);
 
   const sendCodeHandler = () => {
     if (!Object.keys(errors).length && state.phoneNumber.length !== 0) {
-      dispatch(registerPhone(state.phoneNumber, lang));
-      setAgain(false);
+        dispatch(registerPhone(state.phoneNumber, lang));
+        setAgain(false);
     } else {
       if (errors.phone === "empty") {
         var errorText = t("emptyPhoneValidate");
@@ -112,6 +150,17 @@ const Register = ({ title }) => {
       };
     dispatch(getphone(fixNumbers(e.target.value)));
   };
+
+  const openClientWrong = () => {
+    let errorClient; 
+    if(lang === "fa"){
+      errorClient =  "شما بیش از حد معقول تلاش کرده اید لطفا یک دقیقه صبر کنید";
+    }else {
+      errorClient = "You have tried too hard, please wait a minute";
+    }
+    notify(errorClient, "warning")
+  }
+
   const focusHandler = (e) => {
     setTouched({ ...touched, [e.target.name]: true });
   };
@@ -171,6 +220,7 @@ const Register = ({ title }) => {
 
   return (
     <section>
+      {/* <button onClick={()=> console.log(tryClient === 5)} >hfyugdsb</button> */}
       <div className={`row m-0 ${style.Register}`}>
         <div className="col-lg-6 col-md-6 col-12 pt-5">
           {state.loader ? (
@@ -237,7 +287,7 @@ const Register = ({ title }) => {
                 }
               >
                 {state.codeStatus === true && (
-                  <NormalBtn text={t("submit")} onClick={enterCodeHandler} />
+                  <NormalBtn text={t("submit")} onClick={tryClient === 5 ? openClientWrong :enterCodeHandler} />
                 )}
 
                 {state.codeStatus ? (

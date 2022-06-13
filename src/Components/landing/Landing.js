@@ -13,7 +13,6 @@ const Landing = ({ product,explore }) => {
     }
     images.push({ src: itm, id: item.id });
   });
-  console.log(images)
   return (
     <div className={style.landing}>
       <HeroSection />

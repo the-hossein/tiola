@@ -8,8 +8,16 @@
 }
 
 .information h1 {
-    font-size: var(--veryLg-font);
-    
+    font-size: var(--veryLg2-font);
+    margin: 0;
+
+}
+
+.informationEn h1 {
+    font-size: var(--veryLg2-font);
+    margin: 0;
+    position: relative;
+    margin-bottom: -9px;
 }
 
 .readmore,
@@ -45,7 +53,7 @@
     object-fit: cover;
 }
 
-.information {
+.information ,.informationEn{
     direction: var(--direction);
     padding-left: 3rem !important;
     display: flex;
@@ -56,7 +64,8 @@
 
 .similar {
     text-align: var(--float-left);
-    font-size: var(--veryLg-font);
+    font-size: var(--veryLg2-font);
+    margin-bottom: 2rem;
 }
 
 .buttons {
@@ -64,14 +73,17 @@
     flex-direction: column;
     align-items: center;
 }
+
 .notStock button {
     font-size: var(--xs-font) !important;
     padding-top: 5px;
 }
-.notStock button:hover{
+
+.notStock button:hover {
     background-color: var(--red-pen) !important;
     color: #fff !important;
 }
+
 @media(max-width:1200px) {
     .content {
         width: 95%;
