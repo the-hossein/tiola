@@ -7,7 +7,6 @@ import callApi from "../../src/api/callApi";
 import { BASE_URL, GET_TARGET_BLOG } from "../../src/api/urls";
 export default function Blog({ blog }) {
   const { t } = useTranslation();
-  console.log(blog);
   
   return (
     <div>

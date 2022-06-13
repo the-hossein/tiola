@@ -31,8 +31,6 @@ const PaymentStatus = () => {
       myHeaders.append("Authorization", `Bearer ${token}`);
       myHeaders.append("Content-Type", "application/json");
 
-      console.log(params.get("orderid"));
-
       const VerifyPayment = async () => {
         try {
           const verify = await callApi(
@@ -41,8 +39,6 @@ const PaymentStatus = () => {
             myHeaders,
             "POST"
           );
-          console.log("first");
-          console.log(verify[0].data.code);
 
           if (verify[0].data.code === 200||verify[0].data.code === 206) {
             setStatusCode(verify[0].data.code);
@@ -50,12 +46,10 @@ const PaymentStatus = () => {
             setStatus("success");
             setPreLoad(false);
 
-            // console.log(verify);
           } else {
             setStatusCode(verify[0].data.code);
             setStatus("unSuccess");
             setPreLoad(false);
-            // console.log(verify[1])
           }
         } catch {
           setStatusCode("catch");

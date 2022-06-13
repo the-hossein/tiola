@@ -7,7 +7,6 @@ import Header from "../src/Components/header/Header";
 import TiolaCollections from "../src/Components/pageCollentions/MyCollection/TiolaCollections";
 
 export default function Collections({ allCollection }) {
-  console.log(allCollection[0].data);
   const { t } = useTranslation();
   return (
     <div>
