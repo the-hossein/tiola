@@ -98,9 +98,15 @@ const ExploreMain = ({ data }) => {
     console.log(categoryHeadgear);
   }
 
+  const showAllExplore = () => {
+    setShawlShow(false);
+    setScarfShow(false);
+    setHeadgearShow(false);
+  }
+
   return (
     <div className={style.explore}>
-      <h1>{t("explore")}</h1>
+      <h1 onClick={showAllExplore}>{t("explore")}</h1>
       <div className={style.selectedCategory}>
         <div>
           <img src={data[30].imageFile1.filePath} alt="category"/>
@@ -143,6 +149,7 @@ const ExploreMain = ({ data }) => {
                             <img
                               src={product.explorFile.filePath}
                               alt="product"
+                              loading="lazy"
                             />
                             <p className={style.parag}>
                               {lang === "fa" ? product.title : product.titleEn}

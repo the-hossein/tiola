@@ -15,7 +15,7 @@
   "typeHere": "اینجا بنویس",
   "sendAMessage": "تیولا خبرم کن",
   "sentBtn": "ارسال",
-
+  "view": "دیدن",
   "code": "کد",
   "t": "ت",
   "simpleViewMore": "بیشتر ببینیم",
@@ -56,6 +56,7 @@
   "addresPlaceHolder": "آدرس را در اینجا وارد کنید",
   "addCmPlaceHOlder": "وارد کردن آدرس جدید",
   "edit": "تصحیح",
+  "addresTest1": " میرداماد- خیابان انوار",
   "addresTest": " میرداماد-خیابان انوار- کوچه فلان پلاک3",
   "addWatchList": "افزود به لیست",
   "checking": "بررسی سفارش",

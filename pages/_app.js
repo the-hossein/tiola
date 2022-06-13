@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
           .getElementsByTagName("body")[0]
           .style.setProperty(
             "background",
-            `   linear-gradient(180deg, rgba(26,121,9,0.4489146000196954) 0%, rgba(26,121,9,0.3200630594034489) 30%, rgba(239,239,239,0) 100%);`,
+            pageProps.collection[0].data[0].collection.colorCode,
             "important"
           );
       }
@@ -63,7 +63,6 @@ function MyApp({ Component, pageProps }) {
         height={6}
         options={{ showSpinner: false }}
         color="#6a8eae"
-     
       />
       <Component {...pageProps} />
       <ToastContainer

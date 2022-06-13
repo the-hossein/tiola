@@ -226,7 +226,15 @@ const ProductContent = ({ product }) => {
                 </div>
               </div>
               <div className={style.buttons}>
-                <NormalBtn
+                {
+                  product.data.stock <= 0 ?<div className={style.notStock}>
+                    <NormalBtn
+                    color={"red"}
+                    text={lang === "fa" ? "موجودی در انبار کافی نیست" : "In stock is not enough" }
+                    onClick={()=> ""}
+                    />  
+                  </div> 
+                  : <NormalBtn
                   color="red"
                   text={
                     preloadPay ? (
@@ -237,6 +245,7 @@ const ProductContent = ({ product }) => {
                   }
                   onClick={(e) => payHandler()}
                 />
+                }
                 <NormalBtn
                   color="white"
                   text={
