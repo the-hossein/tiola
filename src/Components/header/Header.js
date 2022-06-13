@@ -250,11 +250,13 @@ const Header = ({ backColor }) => {
                   </Link>
                 </div>
               </nav>
-              <Link href="/">
-                <a>
-                  <Image src={logo} alt="logo" className={style.logo} />
-                </a>
-              </Link>
+              <div className={style.logoDiv}>
+                <Link href="/">
+                  <a>
+                    <Image src={logo} alt="logo" className={style.logo} />
+                  </a>
+                </Link>
+              </div>
             </div>
 
             <div className={style.headerIcon}>
