@@ -18,8 +18,15 @@
     width: 160px;
     border: var(--borderWidth);
     margin: 0 1rem;
+    position: relative;
 }
-
+/* .namad img {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
 .phone {
     width: 40%;
 }

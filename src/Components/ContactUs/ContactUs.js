@@ -56,7 +56,15 @@ const ContactUs = () => {
             >
                 کیلومتر ۱۲ جاده امام رضا عباس آباد علاقبند مجتمع صنعتی بهارستان سالن ۶۴۷
             </p>
-            <p>{t("addresTest")}</p>
+            <p
+              onClick={() => openInNewTab("https://www.google.com/maps/place/35%C2%B040'39.2%22N+51%C2%B025'06.3%22E/@35.6775568,51.4162305,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x6aea2b93e49f7b7c!8m2!3d35.6775568!4d51.4184192?hl=en")}
+            >
+              بازار تهران 
+              مترو پانزده خرداد 
+              پاساژ دلگشا 
+              طبقه منفی ۴ 
+              پلاک  ۱۴۳  
+            </p>
           </div>
         </div>
         <div className={style.social}>
