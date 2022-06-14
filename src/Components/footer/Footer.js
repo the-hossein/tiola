@@ -43,7 +43,7 @@ const Footer = () => {
       d.getElementsByTagName("body")[0].appendChild(s);
     })();
   }, []);
-  const addPhone = () => {};
+
 
   const TypeNumber = (e) => {
     if (!e) {
