@@ -9,7 +9,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useTranslation } from "react-i18next";
 const AddComment = () => {
   const dispatch = useDispatch();
-  const {t}=useTranslation()
+  const { t } = useTranslation();
   const state = useSelector((state) => state.stateComment);
   const openHandler = () => {
     dispatch(writeTrue());
@@ -22,7 +22,11 @@ const AddComment = () => {
         <p>{t("addCm")}</p>
         <div className={style.add}>
           <AddCircleOutlineIcon
-            sx={{ fontSize: 40, color: "var(--lightGray-border)" }}
+            sx={{
+              fontSize: 70,
+              color: "var(--lightGray-border)",
+              stroke: "white"
+            }}
           />
         </div>
       </div>

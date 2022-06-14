@@ -64,13 +64,13 @@ const AllComment = ({ product }) => {
         <div className="col-12 col-md-12 p-0" >
           <div className="row justify-content-evenly align-items-center">
               {size > 685 && (
-              <div className={`${!state.writeCm ? 'col-12  col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3' : 'col-md-6 col-sm-5'}`}>
+              <div className={`${!state.writeCm ? 'col-12  col-sm-3 col-md-4 col-lg-4 col-xl-4 col-xxl-4' : 'col-md-6 col-sm-5'}`}>
                 <div className={Style.firstChild}>
                   <AddComment />
                 </div>
             </div>
               )}
-            <div className={size > 685 ? !state.writeCm ? 'col-9 col-sm-8 col-md-9 col-lg-8 col-xl-9 col-xxl-9' : 'col-12 col-md-6 col-sm-5': "col-12"}>
+            <div className={size > 685 ? !state.writeCm ? 'col-9 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8' : 'col-12 col-md-6 col-sm-5': "col-12"}>
             <Swiper
             dir={"rtl"}
             showsPagination={false}

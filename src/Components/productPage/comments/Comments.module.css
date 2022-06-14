@@ -108,11 +108,13 @@
     color: var(--medium-gray);
     display: flex;
     justify-content: center;
-    align-items: center;
+  
     /* margin-bottom: 25px; */
     box-shadow: 4px 3px 8px #a6a5a547;
 }
-
+.addComment p{
+    margin-top: 1rem;
+}
 .add {
     cursor: pointer;
     border-radius: 50%;
