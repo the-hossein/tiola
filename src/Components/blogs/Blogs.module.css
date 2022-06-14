@@ -5,7 +5,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    /* padding: 30px 60px; */
 }
 .blogTitle{
     font-size: var(--veryLg-font);

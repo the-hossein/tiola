@@ -53,12 +53,7 @@ const EditProfile = () => {
 
   const [userBirthday, setBirthday] = useState();
   const subBirthday = (unix, formatted) => {
-    console.log(unix);
-    console.log(formatted); 
     var date = new Date(unix * 1000);
-    console.log(date.getTime())
-    console.log(date)
-    setBirthday(date);
 
     // console.log(value) 
     // console.log(e.target.value)
@@ -73,9 +68,6 @@ const EditProfile = () => {
 
   const subHandler = (e) => {
     e.preventDefault();
-    console.log(typeof userFName === "undefined")
-    console.log(typeof userLName)
-    console.log(userBirthday)
     let textShow ;
     if(typeof userBirthday !== "undefined" && typeof userLName !== "undefined" && typeof userFName !== "undefined"){
       if(userFName === ""){
@@ -114,7 +106,6 @@ const EditProfile = () => {
           );
         }
     }else{
-      console.log("worked allllllllli")
       if(lang === "fa"){
         textShow = "اطلاعات حساب کاربری خود را کامل وارد کنید"
       }else{

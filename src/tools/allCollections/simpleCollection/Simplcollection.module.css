@@ -22,8 +22,8 @@
 }
 
 .containerPic img:last-child {
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
+    border-top-left-radius: 60% 25% ;
+    border-top-right-radius: 60% 24%; 
     width: 40%;
     height: 100%;
 

@@ -33,7 +33,6 @@ const ChangeImage = async (e) => {
       const data = await response.json();
       const status = await response.status;
       
-      // console.log(data.data)
         
       return data;
        

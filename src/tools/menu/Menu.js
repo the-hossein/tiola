@@ -54,7 +54,7 @@ const Menu = ({ backColor, show, setLang }) => {
       >
         <div className="d-flex justify-content-between">
           <Link href="/profile">
-            <span>{user.name + " " + user.family}</span>
+            <span className={style.userName}>{user.name + " " + user.family}</span>
           </Link>
           {
             setLang && <a className={style.setLng}>

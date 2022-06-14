@@ -31,7 +31,6 @@ const ExploreMain = ({ data }) => {
   const params = new URLSearchParams(search);
   // bar
   var idSearching = params.get("search");
-  console.log(data);
   const [targetSearch, setTargetSearch] = useState([]);
 
   useEffect(() => {
@@ -79,7 +78,6 @@ const ExploreMain = ({ data }) => {
     setShawlShow(false);
     setHeadgearShow(false)
     setScarfShow(true);
-    console.log(categoryScarf);
   }
   const categoryShawl = data.filter(item => item.type === "shawl");
   const [shawlShow, setShawlShow] = useState(false);
@@ -87,7 +85,6 @@ const ExploreMain = ({ data }) => {
     setHeadgearShow(false)
     setScarfShow(false);
     setShawlShow(true);
-    console.log(categoryShawl);
   }
   const categoryHeadgear = data.filter(item => item.type === "headgear");
   const [headgearShow, setHeadgearShow] = useState(false);
@@ -95,7 +92,6 @@ const ExploreMain = ({ data }) => {
     setShawlShow(false);
     setScarfShow(false);
     setHeadgearShow(true);
-    console.log(categoryHeadgear);
   }
 
   const showAllExplore = () => {
@@ -108,17 +104,17 @@ const ExploreMain = ({ data }) => {
     <div className={style.explore}>
       <h1 onClick={showAllExplore}>{t("explore")}</h1>
       <div className={style.selectedCategory}>
-        <div>
+        <div onClick={scarfHandler}>
           <img src="/Assets/images/categoryScarf.jpg" alt="category"/>
-          <span onClick={scarfHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("scarf")}</span>
+          <span  className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("scarf")}</span>
         </div>
-        <div>
+        <div onClick={shawlHandler}>
           <img src="/Assets/images/categoryShwal.jpg" alt="boboland"/>
-          <span onClick={shawlHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("shawl")}</span>
+          <span className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("shawl")}</span>
         </div>
-        <div>
+        <div onClick={headgearHandler}>
           <img src="/Assets/images/categoryHeadger.jpg" alt="boboland"/>
-          <span onClick={headgearHandler} className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("headgear")}</span>
+          <span className={lang === "fa" ? style.categoryFa : style.categoryEn }>{t("headgear")}</span>
         </div>
       </div>
       <Box sx={{ width: "auto" }}>

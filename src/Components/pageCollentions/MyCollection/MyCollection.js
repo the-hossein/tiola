@@ -3,7 +3,6 @@ import CollectionInfo from "./CollectionInfo";
 import style from "./PageCollection.module.css";
 import Link from "next/link";
 const MyCollection = ({ data }) => {
-  console.log(data);
   return (
     <>
     {/* {data.picture.confirmed? */}

@@ -40,13 +40,11 @@ const UserFactor = () => {
       }
     }
     if (!!basket) {
-      console.log(basket.details);
       setBasketDatas(basket.details);
       setPreload(false);
     }
   
   }, [state]);
-  console.log(basket.allAddress);
   return (
     <section className={style.ContainerSection}>
       {!!basket ? (

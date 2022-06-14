@@ -154,8 +154,6 @@ const registerCode = (code, num, lang, router) => {
         myHeaders,
         "POST"
       );
-
-      console.log(registerCode);
       if (registerCode[0].code === 200 || registerCode[0].code === 201) {
         dispatch(checkOtpSuccess());
         dispatch(loginTrue());
@@ -257,7 +255,6 @@ const getProfile = () => {
           "POST"
         );
         if (user[0].code === 200 && user[0].data !== null) {
-          console.log(user[0].data);
           dispatch(userData(user[0].data));
         }
         const basket = async () => {

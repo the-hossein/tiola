@@ -37,7 +37,6 @@ import {
 } from "../../../redux/saveItem/saveItemAction";
 import persianNumber from "../../../tools/persianNumber/persianNumber";
 const List = ({ data, alldata }) => {
-  console.log(data);
   const dispatch = useDispatch();
   const [preload, setPreload] = useState(false);
   const [size, setSize] = useState([0]);

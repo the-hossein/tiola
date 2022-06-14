@@ -139,7 +139,6 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
             userid: user.userid,
             postCode: postCode
           });
-          console.log(raw);
           const edited = await callApi(
             BASE_URL + UPDATE_ADDRESS,
             raw,

@@ -34,6 +34,10 @@ const UserAction = () => {
   }, [user]);
 
   const { t } = useTranslation();
+
+  const [showAllHistory, setShowAllHistory] = useState(false);
+  const shortHistory = orderHistory.data.slice(0, 3);
+
   return (
     <div className="row justify-content-between mt-5 mb-5 ">
       <div
@@ -72,7 +76,18 @@ const UserAction = () => {
             <p>{t("dontHistory")}</p>
           </div>
         ) : (
-          orderHistory.data.map((item) => (
+          showAllHistory ? (orderHistory.data.map((item) => (
+            <RowProduct
+              key={item.id}
+              close={false}
+              removeId={item.id}
+              data={item}
+              userId={user.userid}
+              loading={orderHistory.loader}
+              statusText="completed"
+            />
+          ))):
+          shortHistory.map((item) => (
             <RowProduct
               key={item.id}
               close={false}
@@ -84,6 +99,10 @@ const UserAction = () => {
             />
           ))
         )}
+        {
+          orderHistory.data.length === true
+           && <button onClick={() => setShowAllHistory(preveShow => !preveShow)}>{t("simpleViewMore")}</button>
+        }
       </div> 
     </div>
   );
