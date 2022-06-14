@@ -7,37 +7,7 @@ import CategoryProduct from "./CategoryProduct";
 import Link from "next/link";
 const Category = ({ data }) => {
   const { t } = useTranslation();
-  console.log(data);
-
-  const product = [
-    {
-      src: "/Assets/images/3.jpeg"
-    },
-    {
-      src: "/Assets/images/4.jpeg"
-    },
-    {
-      src: "/Assets/images/5.jpeg"
-    },
-    {
-      src: "/Assets/images/2.jpeg"
-    },
-    {
-      src: "/Assets/images/4.jpeg"
-    },
-    {
-      src: "/Assets/images/5.jpeg"
-    },
-    {
-      src: "/Assets/images/2.jpeg"
-    },
-    {
-      src: "/Assets/images/1.jpeg"
-    },
-    {
-      src: "/Assets/images/5.jpeg"
-    }
-  ];
+ 
   return (
     <section>
       <div className="container mt-5">

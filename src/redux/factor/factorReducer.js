@@ -56,7 +56,6 @@ const factorReducer = (state = initializedState, action) => {
         loadingAddress: false
       };
     case "BASKET_DETAILS":
-      console.log(action.data);
       return {
         ...state,
         details: action.data,

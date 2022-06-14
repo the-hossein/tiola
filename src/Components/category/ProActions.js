@@ -47,7 +47,7 @@ const ProActions = ({id}) => {
       dispatch(checkSavedItem(userID, lang));
     }},[])
   return (
-    <div className="d-flex justify-content-between mt-4 mb-2">
+    <div className="d-flex justify-content-between mt-5 mb-3">
      <Link href={`/product/${id}`}>
    <a>
    <PrimaryButton

@@ -70,7 +70,6 @@ const Footer = () => {
             myHeaders,
             "POST"
           );
-          console.log(response);
           if (response[0].code === 200) {
             if (lang === "fa") {
               var text = "شماره شما با موفقیت ثبت  شد";

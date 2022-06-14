@@ -31,7 +31,6 @@ const BuyLists = ({ setBasketDatas }) => {
     var Price = 0;
     for (var i = 0; i < state.details.length; i++) {
       Price = Price + state.details[i].qty * state.details[i].amount;
-      console.log(Price);
     }
     settotalprice(Price);
     setpreload(false);
@@ -39,7 +38,6 @@ const BuyLists = ({ setBasketDatas }) => {
 
   const payHandler = () => {
     if (user.loginStatus && user.birthDayDateTime !== null && ls) {
-      console.log(user.birthDayDateTime);
       setpreloadPay(true);
       const userToken = JSON.parse(ls);
       const token = userToken.token;
@@ -53,7 +51,6 @@ const BuyLists = ({ setBasketDatas }) => {
         description: "string",
         bank: 1
       });
-      console.log(raw);
       const apipayment = async () => {
         const status = await callApi(
           BASE_URL + ADD_PAYMENT,

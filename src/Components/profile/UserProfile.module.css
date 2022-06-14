@@ -1,24 +1,40 @@
 .profile img {
     width: 100px;
     height: 100px;
-    border-radius: 100%;
+    height: fit-content;
+    border-radius: 50%;
     overflow: hidden;
     object-fit: cover;
-    margin: 0 2rem;
 }
 
 .profile {
     direction: var(--direction);
     display: flex;
     align-items: center;
+    height: 100px;
 }
-
+.avatar{
+    width: fit-content;
+    display: grid;
+    place-items: center;
+}
+.profileText{
+    margin: 0 2rem;
+    direction: var(--direction);
+    height: 92% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+    padding: 0 0 !important;
+}
+.remain{
+    font-size: var(--sm-font);
+}
 .editPro {
     font-size: var(--md-font);
     display: block;
-    line-height: 1.5;
     cursor: pointer;
-
+    margin-top: .5rem;
 }
 
 .RowProduct {
@@ -49,9 +65,13 @@
 
 .history button {
     font-size: var(--xs-font);
-    padding: 0.3rem 3rem;
+    padding: .5rem 3rem;
     margin: auto;
     display: block;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 10px;
 }
 
 .close {

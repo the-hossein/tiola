@@ -94,7 +94,6 @@ const AddNewAddress = () => {
           dispatch(loadingAddress());
             const addAddresUser = async () => { 
               try {
-                console.log(user);
                 var myHeaders = new Headers();
                 myHeaders.append("Authorization", `Bearer ${token}`);
                 myHeaders.append("Content-Type", "application/json");

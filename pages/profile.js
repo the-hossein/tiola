@@ -16,9 +16,7 @@ export default function Profile() {
   const router = useRouter()
  useEffect(()=> {
   const tokenLocal = JSON.parse(window.localStorage.getItem("userToken"));
-  console.log("hello", tokenLocal)
   if(tokenLocal === null){
-    console.log(router, "hihi")
     router.push({pathname: "/"})
   }
  }, [])

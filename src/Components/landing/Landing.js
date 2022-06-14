@@ -3,8 +3,7 @@ import Collection from "../collection/Collection";
 import HeroSection from "../heroSection/HeroSection";
 import ProductSlider from "../productSlider/ProductSlider";
 import style from "./Landing.module.css";
-const Landing = ({ product,explore }) => {
-  console.log(explore)
+const Landing = ({ product,explore }) => { 
   const images = [];
   var itm;
   product.map((item) => {

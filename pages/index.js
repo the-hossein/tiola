@@ -9,9 +9,6 @@ import Landing from "../src/Components/landing/Landing";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 
 export default function Home({ slider, explor }) {
-  // const indexExplore = Math.round(Math.random()*4)
-  // console.log(indexExplore)
-  console.log(explor[0].data);
   const state = useSelector((state) => state.stateRegister);
   const { t } = useTranslation();
   return (

@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0.3rem 4rem;
+    padding: 1.2rem 4rem;
     color: var(--light-pen);
     font-size: var(--md-font);
     direction: var(--direction);
@@ -33,7 +33,13 @@
     width: 52.3%;
     justify-content: space-between;
 }
-
+.logoDiv{
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 40px;
+}
 .active {
     border-width: 10px;
     border-bottom: 1px solid var(--blue-pen);

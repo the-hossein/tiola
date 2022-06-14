@@ -6,7 +6,7 @@ import style from "./CollectionText.module.css";
 const CollectionText = ({ content, title, reverse,btnText, href, second }) => {
   return (
     <>
-      <div>
+      <div className={style.textContainer}>
         <h1 className={style.collectionTitile}>{title}</h1>
         <p className={style.CollectionText}>{content}</p>
       </div>

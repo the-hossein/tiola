@@ -52,7 +52,7 @@ const BlogDetail = ({data}) => {
               </div>
               <div className={`col-12 col-md-6 col-lg-6 ${style.blogContent}`}>
                 <h1>{loading ? "Loading..." : lang === "fa" ? data.title : data.titleEn }</h1>
-                <p>{loading ? "Loading..." : lang === "fa" ? item.description : item.descriptionen}</p>
+                <p className={lang === "fa" && style.paragraphFa} >{loading ? "Loading..." : lang === "fa" ? item.description : item.descriptionen}</p>
               </div>
             </div>
             </>

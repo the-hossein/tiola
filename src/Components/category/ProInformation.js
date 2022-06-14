@@ -5,7 +5,6 @@ import ProActions from "./ProActions";
 
 const ProInformation = ({data}) => {
   const { t } = useTranslation();
-  console.log(data)
   return (
     <div className="d-flex flex-column">
       <ProductInfo more={false} data={data}/>

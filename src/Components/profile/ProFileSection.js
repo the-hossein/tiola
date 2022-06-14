@@ -29,30 +29,31 @@ const ProFileSection = () => {
   useEffect(()=> {
     setpreload(true)
     if(data.profileUser) {
-      // console.log(data.profileUser.filePath);
       setpreload(false)
       return;
     }
   }, [data])
   
   return (
-    <>
+    <>  
+        <div className="row">
           <div className={style.profile}>
             <div className={style.avatar}>
               <img src={data.profileUser === null ? "/Assets/images/userdefault.png" : data.profileUser.filePath } alt="user profile image" />
             </div>
-            <div>
+            <div className={style.profileText}>
               <h1 className={style.name}>{data.isConfirmed ? data.userNameAvatar : data.phoneNumber}</h1>
               <Link href='/editprofile'>
                 <span
                   className={style.editPro}
-                >
+                  >
                   {t("editProfile")}
                 </span>
               </Link>
-              {/* <span className="d-block">20%{t("remain")}</span> */}
+              <span className={style.remain}>{data.complatedPersent}% {t("remain")}</span>
             </div>
           </div>
+        </div>
     </>
   );
 };

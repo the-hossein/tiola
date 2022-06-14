@@ -21,7 +21,8 @@ const initializedState = {
   name: "",
   family: "",
   isConfirmed: false ,
-  profileUser: {}
+  profileUser: {},
+  complatedPersent: 0
 };
 const registerReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -134,7 +135,8 @@ const registerReducer = (state = initializedState, action) => {
         name: action.user.user.name,
         family: action.user.user.family,
         profileUser: action.user.profilePic,
-        isConfirmed : action.user.user.isConfirmed
+        isConfirmed : action.user.user.isConfirmed,
+        complatedPersent: action.user.user.complatedPersent
       };
     case "BASKET_ID":
       return {
