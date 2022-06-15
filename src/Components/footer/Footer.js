@@ -191,7 +191,7 @@ const Footer = () => {
                 {/* <button className={style.send}>{t("sentBtn")}</button> */}
               </div>
               <div className={style.namad} onClick={()=> openInNewTab(namadHref)}>
-              
+              {/* <a referrerPolicy="origin" target="_blank" href={`https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX`}><img referrerpolicy="origin" src={`https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX`} alt="e-namad"  id="Pq5WOtFgnkup0Clm8xfX" /></a> */}
               </div>
             </div>
             <div className={style.socialMedia}>

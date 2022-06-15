@@ -99,9 +99,7 @@
 }
 
 .imageHeader svg {
-    /* font-size: rem; */
     transform: scale(2.5, 1.2);
-    /* border-radius: 15px; */
 }
 
 .blogInfo h1,
@@ -243,6 +241,9 @@
     .headerContainer img {
         width: 100%;
         height: 480px;
+    }
+    .imageHeader svg {
+        transform: scale(1.5, 1.2);
     }
 }
 

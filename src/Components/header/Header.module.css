@@ -171,9 +171,6 @@
     right: 8px;
     font-size: 8pt;
     border: 1px solid var(--light-pen);
-
-
-
 }
 
 @keyframes searchBoxAnimation {
@@ -297,6 +294,17 @@
             right: 5px !important;
             top: 8px !important;
         } */
+
+    
+.basketAmount {
+    right: 12px;
+    transform: scale(.9);
+}
+
+.basketAmountEn {
+    right: 12px;
+    transform: scale(.9);
+}
 
 }
 
