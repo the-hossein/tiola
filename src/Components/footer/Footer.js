@@ -12,13 +12,14 @@ import toPersianNum from "../../tools/persianNumber2/persianNumber2";
 import callApi from "../../api/callApi";
 import { ADD_USER, BASE_URL } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
-const namadHref = "https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
-const imageNamad = "https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
+// const namadHref = "https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
+// const imageNamad = "https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
 
-const jsxNamad = (<a referrerPolicy="origin" href={namadHref}>   
-<img referrerPolicy="origin" src={imageNamad} alt="" id="Pq5WOtFgnkup0Clm8xfX" />          
-</a>)
-
+// const jsxNamad = (<a referrerPolicy="origin" href={namadHref}>
+// <img referrerPolicy="origin" src={imageNamad} alt="" id="Pq5WOtFgnkup0Clm8xfX" />
+// </a>)
+const enamadHref ="https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
+const namadsrc ="https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
 const Footer = () => {
   const [size, setSize] = useState([0]);
   const [phoneNum, setPhoneNum] = useState("");
@@ -43,7 +44,6 @@ const Footer = () => {
       d.getElementsByTagName("body")[0].appendChild(s);
     })();
   }, []);
-
 
   const TypeNumber = (e) => {
     if (!e) {
@@ -143,8 +143,8 @@ const Footer = () => {
     setPhoneNum(fixNumbers(e.target.value));
   };
 
-  const openInNewTab = url => {
-    window.open(url, '_blank');
+  const openInNewTab = (url) => {
+    window.open(url, "_blank");
   };
   return (
     <>
@@ -190,14 +190,25 @@ const Footer = () => {
                 />
                 {/* <button className={style.send}>{t("sentBtn")}</button> */}
               </div>
-              <div className={style.namad} onClick={()=> openInNewTab(namadHref)}>
-              
-              </div>
+              <a referrerPolicy="origin" href={enamadHref}>
+                <img
+                  referrerpolicy="origin"
+                  src={namadsrc}
+                  alt="namad"
+                  id="Pq5WOtFgnkup0Clm8xfX"
+                />
+              </a>
             </div>
             <div className={style.socialMedia}>
               <TwitterIcon />
               <WhatsAppIcon />
-              <InstagramIcon onClick={()=> openInNewTab("https://instagram.com/tiolastyle?igshid=NWRhNmQxMjQ=") }/>
+              <InstagramIcon
+                onClick={() =>
+                  openInNewTab(
+                    "https://instagram.com/tiolastyle?igshid=NWRhNmQxMjQ="
+                  )
+                }
+              />
             </div>
             <a href="tel:02191690818" id={style.phone}>
               <span>{t("ContactUs") + " :   "}</span>
