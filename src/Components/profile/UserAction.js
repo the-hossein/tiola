@@ -99,7 +99,9 @@ const UserAction = () => {
             />
           ))
         )}
-        <button onClick={() => setShowAllHistory(preveShow => !preveShow)}>{t("simpleViewMore")}</button>
+        {
+          orderHistory.data.length > 3 ? <button onClick={() => setShowAllHistory(preveShow => !preveShow)}>{t("simpleViewMore")}</button> : ""
+        }
       </div> 
     </div>
   );

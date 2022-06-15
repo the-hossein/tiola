@@ -57,7 +57,7 @@ const Menu = ({ backColor, show, setLang }) => {
             <span className={style.userName}>{user.name + " " + user.family}</span>
           </Link>
           {
-            setLang && <a className={style.setLng}>
+            !!setLang && <a className={style.setLng}>
             {lang === "en" ? (
               <span onClick={() => setLang("fa")}>fa</span>
             ) : (
