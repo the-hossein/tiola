@@ -152,16 +152,16 @@ const ProductContent = ({ product }) => {
       (item) => item.productId === productId
     );
     if (targetItem) {
-      let textShow ; 
-      if(lang === 'fa'){
-        textShow = 'شما این محصول را قبلا اضافه کرده اید.';
-      }else {
-        textShow = 'You have already added this product';
+      let textShow;
+      if (lang === "fa") {
+        textShow = "شما این محصول را قبلا اضافه کرده اید.";
+      } else {
+        textShow = "You have already added this product";
       }
       notify(textShow, "success");
       setpreloadWatch(false);
     } else {
-      dispatch(fetchingToSave(userID, productId,lang));
+      dispatch(fetchingToSave(userID, productId, lang));
       setpreloadWatch(false);
     }
   };
@@ -189,7 +189,11 @@ const ProductContent = ({ product }) => {
             border={true}
           />
         </div>
-        <div className={`col-lg-8 col-xxl-7 col-12 ${lang==="fa"?style.information:style.informationEn} mt-5 `}>
+        <div
+          className={`col-lg-8 col-xxl-7 col-12 ${
+            lang === "fa" ? style.information : style.informationEn
+          } mt-5 `}
+        >
           <div>
             <h1>{lang === "fa" ? product.data.title : product.data.titleEn}</h1>
             <div
@@ -204,47 +208,57 @@ const ProductContent = ({ product }) => {
 
                 <p className={style.content}>
                   <ReactReadMoreReadLess
-                    charLimit={340}
+                    charLimit={450}
                     readMoreText={t("Readmore")}
                     readLessText={t("Readless")}
                     readMoreClassName={style.readmore}
                     readLessClassName={style.readLess}
                   >
-                    {lang==="fa"?product.data.description:product.data.descriptionEn}
+                    {lang === "fa"
+                      ? product.data.description
+                      : product.data.descriptionEn}
                   </ReactReadMoreReadLess>
+                  .
                 </p>
                 <div>
                   <span className={style.compatible}>
                     {t("Compatiblewith")}
                   </span>
-                  {product.data.compatibleColors.split(",").map((color, index) => (
-                    <Fragment key={index}>
-                      <ColorPick color={color} />
-                    </Fragment>
-                  ))}
+                  {product.data.compatibleColors
+                    .split(",")
+                    .map((color, index) => (
+                      <Fragment key={index}>
+                        <ColorPick color={color} />
+                      </Fragment>
+                    ))}
                 </div>
               </div>
               <div className={style.buttons}>
-                {
-                  product.data.stock <= 0 ?<div className={style.notStock}>
+                {product.data.stock <= 0 ? (
+                  <div className={style.notStock}>
                     <NormalBtn
-                    color={"red"}
-                    text={lang === "fa" ? "موجودی در انبار کافی نیست" : "In stock is not enough" }
-                    onClick={()=> ""}
-                    />  
-                  </div> 
-                  : <NormalBtn
-                  color="red"
-                  text={
-                    preloadPay ? (
-                      <CircularProgress size={20} disableShrink />
-                    ) : (
-                      t("pay")
-                    )
-                  }
-                  onClick={(e) => payHandler()}
-                />
-                }
+                      color={"red"}
+                      text={
+                        lang === "fa"
+                          ? "موجودی در انبار کافی نیست"
+                          : "In stock is not enough"
+                      }
+                      onClick={() => ""}
+                    />
+                  </div>
+                ) : (
+                  <NormalBtn
+                    color="red"
+                    text={
+                      preloadPay ? (
+                        <CircularProgress size={20} disableShrink />
+                      ) : (
+                        t("pay")
+                      )
+                    }
+                    onClick={(e) => payHandler()}
+                  />
+                )}
                 <NormalBtn
                   color="white"
                   text={
@@ -259,7 +273,7 @@ const ProductContent = ({ product }) => {
               </div>
             </div>
           </div>
-            <AllComment product={product[0]} className="col" />
+          <AllComment product={product[0]} className="col" />
         </div>
       </div>
     </>

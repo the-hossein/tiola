@@ -130,5 +130,6 @@
   "factorRate2": "Quality",
   "factorRate3": "Price",
   "tiolaHome":"Tiola Home",
-  "exitAccount": "Exit your account"
+  "exitAccount": "Exit your account",
+  "close": "close"
 }
