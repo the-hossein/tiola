@@ -2,7 +2,7 @@ import React from "react";
 import style from "./NormalBtn.module.css";
 import {  useSelector } from "react-redux";
 
-const NormalBtn = ({ color, text, onClick }) => {
+const NormalBtn = ({ color, text, onClick,disable }) => {
   const lang = useSelector((state) => state.stateLang.lng);
   return (
     <button
@@ -16,6 +16,7 @@ const NormalBtn = ({ color, text, onClick }) => {
           : `${style.addWatchEn} ${ style.addWatch}`
       }`}
       onClick={onClick}
+      disabled={disable===true?true:false}
     >
       {text}
     </button>

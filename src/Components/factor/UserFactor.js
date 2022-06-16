@@ -19,6 +19,7 @@ import { notify } from "../../tools/toast/toast";
 import { useRouter } from "next/router";
 
 import Placement from "../../tools/placement/Placement";
+import Delivery from "./Delivery";
 const UserFactor = () => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -27,7 +28,7 @@ const UserFactor = () => {
   const dispatch = useDispatch();
   const [prelaod, setPreload] = useState(true);
   const [baskedatas, setBasketDatas] = useState();
-
+  const [post, setPost] = useState("pishtaz");
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
   }
@@ -43,7 +44,6 @@ const UserFactor = () => {
       setBasketDatas(basket.details);
       setPreload(false);
     }
-  
   }, [state]);
   return (
     <section className={style.ContainerSection}>
@@ -53,12 +53,19 @@ const UserFactor = () => {
         ) : (
           <div className="container mt-4">
             <FactorSection title={t("addres")} component={<UserAddres />} />
-
+            <FactorSection
+              title={t("deliveryFactor")}
+              component={<Delivery setPost={setPost} post={post} />}
+            />
             <FactorSection
               title={t("paylist")}
               component={
                 prelaod ? null : (
-                  <BuyLists data={baskedatas} setBasketDatas={setBasketDatas} />
+                  <BuyLists
+                    data={baskedatas}
+                    post={post}
+                    setBasketDatas={setBasketDatas}
+                  />
                 )
               }
             />

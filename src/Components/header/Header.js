@@ -103,7 +103,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--veryLg-font", "30pt");
     root.style.setProperty("--veryLg2-font", "40pt");
 
-    root.style.setProperty("--hamberMenu-translate", "translateX(200%)");
+    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
   };
 
   const leftDir = () => {
@@ -124,7 +124,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--veryLg-font", "48pt");
     root.style.setProperty("--veryLg2-font", "56pt");
 
-    root.style.setProperty("--hamberMenu-translate", "translateX(-200%)");
+    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
   };
 
   useEffect(() => {
@@ -336,7 +336,7 @@ const Header = ({ backColor }) => {
           <>
             <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
               <MenuIcon sx={{ fontSize: 12 }} onClick={openMenu} />
-              {menuBar ? <Menu /> : null}
+              {menuBar ? <Menu show={menuBar} setLang={(lng)=> changeLng(lng)} /> : null}
               {state.loginStatus ? (
                 <Link href={"/profile"}>
                   <a>

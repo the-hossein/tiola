@@ -18,8 +18,10 @@ import { notify } from "../../tools/toast/toast";
 // const jsxNamad = (<a referrerPolicy="origin" href={namadHref}>
 // <img referrerPolicy="origin" src={imageNamad} alt="" id="Pq5WOtFgnkup0Clm8xfX" />
 // </a>)
-const enamadHref ="https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
-const namadsrc ="https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
+const enamadHref =
+  "https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
+const namadsrc =
+  "https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
 const Footer = () => {
   const [size, setSize] = useState([0]);
   const [phoneNum, setPhoneNum] = useState("");
@@ -190,7 +192,11 @@ const Footer = () => {
                 />
                 {/* <button className={style.send}>{t("sentBtn")}</button> */}
               </div>
-              <a referrerPolicy="origin" href={enamadHref}>
+              <a
+                referrerPolicy="origin"
+                href={enamadHref}
+                className={style.namad}
+              >
                 <img
                   referrerpolicy="origin"
                   src={namadsrc}
