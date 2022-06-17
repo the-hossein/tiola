@@ -38,7 +38,7 @@ const XoGame = () => {
       setWins(prevState => {
         return{
           ...wins,
-          computer: prevState.computer ++
+          computer: prevState.computer + 1
         }
       });
       setSquares([1,2,3,4,5,6,7,8,9].fill(null));
@@ -48,7 +48,7 @@ const XoGame = () => {
       setWins(prevState => {
         return{
           ...wins,
-          player: prevState.player ++
+          player: prevState.player + 1
         }
       });
       setSquares([1,2,3,4,5,6,7,8,9].fill(null));
@@ -115,8 +115,8 @@ const XoGame = () => {
         </div>
       }
       <button onClick={()=> {
-        setSquares([1,2,3,4,5,6,7,8,9].fill(null))
-        setWins({player: 0, computer:0})
+        setSquares([1,2,3,4,5,6,7,8,9].fill(null));
+        setWins({player: 0, computer:0});
       }}>Reset</button>
     </div>
   );
