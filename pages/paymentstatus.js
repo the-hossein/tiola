@@ -40,23 +40,27 @@ const PaymentStatus = () => {
             "POST"
           );
 
-          if (verify[0].data.code === 200||verify[0].data.code === 206) {
+          if (verify[0].data.code === 200 || verify[0].data.code === 206) {
             setStatusCode(verify[0].data.code);
 
             setStatus("success");
             setPreLoad(false);
-
+            console.log(verify[0].data);
           } else {
             setStatusCode(verify[0].data.code);
             setStatus("unSuccess");
             setPreLoad(false);
+            console.log(verify[0].data);
           }
         } catch {
+          setPreLoad(false);
+
           setStatusCode("catch");
         }
       };
       VerifyPayment();
     } else {
+      setPreLoad(false);
       setStatus("unSuccess");
       setStatusCode("catch");
     }

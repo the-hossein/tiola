@@ -5,12 +5,7 @@ import { useTranslation } from "react-i18next";
 import style from "./ContactUs.module.css";
 
 //icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTwitter,
-  faInstagram,
-  faWhatsapp
-} from "@fortawesome/free-brands-svg-icons";
+
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TwitterIcon from "@mui/icons-material/Twitter";

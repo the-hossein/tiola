@@ -15,6 +15,7 @@ export default function Productname({ product, similar }) {
   const state = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
   const {t}=useTranslation()
+  console.log(product);
   return (
     <div>
       <Head>

@@ -12,21 +12,27 @@ import callApi from "../../../api/callApi";
 import Spinner from "react-bootstrap/Spinner";
 import { notify } from "../../../tools/toast/toast";
 import persianNumber from "../../../tools/persianNumber/persianNumber";
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-const BuyLists = ({ setBasketDatas }) => {
+import SquareIcon from "@mui/icons-material/Square";
+import Rule from "./Rule";
+const BuyLists = ({ setBasketDatas, post }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateFactor);
   const user = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
-
+  const [faQ, setFaQ] = useState(false);
+  const [openRule, setOpenRule] = useState(false);
   const [totalprice, settotalprice] = useState(0);
   const [preload, setpreload] = useState(true);
   const [preloadPay, setpreloadPay] = useState();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
   }
-
+  console.log(state);
   useEffect(() => {
     var Price = 0;
     for (var i = 0; i < state.details.length; i++) {
@@ -39,6 +45,15 @@ const BuyLists = ({ setBasketDatas }) => {
   const payHandler = () => {
     if (user.loginStatus && user.birthDayDateTime !== null && ls) {
       setpreloadPay(true);
+      if (state.allAddress.length === 0) {
+        setpreloadPay(false);
+        if (lang === "fa") {
+          var text = "لطفا آدرس خود را ثبت کنید";
+        } else {
+          text = "please complit profile data";
+        }
+        notify(text, "error");
+      }
       const userToken = JSON.parse(ls);
       const token = userToken.token;
       var myHeaders = new Headers();
@@ -47,11 +62,14 @@ const BuyLists = ({ setBasketDatas }) => {
       var raw = JSON.stringify({
         userid: user.userid,
         basketid: user.basketid,
-        amount: totalprice*10,
+        amount:
+          post === "pishtaz" ? (totalprice + 30000) * 10 : totalprice * 10,
         description: "string",
-        bank: 1
+        bank: 1,
+        shiping: post === "pishtaz" ? 0 : 1
       });
       const apipayment = async () => {
+        console.log(raw);
         const status = await callApi(
           BASE_URL + ADD_PAYMENT,
           raw,
@@ -59,8 +77,8 @@ const BuyLists = ({ setBasketDatas }) => {
           "POST"
         );
         if (status[0].code === 200) {
-          setpreloadPay(false);
           window.location = status[0].data.requestBank;
+          setpreloadPay(false);
         } else if (status[0].code === 285) {
           if (lang === "fa") {
             var text = "آدرس خود را وارد کنید";
@@ -106,7 +124,21 @@ const BuyLists = ({ setBasketDatas }) => {
               />
             </>
           ))}
-
+          <FormGroup
+            sx={{ alignContent: "center", color: "var(--red-pen)" }}
+            className={style.checkFaq}
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => setFaQ(!faQ)}
+                  icon={<SquareIcon sx={{ color: "var(--light-pen)" }} />}
+                  checked={faQ === true ? true : false}
+                />
+              }
+            />
+            <span onClick={() => setOpenRule(true)}>{t("allowFaq")}</span>
+          </FormGroup>
           <div className={style.payBtn}>
             <NormalBtn
               color="red"
@@ -118,6 +150,7 @@ const BuyLists = ({ setBasketDatas }) => {
                 )
               }
               onClick={(e) => payHandler()}
+              disable={faQ ? false : true}
             />
             {preload === true ? (
               <Loader />
@@ -125,13 +158,22 @@ const BuyLists = ({ setBasketDatas }) => {
               <div>
                 <span>{t("total")}</span>
                 <span>
-                  {lang === "fa" ? persianNumber(totalprice) : totalprice}
+                  {lang === "fa"
+                    ? post === "pishtaz"
+                      ? persianNumber(totalprice + 30000)
+                      : persianNumber(totalprice)
+                    : post === "pishtaz"
+                    ? totalprice + 30000
+                    : totalprice}
                 </span>
                 <span>{t("toman")}</span>
               </div>
             )}
           </div>
         </>
+      )}
+      {openRule && (
+        <Rule openRule={openRule} setopenRule={setOpenRule} setFaQ={setFaQ} />
       )}
     </div>
   );
