@@ -45,6 +45,15 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const payHandler = () => {
     if (user.loginStatus && user.birthDayDateTime !== null && ls) {
       setpreloadPay(true);
+      if (state.allAddress.length === 0) {
+        setpreloadPay(false);
+        if (lang === "fa") {
+          var text = "لطفا آدرس خود را ثبت کنید";
+        } else {
+          text = "please complit profile data";
+        }
+        notify(text, "error");
+      }
       const userToken = JSON.parse(ls);
       const token = userToken.token;
       var myHeaders = new Headers();
@@ -60,7 +69,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
         shiping: post === "pishtaz" ? 0 : 1
       });
       const apipayment = async () => {
-      console.log(raw)
+        console.log(raw);
         const status = await callApi(
           BASE_URL + ADD_PAYMENT,
           raw,
