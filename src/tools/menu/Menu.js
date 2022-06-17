@@ -67,11 +67,12 @@ const Menu = ({ backColor, show, setLang }) => {
           }
         </div>
         <ul>
-          <li>
+          {
+            !!setLang && <><li>
             <Link href="/collections">
               <a>{t("collection")}</a>
             </Link>
-          </li>
+          </li> 
           <li>
             <Link href="/shop">
               <a>{t("shop")}</a>
@@ -82,6 +83,9 @@ const Menu = ({ backColor, show, setLang }) => {
               <a>{t("explore")}</a>
             </Link>
           </li>
+          </>
+          }
+          
           <li onClick={goFactorHandler}>
             <a>{t("MyCart")}</a>
           </li>

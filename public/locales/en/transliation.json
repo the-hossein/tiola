@@ -134,5 +134,6 @@
   "close": "close",
   "deliveryFactor": "Delivery",
   "allowFaq": "I have read the rules and accept",
-  "error429": "Error 429"
+  "error429": "Error 429",
+  "ourteam":"Our team"
 }
