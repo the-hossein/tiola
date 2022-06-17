@@ -12,16 +12,7 @@ import toPersianNum from "../../tools/persianNumber2/persianNumber2";
 import callApi from "../../api/callApi";
 import { ADD_USER, BASE_URL } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
-// const namadHref = "https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
-// const imageNamad = "https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
 
-// const jsxNamad = (<a referrerPolicy="origin" href={namadHref}>
-// <img referrerPolicy="origin" src={imageNamad} alt="" id="Pq5WOtFgnkup0Clm8xfX" />
-// </a>)
-const enamadHref =
-  "https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
-const namadsrc =
-  "https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
 const Footer = () => {
   const [size, setSize] = useState([0]);
   const [phoneNum, setPhoneNum] = useState("");
@@ -44,6 +35,12 @@ const Footer = () => {
       s.src = "https://client.crisp.chat/l.js";
       s.async = 1;
       d.getElementsByTagName("body")[0].appendChild(s);
+    })();
+    (() => {
+      const namad = document;
+      const makescript = namad.createElement("script");
+      makescript.src = "https://static.idpay.ir/trust.js?id=97591885&width=64";
+      namad.getElementsByTagName("body")[0].appendChild(makescript);
     })();
   }, []);
 
@@ -148,35 +145,12 @@ const Footer = () => {
   const openInNewTab = (url) => {
     window.open(url, "_blank");
   };
+
   return (
     <>
       <div className={style.footer}>
         {size > 768 ? (
-          // <div className="col-12">
-          //   <div className="row  justify-content-between align-items-center">
-          //     <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
-
-          //     <div
-          //       className={`col-lg-4 col-md-6 col-sm-6 col-8 ${style.footerInput}`}
-          //     >
-          //       <Input
-          //         lablelText={t("sendAMessage")}
-          //         type="text"
-          //         placeholder={t("typeHere")}
-          //       />
-          //       <button className={style.send}>{t("sentBtn")}</button>
-          //       <div className={style.socialMedia}>
-          //         <TwitterIcon />
-          //         <WhatsAppIcon />
-          //         <InstagramIcon />
-          //       </div>
-          //       <a href="tel:02126420420" id={style.phone}>
-          //         <span>{t("ContactUs")}: 02126420420</span>
-          //       </a>
-          //     </div>
-          //     <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
-          //   </div>
-          // </div>
+      
           <>
             <div className={style.footerStyle}>
               <div className={style.namad}></div>
@@ -193,16 +167,12 @@ const Footer = () => {
                 {/* <button className={style.send}>{t("sentBtn")}</button> */}
               </div>
               <a
-                referrerPolicy="origin"
-                href={enamadHref}
+                id="idpay-cert"
+                href="https://idpay.ir/cert?id=97591885&domain=https://tiolastyle.com/"
+                target="blank"
                 className={style.namad}
               >
-                <img
-                  referrerpolicy="origin"
-                  src={namadsrc}
-                  alt="namad"
-                  id="Pq5WOtFgnkup0Clm8xfX"
-                />
+                <img src="https://static.idpay.ir/logo/cert.svg" />
               </a>
             </div>
             <div className={style.socialMedia}>

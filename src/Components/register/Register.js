@@ -233,7 +233,7 @@ const Register = ({ title }) => {
                   value={state.code}
                   lablelText={t("enterCode")}
                   type="text"
-                  placeholder={t("typeHere")}
+                  placeholder={t("enterCode")}
                   color="dark"
                   maxLength={6}
                   changehandler={(e) => changeCodeNumber(e)}

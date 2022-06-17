@@ -9,20 +9,7 @@ import { useSelector } from "react-redux";
 import callApi from "../../api/callApi";
 import { ADD_USER, BASE_URL } from "../../api/urls";
 import { notify } from "../../tools/toast/toast";
-const namadHref =
-  "https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
-const imageNamad =
-  "https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX";
-const jsxNamad = (
-  <a referrerPolicy="origin" href={namadHref}>
-    <img
-      referrerPolicy="origin"
-      src={imageNamad}
-      alt=""
-      id="Pq5WOtFgnkup0Clm8xfX"
-    />
-  </a>
-);
+
 const MobileFooter = () => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang.lng);
@@ -126,9 +113,7 @@ const MobileFooter = () => {
     setPhoneNum(fixNumbers(e.target.value));
   };
 
-  const openInNewTab = (url) => {
-    window.open(url, "_blank");
-  };
+
   return (
     <>
       <div className="d-flex flex-column  ">
@@ -161,14 +146,17 @@ const MobileFooter = () => {
           </a>
         </div>
         <div className="d-flex align-item-center justify-content-evenly pt-3">
-          <div
-            className={`col-lg-1  col-md-2 col-2 ${style.namad}`}
-            onClick={() => openInNewTab(namadHref)}
-          ></div>
-          <div
-            className={`col-lg-1  col-md-2 col-2 ${style.namad}`}
-            onClick={() => openInNewTab(namadHref)}
-          ></div>
+          <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
+          <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}>
+            <a
+              id="idpay-cert"
+              href="https://idpay.ir/cert?id=97591885&domain=https://tiolastyle.com/"
+              target="blank"
+              className={style.namad}
+            >
+              <img src="https://static.idpay.ir/logo/cert.svg" />
+            </a>
+          </div>
         </div>
       </div>
     </>
