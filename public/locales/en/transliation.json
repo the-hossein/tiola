@@ -134,5 +134,9 @@
   "close": "close",
   "deliveryFactor": "Delivery",
   "allowFaq": "I have read the rules and accept",
-  "error429": "Error 429"
+  "error429": "Error 429",
+  "FAQ": "Frequently Asked Questions",
+  "faqTab": "FAQ",
+  "ourTeam": "Our Team",
+  "introTeam":"Karma Advertising Agency strives to provide the best services by relying on creativity, speed and accuracy in carrying out projects. Karma was involved with the Tiola project from the beginning and with the help of his expert team, he completed the Tiola in the best possible time. Our team wishes Tiola a clear path."
 }
