@@ -16,11 +16,18 @@
 
 .namad {
     height: 160px;
-    width: 160px;
-    border: var(--borderWidth);
+    /* width: 160px; */
+    /* border: var(--borderWidth); */
     margin: 0 1rem;
     position: relative;
+    /* overflow: hidden; */
 }
+
+.namad img {
+    width: 100%;
+    height: 100%;
+}
+
 /* .namad img {
     width: 160px;
     height: 160px;
