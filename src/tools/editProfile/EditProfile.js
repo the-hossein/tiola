@@ -21,6 +21,7 @@ import {
   DateRangePicker,
   DateTimeRangePicker
 } from "react-advance-jalaali-datepicker";
+import { data } from "jquery";
 
 //convert date
 
@@ -51,9 +52,11 @@ const EditProfile = () => {
     setAddress(valueOfInput);
   };
 
-  const [userBirthday, setBirthday] = useState();
+  const [userBirthday, setBirthday] = useState({});
   const subBirthday = (unix, formatted) => {
     var date = new Date(unix * 1000);
+    console.log(date.toISOString());
+    setBirthday(date.toISOString());
 
     // console.log(value) 
     // console.log(e.target.value)
@@ -68,6 +71,7 @@ const EditProfile = () => {
 
   const subHandler = (e) => {
     e.preventDefault();
+    console.log(userBirthday)
     let textShow ;
     if(typeof userBirthday !== "undefined" && typeof userLName !== "undefined" && typeof userFName !== "undefined"){
       if(userFName === ""){
@@ -106,6 +110,7 @@ const EditProfile = () => {
           );
         }
     }else{
+      console.log("alan injast");
       if(lang === "fa"){
         textShow = "اطلاعات حساب کاربری خود را کامل وارد کنید"
       }else{

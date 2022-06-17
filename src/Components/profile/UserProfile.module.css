@@ -202,11 +202,19 @@
     }
 
     .name {
-        font-size: var(--lg-font);
+        font-size: var(--lg-font) !important;
         margin-bottom: 1rem;
         font-family: 'IRANSansWeb';
     }
-
+    .remain{
+        font-size: var(--verySmall-font);
+    }
+    .editPro {
+        font-size: var(--sm-font);
+        display: block;
+        cursor: pointer;
+        margin-top: .5rem;
+    }
 
 
 
