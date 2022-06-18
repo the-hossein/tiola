@@ -10,7 +10,7 @@ import sina from "../../../public/Assets/images/sina.jpeg";
 import milad from "../../../public/Assets/images/milad.jpeg";
 import hosein from "../../../public/Assets/images/hosein.jpeg";
 import ali from "../../../public/Assets/images/ali.jpeg";
-import fatemeh from "../../../public/Assets/images/1.jpg";
+import fatemeh from "../../../public/Assets/images/fatemeh.jpeg";
 import erfan from "../../../public/Assets/images/erfan.jpeg";
 import fazele from "../../../public/Assets/images/fazele.jpeg";
 import mohadese from "../../../public/Assets/images/mohadese.jpeg";
