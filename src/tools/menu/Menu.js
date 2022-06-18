@@ -109,6 +109,16 @@ const Menu = ({ backColor, show, setLang }) => {
               <a>{t("AboutUs")}</a>
             </Link>
           </li>
+          <li>
+            <Link href="/faqPage">
+              <a>{t("faqTab")}</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/ourteam">
+              <a>{t("ourteam")}</a>
+            </Link>
+          </li>
         </ul>
         {register.loginStatus && (
           <span className={style.sign} onClick={exitHandler}>

@@ -150,7 +150,6 @@ const Footer = () => {
     <>
       <div className={style.footer}>
         {size > 768 ? (
-      
           <>
             <div className={style.footerStyle}>
               <div className={style.namad}></div>
@@ -193,6 +192,26 @@ const Footer = () => {
           </>
         ) : (
           <MobileFooter />
+        )}
+
+        {lang === "fa" ? (
+          <p className={style.karma}>
+            تمام حقوق برای
+            <a href="https://karmaagy.com/"> کارما </a>
+            محفوظ است و استفاده از مطالب
+            <a href="https://karmaagy.com/"> کارما </a>
+            تنها با ذکر نام
+            <a href="https://karmaagy.com/"> کارما </a>و درج لینک مستقیم مجاز
+            است ،
+          </p>
+        ) : (
+          <p className={style.karma}>
+            All rights reserved for <a href="https://karmaagy.com/">karma</a>{" "}
+            and the use of <a href="https://karmaagy.com/">karma</a> content is
+            allowed only by mentioning the name of{" "}
+            <a href="https://karmaagy.com/">karma</a> and inserting a direct
+            link
+          </p>
         )}
       </div>
     </>

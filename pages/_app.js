@@ -66,7 +66,7 @@ function MyApp({ Component, pageProps }) {
       />
       <Component {...pageProps} />
       <ToastContainer
-        style={{ width: "35%", padding: "3px", top: "57px" }}
+        style={{ width: "35%", padding: "3px", top: "62px" }}
         bodyClassName="toastBox"
       />
       <PopUp />

@@ -216,6 +216,14 @@ input[type=number]::-webkit-inner-spin-button {
   object-position: 0 10% !important;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.simlarHover:hover {
+  border-radius: 0 !important;
+}
+
 @media(max-width:480px) {
   .Toastify__toast-container--top-right {
     text-align: center !important;
@@ -223,7 +231,16 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 
+
+
+
+
 @media (max-width: 600px) {
+
+  :root {
+    --veryLg2-font: 22pt !important;
+  }
+
   .swiper {
     z-index: 1 !important;
   }
@@ -231,12 +248,4 @@ input[type=number]::-webkit-inner-spin-button {
   .Toastify__toast-container {
     width: 100% !important;
   }
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.simlarHover:hover {
-  border-radius: 0 !important;
 }
