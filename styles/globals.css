@@ -21,18 +21,18 @@
   --xs-font: 10pt;
   --md-font: 11pt;
   --lg-font: 14pt;
-  --xl-font: 18pt;
-  --xxl-font:22pt;
+  --xl-font: 16pt;
+  --xxl-font: 22pt;
   --oxx-font: 26pt;
   --veryLg-font: 30pt;
-  --veryLg2-font:40pt;
+  --veryLg2-font: 40pt;
   --green-pen: #06745f;
   --greenLight-pen: #03c65e;
   --toastify-color-success: #05755d !important;
   --toastify-color-error: #c43131 !important;
-  --hamberMenu-translate : translateX(200%);
+  --hamberMenu-translate: translateX(200%);
   --input-Radius: 12px;
-  --borderWidth:0.5px solid var(--lightGray-border)
+  --borderWidth: 0.5px solid var(--lightGray-border)
 }
 
 .Toastify__toast-body div:last-child {
@@ -97,7 +97,9 @@ a {
 
 }
 
-
+.noneM>div {
+  margin: 0 !important;
+}
 
 .swiper {
   /* direction: var(--direction); */
@@ -209,6 +211,7 @@ input[type=number]::-webkit-inner-spin-button {
 .homeSwiper {
   z-index: 16 !important;
 }
+
 .homeSwiper img {
   object-position: 0 10% !important;
 }
@@ -230,9 +233,10 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
-} 
-.simlarHover:hover{
+}
+
+.simlarHover:hover {
   border-radius: 0 !important;
 }
