@@ -1,0 +1,96 @@
+.teamImg span {
+    width: 100% !important;
+    height: 100vh !important;
+    display: block !important;
+    position: sticky !important;
+    top: 0;
+}
+
+.teamImg span img {
+    object-fit: cover;
+
+}
+
+.contentTeam {
+    direction: var(--direction);
+    padding: 2rem 5rem;
+}
+
+.lineHeight p {
+    line-height: 1.7;
+}
+
+.titleTeam {
+    font-size: var(--xl-font);
+}
+
+.personalStyle {
+    display: flex;
+    align-items: stretch;
+    min-width: 50%;
+    margin: 1rem 0;
+}
+
+.personalDes h5,
+.personalDes p {
+    font-size: var(--xs-font);
+}
+
+.teamDec,
+.contentTeam>p {
+    font-size: var(--md-font);
+
+}
+
+.personalDes {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: space-evenly;
+}
+
+.teams {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 2rem 0;
+}
+
+.karmaTeam>div:not(:last-child) {
+    border-bottom: 1px solid var(--border-button);
+
+}
+
+.personalStyle>span {
+
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    margin: 0 0.5rem !important;
+    height: fit-content;
+}
+
+.personalStyle>span img {
+
+    object-fit: cover;
+}
+
+.stickyStyle>div {
+    height: 100%;
+    display: block;
+    position: sticky;
+    top: 0;
+}
+
+.mainTitle {
+    font-size: var(--oxx-font);
+}
+
+@media(max-width:768px) {
+    .stickyStyle {
+        display: none;
+    }
+    .contentTeam {
+
+        padding: 1.5rem;
+    }
+}
