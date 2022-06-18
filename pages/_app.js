@@ -36,21 +36,8 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
 
+ 
   useEffect(() => {
-    document.addEventListener(
-      "keydown",
-      function () {
-        if (event.keyCode == 123) {
-          return false;
-        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
-          return false;
-        } else if (event.ctrlKey && event.keyCode == 85) {
-          return false;
-        }
-      },
-      false
-    );
-
     if (document.addEventListener) {
       document.addEventListener(
         "contextmenu",
@@ -66,7 +53,6 @@ function MyApp({ Component, pageProps }) {
         window.event.returnValue = false;
       });
     }
-
     if (router.pathname === "/collections/[collectionname]") {
       if (pageProps.collection[0].data.length !== 0) {
         document

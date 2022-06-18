@@ -83,6 +83,23 @@ const Header = ({ backColor }) => {
     setShowSearchBox(!showSearchBox);
     setBoxTarget(false);
   };
+  const inspect = () => {
+  
+    document.addEventListener(
+      "keydown",
+      function (event) {
+        console.log(event.ctrlKey);
+        if (event.keyCode == 123) {
+          return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode === 67) {
+          return false;
+        } else if (event.ctrlKey && event.keyCode === 85) {
+          return false;
+        }
+      },
+      false
+    );
+  };
   const rightDir = () => {
     root.style.setProperty("--direction", "rtl");
     root.style.setProperty("--directionR", "ltr");
@@ -120,9 +137,8 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--md-font", "15pt");
     root.style.setProperty("--lg-font", "18pt");
     root.style.setProperty("--xl-font", "24pt");
-    root.style.setProperty("--xxl-font", "30pt")
+    root.style.setProperty("--xxl-font", "30pt");
     root.style.setProperty("--oxx-font", "34pt");
-    ;
     root.style.setProperty("--veryLg-font", "48pt");
     root.style.setProperty("--veryLg2-font", "56pt");
 
@@ -202,7 +218,7 @@ const Header = ({ backColor }) => {
   };
   return !prelaod ? (
     <>
-      <div className={`${style.header} ${backColor}`}>
+      <div className={`${style.header} ${backColor}`} onKeyDown={inspect}>
         {size > 768 ? (
           <>
             <div className={`${style.headaritem} d-flex align-items-center`}>
@@ -338,7 +354,9 @@ const Header = ({ backColor }) => {
           <>
             <div className={` d-flex  align-items-center ${style.mobileIcon}`}>
               <MenuIcon sx={{ fontSize: 12 }} onClick={openMenu} />
-              {menuBar ? <Menu show={menuBar} setLang={(lng)=> changeLng(lng)} /> : null}
+              {menuBar ? (
+                <Menu show={menuBar} setLang={(lng) => changeLng(lng)} />
+              ) : null}
               {state.loginStatus ? (
                 <Link href={"/profile"}>
                   <a>

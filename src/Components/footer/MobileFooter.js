@@ -129,7 +129,9 @@ const MobileFooter = () => {
           {/* <button className={style.send}>{t("sentBtn")}</button> */}
           <div className={style.socialMediaMB}>
             <TwitterIcon />
-            <WhatsAppIcon />
+            <a href="https://api.whatsapp.com/send?phone=989121059959">
+              <WhatsAppIcon />
+            </a>
             <InstagramIcon
               onClick={() =>
                 openInNewTab(
