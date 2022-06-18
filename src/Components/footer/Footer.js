@@ -150,10 +150,22 @@ const Footer = () => {
     <>
       <div className={style.footer}>
         {size > 768 ? (
-      
           <>
             <div className={style.footerStyle}>
-              <div className={style.namad}></div>
+              <div className={style.namad}>
+                <a
+                  referrerpolicy="origin"
+                  target="blank"
+                  href="https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
+                >
+                  <img
+                    referrerpolicy="origin"
+                    src="https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
+                    id="Pq5WOtFgnkup0Clm8xfX"
+                    alt="enamad image"
+                  />
+                </a>
+              </div>
               <div className={style.phone} id="phone">
                 <Input
                   lablelText={t("sendAMessage")}
@@ -193,6 +205,26 @@ const Footer = () => {
           </>
         ) : (
           <MobileFooter />
+        )}
+
+        {lang === "fa" ? (
+          <p className={style.karma}>
+            تمام حقوق برای
+            <a href="https://karmaagy.com/"> کارما </a>
+            محفوظ است و استفاده از مطالب
+            <a href="https://karmaagy.com/"> کارما </a>
+            تنها با ذکر نام
+            <a href="https://karmaagy.com/"> کارما </a>و درج لینک مستقیم مجاز
+            است ،
+          </p>
+        ) : (
+          <p className={style.karma}>
+            All rights reserved for <a href="https://karmaagy.com/">karma</a>{" "}
+            and the use of <a href="https://karmaagy.com/">karma</a> content is
+            allowed only by mentioning the name of{" "}
+            <a href="https://karmaagy.com/">karma</a> and inserting a direct
+            link
+          </p>
         )}
       </div>
     </>

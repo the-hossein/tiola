@@ -10,9 +10,36 @@ const Rule = ({ openRule, setopenRule, setFaQ }) => {
           <h5>{lang === "fa" ? " قوانین:" : "Rules: "}</h5>
           <p>
             {lang === "fa"
-              ? "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد."
-              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Morbi tristique senectus et netus. Mattis pellentesque id nibh tortor id aliquet lectus proin. Sapien faucibus et molestie ac feugiat sed lectus vestibulum. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Dictum varius duis at consectetur lorem. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Velit ut tortor pretium viverra suspendisse potenti nullam. Et molestie ac feugiat sed lectus. Non nisi est sit amet facilisis magna. Dignissim diam quis enim lobortis scelerisque fermentum. Odio ut enim blandit volutpat maecenas volutpat. Ornare lectus sit amet est placerat in egestas erat. Nisi vitae suscipit tellus mauris a diam maecenas sed. Placerat duis ultricies lacus sed turpis tincidunt id aliquet."}
+              ? "قوانین و مقررات مربوط به فروشگاه اینترنتی تیولا ضمن تشکر بابت اعتماد و خرید از سایت فروشگاهی تیولا احترما به استحضار میرساند:"
+              : "Terms and Conditions of Tiola Online Store Thank you for your trust and purchase from the Tiola store site."}
           </p>
+          <ol>
+            <li>
+              {lang === "fa"
+                ? "با توجه به تفاوت در نمایشگرهای مبایل و کامپیوتر های کاربران ، وجود اختلاف رنگی با اصل کار ممکن است و متاسفانه امکان به صفر رساندن این اختلاف ممکن نیست لذا تیم عکاسی فروشگاه اینترنتی تیولا تمام سعی و تلاش خود را برای نشان دادن رنگ واقعی محصولات به کار خواهد گرفت تا کاربران با خیال آسوده تری خرید اینترنتی انجام دهند و از اینکه به این موضوع توجه مینمایید بسیار سپاس گزاریم ."
+                : "Due to the difference in the screens of users' mobiles and computers, it is possible to have a color difference with the original work, and unfortunately it is not possible to reduce this difference to zero, so the photography team of Tiola online store does its best to show the true color of products. It will take users to shop online more easily and thank you very much for paying attention to this issue."}
+            </li>
+            <li>
+              {lang === "fa"
+                ? "با کمال احترام متاسفانه جنس فروخته شده به هیچ عنوان پس گرفته و تعویض نمیشود مگر در حالتیکه جنس خریداری شده مشکل تولیدی داشته باشد."
+                : "With all due respect, unfortunately, the sold item will not be returned or exchanged in any way, unless the purchased item has a production problem."}
+            </li>
+            <li>
+              {lang === "fa"
+                ? "بنابراین خواهشمندیم در زمان خرید حتما دقت کافی داشته باشید."
+                : "Therefore, please be careful when buying."}
+            </li>
+            <li>
+              {lang === "fa"
+                ? "در صورتی که کار خریداری شده مشکل تولیدی داشته باشد(مشروط  برتاییدیه مدیریت سایت تیولا ) هزینه پستی  تعویض کار بر عهده فروشگاه اینترنتی آدو خواهد بود .ضمنا کار ایراددار صرفا تعویض میشود و امکان عودت و استرداد وجه تحت هیچ عنوان وجود ندارد ."
+                : "If the purchased work has a production problem (subject to the approval of the Tiola site management), the postage cost of the work replacement will be borne by the Ado online store."}
+            </li>
+            <li>
+              {lang === "fa"
+                ? "بنابراین خرید از فروشگاه اینترنتی تیولا به منزله قبول کلیه قوانین مربوط به این سایت می باشد و کاربران امکان هرگونه اعتراض را از خود سلب می نمایند."
+                : "Therefore, buying from Tiola online store means accepting all the rules related to this site and users are deprived of the possibility of any objection."}
+            </li>
+          </ol>
           <button
             className={style.accept}
             onClick={() => {

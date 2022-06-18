@@ -10,10 +10,16 @@ import sina from "../../../public/Assets/images/sina.jpeg";
 import milad from "../../../public/Assets/images/milad.jpeg";
 import hosein from "../../../public/Assets/images/hosein.jpeg";
 import ali from "../../../public/Assets/images/ali.jpeg";
-import fatemeh from "../../../public/Assets/images/1.jpg";
+import fatemeh from "../../../public/Assets/images/fatemeh.jpeg";
 import erfan from "../../../public/Assets/images/erfan.jpeg";
 import fazele from "../../../public/Assets/images/fazele.jpeg";
 import mohadese from "../../../public/Assets/images/mohadese.jpeg";
+import yasmin from "../../../public/Assets/images/hosein.jpeg";
+import sara from "../../../public/Assets/images/hosein.jpeg";
+import ardalan from "../../../public/Assets/images/hosein.jpeg";
+import yasi from "../../../public/Assets/images/hosein.jpeg";
+import ramin from "../../../public/Assets/images/hosein.jpeg";
+import parmida from "../../../public/Assets/images/hosein.jpeg";
 
 const OurTeam = () => {
   const { t } = useTranslation();
@@ -29,18 +35,18 @@ const OurTeam = () => {
     { img: erfan, name: t("erfan"), des: t("erfanDes") }
   ];
   const teamUI = [
-    { img: pers1, name: t("ardalan"), des: t("ardalanDes") },
-    { img: pers1, name: t("yasi"), des: t("yasiDes") },
-    { img: pers1, name: t("parmida"), des: t("yasiDes") },
-    { img: pers1, name: t("ramin"), des: t("raminDes") }
+    { img: ardalan, name: t("ardalan"), des: t("ardalanDes") },
+    { img: yasi, name: t("yasi"), des: t("yasiDes") },
+    { img: parmida, name: t("parmida"), des: t("yasiDes") },
+    { img: ramin, name: t("ramin"), des: t("raminDes") }
   ];
   const teamWR = [
     { img: fazele, name: t("fazele"), des: t("fazeleDes") },
     { img: mohadese, name: t("mohadese"), des: t("mohadeseDes") }
   ];
   const teamDesign = [
-    { img: pers1, name: t("yasamin"), des: t("yasaminDes") },
-    { img: pers1, name: t("sara"), des: t("saraDes") }
+    { img: yasmin, name: t("yasamin"), des: t("yasaminDes") },
+    { img: sara, name: t("sara"), des: t("saraDes") }
   ];
   return (
     <div>

@@ -53,10 +53,12 @@ const UserFactor = () => {
         ) : (
           <div className="container mt-4">
             <FactorSection title={t("addres")} component={<UserAddres />} />
-            <FactorSection
-              title={t("deliveryFactor")}
-              component={<Delivery setPost={setPost} post={post} />}
-            />
+            {basket.details.length !== 0 && (
+              <FactorSection
+                title={t("deliveryFactor")}
+                component={<Delivery setPost={setPost} post={post} />}
+              />
+            )}
             <FactorSection
               title={t("paylist")}
               component={

@@ -25,14 +25,13 @@ import { data } from "jquery";
 
 //convert date
 
-
 const EditProfile = () => {
   const router = useRouter();
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const userData = useSelector((state) => state.stateRegister);
-  const lang = useSelector(state => state.stateLang.lng);
+  const lang = useSelector((state) => state.stateLang.lng);
 
   const [userToken, setToken] = useState();
 
@@ -47,18 +46,17 @@ const EditProfile = () => {
   };
 
   const [address, setAddress] = useState("");
-  const subAddress = date => {
+  const subAddress = (date) => {
     const valueOfInput = date.format();
     setAddress(valueOfInput);
   };
 
-  const [userBirthday, setBirthday] = useState({});
+  const [userBirthday, setBirthday] = useState();
   const subBirthday = (unix, formatted) => {
     var date = new Date(unix * 1000);
-    console.log(date.toISOString());
     setBirthday(date.toISOString());
 
-    // console.log(value) 
+    // console.log(value)
     // console.log(e.target.value)
     // const valueOfInput = e.format();
     // setAddress(valueOfInput);
@@ -71,53 +69,54 @@ const EditProfile = () => {
 
   const subHandler = (e) => {
     e.preventDefault();
-    console.log(userBirthday)
-    let textShow ;
-    if(typeof userBirthday !== "undefined" && typeof userLName !== "undefined" && typeof userFName !== "undefined"){
-      if(userFName === ""){
-        if(lang === "fa"){
+    let textShow;
+    if (
+      typeof userBirthday !== "undefined" &&
+      typeof userLName !== "undefined" &&
+      typeof userFName !== "undefined"
+    ) {
+      if (userFName === "") {
+        if (lang === "fa") {
           textShow = "لطفا نام خود را وارد کنید";
-        }else{
+        } else {
           textShow = "Please enter your name";
         }
-        notify(textShow, "warning")
-      }else if(userLName === "" ){
-        if(lang === "fa"){
+        notify(textShow, "warning");
+      } else if (userLName === "") {
+        if (lang === "fa") {
           textShow = "لطفا نام خانوادگی خود را وارد کنید";
-        }else{
+        } else {
           textShow = "Please enter your last name";
         }
         notify(textShow, "warning");
-      }else if(userBirthday === "" ){
-        if(lang === "fa"){
+      } else if (userBirthday === "") {
+        if (lang === "fa") {
           textShow = "لطفا تاریخ تولد خود را وارد کنید";
-        }else{
+        } else {
           textShow = "Please enter your date of birth";
         }
         notify(textShow, "warning");
-        }else {
-          RequestProfile(
-            userToken,
-            userData.userid,
-            userFName,
-            userLName,
-            userBirthday,
-            gender,
-            imageId,
-            router,
-            lang,
-            dispatch
-          );
-        }
-    }else{
-      console.log("alan injast");
-      if(lang === "fa"){
-        textShow = "اطلاعات حساب کاربری خود را کامل وارد کنید"
-      }else{
-        textShow = "Enter your full account information"
+      } else {
+        RequestProfile(
+          userToken,
+          userData.userid,
+          userFName,
+          userLName,
+          userBirthday,
+          gender,
+          imageId,
+          router,
+          lang,
+          dispatch
+        );
+      }
+    } else {
+      if (lang === "fa") {
+        textShow = "اطلاعات حساب کاربری خود را کامل وارد کنید";
+      } else {
+        textShow = "Enter your full account information";
       }
       notify(textShow, "error");
-      
     }
   };
 
@@ -134,7 +133,6 @@ const EditProfile = () => {
       setImage(Image.data.filePath);
       setImageid(Image.data.id);
     } else {
-      console.log("error");
     }
     setpreload(false);
   };
@@ -147,7 +145,9 @@ const EditProfile = () => {
 
     var config = {
       method: "post",
-      url: `${BASE_URL+REMOVE_USER_IMAGE}?id=${userData.profilePicId}&UserId=${userData.userid}`,
+      url: `${BASE_URL + REMOVE_USER_IMAGE}?id=${
+        userData.profilePicId
+      }&UserId=${userData.userid}`,
       headers: { Authorization: `Bearer ${userToken}` }
     };
 
@@ -162,8 +162,8 @@ const EditProfile = () => {
 
   useEffect(() => {
     const tokenLocal = JSON.parse(localStorage.getItem("userToken"));
-    if(tokenLocal === null){
-      router.push({pathname: "/"})
+    if (tokenLocal === null) {
+      router.push({ pathname: "/" });
     }
     if (tokenLocal) {
       setToken(tokenLocal.token);
@@ -175,8 +175,8 @@ const EditProfile = () => {
       setGender(userData.gender);
       setBirthday(birthdayUser[0]);
     }
-    if(userData.profileUser !== null){
-      setImageid(userData.profileUser.id)
+    if (userData.profileUser !== null) {
+      setImageid(userData.profileUser.id);
     }
   }, [userData]);
 
@@ -211,16 +211,20 @@ const EditProfile = () => {
                   }
                   alt="user profile"
                 />
-                <input 
+                <input
                   type="file"
                   id="userImage"
                   accept="image/png, image/jpeg,"
                   onChange={ChangeImageAction}
                 />
-                  <label htmlFor="userImage" className={style.buttonStyle}>
-                    {t("Change")}
-                  </label>
-                <button onClick={removeImg} className={style.buttonStyleRemove} type="button">
+                <label htmlFor="userImage" className={style.buttonStyle}>
+                  {t("Change")}
+                </label>
+                <button
+                  onClick={removeImg}
+                  className={style.buttonStyleRemove}
+                  type="button"
+                >
                   {t("remove")}
                 </button>
               </div>
@@ -268,33 +272,36 @@ const EditProfile = () => {
                     </div>
                 </div> */}
         <div className={`row m-5 align-items-end ${style.formContainer}`}>
-          {
-            !userData.birthDayDateTime && <div className="col-12 col-md-6 col-lg-4">
-            <div className="d-flex flex-column ">
-              <label htmlFor="birthday">{t("enterBirth")+ " : "}</label>
-              {/* <input
+          {!userData.birthDayDateTime && (
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="d-flex flex-column ">
+                <label htmlFor="birthday">{t("enterBirth") + " : "}</label>
+                {/* <input
                 id="birthday"
                 placeholder="day/mont/year"
                 type="date"
                 value={userBirthday}
                 onChange={subBirthday}
               /> */}
-              <DatePicker
-                placeholder={lang === 'fa' ? "لطفا تاریخ تولد خود را وارد کنید" : "Please enter your date of birth"}
-                format="jYYYY-jMM-jDD"
-                onChange={subBirthday}
-                id="datePicker"
-                preSelected={userBirthday}
-              />
+                <DatePicker
+                  placeholder={
+                    lang === "fa"
+                      ? "لطفا تاریخ تولد خود را وارد کنید"
+                      : "Please enter your date of birth"
+                  }
+                  format="jYYYY-jMM-jDD"
+                  onChange={subBirthday}
+                  id="datePicker"
+                  preSelected={userBirthday}
+                />
+              </div>
             </div>
-          </div>
-          }
-          
-          
+          )}
+
           <div className="col-12 col-md-6 col-lg-5">
             <div className="row ">
               <div className="d-flex align-items-center col-12 col-md-12 col-lg-12 mt-4 text-center">
-                <label htmlFor="cars">{t("choseGender")+ " :  "}</label>
+                <label htmlFor="cars">{t("choseGender") + " :  "}</label>
                 <select value={gender} id="cars" onChange={subGender}>
                   <option value="0">{t("Female")}</option>
                   <option value="1">{t("Male")}</option>
@@ -305,7 +312,13 @@ const EditProfile = () => {
           </div>
           <div className="col-12 col-md-12 col-lg-3 text-center">
             <div className={`mt-5 ${style.btnHandel}`}>
-              <button type="submit" className={style.subBtn} onClick={subHandler}>{t("submit")}</button>
+              <button
+                type="submit"
+                className={style.subBtn}
+                onClick={subHandler}
+              >
+                {t("submit")}
+              </button>
               <Link href="/">
                 <span className={style.navigate}>{t("home")}</span>
               </Link>

@@ -54,11 +54,13 @@ const MbList = ({
               : info.total + t("t")}
           </li>
 
-          <ColorPick color={data.collection.colorCode} />
+          <ColorPick color={data.compatibleColors.split(",")[1]} />
         </ul>
         <div className="d-flex flex-row align-items-center justify-content-evenly mt-3 mb-3">
           <Link href={`/product/${data.productId}`}>
-            <img src={data.filePath} />
+            <a>
+              <img src={data.filePath} />
+            </a>
           </Link>
           <div>
             <div className="d-flex flex-row align-items-center justify-content-center">
