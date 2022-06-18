@@ -20,7 +20,7 @@
     /* border: var(--borderWidth); */
     margin: 0 1rem;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .karma {

@@ -54,7 +54,6 @@ const EditProfile = () => {
   const [userBirthday, setBirthday] = useState();
   const subBirthday = (unix, formatted) => {
     var date = new Date(unix * 1000);
-    console.log(date.toISOString());
     setBirthday(date.toISOString());
 
     // console.log(value)
@@ -70,7 +69,6 @@ const EditProfile = () => {
 
   const subHandler = (e) => {
     e.preventDefault();
-    console.log(userBirthday);
     let textShow;
     if (
       typeof userBirthday !== "undefined" &&
@@ -113,7 +111,6 @@ const EditProfile = () => {
         );
       }
     } else {
-      console.log("alan injast");
       if (lang === "fa") {
         textShow = "اطلاعات حساب کاربری خود را کامل وارد کنید";
       } else {
@@ -136,7 +133,6 @@ const EditProfile = () => {
       setImage(Image.data.filePath);
       setImageid(Image.data.id);
     } else {
-      console.log("error");
     }
     setpreload(false);
   };

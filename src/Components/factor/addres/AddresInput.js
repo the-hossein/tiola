@@ -94,7 +94,6 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
 
   const changeRadio = (e) => {
     dispatch(getAddres(document.getElementById(`${e.target.value}`).value));
-    console.log(document.getElementById(`${e.target.value}`).value);
     dispatch(checkAddress(e.target.value));
 
     const choseAddress = async () => {

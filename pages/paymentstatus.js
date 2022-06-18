@@ -20,6 +20,7 @@ const PaymentStatus = () => {
   const [Classid, setClassid] = useState(0);
   const [preLoad, setPreLoad] = useState(true);
   const [statusCode, setStatusCode] = useState();
+  
   useEffect(() => {
     if (ls) {
       var token = JSON.parse(ls).token;
@@ -45,12 +46,10 @@ const PaymentStatus = () => {
 
             setStatus("success");
             setPreLoad(false);
-            console.log(verify[0].data);
           } else {
             setStatusCode(verify[0].data.code);
             setStatus("unSuccess");
             setPreLoad(false);
-            console.log(verify[0].data);
           }
         } catch {
           setPreLoad(false);

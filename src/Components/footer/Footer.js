@@ -152,7 +152,20 @@ const Footer = () => {
         {size > 768 ? (
           <>
             <div className={style.footerStyle}>
-              <div className={style.namad}></div>
+              <div className={style.namad}>
+                <a
+                  referrerpolicy="origin"
+                  target="blank"
+                  href="https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
+                >
+                  <img
+                    referrerpolicy="origin"
+                    src="https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
+                    id="Pq5WOtFgnkup0Clm8xfX"
+                    alt="enamad image"
+                  />
+                </a>
+              </div>
               <div className={style.phone} id="phone">
                 <Input
                   lablelText={t("sendAMessage")}
