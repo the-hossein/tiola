@@ -120,7 +120,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--veryLg-font", "30pt");
     root.style.setProperty("--veryLg2-font", "40pt");
 
-    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
+    root.style.setProperty("--hamberMenu-translate", "translateY(50%)");
   };
 
   const leftDir = () => {
@@ -142,7 +142,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--veryLg-font", "48pt");
     root.style.setProperty("--veryLg2-font", "56pt");
 
-    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
+    root.style.setProperty("--hamberMenu-translate", "translateY(50%)");
   };
 
   useEffect(() => {
