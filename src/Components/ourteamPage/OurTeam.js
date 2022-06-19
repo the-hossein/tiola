@@ -20,6 +20,7 @@ import ardalan from "../../../public/Assets/images/Ardalan.jpg";
 import yasi from "../../../public/Assets/images/Yasi.jpg";
 import ramin from "../../../public/Assets/images/Ramin.jpg";
 import parmida from "../../../public/Assets/images/Parmida.jpg";
+import hana from "../../../public/Assets/images/Parmida.jpg";
 
 const OurTeam = () => {
   const { t } = useTranslation();
@@ -46,7 +47,8 @@ const OurTeam = () => {
   ];
   const teamDesign = [
     { img: yasmin, name: t("yasamin"), des: t("yasaminDes") },
-    { img: sara, name: t("sara"), des: t("saraDes") }
+    { img: sara, name: t("sara"), des: t("saraDes") },
+    // { img: hana, name: t("hana"), des: t("hanaDes") }
   ];
   return (
     <div>
