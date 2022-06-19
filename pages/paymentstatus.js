@@ -20,7 +20,7 @@ const PaymentStatus = () => {
   const [Classid, setClassid] = useState(0);
   const [preLoad, setPreLoad] = useState(true);
   const [statusCode, setStatusCode] = useState();
-  
+
   useEffect(() => {
     if (ls) {
       var token = JSON.parse(ls).token;

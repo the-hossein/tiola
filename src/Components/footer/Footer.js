@@ -189,7 +189,9 @@ const Footer = () => {
             </div>
             <div className={style.socialMedia}>
               <TwitterIcon />
-              <WhatsAppIcon />
+              <a href="https://api.whatsapp.com/send?phone=989121059959">
+                <WhatsAppIcon />
+              </a>
               <InstagramIcon
                 onClick={() =>
                   openInNewTab(
