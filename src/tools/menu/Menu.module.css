@@ -58,9 +58,9 @@
 .burgerMenu > a {
     /* opacity: 0; */
 }
-.showItem > * {
+.showItem li,.showItem a,.showItem p,.showItem ul,.showItem span,.showItem div {
     /* position: absolute; */
-    display: inline;
+    /* display: inline; */
     opacity: 1;
     animation: show 1.5s ease;
 }
