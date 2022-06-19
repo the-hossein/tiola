@@ -181,7 +181,8 @@ if(ls){
               : info.total + t("t")}
           </li>
         </ul>
-        <ColorPick color={data.collection.colorCode} />
+     
+        <ColorPick color={data.compatibleColors.split(",")[1]} />
 
         {preload ? (
           <Spinner animation="grow" />

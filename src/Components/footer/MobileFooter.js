@@ -39,7 +39,6 @@ const MobileFooter = () => {
             myHeaders,
             "POST"
           );
-          console.log(response);
           if (response[0].code === 200) {
             if (lang === "fa") {
               var text = "شماره شما با موفقیت ثبت  شد";
@@ -113,7 +112,6 @@ const MobileFooter = () => {
     setPhoneNum(fixNumbers(e.target.value));
   };
 
-
   return (
     <>
       <div className="d-flex flex-column  ">
@@ -131,7 +129,9 @@ const MobileFooter = () => {
           {/* <button className={style.send}>{t("sentBtn")}</button> */}
           <div className={style.socialMediaMB}>
             <TwitterIcon />
-            <WhatsAppIcon />
+            <a href="https://api.whatsapp.com/send?phone=989121059959">
+              <WhatsAppIcon />
+            </a>
             <InstagramIcon
               onClick={() =>
                 openInNewTab(
@@ -146,8 +146,21 @@ const MobileFooter = () => {
           </a>
         </div>
         <div className="d-flex align-item-center justify-content-evenly pt-3">
-          <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}></div>
-          <div className={`col-lg-1  col-md-2 col-2 ${style.namad}`}>
+          <div className={`col-lg-1  col-md-2 col-6 ${style.namad}`}>
+            <a
+              referrerpolicy="origin"
+              target="blank"
+              href="https://trustseal.enamad.ir/?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
+            >
+              <img
+                referrerpolicy="origin"
+                src="https://Trustseal.eNamad.ir/logo.aspx?id=280794&amp;Code=Pq5WOtFgnkup0Clm8xfX"
+                id="Pq5WOtFgnkup0Clm8xfX"
+                alt="enamad image"
+              />
+            </a>
+          </div>
+          <div className={`col-lg-1  col-md-2 col-6 ${style.namad}`}>
             <a
               id="idpay-cert"
               href="https://idpay.ir/cert?id=97591885&domain=https://tiolastyle.com/"

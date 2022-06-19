@@ -116,7 +116,7 @@ const Menu = ({ backColor, show, setLang }) => {
           </li>
           <li>
             <Link href="/ourteam">
-              <a>{t("ourTeam")}</a>
+              <a>{t("ourteam")}</a>
             </Link>
           </li>
         </ul>

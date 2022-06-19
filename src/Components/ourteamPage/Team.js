@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 
 const Team = ({ text, title, personals }) => {
   const { t } = useTranslation();
-  console.log(personals);
   return (
     <>
       <div className="mt-4 mb-4">

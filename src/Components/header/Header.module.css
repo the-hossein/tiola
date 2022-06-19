@@ -298,12 +298,12 @@
 
     
 .basketAmount {
-    right: 12px;
+    right: -16px;
     transform: scale(.9);
 }
 
 .basketAmountEn {
-    right: 12px;
+    right: 20px;
     transform: scale(.9);
 }
 

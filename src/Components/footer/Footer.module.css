@@ -20,7 +20,22 @@
     /* border: var(--borderWidth); */
     margin: 0 1rem;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
+}
+
+.karma {
+    margin: 1rem 0;
+    text-align: center
+}
+
+.karma a {
+    text-decoration: underline !important;
+}
+
+.karma a:hover {
+    color: rgb(0, 28, 53) !important;
+    text-decoration: none !important;
+
 }
 
 .namad img {

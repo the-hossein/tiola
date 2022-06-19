@@ -19,6 +19,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import SquareIcon from "@mui/icons-material/Square";
 import Rule from "./Rule";
 const BuyLists = ({ setBasketDatas, post }) => {
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateFactor);
@@ -32,7 +33,6 @@ const BuyLists = ({ setBasketDatas, post }) => {
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
   }
-  console.log(state);
   useEffect(() => {
     var Price = 0;
     for (var i = 0; i < state.details.length; i++) {
@@ -69,7 +69,6 @@ const BuyLists = ({ setBasketDatas, post }) => {
         shiping: post === "pishtaz" ? 0 : 1
       });
       const apipayment = async () => {
-        console.log(raw);
         const status = await callApi(
           BASE_URL + ADD_PAYMENT,
           raw,
