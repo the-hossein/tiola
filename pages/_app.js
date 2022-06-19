@@ -35,9 +35,33 @@ function MyApp({ Component, pageProps }) {
   const [network, setNetwork] = useState();
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
-
- 
+  
+  
   useEffect(() => {
+
+    if(window !== "undefined"){
+      window.document.querySelector("body").addEventListener("keypress", e=> {
+        console.log(e.keyCode);
+        if (event.keyCode == 123) {
+          e.preventDefault()
+          e.stopPropagation()
+          return false;
+        } 
+        if (event.ctrlKey && event.shiftKey && event.key === "c") {
+          e.preventDefault()
+          e.stopPropagation()
+          return false;
+        }
+        if (event.ctrlKey && event.keyCode === 85) {
+          e.preventDefault()
+          e.stopPropagation()
+          return false;
+        }
+        return false
+      },
+      )
+    }  
+
     if (document.addEventListener) {
       document.addEventListener(
         "contextmenu",
