@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 // import userProfile from ;
 
-const Blog = ({title, titleEn, body, params}) => {
+const Blog = ({title, titleEn, body, params, image}) => {
 
     const { t } = useTranslation();
     const lang = useSelector(state => state.stateLang.lng)
@@ -20,7 +20,7 @@ const Blog = ({title, titleEn, body, params}) => {
         <div className={`col-lg-6 col-12 mb-4 ${style.blogContainer}`}>
             <div className={`${style.container}`}>
                 <div>
-                    <img src={bodyReveiw.Paragraphs[0].picpath} alt='user' />
+                    <img src={image} alt='user' />
                 </div>
                 <div className={style.text}>
                     <h5 className={style.title}>
