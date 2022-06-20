@@ -185,10 +185,10 @@ const Header = ({ backColor }) => {
     const lngCookie = Cookies.get("i18next");
     setCookieLs(lngCookie);
     if (lngCookie === "fa") {
+      dispatch(changeLang("fa"));
       rightDir();
-      i18next.changeLanguage("fa");
     } else {
-      i18next.changeLanguage("en");
+      dispatch(changeLang("en"));
       leftDir();
     }
     setpreload(false);

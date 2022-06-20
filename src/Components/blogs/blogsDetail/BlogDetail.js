@@ -51,7 +51,7 @@ const BlogDetail = ({data}) => {
                 <img className={style.imgBlog} src={loading === false && item.picpath } />
               </div>
               <div className={`col-12 col-md-6 col-lg-6 ${style.blogContent}`}>
-                <h1>{loading ? "Loading..." : lang === "fa" ? data.title : data.titleEn }</h1>
+                <h2>{loading ? "Loading..." : lang === "fa" ? item.title : item.titleen }</h2>
                 <p className={lang === "fa" && style.paragraphFa} >{loading ? "Loading..." : lang === "fa" ? item.description : item.descriptionen}</p>
               </div>
             </div>

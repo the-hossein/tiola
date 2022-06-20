@@ -161,7 +161,7 @@
     /* justify-content: end; */
 }
 
-.blogMain h1 {
+.blogMain h2 {
     margin-bottom: 2rem;
     font-size: var(--xl-font);
 }
