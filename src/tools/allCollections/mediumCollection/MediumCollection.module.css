@@ -1,5 +1,6 @@
 .collection{
-    min-height: 610px;
+    min-height: 640px;
+    border-bottom: var(--border-bottom);
 }
 .collectionImage div img:first-child:hover,
 .collectionImage div img:nth-child(2):hover,
@@ -64,10 +65,8 @@
 }
 
 .collectionImage,
-
-
 .content {
-    border-bottom: var(--border-bottom);
+    /* border-bottom: var(--border-bottom); */
 }
 
 .content a:last-child {
@@ -104,6 +103,8 @@
 
     .collection {
         flex-direction: column-reverse !important;
+        height: fit-content;
+        padding-bottom: 5rem !important;
     }
     .viewAll {
         padding-top: 0;

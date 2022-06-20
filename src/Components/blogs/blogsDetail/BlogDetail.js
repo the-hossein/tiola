@@ -43,7 +43,7 @@ const BlogDetail = ({data}) => {
           parag.Paragraphs.map((item, index)=> (
             <>
             <div
-              className={`row align-items-center justify-content-space-between ${index % 2 === 0 && "flex-row-reverse" } ${style.blogMain}`}
+              className={`row align-items-center justify-content-between ${index % 2 === 0 && "flex-row-reverse" } ${style.blogMain}`}
             >
               <div
                 className={`col-12 col-md-6 col-lg-5 ${style.headerContainer}`}
@@ -58,20 +58,6 @@ const BlogDetail = ({data}) => {
             </>
           ))
         }
-          
-        {/* <div
-          className={`row align-items-center flex-row-reverse justify-content-space-between ${style.blogMain}`}
-        >
-          <div
-            className={`col-12 col-md-6 col-lg-5 ${style.headerContainer}`}
-          >
-            <img className={style.imgBlog} src="/Assets/images/3.jpeg"/>
-          </div>
-          <div className={`col-12 col-md-6 col-lg-6 ${style.blogContent}`}>
-            <h1>{blogTarget.length ? blogTarget[0].title : "Loading..."}</h1>
-            <p>{blogTarget.length ? blogTarget[0].body : "Loading..."}</p>
-          </div>
-        </div> */}
       </div>
     </div>
   );

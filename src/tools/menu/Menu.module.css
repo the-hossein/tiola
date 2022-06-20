@@ -53,22 +53,18 @@
 .burgerMenu > a {
     transition: all 1s linear;
     opacity: 0;
-    /* display: none; */
 }
 .burgerMenu > a {
     /* opacity: 0; */
 }
 .showItem li,.showItem a,.showItem p,.showItem ul,.showItem span,.showItem div {
-    /* position: absolute; */
-    /* display: inline; */
     opacity: 1;
-    animation: show 1.5s ease;
+    animation: show 1s ease;
 }
 @keyframes show {
     from{
         opacity: 0;
         transform: var(--hamberMenu-translate);
-        /* transform: translateX(200%); */
     }
     50%{
         opacity: .2;
