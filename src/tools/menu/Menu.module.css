@@ -6,7 +6,7 @@
     height: 100vh;
     display: block;
     position: absolute;
-    top: 58px; 
+    top: 64px; 
     padding: 2rem 1.5rem;
     direction: var(--direction);
     z-index: 99;
@@ -107,7 +107,7 @@
 
 @media(max-width:768px) {
     .burgerMenu {
-        top: 48px;
+        top: 64px;
     }
 }
 
