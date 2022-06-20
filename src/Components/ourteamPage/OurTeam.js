@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import style from "./OurTeam.module.css";
-import teampic from "../../../public/Assets/images/11.jpg";
+import teampic from "../../../public/Assets/images/sahar.jpg";
 import { useTranslation } from "react-i18next";
 import Team from "./Team";
 import { useSelector } from "react-redux";
