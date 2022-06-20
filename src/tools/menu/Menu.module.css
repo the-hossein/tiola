@@ -59,7 +59,7 @@
 }
 .showItem li,.showItem a,.showItem p,.showItem ul,.showItem span,.showItem div {
     opacity: 1;
-    animation: show 1.5s ease;
+    animation: show 1s ease;
 }
 @keyframes show {
     from{

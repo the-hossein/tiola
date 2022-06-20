@@ -38,7 +38,8 @@ const Header = ({ backColor }) => {
   const lang = useSelector((state) => state.stateLang);
   const state = useSelector((state) => state.stateRegister);
   const basket = useSelector((state) => state.stateFactor);
-
+  
+  const [cookieLS, setCookieLs] = useState();
   const [errorShow, setErrorShow] = useState(true);
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
@@ -182,16 +183,18 @@ const Header = ({ backColor }) => {
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
-    if (lngCookie === "en") {
-      leftDir();
-    } else {
+    setCookieLs(lngCookie);
+    if (lngCookie === "fa") {
       rightDir();
+      i18next.changeLanguage("fa");
+    } else {
+      i18next.changeLanguage("en");
+      leftDir();
     }
     setpreload(false);
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
-
     i18next.changeLanguage(lng);
     if (lng === "en") {
       leftDir();
