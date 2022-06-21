@@ -188,20 +188,19 @@ const Header = ({ backColor }) => {
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
     if(lngCookie === undefined){
-      i18next.changeLanguage("fa");
-      changeLng("fa");
       dispatch(changeLang("fa"));
+      i18next.changeLanguage("fa");
       rightDir();
     }
     setCookieLs(lngCookie);
-    if (lngCookie === "fa") {
-      dispatch(changeLang("fa"));
-      i18next.changeLanguage("fa");
-      rightDir();
-    } else {
+    if (lngCookie === "en") {
       dispatch(changeLang("en"));
       i18next.changeLanguage("en");
       leftDir();
+    } else{
+      dispatch(changeLang("fa"));
+      i18next.changeLanguage("fa");
+      rightDir();
     }
     setpreload(false);
   }, []);
