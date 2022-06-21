@@ -6,6 +6,10 @@ import logo from "../../../public/Assets/images/logo.png";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import HttpApi from "i18next-http-backend";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLang } from "../../redux/lang/langActions";
@@ -183,6 +187,27 @@ const Header = ({ backColor }) => {
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
+    if(lngCookie === undefined){
+      i18n
+        .use(initReactI18next)
+        .use(LanguageDetector)
+        .init({
+          fallbackLng: "fa",
+          detection: {
+            order: ["cookie", "htmlTag", "localStorage", "path", "subdomain"],
+            caches: ["cookie"],
+            value:"fa"
+          },
+          backend: {
+            loadPath: `/locales/{{lng}}/transliation.json`
+          },
+          react: {
+            useSuspense: false
+          }
+        });
+        i18next.changeLanguage("fa");
+        window.location.reload();
+    }
     setCookieLs(lngCookie);
     if (lngCookie === "fa") {
       dispatch(changeLang("fa"));

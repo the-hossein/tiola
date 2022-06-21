@@ -63,7 +63,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   }, [state]);
 
   const payHandler = () => {
-    if (user.loginStatus && user.birthDayDateTime !== null && ls) {
+    if (user.loginStatus && ls) {
       setpreloadPay(true);
       if (state.allAddress.length === 0) {
         if (lang === "fa") {
