@@ -31,7 +31,7 @@ const Rule = ({ openRule, setopenRule, setFaQ }) => {
             </li>
             <li>
               {lang === "fa"
-                ? "در صورتی که کار خریداری شده مشکل تولیدی داشته باشد(مشروط  برتاییدیه مدیریت سایت تیولا ) هزینه پستی  تعویض کار بر عهده فروشگاه اینترنتی آدو خواهد بود .ضمنا کار ایراددار صرفا تعویض میشود و امکان عودت و استرداد وجه تحت هیچ عنوان وجود ندارد ."
+                ? "در صورتی که کار خریداری شده مشکل تولیدی داشته باشد(مشروط  برتاییدیه مدیریت سایت تیولا ) هزینه پستی  تعویض کار بر عهده فروشگاه اینترنتی تیولا خواهد بود .ضمنا کار ایراددار صرفا تعویض میشود و امکان عودت و استرداد وجه تحت هیچ عنوان وجود ندارد ."
                 : "If the purchased work has a production problem (subject to the approval of the Tiola site management), the postage cost of the work replacement will be borne by the Ado online store."}
             </li>
             <li>
