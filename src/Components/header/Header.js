@@ -188,32 +188,19 @@ const Header = ({ backColor }) => {
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
     if(lngCookie === undefined){
-      i18n
-        .use(initReactI18next)
-        .use(LanguageDetector)
-        .init({
-          fallbackLng: "fa",
-          detection: {
-            order: ["cookie", "htmlTag", "localStorage", "path", "subdomain"],
-            caches: ["cookie"],
-            value:"fa"
-          },
-          backend: {
-            loadPath: `/locales/{{lng}}/transliation.json`
-          },
-          react: {
-            useSuspense: false
-          }
-        });
-        i18next.changeLanguage("fa");
-        window.location.reload();
+      i18next.changeLanguage("fa");
+      changeLng("fa");
+      dispatch(changeLang("fa"));
+      rightDir();
     }
     setCookieLs(lngCookie);
     if (lngCookie === "fa") {
       dispatch(changeLang("fa"));
+      i18next.changeLanguage("fa");
       rightDir();
     } else {
       dispatch(changeLang("en"));
+      i18next.changeLanguage("en");
       leftDir();
     }
     setpreload(false);
