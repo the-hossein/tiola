@@ -53,6 +53,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
     }
 
     if (post === "pishtaz") {
+      console.log(Price)
       settotalprice(Price + 30000);
     } else {
       settotalprice(Price);
@@ -62,7 +63,12 @@ const BuyLists = ({ setBasketDatas, post }) => {
       if (Price - amountOff <= 0) {
         settotalprice(0);
       } else {
-        settotalprice(Price - amountOff);
+        if (post === "pishtaz") {
+          settotalprice(Price - amountOff+30000);
+  
+        } else {
+          settotalprice(Price - amountOff);
+        }
       }
     }
   }, [state, post]);
@@ -202,7 +208,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
           if (diff <= 0) {
             settotalprice(0);
           } else {
-            settotalprice(totalprice - offStatus[0].data.price);
+            settotalprice(diff);
           }
           setoffCodeLoader(false);
           notify(t("offCodeTrue"), "success");
