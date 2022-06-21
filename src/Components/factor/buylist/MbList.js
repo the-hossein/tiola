@@ -13,6 +13,7 @@ import Link from "next/link";
 import { checkSavedItem } from "../../../redux/saveItem/saveItemAction";
 import persianNumber from "../../../tools/persianNumber/persianNumber";
 import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const MbList = ({
   data,
@@ -74,11 +75,8 @@ const MbList = ({
                       onClick={deleteHandler}
                     />
                   ) : (
-                    <FontAwesomeIcon
-                      icon={faMinus}
-                      className={style.minus}
-                      onClick={decreseHandler}
-                    />
+                   
+                    <RemoveIcon sx={{ fontSize: 30 }} onClick={decreseHandler} />
                   )}
                   <span className={style.count}>{info.qty}</span>
                   <AddOutlinedIcon

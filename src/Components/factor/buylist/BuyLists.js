@@ -18,8 +18,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 import SquareIcon from "@mui/icons-material/Square";
 import Rule from "./Rule";
+import Input from "../../../tools/input/Input";
 const BuyLists = ({ setBasketDatas, post }) => {
-
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stateFactor);
@@ -30,6 +30,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const [totalprice, settotalprice] = useState(0);
   const [preload, setpreload] = useState(true);
   const [preloadPay, setpreloadPay] = useState();
+  const [offCode, setOffCode] = useState();
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
   }
@@ -106,6 +107,10 @@ const BuyLists = ({ setBasketDatas, post }) => {
       notify(text, "error");
     }
   };
+  const EnterCodehandler = (e) => {
+    setOffCode(e.target.value);
+    console.log(offCode);
+  };
   return state.deleteLoader ? (
     <Loader />
   ) : (
@@ -123,6 +128,24 @@ const BuyLists = ({ setBasketDatas, post }) => {
               />
             </>
           ))}
+
+       <div className={style.factorAction}>
+       <div className={style.offCode}>
+          <div className={style.enterCode}>
+          <Input
+              type="text"
+              placeholder={t("offCodePlaceHolder")}
+              changehandler={EnterCodehandler}
+              maxLength={6}
+              name="offCode"
+              value={offCode}
+              AutoFocus={true}
+            />
+            <button>
+              {t("submit")}
+            </button>
+          </div>
+          </div>
           <FormGroup
             sx={{ alignContent: "center", color: "var(--red-pen)" }}
             className={style.checkFaq}
@@ -169,6 +192,9 @@ const BuyLists = ({ setBasketDatas, post }) => {
               </div>
             )}
           </div>
+         
+       </div>
+         
         </>
       )}
       {openRule && (

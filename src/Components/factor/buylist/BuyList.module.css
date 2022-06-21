@@ -21,14 +21,16 @@
 
 .payBtn {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     margin: 2.5rem 0;
+    align-items: center;
 }
 
+/* 
 .payBtn button {
     margin: 0 2.5rem;
-}
+} */
 
 .checkFaq {
     direction: var(--direction);
@@ -41,10 +43,13 @@
 .checkFaq span {
     font-size: var(--xs-font) !important;
     font-family: var(--font) !important;
-    margin: 0 6px;
+    /* margin: 0 6px; */
     cursor: pointer;
 }
 
+.checkFaq label {
+    margin: 0 !important;
+}
 
 .popoup {
     width: 100%;
@@ -105,6 +110,7 @@
     min-width: 216px;
     color: var(--greenLight-pen);
     font-size: var(--md-font);
+    height: fit-content;
 }
 
 .price {
@@ -212,6 +218,38 @@
 
 }
 
+.offCode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin:5rem 0 2.5rem;
+}
+
+.offCode input {
+    height: 50px;
+}
+
+.enterCode {
+    position: relative;
+    width: 100%;
+}
+
+.factorAction {
+    width: 480px;
+    margin: auto;
+}
+
+.offCode button {
+    position: absolute;
+    top: 0;
+    background-color: var(--green-pen);
+    border: none;
+    color: var(--light-pen);
+    border-radius: 10px 0 0 10px;
+    padding: 0.8rem 2.5rem;
+    left: 0;
+}
 
 @media(max-width:992px) {
     .popoupContent {
@@ -247,7 +285,13 @@
 
 }
 
-@media(max-width:450px) {
+@media(max-width:600px) {
+    .factorAction {
+        width: 90%;
+    }
+}
+
+@media(max-width:514px) {
     .payBtn {
         flex-direction: column-reverse;
         margin: 2.5rem auto;
@@ -255,13 +299,27 @@
     }
 
     .payBtn button {
-        width: 100%;
+        min-width: 216px;
         margin: 1rem 0;
+
+    }
+
+    .checkFaq {
+        width: 218px;
+        margin: auto;
+        justify-content: space-between;
+    }
+    .checkFaq span{
+        padding-right: 0;
     }
 }
 
 @media(max-width:390px) {
     .Mbrow {
         font-size: 10pt;
+    }
+
+    .offCode button {
+        padding: 0.8rem 1.5rem;
     }
 }
