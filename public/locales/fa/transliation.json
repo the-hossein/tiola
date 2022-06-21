@@ -184,5 +184,9 @@
   "owenTiola": "مؤسس و مدیر عامل برند تیولا:",
   "introOwen": "",
   "mehdiOwen": "مهدی ميرزايحيي",
-  "mehdiOwenDes": "مؤسس و مدیر عامل برند تیولا"
+  "mehdiOwenDes": "مؤسس و مدیر عامل برند تیولا",
+  "offCodeTrue": "کد تخفیف با موفقیت ثبت شد",
+  "offCodeFalse": "کد تخفیف صحیح نیست",
+  "acceptCode": "کد تخفیف ثبت شده",
+  "enter6CharOffCode": "کد تخفیف ۶ رقمی را وارد کنید"
 }

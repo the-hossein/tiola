@@ -12,7 +12,8 @@ const Input = ({
   name,
   keyDown,
   value,
-  AutoFocus
+  AutoFocus,
+  disabled
 }) => {
   const submitHndler = (e) => {
     e.preventDefault();
@@ -41,6 +42,7 @@ const Input = ({
             onFocus={focusHandler}
             onKeyDown={keyDown}
             autoFocus={AutoFocus}
+            disabled={disabled}
           />
         </div>
       </form>
