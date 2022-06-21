@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import style from "./OurTeam.module.css";
-import teampic from "../../../public/Assets/images/11.jpg";
+import teampic from "../../../public/Assets/images/sahar.jpg";
 import { useTranslation } from "react-i18next";
 import Team from "./Team";
 import { useSelector } from "react-redux";
@@ -21,10 +21,14 @@ import yasi from "../../../public/Assets/images/Yasi.jpg";
 import ramin from "../../../public/Assets/images/Ramin.jpg";
 import parmida from "../../../public/Assets/images/Parmida.jpg";
 import hana from "../../../public/Assets/images/Parmida.jpg";
+import owenMehdi from "../../../public/Assets/images/tiolaOwen.png";
 
 const OurTeam = () => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang.lng);
+
+  const owenTiola = [{img: owenMehdi, name: t("mehdiOwen"), des: t("mehdiOwenDes")}]
+
   const teamManager = [
     { img: sina, name: t("sepehri"), des: t("sepehriDes") },
     { img: milad, name: t("milad"), des: t("miladDes") }
@@ -66,6 +70,11 @@ const OurTeam = () => {
           <h1 className={style.mainTitle}>{t("ourteam")}</h1>
           <p>{t("ourTeamContent")}</p>
           <div className={style.karmaTeam}>
+            <Team
+              text={t("introOwen")}
+              title={t("owenTiola")}
+              personals={owenTiola}
+            />
             <Team
               text={t("managerContent")}
               title={t("teamManager")}

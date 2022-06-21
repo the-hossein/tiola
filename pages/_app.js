@@ -36,7 +36,6 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
 
- 
   useEffect(() => {
     // if (document.addEventListener) {
     //   document.addEventListener(

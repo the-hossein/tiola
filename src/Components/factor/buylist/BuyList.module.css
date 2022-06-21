@@ -223,7 +223,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    margin:5rem 0 2.5rem;
+    margin: 5rem 0 2.5rem;
 }
 
 .offCode input {
@@ -278,7 +278,7 @@
     }
 
     .Mbrow img {
-        width: 100%;
+        width: 110px;
         height: 160px;
         object-fit: cover;
     }
@@ -309,7 +309,8 @@
         margin: auto;
         justify-content: space-between;
     }
-    .checkFaq span{
+
+    .checkFaq span {
         padding-right: 0;
     }
 }

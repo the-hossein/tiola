@@ -10,6 +10,7 @@ import style from "./Blogs.module.css";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const [preload, setPreload] = useState(true);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const Blogs = () => {
       .get(BASE_URL+GET_BLOGS)
       .then((response) => {
         setBlogs(response.data.data);
+        setPreload(false);
       });
   }, []);
 
@@ -24,7 +26,7 @@ const Blogs = () => {
     <div className={`${style.container} container mt-3 mb-3`}>
       <h2 className={style.blogTitle}>{t("blogs")}</h2>
       <div className="row justify-content-between">
-        {!blogs.length ? (
+        {preload ? (
         <Loader/>
         ) : (
           blogs.map((blog) => (
@@ -32,6 +34,7 @@ const Blogs = () => {
               key={blog.id}
               title={blog.title}
               titleEn={blog.titleEn}
+              image={blog.imageFile.filePath}
               body={blog.paragraphs}
               params={blog.id}
             />

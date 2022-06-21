@@ -38,7 +38,8 @@ const Header = ({ backColor }) => {
   const lang = useSelector((state) => state.stateLang);
   const state = useSelector((state) => state.stateRegister);
   const basket = useSelector((state) => state.stateFactor);
-
+  
+  const [cookieLS, setCookieLs] = useState();
   const [errorShow, setErrorShow] = useState(true);
   const [menuBar, setMenuBar] = useState(false);
   const [size, setSize] = useState([0]);
@@ -120,7 +121,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--veryLg-font", "30pt");
     root.style.setProperty("--veryLg2-font", "40pt");
 
-    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
+    root.style.setProperty("--hamberMenu-translate", "translateY(50%)");
   };
 
   const leftDir = () => {
@@ -142,7 +143,7 @@ const Header = ({ backColor }) => {
     root.style.setProperty("--veryLg-font", "48pt");
     root.style.setProperty("--veryLg2-font", "56pt");
 
-    root.style.setProperty("--hamberMenu-translate", "translateY(100%)");
+    root.style.setProperty("--hamberMenu-translate", "translateY(50%)");
   };
 
   useEffect(() => {
@@ -182,16 +183,18 @@ const Header = ({ backColor }) => {
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
-    if (lngCookie === "en") {
-      leftDir();
-    } else {
+    setCookieLs(lngCookie);
+    if (lngCookie === "fa") {
+      dispatch(changeLang("fa"));
       rightDir();
+    } else {
+      dispatch(changeLang("en"));
+      leftDir();
     }
     setpreload(false);
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
-
     i18next.changeLanguage(lng);
     if (lng === "en") {
       leftDir();

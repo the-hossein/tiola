@@ -17,7 +17,7 @@ const Collection = ({ explore }) => {
             <div className="col-lg-12 col-md-12 col-11 p-0">
               <Simplcollection
                 image1="/Assets/images/4.jpg"
-                image2="/Assets/images/10.jpg"
+                image2="/Assets/images/pro1.jpg"
                 content={
                   lang === "fa"
                     ? ` اگر به دنبال رنگ به خصوصی هستید\، تیولا می‌تواند به شما کمک کند. چرا که تیولا رگال‌های متنوعی دارد و هر کدام مخصوص یک رنگ است. هر کدام از مدل‌هایی که در رگال تیولا می‌بینید ویژگی خاصی دارد. شما با رگال گردی می‌توانید بهترین انتخاب خودتان را داشته باشید.`
