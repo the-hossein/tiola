@@ -22,8 +22,6 @@ const PaymentStatus = () => {
   const [statusCode, setStatusCode] = useState();
 
   useEffect(() => {
-
-    
     if (ls) {
       var token = JSON.parse(ls).token;
       var userId = JSON.parse(ls).userid;
@@ -45,16 +43,19 @@ const PaymentStatus = () => {
 
           if (verify[0].data.code === 200 || verify[0].data.code === 206) {
             setStatusCode(verify[0].data.code);
-
+            console.log(verify);
             setStatus("success");
             setPreLoad(false);
           } else {
+            console.log(verify);
+
             setStatusCode(verify[0].data.code);
             setStatus("unSuccess");
             setPreLoad(false);
           }
         } catch {
           setPreLoad(false);
+          console.log("verify");
 
           setStatusCode("catch");
         }
@@ -62,6 +63,8 @@ const PaymentStatus = () => {
       VerifyPayment();
     } else {
       setPreLoad(false);
+      console.log("no");
+
       setStatus("unSuccess");
       setStatusCode("catch");
     }
