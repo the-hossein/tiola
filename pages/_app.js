@@ -24,7 +24,7 @@ i18n
       caches: ["cookie"]
     },
     backend: {
-      loadPath: "/locales/{{lng}}/transliation.json"
+      loadPath: `/locales/{{lng}}/transliation.json`
     },
     react: {
       useSuspense: false
