@@ -51,7 +51,12 @@ const BuyLists = ({ setBasketDatas, post }) => {
     for (var i = 0; i < state.details.length; i++) {
       Price = Price + state.details[i].qty * state.details[i].amount;
     }
-    settotalprice(Price);
+
+    if (post === "pishtaz") {
+      settotalprice(Price + 30000);
+    } else {
+      settotalprice(Price);
+    }
     setpreload(false);
     if (offCode && disOff === true) {
       if (Price - amountOff <= 0) {
@@ -60,7 +65,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
         settotalprice(Price - amountOff);
       }
     }
-  }, [state]);
+  }, [state, post]);
 
   const payHandler = () => {
     if (user.loginStatus && ls) {
@@ -81,8 +86,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
       var raw = JSON.stringify({
         userid: user.userid,
         basketid: user.basketid,
-        amount:
-          post === "pishtaz" ? (totalprice + 30000) * 10 : totalprice * 10,
+        amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
         description: disOff ? "Free Payment" : "peyment",
         bank: 1,
         shiping: post === "pishtaz" ? 0 : 1
@@ -90,14 +94,13 @@ const BuyLists = ({ setBasketDatas, post }) => {
       var rawOff = JSON.stringify({
         userid: user.userid,
         basketid: user.basketid,
-        amount:
-          post === "pishtaz" ? (totalprice + 30000) * 10 : totalprice * 10,
+        amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
         description: disOff ? "Free Payment" : "peyment",
         bank: 1,
         offcodeid: offcodeid,
         shiping: post === "pishtaz" ? 0 : 1
       });
-
+      console.log(totalprice);
       if (totalprice !== 0) {
         const apipayment = async () => {
           const status = await callApi(
@@ -107,6 +110,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
             "POST"
           );
           if (status[0].code === 200) {
+            console.log(disOff === true ? rawOff : raw);
             window.location = status[0].data.requestBank;
             setpreloadPay(false);
           } else if (status[0].code === 285) {
@@ -133,7 +137,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
         const freePyamentUser = async () => {
           const freeStatus = await callApi(
             BASE_URL + FREE_PAYMENT,
-            disOff === true ? rawOff : raw,
+            rawOff,
             myHeaders,
             "POST"
           );
@@ -194,6 +198,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
           setOffcodeid(offStatus[0].data.id);
           setAmoutOff(offStatus[0].data.price);
           const diff = totalprice - offStatus[0].data.price;
+          console.log(diff);
           if (diff <= 0) {
             settotalprice(0);
           } else {
@@ -286,13 +291,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
                 <div>
                   <span>{t("total")}</span>
                   <span>
-                    {lang === "fa"
-                      ? post === "pishtaz"
-                        ? persianNumber(totalprice + 30000)
-                        : persianNumber(totalprice)
-                      : post === "pishtaz"
-                      ? totalprice + 30000
-                      : totalprice}
+                    {lang === "fa" ? persianNumber(totalprice) : totalprice}
                   </span>
                   <span>{t("toman")}</span>
                 </div>
