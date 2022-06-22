@@ -15,11 +15,12 @@
 }
 
 .contanctUSContainer {
-    background: url("/Assets/images/5.jpeg");
+    background: url("/Assets/images/contactus.jpg");
     width: 100%;
     min-height: 100vh;
     height: 100%;
     background-size: cover;
+    background-position: 0 30%;
 }
 
 .title {
@@ -89,8 +90,7 @@
     text-align: var(--float-left);
     padding: 16px 30px 8px !important;
     margin-bottom: 3rem;
-    font-size: 11pt !important;
-    font-family: "IRANSansWeb";
+    font-size: var(--md-font) !important;
     cursor: pointer;
 }
 
