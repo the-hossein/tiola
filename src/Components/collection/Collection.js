@@ -27,9 +27,9 @@ const Collection = ({ explore }) => {
                 title={t("collection")}
               />
               <MediumCollection
-                image1={"/Assets/images/11.jpg"}
-                image2={"/Assets/images/7.jpg"}
-                image3={"/Assets/images/10.jpg"}
+                image1={"/Assets/images/10.jpg"}
+                image2={"/Assets/images/11.jpg"}
+                image3={"/Assets/images/7.jpg"}
                 title={t("shop")}
                 content={
                   lang === "fa"
