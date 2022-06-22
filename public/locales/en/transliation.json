@@ -189,6 +189,9 @@
   "offCodeTrue": "The discount code was successfully registered",
   "offCodeFalse": "The discount code is incorrect",
   "acceptCode": "Registered discount code",
-  "enter6CharOffCode":"Enter the 6-digit discount code"
+  "enter6CharOffCode":"Enter the 6-digit discount code",
+  "addresTest1":  "Tehran - Mirdamad - Anvar Street",
+  "addresTest2":  "12 km of Imam Reza Abbas Abad road, Alaqband, Baharestan industrial complex, hall 647",
+  "addresTest3":  "Tehran Bazaar, 15 Khordad Metro, Delgosha Passage, negative floor, No. 4, No. 143"
 
 }
