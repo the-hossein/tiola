@@ -20,7 +20,7 @@
     min-height: 100vh;
     height: 100%;
     background-size: cover;
-    background-position: 0 30%;
+    background-position: center;
 }
 
 .title {
@@ -31,7 +31,7 @@
     font-size: var(--veryLg-font);
 }
 
-.img {
+/* .img {
     background: url("/Assets/images/5.jpeg");
     background-position: center;
     background-repeat: no-repeat;
@@ -43,7 +43,7 @@
     left: 0;
     z-index: 1 !important;
     transform: translateY(-10px);
-}
+} */
 
 .address {
     color: #fff;
@@ -71,7 +71,7 @@
 }
 
 .paddingR p {
-    padding: 16px 30px 8px !important;
+    padding: 16px 30px !important;
 }
 
 /* .phoneNumber{
@@ -88,7 +88,7 @@
     backdrop-filter: blur(5.8px);
     -webkit-backdrop-filter: blur(5.8px);
     text-align: var(--float-left);
-    padding: 16px 30px 8px !important;
+    padding: 16px 30px !important;
     margin-bottom: 3rem;
     font-size: var(--md-font) !important;
     cursor: pointer;
