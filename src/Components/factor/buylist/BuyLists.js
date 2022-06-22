@@ -54,7 +54,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
 
     if (post === "pishtaz") {
       console.log(Price)
-      settotalprice(Price + 30000);
+      settotalprice(Price + 20000);
     } else {
       settotalprice(Price);
     }
@@ -64,7 +64,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
         settotalprice(0);
       } else {
         if (post === "pishtaz") {
-          settotalprice(Price - amountOff+30000);
+          settotalprice(Price - amountOff+20000);
   
         } else {
           settotalprice(Price - amountOff);
@@ -79,9 +79,12 @@ const BuyLists = ({ setBasketDatas, post }) => {
       if (state.allAddress.length === 0) {
         if (lang === "fa") {
           var text = "لطفا آدرس خود را ثبت کنید";
+
         } else {
           text = "please complit profile data";
         }
+      setpreloadPay(false);
+
         notify(text, "error");
       }
       const userToken = JSON.parse(ls);
