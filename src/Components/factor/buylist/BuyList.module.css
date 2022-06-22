@@ -228,11 +228,19 @@
 
 .offCode input {
     height: 50px;
+    /* text-align: right !important;
+    direction: rtl !important; */
+    /* float: right !important; */
 }
 
 .enterCode {
     position: relative;
     width: 100%;
+}
+.enterCode input[type=text] {
+    direction: rtl !important;
+    text-align: right !important;
+    padding-left: 130px;
 }
 
 .factorAction {
@@ -260,7 +268,6 @@
 .enterCode input:disabled {
     background-color: #e8ffe8;
     color: rgb(63, 136, 63);
-
 }
 
 @media(max-width:992px) {
