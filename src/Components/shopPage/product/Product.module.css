@@ -95,7 +95,7 @@
     padding: 0 0 0.8rem 0;
     margin: auto;
     margin-top: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .productPhoto {
@@ -147,5 +147,11 @@
 
     .rectanglePhoto {
         height: 436px;
+    }
+ 
+}
+@media(max-width:420px){
+    .info {
+        font-size: var(--sm-font);
     }
 }

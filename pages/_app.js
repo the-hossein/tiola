@@ -36,23 +36,22 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
 
-  
   useEffect(() => {
-    if (document.addEventListener) {
-      document.addEventListener(
-        "contextmenu",
-        function (e) {
-          // alert("This function has been disabled to prevent you from stealing my code!");
-          e.preventDefault();
-        },
-        false
-      );
-    } else {
-      document.attachEvent("oncontextmenu", function () {
-        // alert("This function has been disabled to prevent you from stealing my code!");
-        window.event.returnValue = false;
-      });
-    }
+    // if (document.addEventListener) {
+    //   document.addEventListener(
+    //     "contextmenu",
+    //     function (e) {
+    //       // alert("This function has been disabled to prevent you from stealing my code!");
+    //       e.preventDefault();
+    //     },
+    //     false
+    //   );
+    // } else {
+    //   document.attachEvent("oncontextmenu", function () {
+    //     // alert("This function has been disabled to prevent you from stealing my code!");
+    //     window.event.returnValue = false;
+    //   });
+    // }
     if (router.pathname === "/collections/[collectionname]") {
       if (pageProps.collection[0].data.length !== 0) {
         document
