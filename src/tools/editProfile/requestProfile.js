@@ -33,10 +33,13 @@ const RequestProfile = (
     headers: myHeaders,
     body: raw
   };
-  if (name !== "" && family !== "" && birthday !== "") {
+  if (name !== "" && family !== "") {
     fetch(BASE_URL + UPDATE_PROFILE, requestOptions)
       .then((response) => response.json())
       .then((json) => {
+        console.log(json)
+        console.log(raw)
+
         if (json.code === 200) {
           router.push({ pathname: "/profile" });
           dispatch(updateSetProfile(JSON.parse(raw)));
