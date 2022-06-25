@@ -154,6 +154,7 @@ const registerCode = (code, num, lang, router) => {
         myHeaders,
         "POST"
       );
+      console.log(registerCode)
       if (registerCode[0].code === 200 || registerCode[0].code === 201) {
         dispatch(checkOtpSuccess());
         dispatch(loginTrue());
@@ -203,17 +204,25 @@ const registerCode = (code, num, lang, router) => {
         }
         dispatch(sendCodeFailed());
         dispatch(closePopUp());
+      }else if (registerCode[0].code === 429){
+        let textServer;
+        if(lang === "fa"){
+          textServer = "شما بیش از حد درخواست کرده اید لطفا پس از چند دقیقه دیگر تلاش کنید."
+        }else{
+          textServer = "You have requested too much, please try again in a few minutes."
+        }
+        notify(textServer, "warning");
       } else {
+        dispatch(checkOtpFailed());
         let num;
         if(localStorage.getItem("tryWrong") === null){
           num = 1;
-          localStorage.setItem("tryWrong", JSON.stringify(num));
+          window.localStorage.setItem("tryWrong", JSON.stringify(num));
         }else{
           num = JSON.parse(localStorage.getItem("tryWrong"));
           num++;
-          localStorage.setItem("tryWrong", JSON.stringify(num));
+          window.localStorage.setItem("tryWrong", JSON.stringify(num));
         }
-        dispatch(checkOtpFailed());
         var errorText;
         if (lang === "fa") {
           errorText = "کد وارد شده اشتباه است";
