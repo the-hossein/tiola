@@ -36,8 +36,6 @@ const PopUp = () => {
     let btryClient = window.localStorage.getItem("tryWrong");
     setTryClient(JSON.parse(btryClient));
 
-    console.log(tryClient)
-
     if(JSON.parse(btryClient) === 5){
       let textAlert;
       if(lang === "fa"){
@@ -48,12 +46,12 @@ const PopUp = () => {
       // notify(textAlert, "warning");
       
       if(window.localStorage.getItem("setWrong") === null){
-        let num = 1;
-        window.localStorage.setItem("setWrong", JSON.stringify(num));
+        let numX = 1;
+        window.localStorage.setItem("setWrong", JSON.stringify(numX));
       }else{
-        let num = JSON.parse(window.localStorage.getItem("setWrong"));
-        num++;
-        window.localStorage.setItem("setWrong", JSON.stringify(num));
+        let numX = JSON.parse(window.localStorage.getItem("setWrong"));
+        numX++;
+        window.localStorage.setItem("setWrong", JSON.stringify(numX));
       }
       
       setTimeout(()=> {
@@ -61,15 +59,16 @@ const PopUp = () => {
         setTryClient(0);
       }, 60000);
 
-      if(JSON.parse(window.localStorage.getItem("setWrong")) === 2 ){
-        let textForBlocked;
-        if(lang === "fa"){
-          textForBlocked = "شما بیش از حد کد نادرست وارد کرده اید حساب شما مسدود شد."
-        }else{
-          textForBlocked = "You have entered too much incorrect code. Your account has been blocked.";
-        }
-        notify(textForBlocked, "error");
-        localStorage.removeItem("setWrong");
+      console.log(JSON.parse(window.localStorage.getItem("setWrong")))
+
+      if(JSON.parse(window.localStorage.getItem("setWrong")) >= 2 ){
+        // let textForBlocked;
+        // if(lang === "fa"){
+        //   textForBlocked = "شما بیش از حد کد نادرست وارد کرده اید حساب شما مسدود شد."
+        // }else{
+        //   textForBlocked = "You have entered too much incorrect code. Your account has been blocked.";
+        // }
+        // notify(textForBlocked, "error");
       }
     }
 
