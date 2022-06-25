@@ -28,9 +28,52 @@ const PopUp = () => {
   const [errors, setError] = useState({});
   const [touched, setTouched] = useState({ phone: false, code: false });
   const [errorsCode, setErrorsCode] = useState({});
+  const [tryClient, setTryClient] = useState();
   useEffect(() => {
     setError(validationNumber(state.phoneNumber));
     setErrorsCode(validateCode(state.code));
+
+    let btryClient = window.localStorage.getItem("tryWrong");
+    setTryClient(JSON.parse(btryClient));
+
+    console.log(tryClient)
+
+    if(JSON.parse(btryClient) === 5){
+      let textAlert;
+      if(lang === "fa"){
+        textAlert = "شما بیش از حد معقول تلاش کرده اید لطفا یک دقیقه صبر کنید";
+      }else{
+        textAlert = "You have tried too hard, please wait a minute";
+      }
+      // notify(textAlert, "warning");
+      
+      if(window.localStorage.getItem("setWrong") === null){
+        let num = 1;
+        window.localStorage.setItem("setWrong", JSON.stringify(num));
+      }else{
+        let num = JSON.parse(window.localStorage.getItem("setWrong"));
+        num++;
+        window.localStorage.setItem("setWrong", JSON.stringify(num));
+      }
+      
+      setTimeout(()=> {
+        localStorage.removeItem("tryWrong");
+        setTryClient(0);
+      }, 60000);
+
+      if(JSON.parse(window.localStorage.getItem("setWrong")) === 2 ){
+        let textForBlocked;
+        if(lang === "fa"){
+          textForBlocked = "شما بیش از حد کد نادرست وارد کرده اید حساب شما مسدود شد."
+        }else{
+          textForBlocked = "You have entered too much incorrect code. Your account has been blocked.";
+        }
+        notify(textForBlocked, "error");
+        localStorage.removeItem("setWrong");
+      }
+    }
+
+
   }, [state.phoneNumber, touched, state.code]);
   const changePhoneNUmber = (e) => {
     var persianNumbers = [
@@ -162,6 +205,17 @@ const PopUp = () => {
   const endTimerHandler = () => {
     setAgain(true);
   };
+
+  const openClientWrong = () => {
+    let errorClient; 
+    if(lang === "fa"){
+      errorClient =  "شما بیش از حد معقول تلاش کرده اید لطفا یک دقیقه صبر کنید";
+    }else {
+      errorClient = "You have tried too hard, please wait a minute";
+    }
+    notify(errorClient, "warning")
+  }
+
   return (
     state.popup === true && (
       <div className={style.popoup}>
@@ -211,7 +265,7 @@ const PopUp = () => {
                 )}
 
                 {state.codeStatus ? (
-                  <button className={style.donebtn} onClick={enterCodeHandler}>
+                  <button className={style.donebtn} onClick={tryClient >= 5 ? openClientWrong : enterCodeHandler}>
                     {t("done")}
                   </button>
                 ) : (
