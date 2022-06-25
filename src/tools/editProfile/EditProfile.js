@@ -71,7 +71,7 @@ const EditProfile = () => {
     e.preventDefault();
     let textShow;
     if (
-      typeof userBirthday !== "undefined" &&
+      // typeof userBirthday !== "undefined" &&
       typeof userLName !== "undefined" &&
       typeof userFName !== "undefined"
     ) {
@@ -89,14 +89,16 @@ const EditProfile = () => {
           textShow = "Please enter your last name";
         }
         notify(textShow, "warning");
-      } else if (userBirthday === "") {
-        if (lang === "fa") {
-          textShow = "لطفا تاریخ تولد خود را وارد کنید";
-        } else {
-          textShow = "Please enter your date of birth";
-        }
-        notify(textShow, "warning");
-      } else {
+      }
+      // else if (userBirthday === "") {
+      //   if (lang === "fa") {
+      //     textShow = "لطفا تاریخ تولد خود را وارد کنید";
+      //   } else {
+      //     textShow = "Please enter your date of birth";
+      //   }
+      //   notify(textShow, "warning");
+      // }
+      else {
         RequestProfile(
           userToken,
           userData.userid,
@@ -170,10 +172,15 @@ const EditProfile = () => {
     }
     if (userData.birthDayDateTime !== null) {
       const birthdayUser = userData.birthDayDateTime.split("T");
+      // setUserFName(userData.name);
+      // setUserLName(userData.family);
+      // setGender(userData.gender);
+      setBirthday(birthdayUser[0]);
+    }
+    if (userData.isConfirmed === true) {
       setUserFName(userData.name);
       setUserLName(userData.family);
       setGender(userData.gender);
-      setBirthday(birthdayUser[0]);
     }
     if (userData.profileUser !== null) {
       setImageid(userData.profileUser.id);
@@ -234,7 +241,7 @@ const EditProfile = () => {
         <div className={`row m-5 ${style.formContainer}`}>
           <div className="col-12 col-md-6">
             <div className="d-flex flex-column ">
-              <label htmlFor="fname-in">{t("enterName")}</label>
+              <label htmlFor="fname-in">{"*" + t("enterName")}</label>
               <input
                 id="fname-in"
                 type="text"
@@ -246,7 +253,7 @@ const EditProfile = () => {
           </div>
           <div className="col-12 col-md-6">
             <div className="d-flex flex-column ">
-              <label htmlFor="lname-in">{t("enterfamily")}</label>
+              <label htmlFor="lname-in">{"*" + t("enterfamily")}</label>
               <input
                 id="lname-in"
                 type="text"

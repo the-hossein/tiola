@@ -53,7 +53,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
     }
 
     if (post === "pishtaz") {
-      console.log(Price)
+      console.log(Price);
       settotalprice(Price + 20000);
     } else {
       settotalprice(Price);
@@ -64,8 +64,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
         settotalprice(0);
       } else {
         if (post === "pishtaz") {
-          settotalprice(Price - amountOff+20000);
-  
+          settotalprice(Price - amountOff + 20000);
         } else {
           settotalprice(Price - amountOff);
         }
@@ -74,109 +73,109 @@ const BuyLists = ({ setBasketDatas, post }) => {
   }, [state, post]);
 
   const payHandler = () => {
-    if (user.loginStatus && ls) {
-      setpreloadPay(true);
+    if (user.loginStatus && user.isConfirmed === true && ls) {
       if (state.allAddress.length === 0) {
         if (lang === "fa") {
           var text = "لطفا آدرس خود را ثبت کنید";
-
         } else {
           text = "please complit profile data";
         }
-      setpreloadPay(false);
+        setpreloadPay(false);
 
         notify(text, "error");
-      }
-      const userToken = JSON.parse(ls);
-      const token = userToken.token;
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({
-        userid: user.userid,
-        basketid: user.basketid,
-        amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
-        description: disOff ? "Free Payment" : "peyment",
-        bank: 1,
-        shiping: post === "pishtaz" ? 0 : 1
-      });
-      var rawOff = JSON.stringify({
-        userid: user.userid,
-        basketid: user.basketid,
-        amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
-        description: disOff ? "Free Payment" : "peyment",
-        bank: 1,
-        offcodeid: offcodeid,
-        shiping: post === "pishtaz" ? 0 : 1
-      });
-      console.log(totalprice);
-      if (totalprice !== 0) {
-        const apipayment = async () => {
-          const status = await callApi(
-            BASE_URL + ADD_PAYMENT,
-            disOff === true ? rawOff : raw,
-            myHeaders,
-            "POST"
-          );
-          if (status[0].code === 200) {
-            console.log(disOff === true ? rawOff : raw);
-            window.location = status[0].data.requestBank;
-            setpreloadPay(false);
-          } else if (status[0].code === 285) {
-            if (lang === "fa") {
-              var text = "آدرس خود را وارد کنید";
-            } else {
-              var text = "Enter your Addres";
-            }
-            notify(text, "error");
-            setpreloadPay(false);
-          } else {
-            if (lang === "fa") {
-              var text = "خطایی رخ داده";
-            } else {
-              var text = "An error occurred";
-            }
-            notify(text, "error");
-            setpreloadPay(false);
-          }
-        };
-        apipayment();
       } else {
-        console.log(rawOff);
-        const freePyamentUser = async () => {
-          const freeStatus = await callApi(
-            BASE_URL + FREE_PAYMENT,
-            rawOff,
-            myHeaders,
-            "POST"
-          );
-          console.log(freeStatus[0].code);
-          if (freeStatus[0].code === 200) {
-            setpreloadPay(false);
-            console.log(freeStatus[0].data.id);
-            router.push({
-              pathname: "paymentstatus",
-              query: { orderid: freeStatus[0].data.id }
-            });
-          } else if (freeStatus[0].code === 285) {
-            if (lang === "fa") {
-              var text = "آدرس خود را وارد کنید";
+        setpreloadPay(true);
+        const userToken = JSON.parse(ls);
+        const token = userToken.token;
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({
+          userid: user.userid,
+          basketid: user.basketid,
+          amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
+          description: disOff ? "Free Payment" : "peyment",
+          bank: 1,
+          shiping: post === "pishtaz" ? 0 : 1
+        });
+        var rawOff = JSON.stringify({
+          userid: user.userid,
+          basketid: user.basketid,
+          amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
+          description: disOff ? "Free Payment" : "peyment",
+          bank: 1,
+          offcodeid: offcodeid,
+          shiping: post === "pishtaz" ? 0 : 1
+        });
+        console.log(totalprice);
+        if (totalprice !== 0) {
+          const apipayment = async () => {
+            const status = await callApi(
+              BASE_URL + ADD_PAYMENT,
+              disOff === true ? rawOff : raw,
+              myHeaders,
+              "POST"
+            );
+            if (status[0].code === 200) {
+              console.log(disOff === true ? rawOff : raw);
+              window.location = status[0].data.requestBank;
+              setpreloadPay(false);
+            } else if (status[0].code === 285) {
+              if (lang === "fa") {
+                var text = "آدرس خود را وارد کنید";
+              } else {
+                var text = "Enter your Addres";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             } else {
-              var text = "Enter your Addres";
+              if (lang === "fa") {
+                var text = "خطایی رخ داده";
+              } else {
+                var text = "An error occurred";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             }
-            notify(text, "error");
-            setpreloadPay(false);
-          } else {
-            if (lang === "fa") {
-              var text = "خطایی رخ داده";
+          };
+          apipayment();
+        } else {
+          console.log(rawOff);
+          const freePyamentUser = async () => {
+            const freeStatus = await callApi(
+              BASE_URL + FREE_PAYMENT,
+              rawOff,
+              myHeaders,
+              "POST"
+            );
+            console.log(freeStatus[0].code);
+            if (freeStatus[0].code === 200) {
+              setpreloadPay(false);
+              console.log(freeStatus[0].data.id);
+              router.push({
+                pathname: "paymentstatus",
+                query: { orderid: freeStatus[0].data.id }
+              });
+            } else if (freeStatus[0].code === 285) {
+              if (lang === "fa") {
+                var text = "آدرس خود را وارد کنید";
+              } else {
+                var text = "Enter your Addres";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             } else {
-              var text = "An error occurred";
+              if (lang === "fa") {
+                var text = "خطایی رخ داده";
+              } else {
+                var text = "An error occurred";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             }
-            notify(text, "error");
-            setpreloadPay(false);
-          }
-        };
-        freePyamentUser();
+          };
+          freePyamentUser();
+        }
       }
     } else {
       if (lang === "fa") {
