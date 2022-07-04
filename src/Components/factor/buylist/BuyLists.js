@@ -73,7 +73,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   }, [state, post]);
 
   const payHandler = () => {
-    if (user.loginStatus && user.isConfirmed === true && ls) {
+    if (user.loginStatus && ls) {
       if (state.allAddress.length === 0) {
         if (lang === "fa") {
           var text = "لطفا آدرس خود را ثبت کنید";
