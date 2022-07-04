@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import Header from "../src/Components/header/Header";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 import { useSelector } from "react-redux";
+import GetUserData from "../src/tools/popup/GetUserData";
 
 if (typeof window !== "undefined") {
   var ls = localStorage.getItem("userToken");
@@ -91,7 +92,12 @@ const PaymentStatus = () => {
               <Loader />
             </>
           ) : (
-            <StatusPayment type={status} statusCode={statusCode} />
+            <>
+              {state.isConfirmed === false && statusCode <= 206 && (
+                <GetUserData />
+              )}
+              <StatusPayment type={status} statusCode={statusCode} />
+            </>
           )}
         </main>
       )}

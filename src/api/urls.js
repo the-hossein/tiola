@@ -32,3 +32,4 @@ export const GET_BLOGS = "api/Content/GetAllContent";
 export const GET_TARGET_BLOG = "api/Content/GetContent";
 export const OFF_CODE = "api/v1/Basket/GetOfferCode";
 export const FREE_PAYMENT = "api/v1/Basket/FreePayment";
+export const UPDATE_PROFILE_AFTER_PAYMENT="api/v1/User/UpdateProfileAfterPayment"

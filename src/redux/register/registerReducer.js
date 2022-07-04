@@ -11,6 +11,7 @@ const initializedState = {
   basketloader: true,
   userName: "",
   popup: false,
+  popupGetData: true,
   userNameAvatar: "",
   userImage: null,
   closePopUp: false,
@@ -20,7 +21,7 @@ const initializedState = {
   birthDayDateTime: null,
   name: "",
   family: "",
-  isConfirmed: false ,
+  isConfirmed: false,
   profileUser: {},
   complatedPersent: 0
 };
@@ -33,6 +34,11 @@ const registerReducer = (state = initializedState, action) => {
         ...state,
         loginStatus: false,
         userDataLoader: false
+      };
+    case "CLOSE_POPUP_GETDATA":
+      return {
+        ...state,
+        popupGetData: false
       };
     case "USER_DATA_LOADER":
       return {
@@ -135,7 +141,7 @@ const registerReducer = (state = initializedState, action) => {
         name: action.user.user.name,
         family: action.user.user.family,
         profileUser: action.user.profilePic,
-        isConfirmed : action.user.user.isConfirmed,
+        isConfirmed: action.user.user.isConfirmed,
         complatedPersent: action.user.user.complatedPersent
       };
     case "BASKET_ID":

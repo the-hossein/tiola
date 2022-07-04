@@ -73,6 +73,11 @@ const closePopUp = () => {
     type: "CLOSE_POPUP"
   };
 };
+const closePopUpGetData = () => {
+  return {
+    type: "CLOSE_POPUP_GETDATA"
+  };
+};
 const registerPhone = (num, lang) => {
   return (dispatch) => {
     dispatch(loader());
@@ -328,5 +333,6 @@ export {
   closePopUp,
   openPopUp,
   updateSetProfile,
-  deleteUserData
+  deleteUserData,
+  closePopUpGetData
 };
