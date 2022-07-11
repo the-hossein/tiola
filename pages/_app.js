@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import PopUp from "../src/tools/popup/PopUp";
 import GetUserData from "../src/tools/popup/GetUserData";
-
+// fixed
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
