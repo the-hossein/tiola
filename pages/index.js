@@ -44,6 +44,7 @@ export async function getServerSideProps(context) {
 
   const data = await callApi(BASE_URL + GET_SLIDER, "{}", myHeaders, "GET");
   const exploreImage = await callApi(
+    
     BASE_URL + GET_LAST_EXPLORE_IMAgE,
     "{}",
     myHeaders,
