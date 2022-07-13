@@ -191,39 +191,35 @@ const BuyLists = ({ setBasketDatas, post }) => {
     console.log(offCode);
   };
   const offHandler = () => {
-    if (offCode.length === 6) {
-      setoffCodeLoader(true);
-      const offCodeApi = async () => {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        const offStatus = await callApi(
-          `${BASE_URL + OFF_CODE}?Code=${offCode}`,
-          "{}",
-          myHeaders,
-          "GET"
-        );
-        if (offStatus[0].code === 200) {
-          setOffcodeid(offStatus[0].data.id);
-          setAmoutOff(offStatus[0].data.price);
-          const diff = totalprice - offStatus[0].data.price;
-          console.log(diff);
-          if (diff <= 0) {
-            settotalprice(0);
-          } else {
-            settotalprice(diff);
-          }
-          setoffCodeLoader(false);
-          notify(t("offCodeTrue"), "success");
-          setDisOff(true);
+    setoffCodeLoader(true);
+    const offCodeApi = async () => {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      const offStatus = await callApi(
+        `${BASE_URL + OFF_CODE}?Code=${offCode}`,
+        "{}",
+        myHeaders,
+        "GET"
+      );
+      if (offStatus[0].code === 200) {
+        setOffcodeid(offStatus[0].data.id);
+        setAmoutOff(offStatus[0].data.price);
+        const diff = totalprice - offStatus[0].data.price;
+        console.log(diff);
+        if (diff <= 0) {
+          settotalprice(0);
         } else {
-          notify(t("offCodeFalse"), "error");
-          setoffCodeLoader(false);
+          settotalprice(diff);
         }
-      };
-      offCodeApi();
-    } else {
-      notify(t("enter6CharOffCode"), "error");
-    }
+        setoffCodeLoader(false);
+        notify(t("offCodeTrue"), "success");
+        setDisOff(true);
+      } else {
+        notify(t("offCodeFalse"), "error");
+        setoffCodeLoader(false);
+      }
+    };
+    offCodeApi();
   };
   return state.deleteLoader ? (
     <Loader />
@@ -250,7 +246,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
                   type="text"
                   placeholder={t("offCodePlaceHolder")}
                   changehandler={EnterCodehandler}
-                  maxLength={6}
+               
                   name="offCode"
                   value={disOff ? t("acceptCode") : offCode}
                   AutoFocus={true}
