@@ -11,7 +11,7 @@ const RectangleProduct = ({ page, data, reverse }) => {
           <Link href={`/product/${data.id}`}>
             <a className={reverse ? style.retDirRevese : style.retDir}>
               <div
-                className={`m-0 ${style.product} ${style.ret} col-12 overflow-hidden `}
+                className={`m-0 ${style.product} ${style.ret} col-12 `}
               >
                 <img
                   src={data.imageFile1.filePath}

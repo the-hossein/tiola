@@ -1,13 +1,12 @@
 import React from "react";
 import style from "./Category.module.css";
 import Image from "next/image";
-import category1 from "../../../public/Assets/images/2.jpeg";
 import { useTranslation } from "react-i18next";
 import CategoryProduct from "./CategoryProduct";
 import Link from "next/link";
 const Category = ({ data }) => {
   const { t } = useTranslation();
- 
+
   return (
     <section>
       <div className="container mt-5">
@@ -17,9 +16,8 @@ const Category = ({ data }) => {
             (item) =>
               item.imageFile1.confirmed && (
                 <>
-                
                   <Link href={`/product/${item.id}`}>
-                   <a
+                    <a
                       className={`col-lg-4 col-md-4 col-4 mb-3 ${style.CategoryPhoto}`}
                     >
                       <img src={item.imageFile1.filePath} alt="category pic " />

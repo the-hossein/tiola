@@ -73,6 +73,11 @@ const closePopUp = () => {
     type: "CLOSE_POPUP"
   };
 };
+const closePopUpGetData = () => {
+  return {
+    type: "CLOSE_POPUP_GETDATA"
+  };
+};
 const registerPhone = (num, lang) => {
   return (dispatch) => {
     dispatch(loader());
@@ -94,7 +99,7 @@ const registerPhone = (num, lang) => {
       );
 
       var text;
-      if (registerUser[1] === 200) {
+      if (registerUser[0].code === 200) {
         dispatch(sendCodeSuccess());
         if (lang === "fa") {
           text = "کد با موفقیت ارسال شد";
@@ -102,6 +107,16 @@ const registerPhone = (num, lang) => {
           text = "The code was sent successfully";
         }
         notify(text, "success");
+      } else if (registerUser[0].code === 429) {
+        let textServer;
+        if (lang === "fa") {
+          textServer =
+            "شما بیش از حد درخواست کرده اید لطفا پس از چند دقیقه دیگر تلاش کنید.";
+        } else {
+          textServer =
+            "You have requested too much, please try again in a few minutes.";
+        }
+        notify(textServer, "warning");
       } else {
         dispatch(sendCodeFailed());
         var errorText;
@@ -154,7 +169,7 @@ const registerCode = (code, num, lang, router) => {
         myHeaders,
         "POST"
       );
-      console.log(registerCode)
+      console.log(registerCode);
       if (registerCode[0].code === 200 || registerCode[0].code === 201) {
         dispatch(checkOtpSuccess());
         dispatch(loginTrue());
@@ -204,21 +219,23 @@ const registerCode = (code, num, lang, router) => {
         }
         dispatch(sendCodeFailed());
         dispatch(closePopUp());
-      }else if (registerCode[0].code === 429){
+      } else if (registerCode[0].code === 429) {
         let textServer;
-        if(lang === "fa"){
-          textServer = "شما بیش از حد درخواست کرده اید لطفا پس از چند دقیقه دیگر تلاش کنید."
-        }else{
-          textServer = "You have requested too much, please try again in a few minutes."
+        if (lang === "fa") {
+          textServer =
+            "شما بیش از حد درخواست کرده اید لطفا پس از چند دقیقه دیگر تلاش کنید.";
+        } else {
+          textServer =
+            "You have requested too much, please try again in a few minutes.";
         }
         notify(textServer, "warning");
       } else {
         dispatch(checkOtpFailed());
         let num;
-        if(localStorage.getItem("tryWrong") === null){
+        if (localStorage.getItem("tryWrong") === null) {
           num = 1;
           window.localStorage.setItem("tryWrong", JSON.stringify(num));
-        }else{
+        } else {
           num = JSON.parse(localStorage.getItem("tryWrong"));
           num++;
           window.localStorage.setItem("tryWrong", JSON.stringify(num));
@@ -288,7 +305,6 @@ const getProfile = () => {
         };
         basket();
       } catch {
-        
         window.location.reload();
       }
     };
@@ -317,5 +333,6 @@ export {
   closePopUp,
   openPopUp,
   updateSetProfile,
-  deleteUserData
+  deleteUserData,
+  closePopUpGetData
 };

@@ -53,7 +53,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
     }
 
     if (post === "pishtaz") {
-      console.log(Price)
+      console.log(Price);
       settotalprice(Price + 20000);
     } else {
       settotalprice(Price);
@@ -64,8 +64,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
         settotalprice(0);
       } else {
         if (post === "pishtaz") {
-          settotalprice(Price - amountOff+20000);
-  
+          settotalprice(Price - amountOff + 20000);
         } else {
           settotalprice(Price - amountOff);
         }
@@ -75,108 +74,108 @@ const BuyLists = ({ setBasketDatas, post }) => {
 
   const payHandler = () => {
     if (user.loginStatus && ls) {
-      setpreloadPay(true);
       if (state.allAddress.length === 0) {
         if (lang === "fa") {
           var text = "لطفا آدرس خود را ثبت کنید";
-
         } else {
           text = "please complit profile data";
         }
-      setpreloadPay(false);
+        setpreloadPay(false);
 
         notify(text, "error");
-      }
-      const userToken = JSON.parse(ls);
-      const token = userToken.token;
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({
-        userid: user.userid,
-        basketid: user.basketid,
-        amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
-        description: disOff ? "Free Payment" : "peyment",
-        bank: 1,
-        shiping: post === "pishtaz" ? 0 : 1
-      });
-      var rawOff = JSON.stringify({
-        userid: user.userid,
-        basketid: user.basketid,
-        amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
-        description: disOff ? "Free Payment" : "peyment",
-        bank: 1,
-        offcodeid: offcodeid,
-        shiping: post === "pishtaz" ? 0 : 1
-      });
-      console.log(totalprice);
-      if (totalprice !== 0) {
-        const apipayment = async () => {
-          const status = await callApi(
-            BASE_URL + ADD_PAYMENT,
-            disOff === true ? rawOff : raw,
-            myHeaders,
-            "POST"
-          );
-          if (status[0].code === 200) {
-            console.log(disOff === true ? rawOff : raw);
-            window.location = status[0].data.requestBank;
-            setpreloadPay(false);
-          } else if (status[0].code === 285) {
-            if (lang === "fa") {
-              var text = "آدرس خود را وارد کنید";
-            } else {
-              var text = "Enter your Addres";
-            }
-            notify(text, "error");
-            setpreloadPay(false);
-          } else {
-            if (lang === "fa") {
-              var text = "خطایی رخ داده";
-            } else {
-              var text = "An error occurred";
-            }
-            notify(text, "error");
-            setpreloadPay(false);
-          }
-        };
-        apipayment();
       } else {
-        console.log(rawOff);
-        const freePyamentUser = async () => {
-          const freeStatus = await callApi(
-            BASE_URL + FREE_PAYMENT,
-            rawOff,
-            myHeaders,
-            "POST"
-          );
-          console.log(freeStatus[0].code);
-          if (freeStatus[0].code === 200) {
-            setpreloadPay(false);
-            console.log(freeStatus[0].data.id);
-            router.push({
-              pathname: "paymentstatus",
-              query: { orderid: freeStatus[0].data.id }
-            });
-          } else if (freeStatus[0].code === 285) {
-            if (lang === "fa") {
-              var text = "آدرس خود را وارد کنید";
+        setpreloadPay(true);
+        const userToken = JSON.parse(ls);
+        const token = userToken.token;
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({
+          userid: user.userid,
+          basketid: user.basketid,
+          amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
+          description: disOff ? "Free Payment" : "peyment",
+          bank: 1,
+          shiping: post === "pishtaz" ? 0 : 1
+        });
+        var rawOff = JSON.stringify({
+          userid: user.userid,
+          basketid: user.basketid,
+          amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
+          description: disOff ? "Free Payment" : "peyment",
+          bank: 1,
+          offcodeid: offcodeid,
+          shiping: post === "pishtaz" ? 0 : 1
+        });
+        console.log(totalprice);
+        if (totalprice !== 0) {
+          const apipayment = async () => {
+            const status = await callApi(
+              BASE_URL + ADD_PAYMENT,
+              disOff === true ? rawOff : raw,
+              myHeaders,
+              "POST"
+            );
+            if (status[0].code === 200) {
+              console.log(disOff === true ? rawOff : raw);
+              window.location = status[0].data.requestBank;
+              setpreloadPay(false);
+            } else if (status[0].code === 285) {
+              if (lang === "fa") {
+                var text = "آدرس خود را وارد کنید";
+              } else {
+                var text = "Enter your Addres";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             } else {
-              var text = "Enter your Addres";
+              if (lang === "fa") {
+                var text = "خطایی رخ داده";
+              } else {
+                var text = "An error occurred";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             }
-            notify(text, "error");
-            setpreloadPay(false);
-          } else {
-            if (lang === "fa") {
-              var text = "خطایی رخ داده";
+          };
+          apipayment();
+        } else {
+          console.log(rawOff);
+          const freePyamentUser = async () => {
+            const freeStatus = await callApi(
+              BASE_URL + FREE_PAYMENT,
+              rawOff,
+              myHeaders,
+              "POST"
+            );
+            console.log(freeStatus[0].code);
+            if (freeStatus[0].code === 200) {
+              setpreloadPay(false);
+              console.log(freeStatus[0].data.id);
+              router.push({
+                pathname: "paymentstatus",
+                query: { orderid: freeStatus[0].data.id }
+              });
+            } else if (freeStatus[0].code === 285) {
+              if (lang === "fa") {
+                var text = "آدرس خود را وارد کنید";
+              } else {
+                var text = "Enter your Addres";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             } else {
-              var text = "An error occurred";
+              if (lang === "fa") {
+                var text = "خطایی رخ داده";
+              } else {
+                var text = "An error occurred";
+              }
+              notify(text, "error");
+              setpreloadPay(false);
             }
-            notify(text, "error");
-            setpreloadPay(false);
-          }
-        };
-        freePyamentUser();
+          };
+          freePyamentUser();
+        }
       }
     } else {
       if (lang === "fa") {
@@ -192,39 +191,35 @@ const BuyLists = ({ setBasketDatas, post }) => {
     console.log(offCode);
   };
   const offHandler = () => {
-    if (offCode.length === 6) {
-      setoffCodeLoader(true);
-      const offCodeApi = async () => {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        const offStatus = await callApi(
-          `${BASE_URL + OFF_CODE}?Code=${offCode}`,
-          "{}",
-          myHeaders,
-          "GET"
-        );
-        if (offStatus[0].code === 200) {
-          setOffcodeid(offStatus[0].data.id);
-          setAmoutOff(offStatus[0].data.price);
-          const diff = totalprice - offStatus[0].data.price;
-          console.log(diff);
-          if (diff <= 0) {
-            settotalprice(0);
-          } else {
-            settotalprice(diff);
-          }
-          setoffCodeLoader(false);
-          notify(t("offCodeTrue"), "success");
-          setDisOff(true);
+    setoffCodeLoader(true);
+    const offCodeApi = async () => {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      const offStatus = await callApi(
+        `${BASE_URL + OFF_CODE}?Code=${offCode}`,
+        "{}",
+        myHeaders,
+        "GET"
+      );
+      if (offStatus[0].code === 200) {
+        setOffcodeid(offStatus[0].data.id);
+        setAmoutOff(offStatus[0].data.price);
+        const diff = totalprice - offStatus[0].data.price;
+        console.log(diff);
+        if (diff <= 0) {
+          settotalprice(0);
         } else {
-          notify(t("offCodeFalse"), "error");
-          setoffCodeLoader(false);
+          settotalprice(diff);
         }
-      };
-      offCodeApi();
-    } else {
-      notify(t("enter6CharOffCode"), "error");
-    }
+        setoffCodeLoader(false);
+        notify(t("offCodeTrue"), "success");
+        setDisOff(true);
+      } else {
+        notify(t("offCodeFalse"), "error");
+        setoffCodeLoader(false);
+      }
+    };
+    offCodeApi();
   };
   return state.deleteLoader ? (
     <Loader />
@@ -251,7 +246,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
                   type="text"
                   placeholder={t("offCodePlaceHolder")}
                   changehandler={EnterCodehandler}
-                  maxLength={6}
+               
                   name="offCode"
                   value={disOff ? t("acceptCode") : offCode}
                   AutoFocus={true}

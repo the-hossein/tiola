@@ -42,7 +42,7 @@ const Header = ({ backColor }) => {
   const lang = useSelector((state) => state.stateLang);
   const state = useSelector((state) => state.stateRegister);
   const basket = useSelector((state) => state.stateFactor);
-  
+
   const [cookieLS, setCookieLs] = useState();
   const [errorShow, setErrorShow] = useState(true);
   const [menuBar, setMenuBar] = useState(false);
@@ -89,7 +89,6 @@ const Header = ({ backColor }) => {
     setBoxTarget(false);
   };
   const inspect = () => {
-  
     document.addEventListener(
       "keydown",
       function (event) {
@@ -187,7 +186,7 @@ const Header = ({ backColor }) => {
     dispatch(changeLang(Cookies.get("i18next")));
     dispatch(fetchProducts());
     const lngCookie = Cookies.get("i18next");
-    if(lngCookie === undefined){
+    if (lngCookie === undefined) {
       dispatch(changeLang("fa"));
       i18next.changeLanguage("fa");
       rightDir();
@@ -197,12 +196,27 @@ const Header = ({ backColor }) => {
       dispatch(changeLang("en"));
       i18next.changeLanguage("en");
       leftDir();
-    } else{
+    } else {
       dispatch(changeLang("fa"));
       i18next.changeLanguage("fa");
       rightDir();
     }
     setpreload(false);
+
+    (() => {
+      const d = document;
+      const s = d.createElement("script");
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-CC43D5C3Q6";
+      s.async = 1;
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-CC43D5C3Q6");
+      d.getElementsByTagName("body")[0].appendChild(s);
+    })();
   }, []);
   const changeLng = (lng) => {
     dispatch(changeLang(lng));
@@ -230,6 +244,7 @@ const Header = ({ backColor }) => {
       });
     }
   };
+
   return !prelaod ? (
     <>
       <div className={`${style.header} ${backColor}`} onKeyDown={inspect}>

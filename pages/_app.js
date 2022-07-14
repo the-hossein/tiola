@@ -12,7 +12,8 @@ import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import PopUp from "../src/tools/popup/PopUp";
-
+import GetUserData from "../src/tools/popup/GetUserData";
+// fixed
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
@@ -36,17 +37,26 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [showChild, setshowChild] = useState(false);
 
-  
   useEffect(() => {
     if (document.addEventListener) {
       document.addEventListener(
         "contextmenu",
         function (e) {
-          // alert("This function has been disabled to prevent you from stealing my code!");
           e.preventDefault();
         },
         false
       );
+      document.addEventListener("keydown", function (e) {
+        if (e.keyCode === 123) {
+          e.preventDefault();
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0)) {
+          e.preventDefault();
+        }
+        if (e.keyCode === 55 && e.keyCode === 58 && e.keyCode === 8) {
+          e.preventDefault();
+        }
+      });
     } else {
       document.attachEvent("oncontextmenu", function () {
         // alert("This function has been disabled to prevent you from stealing my code!");

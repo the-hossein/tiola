@@ -9,6 +9,7 @@ const ShopPage = () => {
   return (
     <>
       <h1 className={style.shop}>{t("shop")}</h1>
+      
       {state.data.data.map((item, index) => (
         <Fragment key={index}>
           <ProductsCategory
