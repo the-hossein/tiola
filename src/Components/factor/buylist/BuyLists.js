@@ -34,6 +34,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const user = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
   const [faQ, setFaQ] = useState(false);
+  const [ pishtazPrice, setPishtazPrice ] = useState(20000);
   const [disOff, setDisOff] = useState(false);
   const [openRule, setOpenRule] = useState(false);
   const [totalprice, settotalprice] = useState(0);
@@ -42,7 +43,9 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const [offCodeLoader, setoffCodeLoader] = useState(false);
   const [offcodeid, setOffcodeid] = useState();
   const [offCode, setOffCode] = useState();
+  const [isFreePost, setIsFreePost]= useState(false);
   const [amountOff, setAmoutOff] = useState();
+  const [percent, setPercent] = useState(0);
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
   }
@@ -51,23 +54,29 @@ const BuyLists = ({ setBasketDatas, post }) => {
     for (var i = 0; i < state.details.length; i++) {
       Price = Price + state.details[i].qty * state.details[i].amount;
     }
-
-    if (post === "pishtaz") {
-      console.log(Price);
-      settotalprice(Price + 20000);
-    } else {
+    if(isFreePost === false){
+      if (post === "pishtaz") {
+        settotalprice(Price + pishtazPrice);
+      } else {
+        settotalprice(Price);
+      }
+    }else {
       settotalprice(Price);
     }
     setpreload(false);
     if (offCode && disOff === true) {
-      if (Price - amountOff <= 0) {
-        settotalprice(0);
-      } else {
-        if (post === "pishtaz") {
-          settotalprice(Price - amountOff + 20000);
+      if(percent === 0){
+        if (Price - amountOff <= 0) {
+          settotalprice(0);
         } else {
-          settotalprice(Price - amountOff);
+          if (post === "pishtaz") {
+            settotalprice(Price - amountOff + pishtazPrice);
+          } else {
+            settotalprice(Price - amountOff);
+          }
         }
+      }else{
+        settotalprice(Price - (Price * percent / 100));
       }
     }
   }, [state, post]);
@@ -202,14 +211,38 @@ const BuyLists = ({ setBasketDatas, post }) => {
         "GET"
       );
       if (offStatus[0].code === 200) {
+        if(offStatus[0].data.freePost){
+          setIsFreePost(true);
+          setPishtazPrice(0);
+        }
         setOffcodeid(offStatus[0].data.id);
-        setAmoutOff(offStatus[0].data.price);
-        const diff = totalprice - offStatus[0].data.price;
-        console.log(diff);
-        if (diff <= 0) {
-          settotalprice(0);
-        } else {
-          settotalprice(diff);
+        if(offStatus[0].data.percent === 0){
+          setAmoutOff(offStatus[0].data.price);
+          const diff = totalprice - offStatus[0].data.price;
+          console.log(diff);
+          if (diff <= 0) {
+            settotalprice(0);
+          } else {
+            settotalprice(diff);
+          }
+        }else{
+          setPercent(offStatus[0].data.percent);
+          if(post === "pishtaz"){
+            let newPrice = totalprice - pishtazPrice;
+            const diff = newPrice - (newPrice * offStatus[0].data.percent / 100);
+            settotalprice(diff);
+          }else{
+            const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
+            settotalprice(diff);
+          }
+          //   }else{
+          //     const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
+          //     settotalprice(diff);
+          //   }
+          // }else{
+          //   const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
+          //   settotalprice(diff);
+          // }
         }
         setoffCodeLoader(false);
         notify(t("offCodeTrue"), "success");
