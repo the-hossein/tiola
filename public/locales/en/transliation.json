@@ -196,7 +196,8 @@
   "compliteInfo":"Complete Info",
   "completeUserData":"Please complete all the information correctly",
   "saveDataSuccess":"Your information has been successfully registered",
-  "saveDataFailed":"There was an error registering your information"
+  "saveDataFailed":"There was an error registering your information",
+  "QTYError": "The discount code entered is not valid for the number of products purchased."
 
 
 

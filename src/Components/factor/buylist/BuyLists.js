@@ -26,7 +26,13 @@ import CircularProgress from "@mui/material/CircularProgress";
 import SquareIcon from "@mui/icons-material/Square";
 import Rule from "./Rule";
 import Input from "../../../tools/input/Input";
+
+function tallyNumbers(tally, currentTotal) {
+  return tally + currentTotal;
+}
+
 const BuyLists = ({ setBasketDatas, post }) => {
+
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -46,10 +52,14 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const [isFreePost, setIsFreePost]= useState(false);
   const [amountOff, setAmoutOff] = useState();
   const [percent, setPercent] = useState(0);
+  const [allQtyBasket, setAllQtyBasket] = useState(0);
   if (typeof window !== "undefined") {
     var ls = localStorage.getItem("userToken");
   }
   useEffect(() => {
+    const allqty = state.details.map((item) => item.qty);
+    var redQty = allqty.reduce(tallyNumbers, 0);
+    setAllQtyBasket(redQty);
     var Price = 0;
     for (var i = 0; i < state.details.length; i++) {
       Price = Price + state.details[i].qty * state.details[i].amount;
@@ -211,48 +221,46 @@ const BuyLists = ({ setBasketDatas, post }) => {
         "GET"
       );
       if (offStatus[0].code === 200) {
-        if(offStatus[0].data.freePost){
-          setIsFreePost(true);
-          setPishtazPrice(0);
-        }
-        setOffcodeid(offStatus[0].data.id);
-        if(offStatus[0].data.percent === 0){
-          setAmoutOff(offStatus[0].data.price);
-          let diff ;
-          if(post === "pishtaz"){
-            let newPrice = totalprice - pishtazPrice;
-            diff = newPrice - offStatus[0].data.price;
-          }else{
-            diff = totalprice - offStatus[0].data.price;
-          }
-          if (diff <= 0) {
-            settotalprice(0);
-          } else {
-            settotalprice(diff);
+        console.log(offStatus[0].data)
+        if( offStatus[0].data.minQty <= allQtyBasket ){
+          if(offStatus[0].data.freePost){
+            setIsFreePost(true);
+            setPishtazPrice(0);
           }
           
-        }else{
-          setPercent(offStatus[0].data.percent);
-          if(post === "pishtaz"){
-            let newPrice = totalprice - pishtazPrice;
-            const diff = newPrice - (newPrice * offStatus[0].data.percent / 100);
-            settotalprice(diff);
+          setOffcodeid(offStatus[0].data.id);
+          if(offStatus[0].data.percent === 0){
+            setAmoutOff(offStatus[0].data.price);
+            let diff ;
+            if(post === "pishtaz"){
+              let newPrice = totalprice - pishtazPrice;
+              diff = newPrice - offStatus[0].data.price;
+            }else{
+              diff = totalprice - offStatus[0].data.price;
+            }
+            if (diff <= 0) {
+              settotalprice(0);
+            } else {
+              settotalprice(diff);
+            }
+            
           }else{
-            const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
-            settotalprice(diff);
+            setPercent(offStatus[0].data.percent);
+            if(post === "pishtaz"){
+              let newPrice = totalprice - pishtazPrice;
+              const diff = newPrice - (newPrice * offStatus[0].data.percent / 100);
+              settotalprice(diff);
+            }else{
+              const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
+              settotalprice(diff);
+            }
           }
-          //   }else{
-          //     const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
-          //     settotalprice(diff);
-          //   }
-          // }else{
-          //   const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
-          //   settotalprice(diff);
-          // }
+          notify(t("offCodeTrue"), "success");
+          setDisOff(true);
+        }else{
+          notify(t("QTYError"), "warning");
         }
         setoffCodeLoader(false);
-        notify(t("offCodeTrue"), "success");
-        setDisOff(true);
       } else {
         notify(t("offCodeFalse"), "error");
         setoffCodeLoader(false);
