@@ -221,13 +221,13 @@ const BuyLists = ({ setBasketDatas, post }) => {
         "GET"
       );
       if (offStatus[0].code === 200) {
-        if(offStatus[0].data.freePost){
-          setIsFreePost(true);
-          setPishtazPrice(0);
-        }
         console.log(offStatus[0].data)
-
         if( offStatus[0].data.minQty <= allQtyBasket ){
+          if(offStatus[0].data.freePost){
+            setIsFreePost(true);
+            setPishtazPrice(0);
+          }
+          
           setOffcodeid(offStatus[0].data.id);
           if(offStatus[0].data.percent === 0){
             setAmoutOff(offStatus[0].data.price);
@@ -258,7 +258,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
           notify(t("offCodeTrue"), "success");
           setDisOff(true);
         }else{
-          notify(t("QTYError"), "success");
+          notify(t("QTYError"), "warning");
         }
         setoffCodeLoader(false);
       } else {
