@@ -218,13 +218,19 @@ const BuyLists = ({ setBasketDatas, post }) => {
         setOffcodeid(offStatus[0].data.id);
         if(offStatus[0].data.percent === 0){
           setAmoutOff(offStatus[0].data.price);
-          const diff = totalprice - offStatus[0].data.price;
-          console.log(diff);
+          let diff ;
+          if(post === "pishtaz"){
+            let newPrice = totalprice - pishtazPrice;
+            diff = newPrice - offStatus[0].data.price;
+          }else{
+            diff = totalprice - offStatus[0].data.price;
+          }
           if (diff <= 0) {
             settotalprice(0);
           } else {
             settotalprice(diff);
           }
+          
         }else{
           setPercent(offStatus[0].data.percent);
           if(post === "pishtaz"){
