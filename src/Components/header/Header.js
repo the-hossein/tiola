@@ -184,7 +184,9 @@ const Header = ({ backColor }) => {
     }
     targetSearch = allProducts.filter((item) => item.title.includes(""));
     dispatch(changeLang(Cookies.get("i18next")));
-    dispatch(fetchProducts());
+    if(!allProducts.length){
+      dispatch(fetchProducts());
+    }
     const lngCookie = Cookies.get("i18next");
     if (lngCookie === undefined) {
       dispatch(changeLang("fa"));
