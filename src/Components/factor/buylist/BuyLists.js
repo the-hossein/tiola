@@ -32,7 +32,6 @@ function tallyNumbers(tally, currentTotal) {
 }
 
 const BuyLists = ({ setBasketDatas, post }) => {
-
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const user = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
   const [faQ, setFaQ] = useState(false);
-  const [ pishtazPrice, setPishtazPrice ] = useState(20000);
+  const [pishtazPrice, setPishtazPrice] = useState(0);
   const [disOff, setDisOff] = useState(false);
   const [openRule, setOpenRule] = useState(false);
   const [totalprice, settotalprice] = useState(0);
@@ -49,7 +48,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const [offCodeLoader, setoffCodeLoader] = useState(false);
   const [offcodeid, setOffcodeid] = useState();
   const [offCode, setOffCode] = useState();
-  const [isFreePost, setIsFreePost]= useState(false);
+  const [isFreePost, setIsFreePost] = useState(false);
   const [amountOff, setAmoutOff] = useState();
   const [percent, setPercent] = useState(0);
   const [allQtyBasket, setAllQtyBasket] = useState(0);
@@ -64,18 +63,18 @@ const BuyLists = ({ setBasketDatas, post }) => {
     for (var i = 0; i < state.details.length; i++) {
       Price = Price + state.details[i].qty * state.details[i].amount;
     }
-    if(isFreePost === false){
+    if (isFreePost === false) {
       if (post === "pishtaz") {
         settotalprice(Price + pishtazPrice);
       } else {
         settotalprice(Price);
       }
-    }else {
+    } else {
       settotalprice(Price);
     }
     setpreload(false);
     if (offCode && disOff === true) {
-      if(percent === 0){
+      if (percent === 0) {
         if (Price - amountOff <= 0) {
           settotalprice(0);
         } else {
@@ -85,8 +84,8 @@ const BuyLists = ({ setBasketDatas, post }) => {
             settotalprice(Price - amountOff);
           }
         }
-      }else{
-        settotalprice(Price - (Price * percent / 100));
+      } else {
+        settotalprice(Price - (Price * percent) / 100);
       }
     }
   }, [state, post]);
@@ -221,21 +220,21 @@ const BuyLists = ({ setBasketDatas, post }) => {
         "GET"
       );
       if (offStatus[0].code === 200) {
-        console.log(offStatus[0].data)
-        if( offStatus[0].data.minQty <= allQtyBasket ){
-          if(offStatus[0].data.freePost){
+        console.log(offStatus[0].data);
+        if (offStatus[0].data.minQty <= allQtyBasket) {
+          if (offStatus[0].data.freePost) {
             setIsFreePost(true);
             setPishtazPrice(0);
           }
-          
+
           setOffcodeid(offStatus[0].data.id);
-          if(offStatus[0].data.percent === 0){
+          if (offStatus[0].data.percent === 0) {
             setAmoutOff(offStatus[0].data.price);
-            let diff ;
-            if(post === "pishtaz"){
+            let diff;
+            if (post === "pishtaz") {
               let newPrice = totalprice - pishtazPrice;
               diff = newPrice - offStatus[0].data.price;
-            }else{
+            } else {
               diff = totalprice - offStatus[0].data.price;
             }
             if (diff <= 0) {
@@ -243,21 +242,22 @@ const BuyLists = ({ setBasketDatas, post }) => {
             } else {
               settotalprice(diff);
             }
-            
-          }else{
+          } else {
             setPercent(offStatus[0].data.percent);
-            if(post === "pishtaz"){
+            if (post === "pishtaz") {
               let newPrice = totalprice - pishtazPrice;
-              const diff = newPrice - (newPrice * offStatus[0].data.percent / 100);
+              const diff =
+                newPrice - (newPrice * offStatus[0].data.percent) / 100;
               settotalprice(diff);
-            }else{
-              const diff = totalprice - (totalprice * offStatus[0].data.percent / 100);
+            } else {
+              const diff =
+                totalprice - (totalprice * offStatus[0].data.percent) / 100;
               settotalprice(diff);
             }
           }
           notify(t("offCodeTrue"), "success");
           setDisOff(true);
-        }else{
+        } else {
           notify(t("QTYError"), "warning");
         }
         setoffCodeLoader(false);
@@ -293,7 +293,6 @@ const BuyLists = ({ setBasketDatas, post }) => {
                   type="text"
                   placeholder={t("offCodePlaceHolder")}
                   changehandler={EnterCodehandler}
-               
                   name="offCode"
                   value={disOff ? t("acceptCode") : offCode}
                   AutoFocus={true}
