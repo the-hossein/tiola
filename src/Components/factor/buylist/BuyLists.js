@@ -246,7 +246,6 @@ const BuyLists = ({ setBasketDatas, post }) => {
                   type="text"
                   placeholder={t("offCodePlaceHolder")}
                   changehandler={EnterCodehandler}
-               
                   name="offCode"
                   value={disOff ? t("acceptCode") : offCode}
                   AutoFocus={true}
