@@ -25,7 +25,7 @@ const Delivery = ({ setPost, post }) => {
               className={`${style.ChosePost} ${
                 post === "tehran" && style.active
               }`}
-              onClick={()=>setPost("tehran")}
+              onClick={() => setPost("tehran")}
             >
               <div className={style.peyk}>
                 <FormControlLabel
@@ -66,7 +66,7 @@ const Delivery = ({ setPost, post }) => {
               className={`${style.ChosePost} ${
                 post === "pishtaz" && style.active
               }`}
-              onClick={()=>setPost("pishtaz")}
+              onClick={() => setPost("pishtaz")}
             >
               <div className={style.peyk}>
                 <FormControlLabel
@@ -97,7 +97,7 @@ const Delivery = ({ setPost, post }) => {
               </div>
               <p>
                 {lang === "fa"
-                  ? " ارسال به سرار کشور با پست پیشتاز ،هزینه ارسال ۲۰ تومان می باشد و زمان ارسال ۳ تا ۶ روز کاری می باشد . "
+                  ? " ارسال به سرار کشور با پست پیشتاز ،هزینه ارسال  رایگان می باشد و زمان ارسال ۳ تا ۶ روز کاری می باشد . "
                   : "Shipping to all over the country by Pishtaz post, the shipping cost is 20 Tomans and the shipping time is 3 to 6 working days."}
               </p>
             </div>

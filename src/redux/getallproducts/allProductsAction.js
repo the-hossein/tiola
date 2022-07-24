@@ -21,6 +21,7 @@ export const fetchProducts = () => {
             .then(response => {
                 const data = response.data.data;
                 dispatch(fetchSuccess(data));
+                console.log("fuck the world")
             })
             .catch(error => {
                 const errorMsg = error.message;

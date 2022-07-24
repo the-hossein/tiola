@@ -193,11 +193,10 @@
   "addresTest1": "Anvar Street - Mirdamad - Tehran",
   "addresTest2": "No.647- Baharestan industrial Complex - Alaghband-Abas abad - 12th km Imam Reza Road",
   "addresTest3": "No.143- 4th Floor - Delgosha shopping mall - Panzdah E Khordad Subway Station (Tehran grand Bazar)",
-  "compliteInfo":"Complete Info",
-  "completeUserData":"Please complete all the information correctly",
-  "saveDataSuccess":"Your information has been successfully registered",
-  "saveDataFailed":"There was an error registering your information"
-
-
-
+  "compliteInfo": "Complete Info",
+  "completeUserData": "Please complete all the information correctly",
+  "saveDataSuccess": "Your information has been successfully registered",
+  "saveDataFailed": "There was an error registering your information",
+  "QTYError": "The discount code entered is not valid for the number of products purchased.",
+  "addBasket": "Add to Cart"
 }

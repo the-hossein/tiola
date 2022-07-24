@@ -253,7 +253,7 @@ const ProductContent = ({ product }) => {
                       preloadPay ? (
                         <CircularProgress size={20} disableShrink />
                       ) : (
-                        t("pay")
+                        t("addBasket")
                       )
                     }
                     onClick={(e) => payHandler()}
