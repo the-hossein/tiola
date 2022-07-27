@@ -160,6 +160,37 @@ const getBasketDetails = (basketid) => {
     }
   };
 };
+export const factorDetail = (data) => {
+  return {
+    type: "FACTOR_DETAIL",
+    data: data
+  };
+};
+export const factorDetailFetching = (basketID) => {
+  return (dispatch) => {
+    const newls = localStorage.getItem("userToken");
+    if (newls !== null) {
+      const userToken = JSON.parse(newls);
+      const token = userToken.token;
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+      dispatch(loaderFactorTrue());
+
+      const basketDetails = async () => {
+        const details = await callApi(
+          `${BASE_URL + GET_BASKET_DETAILS}?id=${basketID}`,
+          "{}",
+          myHeaders,
+          "GET"
+        );
+        if (details[0].code === 200) {
+          dispatch(factorDetail(details[0].data));
+        }
+      };
+      basketDetails();
+    }
+  };
+};
 const deletBasketLength = () => {
   return {
     type: "DELETE_BASKET_LEGTH"
