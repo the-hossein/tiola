@@ -77,6 +77,30 @@ a {
   /* font-family: var(--font) !important; */
 }
 
+.css-quj9j6-MuiTable-root {
+  direction: var(--direction);
+  min-width: 100% !important;
+}
+
+.css-1ndpvdd-MuiTableCell-root,.css-1yhpg23-MuiTableCell-root {
+  font-size: var(--md-font) !important;
+  font-family: var(--font) !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(188, 188, 188);
+  border-radius: 4px;
+}
+
 .headerBlur {
   background-color: none;
   backdrop-filter: blur(5px);
@@ -255,5 +279,12 @@ input[type=number]::-webkit-inner-spin-button {
 
   .Toastify__toast-container {
     width: 100% !important;
+  }
+}
+
+@media(max-width:445px) {
+
+  .css-1azl6jz-MuiTableCell-root {
+    font-size: var(--sm-font) !important;
   }
 }

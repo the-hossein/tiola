@@ -15,6 +15,7 @@ import { addQtyAmont } from "../../redux/factor/factorAction";
 import { notify } from "../../tools/toast/toast";
 import persianNumber from "../../tools/persianNumber/persianNumber";
 import convertDate from "../../tools/convertDate/convertDate";
+import Link from "next/link";
 const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
   const lang = useSelector((state) => state.stateLang.lng);
   const dateC = data ? data.createdDatetime.split("T") : "";
@@ -87,7 +88,6 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
 
   return (
     <>
-     
       <div className={style.RowProduct}>
         {loading && (
           <img
@@ -104,9 +104,15 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
           />
         )}
         <div className={` d-flex align-items-center`}>
-          <span onClick={navigate} style={{ cursor: "pointer" }}>
-            {lang === "fa" ? data.title : data.titleEn}
-          </span>
+          <Link
+            href={close ? `/product/${data.id}` : `/factordetails/${data.id}`}
+          >
+            <a>
+              <span style={{ cursor: "pointer" }}>
+                {lang === "fa" ? data.title : data.titleEn}
+              </span>
+            </a>
+          </Link>
           <span>{lang === "fa" ? convertDate(dateC[0]) : dateC[0]}</span>
           {close ? (
             <span>
@@ -117,13 +123,21 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
           )}
         </div>
         <div className={style.status}>
-          <span>{close ? `${t("stock")}: ${lang==="fa"?persianNumber(data.stock):data.stock}` : data.isFinish===true?t("Completed"):t("Pendding")}</span>
+          <span>
+            {close
+              ? `${t("stock")}: ${
+                  lang === "fa" ? persianNumber(data.stock) : data.stock
+                }`
+              : data.isFinish === true
+              ? t("Completed")
+              : t("Pendding")}
+          </span>
           {close ? (
             <AddCircleIcon
               sx={{ cursor: "pointer" }}
               onClick={(e) => payHandler()}
             />
-          ) : data.isFinish===true ? (
+          ) : data.isFinish === true ? (
             <CheckCircleOutlineIcon sx={{ color: "#8ABA70", fontSize: 30 }} />
           ) : (
             <AccessTimeIcon sx={{ color: "#b7b7b7", fontSize: 30 }} />

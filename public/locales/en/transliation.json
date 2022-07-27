@@ -198,5 +198,11 @@
   "saveDataSuccess": "Your information has been successfully registered",
   "saveDataFailed": "There was an error registering your information",
   "QTYError": "The discount code entered is not valid for the number of products purchased.",
-  "addBasket": "Add to Cart"
+  "addBasket": "Add to Cart",
+  "productName": "Product Name",
+  "productQty": "Quantity",
+  "productCollection": "Collection Name",
+  "row": "row",
+  "image": "Product image",
+  "factorDetailTitle": "Factor Details"
 }

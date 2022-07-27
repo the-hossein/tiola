@@ -194,7 +194,13 @@
   "compliteInfo": "تکمیل اطلاعات",
   "completeUserData": "لطفا همه ی  اطلاعات را به درستی کامل کنید",
   "saveDataSuccess": "اطلاعات شما با موفقیت ثبت شد",
-  "saveDataFailed":"ثبت اطلاعات شما با خطا مواجه شد",
+  "saveDataFailed": "ثبت اطلاعات شما با خطا مواجه شد",
   "QTYError": "کد تخفیف وارد شده برای تعداد محصول خریداری شده معتبر نیست.",
-  "addBasket":"افزودن به سبد خرید"
+  "addBasket": "افزودن به سبد خرید",
+  "productName": "نام محصول",
+  "productQty": "تعداد",
+  "productCollection": "نام رگال",
+  "row": "ردیف",
+  "image": "تصویر محصول",
+  "factorDetailTitle":"جزئیات سفارش"
 }

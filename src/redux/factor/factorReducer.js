@@ -8,7 +8,8 @@ const initializedState = {
   basketLength: 0,
   details: null,
   allAddress: [],
-  checkout: false
+  checkout: false,
+  factorDetail: []
 };
 const factorReducer = (state = initializedState, action) => {
   switch (action.type) {
@@ -20,7 +21,12 @@ const factorReducer = (state = initializedState, action) => {
         check: action.check,
         loadingAddress: false
       };
-
+    case "FACTOR_DETAIL":
+      console.log(action.data)
+      return {
+        ...state,
+        factorDetail: action.data
+      };
     case "LOADER_FACTOR":
       return {
         ...state,
@@ -62,7 +68,7 @@ const factorReducer = (state = initializedState, action) => {
         basketLength: action.data.length,
         loading: false,
         loadingList: false,
-        check:false
+        check: false
       };
     case "Incress_Details":
       const update = state.details.map((p) =>
