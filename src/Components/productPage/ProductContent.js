@@ -206,12 +206,16 @@ const ProductContent = ({ product }) => {
                     ? persianNumber(product.data.price) + " " + t("t")
                     : product.data.price + " " + t("t")}
                 </span>
-                <div className={`d-flex justify-content-between ${style.detail}`}>
+                <div
+                  className={`d-flex justify-content-between ${style.detail}`}
+                >
                   <h6>
                     {t("size")}
-                    {lang === "fa"
-                      ? toPersianNum(product.data.dimensions)
-                      : product.data.dimensions}
+                    <span>
+                      {lang === "fa"
+                        ? toPersianNum(product.data.dimensions)
+                        : product.data.dimensions}
+                    </span>
                   </h6>
                   <h6>{t("material") + t(`${product.data.material}`)}</h6>
                 </div>
