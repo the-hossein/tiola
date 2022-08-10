@@ -20,9 +20,12 @@ import { useRouter } from "next/router";
 
 import Placement from "../../tools/placement/Placement";
 import Delivery from "./Delivery";
+import Input from "../../tools/input/Input";
 const UserFactor = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const lang = useSelector((state) => state.stateLang.lng);
+
   const state = useSelector((state) => state.stateRegister);
   const basket = useSelector((state) => state.stateFactor);
   const dispatch = useDispatch();

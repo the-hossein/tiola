@@ -32,6 +32,7 @@ import { ADD_BASKET, BASE_URL } from "../../api/urls";
 import { addQtyAmont } from "../../redux/factor/factorAction";
 import Placement from "../../tools/placement/Placement";
 import persianNumber from "../../tools/persianNumber/persianNumber";
+import toPersianNum from "../../tools/persianNumber2/persianNumber2";
 const ProductContent = ({ product }) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -172,7 +173,7 @@ const ProductContent = ({ product }) => {
       dispatch(checkSavedItem(userID, lang));
     }
   }, []);
-
+  console.log(product.data);
   return product.data !== null ? (
     <>
       <div className="row  m-0">
@@ -205,7 +206,19 @@ const ProductContent = ({ product }) => {
                     ? persianNumber(product.data.price) + " " + t("t")
                     : product.data.price + " " + t("t")}
                 </span>
-
+                <div
+                  className={`d-flex justify-content-between ${style.detail}`}
+                >
+                  <h6>
+                    {t("size")}
+                    <span>
+                      {lang === "fa"
+                        ? toPersianNum(product.data.dimensions)
+                        : product.data.dimensions}
+                    </span>
+                  </h6>
+                  <h6>{t("material") + t(`${product.data.material}`)}</h6>
+                </div>
                 <p className={style.content}>
                   <ReactReadMoreReadLess
                     charLimit={450}

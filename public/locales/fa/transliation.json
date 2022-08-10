@@ -202,5 +202,11 @@
   "productCollection": "نام رگال",
   "row": "ردیف",
   "image": "تصویر محصول",
-  "factorDetailTitle":"جزئیات سفارش"
+  "factorDetailTitle": "جزئیات سفارش",
+  "destypehere": "اینجا بنویس",
+
+  "anyDes": "توضیحات",
+  "size": "ابعاد: ",
+  "material": "جنس: ",
+  "silk": "نخ ابریشم"
 }

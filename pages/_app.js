@@ -35,34 +35,33 @@ i18n
 function MyApp({ Component, pageProps }) {
   const [network, setNetwork] = useState();
   const router = useRouter();
-  const [showChild, setshowChild] = useState(false);
 
   useEffect(() => {
-    if (document.addEventListener) {
-      document.addEventListener(
-        "contextmenu",
-        function (e) {
-          e.preventDefault();
-        },
-        false
-      );
-      document.addEventListener("keydown", function (e) {
-        if (e.keyCode === 123) {
-          e.preventDefault();
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0)) {
-          e.preventDefault();
-        }
-        if (e.keyCode === 55 && e.keyCode === 58 && e.keyCode === 8) {
-          e.preventDefault();
-        }
-      });
-    } else {
-      document.attachEvent("oncontextmenu", function () {
-        // alert("This function has been disabled to prevent you from stealing my code!");
-        window.event.returnValue = false;
-      });
-    }
+    // if (document.addEventListener) {
+    //   document.addEventListener(
+    //     "contextmenu",
+    //     function (e) {
+    //       e.preventDefault();
+    //     },
+    //     false
+    //   );
+    //   document.addEventListener("keydown", function (e) {
+    //     if (e.keyCode === 123) {
+    //       e.preventDefault();
+    //     }
+    //     if (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0)) {
+    //       e.preventDefault();
+    //     }
+    //     if (e.keyCode === 55 && e.keyCode === 58 && e.keyCode === 8) {
+    //       e.preventDefault();
+    //     }
+    //   });
+    // } else {
+    //   document.attachEvent("oncontextmenu", function () {
+    //     // alert("This function has been disabled to prevent you from stealing my code!");
+    //     window.event.returnValue = false;
+    //   });
+    // }
     if (router.pathname === "/collections/[collectionname]") {
       if (pageProps.collection[0].data.length !== 0) {
         document
@@ -78,11 +77,8 @@ function MyApp({ Component, pageProps }) {
         .getElementsByTagName("body")[0]
         .style.setProperty("background", "#f2f2f2", "important");
     }
-    setshowChild(true);
   }, [pageProps]);
-  if (!showChild) {
-    return null;
-  }
+
   return (
     <Provider store={store}>
       <NextProgress

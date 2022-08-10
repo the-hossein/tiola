@@ -19,6 +19,40 @@
     font-size: 22pt !important;
 }
 
+.des {
+    display: flex;
+    justify-content: space-between;
+    direction: var(--direction);
+    margin-top: 2.5rem;
+}
+
+.des h1 {
+    font-size: var(--veryLg2-font);
+}
+
+.des textarea {
+    width: 60%;
+    height: 200px;
+    text-align-last: var(--float-left);
+    border: none;
+    border-radius: 10px !important;
+    padding: 1rem;
+}
+
+
+.des textarea ::placeholder {
+    color: var(--lightGray-border);
+    font-size: var(--xs-font);
+    direction: var(--direction);
+}
+
+.des textarea t:focus,
+.des textarea :focus-visible {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
 .payBtn {
     display: flex;
     justify-content: space-between;
@@ -237,6 +271,7 @@
     position: relative;
     width: 100%;
 }
+
 .enterCode input[type=text] {
     direction: rtl !important;
     text-align: right !important;
@@ -261,7 +296,7 @@
 
 .offCode button:disabled {
 
-    opacity:70%;
+    opacity: 70%;
     cursor: not-allowed;
 }
 
