@@ -114,13 +114,11 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
             </a>
           </Link>
           <span>{lang === "fa" ? convertDate(dateC[0]) : dateC[0]}</span>
-          {close ? (
+          {close && 
             <span>
               {lang === "fa" ? data.collection.title : data.collection.titleEn}
             </span>
-          ) : (
-            <span className={style.address}>{data.address.address}</span>
-          )}
+}
         </div>
         <div className={style.status}>
           <span>

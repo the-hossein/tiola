@@ -15,27 +15,34 @@ import {
 } from "../../redux/factor/factorAction";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Stepper from "../profile/Stepper";
+import { fetchOrderHistory } from "../../redux/orderHistory/orderHistoryAction";
+
 const FactorDetail = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const router = useRouter();
   const lang = useSelector((state) => state.stateLang.lng);
-
   const state = useSelector((state) => state.stateFactor.factorDetail);
+  const user = useSelector((state) => state.stateRegister);
+  const history = useSelector((state) => state.stateHistory);
+
   useEffect(() => {
+    console.log(history);
+    dispatch(fetchOrderHistory(user.userid));
     dispatch(factorDetailFetching(router.query.factorId));
   }, []);
   return (
     <div className="container">
       <div className={`row ${styles.factortable}`}>
-        <h3 className="p-0 mb-4">
+        {/* <h3 className="p-0 mb-4">
           {t("factorDetailTitle") + router.query.factorId}
         </h3>
         <TableContainer
           component={Paper}
           sx={{ height: "500px", overflow: "auto" }}
         >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell align="center">{t("row")}</TableCell>
@@ -48,12 +55,7 @@ const FactorDetail = () => {
             {state.map((item, index) => (
               <>
                 <TableBody>
-                  <TableCell align="center">
-                    {" "}
-                    <Link href={`/product/${item.productId}`}>
-                      <a>{index + 1}</a>
-                    </Link>
-                  </TableCell>
+                  <TableCell align="center">{index + 1}</TableCell>
                   <TableCell align="center">
                     <Link href={`/product/${item.productId}`}>
                       <a>
@@ -62,7 +64,9 @@ const FactorDetail = () => {
                     </Link>
                   </TableCell>
                   <TableCell align="center">
-                    {lang === "fa" ? item.title : item.titleEn}
+                    <Link href={`/product/${item.productId}`}>
+                      <a>{lang === "fa" ? item.title : item.titleEn}</a>
+                    </Link>
                   </TableCell>
                   <TableCell align="center">{item.qty}</TableCell>
                   <TableCell align="center">
@@ -74,7 +78,7 @@ const FactorDetail = () => {
               </>
             ))}
           </Table>
-        </TableContainer>
+        </TableContainer> */}
       </div>
     </div>
   );

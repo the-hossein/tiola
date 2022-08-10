@@ -39,6 +39,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const user = useSelector((state) => state.stateRegister);
   const lang = useSelector((state) => state.stateLang.lng);
   const [faQ, setFaQ] = useState(false);
+  const [des, setDes] = useState();
   const [pishtazPrice, setPishtazPrice] = useState(0);
   const [disOff, setDisOff] = useState(false);
   const [openRule, setOpenRule] = useState(false);
@@ -112,7 +113,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
           userid: user.userid,
           basketid: user.basketid,
           amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
-          description: disOff ? "Free Payment" : "peyment",
+          description: des,
           bank: 1,
           shiping: post === "pishtaz" ? 0 : 1
         });
@@ -120,7 +121,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
           userid: user.userid,
           basketid: user.basketid,
           amount: post === "pishtaz" ? totalprice * 10 : totalprice * 10,
-          description: disOff ? "Free Payment" : "peyment",
+          description: des,
           bank: 1,
           offcodeid: offcodeid,
           shiping: post === "pishtaz" ? 0 : 1
@@ -285,7 +286,14 @@ const BuyLists = ({ setBasketDatas, post }) => {
               />
             </>
           ))}
-
+          <div className={style.des}>
+            <h1 className={lang === "fa" ? "ms-3" : "me-3"}>{t("anyDes")}</h1>
+            <textarea
+              placeholder={t("destypehere")}
+              value={des}
+              onChange={(e) => setDes(e.target.value)}
+            />
+          </div>
           <div className={style.factorAction}>
             <div className={style.offCode}>
               <div className={style.enterCode}>
@@ -307,6 +315,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
                 </button>
               </div>
             </div>
+
             <FormGroup
               sx={{ alignContent: "center", color: "var(--red-pen)" }}
               className={style.checkFaq}

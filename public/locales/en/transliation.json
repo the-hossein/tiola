@@ -204,5 +204,10 @@
   "productCollection": "Collection Name",
   "row": "row",
   "image": "Product image",
-  "factorDetailTitle": "Factor Details"
+  "factorDetailTitle": "Factor Details",
+  "destypehere": "Type here",
+  "anyDes": "Any Description",
+  "size": "Dimensions: ",
+  "material": "Material: ",
+  "silk":"Silk"
 }

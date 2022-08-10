@@ -13,6 +13,16 @@
 
 }
 
+.detail {
+    width: 90%;
+    direction: var(--directionR);
+
+}
+
+.detail h6 {
+    font-size: var(--md-font);
+}
+
 .informationEn h1 {
     font-size: var(--veryLg2-font);
     margin: 0;
@@ -53,7 +63,8 @@
     object-fit: cover;
 }
 
-.information ,.informationEn{
+.information,
+.informationEn {
     direction: var(--direction);
     padding-left: 3rem !important;
     display: flex;
