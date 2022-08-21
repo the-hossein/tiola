@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 .container a {
   height: 100%;
@@ -29,7 +30,7 @@
   position: relative;
   z-index: 1;
   filter: saturate(20%);
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 .manto {
   width: 100%;
@@ -42,7 +43,7 @@
   display: grid;
   place-items: center;
   filter: saturate(20%);
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .tiola:hover,
@@ -81,4 +82,78 @@
 .child:hover .vector {
   transform: scale(1.2);
   opacity: 0.4;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+}
+
+.header span:first-child {
+  width: 45px !important;
+  height: 45px !important;
+}
+.listNav {
+  width: 30%;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: var(--light-pen);
+  font-size: var(--lg-font);
+}
+.listNav a {
+  border: none;
+}
+
+.selectLang {
+  position: absolute;
+  z-index: 100;
+  background-color: var(--light-pen);
+  width: 100px;
+  height: 60px;
+  right: -20px;
+  bottom: 0;
+  transform: skewX(-30deg);
+}
+.text_holder {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform: skewX(30deg);
+}
+.text_holderEn {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform: skewX(30deg);
+}
+.text_holder .lang_target {
+  cursor: pointer;
+  position: absolute;
+  left: 1.5rem;
+  top: 55%;
+  display: flex;
+  transform: translateY(-50%);
+}
+.text_holderEn .lang_target {
+  cursor: pointer;
+  position: absolute;
+  left: 1.5rem;
+  top: 55%;
+  display: flex;
+  transform: translateY(-50%);
+}
+.lang_target span {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
 }

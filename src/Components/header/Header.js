@@ -25,7 +25,7 @@ import {
   getProfile,
   loginFalse,
   loginTrue,
-  openPopUp
+  openPopUp,
 } from "../../redux/register/registerAction";
 import { query } from "../../redux/searchProduct/searchAction";
 import { notify } from "../../tools/toast/toast";
@@ -33,7 +33,7 @@ import { notify } from "../../tools/toast/toast";
 import { fetchProducts } from "../../redux/getallproducts/allProductsAction";
 import {
   deleteFactor,
-  getBasketDetails
+  getBasketDetails,
 } from "../../redux/factor/factorAction";
 const Header = ({ backColor }) => {
   const router = useRouter();
@@ -178,13 +178,14 @@ const Header = ({ backColor }) => {
   useEffect(() => {
     dispatch(getBasketDetails(state.basketid));
   }, [state.basketid]);
+
   useEffect(() => {
     if (basket.checkout === true) {
       window.location.reload();
     }
     targetSearch = allProducts.filter((item) => item.title.includes(""));
     dispatch(changeLang(Cookies.get("i18next")));
-    if(!allProducts.length){
+    if (!allProducts.length) {
       dispatch(fetchProducts());
     }
     const lngCookie = Cookies.get("i18next");
@@ -242,7 +243,7 @@ const Header = ({ backColor }) => {
       dispatch(openPopUp());
     } else {
       router.push({
-        pathname: "/factor"
+        pathname: "/factor",
       });
     }
   };
