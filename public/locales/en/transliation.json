@@ -209,5 +209,8 @@
   "anyDes": "Any Description",
   "size": "Dimensions: ",
   "material": "Material: ",
-  "silk":"Silk"
+  "silk": "Silk",
+  "teamKarmaAtWorked": "Karma team is developing this section.",
+  "visitTiola": "visit Tiola",
+  "lang": "language"
 }

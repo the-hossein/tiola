@@ -1,15 +1,25 @@
 import Head from "next/head";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import callApi from "../src/api/callApi";
 import { BASE_URL, GET_LAST_EXPLORE_IMAgE, GET_SLIDER } from "../src/api/urls";
+import ComingSoon from "../src/Components/comingSoon/ComingSoon";
 import Footer from "../src/Components/footer/Footer";
 import Header from "../src/Components/header/Header";
 import Landing from "../src/Components/landing/Landing";
+import Vitrine from "../src/Components/vitrineTiolaAndManto/Vitrine";
 import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 
 export default function Home({ slider, explor }) {
   const state = useSelector((state) => state.stateRegister);
+
+  const [vitrine, setVitrine] = useState(0);
+
+  const showPage = (num) => {
+    setVitrine(num)
+  }
+
   const { t } = useTranslation();
   return (
     <>
@@ -22,19 +32,36 @@ export default function Home({ slider, explor }) {
         />
         <meta name="enamad" content="167125" />
       </Head>
-      <header>
-        <Header backColor={"headerBlur"} />
-      </header>
-      {state.userDataLoader ? (
-        <ScreenLoader />
+      {vitrine === 0 ? (
+        <Vitrine show={showPage} />
+      ) : vitrine === 1 ? (
+        <>
+          <header>
+            <Header backColor={"headerBlur"} />
+          </header>
+          {state.userDataLoader ? (
+            <ScreenLoader />
+          ) : (
+            <main>
+              {/* {vitrine === 0 ? (
+            
+          ) : vitrine === 1 ? (
+            ) : (
+              <h1>comingsoon</h1>
+              )} */}
+              <Landing
+                product={slider[0].data}
+                explore={explor[0].data[Math.round(Math.random() * 4)]}
+              />
+            </main>
+          )}
+          <footer>
+            <Footer />
+          </footer>
+        </>
       ) : (
-        <main>
-          <Landing product={slider[0].data} explore={explor[0].data[Math.round(Math.random()*4)]} />
-        </main>
+        <ComingSoon show={showPage} />
       )}
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 }
@@ -44,13 +71,12 @@ export async function getServerSideProps(context) {
 
   const data = await callApi(BASE_URL + GET_SLIDER, "{}", myHeaders, "GET");
   const exploreImage = await callApi(
-    
     BASE_URL + GET_LAST_EXPLORE_IMAgE,
     "{}",
     myHeaders,
     "GET"
   );
   return {
-    props: { slider: data, explor: exploreImage } // will be passed to the page component as props
+    props: { slider: data, explor: exploreImage }, // will be passed to the page component as props
   };
 }
