@@ -7,11 +7,11 @@
   overflow: hidden;
   position: relative;
 }
-.container a {
+/* .container a {
   height: 100%;
   flex: 1 3;
   border: 1px solid #000;
-}
+} */
 
 .child {
   height: 100vh;
@@ -31,6 +31,8 @@
   z-index: 1;
   filter: saturate(20%);
   transition: all 0.2s ease-in;
+  display: grid;
+  place-items: center;
 }
 .manto {
   width: 100%;
@@ -40,15 +42,15 @@
   background-size: cover;
   cursor: pointer;
   position: relative;
-  display: grid;
-  place-items: center;
+  z-index: 1;
   filter: saturate(20%);
   transition: all 0.2s ease-in;
+  display: grid;
+  place-items: center;
 }
 
 .tiola:hover,
 .manto:hover {
-  /* opacity: 0; */
   filter: initial;
 }
 
@@ -102,7 +104,7 @@
   height: 45px !important;
 }
 .listNav {
-  width: 30%;
+  width: 40%;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -156,4 +158,51 @@
   width: 20px !important;
   height: 20px !important;
   border-radius: 50% !important;
+}
+
+@media (max-width: 900px) {
+  .listNav {
+    padding: 0;
+    width: 60%;
+  }
+  .container {
+    height: auto;
+    flex-direction: column-reverse;
+    overflow: initial;
+  }
+  .child {
+    height: 40vh !important;
+    flex: unset;
+    width: 100%;
+  }
+  .child video {
+    width: 100%;
+    height: 40vh !important;
+    object-fit: cover;
+    filter: brightness(0.8);
+  }
+  .manto,
+  .tiola {
+    height: 100% !important;
+    background-size: cover;
+    background-position: 10% 20%;
+  }
+  .vector {
+    width: 20%;
+  }
+
+  .vector img {
+    transform: scale(.6);
+  }
+}
+
+@media (max-width: 542px) {
+  .header {
+    padding: 1rem 1rem;
+  }
+  .listNav {
+    padding: 0;
+    width: 70%;
+    font-size: var(--sm-font);
+  }
 }
