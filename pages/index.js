@@ -14,12 +14,6 @@ import ScreenLoader from "../src/tools/screenLoader/ScreenLoader";
 export default function Home({ slider, explor }) {
   const state = useSelector((state) => state.stateRegister);
 
-  const [vitrine, setVitrine] = useState(0);
-
-  const showPage = (num) => {
-    setVitrine(num)
-  }
-
   const { t } = useTranslation();
   return (
     <>
@@ -32,36 +26,22 @@ export default function Home({ slider, explor }) {
         />
         <meta name="enamad" content="167125" />
       </Head>
-      {vitrine === 0 ? (
-        <Vitrine show={showPage} />
-      ) : vitrine === 1 ? (
-        <>
-          <header>
-            <Header backColor={"headerBlur"} />
-          </header>
-          {state.userDataLoader ? (
-            <ScreenLoader />
-          ) : (
-            <main>
-              {/* {vitrine === 0 ? (
-            
-          ) : vitrine === 1 ? (
-            ) : (
-              <h1>comingsoon</h1>
-              )} */}
-              <Landing
-                product={slider[0].data}
-                explore={explor[0].data[Math.round(Math.random() * 4)]}
-              />
-            </main>
-          )}
-          <footer>
-            <Footer />
-          </footer>
-        </>
+      <header>
+        <Header backColor={"headerBlur"} />
+      </header>
+      {state.userDataLoader ? (
+        <ScreenLoader />
       ) : (
-        <ComingSoon show={showPage} />
+        <main>
+          <Landing
+            product={slider[0].data}
+            explore={explor[0].data[Math.round(Math.random() * 4)]}
+          />
+        </main>
       )}
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
