@@ -128,9 +128,7 @@ const AddNewAddress = () => {
           dispatch(loadingAddress());
             const addAddresUser = async () => { 
               try {
-                var myHeaders = new Headers();
-                myHeaders.append("Authorization", `Bearer ${token}`);
-                myHeaders.append("Content-Type", "application/json");
+                var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
                 var raw = JSON.stringify({
                   id: user.basketid,
                   address: `${newAddres}`,

@@ -29,9 +29,7 @@ const PaymentStatus = () => {
       const search = window.location.search;
       const params = new URLSearchParams(search);
       var OrderId = params.get("orderid");
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      myHeaders.append("Content-Type", "application/json");
+      var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
 
       const VerifyPayment = async () => {
         try {

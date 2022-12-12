@@ -8,88 +8,87 @@ if (typeof window !== "undefined") {
 const getphone = (num) => {
   return {
     type: "GETPHONE",
-    num: num
+    num: num,
   };
 };
 const getCode = (code) => {
   return {
     type: "GETCODE",
-    code: code
+    code: code,
   };
 };
 const sendCodeSuccess = () => {
   return {
-    type: "SEND_CODE_SUCCESS"
+    type: "SEND_CODE_SUCCESS",
   };
 };
 const checkOtpSuccess = () => {
   return {
-    type: "CHECK_OTP_SUCCESS"
+    type: "CHECK_OTP_SUCCESS",
   };
 };
 const checkOtpFailed = () => {
   return {
-    type: "CHECK_OTP_FAILED"
+    type: "CHECK_OTP_FAILED",
   };
 };
 const sendCodeFailed = () => {
   return {
-    type: "SEND_CODE_FAILED"
+    type: "SEND_CODE_FAILED",
   };
 };
 const loginTrue = () => {
   return {
-    type: "LOGIN_TRUE"
+    type: "LOGIN_TRUE",
   };
 };
 const loginFalse = () => {
   return {
-    type: "LOGIN_FALSE"
+    type: "LOGIN_FALSE",
   };
 };
 const deleteUserData = () => {
   return {
-    type: "DELETE_USER_DATA"
+    type: "DELETE_USER_DATA",
   };
 };
 const loader = () => {
   return {
-    type: "LOADER"
+    type: "LOADER",
   };
 };
 const userData = (user) => {
   return {
     type: "USER_DATA",
-    user: user
+    user: user,
   };
 };
 const openPopUp = () => {
   return {
-    type: "OPEN_POPUP"
+    type: "OPEN_POPUP",
   };
 };
 const closePopUp = () => {
   return {
-    type: "CLOSE_POPUP"
+    type: "CLOSE_POPUP",
   };
 };
 const closePopUpGetData = () => {
   return {
-    type: "CLOSE_POPUP_GETDATA"
+    type: "CLOSE_POPUP_GETDATA",
   };
 };
 const registerPhone = (num, lang) => {
   return (dispatch) => {
     dispatch(loader());
     const sendPhone = async () => {
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      var myHeaders = { "Content-Type": "application/json" };
 
       var raw = JSON.stringify({
         methodname: 5,
         checkPhoneNumber: {
-          phonenumber: `${num}`
-        }
+          phonenumber: `${num}`,
+        },
       });
       const registerUser = await callApi(
         BASE_URL + SIGN_UP,
@@ -134,25 +133,24 @@ const registerPhone = (num, lang) => {
 const basketid = (data) => {
   return {
     type: "BASKET_ID",
-    data: data
+    data: data,
   };
 };
 const dataUserloaderFalse = () => {
   return {
-    type: "DATA_USERLOADER_FALSE"
+    type: "DATA_USERLOADER_FALSE",
   };
 };
 const basketLoaderFalse = () => {
   return {
-    type: "BASKET_LOADER_FALSE"
+    type: "BASKET_LOADER_FALSE",
   };
 };
 const registerCode = (code, num, lang, router) => {
   return (dispatch) => {
     dispatch(loader());
     const checkOtp = async () => {
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      var myHeaders = { "Content-Type": "application/json" };
 
       var raw = JSON.stringify({
         methodname: 2,
@@ -160,8 +158,8 @@ const registerCode = (code, num, lang, router) => {
           phoneNumber: `${num}`,
           code: `${code}`,
           referralSite: "string",
-          type: 0
-        }
+          type: 0,
+        },
       });
       const registerCode = await callApi(
         BASE_URL + SIGN_UP,
@@ -205,7 +203,7 @@ const registerCode = (code, num, lang, router) => {
         const data = {
           token: registerCode[0].data.token,
           exp: registerCode[0].data.expiration,
-          phone: num
+          phone: num,
         };
 
         localStorage.setItem("userToken", JSON.stringify(data));
@@ -214,7 +212,7 @@ const registerCode = (code, num, lang, router) => {
         notify(text, "success");
         if (router.pathname === "/signin") {
           router.push({
-            pathname: "/"
+            pathname: "/",
           });
         }
         dispatch(sendCodeFailed());
@@ -255,7 +253,7 @@ const registerCode = (code, num, lang, router) => {
 };
 const userDataLoader = () => {
   return {
-    type: "USER_DATA_LOADER"
+    type: "USER_DATA_LOADER",
   };
 };
 const getProfile = () => {
@@ -266,12 +264,13 @@ const getProfile = () => {
     var phone = userToken.phone;
     var token = userToken.token;
 
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    myHeaders.append("Content-Type", "application/json");
+    var myHeaders = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
     const profile = async () => {
       var raw = JSON.stringify({
-        phonenumber: `${phone}`
+        phonenumber: `${phone}`,
       });
       try {
         const user = await callApi(
@@ -334,5 +333,5 @@ export {
   openPopUp,
   updateSetProfile,
   deleteUserData,
-  closePopUpGetData
+  closePopUpGetData,
 };

@@ -35,9 +35,7 @@ const GetUserData = () => {
       const adduserData = async () => {
         const userToken = JSON.parse(ls);
         const token = userToken.token;
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-        myHeaders.append("Content-Type", "application/json");
+        var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
         var date = new Date(birth * 1000);
         console.log(state.userId);
         const raw = JSON.stringify({

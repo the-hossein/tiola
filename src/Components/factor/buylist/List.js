@@ -69,8 +69,7 @@ const List = ({ data, alldata }) => {
       var userToken = JSON.parse(ls);
       var token = userToken.token;
       const increase = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
+        var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
         const statusAdd = await callApi(
           `${BASE_URL + INCREASE_QTY}?BasketDetailId=${data.id}`,
           "{}",
@@ -105,8 +104,7 @@ if(ls){
   var userToken = JSON.parse(ls);
   var token = userToken.token;
   const decrease = async () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
+    var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
     const statusDec = await callApi(
       `${BASE_URL + DECREASE_QTY}?BasketDetailId=${data.id}`,
       "{}",

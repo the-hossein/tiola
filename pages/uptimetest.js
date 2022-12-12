@@ -22,8 +22,7 @@ const uptimetest = ({ slider }) => {
 
 export default uptimetest;
 export async function getServerSideProps(context) {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  var myHeaders = {"Content-Type": "application/json"}
 
   const data = await callApi(BASE_URL + GET_SLIDER, "{}", myHeaders, "GET");
 

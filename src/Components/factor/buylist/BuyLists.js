@@ -106,9 +106,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
         setpreloadPay(true);
         const userToken = JSON.parse(ls);
         const token = userToken.token;
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-        myHeaders.append("Content-Type", "application/json");
+        var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
         var raw = JSON.stringify({
           userid: user.userid,
           basketid: user.basketid,
@@ -212,8 +210,7 @@ const BuyLists = ({ setBasketDatas, post }) => {
   const offHandler = () => {
     setoffCodeLoader(true);
     const offCodeApi = async () => {
-      let myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      var myHeaders = {"Content-Type": "application/json"}
       const offStatus = await callApi(
         `${BASE_URL + OFF_CODE}?Code=${offCode}`,
         "{}",
