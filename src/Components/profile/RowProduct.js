@@ -37,9 +37,7 @@ const RowProduct = ({ close, statusText, data, userId, removeId, loading }) => {
     const userToken = JSON.parse(ls);
     var phone = userToken.phone;
     var token = userToken.token;
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    myHeaders.append("Content-Type", "application/json");
+    var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
 
     var raw = JSON.stringify({
       userid: userId,

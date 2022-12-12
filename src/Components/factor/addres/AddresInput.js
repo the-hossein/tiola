@@ -132,8 +132,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
 
     const choseAddress = async () => {
       dispatch(loadingAddress());
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
+      var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
       const choseStatus = await callApi(
         `${BASE_URL + CHOSE_ADDRESS}?UserId=${user.userid}&id=${data.id}`,
         "{}",
@@ -162,9 +161,7 @@ const AddresInput = ({ data, id, checkicon, icon, onChangeRadio ,allData}) => {
       }else{
         dispatch(loadingAddress());
         const editApi = async () => {
-          var myHeaders = new Headers();
-          myHeaders.append("Authorization", `Bearer ${token}`);
-          myHeaders.append("Content-Type", "application/json");
+          var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
     
           var raw = JSON.stringify({
             id: data.id,

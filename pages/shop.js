@@ -45,8 +45,7 @@ export default function Shop({ shop }) {
   );
 }
 export async function getServerSideProps(context) {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  var myHeaders = {"Content-Type": "application/json"};
 
   const data = await callApi(BASE_URL + TYPE_PAGE_API, "{}", myHeaders, "GET");
   return {

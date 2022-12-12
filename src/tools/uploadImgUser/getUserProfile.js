@@ -14,9 +14,7 @@ const ChangeImage = async (e) => {
       const userToken = JSON.parse(ls);
 
       var usertoken = userToken.token;
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${usertoken}`);
-      myHeaders.append("Content-Type", "application/json");
+      var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${usertoken}`}
 
 
       var formdata = new FormData();

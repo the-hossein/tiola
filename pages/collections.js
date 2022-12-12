@@ -29,8 +29,7 @@ export default function Collections({ allCollection }) {
 }
 export async function getServerSideProps(context) {
   const { params } = context;
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  var myHeaders = {"Content-Type": "application/json"}
 
   const data = await callApi(BASE_URL + ALL_COLLECTION, "{}", myHeaders, "GET");
 

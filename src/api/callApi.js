@@ -1,22 +1,30 @@
- const callApi= async (BaseUrl, Body, Header, Method) => {
+import axios from "axios";
+
+const callApi = async (BaseUrl, Body, Header, Method) => {
   var requestOptions;
   if (Body === "{}") {
     requestOptions = {
+      url: BaseUrl,
       method: Method,
       headers: Header,
-      redirect: "follow"
     };
   } else {
     requestOptions = {
       method: Method,
       headers: Header,
       body: Body,
-      redirect: "follow"
     };
   }
-  const response = await fetch(BaseUrl, requestOptions);
-  const data = await response.json();
-  const status = await response.status;
-  return [data,status];
+  try {
+    const response = await axios(requestOptions);
+    const data = await response.data;
+    const status = await response.status;
+    return [data, status];
+  } catch (err) {
+    console.log(err)
+    const data = [];
+    const status = 400;
+    return [data, status];
+  }
 };
-export default callApi
+export default callApi;

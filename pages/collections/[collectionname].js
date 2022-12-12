@@ -66,8 +66,7 @@ export default function CollectionName({ collection }) {
 export async function getServerSideProps(context) {
   const { params } = context;
   const { collectionname } = params;
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  var myHeaders = {"Content-Type": "application/json"}
 
   const data = await callApi(
     `${BASE_URL + GET_WITH_COLLECTION}?ColectionId=${collectionname}`,

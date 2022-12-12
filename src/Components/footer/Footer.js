@@ -61,8 +61,7 @@ const Footer = () => {
       //checks whether the pressed key is "Enter"
       if (phoneNum.length === 11 && /^[0]?[9][0-9]{9}$/.test(phoneNum)) {
         const addUser = async () => {
-          var myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
+          var myHeaders = {"Content-Type": "application/json"}
           const response = await callApi(
             `${BASE_URL + ADD_USER}?PhoneNumber=${phoneNum}`,
             "{}",

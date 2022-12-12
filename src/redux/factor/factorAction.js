@@ -112,8 +112,7 @@ const deleteAddresUser = (allAddress, id) => {
     if (newls !== null) {
       const userToken = JSON.parse(newls);
       const token = userToken.token;
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
+      var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
 
       const deleted = async () => {
         const status = await callApi(
@@ -137,8 +136,7 @@ const getBasketDetails = (basketid) => {
     if (newls !== null) {
       const userToken = JSON.parse(newls);
       const token = userToken.token;
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
+      var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
       dispatch(loaderFactorTrue());
 
       const basketDetails = async () => {
@@ -172,8 +170,7 @@ export const factorDetailFetching = (basketID) => {
     if (newls !== null) {
       const userToken = JSON.parse(newls);
       const token = userToken.token;
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", `Bearer ${token}`);
+      var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
       dispatch(loaderFactorTrue());
 
       const basketDetails = async () => {
@@ -202,8 +199,7 @@ const deleteBasketUser = (alldata, data) => {
     var ls = localStorage.getItem("userToken");
     const userToken = JSON.parse(ls);
     const token = userToken.token;
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
+    var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
     const deletProduct = async () => {
       const status = await callApi(
         `${BASE_URL + DELETE_BASKET}?BasketDetailId=${data.id}`,
@@ -228,8 +224,7 @@ const getuserAddress = (userid) => {
       if (ls !== null) {
         const userToken = JSON.parse(ls);
         const token = userToken.token;
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
+        var myHeaders = {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
         // dispatch(loaderFactorTrue());
         dispatch(loadingAddress());
         const allAddress = async () => {
