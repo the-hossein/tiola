@@ -1,57 +1,57 @@
 import React from "react";
 import Image from "next/image";
 import style from "./OurTeam.module.css";
-import teampic from "../../../public/Assets/images/sahar.jpg";
+
 import { useTranslation } from "react-i18next";
 import Team from "./Team";
 import { useSelector } from "react-redux";
-import pers1 from "../../../public/Assets/images/1.jpg";
-import sina from "../../../public/Assets/images/Sina.jpg";
-import milad from "../../../public/Assets/images/Milad.jpg";
-import hosein from "../../../public/Assets/images/Hossein.jpg";
-import ali from "../../../public/Assets/images/Ali.jpg";
-import fatemeh from "../../../public/Assets/images/Fatemeh.jpg";
-import erfan from "../../../public/Assets/images/Erfan.jpg";
-import fazele from "../../../public/Assets/images/Fazeleh.jpg";
-import mohadese from "../../../public/Assets/images/Mohadese.jpg";
-import yasmin from "../../../public/Assets/images/Yasii.jpg";
-import sara from "../../../public/Assets/images/Sara.jpg";
-import ardalan from "../../../public/Assets/images/Ardalan.jpg";
-import yasi from "../../../public/Assets/images/Yasi.jpg";
-import ramin from "../../../public/Assets/images/Ramin.jpg";
-import parmida from "../../../public/Assets/images/Parmida.jpg";
-import hana from "../../../public/Assets/images/Parmida.jpg";
-import owenMehdi from "../../../public/Assets/images/tiolaOwen.png";
+
+/* import sina from "/Assets/images/Sina.jpg";
+import milad from "/Assets/images/Milad.jpg"; */
+/* import hosein from "/Assets/images/Hossein.jpg";
+import ali from "/Assets/images/Ali.jpg";
+import fatemeh from "/Assets/images/Fatemeh.jpg";
+import erfan from "/Assets/images/Erfan.jpg"; */
+/* import fazele from "/Assets/images/Fazeleh.jpg";
+import mohadese from "/Assets/images/Mohadese.jpg";
+import yasmin from "/Assets/images/Yasii.jpg";
+import sara from "/Assets/images/Sara.jpg";
+import ardalan from "/Assets/images/Ardalan.jpg";
+import yasi from "/Assets/images/Yasi.jpg";
+import ramin from "/Assets/images/Ramin.jpg";
+import parmida from "/Assets/images/Parmida.jpg"; */
+
+/* import owenMehdi from "/Assets/images/tiolaOwen.png"; */
 
 const OurTeam = () => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.stateLang.lng);
 
-  const owenTiola = [{img: owenMehdi, name: t("mehdiOwen"), des: t("mehdiOwenDes")}]
+  const owenTiola = [{img: "/Assets/images/tiolaOwen.png", name: t("mehdiOwen"), des: t("mehdiOwenDes")}]
 
   const teamManager = [
-    { img: sina, name: t("sepehri"), des: t("sepehriDes") },
-    { img: milad, name: t("milad"), des: t("miladDes") }
+    { img:  "/Assets/images/Sina.jpg", name: t("sepehri"), des: t("sepehriDes") },
+    { img: "/Assets/images/Milad.jpg", name: t("milad"), des: t("miladDes") }
   ];
   const teamIT = [
-    { img: hosein, name: t("hosein"), des: t("hoseinDes") },
-    { img: ali, name: t("ali"), des: t("aliDes") },
-    { img: fatemeh, name: t("fatemeh"), des: t("fatemehDes") },
-    { img: erfan, name: t("erfan"), des: t("erfanDes") }
+    { img: "/Assets/images/Hossein.jpg", name: t("hosein"), des: t("hoseinDes") },
+    { img: "/Assets/images/Ali.jpg", name: t("ali"), des: t("aliDes") },
+    { img: "/Assets/images/Fatemeh.jpg", name: t("fatemeh"), des: t("fatemehDes") },
+    { img: "/Assets/images/Erfan.jpg", name: t("erfan"), des: t("erfanDes") }
   ];
   const teamUI = [
-    { img: ardalan, name: t("ardalan"), des: t("ardalanDes") },
-    { img: yasi, name: t("yasi"), des: t("yasiDes") },
-    { img: parmida, name: t("parmida"), des: t("yasiDes") },
-    { img: ramin, name: t("ramin"), des: t("raminDes") }
+    { img: "/Assets/images/Ardalan.jpg", name: t("ardalan"), des: t("ardalanDes") },
+    { img: "/Assets/images/Yasi.jpg", name: t("yasi"), des: t("yasiDes") },
+    { img: "/Assets/images/Parmida.jpg", name: t("parmida"), des: t("yasiDes") },
+    { img: "/Assets/images/Ramin.jpg", name: t("ramin"), des: t("raminDes") }
   ];
   const teamWR = [
-    { img: fazele, name: t("fazele"), des: t("fazeleDes") },
-    { img: mohadese, name: t("mohadese"), des: t("mohadeseDes") }
+    { img: "/Assets/images/Fazeleh.jpg", name: t("fazele"), des: t("fazeleDes") },
+    { img: "/Assets/images/Mohadese.jpg", name: t("mohadese"), des: t("mohadeseDes") }
   ];
   const teamDesign = [
-    { img: yasmin, name: t("yasamin"), des: t("yasaminDes") },
-    { img: sara, name: t("sara"), des: t("saraDes") },
+    { img: "/Assets/images/Yasii.jpg", name: t("yasamin"), des: t("yasaminDes") },
+    { img: "/Assets/images/Sara.jpg", name: t("sara"), des: t("saraDes") },
     // { img: hana, name: t("hana"), des: t("hanaDes") }
   ];
   return (
@@ -59,7 +59,7 @@ const OurTeam = () => {
       <div className="row m-0">
         <div className={`col-lg-6  p-0 col-md-6 col-12 ${style.stickyStyle}`}>
           <div className={style.teamImg}>
-            <Image src={teampic} alt="teamPic" />
+            <Image src={"/Assets/images/sahar.jpg"} alt="teamPic" layout="fill" />
           </div>
         </div>
         <div

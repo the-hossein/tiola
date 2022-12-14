@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./Register.module.css";
 import Image from "next/image";
 import Loader from "../../tools/loader/Loader";
-import loginPic from "../../../public/Assets/images/1-1.jpg";
+/* import loginPic from "/Assets/images/1-1.jpg"; */
 import Input from "../../tools/input/Input";
 import NormalBtn from "../../tools/normalBtn/NormalBtn";
 import { useTranslation } from "react-i18next";
@@ -323,7 +323,7 @@ const Register = ({ title }) => {
           )}
         </div>
         <div className={`col-lg-6 col-md-6 col-12 p-0 ${style.pic}`}>
-          <Image alt="sign image" src={loginPic} />
+          <Image alt="sign image" src={"/Assets/images/1-1.jpg"} />
         </div>
       </div>
     </section>

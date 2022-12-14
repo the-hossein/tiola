@@ -2,8 +2,8 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import style from "./StatusPayment.module.css";
-import erroPic from "../../../public/Assets/images/errorPic.jpg";
-import successPIc from "../../../public/Assets/images/successPic.jpg";
+/* import erroPic from "/Assets/images/errorPic.jpg";
+import successPIc from "/Assets/images/successPic.jpg"; */
 import Alert from "react-bootstrap/Alert";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -113,9 +113,9 @@ const StatusPayment = ({ statusCode, type }) => {
               </Alert>
             )}
             {type === "success" ? (
-              <Image src={successPIc} />
+              <Image src={"/Assets/images/successPic.jpg"} />
             ) : (
-              <Image src={erroPic} />
+              <Image src={"/Assets/images/errorPic.jpg"} />
             )}
 
             <button className={style.backindex} onClick={goHomeHandler}>
