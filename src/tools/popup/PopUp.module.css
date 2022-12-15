@@ -1,0 +1,94 @@
+.close {
+    background-color: var(--light-pen);
+    border-radius: 100%;
+
+}
+
+.popoup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.52);
+    top: 0px;
+    z-index: 99;
+    text-align: center;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.again {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--red-pen);
+    cursor: pointer;
+}
+
+
+
+.content input {
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+.content input:focus-visible {
+    border: 1px solid var(--green-pen) !important;
+
+}
+
+.error {
+    color: var(--red-pen);
+    font-size: var(--verySmall-font);
+    text-align: center;
+    display: block;
+    margin: 0.7rem 0;
+}
+
+.popoupContent label {
+    text-align-last: center;
+    float: none;
+
+}
+
+.popoupContent {
+
+    width: 320px;
+    background-color: var(--body-Color);
+    border-radius: var(--Product-Border-radius);
+    font-size: var(--xs-font);
+    padding: 1.5rem;
+    position: relative;
+    margin: 0 auto;
+    top: 1%;
+    text-align: center;
+
+}
+
+.popoupHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    font-size: var(--md-font);
+}
+
+.timer {
+    display: block;
+    margin-top: 1rem;
+    font-size: var(--verySmall-font) !important;
+}
+
+.donebtn {
+    background-color: var(--green-pen);
+    padding: 0.4rem 2rem;
+    border-radius: var(--Product-Border-radius);
+    border: none;
+    display: block;
+    font-size: var(--xs-font);
+    margin: auto;
+    margin-top: 1rem;
+    color: var(--light-pen);
+}

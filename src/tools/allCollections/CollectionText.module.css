@@ -1,0 +1,31 @@
+.collectionTitile {
+    margin-bottom: 1.5rem;
+    font-size: var(--xl-font);
+}
+
+.ViewAll {
+    text-align: right;
+    font-size: var(--md-font) !important;
+    cursor: pointer;
+
+}
+
+.CollectionText {
+    line-height: 1.6;
+    font-size: var(--md-font);
+    direction: var(--direction);
+}
+
+.ViewAllLeft {
+    text-align: left;
+    font-size: var(--md-font) !important;
+    cursor: pointer;
+
+}
+
+.secondeSection {
+    transform: translateY(-40px);
+}
+.textContainer{
+    margin-top: 4rem;
+}

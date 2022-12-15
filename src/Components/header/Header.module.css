@@ -1,0 +1,364 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    padding: 1.2rem 4rem;
+    color: var(--light-pen);
+    font-size: var(--md-font);
+    direction: var(--direction);
+    z-index: 1000 !important;
+}
+
+.allitems div a {
+    margin: 0 1rem;
+    display: inline-block;
+}
+
+.basket {
+    position: relative;
+}
+
+.basket svg {
+    font-size: 14pt;
+
+}
+
+/* .menuDir {
+    direction: var(--directionR);
+} */
+
+
+.headaritem {
+    width: 52.3%;
+    justify-content: space-between;
+}
+.logoDiv{
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 40px;
+}
+.active {
+    border-width: 10px;
+    border-bottom: 1px solid var(--blue-pen);
+}
+
+.headaritem>a {
+
+    width: 50px !important;
+    height: 50px;
+}
+
+
+.allitems svg {
+    width: 20px;
+}
+
+.allitems span,
+.allitems svg,
+.headerIcon span,
+.headerIcon div,
+.headerIcon svg,
+.logo {
+    cursor: pointer !important;
+}
+
+.headerIcon>div {
+    padding: 0 1.5rem !important;
+
+}
+
+.mobileIcon svg {
+    margin: 0 5px;
+    font-size: 16pt;
+}
+
+.mobileIcon .searchBox {
+    font-size: 9pt !important;
+}
+
+.mobileIcon a {
+
+    padding: 0 1.5rem !important;
+}
+
+.mobileLogo {
+    justify-content: space-between;
+    /* flex: 0.35; */
+}
+
+.mobileLogo>a:last-child {
+    width: 30px !important;
+    height: 30px !important;
+
+}
+
+.mobileLogo>a:first-child {
+    padding: 0 1rem;
+}
+
+.headerIcon {
+    display: flex;
+    align-items: center;
+}
+
+.searchBox::placeholder {
+    font-size: var(--sm-font) !important;
+}
+
+.searchBox {
+    background-color: var(--light-pen);
+    color: black;
+    border-radius: 6px;
+    text-align: left;
+    /* display: none; */
+    /* opacity: 0; */
+    /* width: 0; */
+    border: none;
+    font-size: var(--xs-font);
+    transition: all 0.5s linear !important;
+}
+
+.searchBox:focus-visible,
+.searchBox:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+.searchBoxIcon {
+    position: absolute;
+    color: #111111;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    font-size: 14pt !important;
+    transition: all .2s linear;
+}
+
+
+.inputDesignNot {
+    /* display: none; */
+    opacity: 0;
+    width: 10px;
+    /* padding: 0; */
+}
+.inputDesign {
+    width: 280px !important;
+    opacity: 1 !important;
+    /* display: inline; */
+    /* transition: all .5s linear; */
+    padding: .5rem 1.8rem;
+}
+
+.basketAmount {
+    border-radius: 50%;
+    padding: 2px 4px 0;
+    position: absolute;
+    top: -5px;
+    right: 8px;
+    font-size: var(--verySmall-font);
+    border: 1px solid var(--light-pen);
+}
+
+.basketAmountEn {
+    border-radius: 50%;
+    padding: 0px 5px 0;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    font-size: 8pt;
+    border: 1px solid var(--light-pen);
+}
+
+@keyframes searchBoxAnimation {
+    from {
+        display: block;
+        width: 0px;
+    }
+
+    to {
+        width: 180px;
+    }
+}
+
+@keyframes searchBoxAnimationMB {
+    from {
+        display: block;
+        width: 0px;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+@media(max-width:1200px){
+    .headaritem{
+        width: 52.3%;
+    }
+}
+@media(max-width:1000px) {
+    .header {
+        padding: 0.6rem 1.5rem;
+        font-size: var(--md-font);
+
+    }
+.headaritem{
+    width: 52.6%;
+}
+    .allitems div a {
+        margin: 0 0.7rem;
+    }
+}
+
+@media(max-width:768px) {
+    .searchBoxIcon {
+        left: 1px;
+    }
+    .searchBox {
+        background-color: var(--light-pen);
+        color: black;
+        border-radius: 6px;
+        text-align: left;
+        /* display: none; */
+        /* opacity: 0; */
+        width: 0;
+        border: none;
+        font-size: var(--xs-font);
+        transition: all 0.4s ease-in-out !important;
+    }
+
+    .basketAmount {
+        top: -5px;
+        right: -17px;
+    }
+
+    .basketAmountEn {
+        top: 0px;
+        right: 20px;
+    }
+
+}
+
+@media(max-width:475px) {
+    .mobileIcon a {
+        padding: 0 0.5rem !important;
+
+    }
+
+
+
+    .header {
+        padding: 0.6rem 1rem;
+    }
+
+    .searchBox::placeholder {
+        display: inline !important;
+        font-size: var(--sm-font) !important;
+        color: #111111 !important;
+    }
+
+    .searchBox{
+        width: .2px;
+    }
+    .searchBoxIcon {
+        font-size: 13pt !important;
+        position: absolute;
+        left: 1%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .inputDesignNot {
+        position: absolute;
+        opacity: 0;
+        width: .1px;
+        height: 1px;
+        /* transform: translateY(-1200%) translateX(-500%); */
+    }
+    .inputDesign {
+        width: 100% !important;
+        opacity: 1 !important;
+        padding: .5rem 1.8rem;
+    }
+
+
+    .suggest {
+        top: 30px !important;
+    }
+
+        /* .mobileIcon .searchBoxIcon {
+            position: absolute;
+            margin: 0 !important;
+            right: 5px !important;
+            top: 8px !important;
+        } */
+
+    
+.basketAmount {
+    right: -16px;
+    transform: scale(.9);
+}
+
+.basketAmountEn {
+    right: 20px;
+    transform: scale(.9);
+}
+
+}
+
+/* @media(max-width:366px) {
+
+    .headerIcon div,
+    .mobileIcon span,
+    .mobileLogo>span:first-child {
+        padding: 0 0.5rem !important;
+    }
+
+} */
+
+/* style box suggest search */
+.suggest {
+    width: 80%;
+    height: fit-content;
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #111111;
+    position: absolute;
+    top: 45px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    /* align-items: center; */
+    max-height: 300px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* z-index: 5150 !important; */
+    direction: rtl !important;
+    z-index: 26 !important;
+}
+
+.suggest::-webkit-scrollbar {
+    display: none;
+}
+
+.suggest a {
+    z-index: 5150 !important;
+    font-size: var(--sm-font) !important;
+    display: block;
+    float: var(--textAlign-right);
+    color: #111111;
+    text-decoration: none;
+    transition: all .2s linear;
+    margin-top: 10px;
+    direction: rtl !important;
+}
+
+.suggest a:hover {
+    height: fit-content;
+    color: var(--blue-pen);
+}

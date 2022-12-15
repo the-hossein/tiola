@@ -1,0 +1,275 @@
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.profile {
+    direction: var(--direction);
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+.avatar{
+    width: fit-content;
+    display: grid;
+    place-items: center;
+}
+.profileText{
+    margin: 0 2rem;
+    direction: var(--direction);
+    height: 92% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+    padding: 0 0 !important;
+}
+.remain{
+    font-size: var(--sm-font);
+}
+.editPro {
+    font-size: var(--md-font);
+    display: block;
+    cursor: pointer;
+    margin-top: .5rem;
+}
+
+.RowProduct {
+    background-color: var(--light-pen);
+    border-radius: var(--Product-Border-radius);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    font-size: var(--xs-font);
+    position: relative;
+    direction: var(--direction);
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.RowProduct>div>span,
+.status span,
+.status svg {
+    margin: 0 1rem;
+}
+
+.history,
+.watchListDiv {
+    height: fit-content !important;
+}
+
+.history button {
+    font-size: var(--xs-font);
+    padding: .5rem 3rem;
+    margin: auto;
+    display: block;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.close {
+    background-color: var(--light-pen);
+    border-radius: 100%;
+    position: absolute;
+    top: -19px;
+    right: 2px;
+    /* float: var(--textAlign-right); */
+}
+
+.addPhoto {
+    position: absolute;
+    bottom: 8px;
+    left: 15%;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+.addPhoto:hover {
+    transform: scale(1.05);
+}
+
+.title {
+    direction: var(--direction);
+    margin: 1rem 0;
+    font-size: var(--xl-font);
+}
+
+.stepper div:not(:last-child) span:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 99%;
+    top: 52.5%;
+    background-color: var(--lightGray-border);
+    z-index: 0;
+}
+
+.address {
+    font-family: "IRANSansWeb";
+    font-size: 8.5pt;
+}
+
+.stepper svg {
+    max-width: 30px;
+    max-height: 30px;
+    margin-bottom: 0.2rem;
+}
+
+.shape svg,
+.icon {
+    font-size: var(--xxl-font) !important;
+    color: var(--lightGray-border);
+    z-index: 9;
+
+}
+
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    direction: var(--direction);
+    margin: 4rem 0;
+
+}
+
+.active svg,
+.active {
+
+    color: var(--blue-pen);
+
+}
+
+.active::after {
+    background-color: var(--blue-pen) !important;
+
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.name {
+    font-size: var(--lg-font);
+    font-family: 'IRANSansWeb';
+
+}
+
+@media(max-width:510px) {
+
+    .shape svg,
+    .icon {
+        font-size: var(--lg-font) !important;
+        width: 20px;
+    }
+    .categoty{
+        width: 14px;
+
+    }
+    .stepper div span:nth-child(3) {
+        font-size: var(--verySmall-font)
+    }
+
+    .stepper div:not(:last-child) span:nth-child(2)::after {
+        content: "";
+        top:55%;
+
+    }
+
+    .RowProduct {
+        padding: 0.5rem 0;
+        font-size: var(--xs-font)
+    }
+
+    .RowProduct>div>span,
+    .status span,
+    .status svg {
+        margin: 0 0.3rem;
+    }
+
+    .profile img {
+        margin: 0 1rem;
+    }
+
+    .name {
+        font-size: var(--lg-font) !important;
+        margin-bottom: 1rem;
+        font-family: 'IRANSansWeb';
+    }
+    .remain{
+        font-size: var(--verySmall-font);
+    }
+    .editPro {
+        font-size: var(--sm-font);
+        display: block;
+        cursor: pointer;
+        margin-top: .5rem;
+    }
+
+
+
+}
+
+@media(max-width:400px) {
+    .RowProduct {
+        flex-direction: column;
+
+        justify-content: space-between;
+        height: 30%;
+    }
+
+    .RowProduct>div>span,
+    .status span,
+    .status svg {
+        margin: 0 0.6rem;
+    }
+
+    .status {
+        width: 100% !important;
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 60px;
+    }
+
+}
+
+/* 
+@media(max-width:377px) {
+    .stepper div span:nth-child(3) {
+        overflow-wrap: break-word;
+        width: 72px;
+    }
+} */
+
+.messageExist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 65px;
+}
+
+.messageExist p {
+    text-align: center;
+    color: var(--darkGray-border);
+    font-size: var(--md-font);
+}
+
+.loader {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #fff;
+    object-fit: contain;
+}

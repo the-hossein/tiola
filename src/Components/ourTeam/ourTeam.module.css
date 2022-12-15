@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+}
+.imageContainer{
+    width: 50%;
+}
+.imageContainer img{
+    position: sticky !important;
+    top: 20px;
+    width: 100%;
+}
+
+.bodyText{
+    width: 50%;
+    direction: var(--direction);
+    padding: 1rem 1.3rem;
+}

@@ -1,0 +1,254 @@
+.collectionTitile {
+    margin-bottom: 1.5rem;
+}
+
+.content {
+    direction: var(--direction);
+    text-align: justify;
+    margin-top: 50px;
+    /* font-size: var(--xxl-font); */
+}
+.content h3 {
+    font-size: var(--xl-font);
+}
+.content p {
+    font-size: var(--md-font);
+}
+.tileImage img {
+    width: 330px;
+    cursor: pointer;
+    object-fit: cover;
+    height: 516px;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    filter: grayscale(100%);
+}
+.tileImage img:hover {
+  
+    filter: none;
+}
+#line1 {
+
+    position: absolute;
+    top: -2px;
+    right: 76px;
+    width: 14px;
+    height: 101%;
+    background-color: var(--body-Color);
+}
+
+#line2 {
+    position: absolute;
+    top: -2px;
+    right: 85px;
+    /* width: 255px; */
+    width: 74.5%;
+    height: 40px;
+    background-color: var(--body-Color);
+}
+
+#line3 {
+    position: absolute;
+    top: 63px;
+    right: 0;
+    width: 80px;
+    height: 10px;
+    background-color: var(--body-Color);
+}
+
+#line4 {
+    position: absolute;
+    top: 103px;
+    right: 0;
+    width: 80px;
+    height: 10px;
+    background-color: var(--body-Color);
+}
+
+#line5 {
+    position: absolute;
+    top: 112px;
+    right: 88px;
+    /* width: 252px; */
+    width: 74%;
+    height: 10px;
+    background-color: var(--body-Color);
+}
+
+#line6 {
+    position: absolute;
+    top: 36px;
+    right: 83px;
+    width: 131px;
+    height: 17px;
+    background-color: var(--body-Color);
+}
+
+#line7 {
+    position: absolute;
+    top: 65px;
+    right: 224px;
+    /* width: 117px; */
+    width: 33%;
+    height: 10px;
+    background-color: var(--body-Color);
+}
+
+#line8 {
+    position: absolute;
+    top: 27px;
+    right: 213px;
+    width: 12px;
+    height: 86px;
+    background-color: var(--body-Color);
+}
+
+#line9 {
+    position: absolute;
+    top: 27px;
+    right: 213px;
+    /* width: 98px; */
+    width: 22%;
+    height: 39px;
+    background-color: var(--body-Color);
+}
+
+#line10 {
+    position: absolute;
+    top: 285px;
+    right: 0;
+    width: 78px;
+    height: 10px;
+    background-color: var(--body-Color);
+}
+
+#line11 {
+    position: absolute;
+    top: 308px;
+    right: 89px;
+    /* width: 251px; */
+    width: 74%;
+    height: 10px;
+    background-color: var(--body-Color);
+}
+
+#line12 {position: absolute;
+    top: 316px;
+    right: 198px;
+    width: 12px;
+    height: 53px;
+    background-color: var(--body-Color);}
+#line13{
+    position: absolute;
+    top: 362px;
+    right: 88px;
+    /* width: 252px; */
+    width: 74%;
+    height: 8px;
+    background-color: var(--body-Color);
+}
+#line14{
+    position: absolute;
+    top: 355px;
+    right: 88px;
+    width: 110px;
+    height: 8px;
+    background-color: var(--body-Color);
+}
+#line15{
+    position: absolute;
+    top: 370px;
+    right: 120px;
+    width: 9px;
+    height: 146px;
+    background-color: var(--body-Color);
+}
+#line16{
+    position: absolute;
+    top: 429px;
+    right: 89px;
+    width: 31px;
+    height: 10px;
+    background-color: var(--body-Color);
+}
+
+#line17{
+    position: absolute;
+    top: 482px;
+    right: 0;
+    width: 76px;
+    height: 34px;
+    background-color: var(--body-Color);
+}
+#line18{
+    position: absolute;
+    top: 409px;
+    right: 128px;
+    /* width: 212px; */
+    width: 62%;
+    height: 8px;
+    background-color: var(--body-Color);
+}
+#line19{
+    position: absolute;
+    top: 416px;
+    right: 217px;
+    width: 10px;
+    height: 100px;
+    background-color: var(--body-Color);
+}
+#line20{
+    position: absolute;
+    top: 446px;
+    right: 227px;
+    /* width: 113px; */
+    width: 32%;
+    height: 8px;
+    background-color: var(--body-Color);  
+}
+#line21{
+    position: absolute;
+    top: 495px;
+    right: 89px;
+    width: 31px;
+    height: 22px;
+    background-color: var(--body-Color);
+}
+#line22{
+    position: absolute;
+    top: 476px;
+    right: 129px;
+    width: 88px;
+    height: 40px;
+    background-color: var(--body-Color);
+}
+#line23{
+    position: absolute;
+    top: 483px;
+    right: 227px;
+    /* width: 113px; */
+    width: 32%;
+    height: 8px;
+    background-color: var(--body-Color);
+}
+#line24{
+    position: absolute;
+    top: 490px;
+    right: 299px;
+    width: 9px;
+    height: 26px;
+    background-color: var(--body-Color);
+}
+#line25{
+    position: absolute;
+    top: 490px;
+    right: 227px;
+    width: 48px;
+    height: 26px;
+    background-color: var(--body-Color);
+}
+@media(max-width:768px) {
+    .collection {
+        flex-direction: column-reverse !important;
+    }
+}

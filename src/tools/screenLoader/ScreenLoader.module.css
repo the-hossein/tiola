@@ -1,0 +1,27 @@
+.loading_gif svg {
+    max-width: 160px;
+    height: auto;
+
+}
+
+.loading_gif {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color:var(--light-pen);
+    top: 0px;
+    z-index: 99;
+    text-align: center;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-mini {
+    text-align: center;
+}
+
+.loading-mini>img {
+    margin: auto;
+}

@@ -1,0 +1,53 @@
+.payBtn {
+    background-color: var(--red-pen);
+    color: var(--light-pen);
+
+}
+
+.payBtn:hover {
+    background-color: var(--light-pen);
+    color: var(--red-pen);
+}
+
+.payBtn,
+.addWatch {
+    border: none;
+    width: fit-content;
+    min-width: 200px;
+    padding: 0.5rem 0;
+    border-radius: var(--input-Radius);
+    margin: 0.5rem 0;
+
+    min-height: 50px;
+    font-size: var(--xl-font);
+}
+
+.payBtnEn {
+    padding: 0 0 0.1rem;
+}
+
+.payBtn:disabled {
+    opacity: 70%;
+    cursor: not-allowed;
+}
+
+.payBtn:disabled:hover {
+    background-color: var(--red-pen);
+    color: var(--light-pen);
+}
+
+.addWatchEn {
+    padding: 0 0 0.5rem;
+}
+
+.addWatch {
+    background-color: var(--light-pen);
+    color: var(--dark-pen);
+    padding: 0.5rem;
+    font-size: var(--md-font);
+}
+
+.addWatch:hover {
+    background-color: var(--dark-pen);
+    color: var(--light-pen);
+}

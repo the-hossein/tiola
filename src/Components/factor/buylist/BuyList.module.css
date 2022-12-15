@@ -1,0 +1,380 @@
+.row>img,
+.Mbrow>img {
+    width: 86px;
+    height: 118px;
+    border-radius: 8px;
+    overflow: hidden;
+    object-fit: cover;
+    padding: 0;
+    border: 1px solid var(--lightGray-border);
+    cursor: pointer;
+
+}
+
+.row {
+    font-size: var(--md-font) !important;
+}
+
+.deleteicon {
+    font-size: 22pt !important;
+}
+
+.des {
+    display: flex;
+    justify-content: space-between;
+    direction: var(--direction);
+    margin-top: 2.5rem;
+}
+
+.des h1 {
+    font-size: var(--veryLg2-font);
+}
+
+.des textarea {
+    width: 60%;
+    height: 200px;
+    text-align-last: var(--float-left);
+    border: none;
+    border-radius: 10px !important;
+    padding: 1rem;
+}
+
+
+.des textarea ::placeholder {
+    color: var(--lightGray-border);
+    font-size: var(--xs-font);
+    direction: var(--direction);
+}
+
+.des textarea t:focus,
+.des textarea :focus-visible {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+.payBtn {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 2.5rem 0;
+    align-items: center;
+}
+
+/* 
+.payBtn button {
+    margin: 0 2.5rem;
+} */
+
+.checkFaq {
+    direction: var(--direction);
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkFaq span {
+    font-size: var(--xs-font) !important;
+    font-family: var(--font) !important;
+    /* margin: 0 6px; */
+    cursor: pointer;
+}
+
+.checkFaq label {
+    margin: 0 !important;
+}
+
+.popoup {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.52);
+    top: 0px;
+    z-index: 99;
+    text-align: center;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.popoup ol {
+
+    margin: 0;
+    padding: 0;
+}
+
+.popoupContent {
+
+    width: 50%;
+    height: fit-content;
+    max-height: 100%;
+    background-color: var(--body-Color);
+    border-radius: var(--Product-Border-radius);
+    font-size: var(--xs-font);
+    padding: 1.5rem;
+    position: relative;
+    margin: 0 auto;
+    top: 1%;
+    text-align: justify;
+    direction: var(--direction);
+    overflow: auto;
+
+}
+
+.accept {
+    cursor: pointer;
+    all: unset;
+    display: block;
+    margin: 1rem auto;
+
+}
+
+.accept:hover {
+    color: var(--green-pen);
+}
+
+.payBtn>div {
+    background: var(--light-pen);
+    padding: 1rem;
+    border-radius: var(--Product-Border-radius);
+    min-width: 216px;
+    color: var(--greenLight-pen);
+    font-size: var(--md-font);
+    height: fit-content;
+}
+
+.price {
+    color: var(--greenLight-pen);
+}
+
+.factorBtn {
+    display: block;
+    margin: auto;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+
+.factorBtn button {
+    margin: 2rem 1rem;
+}
+
+.count {
+    padding: 0 1rem;
+    font-size: var(--md-font);
+}
+
+.minus {
+    padding: 0.38rem 0rem;
+    width: 25px !important;
+    font-size: 12pt !important;
+}
+
+.row,
+.Mbrow {
+    direction: var(--direction);
+    align-items: center;
+    background-color: var(--light-pen);
+    margin: 1.5rem 0 !important;
+    border-radius: var(--Product-Border-radius);
+    box-shadow: 0px 4px 6px #cccccc;
+    font-size: 12pt;
+}
+
+.row ul,
+.Mbrow ul {
+    width: fit-content;
+    list-style-type: none;
+    min-width: 160px;
+    margin: 0;
+}
+
+.row ul li {
+    padding: 0.3rem 0;
+}
+
+.row>div {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.row>div svg,
+.Mbrow>div svg {
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+    color: #a19c9c;
+    cursor: pointer;
+    width: 27px;
+    font-size: 20pt !important;
+}
+
+.row>div>svg:hover {
+    border-color: var(--blue-pen);
+    color: var(--blue-pen);
+}
+
+.close {
+    margin-bottom: 2rem;
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+    color: #a19c9c;
+}
+
+.close:hover {
+    border: 1px solid var(--red-pen) !important;
+    color: var(--red-pen) !important;
+
+
+}
+
+.row>div button {
+    font-size: 12pt;
+    padding: 0.4rem 1.5rem;
+}
+
+.Mbrow ul li {
+    padding: 0 1rem;
+}
+
+.collection {
+    display: flex;
+    align-items: center;
+}
+
+.collection span {
+    width: 20px;
+    height: 20px;
+
+}
+
+.offCode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 5rem 0 2.5rem;
+}
+
+.offCode input {
+    height: 50px;
+    /* text-align: right !important;
+    direction: rtl !important; */
+    /* float: right !important; */
+}
+
+.enterCode {
+    position: relative;
+    width: 100%;
+}
+
+.enterCode input[type=text] {
+    direction: rtl !important;
+    text-align: right !important;
+    padding-left: 130px;
+}
+
+.factorAction {
+    width: 480px;
+    margin: auto;
+}
+
+.offCode button {
+    position: absolute;
+    top: 0;
+    background-color: var(--green-pen);
+    border: none;
+    color: var(--light-pen);
+    border-radius: 10px 0 0 10px;
+    padding: 0.8rem 2.5rem;
+    left: 0;
+}
+
+.offCode button:disabled {
+
+    opacity: 70%;
+    cursor: not-allowed;
+}
+
+.enterCode input:disabled {
+    background-color: #e8ffe8;
+    color: rgb(63, 136, 63);
+}
+
+@media(max-width:992px) {
+    .popoupContent {
+
+        width: 80%;
+
+
+    }
+}
+
+@media(max-width:768px) {
+    .popoupContent {
+
+        width: 95%;
+
+
+    }
+
+    .close {
+        margin: 1rem 1rem 0.5rem 1rem;
+        float: right
+    }
+
+    .Mbrow button {
+        margin: 1rem;
+    }
+
+    .Mbrow img {
+        width: 110px;
+        height: 160px;
+        object-fit: cover;
+    }
+
+}
+
+@media(max-width:600px) {
+    .factorAction {
+        width: 90%;
+    }
+}
+
+@media(max-width:514px) {
+    .payBtn {
+        flex-direction: column-reverse;
+        margin: 2.5rem auto;
+        width: 80%;
+    }
+
+    .payBtn button {
+        min-width: 216px;
+        margin: 1rem 0;
+
+    }
+
+    .checkFaq {
+        width: 218px;
+        margin: auto;
+        justify-content: space-between;
+    }
+
+    .checkFaq span {
+        padding-right: 0;
+    }
+}
+
+@media(max-width:390px) {
+    .Mbrow {
+        font-size: 10pt;
+    }
+
+    .offCode button {
+        padding: 0.8rem 1.5rem;
+    }
+}

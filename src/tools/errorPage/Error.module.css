@@ -1,0 +1,86 @@
+.container429 h1 {
+    font-size: 160pt;
+    color: #707070;
+    text-align: center;
+}
+
+.ErrorCm span {
+    width: 70% !important;
+    height: 100% !important;
+    overflow: inherit !important;
+}
+
+.defultErrorConteiner {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: var(--light-pen);
+    top: 0px;
+    z-index: 99;
+    text-align: center;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.defultError {
+    display: flex;
+    justify-content: center;
+    font-size: 40pt;
+    width: 90%;
+    padding: 1.5rem;
+    position: relative;
+    margin: 0 auto;
+    top: 1%;
+    text-align: center;
+    color: var(--lightGray-border);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.defultError span {
+    width: 183px !important;
+    height: 100% !important;
+}
+
+.errorBtn {
+    border: 1px solid var(--lightGray-border);
+    border-radius: 8px;
+    padding: 0.5rem 3rem;
+    font-size: 20pt;
+    color: var(--lightGray-border);
+    min-width: 160px;
+    background-color: var(--light-pen);
+}
+
+.ErrorCm span img {
+    object-fit: contain;
+    margin-bottom: 2rem !important;
+
+}
+
+.ErrorCm {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.ErrorCm p {
+    font-size: 50pt;
+    color: #707070;
+}
+
+@media(max-width:768px) {
+    .container429 h1 {
+        font-size: 90pt;
+
+    }
+
+    .ErrorCm p {
+        font-size: 30pt;
+    }
+
+    .container429>div {
+        flex-direction: column-reverse;
+    }
+}

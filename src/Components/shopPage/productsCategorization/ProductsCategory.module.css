@@ -1,0 +1,39 @@
+.title {
+    text-align: var(--float-left);
+    margin-bottom: 1.5rem;
+    font-size: var(--xxl-font);
+}
+
+.container {
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+
+.spliterCategory{
+    border-bottom: var(--border-bottom);
+    margin: 3.5rem 0;
+}
+
+.productPhoto {
+    border-radius: var(--Product-Border-radius);
+
+}
+
+.collPage {
+    display: none !important;
+}
+
+.shopPage {
+    display: block !important;
+}
+
+.productPhoto:hover {
+    border-radius: none;
+}
+
+@media(max-width:1200px) {
+    .container {
+        width: 90%;
+    }
+}

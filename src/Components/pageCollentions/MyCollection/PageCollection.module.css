@@ -1,0 +1,68 @@
+.myCollection {
+    overflow: hidden;
+
+}
+
+.myCollection img {
+    width: 68%;
+    border-radius: 12px;
+    height: 430px;
+    object-fit: cover;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    border: 1px solid var(--lightGray-border);
+}
+
+.info {
+    width: 68%;
+    margin: auto;
+    font-size: var(--xs-font);
+    text-align: var(--float-left);
+    cursor: pointer;
+}
+
+.collectionName>span:first-child {
+    min-width: 96px;
+    overflow-wrap: break-word;
+}
+
+.title {
+    padding: 1.4rem 3rem 0.3rem 3rem;
+    font-size: var(--veryLg-font);
+    margin: 0 0 0.8rem 0;
+
+}
+
+.description {
+    padding: 0 3rem 2rem 3rem;
+    font-size: var(--xs-font);
+
+}
+
+.title,
+.description {
+    text-align: var(--float-left);
+}
+
+.content {
+    min-width: 160px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    height: 55px;
+    direction: var(--direction);
+}
+
+.myCollection img:hover {
+
+    width: 90%;
+    cursor: pointer;
+}
+
+.collectionName {
+    overflow-wrap: break-word;
+    min-width: 100px;
+    margin: 0.6rem 0;
+    font-size: var(--xs-font)
+}

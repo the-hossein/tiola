@@ -1,0 +1,24 @@
+.blurButton button {
+
+    background: #ffffff45;
+    border: none;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    min-width: 290px;
+    padding: 0.6rem 3rem;
+    color: var(--light-pen);
+    border-radius: 12px;
+    font-size: var(--xxl-font);
+
+}
+.blurButtonEn button{
+    background: #ffffff45;
+    border: none;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    min-width: 290px;
+    padding: 0 3rem 0.6rem 3rem;
+    color: var(--light-pen);
+    border-radius: 12px;
+    font-size: var(--xxl-font);
+}

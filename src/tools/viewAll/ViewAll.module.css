@@ -1,0 +1,8 @@
+.viewMore{
+ text-decoration: none;
+ font-size: var(--md-font);
+ color: var(--dark-pen);
+    padding-top: 2rem ;
+    cursor: pointer;
+    z-index: 10;
+}

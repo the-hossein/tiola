@@ -1,0 +1,26 @@
+.inputLabel {
+    float: var(--float-left);
+    font-size: var(--md-font);
+}
+.darkText{
+    color: var(--dark-pen);
+}
+.lightText{
+    color: var(--light-pen);
+
+}
+.input {
+    text-align-last: var(--float-left);
+    border: none;
+    border-radius: 10px !important;
+}
+
+.input::placeholder{
+    color: var(--lightGray-border);
+    font-size: var(--xs-font);
+    direction: var(--direction);
+}
+.input:focus,.input:focus-visible{
+    border: none !important;
+    box-shadow: none !important;
+}

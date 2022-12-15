@@ -1,0 +1,9 @@
+.placement {
+    font-size: var(--md-font);
+    display: block;
+    margin: auto;
+    color: var(--medium-gray);
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+}

@@ -1,0 +1,145 @@
+.content {
+    width: 90%;
+    overflow-wrap: break-word;
+    text-align: justify;
+    line-height: 1.7;
+    font-size: var(--md-font);
+
+}
+
+.information h1 {
+    font-size: var(--veryLg2-font);
+    margin: 0;
+
+}
+
+.detail {
+    width: 90%;
+    direction: var(--directionR);
+
+}
+
+.detail h6 {
+    font-size: var(--md-font);
+}
+
+.informationEn h1 {
+    font-size: var(--veryLg2-font);
+    margin: 0;
+    position: relative;
+    margin-bottom: -9px;
+}
+
+.readmore,
+.readLess {
+    color: var(--blue-pen);
+    font-size: 9pt;
+}
+
+.compatible {
+    display: block;
+    margin-top: 1rem;
+    font-size: var(--xs-font);
+    margin-bottom: 0.4rem;
+}
+
+.price {
+    font-size: var(--xl-font);
+    display: block;
+    padding-bottom: 1.3rem;
+}
+
+.productSlider {
+    padding: 0 0 0 2rem;
+}
+
+.productSlider>div>div {
+    border-radius: 0 0 0 12px !important;
+}
+
+.product {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+}
+
+.information,
+.informationEn {
+    direction: var(--direction);
+    padding-left: 3rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 30px;
+}
+
+.similar {
+    text-align: var(--float-left);
+    font-size: var(--veryLg2-font);
+    margin-bottom: 2rem;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notStock button {
+    font-size: var(--xs-font) !important;
+    padding-top: 5px;
+}
+
+.notStock button:hover {
+    background-color: var(--red-pen) !important;
+    color: #fff !important;
+}
+
+@media(max-width:1200px) {
+    .content {
+        width: 95%;
+    }
+
+    .productSlider {
+        padding: 0;
+    }
+}
+
+@media(max-width:768px) {
+
+    .info {
+        flex-direction: column;
+    }
+
+    .buttons {
+        text-align: center;
+        margin: 2rem 0;
+
+    }
+
+
+    .buttons button {
+        margin: 0.5rem 1rem;
+
+    }
+
+    .information {
+        padding: 0 3rem !important;
+
+    }
+
+    .content {
+        width: 100%;
+    }
+}
+
+@media(max-width:463px) {
+    .buttons button {
+        margin: 0.5rem;
+    }
+
+    .information {
+        padding: 0 1rem !important;
+
+    }
+}

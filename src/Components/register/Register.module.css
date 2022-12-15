@@ -1,0 +1,140 @@
+.Register {
+    height: 100% !important;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pic span {
+    height: 100vh !important;
+}
+
+.Register h1 {
+    text-align: var(--float-left);
+    margin-bottom: 3rem;
+    font-size: var(--xxl-font) !important;
+}
+
+.submitButtons button {
+    font-size: var(--xs-font);
+    min-width: 165px;
+}
+.timer{
+    min-width: 165px;
+    min-height: 50px;
+    border-radius: var(--input-Radius);
+    background-color: var(--light-pen);
+    border: none;
+    cursor:context-menu !important;
+}
+
+.pic span img {
+    object-fit: cover;
+}
+
+.enterNum {
+    width: 65%;
+
+    margin: auto;
+    margin-top: 5rem;
+    display: block;
+}
+
+.enterNum span {
+    font-size: var(--xs-font);
+}
+
+.enterNum label {
+    font-size: var(--md-font);
+}
+
+.enterNum input {
+    font-size: var(--md-font) !important;
+    height: 50px;
+    border-radius: 14px;
+}
+
+.submitButtons button {
+    font-size: var(--xs-font) !important;
+}
+
+.submitButtons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0;
+    font-size: var(--xs-font);
+
+
+}
+
+.again {
+    color: var(--red-pen);
+    display: block;
+    width: 100%;
+    cursor:pointer !important;
+}
+
+.editPhone button {
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    font-size: var(--xs-font);
+}
+
+.error {
+    color: var(--red-pen);
+    font-size: 8pt;
+    padding: 0.5rem;
+    text-align: var(--float-left);
+    display: block;
+}
+
+@media(max-width:768px) {
+    .enterNum {
+        width: 80%;
+    }
+
+   
+}
+@media(max-width:540px){
+    .submitButtons {
+        flex-direction: column;
+        margin: 2rem 0 1rem 0 ;
+    }
+    .pic span{
+        display: none !important;
+    }
+}
+/* @media(max-width:1300px) {
+    .enterNum {
+        width: 80%;
+    }
+}
+
+@media(max-width:1080px) {
+    .enterNum {
+        width: 85%;
+    }
+}
+
+@media(max-width:510px) {
+    .submitButtons button {
+        width: 170px;
+    }
+
+    .enterNum {
+        width: 90%;
+    }
+}
+
+@media(max-width:440px) {
+    .submitButtons button {
+        width: 140px;
+
+    }
+
+    .enterNum {
+        width: 95%;
+    }
+} */
